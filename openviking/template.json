@@ -1,6 +1,11 @@
 {
 	"name": "OpenViking",
 	"emoji": "🧠",
+	"category": "ai",
+	"alternatives": [
+		"Mem0"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "openviking",
 		"port": 1933
@@ -22,35 +27,259 @@
 	"texts": {
 		"en": {
 			"description": "A context database for AI agents: memory, resources and skills in one place",
-			"notes": "Open https://{host}/studio/settings and paste the root key: it is OPENVIKING_ROOT_API_KEY in the project’s .env. Then create an account and a user at /studio/users: the user’s key is what the ov CLI, the SDKs and agents use. Embeddings and summaries go to OpenAI with your key. Data and ov.conf are kept in /app/.openviking."
+			"notes": "Open https://{host}/studio/settings and paste the root key: it is OPENVIKING_ROOT_API_KEY in the project’s .env. Then create an account and a user at /studio/users: the user’s key is what the ov CLI, the SDKs and agents use. Embeddings and summaries go to OpenAI with your key. Data and ov.conf are kept in /app/.openviking.",
+			"sizing": "OpenViking is light: about 400 MB of memory, as embeddings run at OpenAI; agents' memories grow slowly on disk.",
+			"summary": "OpenViking is an open-source context database that gives AI agents memory, a Mem0 alternative. Self-host it on your own machine in one click.",
+			"about": [
+				"OpenViking is an open-source context database for AI agents, an alternative to Mem0 for agent memory, made by Volcengine. It keeps everything an agent knows in one filesystem under viking://: documents and code as resources, a user's preferences and experience as memories, and skills as SKILL.md files. Agents browse it like files, with ls, tree, read and grep. Each directory carries a generated summary, so an agent can judge it before opening the full files.",
+				"People self-host OpenViking to give the coding agents they use one memory that lasts across sessions, and to see what that memory holds. A committed session turns into Markdown memories you can read, edit and merge, not vectors nobody can inspect. The catch is model cost: summaries and memories are written by a model, so adding documents and committing sessions spend API calls."
+			],
+			"faq": [
+				{
+					"q": "Is OpenViking open source?",
+					"a": "Yes. The server is under AGPLv3 and needs no activation key, while the ov CLI and the examples are Apache 2.0. Volcengine also offers a commercial self-managed edition with distributed deployment and official support, activated by a license key."
+				},
+				{
+					"q": "How is OpenViking different from Mem0?",
+					"a": "Mem0 is a memory layer for AI agents. OpenViking also holds the documents, code and skills an agent works with, and can search within one directory, such as a project's docs, instead of the whole index."
+				},
+				{
+					"q": "Does OpenViking work with Claude Code and other MCP clients?",
+					"a": "Yes. The server answers MCP at /mcp, on the same port as its REST API, and its memory plugin installer covers Claude Code, Codex, Cursor, TRAE and OpenCode. Clients connect with a user key, not the root key."
+				},
+				{
+					"q": "Does OpenViking need an OpenAI API key?",
+					"a": "No. It needs an embedding model and a vision-language model from a provider such as Volcengine, OpenAI, Kimi or GLM, or models you run with Ollama. The Pethost template asks for an OpenAI key and uses text-embedding-3-small and gpt-4o-mini."
+				},
+				{
+					"q": "Does OpenViking support multiple users?",
+					"a": "Yes. The root key creates accounts, which are workspaces, and users in them; each user gets a key of its own with the ADMIN or USER role. OIDC and LDAP authentication are built in too."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Kontext-Datenbank für KI-Agenten: Gedächtnis, Ressourcen und Skills an einem Ort",
-			"notes": "Öffne https://{host}/studio/settings und füge den Root-Key ein: Er steht als OPENVIKING_ROOT_API_KEY in der .env des Projekts. Leg dann unter /studio/users einen Account und einen Nutzer an: Den Key des Nutzers verwenden die ov-CLI, die SDKs und Agenten. Embeddings und Zusammenfassungen gehen mit deinem Key an OpenAI. Daten und ov.conf bleiben in /app/.openviking erhalten."
+			"notes": "Öffne https://{host}/studio/settings und füge den Root-Key ein: Er steht als OPENVIKING_ROOT_API_KEY in der .env des Projekts. Leg dann unter /studio/users einen Account und einen Nutzer an: Den Key des Nutzers verwenden die ov-CLI, die SDKs und Agenten. Embeddings und Zusammenfassungen gehen mit deinem Key an OpenAI. Daten und ov.conf bleiben in /app/.openviking erhalten.",
+			"sizing": "OpenViking ist leicht: etwa 400 MB RAM, da Embeddings bei OpenAI laufen; das Gedächtnis der Agenten wächst auf der Disk langsam.",
+			"summary": "OpenViking selbst hosten: Open-Source-Kontext-Datenbank, die KI-Agenten ein Gedächtnis gibt. Mem0-Alternative auf deiner Maschine, mit einem Klick.",
+			"about": [
+				"OpenViking ist eine Open-Source-Kontext-Datenbank für KI-Agenten, eine Alternative zu Mem0 für das Gedächtnis von Agenten, entwickelt von Volcengine. Alles, was ein Agent weiß, liegt in einem einzigen Dateisystem unter viking://: Dokumente und Code als Ressourcen, die Vorlieben und Erfahrungen eines Nutzers als Erinnerungen, Skills als SKILL.md-Dateien. Agenten stöbern darin wie in Dateien, mit ls, tree, read und grep. Jedes Verzeichnis hat eine generierte Zusammenfassung, nach der ein Agent es beurteilen kann, bevor er die vollständigen Dateien öffnet.",
+				"Du hostest OpenViking selbst, um den Coding-Agenten, die du nutzt, ein einziges Gedächtnis zu geben, das über Sitzungen hinweg bleibt, und um zu sehen, was in diesem Gedächtnis steht. Aus einer Sitzung, die du committest, werden Markdown-Erinnerungen, die du lesen, bearbeiten und zusammenführen kannst, keine Vektoren, die niemand prüfen kann. Der Haken sind die Modellkosten: Zusammenfassungen und Erinnerungen schreibt ein Modell, deshalb verbrauchen das Hinzufügen von Dokumenten und das Committen von Sitzungen API-Aufrufe."
+			],
+			"faq": [
+				{
+					"q": "Ist OpenViking Open Source?",
+					"a": "Ja. Der Server steht unter der AGPLv3 und braucht keinen Aktivierungs-Key, die ov-CLI und die Beispiele stehen unter Apache 2.0. Volcengine bietet außerdem eine kommerzielle, selbst verwaltete Edition mit verteilten Deploys und offiziellem Support an, die ein Lizenz-Key aktiviert."
+				},
+				{
+					"q": "Was unterscheidet OpenViking von Mem0?",
+					"a": "Mem0 ist eine Gedächtnisschicht für KI-Agenten. OpenViking verwaltet zusätzlich die Dokumente, den Code und die Skills, mit denen ein Agent arbeitet, und kann auch nur in einem Verzeichnis suchen, etwa in den Docs eines Projekts, statt im ganzen Index."
+				},
+				{
+					"q": "Funktioniert OpenViking mit Claude Code und anderen MCP-Clients?",
+					"a": "Ja. Der Server beantwortet MCP unter /mcp, auf demselben Port wie seine REST-API, und der Installer seines Memory-Plugins deckt Claude Code, Codex, Cursor, TRAE und OpenCode ab. Clients verbinden sich mit dem Key eines Nutzers, nicht mit dem Root-Key."
+				},
+				{
+					"q": "Braucht OpenViking einen OpenAI-API-Key?",
+					"a": "Nein. Es braucht ein Embedding-Modell und ein Vision-Language-Modell von einem Anbieter wie Volcengine, OpenAI, Kimi oder GLM, oder Modelle, die du mit Ollama betreibst. Die Pethost-Vorlage fragt nach einem OpenAI-Key und nutzt text-embedding-3-small und gpt-4o-mini."
+				},
+				{
+					"q": "Unterstützt OpenViking mehrere Nutzer?",
+					"a": "Ja. Der Root-Key legt Konten an, das sind Workspaces, und darin Nutzer; jeder Nutzer bekommt einen eigenen Key mit der Rolle ADMIN oder USER. OIDC- und LDAP-Authentifizierung sind ebenfalls eingebaut."
+				}
+			]
 		},
 		"es": {
 			"description": "Una base de datos de contexto para agentes de IA: memoria, recursos y skills en un solo lugar",
-			"notes": "Abre https://{host}/studio/settings y pega la clave root: es OPENVIKING_ROOT_API_KEY en el .env del proyecto. Después crea una cuenta y un usuario en /studio/users: la clave del usuario es la que usan la CLI ov, los SDK y los agentes. Los embeddings y los resúmenes van a OpenAI con tu clave. Los datos y ov.conf se conservan en /app/.openviking."
+			"notes": "Abre https://{host}/studio/settings y pega la clave root: es OPENVIKING_ROOT_API_KEY en el .env del proyecto. Después crea una cuenta y un usuario en /studio/users: la clave del usuario es la que usan la CLI ov, los SDK y los agentes. Los embeddings y los resúmenes van a OpenAI con tu clave. Los datos y ov.conf se conservan en /app/.openviking.",
+			"sizing": "OpenViking es ligero: unos 400 MB de memoria, pues OpenAI hace los embeddings; la memoria de los agentes crece despacio en disco.",
+			"summary": "Autoaloja OpenViking, la base de datos de contexto de código abierto que da memoria a los agentes de IA. Alternativa a Mem0 en tu máquina, en un clic.",
+			"about": [
+				"OpenViking es una base de datos de contexto de código abierto para agentes de IA, una alternativa a Mem0 para la memoria de los agentes, creada por Volcengine. Guarda todo lo que sabe un agente en un único sistema de archivos bajo viking://: documentos y código como recursos, las preferencias y la experiencia de un usuario como memorias, y las skills como archivos SKILL.md. Los agentes lo recorren como si fueran archivos, con ls, tree, read y grep. Cada directorio lleva un resumen generado, así que un agente puede evaluarlo antes de abrir los archivos completos.",
+				"Autoalojas OpenViking para darles a los agentes de programación que usas una sola memoria que dure entre sesiones, y para ver qué contiene esa memoria. Al hacer commit de una sesión, esta se convierte en memorias en Markdown que puedes leer, editar y fusionar, no en vectores que nadie puede inspeccionar. El inconveniente es el gasto en modelos: los resúmenes y las memorias los escribe un modelo, así que agregar documentos y hacer commit de sesiones consume llamadas a la API."
+			],
+			"faq": [
+				{
+					"q": "¿OpenViking es de código abierto?",
+					"a": "Sí. El servidor tiene licencia AGPLv3 y no necesita clave de activación, mientras que la CLI ov y los ejemplos usan Apache 2.0. Volcengine también ofrece una edición comercial autogestionada, con despliegue distribuido y soporte oficial, que se activa con una clave de licencia."
+				},
+				{
+					"q": "¿En qué se diferencia OpenViking de Mem0?",
+					"a": "Mem0 es una capa de memoria para agentes de IA. OpenViking guarda además los documentos, el código y las skills con los que trabaja un agente, y puede buscar dentro de un solo directorio, como la documentación de un proyecto, en lugar de en todo el índice."
+				},
+				{
+					"q": "¿OpenViking funciona con Claude Code y otros clientes MCP?",
+					"a": "Sí. El servidor responde MCP en /mcp, en el mismo puerto que su API REST, y el instalador de su plugin de memoria cubre Claude Code, Codex, Cursor, TRAE y OpenCode. Los clientes se conectan con la clave de un usuario, no con la clave root."
+				},
+				{
+					"q": "¿OpenViking necesita una clave de API de OpenAI?",
+					"a": "No. Necesita un modelo de embeddings y un modelo de visión y lenguaje de un proveedor como Volcengine, OpenAI, Kimi o GLM, o modelos que ejecutes con Ollama. La plantilla de Pethost pide una clave de OpenAI y usa text-embedding-3-small y gpt-4o-mini."
+				},
+				{
+					"q": "¿OpenViking admite varios usuarios?",
+					"a": "Sí. La clave root crea cuentas, que son espacios de trabajo, y usuarios dentro de ellas; cada usuario recibe una clave propia con el rol ADMIN o USER. La autenticación con OIDC y LDAP también viene integrada."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une base de contexte pour agents IA : mémoire, ressources et skills au même endroit",
-			"notes": "Ouvrez https://{host}/studio/settings et collez la clé root : c’est OPENVIKING_ROOT_API_KEY dans le .env du projet. Créez ensuite un compte et un utilisateur dans /studio/users : la clé de l’utilisateur est celle qu’utilisent la CLI ov, les SDK et les agents. Les embeddings et les résumés partent chez OpenAI avec votre clé. Les données et ov.conf sont conservés dans /app/.openviking."
+			"notes": "Ouvrez https://{host}/studio/settings et collez la clé root : c’est OPENVIKING_ROOT_API_KEY dans le .env du projet. Créez ensuite un compte et un utilisateur dans /studio/users : la clé de l’utilisateur est celle qu’utilisent la CLI ov, les SDK et les agents. Les embeddings et les résumés partent chez OpenAI avec votre clé. Les données et ov.conf sont conservés dans /app/.openviking.",
+			"sizing": "OpenViking est léger : environ 400 MB de mémoire, embeddings chez OpenAI ; les souvenirs des agents prennent lentement du disque.",
+			"summary": "Auto-hébergez OpenViking, la base de contexte open source qui donne une mémoire aux agents IA. Alternative à Mem0 sur votre machine, en un clic.",
+			"about": [
+				"OpenViking est une base de contexte open source pour agents IA, une alternative à Mem0 pour la mémoire des agents, créée par Volcengine. Elle garde tout ce qu’un agent sait dans un seul système de fichiers sous viking:// : les documents et le code comme ressources, les préférences et l’expérience d’un utilisateur comme souvenirs, et les skills comme fichiers SKILL.md. Les agents la parcourent comme des fichiers, avec ls, tree, read et grep. Chaque dossier porte un résumé généré, si bien qu’un agent peut en juger avant d’ouvrir les fichiers complets.",
+				"Vous auto-hébergez OpenViking pour donner aux agents de code que vous utilisez une seule mémoire qui dure d’une session à l’autre, et pour voir ce que cette mémoire contient. Une session dont vous faites le commit devient des souvenirs en Markdown que vous pouvez lire, modifier et fusionner, et non des vecteurs que personne ne peut inspecter. Le revers, c’est le coût des modèles : les résumés et les souvenirs sont écrits par un modèle, donc ajouter des documents et faire le commit de sessions consomme des appels d’API."
+			],
+			"faq": [
+				{
+					"q": "OpenViking est-il open source ?",
+					"a": "Oui. Le serveur est sous licence AGPLv3 et n’a besoin d’aucune clé d’activation, tandis que la CLI ov et les exemples sont sous Apache 2.0. Volcengine propose aussi une édition commerciale autogérée, avec déploiement distribué et support officiel, activée par une clé de licence."
+				},
+				{
+					"q": "En quoi OpenViking diffère-t-il de Mem0 ?",
+					"a": "Mem0 est une couche de mémoire pour agents IA. OpenViking conserve aussi les documents, le code et les skills avec lesquels un agent travaille, et peut chercher dans un seul dossier, comme la documentation d’un projet, plutôt que dans tout l’index."
+				},
+				{
+					"q": "OpenViking fonctionne-t-il avec Claude Code et d’autres clients MCP ?",
+					"a": "Oui. Le serveur répond en MCP sur /mcp, sur le même port que son API REST, et l’installeur de son plugin de mémoire couvre Claude Code, Codex, Cursor, TRAE et OpenCode. Les clients se connectent avec la clé d’un utilisateur, pas avec la clé root."
+				},
+				{
+					"q": "OpenViking a-t-il besoin d’une clé d’API OpenAI ?",
+					"a": "Non. Il lui faut un modèle d’embeddings et un modèle vision-langage d’un fournisseur comme Volcengine, OpenAI, Kimi ou GLM, ou des modèles que vous faites tourner avec Ollama. Le template Pethost demande une clé OpenAI et utilise text-embedding-3-small et gpt-4o-mini."
+				},
+				{
+					"q": "OpenViking gère-t-il plusieurs utilisateurs ?",
+					"a": "Oui. La clé root crée des comptes, qui sont des espaces de travail, et des utilisateurs à l’intérieur ; chaque utilisateur reçoit sa propre clé avec le rôle ADMIN ou USER. L’authentification OIDC et LDAP est aussi intégrée."
+				}
+			]
 		},
 		"pl": {
 			"description": "Baza kontekstu dla agentów AI: pamięć, zasoby i skille w jednym miejscu",
-			"notes": "Otwórz https://{host}/studio/settings i wklej klucz root: to OPENVIKING_ROOT_API_KEY w pliku .env projektu. Potem utwórz konto i użytkownika w /studio/users: klucza użytkownika używają CLI ov, SDK i agenci. Embeddingi i podsumowania idą do OpenAI z twoim kluczem. Dane i ov.conf zostają w /app/.openviking."
+			"notes": "Otwórz https://{host}/studio/settings i wklej klucz root: to OPENVIKING_ROOT_API_KEY w pliku .env projektu. Potem utwórz konto i użytkownika w /studio/users: klucza użytkownika używają CLI ov, SDK i agenci. Embeddingi i podsumowania idą do OpenAI z twoim kluczem. Dane i ov.conf zostają w /app/.openviking.",
+			"sizing": "OpenViking ma małe wymagania: około 400 MB pamięci, bo embeddingi liczy OpenAI; pamięć agentów rośnie na dysku powoli.",
+			"summary": "Hostuj u siebie OpenViking, bazę kontekstu open source, która daje agentom AI pamięć. Alternatywa dla Mem0 na twojej maszynie, jednym kliknięciem.",
+			"about": [
+				"OpenViking to baza kontekstu open source dla agentów AI, alternatywa dla Mem0 w roli pamięci agentów, stworzona przez Volcengine. Trzyma wszystko, co agent wie, w jednym systemie plików pod viking://: dokumenty i kod jako zasoby, preferencje i doświadczenie użytkownika jako wspomnienia, a skille jako pliki SKILL.md. Agenci przeglądają ją jak pliki, poleceniami ls, tree, read i grep. Każdy katalog ma wygenerowane podsumowanie, więc agent może go ocenić, zanim otworzy pełne pliki.",
+				"Hostujesz OpenViking u siebie, żeby agenci, z którymi programujesz, mieli jedną pamięć trwającą między sesjami, i żeby zobaczyć, co ta pamięć zawiera. Po commicie sesja zamienia się we wspomnienia w Markdownie, które możesz czytać, edytować i scalać, a nie w wektory, których nikt nie potrafi sprawdzić. Haczyk to koszt modelu: podsumowania i wspomnienia pisze model, więc dodawanie dokumentów i commitowanie sesji zużywa wywołania API."
+			],
+			"faq": [
+				{
+					"q": "Czy OpenViking jest open source?",
+					"a": "Tak. Serwer ma licencję AGPLv3 i nie wymaga klucza aktywacyjnego, a CLI ov i przykłady są na licencji Apache 2.0. Volcengine oferuje też komercyjną edycję zarządzaną samodzielnie, z wdrożeniem rozproszonym i oficjalnym wsparciem, aktywowaną kluczem licencyjnym."
+				},
+				{
+					"q": "Czym OpenViking różni się od Mem0?",
+					"a": "Mem0 to warstwa pamięci dla agentów AI. OpenViking trzyma też dokumenty, kod i skille, z którymi pracuje agent, i potrafi szukać w jednym katalogu, na przykład w dokumentacji projektu, zamiast w całym indeksie."
+				},
+				{
+					"q": "Czy OpenViking działa z Claude Code i innymi klientami MCP?",
+					"a": "Tak. Serwer odpowiada po MCP pod /mcp, na tym samym porcie co jego REST API, a instalator jego pluginu pamięci obejmuje Claude Code, Codex, Cursor, TRAE i OpenCode. Klienci łączą się kluczem użytkownika, a nie kluczem root."
+				},
+				{
+					"q": "Czy OpenViking potrzebuje klucza API OpenAI?",
+					"a": "Nie. Potrzebuje modelu embeddingów i modelu wizyjno-językowego od dostawcy takiego jak Volcengine, OpenAI, Kimi czy GLM albo modeli uruchamianych przez Ollamę. Szablon Pethost prosi o klucz OpenAI i używa text-embedding-3-small oraz gpt-4o-mini."
+				},
+				{
+					"q": "Czy OpenViking obsługuje wielu użytkowników?",
+					"a": "Tak. Klucz root tworzy konta, czyli przestrzenie robocze, a w nich użytkowników; każdy użytkownik dostaje własny klucz z rolą ADMIN albo USER. Wbudowane jest też uwierzytelnianie OIDC i LDAP."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um banco de contexto para agentes de IA: memória, recursos e skills num só lugar",
-			"notes": "Abra https://{host}/studio/settings e cole a chave root: é OPENVIKING_ROOT_API_KEY no .env do projeto. Depois crie uma conta e um usuário em /studio/users: a chave do usuário é a que a CLI ov, os SDKs e os agentes usam. Os embeddings e os resumos vão para a OpenAI com a sua chave. Os dados e o ov.conf ficam guardados em /app/.openviking."
+			"notes": "Abra https://{host}/studio/settings e cole a chave root: é OPENVIKING_ROOT_API_KEY no .env do projeto. Depois crie uma conta e um usuário em /studio/users: a chave do usuário é a que a CLI ov, os SDKs e os agentes usam. Os embeddings e os resumos vão para a OpenAI com a sua chave. Os dados e o ov.conf ficam guardados em /app/.openviking.",
+			"sizing": "OpenViking é leve: cerca de 400 MB de memória, pois os embeddings rodam na OpenAI; a memória dos agentes cresce devagar no disco.",
+			"summary": "Hospede o OpenViking por conta própria: banco de contexto de código aberto que dá memória a agentes de IA, alternativa ao Mem0, em um clique.",
+			"about": [
+				"O OpenViking é um banco de contexto de código aberto para agentes de IA, uma alternativa ao Mem0 para a memória de agentes, criado pela Volcengine. Ele guarda tudo o que um agente sabe em um único sistema de arquivos sob viking://: documentos e código como recursos, as preferências e a experiência de um usuário como memórias, e as skills como arquivos SKILL.md. Os agentes o exploram como arquivos, com ls, tree, read e grep. Cada diretório traz um resumo gerado, para que um agente possa avaliá-lo antes de abrir os arquivos completos.",
+				"Você hospeda o OpenViking por conta própria para dar aos agentes de código que usa uma única memória que dure entre sessões, e para ver o que há nela. Uma sessão com commit vira memórias em Markdown que você pode ler, editar e mesclar, e não vetores que ninguém consegue inspecionar. O porém é o custo do modelo: resumos e memórias são escritos por um modelo, então adicionar documentos e fazer commit de sessões consome chamadas de API."
+			],
+			"faq": [
+				{
+					"q": "O OpenViking é de código aberto?",
+					"a": "Sim. O servidor está sob a AGPLv3 e não precisa de chave de ativação, enquanto a CLI ov e os exemplos usam Apache 2.0. A Volcengine também oferece uma edição comercial autogerenciada, com deploy distribuído e suporte oficial, ativada por uma chave de licença."
+				},
+				{
+					"q": "Qual é a diferença entre o OpenViking e o Mem0?",
+					"a": "O Mem0 é uma camada de memória para agentes de IA. O OpenViking também guarda os documentos, o código e as skills com que um agente trabalha, e consegue buscar dentro de um único diretório, como a documentação de um projeto, em vez de no índice inteiro."
+				},
+				{
+					"q": "O OpenViking funciona com o Claude Code e outros clientes MCP?",
+					"a": "Sim. O servidor responde MCP em /mcp, na mesma porta da sua API REST, e o instalador do seu plugin de memória cobre o Claude Code, o Codex, o Cursor, o TRAE e o OpenCode. Os clientes se conectam com a chave de um usuário, não com a chave root."
+				},
+				{
+					"q": "O OpenViking precisa de uma chave de API da OpenAI?",
+					"a": "Não. Ele precisa de um modelo de embeddings e de um modelo de visão e linguagem de um provedor como Volcengine, OpenAI, Kimi ou GLM, ou de modelos que você rode com o Ollama. O template do Pethost pede uma chave da OpenAI e usa text-embedding-3-small e gpt-4o-mini."
+				},
+				{
+					"q": "O OpenViking aceita vários usuários?",
+					"a": "Sim. A chave root cria contas, que são espaços de trabalho, e usuários dentro delas; cada usuário recebe uma chave própria com o papel ADMIN ou USER. A autenticação por OIDC e LDAP também já vem embutida."
+				}
+			]
 		},
 		"ru": {
 			"description": "База контекста для ИИ-агентов: память, ресурсы и навыки в одном месте",
-			"notes": "Откройте https://{host}/studio/settings и вставьте root-ключ: это OPENVIKING_ROOT_API_KEY в .env проекта. Затем создайте аккаунт и пользователя в /studio/users: ключ пользователя нужен CLI ov, SDK и агентам. Эмбеддинги и сводки уходят в OpenAI с вашим ключом. Данные и ov.conf хранятся в /app/.openviking."
+			"notes": "Откройте https://{host}/studio/settings и вставьте root-ключ: это OPENVIKING_ROOT_API_KEY в .env проекта. Затем создайте аккаунт и пользователя в /studio/users: ключ пользователя нужен CLI ov, SDK и агентам. Эмбеддинги и сводки уходят в OpenAI с вашим ключом. Данные и ov.conf хранятся в /app/.openviking.",
+			"sizing": "OpenViking: небольшие требования — около 400 MB памяти, эмбеддинги считает OpenAI; память агентов на диске растет медленно.",
+			"summary": "Self-hosted OpenViking — база контекста с открытым кодом, которая дает ИИ-агентам память. Альтернатива Mem0 на вашей машине, в один клик.",
+			"about": [
+				"OpenViking — это база контекста с открытым кодом для ИИ-агентов, альтернатива Mem0 для памяти агентов, разработанная Volcengine. Она хранит все, что знает агент, в одной файловой системе под viking://: документы и код как ресурсы, предпочтения и опыт пользователя как воспоминания, а скиллы как файлы SKILL.md. Агенты просматривают ее как обычные файлы, командами ls, tree, read и grep. У каждой папки есть сгенерированная сводка, по которой агент может оценить ее, прежде чем открывать файлы целиком.",
+				"OpenViking хостят у себя, чтобы у агентов, которые пишут код, была одна общая память, живущая между сессиями, и чтобы видеть, что в ней лежит. Закоммиченная сессия превращается в воспоминания в формате Markdown, которые можно читать, править и объединять, а не в векторы, которые никто не может проверить. Подвох в расходах на модель: сводки и воспоминания пишет модель, поэтому добавление документов и коммит сессий расходуют обращения к API."
+			],
+			"faq": [
+				{
+					"q": "У OpenViking открытый код?",
+					"a": "Да. Сервер распространяется под AGPLv3 и не требует ключа активации, а CLI ov и примеры — под Apache 2.0. Volcengine также предлагает коммерческую редакцию, которой вы управляете сами, с распределенным деплоем и официальной поддержкой; она активируется лицензионным ключом."
+				},
+				{
+					"q": "Чем OpenViking отличается от Mem0?",
+					"a": "Mem0 — это слой памяти для ИИ-агентов. OpenViking хранит еще и документы, код и скиллы, с которыми работает агент, и умеет искать внутри одной папки, например в документации проекта, а не по всему индексу."
+				},
+				{
+					"q": "Работает ли OpenViking с Claude Code и другими MCP-клиентами?",
+					"a": "Да. Сервер отвечает по MCP на /mcp, на том же порту, что и его REST API, а установщик его плагина памяти поддерживает Claude Code, Codex, Cursor, TRAE и OpenCode. Клиенты подключаются с ключом пользователя, а не с root-ключом."
+				},
+				{
+					"q": "Нужен ли OpenViking ключ API OpenAI?",
+					"a": "Нет. Ему нужны модель эмбеддингов и vision-language модель от провайдера вроде Volcengine, OpenAI, Kimi или GLM либо модели, которые вы запускаете через Ollama. Шаблон Pethost просит ключ OpenAI и использует text-embedding-3-small и gpt-4o-mini."
+				},
+				{
+					"q": "Поддерживает ли OpenViking нескольких пользователей?",
+					"a": "Да. Root-ключ создает аккаунты, то есть рабочие пространства, а в них пользователей; у каждого пользователя свой ключ с ролью ADMIN или USER. Аутентификация через OIDC и LDAP тоже встроена."
+				}
+			]
 		},
 		"uk": {
 			"description": "База контексту для ШІ-агентів: пам’ять, ресурси й навички в одному місці",
-			"notes": "Відкрийте https://{host}/studio/settings і вставте root-ключ: це OPENVIKING_ROOT_API_KEY у .env проєкту. Потім створіть акаунт і користувача в /studio/users: ключ користувача потрібен CLI ov, SDK та агентам. Ембединги й підсумки йдуть до OpenAI з вашим ключем. Дані та ov.conf зберігаються в /app/.openviking."
+			"notes": "Відкрийте https://{host}/studio/settings і вставте root-ключ: це OPENVIKING_ROOT_API_KEY у .env проєкту. Потім створіть акаунт і користувача в /studio/users: ключ користувача потрібен CLI ov, SDK та агентам. Ембединги й підсумки йдуть до OpenAI з вашим ключем. Дані та ov.conf зберігаються в /app/.openviking.",
+			"sizing": "OpenViking має скромні вимоги: близько 400 MB пам’яті, бо ембединги рахує OpenAI; пам’ять агентів повільно росте на диску.",
+			"summary": "Self-hosted OpenViking — база контексту з відкритим кодом, що дає ШІ-агентам пам’ять. Альтернатива Mem0 на вашій машині, в один клік.",
+			"about": [
+				"OpenViking — це база контексту з відкритим кодом для ШІ-агентів, альтернатива Mem0 для пам’яті агентів, створена Volcengine. Вона зберігає все, що знає агент, в одній файловій системі під viking://: документи й код як ресурси, вподобання та досвід користувача як спогади, а скіли як файли SKILL.md. Агенти переглядають її як файли, командами ls, tree, read і grep. Кожен каталог має згенерований підсумок, за яким агент може оцінити його, перш ніж відкривати файли повністю.",
+				"OpenViking хостять у себе, щоб в агентів, які пишуть код, була одна пам’ять, що живе між сесіями, і щоб бачити, що в ній лежить. Закомічена сесія перетворюється на спогади в Markdown, які можна читати, редагувати й об’єднувати, а не на вектори, які ніхто не може перевірити. Підступ у витратах на модель: підсумки й спогади пише модель, тож додавання документів і коміт сесій витрачають виклики API."
+			],
+			"faq": [
+				{
+					"q": "Чи має OpenViking відкритий код?",
+					"a": "Так. Сервер ліцензовано за AGPLv3, і ключ активації йому не потрібен, а CLI ov та приклади — за Apache 2.0. Volcengine також пропонує комерційну редакцію, якою ви керуєте самі, з розподіленим деплоєм і офіційною підтримкою; вона активується ліцензійним ключем."
+				},
+				{
+					"q": "Чим OpenViking відрізняється від Mem0?",
+					"a": "Mem0 — це шар пам’яті для ШІ-агентів. OpenViking зберігає ще й документи, код і скіли, з якими працює агент, та вміє шукати всередині одного каталогу, наприклад у документації проєкту, а не по всьому індексу."
+				},
+				{
+					"q": "Чи працює OpenViking з Claude Code та іншими MCP-клієнтами?",
+					"a": "Так. Сервер відповідає по MCP на /mcp, на тому самому порту, що й його REST API, а інсталятор його плагіна пам’яті підтримує Claude Code, Codex, Cursor, TRAE і OpenCode. Клієнти підключаються з ключем користувача, а не з root-ключем."
+				},
+				{
+					"q": "Чи потрібен OpenViking ключ API OpenAI?",
+					"a": "Ні. Йому потрібні модель ембедингів і vision-language модель від провайдера на кшталт Volcengine, OpenAI, Kimi чи GLM або моделі, які ви запускаєте через Ollama. Шаблон Pethost просить ключ OpenAI і використовує text-embedding-3-small та gpt-4o-mini."
+				},
+				{
+					"q": "Чи підтримує OpenViking кількох користувачів?",
+					"a": "Так. Root-ключ створює акаунти, тобто робочі простори, а в них користувачів; кожен користувач отримує власний ключ із роллю ADMIN або USER. Автентифікація через OIDC і LDAP також вбудована."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,12 @@
 {
 	"name": "InsForge",
 	"emoji": "🧱",
+	"category": "developer-tools",
+	"alternatives": [
+		"Supabase",
+		"Firebase"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "insforge",
 		"port": 7130
@@ -34,35 +40,259 @@
 	"texts": {
 		"en": {
 			"description": "A backend for apps that coding agents build: Postgres, auth, storage and edge functions",
-			"notes": "Sign in to the dashboard with the email and the admin password you gave. Your apps and agents reach the API at https://{host}; the dashboard shows the API key and how to connect an agent."
+			"notes": "Sign in to the dashboard with the email and the admin password you gave. Your apps and agents reach the API at https://{host}; the dashboard shows the API key and how to connect an agent.",
+			"sizing": "InsForge is light: about 150 MB with its Postgres, and the disk holds your apps' rows and stored files.",
+			"summary": "InsForge is an open-source Supabase alternative built for AI coding agents. Self-host it with Docker Compose in one click.",
+			"about": [
+				"InsForge is an open-source backend for apps built with AI coding agents, a Supabase alternative on Postgres that the agent operates itself. An app gets a Postgres database with a REST API, row-level security and pgvector, sign-in by email or OAuth providers such as Google and GitHub, file storage, realtime channels, and Deno edge functions with cron schedules. Through its MCP server, Claude Code, Cursor or Codex read the schema, data and logs, run SQL and create buckets and functions, so the agent can check its own work.",
+				"Running InsForge yourself keeps your app's users, tables and files on your server, under the Apache 2.0 license. It suits people who build with an agent and want it to see the whole backend. The catch is outside services. A self-hosted instance sends no email, not even sign-up verification or password resets, until you set up Custom SMTP, and the Model Gateway for LLM calls needs your own OpenRouter key."
+			],
+			"faq": [
+				{
+					"q": "Is InsForge open source?",
+					"a": "Yes. InsForge is licensed under Apache 2.0 and its code is on GitHub. Besides the managed InsForge Cloud, it runs on your own server with Docker Compose."
+				},
+				{
+					"q": "InsForge vs Supabase: what is the difference?",
+					"a": "Both are backends on Postgres. InsForge treats AI coding agents as the main operators: its MCP server gives them schemas, policies and logs, and it adds a Model Gateway for LLM calls and Stripe and Razorpay payments."
+				},
+				{
+					"q": "How do I connect Claude Code or Cursor to a self-hosted InsForge?",
+					"a": "Through the InsForge MCP server, given your instance's URL and admin API key. The InsForge CLI and Skills work only with InsForge Cloud, so a self-hosted instance is reached over MCP."
+				},
+				{
+					"q": "Does InsForge have SDKs for iOS and Android?",
+					"a": "Yes. Besides the TypeScript SDK for browsers, Node and edge runtimes, there is a Swift SDK for iOS and macOS, a Kotlin SDK for Android and the JVM, and a REST API for any other language."
+				},
+				{
+					"q": "Can I import an existing Postgres database into InsForge?",
+					"a": "Yes. Dump it with pg_dump and restore it with pg_restore or psql, using --no-owner. Imported tables stay hidden from the REST API and SDKs until you grant them to the anon and authenticated roles and add row-level security policies."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Backend für Apps, die Coding-Agenten bauen: Postgres, Auth, Speicher und Edge Functions",
-			"notes": "Melde dich im Dashboard mit der angegebenen E-Mail und dem Admin-Passwort an. Deine Apps und Agenten erreichen die API unter https://{host}; das Dashboard zeigt den API-Schlüssel und wie ein Agent verbunden wird."
+			"notes": "Melde dich im Dashboard mit der angegebenen E-Mail und dem Admin-Passwort an. Deine Apps und Agenten erreichen die API unter https://{host}; das Dashboard zeigt den API-Schlüssel und wie ein Agent verbunden wird.",
+			"sizing": "InsForge ist leicht: etwa 150 MB mit Postgres, und auf der Disk liegen die Zeilen und gespeicherten Dateien deiner Apps.",
+			"summary": "InsForge selbst hosten: Open-Source-Alternative zu Supabase, gebaut für KI-Coding-Agenten. Mit Docker Compose in einem Klick.",
+			"about": [
+				"InsForge ist ein Open-Source-Backend für Apps, die mit KI-Coding-Agenten entstehen, eine Supabase-Alternative auf Postgres, die der Agent selbst steuert. Eine App bekommt eine Postgres-Datenbank mit REST-API, Row-Level-Security und pgvector, Anmeldung per E-Mail oder über OAuth-Anbieter wie Google und GitHub, Dateispeicher, Realtime-Kanäle und Edge Functions auf Deno mit Cron-Zeitplänen. Über den MCP-Server lesen Claude Code, Cursor oder Codex Schema, Daten und Logs, führen SQL aus und erstellen Buckets und Funktionen, sodass der Agent seine Arbeit selbst prüfen kann.",
+				"Wer InsForge selbst betreibt, behält Benutzer, Tabellen und Dateien der App auf dem eigenen Server, unter der Apache-2.0-Lizenz. Das passt zu allen, die mit einem Agenten bauen und wollen, dass er das ganze Backend sieht. Der Haken sind externe Dienste. Eine selbst gehostete Instanz verschickt keine E-Mails, nicht einmal die Bestätigung bei der Registrierung oder Passwort-Resets, bis du Custom SMTP einrichtest, und das Model Gateway für LLM-Aufrufe braucht deinen eigenen OpenRouter-Key."
+			],
+			"faq": [
+				{
+					"q": "Ist InsForge Open Source?",
+					"a": "Ja. InsForge steht unter der Apache-2.0-Lizenz, der Code liegt auf GitHub. Neben der verwalteten InsForge Cloud läuft es mit Docker Compose auch auf deinem eigenen Server."
+				},
+				{
+					"q": "InsForge oder Supabase: Was ist der Unterschied?",
+					"a": "Beide sind Backends auf Postgres. InsForge ist darauf ausgelegt, dass KI-Coding-Agenten es hauptsächlich bedienen: Der MCP-Server gibt ihnen Schemas, Policies und Logs, und dazu kommen ein Model Gateway für LLM-Aufrufe sowie Zahlungen über Stripe und Razorpay."
+				},
+				{
+					"q": "Wie verbinde ich Claude Code oder Cursor mit einem selbst gehosteten InsForge?",
+					"a": "Über den InsForge-MCP-Server, dem du die URL deiner Instanz und den Admin-API-Key gibst. Die InsForge CLI und die Skills funktionieren nur mit InsForge Cloud, deshalb erreichst du eine selbst gehostete Instanz über MCP."
+				},
+				{
+					"q": "Hat InsForge SDKs für iOS und Android?",
+					"a": "Ja. Neben dem TypeScript-SDK für Browser, Node und Edge-Runtimes gibt es ein Swift-SDK für iOS und macOS, ein Kotlin-SDK für Android und die JVM sowie eine REST-API für jede andere Sprache."
+				},
+				{
+					"q": "Kann ich eine bestehende Postgres-Datenbank in InsForge importieren?",
+					"a": "Ja. Lege mit pg_dump einen Dump an und stelle ihn mit pg_restore oder psql wieder her, mit der Option --no-owner. Importierte Tabellen bleiben für die REST-API und die SDKs unsichtbar, bis du den Rollen anon und authenticated Zugriff darauf gewährst und Row-Level-Security-Policies hinzufügst."
+				}
+			]
 		},
 		"es": {
 			"description": "Un backend para apps que construyen agentes de código: Postgres, autenticación, almacenamiento y edge functions",
-			"notes": "Entra en el panel con el correo y la contraseña de administrador que indicaste. Tus apps y agentes llegan a la API en https://{host}; el panel muestra la clave de API y cómo conectar un agente."
+			"notes": "Entra en el panel con el correo y la contraseña de administrador que indicaste. Tus apps y agentes llegan a la API en https://{host}; el panel muestra la clave de API y cómo conectar un agente.",
+			"sizing": "InsForge es ligero: unos 150 MB con su Postgres, y el disco guarda las filas y los archivos almacenados de tus apps.",
+			"summary": "Autoaloja InsForge, la alternativa de código abierto a Supabase pensada para agentes de programación con IA. Con Docker Compose en un clic.",
+			"about": [
+				"InsForge es un backend de código abierto para apps creadas con agentes de programación con IA, una alternativa a Supabase sobre Postgres que el propio agente opera. Una app recibe una base de datos Postgres con API REST, seguridad a nivel de fila y pgvector, inicio de sesión por correo o con proveedores OAuth como Google y GitHub, almacenamiento de archivos, canales en tiempo real y edge functions de Deno con tareas programadas con cron. A través de su servidor MCP, Claude Code, Cursor o Codex leen el esquema, los datos y los logs, ejecutan SQL y crean buckets y funciones, así que el agente puede comprobar su propio trabajo.",
+				"Al ejecutar InsForge por tu cuenta, los usuarios, las tablas y los archivos de tu app se quedan en tu servidor, bajo la licencia Apache 2.0. Es para quienes crean con un agente y quieren que vea todo el backend. El inconveniente son los servicios externos. Una instancia autoalojada no envía ningún correo, ni siquiera la verificación del registro o el restablecimiento de contraseña, hasta que configures Custom SMTP, y el Model Gateway para llamadas a LLM necesita tu propia clave de OpenRouter."
+			],
+			"faq": [
+				{
+					"q": "¿InsForge es de código abierto?",
+					"a": "Sí. InsForge tiene licencia Apache 2.0 y su código está en GitHub. Además de InsForge Cloud, el servicio administrado, funciona en tu propio servidor con Docker Compose."
+				},
+				{
+					"q": "InsForge vs Supabase: ¿qué diferencia hay?",
+					"a": "Los dos son backends sobre Postgres. InsForge trata a los agentes de programación con IA como los operadores principales: su servidor MCP les da esquemas, políticas y logs, y agrega un Model Gateway para llamadas a LLM y pagos con Stripe y Razorpay."
+				},
+				{
+					"q": "¿Cómo conecto Claude Code o Cursor a una instancia autoalojada de InsForge?",
+					"a": "Mediante el servidor MCP de InsForge, con la URL de tu instancia y la clave de API de administrador. La CLI de InsForge y las Skills solo funcionan con InsForge Cloud, así que a una instancia autoalojada se llega por MCP."
+				},
+				{
+					"q": "¿InsForge tiene SDK para iOS y Android?",
+					"a": "Sí. Además del SDK de TypeScript para navegadores, Node y entornos edge, hay un SDK de Swift para iOS y macOS, un SDK de Kotlin para Android y la JVM, y una API REST para cualquier otro lenguaje."
+				},
+				{
+					"q": "¿Puedo importar una base de datos Postgres existente en InsForge?",
+					"a": "Sí. Expórtala con pg_dump y restáurala con pg_restore o psql, usando --no-owner. Las tablas importadas permanecen ocultas para la API REST y los SDK hasta que les des acceso a los roles anon y authenticated y agregues políticas de seguridad a nivel de fila."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un backend pour les applications que construisent les agents de code : Postgres, authentification, stockage et edge functions",
-			"notes": "Connectez-vous au tableau de bord avec l’e-mail et le mot de passe administrateur indiqués. Vos applications et vos agents atteignent l’API à https://{host} ; le tableau de bord affiche la clé d’API et la façon de connecter un agent."
+			"notes": "Connectez-vous au tableau de bord avec l’e-mail et le mot de passe administrateur indiqués. Vos applications et vos agents atteignent l’API à https://{host} ; le tableau de bord affiche la clé d’API et la façon de connecter un agent.",
+			"sizing": "InsForge est léger : environ 150 MB avec son Postgres, et le disque contient les lignes et fichiers stockés de vos applications.",
+			"summary": "Auto-hébergez InsForge, l’alternative open source à Supabase conçue pour les agents de code IA, avec Docker Compose en un clic.",
+			"about": [
+				"InsForge est un backend open source pour les applications créées avec des agents de code IA, une alternative à Supabase sur Postgres que l’agent pilote lui-même. Une application obtient une base de données Postgres avec une API REST, la sécurité au niveau des lignes et pgvector, la connexion par e-mail ou via des fournisseurs OAuth comme Google et GitHub, du stockage de fichiers, des canaux temps réel et des edge functions Deno avec des tâches planifiées par cron. Grâce à son serveur MCP, Claude Code, Cursor ou Codex lisent le schéma, les données et les logs, exécutent du SQL et créent des buckets et des fonctions, si bien que l’agent peut vérifier son propre travail.",
+				"Auto-héberger InsForge garde les utilisateurs, les tables et les fichiers de votre application sur votre serveur, sous licence Apache 2.0. Il convient à quiconque crée avec un agent et veut que celui-ci voie tout le backend. Le revers, ce sont les services externes. Une instance auto-hébergée n’envoie aucun e-mail, pas même la vérification d’inscription ni la réinitialisation du mot de passe, tant que vous n’avez pas configuré Custom SMTP, et le Model Gateway pour les appels aux LLM exige votre propre clé OpenRouter."
+			],
+			"faq": [
+				{
+					"q": "InsForge est-il open source ?",
+					"a": "Oui. InsForge est sous licence Apache 2.0 et son code est sur GitHub. En plus d’InsForge Cloud, le service géré, il tourne sur votre propre serveur avec Docker Compose."
+				},
+				{
+					"q": "InsForge ou Supabase : quelle différence ?",
+					"a": "Les deux sont des backends sur Postgres. InsForge considère les agents de code IA comme ses principaux opérateurs : son serveur MCP leur donne les schémas, les politiques et les logs, et il ajoute un Model Gateway pour les appels aux LLM ainsi que les paiements Stripe et Razorpay."
+				},
+				{
+					"q": "Comment connecter Claude Code ou Cursor à une instance InsForge auto-hébergée ?",
+					"a": "Via le serveur MCP d’InsForge, en lui donnant l’URL de votre instance et la clé d’API d’administration. La CLI d’InsForge et les Skills ne fonctionnent qu’avec InsForge Cloud : une instance auto-hébergée s’atteint donc par MCP."
+				},
+				{
+					"q": "InsForge propose-t-il des SDK pour iOS et Android ?",
+					"a": "Oui. En plus du SDK TypeScript pour les navigateurs, Node et les runtimes edge, il y a un SDK Swift pour iOS et macOS, un SDK Kotlin pour Android et la JVM, et une API REST pour tout autre langage."
+				},
+				{
+					"q": "Puis-je importer une base Postgres existante dans InsForge ?",
+					"a": "Oui. Exportez-la avec pg_dump et restaurez-la avec pg_restore ou psql, avec --no-owner. Les tables importées restent masquées pour l’API REST et les SDK tant que vous n’avez pas autorisé les rôles anon et authenticated à y accéder et ajouté des politiques de sécurité au niveau des lignes."
+				}
+			]
 		},
 		"pl": {
 			"description": "Backend dla aplikacji, które budują agenci kodujący: Postgres, uwierzytelnianie, pliki i edge functions",
-			"notes": "Zaloguj się do panelu e-mailem i hasłem administratora, które podano. Twoje aplikacje i agenci łączą się z API pod https://{host}; panel pokazuje klucz API i sposób podłączenia agenta."
+			"notes": "Zaloguj się do panelu e-mailem i hasłem administratora, które podano. Twoje aplikacje i agenci łączą się z API pod https://{host}; panel pokazuje klucz API i sposób podłączenia agenta.",
+			"sizing": "InsForge ma małe wymagania: około 150 MB z Postgresem, a dysk zajmują wiersze twoich aplikacji i zapisane pliki.",
+			"summary": "Hostuj InsForge u siebie: alternatywa dla Supabase open source, stworzona dla agentów AI do kodowania. Docker Compose w jeden klik.",
+			"about": [
+				"InsForge to backend open source dla aplikacji tworzonych z agentami AI do kodowania, alternatywa dla Supabase na Postgresie, którą agent obsługuje sam. Aplikacja dostaje bazę danych Postgres z REST API, row-level security i pgvector, logowanie przez e-mail albo dostawców OAuth, takich jak Google i GitHub, przechowywanie plików, kanały realtime oraz edge functions na Deno z harmonogramami cron. Przez serwer MCP Claude Code, Cursor albo Codex czytają schemat, dane i logi, uruchamiają SQL i tworzą buckety oraz funkcje, więc agent może sprawdzić własną pracę.",
+				"Gdy hostujesz InsForge u siebie, użytkownicy, tabele i pliki twojej aplikacji zostają na twoim serwerze, na licencji Apache 2.0. To rozwiązanie dla osób, które budują z agentem i chcą, żeby widział cały backend. Haczyk to usługi zewnętrzne. Instancja self-hosted nie wysyła żadnych e-maili, nawet weryfikacji przy rejestracji ani resetów hasła, dopóki nie skonfigurujesz Custom SMTP, a Model Gateway do wywołań LLM wymaga twojego własnego klucza OpenRouter."
+			],
+			"faq": [
+				{
+					"q": "Czy InsForge jest open source?",
+					"a": "Tak. InsForge ma licencję Apache 2.0, a jego kod jest na GitHubie. Oprócz zarządzanego InsForge Cloud działa na twoim własnym serwerze z Docker Compose."
+				},
+				{
+					"q": "InsForge czy Supabase: jaka jest różnica?",
+					"a": "Oba to backendy na Postgresie. InsForge traktuje agentów AI do kodowania jako głównych operatorów: jego serwer MCP daje im schematy, polityki i logi, a do tego dodaje Model Gateway do wywołań LLM oraz płatności przez Stripe i Razorpay."
+				},
+				{
+					"q": "Jak podłączyć Claude Code lub Cursor do własnej instancji InsForge?",
+					"a": "Przez serwer MCP InsForge, podając adres URL twojej instancji i klucz API administratora. InsForge CLI i Skills działają tylko z InsForge Cloud, więc do instancji self-hosted łączysz się przez MCP."
+				},
+				{
+					"q": "Czy InsForge ma SDK dla iOS i Androida?",
+					"a": "Tak. Oprócz SDK TypeScript dla przeglądarek, Node i środowisk edge jest SDK Swift dla iOS i macOS, SDK Kotlin dla Androida i JVM oraz REST API dla każdego innego języka."
+				},
+				{
+					"q": "Czy mogę zaimportować istniejącą bazę Postgres do instancji InsForge?",
+					"a": "Tak. Zrób dump za pomocą pg_dump i przywróć go za pomocą pg_restore albo psql, z opcją --no-owner. Zaimportowane tabele pozostają ukryte przed REST API i SDK, dopóki nie nadasz do nich uprawnień rolom anon i authenticated i nie dodasz polityk row-level security."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um backend para apps que agentes de código constroem: Postgres, autenticação, armazenamento e edge functions",
-			"notes": "Entre no painel com o e-mail e a senha de administrador que você informou. Seus apps e agentes acessam a API em https://{host}; o painel mostra a chave de API e como conectar um agente."
+			"notes": "Entre no painel com o e-mail e a senha de administrador que você informou. Seus apps e agentes acessam a API em https://{host}; o painel mostra a chave de API e como conectar um agente.",
+			"sizing": "InsForge é leve: cerca de 150 MB com o Postgres, e o disco guarda as linhas e os arquivos armazenados dos seus apps.",
+			"summary": "Hospede o InsForge por conta própria: alternativa de código aberto ao Supabase, feita para agentes de código com IA. Docker Compose em um clique.",
+			"about": [
+				"O InsForge é um backend de código aberto para apps criados com agentes de código com IA, uma alternativa ao Supabase em Postgres que o próprio agente opera. Um app ganha um banco de dados Postgres com API REST, segurança em nível de linha e pgvector, login por e-mail ou por provedores OAuth como Google e GitHub, armazenamento de arquivos, canais em tempo real e edge functions em Deno com agendamentos cron. Pelo servidor MCP, o Claude Code, o Cursor ou o Codex leem o esquema, os dados e os logs, executam SQL e criam buckets e funções, então o agente pode conferir o próprio trabalho.",
+				"Rodar o InsForge por conta própria mantém os usuários, as tabelas e os arquivos do seu app no seu servidor, sob a licença Apache 2.0. É para quem constrói com um agente e quer que ele enxergue o backend inteiro. O porém são os serviços externos. Uma instância auto-hospedada não envia nenhum e-mail, nem mesmo a verificação de cadastro ou a redefinição de senha, até você configurar o Custom SMTP, e o Model Gateway, para chamadas de LLM, precisa da sua própria chave do OpenRouter."
+			],
+			"faq": [
+				{
+					"q": "O InsForge é de código aberto?",
+					"a": "Sim. O InsForge tem licença Apache 2.0 e o código dele está no GitHub. Além do InsForge Cloud, a versão gerenciada, ele roda no seu próprio servidor com Docker Compose."
+				},
+				{
+					"q": "InsForge ou Supabase: qual é a diferença?",
+					"a": "Os dois são backends em Postgres. O InsForge trata os agentes de código com IA como os principais operadores: o servidor MCP dele entrega a eles esquemas, políticas e logs, e ainda traz um Model Gateway para chamadas de LLM e pagamentos com Stripe e Razorpay."
+				},
+				{
+					"q": "Como conectar o Claude Code ou o Cursor a uma instância auto-hospedada do InsForge?",
+					"a": "Pelo servidor MCP do InsForge, informando a URL da sua instância e a chave de API de administrador. A CLI e as Skills do InsForge só funcionam com o InsForge Cloud, então uma instância auto-hospedada é acessada por MCP."
+				},
+				{
+					"q": "O InsForge tem SDKs para iOS e Android?",
+					"a": "Sim. Além do SDK de TypeScript para navegadores, Node e runtimes edge, há um SDK de Swift para iOS e macOS, um SDK de Kotlin para Android e a JVM, e uma API REST para qualquer outra linguagem."
+				},
+				{
+					"q": "Posso importar um banco de dados Postgres existente no InsForge?",
+					"a": "Sim. Faça o dump com pg_dump e restaure com pg_restore ou psql, usando --no-owner. As tabelas importadas ficam ocultas da API REST e dos SDKs até você liberar o acesso a elas para as roles anon e authenticated e adicionar políticas de segurança em nível de linha."
+				}
+			]
 		},
 		"ru": {
 			"description": "Бэкенд для приложений, которые пишут AI-агенты: Postgres, авторизация, файлы и edge functions",
-			"notes": "Войдите в панель с почтой и паролем администратора, которые вы указали. Ваши приложения и агенты обращаются к API на https://{host}; в панели — API-ключ и подключение агента."
+			"notes": "Войдите в панель с почтой и паролем администратора, которые вы указали. Ваши приложения и агенты обращаются к API на https://{host}; в панели — API-ключ и подключение агента.",
+			"sizing": "InsForge: небольшие требования — около 150 MB вместе с Postgres, а на диске строки ваших приложений и сохраненные файлы.",
+			"summary": "Self-hosted InsForge в один клик через Docker Compose: open source альтернатива Supabase, созданная для ИИ-агентов, которые пишут код.",
+			"about": [
+				"InsForge — это open source бэкенд для приложений, которые создают вместе с ИИ-агентами для программирования, альтернатива Supabase на Postgres, которой агент управляет сам. Приложение получает базу данных Postgres с REST API, защитой на уровне строк (row-level security) и pgvector, вход по почте или через OAuth-провайдеров вроде Google и GitHub, хранилище файлов, realtime-каналы и edge functions на Deno с расписаниями cron. Через MCP-сервер Claude Code, Cursor или Codex читают схему, данные и логи, выполняют SQL, создают бакеты и функции, так что агент может проверить собственную работу.",
+				"Если запускать InsForge у себя, пользователи, таблицы и файлы приложения остаются на вашем сервере, под лицензией Apache 2.0. Это подходит тем, кто разрабатывает с агентом и хочет, чтобы он видел весь бэкенд. Но есть нюанс: внешние сервисы. Self-hosted инстанс не отправляет никаких писем, даже подтверждений регистрации и сброса пароля, пока вы не настроите Custom SMTP, а Model Gateway для вызовов LLM требует собственного ключа OpenRouter."
+			],
+			"faq": [
+				{
+					"q": "InsForge с открытым исходным кодом?",
+					"a": "Да. InsForge распространяется по лицензии Apache 2.0, его код лежит на GitHub. Кроме управляемого InsForge Cloud, он работает на вашем собственном сервере через Docker Compose."
+				},
+				{
+					"q": "InsForge или Supabase: в чем разница?",
+					"a": "Оба — бэкенды на Postgres. InsForge считает главными операторами ИИ-агентов для программирования: его MCP-сервер дает им схемы, политики и логи, а еще в нем есть Model Gateway для вызовов LLM и платежи через Stripe и Razorpay."
+				},
+				{
+					"q": "Как подключить Claude Code или Cursor к self-hosted InsForge?",
+					"a": "Через MCP-сервер InsForge, указав URL вашего инстанса и API-ключ администратора. InsForge CLI и Skills работают только с InsForge Cloud, поэтому к self-hosted инстансу подключаются по MCP."
+				},
+				{
+					"q": "Есть ли у InsForge SDK для iOS и Android?",
+					"a": "Да. Кроме TypeScript SDK для браузеров, Node и edge-окружений, есть Swift SDK для iOS и macOS, Kotlin SDK для Android и JVM, а также REST API для любого другого языка."
+				},
+				{
+					"q": "Можно ли импортировать в InsForge существующую базу Postgres?",
+					"a": "Да. Сделайте дамп через pg_dump и восстановите его через pg_restore или psql с опцией --no-owner. Импортированные таблицы остаются скрытыми от REST API и SDK, пока вы не выдадите на них права ролям anon и authenticated и не добавите политики row-level security."
+				}
+			]
 		},
 		"uk": {
 			"description": "Бекенд для застосунків, які пишуть AI-агенти: Postgres, авторизація, файли та edge functions",
-			"notes": "Увійдіть у панель з поштою й паролем адміністратора, які ви вказали. Ваші застосунки й агенти звертаються до API на https://{host}; у панелі — API-ключ і підключення агента."
+			"notes": "Увійдіть у панель з поштою й паролем адміністратора, які ви вказали. Ваші застосунки й агенти звертаються до API на https://{host}; у панелі — API-ключ і підключення агента.",
+			"sizing": "InsForge має скромні вимоги: близько 150 MB з Postgres, а диск займають рядки ваших застосунків і збережені файли.",
+			"summary": "Self-hosted InsForge в один клік через Docker Compose: open source альтернатива Supabase, створена для ШІ-агентів, що пишуть код.",
+			"about": [
+				"InsForge — це open source бекенд для застосунків, які створюють разом із ШІ-агентами для програмування, альтернатива Supabase на Postgres, якою агент керує сам. Застосунок отримує базу даних Postgres з REST API, захистом на рівні рядків (row-level security) і pgvector, вхід поштою або через OAuth-провайдерів на кшталт Google і GitHub, сховище файлів, realtime-канали та edge functions на Deno з розкладами cron. Через MCP-сервер Claude Code, Cursor або Codex читають схему, дані й логи, виконують SQL, створюють бакети та функції, тож агент може перевірити власну роботу.",
+				"Якщо запускати InsForge у себе, користувачі, таблиці та файли застосунку лишаються на вашому сервері, під ліцензією Apache 2.0. Це підходить тим, хто створює проєкти з агентом і хоче, щоб він бачив увесь бекенд. Але є нюанс: зовнішні сервіси. Self-hosted інстанс не надсилає жодних листів, навіть підтверджень реєстрації та скидання пароля, доки ви не налаштуєте Custom SMTP, а Model Gateway для викликів LLM потребує власного ключа OpenRouter."
+			],
+			"faq": [
+				{
+					"q": "Чи InsForge з відкритим кодом?",
+					"a": "Так. InsForge поширюється за ліцензією Apache 2.0, його код лежить на GitHub. Окрім керованого InsForge Cloud, він працює на вашому власному сервері через Docker Compose."
+				},
+				{
+					"q": "InsForge чи Supabase: у чому різниця?",
+					"a": "Обидва — бекенди на Postgres. InsForge вважає головними операторами ШІ-агентів для програмування: його MCP-сервер дає їм схеми, політики й логи, а ще в ньому є Model Gateway для викликів LLM та платежі через Stripe і Razorpay."
+				},
+				{
+					"q": "Як підключити Claude Code або Cursor до self-hosted InsForge?",
+					"a": "Через MCP-сервер InsForge, вказавши URL вашого інстансу та API-ключ адміністратора. InsForge CLI і Skills працюють лише з InsForge Cloud, тож до self-hosted інстансу підключаються через MCP."
+				},
+				{
+					"q": "Чи є в InsForge SDK для iOS та Android?",
+					"a": "Так. Окрім TypeScript SDK для браузерів, Node і edge-середовищ, є Swift SDK для iOS і macOS, Kotlin SDK для Android та JVM, а також REST API для будь-якої іншої мови."
+				},
+				{
+					"q": "Чи можна імпортувати в InsForge наявну базу Postgres?",
+					"a": "Так. Зробіть дамп через pg_dump і відновіть його через pg_restore або psql з опцією --no-owner. Імпортовані таблиці лишаються прихованими від REST API та SDK, доки ви не надасте на них права ролям anon і authenticated та не додасте політики row-level security."
+				}
+			]
 		}
 	}
 }

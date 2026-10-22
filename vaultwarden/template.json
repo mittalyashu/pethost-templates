@@ -1,6 +1,13 @@
 {
 	"name": "Vaultwarden",
 	"emoji": "🔐",
+	"category": "security",
+	"alternatives": [
+		"Bitwarden",
+		"1Password",
+		"LastPass"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "vaultwarden",
 		"port": 80
@@ -14,35 +21,259 @@
 	"texts": {
 		"en": {
 			"description": "A password manager server for the Bitwarden apps",
-			"notes": "Open the site, choose Create account and set a master password: it cannot be recovered. Then add SIGNUPS_ALLOWED=false to the project’s .env and deploy again, and name https://{host} as the self-hosted server in the Bitwarden apps."
+			"notes": "Open the site, choose Create account and set a master password: it cannot be recovered. Then add SIGNUPS_ALLOWED=false to the project’s .env and deploy again, and name https://{host} as the self-hosted server in the Bitwarden apps.",
+			"sizing": "Vaultwarden is very light: tens of megabytes of memory, and thousands of passwords take a few megabytes.",
+			"summary": "Self-host Vaultwarden, the lightweight Bitwarden-compatible password manager server written in Rust, in one click with HTTPS and nightly backups.",
+			"about": [
+				"Vaultwarden is an open-source password manager server, a lightweight alternative to Bitwarden's own server, written in Rust. The official Bitwarden apps for browsers, desktops and phones connect to it and fill and sync your logins, and a web vault comes built in. Organizations with collections share passwords with a family or a team. Send shares a note or a file through a link, and Emergency Access lets a trusted contact request access to your vault.",
+				"People self-host Vaultwarden to keep their passwords on a server they control, with software that is free under the AGPL-3.0 licence. Its database is a single SQLite file by default. It suits a person, a family or a small team: features for large companies are not the project's priority. The catch is email. Without an SMTP service it sends none, so no invitations and no two-step login by email."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden vs Bitwarden: what is the difference?",
+					"a": "Vaultwarden is a separate server that implements the same client API, so Bitwarden's apps work with both. It is not affiliated with Bitwarden, Inc., lacks a few large-organization features such as custom roles, and takes its bug reports itself."
+				},
+				{
+					"q": "Does Vaultwarden work with the Bitwarden mobile apps?",
+					"a": "Yes. In the Bitwarden app for iOS or Android, choose a self-hosted server and enter your Vaultwarden address. For changes to reach the phone without a manual sync, turn on push notifications with an installation ID and key from bitwarden.com/host."
+				},
+				{
+					"q": "Can I import passwords from LastPass or 1Password into Vaultwarden?",
+					"a": "Yes. Vaultwarden serves Bitwarden's web vault, whose import tool reads export files from LastPass, 1Password, KeePass, Chrome, Firefox and many other password managers."
+				},
+				{
+					"q": "How do I disable signups in Vaultwarden?",
+					"a": "Set SIGNUPS_ALLOWED=false once your own account exists. On Pethost that is one line in the project's .env and a new deploy. Organization owners and admins can still invite new users."
+				},
+				{
+					"q": "Has Vaultwarden had a security audit?",
+					"a": "Yes. Germany's Federal Office for Information Security (BSI) published a test of Vaultwarden 1.30.3 in 2024, and a penetration test by ERNW that October found three vulnerabilities, which were disclosed to the project. The wiki's Audits page links both."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Passwortmanager-Server für die Bitwarden-Apps",
-			"notes": "Öffne die Website, wähl „Create account“ und leg ein Master-Passwort fest: Es lässt sich nicht wiederherstellen. Trag dann SIGNUPS_ALLOWED=false in die .env des Projekts ein und deploy neu, und gib in den Bitwarden-Apps https://{host} als selbst gehosteten Server an."
+			"notes": "Öffne die Website, wähl „Create account“ und leg ein Master-Passwort fest: Es lässt sich nicht wiederherstellen. Trag dann SIGNUPS_ALLOWED=false in die .env des Projekts ein und deploy neu, und gib in den Bitwarden-Apps https://{host} als selbst gehosteten Server an.",
+			"sizing": "Vaultwarden ist sehr leicht: Dutzende MB RAM, und Tausende Passwörter brauchen ein paar MB.",
+			"summary": "Vaultwarden selbst hosten: der schlanke, Bitwarden-kompatible Passwortmanager-Server in Rust. Mit einem Klick, HTTPS und nächtlichen Backups.",
+			"about": [
+				"Vaultwarden ist ein Open-Source-Passwortmanager-Server, eine schlanke Alternative zum eigenen Server von Bitwarden, geschrieben in Rust. Die offiziellen Bitwarden-Apps für Browser, Desktop und Smartphone verbinden sich damit, füllen deine Logins aus und halten sie synchron, und ein Web-Tresor ist gleich eingebaut. Organisationen mit Sammlungen teilen Passwörter mit einer Familie oder einem Team. Send teilt eine Notiz oder eine Datei über einen Link, und mit Emergency Access kann eine vertraute Person Zugriff auf deinen Tresor anfragen.",
+				"Man hostet Vaultwarden selbst, damit die eigenen Passwörter auf einer Maschine liegen, die man selbst kontrolliert. Die Software ist unter der AGPL-3.0-Lizenz frei, und die Datenbank ist standardmäßig eine einzelne SQLite-Datei. Es passt zu einer Person, einer Familie oder einem kleinen Team: Funktionen für große Unternehmen sind nicht die Priorität des Projekts. Der Haken ist die E-Mail. Ohne SMTP-Server verschickt Vaultwarden keine, also gibt es weder Einladungen noch die zweistufige Anmeldung per E-Mail."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden oder Bitwarden: Was ist der Unterschied?",
+					"a": "Vaultwarden ist ein eigener Server, der dieselbe Client-API umsetzt, deshalb funktionieren die Apps von Bitwarden mit beiden. Er gehört nicht zu Bitwarden, Inc., ihm fehlen ein paar Funktionen für große Organisationen, etwa benutzerdefinierte Rollen, und Fehlerberichte nimmt das Projekt selbst entgegen."
+				},
+				{
+					"q": "Funktioniert Vaultwarden mit den mobilen Apps von Bitwarden?",
+					"a": "Ja. Wähl in der Bitwarden-App für iOS oder Android einen selbst gehosteten Server und gib die Adresse deines Vaultwarden ein. Damit Änderungen ohne manuelle Synchronisierung aufs Smartphone kommen, schalte Push-Benachrichtigungen ein, mit einer Installations-ID und einem Key von bitwarden.com/host."
+				},
+				{
+					"q": "Kann ich Passwörter aus LastPass oder 1Password in Vaultwarden importieren?",
+					"a": "Ja. Vaultwarden liefert den Web-Tresor von Bitwarden aus, dessen Importfunktion Exportdateien von LastPass, 1Password, KeePass, Chrome, Firefox und vielen anderen Passwortmanagern liest."
+				},
+				{
+					"q": "Wie schalte ich die Registrierung in Vaultwarden ab?",
+					"a": "Setz SIGNUPS_ALLOWED=false, sobald dein eigenes Konto existiert. Bei Pethost ist das eine Zeile in der .env des Projekts und ein neuer Deploy. Besitzer und Admins von Organisationen können weiterhin neue Personen einladen."
+				},
+				{
+					"q": "Gab es für Vaultwarden ein Sicherheits-Audit?",
+					"a": "Ja. Das Bundesamt für Sicherheit in der Informationstechnik (BSI) hat 2024 einen Test von Vaultwarden 1.30.3 veröffentlicht, und ein Penetrationstest von ERNW fand im Oktober desselben Jahres drei Schwachstellen, die dem Projekt gemeldet wurden. Die Seite „Audits“ im Wiki verlinkt beide."
+				}
+			]
 		},
 		"es": {
 			"description": "Un servidor de contraseñas para las apps de Bitwarden",
-			"notes": "Abre el sitio, elige Create account y define una contraseña maestra: no se puede recuperar. Luego agrega SIGNUPS_ALLOWED=false al .env del proyecto y vuelve a desplegar, e indica https://{host} como servidor autoalojado en las apps de Bitwarden."
+			"notes": "Abre el sitio, elige Create account y define una contraseña maestra: no se puede recuperar. Luego agrega SIGNUPS_ALLOWED=false al .env del proyecto y vuelve a desplegar, e indica https://{host} como servidor autoalojado en las apps de Bitwarden.",
+			"sizing": "Vaultwarden es muy ligero: decenas de MB de memoria, y miles de contraseñas ocupan unos pocos MB.",
+			"summary": "Autoaloja Vaultwarden, el servidor ligero de gestión de contraseñas compatible con Bitwarden, escrito en Rust. En un clic, con HTTPS y backups cada noche.",
+			"about": [
+				"Vaultwarden es un servidor de gestión de contraseñas de código abierto escrito en Rust, una alternativa ligera al servidor propio de Bitwarden. Las apps oficiales de Bitwarden para navegadores, escritorio y móviles se conectan a él, completan tus inicios de sesión y los sincronizan, y trae una bóveda web integrada. Las organizaciones con colecciones comparten contraseñas con una familia o un equipo. Send comparte una nota o un archivo mediante un enlace, y Emergency Access permite que un contacto de confianza solicite acceso a tu bóveda.",
+				"Quien autoaloja Vaultwarden guarda sus contraseñas en una máquina que controla, con software libre bajo la licencia AGPL-3.0. Por defecto, su base de datos es un único archivo SQLite. Sirve para una persona, una familia o un equipo pequeño: las funciones para grandes empresas no son la prioridad del proyecto. El inconveniente es el correo. Sin un servidor SMTP no envía ninguno, así que no hay invitaciones ni inicio de sesión en dos pasos por correo."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden frente a Bitwarden: ¿cuál es la diferencia?",
+					"a": "Vaultwarden es un servidor aparte que implementa la misma API de cliente, así que las apps de Bitwarden funcionan con ambos. No está afiliado a Bitwarden, Inc., le faltan algunas funciones para organizaciones grandes, como los roles personalizados, y los informes de errores se envían al propio proyecto."
+				},
+				{
+					"q": "¿Vaultwarden funciona con las apps móviles de Bitwarden?",
+					"a": "Sí. En la app de Bitwarden para iOS o Android, elige un servidor autoalojado y escribe la dirección de tu Vaultwarden. Para que los cambios lleguen al teléfono sin sincronizar a mano, activa las notificaciones push con un ID de instalación y una clave de bitwarden.com/host."
+				},
+				{
+					"q": "¿Puedo importar contraseñas de LastPass o 1Password a Vaultwarden?",
+					"a": "Sí. Vaultwarden sirve la bóveda web de Bitwarden, cuya herramienta de importación lee archivos de exportación de LastPass, 1Password, KeePass, Chrome, Firefox y muchos otros gestores de contraseñas."
+				},
+				{
+					"q": "¿Cómo desactivo los registros en Vaultwarden?",
+					"a": "Define SIGNUPS_ALLOWED=false cuando ya exista tu propia cuenta. En Pethost es una línea en el .env del proyecto y un nuevo despliegue. Los propietarios y administradores de las organizaciones todavía pueden invitar a nuevos usuarios."
+				},
+				{
+					"q": "¿Vaultwarden pasó por una auditoría de seguridad?",
+					"a": "Sí. La Oficina Federal de Seguridad de la Información de Alemania (BSI) publicó en 2024 una prueba de Vaultwarden 1.30.3, y una prueba de penetración de ERNW ese mismo octubre encontró tres vulnerabilidades, que se comunicaron al proyecto. La página “Audits” del wiki enlaza las dos."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un serveur de gestion de mots de passe pour les applications Bitwarden",
-			"notes": "Ouvrez le site, choisissez Create account et définissez un mot de passe principal : il ne peut pas être récupéré. Ajoutez ensuite SIGNUPS_ALLOWED=false au .env du projet et redéployez, puis indiquez https://{host} comme serveur auto-hébergé dans les applications Bitwarden."
+			"notes": "Ouvrez le site, choisissez Create account et définissez un mot de passe principal : il ne peut pas être récupéré. Ajoutez ensuite SIGNUPS_ALLOWED=false au .env du projet et redéployez, puis indiquez https://{host} comme serveur auto-hébergé dans les applications Bitwarden.",
+			"sizing": "Vaultwarden est très léger : quelques dizaines de MB de mémoire, et des milliers de mots de passe prennent quelques MB.",
+			"summary": "Auto-hébergez Vaultwarden, serveur léger de gestion de mots de passe compatible Bitwarden, écrit en Rust. En un clic, avec HTTPS et sauvegardes nocturnes.",
+			"about": [
+				"Vaultwarden est un serveur de gestion de mots de passe open source écrit en Rust, une alternative légère au serveur de Bitwarden lui-même. Les applications Bitwarden officielles pour navigateurs, ordinateurs et téléphones s’y connectent, remplissent vos identifiants et les synchronisent, et un coffre web est intégré. Des organisations dotées de collections permettent de partager des mots de passe avec une famille ou une équipe. Send partage une note ou un fichier par un lien, et Emergency Access permet à un contact de confiance de demander l’accès à votre coffre.",
+				"On auto-héberge Vaultwarden pour garder ses mots de passe sur une machine que l’on contrôle, avec un logiciel libre sous licence AGPL-3.0. Sa base de données est par défaut un simple fichier SQLite. Il convient à une personne, une famille ou une petite équipe : les fonctions pour les grandes entreprises ne sont pas la priorité du projet. Le revers : l’e-mail. Sans serveur SMTP, il n’en envoie aucun, donc ni invitations ni connexion en deux étapes par e-mail."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden ou Bitwarden : quelle différence ?",
+					"a": "Vaultwarden est un serveur à part qui implémente la même API client, donc les applications Bitwarden fonctionnent avec les deux. Il n’est pas affilié à Bitwarden, Inc., il lui manque quelques fonctions pour les grandes organisations, comme les rôles personnalisés, et c’est le projet lui-même qui reçoit ses rapports de bugs."
+				},
+				{
+					"q": "Vaultwarden fonctionne-t-il avec les applications mobiles Bitwarden ?",
+					"a": "Oui. Dans l’application Bitwarden pour iOS ou Android, choisissez un serveur auto-hébergé et saisissez l’adresse de votre Vaultwarden. Pour que les changements arrivent sur le téléphone sans synchronisation manuelle, activez les notifications push avec un ID d’installation et une clé obtenus sur bitwarden.com/host."
+				},
+				{
+					"q": "Puis-je importer des mots de passe de LastPass ou de 1Password dans Vaultwarden ?",
+					"a": "Oui. Vaultwarden sert le coffre web de Bitwarden, dont l’outil d’import lit les fichiers d’export de LastPass, 1Password, KeePass, Chrome, Firefox et de nombreux autres gestionnaires de mots de passe."
+				},
+				{
+					"q": "Comment désactiver les inscriptions dans Vaultwarden ?",
+					"a": "Définissez SIGNUPS_ALLOWED=false une fois votre propre compte créé. Sur Pethost, c’est une ligne dans le .env du projet et un nouveau déploiement. Les propriétaires et les administrateurs d’une organisation peuvent toujours inviter de nouveaux utilisateurs."
+				},
+				{
+					"q": "Vaultwarden a-t-il fait l’objet d’un audit de sécurité ?",
+					"a": "Oui. L’Office fédéral allemand de la sécurité des technologies de l’information (BSI) a publié en 2024 un test de Vaultwarden 1.30.3, et un test d’intrusion d’ERNW, en octobre de la même année, a relevé trois vulnérabilités, signalées au projet. La page « Audits » du wiki renvoie vers les deux."
+				}
+			]
 		},
 		"pl": {
 			"description": "Serwer menedżera haseł dla aplikacji Bitwarden",
-			"notes": "Otwórz witrynę, wybierz Create account i ustaw hasło główne: nie da się go odzyskać. Potem dodaj SIGNUPS_ALLOWED=false do pliku .env projektu i wdróż ponownie, a w aplikacjach Bitwarden podaj https://{host} jako serwer self-hosted."
+			"notes": "Otwórz witrynę, wybierz Create account i ustaw hasło główne: nie da się go odzyskać. Potem dodaj SIGNUPS_ALLOWED=false do pliku .env projektu i wdróż ponownie, a w aplikacjach Bitwarden podaj https://{host} jako serwer self-hosted.",
+			"sizing": "Vaultwarden ma bardzo małe wymagania: dziesiątki MB pamięci, a tysiące haseł zajmują kilka MB.",
+			"summary": "Hostuj Vaultwardena u siebie: lekki serwer menedżera haseł zgodny z Bitwarden, napisany w Ruście. Jednym kliknięciem, z HTTPS i backupami co noc.",
+			"about": [
+				"Vaultwarden to serwer menedżera haseł open source napisany w Ruście, lekka alternatywa dla serwera samego Bitwarden. Oficjalne aplikacje Bitwarden na przeglądarki, komputery i telefony łączą się z nim, wypełniają twoje dane logowania i synchronizują je, a sejf webowy jest wbudowany. Organizacje z kolekcjami pozwalają dzielić się hasłami z rodziną albo zespołem. Send udostępnia notatkę lub plik przez link, a Emergency Access pozwala zaufanemu kontaktowi poprosić o dostęp do twojego sejfu.",
+				"Vaultwarden hostuje się u siebie, żeby trzymać hasła na maszynie, którą samemu się kontroluje. Oprogramowanie jest wolne na licencji AGPL-3.0, a baza danych to domyślnie pojedynczy plik SQLite. Pasuje do jednej osoby, rodziny albo małego zespołu: funkcje dla dużych firm nie są priorytetem projektu. Haczyk to e-mail. Bez serwera SMTP Vaultwarden nie wysyła żadnych wiadomości, więc nie ma zaproszeń ani logowania dwuetapowego przez e-mail."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden czy Bitwarden: jaka jest różnica?",
+					"a": "Vaultwarden to osobny serwer, który implementuje to samo API klienckie, więc aplikacje Bitwarden działają z oboma. Nie jest związany z Bitwarden, Inc., brakuje mu kilku funkcji dla dużych organizacji, takich jak własne role, a zgłoszenia błędów przyjmuje sam projekt."
+				},
+				{
+					"q": "Czy Vaultwarden działa z mobilnymi aplikacjami Bitwarden?",
+					"a": "Tak. W aplikacji Bitwarden na iOS lub Androida wybierz serwer self-hosted i wpisz adres swojego Vaultwardena. Żeby zmiany docierały na telefon bez ręcznej synchronizacji, włącz powiadomienia push z identyfikatorem instalacji i kluczem z bitwarden.com/host."
+				},
+				{
+					"q": "Czy mogę zaimportować hasła z LastPass lub 1Password do Vaultwardena?",
+					"a": "Tak. Vaultwarden udostępnia sejf webowy Bitwarden, którego narzędzie importu czyta pliki eksportu z LastPass, 1Password, KeePass, Chrome, Firefox i wielu innych menedżerów haseł."
+				},
+				{
+					"q": "Jak wyłączyć rejestrację w Vaultwardenie?",
+					"a": "Ustaw SIGNUPS_ALLOWED=false, gdy twoje własne konto już istnieje. Na Pethost to jedna linijka w pliku .env projektu i nowe wdrożenie. Właściciele i administratorzy organizacji nadal mogą zapraszać nowych użytkowników."
+				},
+				{
+					"q": "Czy Vaultwarden przeszedł audyt bezpieczeństwa?",
+					"a": "Tak. Niemiecki Federalny Urząd ds. Bezpieczeństwa Informacji (BSI) opublikował w 2024 roku test Vaultwardena 1.30.3, a test penetracyjny ERNW z października tego samego roku wykrył trzy podatności, zgłoszone projektowi. Strona „Audits” w wiki linkuje do obu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um servidor de gerenciamento de senhas para os apps do Bitwarden",
-			"notes": "Abra o site, escolha Create account e defina uma senha mestra: ela não pode ser recuperada. Depois adicione SIGNUPS_ALLOWED=false ao .env do projeto e faça o deploy de novo, e indique https://{host} como servidor auto-hospedado nos apps do Bitwarden."
+			"notes": "Abra o site, escolha Create account e defina uma senha mestra: ela não pode ser recuperada. Depois adicione SIGNUPS_ALLOWED=false ao .env do projeto e faça o deploy de novo, e indique https://{host} como servidor auto-hospedado nos apps do Bitwarden.",
+			"sizing": "Vaultwarden é muito leve: dezenas de MB de memória, e milhares de senhas ocupam poucos MB.",
+			"summary": "Auto-hospede o Vaultwarden: servidor leve de gerenciamento de senhas compatível com o Bitwarden, em Rust. Em um clique, com HTTPS e backups noturnos.",
+			"about": [
+				"O Vaultwarden é um servidor de gerenciamento de senhas de código aberto escrito em Rust, uma alternativa leve ao servidor do próprio Bitwarden. Os apps oficiais do Bitwarden para navegadores, desktop e celulares se conectam a ele, preenchem e sincronizam seus logins, e um cofre web já vem embutido. Organizações com coleções compartilham senhas com uma família ou uma equipe. O Send compartilha uma nota ou um arquivo por um link, e o Emergency Access permite que um contato de confiança peça acesso ao seu cofre.",
+				"As pessoas auto-hospedam o Vaultwarden para guardar as senhas em uma máquina que elas mesmas controlam, com um software livre sob a licença AGPL-3.0. O banco de dados é, por padrão, um único arquivo SQLite. Ele serve para uma pessoa, uma família ou uma equipe pequena: recursos para grandes empresas não são a prioridade do projeto. O porém é o e-mail. Sem um servidor SMTP, ele não envia nenhum, então não há convites nem login em duas etapas por e-mail."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden ou Bitwarden: qual é a diferença?",
+					"a": "O Vaultwarden é um servidor à parte que implementa a mesma API de cliente, então os apps do Bitwarden funcionam com os dois. Ele não é afiliado à Bitwarden, Inc., não tem alguns recursos para grandes organizações, como funções personalizadas, e os relatos de bugs vão para o próprio projeto."
+				},
+				{
+					"q": "O Vaultwarden funciona com os apps de celular do Bitwarden?",
+					"a": "Sim. No app do Bitwarden para iOS ou Android, escolha um servidor auto-hospedado e informe o endereço do seu Vaultwarden. Para que as mudanças cheguem ao celular sem sincronização manual, ative as notificações push com um ID de instalação e uma chave de bitwarden.com/host."
+				},
+				{
+					"q": "Dá para importar senhas do LastPass ou do 1Password no Vaultwarden?",
+					"a": "Sim. O Vaultwarden serve o cofre web do Bitwarden, cuja ferramenta de importação lê arquivos de exportação do LastPass, 1Password, KeePass, Chrome, Firefox e de muitos outros gerenciadores de senhas."
+				},
+				{
+					"q": "Como desativar os cadastros no Vaultwarden?",
+					"a": "Defina SIGNUPS_ALLOWED=false assim que a sua própria conta existir. No Pethost, é uma linha no .env do projeto e um novo deploy. Donos e administradores de organizações ainda podem convidar novos usuários."
+				},
+				{
+					"q": "O Vaultwarden já passou por uma auditoria de segurança?",
+					"a": "Sim. O Escritório Federal de Segurança da Informação da Alemanha (BSI) publicou em 2024 um teste do Vaultwarden 1.30.3, e um teste de intrusão da ERNW em outubro daquele ano encontrou três vulnerabilidades, que foram reportadas ao projeto. A página “Audits” da wiki tem links para os dois."
+				}
+			]
 		},
 		"ru": {
 			"description": "Сервер менеджера паролей для приложений Bitwarden",
-			"notes": "Откройте сайт, выберите Create account и задайте мастер-пароль: восстановить его нельзя. Затем добавьте SIGNUPS_ALLOWED=false в .env проекта и задеплойте проект заново, а в приложениях Bitwarden укажите https://{host} как собственный сервер."
+			"notes": "Откройте сайт, выберите Create account и задайте мастер-пароль: восстановить его нельзя. Затем добавьте SIGNUPS_ALLOWED=false в .env проекта и задеплойте проект заново, а в приложениях Bitwarden укажите https://{host} как собственный сервер.",
+			"sizing": "Vaultwarden: совсем небольшие требования — десятки MB памяти, а тысячи паролей занимают несколько MB.",
+			"summary": "Self-hosted Vaultwarden в один клик: легкий сервер менеджера паролей, совместимый с Bitwarden, на Rust. С HTTPS и ночными бэкапами.",
+			"about": [
+				"Vaultwarden — это сервер менеджера паролей с открытым кодом на Rust, легкая альтернатива собственному серверу Bitwarden. Официальные приложения Bitwarden для браузеров, компьютеров и телефонов подключаются к нему, автозаполняют ваши логины и синхронизируют их, а веб-хранилище встроено. Организации с коллекциями позволяют делиться паролями с семьей или командой. Send передает заметку или файл по ссылке, а Emergency Access дает доверенному контакту возможность запросить доступ к вашему хранилищу.",
+				"Vaultwarden хостят у себя, чтобы хранить пароли на машине под своим контролем: это свободное ПО под лицензией AGPL-3.0, а база данных по умолчанию — один файл SQLite. Он подходит одному человеку, семье или небольшой команде: функции для крупных компаний не в приоритете проекта. Но есть нюанс: почта. Без SMTP-сервера Vaultwarden не отправляет писем, поэтому нет ни приглашений, ни двухэтапного входа по почте."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden и Bitwarden: в чем разница?",
+					"a": "Vaultwarden — отдельный сервер, который реализует тот же клиентский API, поэтому приложения Bitwarden работают с обоими. Он не связан с Bitwarden, Inc., в нем нет нескольких функций для крупных организаций, например пользовательских ролей, а сообщения об ошибках принимает сам проект."
+				},
+				{
+					"q": "Работает ли Vaultwarden с мобильными приложениями Bitwarden?",
+					"a": "Да. В приложении Bitwarden для iOS или Android выберите собственный сервер и введите адрес вашего Vaultwarden. Чтобы изменения доходили до телефона без ручной синхронизации, включите push-уведомления с ID установки и ключом с bitwarden.com/host."
+				},
+				{
+					"q": "Можно ли импортировать пароли из LastPass или 1Password в Vaultwarden?",
+					"a": "Да. Vaultwarden отдает веб-хранилище Bitwarden, и его инструмент импорта читает файлы экспорта из LastPass, 1Password, KeePass, Chrome, Firefox и многих других менеджеров паролей."
+				},
+				{
+					"q": "Как отключить регистрацию в Vaultwarden?",
+					"a": "Задайте SIGNUPS_ALLOWED=false, когда ваш собственный аккаунт уже создан. В Pethost это одна строка в .env проекта и новый деплой. Владельцы и администраторы организаций по-прежнему могут приглашать новых пользователей."
+				},
+				{
+					"q": "Проходил ли Vaultwarden аудит безопасности?",
+					"a": "Да. Федеральное ведомство Германии по информационной безопасности (BSI) опубликовало в 2024 году тест Vaultwarden 1.30.3, а тест на проникновение от ERNW в октябре того же года нашел три уязвимости, о которых сообщили проекту. Страница «Audits» в вики ссылается на оба отчета."
+				}
+			]
 		},
 		"uk": {
 			"description": "Сервер менеджера паролів для застосунків Bitwarden",
-			"notes": "Відкрийте сайт, оберіть Create account і задайте головний пароль: відновити його неможливо. Потім додайте SIGNUPS_ALLOWED=false у файл .env проєкту й задеплойте ще раз, а в застосунках Bitwarden вкажіть https://{host} як власний сервер."
+			"notes": "Відкрийте сайт, оберіть Create account і задайте головний пароль: відновити його неможливо. Потім додайте SIGNUPS_ALLOWED=false у файл .env проєкту й задеплойте ще раз, а в застосунках Bitwarden вкажіть https://{host} як власний сервер.",
+			"sizing": "Vaultwarden має дуже скромні вимоги: десятки MB пам’яті, а тисячі паролів займають кілька MB.",
+			"summary": "Self-hosted Vaultwarden в один клік: легкий сервер менеджера паролів, сумісний із Bitwarden, на Rust. З HTTPS і щонічними бекапами.",
+			"about": [
+				"Vaultwarden — це сервер менеджера паролів із відкритим кодом на Rust, легка альтернатива власному серверу Bitwarden. Офіційні застосунки Bitwarden для браузерів, комп’ютерів і телефонів підключаються до нього, автозаповнюють ваші логіни та синхронізують їх, а вебсховище вбудоване. Організації з колекціями дають змогу ділитися паролями з родиною чи командою. Send передає нотатку або файл за посиланням, а Emergency Access дає довіреному контакту змогу запросити доступ до вашого сховища.",
+				"Vaultwarden хостять у себе, щоб зберігати паролі на машині під власним контролем: це вільне ПЗ за ліцензією AGPL-3.0, а база даних за замовчуванням — один файл SQLite. Він підходить одній людині, родині чи невеликій команді: функції для великих компаній не є пріоритетом проєкту. Але є нюанс: пошта. Без SMTP-сервера Vaultwarden не надсилає листів, тож немає ні запрошень, ні двоетапного входу поштою."
+			],
+			"faq": [
+				{
+					"q": "Vaultwarden чи Bitwarden: у чому різниця?",
+					"a": "Vaultwarden — окремий сервер, що реалізує той самий клієнтський API, тож застосунки Bitwarden працюють з обома. Він не пов’язаний із Bitwarden, Inc., йому бракує кількох функцій для великих організацій, як-от власних ролей, а повідомлення про помилки приймає сам проєкт."
+				},
+				{
+					"q": "Чи працює Vaultwarden з мобільними застосунками Bitwarden?",
+					"a": "Так. У застосунку Bitwarden для iOS або Android оберіть власний сервер і введіть адресу вашого Vaultwarden. Щоб зміни доходили до телефона без ручної синхронізації, увімкніть push-сповіщення з ID встановлення та ключем із bitwarden.com/host."
+				},
+				{
+					"q": "Чи можна імпортувати паролі з LastPass або 1Password у Vaultwarden?",
+					"a": "Так. Vaultwarden віддає вебсховище Bitwarden, а його інструмент імпорту читає файли експорту з LastPass, 1Password, KeePass, Chrome, Firefox і багатьох інших менеджерів паролів."
+				},
+				{
+					"q": "Як вимкнути реєстрацію у Vaultwarden?",
+					"a": "Задайте SIGNUPS_ALLOWED=false, коли ваш власний акаунт уже створено. На Pethost це один рядок у .env проєкту й новий деплой. Власники та адміністратори організацій і далі можуть запрошувати нових користувачів."
+				},
+				{
+					"q": "Чи проходив Vaultwarden аудит безпеки?",
+					"a": "Так. Федеральне відомство Німеччини з інформаційної безпеки (BSI) опублікувало 2024 року тест Vaultwarden 1.30.3, а тест на проникнення від ERNW у жовтні того самого року виявив три вразливості, про які повідомили проєкту. Сторінка «Audits» у вікі посилається на обидва звіти."
+				}
+			]
 		}
 	}
 }

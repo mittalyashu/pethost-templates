@@ -1,6 +1,13 @@
 {
 	"name": "Authorizer",
 	"emoji": "🔑",
+	"category": "security",
+	"alternatives": [
+		"Auth0",
+		"Clerk",
+		"Firebase Authentication"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "authorizer",
 		"port": 8080
@@ -34,35 +41,259 @@
 	"texts": {
 		"en": {
 			"description": "Sign-in for your own apps, with OAuth 2 and OpenID Connect",
-			"notes": "Open https://{host}/dashboard and sign in with the password you gave. Your apps use https://{host} as the issuer, and CLIENT_ID from the project’s .env as their client ID."
+			"notes": "Open https://{host}/dashboard and sign in with the password you gave. Your apps use https://{host} as the issuer, and CLIENT_ID from the project’s .env as their client ID.",
+			"sizing": "Authorizer is very light: under 100 MB of memory, and many thousands of users take little disk.",
+			"summary": "Authorizer is an open-source authentication server with OAuth 2, OpenID Connect and social logins, an Auth0 alternative. Self-host it in one click.",
+			"about": [
+				"Authorizer is an open-source authentication and authorization server, a self-hosted alternative to Auth0 for adding sign-in to your own apps. It speaks OAuth 2 and OpenID Connect, so any app that supports them can sign people in through it, and it ships a built-in login page and SDKs for JavaScript, React, Go and Python. People sign in with a password, a magic link, a passkey or one of ten social logins, and can add a second factor. An admin dashboard covers users, webhooks, email templates and audit logs.",
+				"Running Authorizer yourself keeps your users' accounts in your own database, with no fee per user as an app grows. It suits a side project or a small product that needs proper sign-in without handing its users to a vendor. The catch: email verification, password resets and magic links work only once you give it an SMTP server to send mail through."
+			],
+			"faq": [
+				{
+					"q": "Is Authorizer free and open source?",
+					"a": "Yes. Authorizer is released under the Apache-2.0 license, which lets you use, change and run it commercially at no cost. You pay only for the server it runs on."
+				},
+				{
+					"q": "Which social logins does Authorizer support?",
+					"a": "Ten: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox and Microsoft. Each one needs a key and secret that you get from that provider."
+				},
+				{
+					"q": "Does Authorizer support MFA and passkeys?",
+					"a": "Yes. The second factor can be a TOTP authenticator app, a one-time code by email or an SMS code through Twilio. Passkeys work through WebAuthn, with FIDO2 security keys, Touch ID, Face ID or Windows Hello."
+				},
+				{
+					"q": "Which databases does Authorizer support?",
+					"a": "More than a dozen, including Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB and Couchbase. The --database-type and --database-url flags pick one when the server starts."
+				},
+				{
+					"q": "Does Authorizer need Redis?",
+					"a": "No. Without Redis, Authorizer keeps sessions in memory, so people stay signed in only until the server restarts. Pointing it at a Redis server with --redis-url keeps sessions across restarts."
+				}
+			]
 		},
 		"de": {
 			"description": "Anmeldung für deine eigenen Apps, mit OAuth 2 und OpenID Connect",
-			"notes": "Öffne https://{host}/dashboard und melde dich mit dem Passwort an, das du festgelegt hast. Deine Apps nutzen https://{host} als Issuer und CLIENT_ID aus der .env des Projekts als Client-ID."
+			"notes": "Öffne https://{host}/dashboard und melde dich mit dem Passwort an, das du festgelegt hast. Deine Apps nutzen https://{host} als Issuer und CLIENT_ID aus der .env des Projekts als Client-ID.",
+			"sizing": "Authorizer ist sehr leicht: unter 100 MB RAM, und viele Tausend Konten brauchen wenig Disk.",
+			"summary": "Authorizer selbst hosten: Open-Source-Server für Anmeldung mit OAuth 2, OpenID Connect und Social Logins, eine Auth0-Alternative. Mit einem Klick.",
+			"about": [
+				"Authorizer ist ein Open-Source-Server für Authentifizierung und Autorisierung, eine selbst gehostete Alternative zu Auth0, um deinen eigenen Apps eine Anmeldung zu geben. Er spricht OAuth 2 und OpenID Connect, sodass sich über ihn jede App anmelden lässt, die beides unterstützt. Dazu bringt er eine eingebaute Login-Seite und SDKs für JavaScript, React, Go und Python mit. Die Anmeldung läuft per Passwort, Magic Link, Passkey oder über einen von zehn Social Logins, und ein zweiter Faktor lässt sich ergänzen. Ein Admin-Dashboard deckt Benutzerkonten, Webhooks, E-Mail-Vorlagen und Audit-Logs ab.",
+				"Wer Authorizer selbst hostet, behält die Konten seiner Benutzer in der eigenen Datenbank und zahlt keine Gebühr pro Benutzer, wenn eine App wächst. Das passt zu einem Nebenprojekt oder einem kleinen Produkt, das eine ordentliche Anmeldung braucht, ohne seine Benutzer an einen Anbieter abzugeben. Der Haken: E-Mail-Bestätigung, Passwort-Reset und Magic Links funktionieren erst, wenn du einen SMTP-Server angibst, über den Authorizer Mails verschickt."
+			],
+			"faq": [
+				{
+					"q": "Ist Authorizer kostenlos und Open Source?",
+					"a": "Ja. Authorizer steht unter der Apache-2.0-Lizenz, die dir erlaubt, es kostenlos zu nutzen, zu ändern und kommerziell einzusetzen. Du zahlst nur für den Server, auf dem es läuft."
+				},
+				{
+					"q": "Welche Social Logins unterstützt Authorizer?",
+					"a": "Zehn: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox und Microsoft. Jeder braucht einen Key und ein Secret, die du beim jeweiligen Anbieter bekommst."
+				},
+				{
+					"q": "Unterstützt Authorizer MFA und Passkeys?",
+					"a": "Ja. Als zweiter Faktor dienen eine TOTP-Authenticator-App, ein Einmalcode per E-Mail oder ein SMS-Code über Twilio. Passkeys laufen über WebAuthn, mit FIDO2-Sicherheitsschlüsseln, Touch ID, Face ID oder Windows Hello."
+				},
+				{
+					"q": "Welche Datenbanken unterstützt Authorizer?",
+					"a": "Mehr als ein Dutzend, darunter Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB und Couchbase. Die Flags --database-type und --database-url wählen beim Start des Servers eine davon aus."
+				},
+				{
+					"q": "Braucht Authorizer Redis?",
+					"a": "Nein. Ohne Redis hält Authorizer die Sitzungen im RAM, deshalb bleiben Leute nur bis zum Neustart des Servers angemeldet. Zeigst du ihn mit --redis-url auf einen Redis-Server, bleiben die Sitzungen über Neustarts hinweg erhalten."
+				}
+			]
 		},
 		"es": {
 			"description": "Inicio de sesión para tus propias apps, con OAuth 2 y OpenID Connect",
-			"notes": "Abre https://{host}/dashboard e inicia sesión con la contraseña que indicaste. Tus apps usan https://{host} como emisor (issuer) y CLIENT_ID del .env del proyecto como su ID de cliente."
+			"notes": "Abre https://{host}/dashboard e inicia sesión con la contraseña que indicaste. Tus apps usan https://{host} como emisor (issuer) y CLIENT_ID del .env del proyecto como su ID de cliente.",
+			"sizing": "Authorizer es muy ligero: menos de 100 MB de memoria, y muchos miles de usuarios ocupan poco disco.",
+			"summary": "Autoaloja Authorizer, servidor de autenticación de código abierto con OAuth 2, OpenID Connect e inicio de sesión social, alternativa a Auth0. En un clic.",
+			"about": [
+				"Authorizer es un servidor de autenticación y autorización de código abierto, una alternativa autoalojada a Auth0 para agregar inicio de sesión a tus propias apps. Habla OAuth 2 y OpenID Connect, así que cualquier app que los admita puede dejar que la gente inicie sesión a través de él, e incluye una página de inicio de sesión integrada y SDKs para JavaScript, React, Go y Python. La gente inicia sesión con contraseña, enlace mágico, passkey o uno de diez inicios de sesión social, y puede agregar un segundo factor. Un panel de administración cubre usuarios, webhooks, plantillas de correo y logs de auditoría.",
+				"Al autoalojar Authorizer, las cuentas de tus usuarios se quedan en tu propia base de datos y no pagas una tarifa por usuario a medida que una app crece. Encaja en un proyecto paralelo o en un producto pequeño que necesita un inicio de sesión como es debido sin entregar a sus usuarios a un proveedor. El inconveniente: la verificación del correo, el restablecimiento de contraseñas y los enlaces mágicos solo funcionan cuando le das un servidor SMTP por el que enviar correos."
+			],
+			"faq": [
+				{
+					"q": "¿Authorizer es gratis y de código abierto?",
+					"a": "Sí. Authorizer se publica con la licencia Apache-2.0, que te permite usarlo, modificarlo y ejecutarlo comercialmente sin pagar por ello. Solo pagas por el servidor en el que se ejecuta."
+				},
+				{
+					"q": "¿Qué inicios de sesión social admite Authorizer?",
+					"a": "Diez: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox y Microsoft. Cada uno necesita una clave y un secreto que obtienes del proveedor."
+				},
+				{
+					"q": "¿Authorizer admite MFA y passkeys?",
+					"a": "Sí. El segundo factor puede ser una app de autenticación TOTP, un código de un solo uso por correo o un código SMS mediante Twilio. Las passkeys funcionan con WebAuthn, con claves de seguridad FIDO2, Touch ID, Face ID o Windows Hello."
+				},
+				{
+					"q": "¿Qué bases de datos admite Authorizer?",
+					"a": "Más de una docena, entre ellas Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB y Couchbase. Los flags --database-type y --database-url eligen una cuando se inicia el servidor."
+				},
+				{
+					"q": "¿Authorizer necesita Redis?",
+					"a": "No. Sin Redis, Authorizer guarda las sesiones en memoria, así que la gente sigue con la sesión iniciada solo hasta que el servidor se reinicia. Si lo apuntas a un servidor Redis con --redis-url, las sesiones se conservan entre reinicios."
+				}
+			]
 		},
 		"fr": {
 			"description": "La connexion pour vos propres applications, avec OAuth 2 et OpenID Connect",
-			"notes": "Ouvrez https://{host}/dashboard et connectez-vous avec le mot de passe que vous avez choisi. Vos applications utilisent https://{host} comme émetteur (issuer) et CLIENT_ID du .env du projet comme identifiant client."
+			"notes": "Ouvrez https://{host}/dashboard et connectez-vous avec le mot de passe que vous avez choisi. Vos applications utilisent https://{host} comme émetteur (issuer) et CLIENT_ID du .env du projet comme identifiant client.",
+			"sizing": "Authorizer est très léger : moins de 100 MB de mémoire, et de nombreux milliers d’utilisateurs pèsent peu sur le disque.",
+			"summary": "Auto-hébergez Authorizer : serveur d’authentification open source avec OAuth 2, OpenID Connect et connexions sociales, alternative à Auth0. En un clic.",
+			"about": [
+				"Authorizer est un serveur d’authentification et d’autorisation open source, une alternative auto-hébergée à Auth0 pour ajouter la connexion à vos propres applications. Il parle OAuth 2 et OpenID Connect : toute application qui les prend en charge peut s’en servir pour connecter ses utilisateurs, et il fournit une page de connexion intégrée ainsi que des SDK pour JavaScript, React, Go et Python. On s’y connecte avec un mot de passe, un lien magique, une clé d’accès ou l’une des dix connexions sociales, et l’on peut ajouter un second facteur. Un tableau de bord d’administration couvre les utilisateurs, les webhooks, les modèles d’e-mail et les journaux d’audit.",
+				"En auto-hébergeant Authorizer, vous gardez les comptes de vos utilisateurs dans votre propre base de données, sans frais par utilisateur quand une application grandit. Il convient à un projet perso ou à un petit produit qui a besoin d’une vraie connexion sans confier ses utilisateurs à un fournisseur. Le revers : la vérification des e-mails, la réinitialisation des mots de passe et les liens magiques ne fonctionnent qu’une fois que vous lui avez donné un serveur SMTP pour envoyer les messages."
+			],
+			"faq": [
+				{
+					"q": "Authorizer est-il gratuit et open source ?",
+					"a": "Oui. Authorizer est publié sous licence Apache-2.0, qui permet de l’utiliser, de le modifier et de l’exploiter commercialement sans rien payer. Vous ne payez que le serveur sur lequel il tourne."
+				},
+				{
+					"q": "Quelles connexions sociales Authorizer prend-il en charge ?",
+					"a": "Dix : Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox et Microsoft. Chacune demande une clé et un secret que vous obtenez auprès du fournisseur concerné."
+				},
+				{
+					"q": "Authorizer prend-il en charge la MFA et les clés d’accès ?",
+					"a": "Oui. Le second facteur peut être une application d’authentification TOTP, un code à usage unique par e-mail ou un code SMS via Twilio. Les clés d’accès fonctionnent avec WebAuthn, avec des clés de sécurité FIDO2, Touch ID, Face ID ou Windows Hello."
+				},
+				{
+					"q": "Quelles bases de données Authorizer prend-il en charge ?",
+					"a": "Plus d’une douzaine, dont Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB et Couchbase. Les options --database-type et --database-url en choisissent une au démarrage du serveur."
+				},
+				{
+					"q": "Authorizer a-t-il besoin de Redis ?",
+					"a": "Non. Sans Redis, Authorizer garde les sessions en mémoire : les gens ne restent connectés que jusqu’au redémarrage du serveur. Si vous le pointez vers un serveur Redis avec --redis-url, les sessions sont conservées d’un redémarrage à l’autre."
+				}
+			]
 		},
 		"pl": {
 			"description": "Logowanie do twoich własnych aplikacji, z OAuth 2 i OpenID Connect",
-			"notes": "Otwórz https://{host}/dashboard i zaloguj się hasłem podanym przy tworzeniu projektu. Twoje aplikacje używają https://{host} jako issuera, a CLIENT_ID z pliku .env projektu jako identyfikatora klienta."
+			"notes": "Otwórz https://{host}/dashboard i zaloguj się hasłem podanym przy tworzeniu projektu. Twoje aplikacje używają https://{host} jako issuera, a CLIENT_ID z pliku .env projektu jako identyfikatora klienta.",
+			"sizing": "Authorizer ma bardzo małe wymagania: poniżej 100 MB pamięci, a wiele tysięcy użytkowników zajmuje mało miejsca na dysku.",
+			"summary": "Hostuj Authorizer u siebie w jeden klik: serwer uwierzytelniania open source z OAuth 2, OpenID Connect i social loginami, alternatywa dla Auth0.",
+			"about": [
+				"Authorizer to serwer uwierzytelniania i autoryzacji open source, hostowana u siebie alternatywa dla Auth0, która dodaje logowanie do twoich własnych aplikacji. Obsługuje OAuth 2 i OpenID Connect, więc przez niego może logować ludzi każda aplikacja, która je wspiera, a do tego ma wbudowaną stronę logowania i SDK dla JavaScriptu, Reacta, Go i Pythona. Zalogować się można hasłem, magic linkiem, kluczem dostępu albo jednym z dziesięciu logowań społecznościowych, a do tego można dodać drugi składnik. Panel administracyjny obejmuje użytkowników, webhooki, szablony e-maili i logi audytu.",
+				"Kto hostuje Authorizer u siebie, trzyma konta użytkowników we własnej bazie danych i nie płaci opłaty za każdego użytkownika, gdy aplikacja rośnie. Pasuje do projektu pobocznego albo małego produktu, który potrzebuje porządnego logowania bez oddawania użytkowników dostawcy. Haczyk: weryfikacja e-maila, resetowanie haseł i magic linki działają dopiero wtedy, gdy podasz mu serwer SMTP, przez który ma wysyłać e-maile."
+			],
+			"faq": [
+				{
+					"q": "Czy Authorizer jest darmowy i open source?",
+					"a": "Tak. Authorizer jest wydany na licencji Apache-2.0, która pozwala go używać, zmieniać i uruchamiać komercyjnie bez opłat. Płacisz tylko za serwer, na którym działa."
+				},
+				{
+					"q": "Jakie logowania społecznościowe obsługuje Authorizer?",
+					"a": "Dziesięć: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox i Microsoft. Każde wymaga klucza i sekretu, które dostajesz od danego dostawcy."
+				},
+				{
+					"q": "Czy Authorizer obsługuje MFA i klucze dostępu (passkeys)?",
+					"a": "Tak. Drugim składnikiem może być aplikacja uwierzytelniająca TOTP, jednorazowy kod e-mailem albo kod SMS przez Twilio. Klucze dostępu działają przez WebAuthn, z kluczami bezpieczeństwa FIDO2, Touch ID, Face ID lub Windows Hello."
+				},
+				{
+					"q": "Jakie bazy danych obsługuje Authorizer?",
+					"a": "Ponad tuzin, w tym Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB i Couchbase. Flagi --database-type i --database-url wybierają jedną z nich przy starcie serwera."
+				},
+				{
+					"q": "Czy Authorizer potrzebuje Redisa?",
+					"a": "Nie. Bez Redisa Authorizer trzyma sesje w pamięci, więc ludzie pozostają zalogowani tylko do restartu serwera. Jeśli wskażesz mu serwer Redis przez --redis-url, sesje przetrwają restarty."
+				}
+			]
 		},
 		"pt": {
 			"description": "Login para os seus próprios apps, com OAuth 2 e OpenID Connect",
-			"notes": "Abra https://{host}/dashboard e entre com a senha que você definiu. Seus apps usam https://{host} como emissor (issuer) e o CLIENT_ID do .env do projeto como ID de cliente."
+			"notes": "Abra https://{host}/dashboard e entre com a senha que você definiu. Seus apps usam https://{host} como emissor (issuer) e o CLIENT_ID do .env do projeto como ID de cliente.",
+			"sizing": "Authorizer é muito leve: menos de 100 MB de memória, e muitos milhares de usuários ocupam pouco disco.",
+			"summary": "Auto-hospede o Authorizer: servidor de autenticação open source com OAuth 2, OpenID Connect e logins sociais, alternativa ao Auth0. Em um clique.",
+			"about": [
+				"O Authorizer é um servidor de autenticação e autorização open source, uma alternativa auto-hospedada ao Auth0 para adicionar login aos seus próprios apps. Ele fala OAuth 2 e OpenID Connect, então qualquer app que os suporte pode fazer o login das pessoas por ele, e traz uma página de login embutida e SDKs para JavaScript, React, Go e Python. As pessoas entram com senha, link mágico, passkey ou um de dez logins sociais, e podem adicionar um segundo fator. Um painel de administração cobre usuários, webhooks, templates de e-mail e logs de auditoria.",
+				"Rodar o Authorizer por conta própria mantém as contas dos seus usuários no seu próprio banco de dados, sem taxa por usuário conforme um app cresce. Serve para um projeto paralelo ou um produto pequeno que precisa de um login de verdade sem entregar seus usuários a um fornecedor. O porém: a verificação de e-mail, a redefinição de senha e os links mágicos só funcionam depois que você der a ele um servidor SMTP para enviar os e-mails."
+			],
+			"faq": [
+				{
+					"q": "O Authorizer é gratuito e open source?",
+					"a": "Sim. O Authorizer é distribuído sob a licença Apache-2.0, que permite usar, modificar e rodar comercialmente sem pagar nada. Você paga só pelo servidor em que ele roda."
+				},
+				{
+					"q": "Quais logins sociais o Authorizer suporta?",
+					"a": "Dez: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox e Microsoft. Cada um precisa de uma chave e de um segredo que você obtém com o provedor."
+				},
+				{
+					"q": "O Authorizer suporta MFA e passkeys?",
+					"a": "Sim. O segundo fator pode ser um app autenticador TOTP, um código de uso único por e-mail ou um código por SMS via Twilio. As passkeys funcionam por WebAuthn, com chaves de segurança FIDO2, Touch ID, Face ID ou Windows Hello."
+				},
+				{
+					"q": "Quais bancos de dados o Authorizer suporta?",
+					"a": "Mais de uma dúzia, incluindo Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB e Couchbase. As flags --database-type e --database-url escolhem um deles quando o servidor inicia."
+				},
+				{
+					"q": "O Authorizer precisa de Redis?",
+					"a": "Não. Sem o Redis, o Authorizer guarda as sessões na memória, então as pessoas continuam conectadas só até o servidor reiniciar. Se você apontar o Authorizer para um servidor Redis com --redis-url, as sessões sobrevivem a reinícios."
+				}
+			]
 		},
 		"ru": {
 			"description": "Вход в ваши собственные приложения, с OAuth 2 и OpenID Connect",
-			"notes": "Откройте https://{host}/dashboard и войдите с паролем, который вы задали. Ваши приложения используют https://{host} как issuer, а CLIENT_ID из .env проекта как свой client ID."
+			"notes": "Откройте https://{host}/dashboard и войдите с паролем, который вы задали. Ваши приложения используют https://{host} как issuer, а CLIENT_ID из .env проекта как свой client ID.",
+			"sizing": "Authorizer: совсем небольшие требования — менее 100 MB памяти, а многие тысячи пользователей занимают мало диска.",
+			"summary": "Self-hosted Authorizer — open-source сервер аутентификации с OAuth 2, OpenID Connect и входом через соцсети, альтернатива Auth0. В один клик.",
+			"about": [
+				"Authorizer — open-source сервер аутентификации и авторизации, self-hosted альтернатива Auth0 для добавления входа в ваши собственные приложения. Он поддерживает OAuth 2 и OpenID Connect, поэтому через него могут входить пользователи любого приложения, которое их поддерживает. В комплекте встроенная страница входа и SDK для JavaScript, React, Go и Python. Войти можно с паролем, по ссылке для входа (magic link), с passkey или через один из десяти способов входа через соцсети, а еще можно добавить второй фактор. Панель администратора охватывает пользователей, вебхуки, шаблоны писем и логи аудита.",
+				"Если хостить Authorizer у себя, аккаунты ваших пользователей остаются в вашей собственной базе данных, а плата за каждого пользователя не растет вместе с приложением. Он подходит для личного проекта или небольшого продукта, которому нужен нормальный вход без передачи пользователей вендору. Нюанс: подтверждение почты, сброс пароля и magic link работают только после того, как вы дадите ему SMTP-сервер для отправки писем."
+			],
+			"faq": [
+				{
+					"q": "Authorizer бесплатный и с открытым кодом?",
+					"a": "Да. Authorizer выпущен под лицензией Apache-2.0, которая позволяет бесплатно использовать, изменять и запускать его в коммерческих целях. Вы платите только за сервер, на котором он работает."
+				},
+				{
+					"q": "Какие способы входа через соцсети поддерживает Authorizer?",
+					"a": "Десять: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox и Microsoft. Для каждого нужны ключ и секрет, которые вы получаете у этого провайдера."
+				},
+				{
+					"q": "Поддерживает ли Authorizer MFA и passkey?",
+					"a": "Да. Вторым фактором может быть приложение-аутентификатор TOTP, одноразовый код по почте или SMS-код через Twilio. Passkey работают через WebAuthn: с ключами безопасности FIDO2, Touch ID, Face ID или Windows Hello."
+				},
+				{
+					"q": "Какие базы данных поддерживает Authorizer?",
+					"a": "Больше десятка, в том числе Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB и Couchbase. Флаги --database-type и --database-url выбирают одну из них при запуске сервера."
+				},
+				{
+					"q": "Нужен ли Authorizer Redis?",
+					"a": "Нет. Без Redis Authorizer хранит сессии в памяти, поэтому люди остаются в системе только до перезапуска сервера. Если указать ему Redis-сервер через --redis-url, сессии сохраняются после перезапусков."
+				}
+			]
 		},
 		"uk": {
 			"description": "Вхід у ваші власні застосунки, з OAuth 2 та OpenID Connect",
-			"notes": "Відкрийте https://{host}/dashboard і увійдіть із паролем, який ви вказали. Ваші застосунки використовують https://{host} як issuer, а CLIENT_ID з файлу .env проєкту як свій client ID."
+			"notes": "Відкрийте https://{host}/dashboard і увійдіть із паролем, який ви вказали. Ваші застосунки використовують https://{host} як issuer, а CLIENT_ID з файлу .env проєкту як свій client ID.",
+			"sizing": "Authorizer має дуже скромні вимоги: менше 100 MB пам’яті, а багато тисяч користувачів займають мало місця на диску.",
+			"summary": "Self-hosted Authorizer — сервер автентифікації з відкритим кодом, OAuth 2, OpenID Connect і вхід через соцмережі, альтернатива Auth0. В один клік.",
+			"about": [
+				"Authorizer — це сервер автентифікації та авторизації з відкритим кодом, self-hosted альтернатива Auth0 для додавання входу у ваші власні застосунки. Він розуміє OAuth 2 і OpenID Connect, тож через нього можуть входити користувачі будь-якого застосунку, що їх підтримує. У комплекті є вбудована сторінка входу та SDK для JavaScript, React, Go і Python. Увійти можна з паролем, за посиланням для входу (magic link), з ключем доступу або через один із десяти способів входу через соцмережі, а ще можна додати другий фактор. Панель адміністратора охоплює користувачів, вебхуки, шаблони листів і логи аудиту.",
+				"Якщо хостити Authorizer у себе, акаунти ваших користувачів лишаються у вашій власній базі даних, а плата за кожного користувача не зростає разом із застосунком. Він підходить для особистого проєкту чи невеликого продукту, якому потрібен нормальний вхід без передачі користувачів вендору. Нюанс: підтвердження пошти, скидання пароля й magic link працюють лише після того, як ви дасте йому SMTP-сервер для надсилання листів."
+			],
+			"faq": [
+				{
+					"q": "Authorizer безплатний і з відкритим кодом?",
+					"a": "Так. Authorizer випущено за ліцензією Apache-2.0, яка дозволяє безплатно використовувати, змінювати та запускати його в комерційних цілях. Ви платите лише за сервер, на якому він працює."
+				},
+				{
+					"q": "Які способи входу через соцмережі підтримує Authorizer?",
+					"a": "Десять: Google, GitHub, Facebook, LinkedIn, Apple, Discord, Twitter, Twitch, Roblox і Microsoft. Для кожного потрібні ключ і секрет, які ви отримуєте в цього провайдера."
+				},
+				{
+					"q": "Чи підтримує Authorizer MFA і ключі доступу (passkeys)?",
+					"a": "Так. Другим фактором може бути застосунок-автентифікатор TOTP, одноразовий код електронною поштою або SMS-код через Twilio. Ключі доступу працюють через WebAuthn: з ключами безпеки FIDO2, Touch ID, Face ID або Windows Hello."
+				},
+				{
+					"q": "Які бази даних підтримує Authorizer?",
+					"a": "Понад десяток, зокрема Postgres, MySQL, MariaDB, SQLite, SQL Server, MongoDB, ArangoDB, Cassandra, DynamoDB і Couchbase. Прапорці --database-type і --database-url обирають одну з них під час запуску сервера."
+				},
+				{
+					"q": "Чи потрібен Authorizer Redis?",
+					"a": "Ні. Без Redis Authorizer зберігає сесії в пам’яті, тому люди залишаються в системі лише до перезапуску сервера. Якщо вказати йому Redis-сервер через --redis-url, сесії зберігаються після перезапусків."
+				}
+			]
 		}
 	}
 }

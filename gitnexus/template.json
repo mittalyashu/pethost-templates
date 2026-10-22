@@ -1,6 +1,11 @@
 {
 	"name": "GitNexus",
 	"emoji": "🕸️",
+	"category": "ai",
+	"alternatives": [
+		"DeepWiki"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "web",
 		"port": 4173
@@ -18,35 +23,259 @@
 	"texts": {
 		"en": {
 			"description": "Index a code repository into a knowledge graph and explore it, or let an agent query it over MCP",
-			"notes": "The site asks for an access token: TOKEN in the project’s .env. The browser forgets it with the tab, and an agent sends it to the address’s /api/mcp. Whoever has it reads every indexed repository. Its license, PolyForm Noncommercial, allows noncommercial use only."
+			"notes": "The site asks for an access token: TOKEN in the project’s .env. The browser forgets it with the tab, and an agent sends it to the address’s /api/mcp. Whoever has it reads every indexed repository. Its license, PolyForm Noncommercial, allows noncommercial use only.",
+			"sizing": "GitNexus is light: about 100 MB at rest, and indexing a large repository takes a gigabyte or so for a while.",
+			"summary": "GitNexus maps a codebase's imports, calls and execution flows into a graph you and your coding agents can query: a self-hosted DeepWiki alternative.",
+			"about": [
+				"GitNexus is a source-available code intelligence engine, an alternative to DeepWiki that indexes a codebase into a knowledge graph instead of writing documentation about it. It reads a GitHub, GitLab or Azure DevOps URL or an uploaded folder, and traces imports, calls, inheritance and execution flows across 16 languages. In the browser, each file, class and function is a node to click, search or ask Nexus AI about. Coding agents such as Claude Code and Cursor query the same graph over MCP.",
+				"Self-hosting it keeps your source and its indexes on your own server, where your browser and every agent you connect read the same index. GitNexus suits anyone facing a large, unfamiliar codebase, or whose agent edits functions without seeing their callers: its impact tool lists what depends on a symbol before the change. The catch is the license, which allows noncommercial use only."
+			],
+			"faq": [
+				{
+					"q": "Is GitNexus open source?",
+					"a": "Not in the usual sense. Its code is public under the PolyForm Noncommercial 1.0.0 license, which allows personal and other noncommercial use; commercial use needs a license from Akon Labs, the company behind GitNexus."
+				},
+				{
+					"q": "GitNexus vs DeepWiki: what is the difference?",
+					"a": "DeepWiki is a hosted service that generates documentation and diagrams for a repository. GitNexus builds a graph of the code's symbols and how they connect, runs on your own server, and lets agents check what a change affects."
+				},
+				{
+					"q": "How do I connect GitNexus to Claude Code or Cursor?",
+					"a": "On Pethost, add it as a remote MCP server at your app's address plus /api/mcp, with the header Authorization: Bearer followed by the TOKEN from the project's .env. The agent then gets tools such as query, context and impact."
+				},
+				{
+					"q": "Can GitNexus index private repositories?",
+					"a": "Yes. With a GitHub URL, add a Personal Access Token with the repo scope or the fine-grained Contents read permission; the token is sent once and not stored. Private code from elsewhere can be uploaded as a folder."
+				},
+				{
+					"q": "Does GitNexus need an OpenAI API key?",
+					"a": "Only for the Nexus AI chat, which uses your own key for OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama or another supported provider. Indexing, the graph, search and the MCP tools need no key."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Code-Repository als Wissensgraph indexieren und erkunden oder einen Agenten per MCP darin suchen lassen",
-			"notes": "Die Seite fragt nach einem Zugangstoken: TOKEN in der .env des Projekts. Der Browser vergisst es mit dem Tab, und ein Agent schickt es an /api/mcp unter der Adresse. Wer es hat, liest jedes indexierte Repository. Die Lizenz, PolyForm Noncommercial, erlaubt nur nichtkommerzielle Nutzung."
+			"notes": "Die Seite fragt nach einem Zugangstoken: TOKEN in der .env des Projekts. Der Browser vergisst es mit dem Tab, und ein Agent schickt es an /api/mcp unter der Adresse. Wer es hat, liest jedes indexierte Repository. Die Lizenz, PolyForm Noncommercial, erlaubt nur nichtkommerzielle Nutzung.",
+			"sizing": "GitNexus ist leicht: etwa 100 MB im Leerlauf, und ein großes Repository zu indexieren braucht zeitweise rund 1 GB.",
+			"summary": "GitNexus selbst hosten: Imports, Aufrufe und Ausführungsflüsse einer Codebasis als Graph, den du und deine Agenten abfragen. Alternative zu DeepWiki.",
+			"about": [
+				"GitNexus ist eine Code-Intelligence-Engine mit einsehbarem Quellcode (source-available), eine Alternative zu DeepWiki, die eine Codebasis in einen Wissensgraphen indexiert, statt Dokumentation darüber zu schreiben. Es liest die URL eines GitHub-, GitLab- oder Azure-DevOps-Repositorys oder einen hochgeladenen Ordner und verfolgt Imports, Aufrufe, Vererbung und Ausführungsflüsse in 16 Sprachen. Im Browser ist jede Datei, Klasse und Funktion ein Knoten, den du anklicken, durchsuchen oder über den du Nexus AI fragen kannst. Coding-Agenten wie Claude Code und Cursor fragen denselben Graphen per MCP ab.",
+				"Wenn du GitNexus selbst hostest, bleiben dein Quellcode und seine Indizes auf deinem eigenen Server, und dein Browser und jeder Agent, den du verbindest, lesen denselben Index. GitNexus passt zu allen, die vor einer großen, unbekannten Codebasis stehen oder deren Agent Funktionen ändert, ohne ihre Aufrufer zu sehen: Das Tool impact listet vor der Änderung auf, was von einem Symbol abhängt. Der Haken ist die Lizenz, die nur nichtkommerzielle Nutzung erlaubt."
+			],
+			"faq": [
+				{
+					"q": "Ist GitNexus Open Source?",
+					"a": "Nicht im üblichen Sinn. Der Code ist öffentlich unter der Lizenz PolyForm Noncommercial 1.0.0, die private und andere nichtkommerzielle Nutzung erlaubt; für kommerzielle Nutzung braucht es eine Lizenz von Akon Labs, der Firma hinter GitNexus."
+				},
+				{
+					"q": "GitNexus oder DeepWiki: Was ist der Unterschied?",
+					"a": "DeepWiki ist ein gehostetes Angebot, das Dokumentation und Diagramme für ein Repository erzeugt. GitNexus baut einen Graphen aus den Symbolen des Codes und ihren Verbindungen, läuft auf deinem eigenen Server und lässt Agenten prüfen, was eine Änderung betrifft."
+				},
+				{
+					"q": "Wie verbinde ich GitNexus mit Claude Code oder Cursor?",
+					"a": "Auf Pethost fügst du es als Remote-MCP-Server unter der Adresse deiner App plus /api/mcp hinzu, mit dem Header Authorization: Bearer, gefolgt vom TOKEN aus der .env des Projekts. Der Agent bekommt dann Tools wie query, context und impact."
+				},
+				{
+					"q": "Kann GitNexus private Repositorys indexieren?",
+					"a": "Ja. Bei einer GitHub-URL gibst du ein Personal Access Token mit dem Scope repo oder der feingranularen Berechtigung Contents (Lesen) an; das Token wird einmal gesendet und nicht gespeichert. Privaten Code von anderswo kannst du als Ordner hochladen."
+				},
+				{
+					"q": "Braucht GitNexus einen OpenAI-API-Key?",
+					"a": "Nur für den Chat Nexus AI, der deinen eigenen Key für OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama oder einen anderen unterstützten Anbieter nutzt. Indexierung, Graph, Suche und die MCP-Tools brauchen keinen Key."
+				}
+			]
 		},
 		"es": {
 			"description": "Indexa un repositorio de código como un grafo de conocimiento y explóralo, o deja que un agente lo consulte por MCP",
-			"notes": "El sitio pide un token de acceso: TOKEN en el .env del proyecto. El navegador lo olvida al cerrar la pestaña, y un agente lo envía a /api/mcp en la dirección. Quien lo tenga lee todos los repositorios indexados. Su licencia, PolyForm Noncommercial, solo permite el uso no comercial."
+			"notes": "El sitio pide un token de acceso: TOKEN en el .env del proyecto. El navegador lo olvida al cerrar la pestaña, y un agente lo envía a /api/mcp en la dirección. Quien lo tenga lee todos los repositorios indexados. Su licencia, PolyForm Noncommercial, solo permite el uso no comercial.",
+			"sizing": "GitNexus es ligero: unos 100 MB en reposo, e indexar un repositorio grande necesita alrededor de 1 GB por un rato.",
+			"summary": "Autoaloja GitNexus: convierte imports, llamadas y flujos de ejecución de un código en un grafo que consultas con tus agentes. Alternativa a DeepWiki.",
+			"about": [
+				"GitNexus es un motor de inteligencia de código con código fuente disponible (source-available), una alternativa a DeepWiki que indexa una base de código como un grafo de conocimiento en lugar de redactar documentación sobre ella. Lee una URL de GitHub, GitLab o Azure DevOps, o una carpeta subida, y rastrea imports, llamadas, herencia y flujos de ejecución en 16 lenguajes. En el navegador, cada archivo, clase y función es un nodo en el que puedes hacer clic, buscar o preguntar a Nexus AI. Agentes de programación como Claude Code y Cursor consultan el mismo grafo por MCP.",
+				"Al autoalojarlo, tu código fuente y sus índices se quedan en tu propio servidor, donde tu navegador y cada agente que conectes leen el mismo índice. GitNexus es para quien se enfrenta a una base de código grande y desconocida, o cuyo agente edita funciones sin ver quién las llama: su herramienta impact lista lo que depende de un símbolo antes del cambio. El inconveniente es la licencia, que solo permite el uso no comercial."
+			],
+			"faq": [
+				{
+					"q": "¿GitNexus es de código abierto?",
+					"a": "No en el sentido habitual. Su código es público bajo la licencia PolyForm Noncommercial 1.0.0, que permite el uso personal y otros usos no comerciales; el uso comercial necesita una licencia de Akon Labs, la empresa detrás de GitNexus."
+				},
+				{
+					"q": "GitNexus o DeepWiki: ¿en qué se diferencian?",
+					"a": "DeepWiki es un servicio alojado que genera documentación y diagramas para un repositorio. GitNexus construye un grafo de los símbolos del código y de cómo se conectan, se ejecuta en tu propio servidor y deja que los agentes comprueben qué afecta un cambio."
+				},
+				{
+					"q": "¿Cómo conecto GitNexus a Claude Code o a Cursor?",
+					"a": "En Pethost, agrégalo como servidor MCP remoto en la dirección de tu app más /api/mcp, con el encabezado Authorization: Bearer seguido del TOKEN del .env del proyecto. El agente recibe entonces herramientas como query, context e impact."
+				},
+				{
+					"q": "¿GitNexus puede indexar repositorios privados?",
+					"a": "Sí. Con una URL de GitHub, agrega un Personal Access Token con el scope repo o el permiso detallado Contents de solo lectura; el token se envía una vez y no se guarda. El código privado de otro lugar se puede subir como carpeta."
+				},
+				{
+					"q": "¿GitNexus necesita una clave de API de OpenAI?",
+					"a": "Solo para el chat de Nexus AI, que usa tu propia clave de OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama u otro proveedor compatible. La indexación, el grafo, la búsqueda y las herramientas MCP no necesitan ninguna clave."
+				}
+			]
 		},
 		"fr": {
 			"description": "Indexez un dépôt de code en graphe de connaissances et explorez-le, ou laissez un agent l’interroger via MCP",
-			"notes": "Le site demande un jeton d’accès : TOKEN dans le .env du projet. Le navigateur l’oublie avec l’onglet, et un agent l’envoie à /api/mcp sur l’adresse. Qui le détient lit tous les dépôts indexés. Sa licence, PolyForm Noncommercial, n’autorise qu’un usage non commercial."
+			"notes": "Le site demande un jeton d’accès : TOKEN dans le .env du projet. Le navigateur l’oublie avec l’onglet, et un agent l’envoie à /api/mcp sur l’adresse. Qui le détient lit tous les dépôts indexés. Sa licence, PolyForm Noncommercial, n’autorise qu’un usage non commercial.",
+			"sizing": "GitNexus est léger : environ 100 MB au repos, et indexer un gros dépôt prend un GB environ pendant un moment.",
+			"summary": "Auto-hébergez GitNexus : imports, appels et flux d’exécution d’un code en graphe que vous et vos agents interrogez. Alternative à DeepWiki.",
+			"about": [
+				"GitNexus est un moteur d’intelligence du code à code source disponible (source-available), une alternative à DeepWiki qui indexe une base de code en graphe de connaissances au lieu d’écrire de la documentation à son sujet. Il lit une URL GitHub, GitLab ou Azure DevOps, ou un dossier envoyé, et suit les imports, les appels, l’héritage et les flux d’exécution dans 16 langages. Dans le navigateur, chaque fichier, classe et fonction est un nœud sur lequel cliquer, chercher, ou interroger Nexus AI. Des agents de code comme Claude Code et Cursor interrogent le même graphe via MCP.",
+				"En l’auto-hébergeant, vous gardez votre code source et ses index sur votre propre serveur, où votre navigateur et chaque agent que vous connectez lisent le même index. GitNexus convient à qui fait face à une grande base de code inconnue, ou dont l’agent modifie des fonctions sans voir leurs appelants : son outil impact liste ce qui dépend d’un symbole avant le changement. Le revers, c’est la licence, qui n’autorise qu’un usage non commercial."
+			],
+			"faq": [
+				{
+					"q": "GitNexus est-il open source ?",
+					"a": "Pas au sens habituel. Son code est public sous la licence PolyForm Noncommercial 1.0.0, qui autorise l’usage personnel et les autres usages non commerciaux ; un usage commercial demande une licence d’Akon Labs, l’entreprise derrière GitNexus."
+				},
+				{
+					"q": "GitNexus ou DeepWiki : quelle différence ?",
+					"a": "DeepWiki est un service hébergé qui génère de la documentation et des diagrammes pour un dépôt. GitNexus construit un graphe des symboles du code et de leurs liens, tourne sur votre propre serveur et permet aux agents de vérifier ce qu’un changement affecte."
+				},
+				{
+					"q": "Comment connecter GitNexus à Claude Code ou à Cursor ?",
+					"a": "Sur Pethost, ajoutez-le comme serveur MCP distant à l’adresse de votre application plus /api/mcp, avec l’en-tête Authorization: Bearer puis le TOKEN du .env du projet. L’agent obtient alors des outils comme query, context et impact."
+				},
+				{
+					"q": "GitNexus peut-il indexer des dépôts privés ?",
+					"a": "Oui. Avec une URL GitHub, ajoutez un Personal Access Token avec le scope repo ou la permission à granularité fine Contents en lecture ; le token est envoyé une seule fois et n’est pas conservé. Le code privé venu d’ailleurs peut être envoyé sous forme de dossier."
+				},
+				{
+					"q": "GitNexus a-t-il besoin d’une clé d’API OpenAI ?",
+					"a": "Seulement pour le chat Nexus AI, qui utilise votre propre clé pour OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama ou un autre fournisseur pris en charge. L’indexation, le graphe, la recherche et les outils MCP n’ont besoin d’aucune clé."
+				}
+			]
 		},
 		"pl": {
 			"description": "Indeksuj repozytorium kodu jako graf wiedzy i przeglądaj go albo pozwól agentowi odpytywać go przez MCP",
-			"notes": "Strona poprosi o token dostępu: TOKEN z pliku .env projektu. Przeglądarka zapomina go razem z kartą, a agent wysyła go do /api/mcp pod adresem projektu. Kto go ma, czyta każde zindeksowane repozytorium. Licencja, PolyForm Noncommercial, pozwala tylko na użytek niekomercyjny."
+			"notes": "Strona poprosi o token dostępu: TOKEN z pliku .env projektu. Przeglądarka zapomina go razem z kartą, a agent wysyła go do /api/mcp pod adresem projektu. Kto go ma, czyta każde zindeksowane repozytorium. Licencja, PolyForm Noncommercial, pozwala tylko na użytek niekomercyjny.",
+			"sizing": "GitNexus ma małe wymagania: około 100 MB w spoczynku, a indeksowanie dużego repozytorium na jakiś czas zajmuje około 1 GB.",
+			"summary": "Hostuj GitNexus u siebie: importy, wywołania i przepływy wykonania kodu jako graf do odpytywania przez ciebie i twoich agentów. Alternatywa dla DeepWiki.",
+			"about": [
+				"GitNexus to silnik code intelligence z dostępnym kodem źródłowym (source-available), alternatywa dla DeepWiki, która indeksuje bazę kodu do grafu wiedzy zamiast pisać o niej dokumentację. Czyta adres URL z GitHuba, GitLaba lub Azure DevOps albo wgrany katalog i śledzi importy, wywołania, dziedziczenie i przepływy wykonania w 16 językach. W przeglądarce każdy plik, klasa i funkcja to węzeł, który możesz kliknąć, wyszukać albo o który możesz zapytać Nexus AI. Agenci kodujący, tacy jak Claude Code i Cursor, odpytują ten sam graf przez MCP.",
+				"Gdy hostujesz GitNexus u siebie, twój kod źródłowy i jego indeksy zostają na twoim własnym serwerze, a przeglądarka i każdy podłączony agent czytają ten sam indeks. GitNexus pasuje komuś, kto staje przed dużą, nieznaną bazą kodu albo czyj agent zmienia funkcje, nie widząc, kto je wywołuje: narzędzie impact przed zmianą wypisuje wszystko, co zależy od symbolu. Haczyk to licencja, która pozwala tylko na użytek niekomercyjny."
+			],
+			"faq": [
+				{
+					"q": "Czy GitNexus jest open source?",
+					"a": "Nie w zwykłym sensie. Jego kod jest publiczny na licencji PolyForm Noncommercial 1.0.0, która pozwala na użytek osobisty i inny niekomercyjny; użytek komercyjny wymaga licencji od Akon Labs, firmy stojącej za GitNexusem."
+				},
+				{
+					"q": "GitNexus czy DeepWiki: czym się różnią?",
+					"a": "DeepWiki to hostowana usługa, która generuje dokumentację i diagramy repozytorium. GitNexus buduje graf symboli kodu i powiązań między nimi, działa na twoim własnym serwerze i pozwala agentom sprawdzić, na co wpłynie zmiana."
+				},
+				{
+					"q": "Jak podłączyć GitNexus do Claude Code lub Cursora?",
+					"a": "W Pethost dodaj go jako zdalny serwer MCP pod adresem swojej aplikacji z dopiskiem /api/mcp i nagłówkiem Authorization: Bearer, po którym wpisz TOKEN z pliku .env projektu. Agent dostanie wtedy narzędzia takie jak query, context i impact."
+				},
+				{
+					"q": "Czy GitNexus zaindeksuje prywatne repozytoria?",
+					"a": "Tak. Przy adresie z GitHuba dodaj Personal Access Token z zakresem repo albo szczegółowym uprawnieniem Contents tylko do odczytu; token jest wysyłany raz i nie jest zapisywany. Prywatny kod z innego miejsca można wgrać jako katalog."
+				},
+				{
+					"q": "Czy GitNexus potrzebuje klucza API OpenAI?",
+					"a": "Tylko do czatu Nexus AI, który używa twojego własnego klucza do OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama lub innego obsługiwanego dostawcy. Indeksowanie, graf, wyszukiwanie i narzędzia MCP nie potrzebują żadnego klucza."
+				}
+			]
 		},
 		"pt": {
 			"description": "Indexe um repositório de código como um grafo de conhecimento e explore-o, ou deixe um agente consultá-lo por MCP",
-			"notes": "O site pede um token de acesso: o TOKEN no .env do projeto. O navegador o esquece ao fechar a aba, e um agente o envia para /api/mcp no endereço. Quem o tiver lê todos os repositórios indexados. A licença, PolyForm Noncommercial, permite apenas uso não comercial."
+			"notes": "O site pede um token de acesso: o TOKEN no .env do projeto. O navegador o esquece ao fechar a aba, e um agente o envia para /api/mcp no endereço. Quem o tiver lê todos os repositórios indexados. A licença, PolyForm Noncommercial, permite apenas uso não comercial.",
+			"sizing": "GitNexus é leve: cerca de 100 MB em repouso, e indexar um repositório grande leva cerca de 1 GB por um tempo.",
+			"summary": "Auto-hospede o GitNexus: imports, chamadas e fluxos de execução de um código em um grafo que você e seus agentes consultam. Alternativa ao DeepWiki.",
+			"about": [
+				"O GitNexus é um motor de code intelligence com código-fonte disponível (source-available), uma alternativa ao DeepWiki que indexa uma base de código como um grafo de conhecimento em vez de escrever documentação sobre ela. Ele lê uma URL do GitHub, do GitLab ou do Azure DevOps, ou uma pasta enviada, e rastreia imports, chamadas, herança e fluxos de execução em 16 linguagens. No navegador, cada arquivo, classe e função é um nó em que você pode clicar, buscar ou perguntar ao Nexus AI. Agentes de código como o Claude Code e o Cursor consultam o mesmo grafo por MCP.",
+				"Auto-hospedar o GitNexus mantém seu código-fonte e os índices dele no seu próprio servidor, onde seu navegador e cada agente que você conectar leem o mesmo índice. O GitNexus serve para quem enfrenta uma base de código grande e desconhecida, ou cujo agente edita funções sem ver quem as chama: a ferramenta impact lista o que depende de um símbolo antes da mudança. O porém é a licença, que permite apenas uso não comercial."
+			],
+			"faq": [
+				{
+					"q": "O GitNexus é de código aberto?",
+					"a": "Não no sentido usual. O código dele é público sob a licença PolyForm Noncommercial 1.0.0, que permite uso pessoal e outros usos não comerciais; o uso comercial exige uma licença da Akon Labs, a empresa por trás do GitNexus."
+				},
+				{
+					"q": "GitNexus ou DeepWiki: qual é a diferença?",
+					"a": "O DeepWiki é um serviço hospedado que gera documentação e diagramas para um repositório. O GitNexus constrói um grafo dos símbolos do código e de como eles se conectam, roda no seu próprio servidor e deixa os agentes verificarem o que uma mudança afeta."
+				},
+				{
+					"q": "Como conecto o GitNexus ao Claude Code ou ao Cursor?",
+					"a": "No Pethost, adicione-o como servidor MCP remoto no endereço do seu app mais /api/mcp, com o header Authorization: Bearer seguido do TOKEN do .env do projeto. O agente então ganha ferramentas como query, context e impact."
+				},
+				{
+					"q": "O GitNexus consegue indexar repositórios privados?",
+					"a": "Sim. Com uma URL do GitHub, adicione um Personal Access Token com o escopo repo ou a permissão granular Contents de leitura; o token é enviado uma vez e não é guardado. Código privado de outro lugar pode ser enviado como pasta."
+				},
+				{
+					"q": "O GitNexus precisa de uma chave de API da OpenAI?",
+					"a": "Só para o chat Nexus AI, que usa sua própria chave da OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama ou outro provedor compatível. A indexação, o grafo, a busca e as ferramentas MCP não precisam de chave."
+				}
+			]
 		},
 		"ru": {
 			"description": "Индексирует репозиторий кода в граф знаний: исследуйте его сами или дайте агенту спрашивать его по MCP",
-			"notes": "Сайт спросит токен доступа: это TOKEN в .env проекта. Браузер забывает его вместе с вкладкой, а агент отправляет его на /api/mcp по адресу проекта. У кого он есть, тот читает все проиндексированные репозитории. Лицензия, PolyForm Noncommercial, разрешает только некоммерческое использование."
+			"notes": "Сайт спросит токен доступа: это TOKEN в .env проекта. Браузер забывает его вместе с вкладкой, а агент отправляет его на /api/mcp по адресу проекта. У кого он есть, тот читает все проиндексированные репозитории. Лицензия, PolyForm Noncommercial, разрешает только некоммерческое использование.",
+			"sizing": "GitNexus: небольшие требования — около 100 MB в простое; индексация большого репозитория какое-то время занимает около 1 GB.",
+			"summary": "Self-hosted GitNexus: превращает импорты, вызовы и потоки выполнения кода в граф, который запрашиваете вы и ваши агенты. Альтернатива DeepWiki.",
+			"about": [
+				"GitNexus — это source-available движок code intelligence, альтернатива DeepWiki: он индексирует кодовую базу в граф знаний, а не пишет по ней документацию. Он читает URL с GitHub, GitLab или Azure DevOps либо загруженную папку и прослеживает импорты, вызовы, наследование и потоки выполнения в 16 языках. В браузере каждый файл, класс и функция — это узел, на который можно нажать, найти его или спросить о нем Nexus AI. Агенты вроде Claude Code и Cursor запрашивают тот же граф по MCP.",
+				"GitNexus хостят у себя, чтобы исходный код и его индексы оставались на вашем собственном сервере, где ваш браузер и каждый подключенный агент читают один и тот же индекс. Он подходит тем, кто столкнулся с большой незнакомой кодовой базой или чей агент правит функции, не видя, кто их вызывает: инструмент impact перед изменением перечисляет то, что зависит от символа. Но есть нюанс: лицензия разрешает только некоммерческое использование."
+			],
+			"faq": [
+				{
+					"q": "GitNexus — это open source?",
+					"a": "Не в привычном смысле. Код открыт для чтения по лицензии PolyForm Noncommercial 1.0.0, которая разрешает личное и другое некоммерческое использование; для коммерческого нужна лицензия от Akon Labs, компании, которая стоит за GitNexus."
+				},
+				{
+					"q": "GitNexus или DeepWiki: в чем разница?",
+					"a": "DeepWiki — облачный сервис, который генерирует документацию и диаграммы для репозитория. GitNexus строит граф символов кода и их связей, работает на вашем собственном сервере и позволяет агентам проверить, что затронет изменение."
+				},
+				{
+					"q": "Как подключить GitNexus к Claude Code или Cursor?",
+					"a": "В Pethost добавьте его как удаленный MCP-сервер по адресу вашего приложения плюс /api/mcp, с заголовком Authorization: Bearer и TOKEN из .env проекта. Тогда у агента появятся инструменты вроде query, context и impact."
+				},
+				{
+					"q": "Может ли GitNexus индексировать приватные репозитории?",
+					"a": "Да. Для URL с GitHub добавьте Personal Access Token с правом repo или с гранулярным разрешением Contents на чтение; токен отправляется один раз и не сохраняется. Приватный код из других мест можно загрузить папкой."
+				},
+				{
+					"q": "Нужен ли GitNexus ключ OpenAI API?",
+					"a": "Только для чата Nexus AI, который использует ваш собственный ключ OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama или другого поддерживаемого провайдера. Индексации, графу, поиску и MCP-инструментам ключ не нужен."
+				}
+			]
 		},
 		"uk": {
 			"description": "Індексує репозиторій коду в граф знань: досліджуйте його самі або дайте агентові запитувати його через MCP",
-			"notes": "Сайт запитає токен доступу: це TOKEN у .env проєкту. Браузер забуває його разом із вкладкою, а агент надсилає його на /api/mcp за адресою проєкту. Хто його має, той читає всі проіндексовані репозиторії. Ліцензія, PolyForm Noncommercial, дозволяє лише некомерційне використання."
+			"notes": "Сайт запитає токен доступу: це TOKEN у .env проєкту. Браузер забуває його разом із вкладкою, а агент надсилає його на /api/mcp за адресою проєкту. Хто його має, той читає всі проіндексовані репозиторії. Ліцензія, PolyForm Noncommercial, дозволяє лише некомерційне використання.",
+			"sizing": "GitNexus має скромні вимоги: близько 100 MB без навантаження, а індексація великого репозиторію тимчасово забирає близько 1 GB.",
+			"summary": "Self-hosted GitNexus: перетворює імпорти, виклики та потоки виконання коду на граф, який запитуєте ви та ваші агенти. Альтернатива DeepWiki.",
+			"about": [
+				"GitNexus — це source-available рушій code intelligence, альтернатива DeepWiki: він індексує кодову базу в граф знань, а не пише про неї документацію. Він читає URL з GitHub, GitLab або Azure DevOps чи завантажену папку й простежує імпорти, виклики, успадкування та потоки виконання в 16 мовах. У браузері кожен файл, клас і функція — це вузол, на який можна клацнути, знайти його або розпитати про нього Nexus AI. Агенти на кшталт Claude Code і Cursor запитують той самий граф через MCP.",
+				"GitNexus хостять у себе, щоб вихідний код і його індекси лишалися на вашому власному сервері, де ваш браузер і кожен підключений агент читають той самий індекс. Він підходить тим, хто стикнувся з великою незнайомою кодовою базою або чий агент змінює функції, не бачачи, хто їх викликає: інструмент impact перед зміною перелічує те, що залежить від символу. Але є нюанс: ліцензія дозволяє лише некомерційне використання."
+			],
+			"faq": [
+				{
+					"q": "Чи GitNexus має відкритий код?",
+					"a": "Не в звичному розумінні. Код відкритий для читання за ліцензією PolyForm Noncommercial 1.0.0, яка дозволяє особисте й інше некомерційне використання; для комерційного потрібна ліцензія від Akon Labs, компанії, що стоїть за GitNexus."
+				},
+				{
+					"q": "GitNexus чи DeepWiki: у чому різниця?",
+					"a": "DeepWiki — хмарний сервіс, який генерує документацію та діаграми для репозиторію. GitNexus будує граф символів коду та їхніх зв’язків, працює на вашому власному сервері й дає агентам змогу перевірити, що зачепить зміна."
+				},
+				{
+					"q": "Як підключити GitNexus до Claude Code або Cursor?",
+					"a": "У Pethost додайте його як віддалений MCP-сервер за адресою вашого застосунку плюс /api/mcp, із заголовком Authorization: Bearer і TOKEN з .env проєкту. Тоді в агента з’являться інструменти на кшталт query, context та impact."
+				},
+				{
+					"q": "Чи може GitNexus індексувати приватні репозиторії?",
+					"a": "Так. Для URL з GitHub додайте Personal Access Token із правом repo або з гранульованим дозволом Contents на читання; токен надсилається один раз і не зберігається. Приватний код з інших місць можна завантажити папкою."
+				},
+				{
+					"q": "Чи потрібен GitNexus ключ OpenAI API?",
+					"a": "Лише для чату Nexus AI, який використовує ваш власний ключ OpenAI, Anthropic, Gemini, OpenRouter, DeepSeek, Ollama або іншого підтримуваного провайдера. Індексації, графу, пошуку та MCP-інструментам ключ не потрібен."
+				}
+			]
 		}
 	}
 }

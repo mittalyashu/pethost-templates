@@ -1,6 +1,11 @@
 {
 	"name": "AstrBot",
 	"emoji": "🤖",
+	"category": "ai",
+	"alternatives": [
+		"OpenClaw"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "astrbot",
 		"port": 6185
@@ -14,35 +19,259 @@
 	"texts": {
 		"en": {
 			"description": "An AI chatbot and agent for Telegram, Discord, Slack, QQ, WeChat and more, with plugins and a web dashboard",
-			"notes": "Sign in to the dashboard as astrbot with the admin password you gave: it needs an upper-case letter, a lower-case letter and a digit. AstrBot asks for a new password at the first sign-in. Then add a model provider’s key and connect a messaging platform under Platforms."
+			"notes": "Sign in to the dashboard as astrbot with the admin password you gave: it needs an upper-case letter, a lower-case letter and a digit. AstrBot asks for a new password at the first sign-in. Then add a model provider’s key and connect a messaging platform under Platforms.",
+			"sizing": "AstrBot is light: about 300 MB of memory, and its chat history and plugins take little disk.",
+			"summary": "AstrBot is an open-source AI chatbot and agent for Telegram, Discord, Slack and QQ. Run this OpenClaw alternative on your own machine in one click.",
+			"about": [
+				"AstrBot is an open-source AI chatbot and agent platform, an OpenClaw alternative that lives in the chat apps you already use. One instance can answer on Telegram, Discord, Slack, Mattermost, QQ and personal WeChat at the same time, with the model you pick: OpenAI, Anthropic, Gemini, DeepSeek or a local one through Ollama. The agent calls tools and MCP servers, follows skills, searches a knowledge base and keeps the persona you set. Plugins from its market install from the web dashboard.",
+				"People self-host AstrBot to keep their chats and API keys on a server they control, and to run one bot across every group they look after: a personal assistant, a community's group bot, or customer service inside a team's chat. The code is AGPL-3.0. The catch: AstrBot is only as good as the model behind it, so you need a provider's API key or a local model."
+			],
+			"faq": [
+				{
+					"q": "Is AstrBot free and open source?",
+					"a": "Yes. AstrBot is free and open source under the AGPL-3.0 license, which requires anyone who runs a modified version as a network service to offer its source to their users. Model providers bill their API use separately."
+				},
+				{
+					"q": "Is AstrBot an alternative to OpenClaw?",
+					"a": "Its developers present it as one. AstrBot answers in personal and group chats on many platforms, and can also hand conversations to an agent built in Dify, Coze or DeerFlow."
+				},
+				{
+					"q": "How do I connect AstrBot to Telegram?",
+					"a": "Create a bot with BotFather and copy its token. In the AstrBot dashboard open Platforms, click Add Adapter, choose telegram and paste the token as Bot Token. For group chats, disable privacy mode in BotFather with /setprivacy."
+				},
+				{
+					"q": "Does AstrBot support WhatsApp?",
+					"a": "Not yet: AstrBot lists WhatsApp as coming soon. Its own adapters cover QQ, Telegram, Discord, Slack, LINE, personal WeChat, WeCom, Feishu, DingTalk and others, and community plugins add Matrix and Rocket.Chat."
+				},
+				{
+					"q": "What is AstrBot's default username and password?",
+					"a": "The username is astrbot. A plain Docker install prints a random first password in its startup log; this template sets the first password to the one you give at deploy, and AstrBot then asks you to change it."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein KI-Chatbot und Agent für Telegram, Discord, Slack, QQ, WeChat und mehr, mit Plugins und einem Web-Dashboard",
-			"notes": "Melde dich im Dashboard als astrbot mit dem angegebenen Admin-Passwort an: Es braucht einen Großbuchstaben, einen Kleinbuchstaben und eine Ziffer. Bei der ersten Anmeldung fragt AstrBot nach einem neuen Passwort. Trag dann den Key eines Modellanbieters ein und verbinde unter Platforms eine Messaging-Plattform."
+			"notes": "Melde dich im Dashboard als astrbot mit dem angegebenen Admin-Passwort an: Es braucht einen Großbuchstaben, einen Kleinbuchstaben und eine Ziffer. Bei der ersten Anmeldung fragt AstrBot nach einem neuen Passwort. Trag dann den Key eines Modellanbieters ein und verbinde unter Platforms eine Messaging-Plattform.",
+			"sizing": "AstrBot ist leicht: etwa 300 MB RAM, und sein Chatverlauf und seine Plugins brauchen wenig Disk.",
+			"summary": "AstrBot selbst hosten: Open-Source-KI-Chatbot und Agent für Telegram, Discord, Slack und QQ. OpenClaw-Alternative auf deiner Maschine, mit einem Klick.",
+			"about": [
+				"AstrBot ist ein Open-Source-KI-Chatbot und eine Agent-Plattform, eine OpenClaw-Alternative, die in den Chat-Apps lebt, die du schon nutzt. Eine Instanz kann gleichzeitig auf Telegram, Discord, Slack, Mattermost, QQ und persönlichem WeChat antworten, mit dem Modell deiner Wahl: OpenAI, Anthropic, Gemini, DeepSeek oder einem lokalen über Ollama. Der Agent ruft Tools und MCP-Server auf, nutzt Skills, durchsucht eine Wissensbasis und bleibt in der Persona, die du festlegst. Plugins aus dem Plugin-Markt installierst du im Web-Dashboard.",
+				"Du hostest AstrBot selbst, damit deine Chats und API-Keys auf einer Maschine bleiben, die du kontrollierst, und um einen Bot in allen Gruppen einzusetzen, um die du dich kümmerst: als persönlicher Assistent, als Gruppenbot einer Community oder als Kundenservice im Chat eines Teams. Der Code steht unter der AGPL-3.0. Der Haken: AstrBot ist nur so gut wie das Modell dahinter, du brauchst also den API-Key eines Anbieters oder ein lokales Modell."
+			],
+			"faq": [
+				{
+					"q": "Ist AstrBot kostenlos und Open Source?",
+					"a": "Ja. AstrBot ist kostenlos und Open Source unter der AGPL-3.0-Lizenz. Sie verlangt von allen, die eine veränderte Version als Netzwerkdienst betreiben, ihren Nutzern den Quellcode anzubieten. Die Modellanbieter berechnen ihre API-Nutzung separat."
+				},
+				{
+					"q": "Ist AstrBot eine Alternative zu OpenClaw?",
+					"a": "Die Entwickler stellen es so dar. AstrBot antwortet in persönlichen Chats und Gruppen auf vielen Plattformen und kann Unterhaltungen auch an einen Agenten übergeben, der in Dify, Coze oder DeerFlow gebaut wurde."
+				},
+				{
+					"q": "Wie verbinde ich AstrBot mit Telegram?",
+					"a": "Erstelle mit BotFather einen Bot und kopiere sein Token. Öffne im AstrBot-Dashboard Platforms, klicke auf Add Adapter, wähle telegram und füge das Token als Bot Token ein. Für Gruppenchats schaltest du den Privacy-Modus in BotFather mit /setprivacy aus."
+				},
+				{
+					"q": "Unterstützt AstrBot WhatsApp?",
+					"a": "Noch nicht: AstrBot führt WhatsApp als demnächst verfügbar auf. Die eigenen Adapter decken QQ, Telegram, Discord, Slack, LINE, persönliches WeChat, WeCom, Feishu, DingTalk und weitere ab, und Community-Plugins ergänzen Matrix und Rocket.Chat."
+				},
+				{
+					"q": "Wie lauten Benutzername und Passwort von AstrBot standardmäßig?",
+					"a": "Der Benutzername ist astrbot. Eine einfache Docker-Installation gibt ein zufälliges erstes Passwort im Log beim Start aus. Diese Vorlage setzt als erstes Passwort das, das du beim Deploy angibst, und AstrBot fordert dich dann auf, es zu ändern."
+				}
+			]
 		},
 		"es": {
 			"description": "Un chatbot y agente de IA para Telegram, Discord, Slack, QQ, WeChat y más, con plugins y un panel web",
-			"notes": "Entra en el panel como astrbot con la contraseña de administrador que indicaste: necesita una mayúscula, una minúscula y un dígito. En el primer inicio de sesión AstrBot pide una contraseña nueva. Después añade la clave de un proveedor de modelos y conecta una plataforma de mensajería en Platforms."
+			"notes": "Entra en el panel como astrbot con la contraseña de administrador que indicaste: necesita una mayúscula, una minúscula y un dígito. En el primer inicio de sesión AstrBot pide una contraseña nueva. Después añade la clave de un proveedor de modelos y conecta una plataforma de mensajería en Platforms.",
+			"sizing": "AstrBot es ligero: unos 300 MB de memoria, y su historial de chats y sus plugins ocupan poco disco.",
+			"summary": "Autoaloja AstrBot, el chatbot y agente de IA de código abierto para Telegram, Discord, Slack y QQ. Una alternativa a OpenClaw en tu máquina en un clic.",
+			"about": [
+				"AstrBot es un chatbot y una plataforma de agentes de IA de código abierto, una alternativa a OpenClaw que vive en las apps de chat que ya usas. Una sola instancia puede responder a la vez en Telegram, Discord, Slack, Mattermost, QQ y WeChat personal, con el modelo que elijas: OpenAI, Anthropic, Gemini, DeepSeek o uno local con Ollama. El agente llama a herramientas y servidores MCP, usa skills, busca en una base de conocimiento y mantiene la personalidad que definas. Los plugins de su marketplace se instalan desde el panel web.",
+				"Autoalojas AstrBot para que tus chats y claves de API se queden en una máquina que controlas, y para usar un solo bot en todos los grupos de los que te ocupas: un asistente personal, el bot de grupo de una comunidad o la atención al cliente dentro del chat de un equipo. El código tiene licencia AGPL-3.0. El inconveniente: AstrBot solo es tan bueno como el modelo que tiene detrás, así que necesitas la clave de API de un proveedor o un modelo local."
+			],
+			"faq": [
+				{
+					"q": "¿AstrBot es gratis y de código abierto?",
+					"a": "Sí. AstrBot es gratis y de código abierto con licencia AGPL-3.0, que obliga a quien ejecute una versión modificada como servicio de red a ofrecer su código fuente a sus usuarios. Los proveedores de modelos cobran aparte por el uso de su API."
+				},
+				{
+					"q": "¿AstrBot es una alternativa a OpenClaw?",
+					"a": "Sus desarrolladores lo presentan así. AstrBot responde en chats personales y de grupo en muchas plataformas, y también puede pasar las conversaciones a un agente creado en Dify, Coze o DeerFlow."
+				},
+				{
+					"q": "¿Cómo conecto AstrBot a Telegram?",
+					"a": "Crea un bot con BotFather y copia su token. En el panel de AstrBot abre Platforms, haz clic en Add Adapter, elige telegram y pega el token como Bot Token. Para chats de grupo, desactiva el modo de privacidad en BotFather con /setprivacy."
+				},
+				{
+					"q": "¿AstrBot es compatible con WhatsApp?",
+					"a": "Todavía no: AstrBot lista WhatsApp como próximamente. Sus adaptadores propios cubren QQ, Telegram, Discord, Slack, LINE, WeChat personal, WeCom, Feishu, DingTalk y otros, y los plugins de la comunidad agregan Matrix y Rocket.Chat."
+				},
+				{
+					"q": "¿Cuáles son el usuario y la contraseña por defecto de AstrBot?",
+					"a": "El usuario es astrbot. Una instalación sencilla con Docker imprime una primera contraseña aleatoria en su log de inicio; esta plantilla fija como primera contraseña la que indicas al desplegar, y luego AstrBot te pide cambiarla."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un chatbot et agent IA pour Telegram, Discord, Slack, QQ, WeChat et d’autres, avec des plugins et un tableau de bord web",
-			"notes": "Connectez-vous au tableau de bord en tant qu’astrbot avec le mot de passe administrateur indiqué : il lui faut une majuscule, une minuscule et un chiffre. À la première connexion, AstrBot demande un nouveau mot de passe. Ajoutez ensuite la clé d’un fournisseur de modèles et reliez une messagerie dans Platforms."
+			"notes": "Connectez-vous au tableau de bord en tant qu’astrbot avec le mot de passe administrateur indiqué : il lui faut une majuscule, une minuscule et un chiffre. À la première connexion, AstrBot demande un nouveau mot de passe. Ajoutez ensuite la clé d’un fournisseur de modèles et reliez une messagerie dans Platforms.",
+			"sizing": "AstrBot est léger : environ 300 MB de mémoire, et son historique de conversations et ses plugins pèsent peu sur le disque.",
+			"summary": "Auto-hébergez AstrBot, le chatbot et agent IA open source pour Telegram, Discord, Slack et QQ. Une alternative à OpenClaw sur votre machine, en un clic.",
+			"about": [
+				"AstrBot est un chatbot et une plateforme d’agents IA open source, une alternative à OpenClaw qui vit dans les messageries que vous utilisez déjà. Une même instance peut répondre en même temps sur Telegram, Discord, Slack, Mattermost, QQ et WeChat personnel, avec le modèle de votre choix : OpenAI, Anthropic, Gemini, DeepSeek ou un modèle local via Ollama. L’agent appelle des outils et des serveurs MCP, suit des skills, interroge une base de connaissances et garde la personnalité que vous définissez. Les plugins de sa marketplace s’installent depuis le tableau de bord web.",
+				"Vous auto-hébergez AstrBot pour garder vos discussions et vos clés d’API sur une machine que vous contrôlez, et pour faire tourner un seul bot dans tous les groupes dont vous vous occupez : un assistant personnel, le bot de groupe d’une communauté ou le service client dans la messagerie d’une équipe. Le code est sous licence AGPL-3.0. Le revers : AstrBot ne vaut que ce que vaut le modèle derrière lui, il vous faut donc la clé d’API d’un fournisseur ou un modèle local."
+			],
+			"faq": [
+				{
+					"q": "AstrBot est-il gratuit et open source ?",
+					"a": "Oui. AstrBot est gratuit et open source sous licence AGPL-3.0, qui oblige quiconque fait tourner une version modifiée comme service réseau à en offrir le code source à ses utilisateurs. Les fournisseurs de modèles facturent l’usage de leur API à part."
+				},
+				{
+					"q": "AstrBot est-il une alternative à OpenClaw ?",
+					"a": "Ses développeurs le présentent ainsi. AstrBot répond dans des discussions privées et des groupes sur de nombreuses plateformes, et peut aussi confier les conversations à un agent construit dans Dify, Coze ou DeerFlow."
+				},
+				{
+					"q": "Comment connecter AstrBot à Telegram ?",
+					"a": "Créez un bot avec BotFather et copiez son token. Dans le tableau de bord d’AstrBot, ouvrez Platforms, cliquez sur Add Adapter, choisissez telegram et collez le token comme Bot Token. Pour les groupes, désactivez le mode confidentialité dans BotFather avec /setprivacy."
+				},
+				{
+					"q": "AstrBot prend-il en charge WhatsApp ?",
+					"a": "Pas encore : AstrBot indique WhatsApp comme bientôt disponible. Ses adaptateurs couvrent QQ, Telegram, Discord, Slack, LINE, WeChat personnel, WeCom, Feishu, DingTalk et d’autres, et des plugins de la communauté ajoutent Matrix et Rocket.Chat."
+				},
+				{
+					"q": "Quels sont le nom d’utilisateur et le mot de passe par défaut d’AstrBot ?",
+					"a": "Le nom d’utilisateur est astrbot. Une installation Docker simple affiche un premier mot de passe aléatoire dans son log de démarrage ; ce template définit comme premier mot de passe celui que vous donnez au déploiement, puis AstrBot vous demande de le changer."
+				}
+			]
 		},
 		"pl": {
 			"description": "Chatbot i agent AI dla Telegrama, Discorda, Slacka, QQ, WeChata i innych, z wtyczkami i panelem w przeglądarce",
-			"notes": "Zaloguj się do panelu jako astrbot hasłem administratora, które podano: musi mieć wielką literę, małą literę i cyfrę. Przy pierwszym logowaniu AstrBot poprosi o nowe hasło. Potem dodaj klucz dostawcy modeli i podłącz komunikator w Platforms."
+			"notes": "Zaloguj się do panelu jako astrbot hasłem administratora, które podano: musi mieć wielką literę, małą literę i cyfrę. Przy pierwszym logowaniu AstrBot poprosi o nowe hasło. Potem dodaj klucz dostawcy modeli i podłącz komunikator w Platforms.",
+			"sizing": "AstrBot ma małe wymagania: około 300 MB pamięci, a historia czatów i pluginy zajmują mało miejsca na dysku.",
+			"summary": "Hostuj u siebie AstrBota, chatbota i agenta AI open source dla Telegrama, Discorda, Slacka i QQ. Alternatywa dla OpenClaw na twojej maszynie w jeden klik.",
+			"about": [
+				"AstrBot to chatbot i platforma agentów AI typu open source, alternatywa dla OpenClaw, która mieszka w komunikatorach, z których już korzystasz. Jedna instancja odpowiada jednocześnie na Telegramie, Discordzie, Slacku, Mattermoście, w QQ i w osobistym WeChacie, z modelem, który wybierzesz: OpenAI, Anthropic, Gemini, DeepSeek albo lokalnym przez Ollamę. Agent wywołuje narzędzia i serwery MCP, korzysta ze skilli, przeszukuje bazę wiedzy i trzyma się osobowości, którą ustawisz. Pluginy z jego marketplace’u instalujesz z panelu w przeglądarce.",
+				"AstrBota hostujesz u siebie, żeby rozmowy i klucze API zostały na maszynie, którą kontrolujesz, i żeby jeden bot obsługiwał wszystkie grupy, którymi się zajmujesz: osobisty asystent, bot grupowy społeczności albo obsługa klienta na czacie zespołu. Kod jest na licencji AGPL-3.0. Haczyk: AstrBot jest tak dobry, jak model, który za nim stoi, więc potrzebujesz klucza API dostawcy albo lokalnego modelu."
+			],
+			"faq": [
+				{
+					"q": "Czy AstrBot jest darmowy i open source?",
+					"a": "Tak. AstrBot jest darmowy i open source na licencji AGPL-3.0, która każe każdemu, kto uruchamia zmodyfikowaną wersję jako usługę sieciową, udostępnić jej kod źródłowy użytkownikom. Dostawcy modeli rozliczają użycie swojego API osobno."
+				},
+				{
+					"q": "Czy AstrBot jest alternatywą dla OpenClaw?",
+					"a": "Twórcy tak go przedstawiają. AstrBot odpowiada w rozmowach prywatnych i grupowych na wielu platformach, a rozmowy może też przekazać agentowi zbudowanemu w Dify, Coze albo DeerFlow."
+				},
+				{
+					"q": "Jak połączyć AstrBota z Telegramem?",
+					"a": "Utwórz bota w BotFather i skopiuj jego token. W panelu AstrBota otwórz Platforms, kliknij Add Adapter, wybierz telegram i wklej token jako Bot Token. Dla czatów grupowych wyłącz w BotFather tryb prywatności poleceniem /setprivacy."
+				},
+				{
+					"q": "Czy AstrBot obsługuje WhatsApp?",
+					"a": "Jeszcze nie: AstrBot podaje WhatsApp jako wkrótce dostępny. Własne adaptery obejmują QQ, Telegram, Discord, Slack, LINE, osobisty WeChat, WeCom, Feishu, DingTalk i inne, a pluginy społeczności dodają Matrix i Rocket.Chat."
+				},
+				{
+					"q": "Jaka jest domyślna nazwa użytkownika i hasło AstrBota?",
+					"a": "Nazwa użytkownika to astrbot. Zwykła instalacja Dockera wypisuje losowe pierwsze hasło w logu przy starcie; ten szablon ustawia jako pierwsze hasło to, które podasz przy wdrożeniu, a AstrBot poprosi potem o jego zmianę."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um chatbot e agente de IA para Telegram, Discord, Slack, QQ, WeChat e outros, com plugins e um painel web",
-			"notes": "Entre no painel como astrbot com a senha de administrador que você informou: ela precisa de uma letra maiúscula, uma minúscula e um dígito. No primeiro acesso o AstrBot pede uma senha nova. Depois adicione a chave de um provedor de modelos e conecte uma plataforma de mensagens em Platforms."
+			"notes": "Entre no painel como astrbot com a senha de administrador que você informou: ela precisa de uma letra maiúscula, uma minúscula e um dígito. No primeiro acesso o AstrBot pede uma senha nova. Depois adicione a chave de um provedor de modelos e conecte uma plataforma de mensagens em Platforms.",
+			"sizing": "AstrBot é leve: cerca de 300 MB de memória, e o histórico de chats e os plugins ocupam pouco disco.",
+			"summary": "Auto-hospede o AstrBot: chatbot e agente de IA de código aberto para Telegram, Discord, Slack e QQ. Alternativa ao OpenClaw na sua máquina, em um clique.",
+			"about": [
+				"O AstrBot é um chatbot e uma plataforma de agentes de IA de código aberto, uma alternativa ao OpenClaw que vive nos apps de mensagens que você já usa. Uma instância pode responder ao mesmo tempo no Telegram, Discord, Slack, Mattermost, QQ e WeChat pessoal, com o modelo que você escolher: OpenAI, Anthropic, Gemini, DeepSeek ou um local pelo Ollama. O agente chama ferramentas e servidores MCP, usa skills, busca em uma base de conhecimento e mantém a persona que você definir. Os plugins do marketplace dele se instalam pelo painel web.",
+				"Auto-hospedar o AstrBot mantém seus chats e chaves de API em uma máquina que você controla, e permite rodar um só bot em todos os grupos de que você cuida: um assistente pessoal, o bot de grupo de uma comunidade ou o atendimento ao cliente no chat de uma equipe. O código usa a licença AGPL-3.0. O porém: o AstrBot é tão bom quanto o modelo por trás dele, então você precisa da chave de API de um provedor ou de um modelo local."
+			],
+			"faq": [
+				{
+					"q": "O AstrBot é gratuito e de código aberto?",
+					"a": "Sim. O AstrBot é gratuito e de código aberto sob a licença AGPL-3.0, que obriga quem roda uma versão modificada como serviço de rede a oferecer o código-fonte aos seus usuários. Os provedores de modelos cobram o uso da API à parte."
+				},
+				{
+					"q": "O AstrBot é uma alternativa ao OpenClaw?",
+					"a": "Os desenvolvedores o apresentam assim. O AstrBot responde em chats pessoais e em grupos de várias plataformas, e também pode passar as conversas a um agente criado no Dify, no Coze ou no DeerFlow."
+				},
+				{
+					"q": "Como conecto o AstrBot ao Telegram?",
+					"a": "Crie um bot com o BotFather e copie o token dele. No painel do AstrBot, abra Platforms, clique em Add Adapter, escolha telegram e cole o token como Bot Token. Para chats de grupo, desative o modo de privacidade no BotFather com /setprivacy."
+				},
+				{
+					"q": "O AstrBot funciona com o WhatsApp?",
+					"a": "Ainda não: o AstrBot lista o WhatsApp como em breve. Os adaptadores próprios cobrem QQ, Telegram, Discord, Slack, LINE, WeChat pessoal, WeCom, Feishu, DingTalk e outros, e plugins da comunidade acrescentam Matrix e Rocket.Chat."
+				},
+				{
+					"q": "Qual é o usuário e a senha padrão do AstrBot?",
+					"a": "O usuário é astrbot. Uma instalação simples com Docker imprime uma primeira senha aleatória no log de inicialização; este template define como primeira senha a que você informa no deploy, e depois o AstrBot pede que você a troque."
+				}
+			]
 		},
 		"ru": {
 			"description": "ИИ-чат-бот и агент для Telegram, Discord, Slack, QQ, WeChat и других, с плагинами и веб-панелью",
-			"notes": "Войдите в панель как astrbot с паролем администратора, который вы указали: в нём нужны заглавная буква, строчная буква и цифра. При первом входе AstrBot попросит новый пароль. Затем добавьте ключ провайдера моделей и подключите мессенджер в Platforms."
+			"notes": "Войдите в панель как astrbot с паролем администратора, который вы указали: в нём нужны заглавная буква, строчная буква и цифра. При первом входе AstrBot попросит новый пароль. Затем добавьте ключ провайдера моделей и подключите мессенджер в Platforms.",
+			"sizing": "AstrBot: небольшие требования — около 300 MB памяти, а история чатов и плагины занимают мало диска.",
+			"summary": "Self-hosted AstrBot — open source ИИ-чат-бот и агент для Telegram, Discord, Slack и QQ. Альтернатива OpenClaw на вашей машине в один клик.",
+			"about": [
+				"AstrBot — это open source ИИ-чат-бот и платформа агентов, альтернатива OpenClaw, живущая в мессенджерах, которыми вы уже пользуетесь. Один экземпляр может одновременно отвечать в Telegram, Discord, Slack, Mattermost, QQ и личном WeChat на выбранной вами модели: OpenAI, Anthropic, Gemini, DeepSeek или локальной через Ollama. Агент вызывает инструменты и MCP-серверы, использует скиллы, ищет по базе знаний и держится заданной вами персоны. Плагины из его маркетплейса устанавливаются из веб-панели.",
+				"AstrBot хостят у себя, чтобы переписки и API-ключи оставались на машине, которую вы контролируете, и чтобы один бот работал во всех группах, за которыми вы присматриваете: личный ассистент, групповой бот сообщества или поддержка клиентов в чате команды. Код под лицензией AGPL-3.0. Но есть нюанс: AstrBot хорош ровно настолько, насколько хороша модель за ним, поэтому вам нужен API-ключ провайдера или локальная модель."
+			],
+			"faq": [
+				{
+					"q": "AstrBot бесплатный и с открытым кодом?",
+					"a": "Да. AstrBot бесплатный и с открытым кодом под лицензией AGPL-3.0: она требует от каждого, кто запускает измененную версию как сетевой сервис, предоставлять ее исходный код пользователям. Провайдеры моделей берут плату за использование своего API отдельно."
+				},
+				{
+					"q": "AstrBot — альтернатива OpenClaw?",
+					"a": "Так его представляют сами разработчики. AstrBot отвечает в личных и групповых чатах на многих платформах, а еще может передавать диалоги агенту, собранному в Dify, Coze или DeerFlow."
+				},
+				{
+					"q": "Как подключить AstrBot к Telegram?",
+					"a": "Создайте бота через BotFather и скопируйте его токен. В панели AstrBot откройте Platforms, нажмите Add Adapter, выберите telegram и вставьте токен как Bot Token. Для групповых чатов отключите режим приватности в BotFather командой /setprivacy."
+				},
+				{
+					"q": "AstrBot поддерживает WhatsApp?",
+					"a": "Пока нет: в AstrBot WhatsApp значится среди платформ, которые скоро появятся. Собственные адаптеры охватывают QQ, Telegram, Discord, Slack, LINE, личный WeChat, WeCom, Feishu, DingTalk и другие, а плагины сообщества добавляют Matrix и Rocket.Chat."
+				},
+				{
+					"q": "Какие логин и пароль по умолчанию у AstrBot?",
+					"a": "Логин — astrbot. Обычная установка через Docker выводит случайный первый пароль в логах запуска; этот шаблон задает первым паролем тот, что вы укажете при деплое, а AstrBot потом попросит его сменить."
+				}
+			]
 		},
 		"uk": {
 			"description": "ШІ-чат-бот і агент для Telegram, Discord, Slack, QQ, WeChat та інших, із плагінами й вебпанеллю",
-			"notes": "Увійдіть у панель як astrbot із паролем адміністратора, який ви вказали: у ньому потрібні велика літера, мала літера й цифра. Під час першого входу AstrBot попросить новий пароль. Потім додайте ключ провайдера моделей і підключіть месенджер у Platforms."
+			"notes": "Увійдіть у панель як astrbot із паролем адміністратора, який ви вказали: у ньому потрібні велика літера, мала літера й цифра. Під час першого входу AstrBot попросить новий пароль. Потім додайте ключ провайдера моделей і підключіть месенджер у Platforms.",
+			"sizing": "AstrBot має скромні вимоги: близько 300 MB пам’яті, а історія чатів і плагіни займають мало місця на диску.",
+			"summary": "Self-hosted AstrBot — ШІ-чат-бот і агент із відкритим кодом для Telegram, Discord, Slack і QQ. Альтернатива OpenClaw на вашій машині в один клік.",
+			"about": [
+				"AstrBot — це ШІ-чат-бот і платформа агентів із відкритим кодом, альтернатива OpenClaw, що живе в месенджерах, якими ви вже користуєтеся. Один екземпляр може одночасно відповідати в Telegram, Discord, Slack, Mattermost, QQ і особистому WeChat на обраній вами моделі: OpenAI, Anthropic, Gemini, DeepSeek або локальній через Ollama. Агент викликає інструменти й MCP-сервери, користується скілами, шукає в базі знань і тримається заданої вами персони. Плагіни з його маркетплейсу встановлюються з вебпанелі.",
+				"AstrBot хостять у себе, щоб розмови й API-ключі лишалися на машині, яку ви контролюєте, і щоб один бот працював у всіх групах, якими ви опікуєтеся: особистий асистент, груповий бот спільноти або підтримка клієнтів у чаті команди. Код — під ліцензією AGPL-3.0. Але є нюанс: AstrBot хороший рівно настільки, наскільки хороша модель за ним, тож вам потрібен API-ключ провайдера або локальна модель."
+			],
+			"faq": [
+				{
+					"q": "AstrBot безплатний і з відкритим кодом?",
+					"a": "Так. AstrBot безплатний і має відкритий код за ліцензією AGPL-3.0: вона вимагає від кожного, хто запускає змінену версію як мережевий сервіс, надавати її вихідний код користувачам. Провайдери моделей беруть плату за використання свого API окремо."
+				},
+				{
+					"q": "AstrBot — альтернатива OpenClaw?",
+					"a": "Так його подають самі розробники. AstrBot відповідає в особистих і групових чатах на багатьох платформах, а ще може передавати розмови агентові, зібраному в Dify, Coze або DeerFlow."
+				},
+				{
+					"q": "Як підключити AstrBot до Telegram?",
+					"a": "Створіть бота через BotFather і скопіюйте його токен. У панелі AstrBot відкрийте Platforms, натисніть Add Adapter, оберіть telegram і вставте токен як Bot Token. Для групових чатів вимкніть режим приватності в BotFather командою /setprivacy."
+				},
+				{
+					"q": "AstrBot підтримує WhatsApp?",
+					"a": "Поки що ні: в AstrBot WhatsApp значиться серед платформ, які скоро з’являться. Власні адаптери охоплюють QQ, Telegram, Discord, Slack, LINE, особистий WeChat, WeCom, Feishu, DingTalk та інші, а плагіни спільноти додають Matrix і Rocket.Chat."
+				},
+				{
+					"q": "Які логін і пароль в AstrBot за замовчуванням?",
+					"a": "Логін — astrbot. Звичайне встановлення через Docker виводить випадковий перший пароль у логах запуску; цей шаблон задає першим паролем той, що ви вкажете під час деплою, а AstrBot потім попросить його змінити."
+				}
+			]
 		}
 	}
 }

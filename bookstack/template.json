@@ -1,6 +1,11 @@
 {
 	"name": "BookStack",
 	"emoji": "📚",
+	"category": "notes",
+	"alternatives": [
+		"Confluence"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "bookstack",
 		"port": 80
@@ -34,35 +39,259 @@
 	"texts": {
 		"en": {
 			"description": "A wiki organised as shelves, books, chapters and pages",
-			"notes": "Sign in with the email and the admin password you gave, at least 8 characters: the template gives them to BookStack’s first admin, so the stock admin@admin.com never signs in. Uploads and settings are kept in /config."
+			"notes": "Sign in with the email and the admin password you gave, at least 8 characters: the template gives them to BookStack’s first admin, so the stock admin@admin.com never signs in. Uploads and settings are kept in /config.",
+			"sizing": "BookStack is light: about 150 MB with MariaDB, and thousands of pages with their images take a few gigabytes.",
+			"summary": "BookStack is an open-source documentation wiki and Confluence alternative, with a WYSIWYG editor and Markdown. Self-host it with Docker in one click.",
+			"about": [
+				"BookStack is an open-source wiki for documentation and team knowledge, an alternative to Confluence. Content lives in books, split into chapters and pages, and books sit on shelves, so a manual or a runbook reads like a book rather than a pile of links. Pages are written in a WYSIWYG editor, keep a revision history you can compare and restore, and can hold diagrams drawn in diagrams.net. Search covers one book or the whole wiki, and any paragraph can be linked to directly.",
+				"People self-host BookStack to keep internal docs on a server they control. Roles set what people can see and do, and permissions can be overridden on any shelf, book, chapter or page. Sign-in can go through LDAP, SAML2 or OIDC, and multi-factor authentication can be required per role. The catch: user invites and password resets go out by email, so BookStack needs a mail server, usually over SMTP."
+			],
+			"faq": [
+				{
+					"q": "Is BookStack free and open source?",
+					"a": "Yes. BookStack is free under the MIT license, and its source code is on Codeberg. Paid support plans are offered, but the software itself costs nothing to download and run."
+				},
+				{
+					"q": "How do I migrate from Confluence to BookStack?",
+					"a": "By hand, for now: BookStack's site says there is no automated way to move content from Confluence yet. Its REST API can script parts of the move."
+				},
+				{
+					"q": "Does BookStack support Markdown?",
+					"a": "Yes. BookStack has a Markdown editor with a live preview beside its WYSIWYG one, and a page written in Markdown exports as its original Markdown."
+				},
+				{
+					"q": "Can I export BookStack to PDF?",
+					"a": "Yes. A book, chapter or page exports as a Contained Web File, PDF File, Plain Text File, Markdown File or Portable ZIP, and a Portable ZIP can be imported back into BookStack. Exports are not meant as backups."
+				},
+				{
+					"q": "What is the default BookStack login?",
+					"a": "A manual install starts with admin@admin.com and the password \"password\". This template sets that first admin account to the email and password you enter when you deploy, so the default pair never works."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Wiki aus Regalen, Büchern, Kapiteln und Seiten",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an, mindestens 8 Zeichen: Die Vorlage gibt sie dem ersten Admin von BookStack, sodass sich das voreingestellte admin@admin.com nie anmeldet. Uploads und Einstellungen bleiben in /config erhalten."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an, mindestens 8 Zeichen: Die Vorlage gibt sie dem ersten Admin von BookStack, sodass sich das voreingestellte admin@admin.com nie anmeldet. Uploads und Einstellungen bleiben in /config erhalten.",
+			"sizing": "BookStack ist leicht: etwa 150 MB mit MariaDB, und Tausende Seiten samt Bildern brauchen ein paar GB.",
+			"summary": "BookStack selbst hosten: Open-Source-Wiki für Dokumentation und Confluence-Alternative mit WYSIWYG-Editor und Markdown. Mit Docker in einem Klick.",
+			"about": [
+				"BookStack ist ein Open-Source-Wiki für Dokumentation und Teamwissen, eine Alternative zu Confluence. Inhalte liegen in Büchern, die in Kapitel und Seiten gegliedert sind, und die Bücher stehen in Regalen, sodass sich ein Handbuch oder ein Runbook wie ein Buch liest und nicht wie ein Haufen Links. Seiten schreibst du in einem WYSIWYG-Editor; sie behalten einen Versionsverlauf, den du vergleichen und wiederherstellen kannst, und können in diagrams.net gezeichnete Diagramme enthalten. Die Suche deckt ein Buch oder das ganze Wiki ab, und jeder Absatz lässt sich direkt verlinken.",
+				"Du hostest BookStack selbst, um interne Dokumentation auf einer Maschine zu halten, die du kontrollierst. Rollen legen fest, was Leute sehen und tun dürfen, und Berechtigungen lassen sich für jedes Regal, Buch, Kapitel und jede Seite überschreiben. Die Anmeldung kann über LDAP, SAML2 oder OIDC laufen, und Multi-Faktor-Authentifizierung lässt sich pro Rolle vorschreiben. Der Haken: Einladungen und Passwort-Resets gehen per E-Mail raus, BookStack braucht also einen Mailserver, meist über SMTP."
+			],
+			"faq": [
+				{
+					"q": "Ist BookStack kostenlos und Open Source?",
+					"a": "Ja. BookStack ist kostenlos unter der MIT-Lizenz, und der Quellcode liegt auf Codeberg. Bezahlte Support-Tarife gibt es auch, aber die Software selbst kostet nichts zum Herunterladen und Betreiben."
+				},
+				{
+					"q": "Wie migriere ich von Confluence zu BookStack?",
+					"a": "Vorerst von Hand: Laut der Website von BookStack gibt es noch keinen automatischen Weg, Inhalte aus Confluence zu übernehmen. Mit der REST-API lassen sich Teile des Umzugs per Skript erledigen."
+				},
+				{
+					"q": "Unterstützt BookStack Markdown?",
+					"a": "Ja. BookStack hat neben dem WYSIWYG-Editor einen Markdown-Editor mit Live-Vorschau, und eine in Markdown geschriebene Seite wird als ihr ursprüngliches Markdown exportiert."
+				},
+				{
+					"q": "Kann ich BookStack als PDF exportieren?",
+					"a": "Ja. Ein Buch, ein Kapitel oder eine Seite lässt sich als Contained Web File, PDF File, Plain Text File, Markdown File oder Portable ZIP exportieren, und ein Portable ZIP kann wieder in BookStack importiert werden. Exporte sind nicht als Backups gedacht."
+				},
+				{
+					"q": "Was ist der Standard-Login von BookStack?",
+					"a": "Eine manuelle Installation startet mit admin@admin.com und dem Passwort „password“. Diese Vorlage setzt das erste Admin-Konto auf die E-Mail und das Passwort, die du beim Deploy angibst, sodass das Standardpaar nie funktioniert."
+				}
+			]
 		},
 		"es": {
 			"description": "Una wiki organizada en estantes, libros, capítulos y páginas",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste, de al menos 8 caracteres: la plantilla se los da al primer administrador de BookStack, así que la cuenta predeterminada admin@admin.com nunca entra. Las subidas y la configuración se conservan en /config."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste, de al menos 8 caracteres: la plantilla se los da al primer administrador de BookStack, así que la cuenta predeterminada admin@admin.com nunca entra. Las subidas y la configuración se conservan en /config.",
+			"sizing": "BookStack es ligero: unos 150 MB con MariaDB, y miles de páginas con sus imágenes ocupan unos pocos GB.",
+			"summary": "Autoaloja BookStack, la wiki de documentación de código abierto y alternativa a Confluence, con editor WYSIWYG y Markdown. Con Docker, en un clic.",
+			"about": [
+				"BookStack es una wiki de código abierto para documentación y conocimiento de equipo, una alternativa a Confluence. El contenido vive en libros, divididos en capítulos y páginas, y los libros se colocan en estantes, así que un manual o un runbook se lee como un libro y no como un montón de enlaces. Las páginas se escriben en un editor WYSIWYG, guardan un historial de revisiones que puedes comparar y restaurar, y pueden incluir diagramas dibujados en diagrams.net. La búsqueda abarca un libro o toda la wiki, y cualquier párrafo se puede enlazar directamente.",
+				"Autoalojas BookStack para guardar la documentación interna en una máquina que controlas. Los roles definen qué puede ver y hacer cada persona, y los permisos se pueden sobrescribir en cualquier estante, libro, capítulo o página. El inicio de sesión puede pasar por LDAP, SAML2 u OIDC, y se puede exigir la autenticación multifactor por rol. El inconveniente: las invitaciones de usuarios y los restablecimientos de contraseña salen por correo, así que BookStack necesita un servidor de correo, normalmente por SMTP."
+			],
+			"faq": [
+				{
+					"q": "¿BookStack es gratis y de código abierto?",
+					"a": "Sí. BookStack es gratis con licencia MIT, y su código fuente está en Codeberg. También ofrece planes de soporte de pago, pero el software en sí no cuesta nada descargarlo ni ejecutarlo."
+				},
+				{
+					"q": "¿Cómo migro de Confluence a BookStack?",
+					"a": "A mano, por ahora: el sitio de BookStack dice que todavía no hay una forma automática de mover contenido desde Confluence. Su API REST permite automatizar partes de la migración con scripts."
+				},
+				{
+					"q": "¿BookStack es compatible con Markdown?",
+					"a": "Sí. BookStack tiene un editor de Markdown con vista previa en tiempo real junto al editor WYSIWYG, y una página escrita en Markdown se exporta como su Markdown original."
+				},
+				{
+					"q": "¿Puedo exportar BookStack a PDF?",
+					"a": "Sí. Un libro, capítulo o página se exporta como Contained Web File, PDF File, Plain Text File, Markdown File o Portable ZIP, y un Portable ZIP se puede volver a importar en BookStack. Las exportaciones no están pensadas como backups."
+				},
+				{
+					"q": "¿Cuáles son el correo y la contraseña por defecto de BookStack?",
+					"a": "Una instalación manual empieza con admin@admin.com y la contraseña “password”. Esta plantilla fija esa primera cuenta de administrador con el correo y la contraseña que indicas al desplegar, así que el par por defecto nunca funciona."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un wiki organisé en étagères, livres, chapitres et pages",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués, d’au moins 8 caractères : le modèle les donne au premier administrateur de BookStack, si bien que le compte par défaut admin@admin.com ne se connecte jamais. Les fichiers envoyés et les réglages sont conservés dans /config."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués, d’au moins 8 caractères : le modèle les donne au premier administrateur de BookStack, si bien que le compte par défaut admin@admin.com ne se connecte jamais. Les fichiers envoyés et les réglages sont conservés dans /config.",
+			"sizing": "BookStack est léger : environ 150 MB avec MariaDB, et des milliers de pages avec leurs images prennent quelques GB.",
+			"summary": "Auto-hébergez BookStack, le wiki de documentation open source et alternative à Confluence, avec éditeur WYSIWYG et Markdown. Avec Docker, en un clic.",
+			"about": [
+				"BookStack est un wiki open source pour la documentation et le savoir d’une équipe, une alternative à Confluence. Le contenu vit dans des livres, découpés en chapitres et en pages, et les livres sont rangés sur des étagères : un manuel ou un runbook se lit comme un livre plutôt que comme un tas de liens. Les pages s’écrivent dans un éditeur WYSIWYG, gardent un historique des révisions que vous pouvez comparer et restaurer, et peuvent contenir des diagrammes dessinés dans diagrams.net. La recherche porte sur un livre ou sur tout le wiki, et chaque paragraphe peut être lié directement.",
+				"Vous auto-hébergez BookStack pour garder la documentation interne sur une machine que vous contrôlez. Les rôles définissent ce que chacun peut voir et faire, et les permissions peuvent être redéfinies sur n’importe quelle étagère, n’importe quel livre, chapitre ou page. La connexion peut passer par LDAP, SAML2 ou OIDC, et l’authentification multifacteur peut être exigée par rôle. Le revers : les invitations d’utilisateurs et les réinitialisations de mot de passe partent par e-mail, BookStack a donc besoin d’un serveur de messagerie, le plus souvent en SMTP."
+			],
+			"faq": [
+				{
+					"q": "BookStack est-il gratuit et open source ?",
+					"a": "Oui. BookStack est gratuit, sous licence MIT, et son code source est sur Codeberg. Des offres de support payantes existent, mais le logiciel lui-même ne coûte rien à télécharger ni à faire tourner."
+				},
+				{
+					"q": "Comment migrer de Confluence vers BookStack ?",
+					"a": "À la main, pour l’instant : le site de BookStack indique qu’il n’existe pas encore de moyen automatique de déplacer le contenu depuis Confluence. Son API REST permet de scripter une partie du transfert."
+				},
+				{
+					"q": "BookStack prend-il en charge Markdown ?",
+					"a": "Oui. BookStack propose un éditeur Markdown avec aperçu en direct à côté de son éditeur WYSIWYG, et une page écrite en Markdown s’exporte avec son Markdown d’origine."
+				},
+				{
+					"q": "Peut-on exporter BookStack en PDF ?",
+					"a": "Oui. Un livre, un chapitre ou une page s’exporte en Contained Web File, PDF File, Plain Text File, Markdown File ou Portable ZIP, et un Portable ZIP peut être réimporté dans BookStack. Les exports ne sont pas conçus comme des sauvegardes."
+				},
+				{
+					"q": "Quels sont l’e-mail et le mot de passe par défaut de BookStack ?",
+					"a": "Une installation manuelle démarre avec admin@admin.com et le mot de passe « password ». Ce template donne au premier compte administrateur l’e-mail et le mot de passe que vous saisissez au déploiement, si bien que le couple par défaut ne fonctionne jamais."
+				}
+			]
 		},
 		"pl": {
 			"description": "Wiki uporządkowane w półki, książki, rozdziały i strony",
-			"notes": "Zaloguj się e-mailem i hasłem administratora, które podano, co najmniej 8 znaków: szablon nadaje je pierwszemu administratorowi BookStack, więc domyślne konto admin@admin.com nigdy się nie zaloguje. Przesłane pliki i ustawienia zostają w /config."
+			"notes": "Zaloguj się e-mailem i hasłem administratora, które podano, co najmniej 8 znaków: szablon nadaje je pierwszemu administratorowi BookStack, więc domyślne konto admin@admin.com nigdy się nie zaloguje. Przesłane pliki i ustawienia zostają w /config.",
+			"sizing": "BookStack ma małe wymagania: około 150 MB z MariaDB, a tysiące stron z obrazami zajmują kilka GB.",
+			"summary": "Hostuj u siebie BookStacka: wiki open source do dokumentacji, alternatywa dla Confluence, z edytorem WYSIWYG i Markdownem. W Dockerze, w jeden klik.",
+			"about": [
+				"BookStack to wiki open source do dokumentacji i wiedzy zespołu, alternatywa dla Confluence. Treść mieści się w książkach, podzielonych na rozdziały i strony, a książki stoją na półkach, więc instrukcję albo runbook czyta się jak książkę, a nie jak stos linków. Strony pisze się w edytorze WYSIWYG, mają historię wersji, którą możesz porównać i przywrócić, i mogą zawierać diagramy narysowane w diagrams.net. Wyszukiwanie obejmuje jedną książkę albo całe wiki, a do każdego akapitu można zrobić bezpośredni link.",
+				"BookStacka hostujesz u siebie, żeby trzymać wewnętrzną dokumentację na maszynie, którą kontrolujesz. Role określają, co kto może widzieć i robić, a uprawnienia można nadpisać na dowolnej półce, w dowolnej książce, rozdziale albo na dowolnej stronie. Logowanie może iść przez LDAP, SAML2 lub OIDC, a uwierzytelnianie wieloskładnikowe można wymusić osobno dla każdej roli. Haczyk: zaproszenia użytkowników i resety haseł wychodzą e-mailem, więc BookStack potrzebuje serwera poczty, zwykle przez SMTP."
+			],
+			"faq": [
+				{
+					"q": "Czy BookStack jest darmowy i open source?",
+					"a": "Tak. BookStack jest darmowy na licencji MIT, a jego kod źródłowy jest na Codebergu. W ofercie są też płatne plany wsparcia, ale samo oprogramowanie jest darmowe do pobrania i uruchomienia."
+				},
+				{
+					"q": "Jak przeprowadzić migrację z Confluence do BookStack?",
+					"a": "Na razie ręcznie: strona BookStack mówi, że nie ma jeszcze automatycznego sposobu przenoszenia treści z Confluence. Jego REST API pozwala oskryptować część przenosin."
+				},
+				{
+					"q": "Czy BookStack obsługuje Markdown?",
+					"a": "Tak. BookStack ma edytor Markdown z podglądem na żywo obok edytora WYSIWYG, a strona napisana w Markdownie eksportuje się jako jej oryginalny Markdown."
+				},
+				{
+					"q": "Czy można eksportować z BookStack do PDF?",
+					"a": "Tak. Książkę, rozdział lub stronę można wyeksportować jako Contained Web File, PDF File, Plain Text File, Markdown File albo Portable ZIP, a Portable ZIP można zaimportować z powrotem do BookStack. Eksporty nie służą jako backupy."
+				},
+				{
+					"q": "Jaki jest domyślny login do BookStack?",
+					"a": "Ręczna instalacja startuje z admin@admin.com i hasłem „password”. Ten szablon ustawia pierwsze konto administratora na e-mail i hasło, które podasz przy wdrożeniu, więc domyślna para nigdy nie działa."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma wiki organizada em estantes, livros, capítulos e páginas",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou, de pelo menos 8 caracteres: o template os dá ao primeiro administrador do BookStack, então a conta padrão admin@admin.com nunca entra. Uploads e configurações ficam guardados em /config."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou, de pelo menos 8 caracteres: o template os dá ao primeiro administrador do BookStack, então a conta padrão admin@admin.com nunca entra. Uploads e configurações ficam guardados em /config.",
+			"sizing": "BookStack é leve: cerca de 150 MB com o MariaDB, e milhares de páginas com suas imagens ocupam alguns GB.",
+			"summary": "Auto-hospede o BookStack: wiki de documentação de código aberto e alternativa ao Confluence, com editor WYSIWYG e Markdown. Com Docker, em um clique.",
+			"about": [
+				"O BookStack é uma wiki de código aberto para documentação e conhecimento de equipe, uma alternativa ao Confluence. O conteúdo fica em livros, divididos em capítulos e páginas, e os livros ficam em estantes, então um manual ou um runbook se lê como um livro, não como um monte de links. As páginas são escritas em um editor WYSIWYG, guardam um histórico de revisões que você pode comparar e restaurar e podem conter diagramas desenhados no diagrams.net. A busca cobre um livro ou a wiki inteira, e qualquer parágrafo pode receber um link direto.",
+				"Você auto-hospeda o BookStack para manter a documentação interna em uma máquina que você controla. As funções definem o que cada pessoa pode ver e fazer, e as permissões podem ser sobrescritas em qualquer estante, livro, capítulo ou página. O login pode passar por LDAP, SAML2 ou OIDC, e a autenticação multifator pode ser exigida por função. O porém: os convites de usuários e as redefinições de senha saem por e-mail, então o BookStack precisa de um servidor de e-mail, em geral por SMTP."
+			],
+			"faq": [
+				{
+					"q": "O BookStack é gratuito e de código aberto?",
+					"a": "Sim. O BookStack é gratuito sob a licença MIT, e o código-fonte dele está no Codeberg. Também há planos de suporte pagos, mas o software em si não custa nada para baixar e rodar."
+				},
+				{
+					"q": "Como migrar do Confluence para o BookStack?",
+					"a": "Por enquanto, à mão: o site do BookStack diz que ainda não existe um jeito automático de mover o conteúdo do Confluence. A API REST dele permite automatizar parte da migração com scripts."
+				},
+				{
+					"q": "O BookStack suporta Markdown?",
+					"a": "Sim. O BookStack tem um editor de Markdown com prévia ao vivo ao lado do editor WYSIWYG, e uma página escrita em Markdown é exportada como o Markdown original."
+				},
+				{
+					"q": "Dá para exportar o BookStack em PDF?",
+					"a": "Sim. Um livro, capítulo ou página pode ser exportado como Contained Web File, PDF File, Plain Text File, Markdown File ou Portable ZIP, e um Portable ZIP pode ser importado de volta no BookStack. As exportações não servem como backup."
+				},
+				{
+					"q": "Qual é o login padrão do BookStack?",
+					"a": "Uma instalação manual começa com admin@admin.com e a senha “password”. Este template define a primeira conta de administrador com o e-mail e a senha que você informa no deploy, então o par padrão nunca funciona."
+				}
+			]
 		},
 		"ru": {
 			"description": "Вики, разложенная по полкам, книгам, главам и страницам",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали, не короче 8 символов: шаблон отдаёт их первому администратору BookStack, так что стандартный admin@admin.com никогда не войдёт. Загрузки и настройки хранятся в /config."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали, не короче 8 символов: шаблон отдаёт их первому администратору BookStack, так что стандартный admin@admin.com никогда не войдёт. Загрузки и настройки хранятся в /config.",
+			"sizing": "BookStack: небольшие требования — около 150 MB вместе с MariaDB, а тысячи страниц с картинками занимают несколько GB.",
+			"summary": "Self-hosted BookStack — open source вики для документации, альтернатива Confluence, с WYSIWYG-редактором и Markdown. Через Docker в один клик.",
+			"about": [
+				"BookStack — это open source вики для документации и знаний команды, альтернатива Confluence. Контент живет в книгах, разделенных на главы и страницы, а книги стоят на полках, поэтому руководство или runbook читается как книга, а не как куча ссылок. Страницы пишутся в WYSIWYG-редакторе, хранят историю версий, которую можно сравнивать и восстанавливать, и могут содержать диаграммы, нарисованные в diagrams.net. Поиск охватывает одну книгу или всю вики, а на любой абзац можно дать прямую ссылку.",
+				"BookStack хостят у себя, чтобы держать внутреннюю документацию на машине, которую вы контролируете. Роли определяют, что люди видят и что могут делать, а права можно переопределить для любой полки, книги, главы или страницы. Вход может идти через LDAP, SAML2 или OIDC, а многофакторную аутентификацию можно сделать обязательной для отдельной роли. Но есть нюанс: приглашения пользователей и сброс паролей уходят по почте, поэтому BookStack нужен почтовый сервер, обычно по SMTP."
+			],
+			"faq": [
+				{
+					"q": "BookStack бесплатный и с открытым кодом?",
+					"a": "Да. BookStack бесплатный, под лицензией MIT, а его исходный код лежит на Codeberg. Платные тарифы поддержки тоже есть, но саму программу можно скачать и запустить бесплатно."
+				},
+				{
+					"q": "Как перенести данные из Confluence в BookStack?",
+					"a": "Пока вручную: на сайте BookStack сказано, что автоматического способа перенести контент из Confluence пока нет. Часть переноса можно автоматизировать скриптом через REST API."
+				},
+				{
+					"q": "BookStack поддерживает Markdown?",
+					"a": "Да. Рядом с WYSIWYG-редактором в BookStack есть Markdown-редактор с предпросмотром в реальном времени, а страница, написанная в Markdown, экспортируется в исходном Markdown."
+				},
+				{
+					"q": "Можно ли экспортировать BookStack в PDF?",
+					"a": "Да. Книгу, главу или страницу можно экспортировать как Contained Web File, PDF File, Plain Text File, Markdown File или Portable ZIP, а Portable ZIP можно импортировать обратно в BookStack. Экспорт не предназначен для бэкапов."
+				},
+				{
+					"q": "Какой логин по умолчанию в BookStack?",
+					"a": "Ручная установка начинается с admin@admin.com и пароля «password». Этот шаблон задает первому аккаунту администратора почту и пароль, которые вы указываете при деплое, поэтому пара по умолчанию никогда не работает."
+				}
+			]
 		},
 		"uk": {
 			"description": "Вікі, розкладена по полицях, книгах, розділах і сторінках",
-			"notes": "Увійдіть з поштою й паролем адміністратора, які ви вказали, не коротшим за 8 символів: шаблон віддає їх першому адміністраторові BookStack, тож стандартний admin@admin.com ніколи не ввійде. Завантаження й налаштування зберігаються в /config."
+			"notes": "Увійдіть з поштою й паролем адміністратора, які ви вказали, не коротшим за 8 символів: шаблон віддає їх першому адміністраторові BookStack, тож стандартний admin@admin.com ніколи не ввійде. Завантаження й налаштування зберігаються в /config.",
+			"sizing": "BookStack має скромні вимоги: близько 150 MB з MariaDB, а тисячі сторінок із зображеннями займають кілька GB.",
+			"summary": "Self-hosted BookStack — вікі для документації з відкритим кодом, альтернатива Confluence, з WYSIWYG-редактором і Markdown. Через Docker в один клік.",
+			"about": [
+				"BookStack — це вікі з відкритим кодом для документації та знань команди, альтернатива Confluence. Вміст живе в книгах, розділених на розділи й сторінки, а книги стоять на полицях, тож посібник чи runbook читається як книга, а не як купа посилань. Сторінки пишуться в WYSIWYG-редакторі, зберігають історію версій, яку можна порівнювати й відновлювати, і можуть містити діаграми, намальовані в diagrams.net. Пошук охоплює одну книгу або всю вікі, а на будь-який абзац можна дати пряме посилання.",
+				"BookStack хостять у себе, щоб тримати внутрішню документацію на машині, яку ви контролюєте. Ролі визначають, що люди бачать і що можуть робити, а права можна перевизначити для будь-якої полиці, книги, розділу чи сторінки. Вхід може йти через LDAP, SAML2 або OIDC, а багатофакторну автентифікацію можна зробити обов’язковою для окремої ролі. Але є нюанс: запрошення користувачів і скидання паролів надсилаються поштою, тож BookStack потрібен поштовий сервер, зазвичай через SMTP."
+			],
+			"faq": [
+				{
+					"q": "BookStack безплатний і з відкритим кодом?",
+					"a": "Так. BookStack безплатний, за ліцензією MIT, а його вихідний код лежить на Codeberg. Платні тарифи підтримки теж є, але саму програму можна безплатно завантажити й запустити."
+				},
+				{
+					"q": "Як перенести дані з Confluence до BookStack?",
+					"a": "Поки що вручну: на сайті BookStack сказано, що автоматичного способу перенести вміст із Confluence ще немає. Частину перенесення можна автоматизувати скриптом через REST API."
+				},
+				{
+					"q": "BookStack підтримує Markdown?",
+					"a": "Так. Поруч із WYSIWYG-редактором у BookStack є Markdown-редактор із попереднім переглядом у реальному часі, а сторінка, написана в Markdown, експортується як вихідний Markdown."
+				},
+				{
+					"q": "Чи можна експортувати BookStack у PDF?",
+					"a": "Так. Книгу, розділ або сторінку можна експортувати як Contained Web File, PDF File, Plain Text File, Markdown File або Portable ZIP, а Portable ZIP можна імпортувати назад у BookStack. Експорт не призначений для бекапів."
+				},
+				{
+					"q": "Який логін за замовчуванням у BookStack?",
+					"a": "Ручне встановлення починається з admin@admin.com і пароля «password». Цей шаблон задає першому акаунту адміністратора пошту й пароль, які ви вказуєте під час деплою, тож пара за замовчуванням ніколи не працює."
+				}
+			]
 		}
 	}
 }

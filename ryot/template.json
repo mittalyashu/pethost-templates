@@ -1,6 +1,13 @@
 {
 	"name": "Ryot",
 	"emoji": "🎬",
+	"category": "productivity",
+	"alternatives": [
+		"Trakt",
+		"Goodreads",
+		"Hevy"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "ryot",
 		"port": 8000
@@ -22,35 +29,259 @@
 	"texts": {
 		"en": {
 			"description": "A tracker for films, shows, books, games and workouts",
-			"notes": "Open the address and choose “Create a new account”. Then add USERS_ALLOW_REGISTRATION=false to the project’s .env and deploy again, so that nobody else can sign up."
+			"notes": "Open the address and choose “Create a new account”. Then add USERS_ALLOW_REGISTRATION=false to the project’s .env and deploy again, so that nobody else can sign up.",
+			"sizing": "Ryot is light: about 400 MB with Postgres, and years of tracked films, books and workouts take little disk.",
+			"summary": "Self-host Ryot, the open-source Trakt alternative that keeps your watch history, reading and workout logs in one place, in one click.",
+			"about": [
+				"Ryot is an open-source media and fitness tracker that people run instead of Trakt. One account logs movies, shows, anime, manga, books, audiobooks, podcasts, music and video games, with statistics and a calendar of upcoming releases. Plays in Jellyfin, Plex, Kodi or Emby can be tracked automatically. For training, it logs sets against a database of more than 800 exercises, runs rest timers between them, and graphs your progress and body measurements.",
+				"People self-host Ryot to keep years of watch history and workout logs in a database of their own, with films, books and the gym in one app. It fits best next to a Jellyfin or Plex server, where your viewing gets logged without a click. The catch is that recommendations, workout templates and sharing links to your data need a paid Pro key."
+			],
+			"faq": [
+				{
+					"q": "Is Ryot free and open source?",
+					"a": "Yes. Ryot is published under the GPL-3.0 license, and without a Pro key it runs as the free Community version. A key bought from the Ryot website turns on the Pro features."
+				},
+				{
+					"q": "Is Ryot a good Trakt alternative?",
+					"a": "Yes, if you want your watch history on a server of your own. Ryot imports a Trakt export ZIP without a client ID; importing a user or a list straight from the Trakt API needs one."
+				},
+				{
+					"q": "Can Ryot import from Goodreads, Hevy or Strong?",
+					"a": "Yes. Ryot has importers for Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy and the Strong app, among others. A Hevy history comes in from the CSV file the Hevy app exports."
+				},
+				{
+					"q": "Does Ryot have a mobile app?",
+					"a": "It works on a phone as a PWA: open your Ryot address in the phone's browser and add it to the home screen."
+				},
+				{
+					"q": "How do I disable registration in Ryot?",
+					"a": "Set USERS_ALLOW_REGISTRATION=false in Ryot's environment and redeploy; it is true by default. Create your own account first, since afterwards nobody can sign up, you included."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Tracker für Filme, Serien, Bücher, Spiele und Workouts",
-			"notes": "Öffne die Adresse und wähl „Create a new account“. Trag dann USERS_ALLOW_REGISTRATION=false in die .env des Projekts ein und deploy neu, damit sich sonst niemand registrieren kann."
+			"notes": "Öffne die Adresse und wähl „Create a new account“. Trag dann USERS_ALLOW_REGISTRATION=false in die .env des Projekts ein und deploy neu, damit sich sonst niemand registrieren kann.",
+			"sizing": "Ryot ist leicht: etwa 400 MB mit Postgres, und Jahre an erfassten Filmen, Büchern und Workouts brauchen wenig Disk.",
+			"summary": "Ryot selbst hosten: die Open-Source-Alternative zu Trakt, die Verlauf, Lese- und Workout-Logs an einem Ort hält. In einem Klick.",
+			"about": [
+				"Ryot ist ein Open-Source-Tracker für Medien und Fitness, den viele statt Trakt betreiben. Ein Konto erfasst Filme, Serien, Anime, Manga, Bücher, Hörbücher, Podcasts, Musik und Videospiele, mit Statistiken und einem Kalender kommender Veröffentlichungen. Wiedergaben in Jellyfin, Plex, Kodi oder Emby kann Ryot automatisch erfassen. Fürs Training loggt er deine Sätze zu mehr als 800 Übungen aus einer Datenbank, startet Pausentimer dazwischen und zeigt deinen Fortschritt und deine Körpermaße als Diagramme.",
+				"Du hostest Ryot selbst, um den Seh- und Trainingsverlauf aus Jahren in einer eigenen Datenbank zu behalten, mit Filmen, Büchern und dem Gym in einer App. Am besten passt er neben einen Jellyfin- oder Plex-Server, auf dem sich dein Schauen ohne Klick loggt. Der Haken: Empfehlungen, Workout-Vorlagen und Links zum Teilen deiner Daten brauchen einen kostenpflichtigen Pro-Key."
+			],
+			"faq": [
+				{
+					"q": "Ist Ryot kostenlos und Open Source?",
+					"a": "Ja. Ryot steht unter der GPL-3.0-Lizenz, und ohne Pro-Key läuft Ryot als kostenlose Community-Version. Ein Key von der Ryot-Website schaltet die Pro-Funktionen frei."
+				},
+				{
+					"q": "Ist Ryot eine gute Trakt-Alternative?",
+					"a": "Ja, wenn du deinen Verlauf auf einer eigenen Maschine haben willst. Ryot importiert eine ZIP-Datei mit dem Trakt-Export ohne Client-ID; der Import eines Trakt-Kontos oder einer Liste direkt über die Trakt-API braucht eine."
+				},
+				{
+					"q": "Kann Ryot Daten von Goodreads, Hevy oder Strong importieren?",
+					"a": "Ja. Ryot hat unter anderem Importer für Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy und die Strong-App. Ein Hevy-Verlauf kommt aus der CSV-Datei, die die Hevy-App exportiert."
+				},
+				{
+					"q": "Gibt es eine Ryot-App fürs Smartphone?",
+					"a": "Ryot läuft auf dem Smartphone als PWA: Öffne deine Ryot-Adresse im Browser des Smartphones und füg sie dem Startbildschirm hinzu."
+				},
+				{
+					"q": "Wie schalte ich die Registrierung in Ryot ab?",
+					"a": "Setz USERS_ALLOW_REGISTRATION=false in den Umgebungsvariablen von Ryot und deploy neu; standardmäßig ist der Wert true. Leg zuerst dein eigenes Konto an, denn danach kann sich niemand mehr registrieren, du eingeschlossen."
+				}
+			]
 		},
 		"es": {
 			"description": "Seguimiento de películas, series, libros, juegos y entrenamientos",
-			"notes": "Abre la dirección y elige “Create a new account”. Luego agrega USERS_ALLOW_REGISTRATION=false al .env del proyecto y vuelve a desplegar, para que nadie más pueda registrarse."
+			"notes": "Abre la dirección y elige “Create a new account”. Luego agrega USERS_ALLOW_REGISTRATION=false al .env del proyecto y vuelve a desplegar, para que nadie más pueda registrarse.",
+			"sizing": "Ryot es ligero: unos 400 MB con Postgres, y años de películas, libros y entrenamientos registrados ocupan poco disco.",
+			"summary": "Autoaloja Ryot, la alternativa de código abierto a Trakt que guarda en un solo lugar lo que ves, lees y entrenas. En un clic.",
+			"about": [
+				"Ryot es un tracker de medios y fitness de código abierto que se usa en vez de Trakt. Una sola cuenta registra películas, series, anime, manga, libros, audiolibros, podcasts, música y videojuegos, con estadísticas y un calendario de próximos estrenos. Las reproducciones en Jellyfin, Plex, Kodi o Emby se pueden registrar automáticamente. Para entrenar, registra cada serie de ejercicio sobre una base de datos de más de 800 ejercicios, cuenta el descanso entre ellas con temporizadores y muestra en gráficos tu progreso y tus medidas corporales.",
+				"Autoalojas Ryot para guardar años de historial de lo que ves y de tus entrenamientos en una base de datos propia, con películas, libros y el gimnasio en una sola app. Encaja mejor junto a un servidor Jellyfin o Plex, donde lo que ves se registra sin hacer clic. El inconveniente: las recomendaciones, las plantillas de entrenamiento y los enlaces para compartir tus datos requieren una clave Pro de pago."
+			],
+			"faq": [
+				{
+					"q": "¿Ryot es gratis y de código abierto?",
+					"a": "Sí. Ryot se publica con licencia GPL-3.0 y, sin clave Pro, funciona como la versión Community gratuita. Una clave comprada en el sitio web de Ryot activa las funciones Pro."
+				},
+				{
+					"q": "¿Ryot es una buena alternativa a Trakt?",
+					"a": "Sí, si quieres tu historial en una máquina propia. Ryot importa un ZIP con la exportación de Trakt sin client ID; importar un usuario o una lista directamente desde la API de Trakt sí necesita uno."
+				},
+				{
+					"q": "¿Ryot puede importar desde Goodreads, Hevy o Strong?",
+					"a": "Sí. Ryot tiene importadores para Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy y la app Strong, entre otros. Un historial de Hevy entra desde el archivo CSV que exporta la app de Hevy."
+				},
+				{
+					"q": "¿Ryot tiene app móvil?",
+					"a": "Funciona en el teléfono como PWA: abre la dirección de tu Ryot en el navegador del teléfono y agrégala a la pantalla de inicio."
+				},
+				{
+					"q": "¿Cómo desactivo el registro en Ryot?",
+					"a": "Define USERS_ALLOW_REGISTRATION=false en las variables de entorno de Ryot y vuelve a desplegar; por defecto es true. Crea primero tu propia cuenta, porque después nadie podrá registrarse, incluyéndote a ti."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un outil de suivi pour films, séries, livres, jeux et entraînements",
-			"notes": "Ouvrez l’adresse et choisissez « Create a new account ». Ajoutez ensuite USERS_ALLOW_REGISTRATION=false au .env du projet et redéployez, pour que personne d’autre ne puisse s’inscrire."
+			"notes": "Ouvrez l’adresse et choisissez « Create a new account ». Ajoutez ensuite USERS_ALLOW_REGISTRATION=false au .env du projet et redéployez, pour que personne d’autre ne puisse s’inscrire.",
+			"sizing": "Ryot est léger : environ 400 MB avec Postgres, et des années de films, livres et entraînements suivis pèsent peu sur le disque.",
+			"summary": "Auto-hébergez Ryot, l’alternative open source à Trakt qui réunit votre historique de visionnage, vos lectures et vos séances de sport. En un clic.",
+			"about": [
+				"Ryot est un outil de suivi open source pour les médias et la forme, que l’on installe à la place de Trakt. Un seul compte enregistre films, séries, animes, mangas, livres, livres audio, podcasts, musique et jeux vidéo, avec des statistiques et un calendrier des sorties à venir. Ce que vous regardez dans Jellyfin, Plex, Kodi ou Emby peut être enregistré automatiquement. Pour l’entraînement, il note vos séries à partir d’une base de plus de 800 exercices, lance des minuteurs de repos entre elles et trace des graphiques de vos progrès et de vos mensurations.",
+				"Vous auto-hébergez Ryot pour garder des années d’historique de visionnage et de séances dans une base de données à vous, avec les films, les livres et la salle de sport dans une seule application. Il convient surtout à côté d’un serveur Jellyfin ou Plex, où ce que vous regardez est enregistré sans un clic. Le revers : les recommandations, les modèles d’entraînement et les liens pour partager vos données exigent une clé Pro payante."
+			],
+			"faq": [
+				{
+					"q": "Ryot est-il gratuit et open source ?",
+					"a": "Oui. Ryot est publié sous licence GPL-3.0, et sans clé Pro il tourne comme la version Community gratuite. Une clé achetée sur le site de Ryot active les fonctions Pro."
+				},
+				{
+					"q": "Ryot est-il une bonne alternative à Trakt ?",
+					"a": "Oui, si vous voulez votre historique sur une machine à vous. Ryot importe une archive ZIP d’export Trakt sans client ID ; importer un utilisateur ou une liste directement depuis l’API de Trakt en demande un."
+				},
+				{
+					"q": "Ryot peut-il importer depuis Goodreads, Hevy ou Strong ?",
+					"a": "Oui. Ryot propose des imports depuis Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy et l’application Strong, entre autres. Un historique Hevy arrive depuis le fichier CSV qu’exporte l’application Hevy."
+				},
+				{
+					"q": "Ryot a-t-il une application mobile ?",
+					"a": "Il fonctionne sur un téléphone en PWA : ouvrez l’adresse de votre Ryot dans le navigateur du téléphone et ajoutez-la à l’écran d’accueil."
+				},
+				{
+					"q": "Comment désactiver l’inscription dans Ryot ?",
+					"a": "Définissez USERS_ALLOW_REGISTRATION=false dans les variables d’environnement de Ryot et redéployez ; la valeur par défaut est true. Créez d’abord votre propre compte, car ensuite personne ne pourra s’inscrire, vous compris."
+				}
+			]
 		},
 		"pl": {
 			"description": "Dziennik filmów, seriali, książek, gier i treningów",
-			"notes": "Otwórz adres projektu i wybierz „Create a new account”. Potem dodaj USERS_ALLOW_REGISTRATION=false do pliku .env projektu i wdróż ponownie, żeby nikt inny nie mógł założyć konta."
+			"notes": "Otwórz adres projektu i wybierz „Create a new account”. Potem dodaj USERS_ALLOW_REGISTRATION=false do pliku .env projektu i wdróż ponownie, żeby nikt inny nie mógł założyć konta.",
+			"sizing": "Ryot ma małe wymagania: około 400 MB z Postgresem, a lata śledzonych filmów, książek i treningów zajmują mało miejsca na dysku.",
+			"summary": "Hostuj Ryota u siebie w jeden klik: alternatywa dla Trakta open source, która trzyma historię oglądania, lektur i treningów w jednym miejscu.",
+			"about": [
+				"Ryot to tracker mediów i fitnessu open source, który ludzie uruchamiają zamiast Trakta. Jedno konto zapisuje filmy, seriale, anime, mangi, książki, audiobooki, podcasty, muzykę i gry wideo, ze statystykami i kalendarzem nadchodzących premier. Odtwarzanie w Jellyfin, Plex, Kodi lub Emby można śledzić automatycznie. Do treningu zapisuje serie ćwiczeń z bazy ponad 800 ćwiczeń, odmierza przerwy między nimi minutnikami i rysuje wykresy twoich postępów oraz pomiarów ciała.",
+				"Ryota hostujesz u siebie, żeby trzymać wieloletnią historię oglądania i zapisy treningów we własnej bazie danych, z filmami, książkami i siłownią w jednej aplikacji. Najlepiej pasuje obok serwera Jellyfin lub Plex, gdzie to, co oglądasz, zapisuje się bez jednego kliknięcia. Haczyk: rekomendacje, szablony treningów i linki do udostępniania twoich danych wymagają płatnego klucza Pro."
+			],
+			"faq": [
+				{
+					"q": "Czy Ryot jest darmowy i open source?",
+					"a": "Tak. Ryot jest publikowany na licencji GPL-3.0, a bez klucza Pro działa jako darmowa wersja Community. Klucz kupiony na stronie Ryota włącza funkcje Pro."
+				},
+				{
+					"q": "Czy Ryot to dobra alternatywa dla Trakta?",
+					"a": "Tak, jeśli chcesz trzymać historię oglądania na własnej maszynie. Ryot importuje archiwum ZIP z eksportem z Trakta bez client ID; import użytkownika lub listy prosto z API Trakta wymaga jednak client ID."
+				},
+				{
+					"q": "Czy Ryot zaimportuje dane z Goodreads, Hevy lub Strong?",
+					"a": "Tak. Ryot ma importery m.in. dla Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy i aplikacji Strong. Historia z Hevy wchodzi z pliku CSV, który eksportuje aplikacja Hevy."
+				},
+				{
+					"q": "Czy Ryot ma aplikację mobilną?",
+					"a": "Na telefonie działa jako PWA: otwórz adres swojego Ryota w przeglądarce telefonu i dodaj go do ekranu głównego."
+				},
+				{
+					"q": "Jak wyłączyć rejestrację w Ryocie?",
+					"a": "Ustaw USERS_ALLOW_REGISTRATION=false w zmiennych środowiskowych Ryota i wdróż ponownie; domyślnie jest true. Najpierw załóż własne konto, bo potem nikt nie będzie mógł się zarejestrować, ty też."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um app para acompanhar filmes, séries, livros, jogos e treinos",
-			"notes": "Abra o endereço e escolha “Create a new account”. Depois adicione USERS_ALLOW_REGISTRATION=false ao .env do projeto e faça o deploy de novo, para que mais ninguém possa se cadastrar."
+			"notes": "Abra o endereço e escolha “Create a new account”. Depois adicione USERS_ALLOW_REGISTRATION=false ao .env do projeto e faça o deploy de novo, para que mais ninguém possa se cadastrar.",
+			"sizing": "Ryot é leve: cerca de 400 MB com o Postgres, e anos de filmes, livros e treinos registrados ocupam pouco disco.",
+			"summary": "Auto-hospede o Ryot, a alternativa de código aberto ao Trakt que reúne histórico de filmes, leituras e treinos em um só lugar. Em um clique.",
+			"about": [
+				"O Ryot é um tracker de mídia e fitness de código aberto que as pessoas rodam no lugar do Trakt. Uma só conta registra filmes, séries, animes, mangás, livros, audiolivros, podcasts, músicas e videogames, com estatísticas e um calendário dos próximos lançamentos. O que você assiste no Jellyfin, Plex, Kodi ou Emby pode ser registrado automaticamente. Para o treino, ele registra cada série de exercício em uma base com mais de 800 exercícios, usa timers de descanso entre elas e mostra em gráficos seu progresso e suas medidas corporais.",
+				"Você auto-hospeda o Ryot para manter anos de histórico do que assistiu e de treinos em um banco de dados próprio, com filmes, livros e a academia em um só app. Ele combina melhor com um servidor Jellyfin ou Plex, onde o que você assiste é registrado sem nenhum clique. O porém: recomendações, templates de treino e links para compartilhar seus dados exigem uma chave Pro paga."
+			],
+			"faq": [
+				{
+					"q": "O Ryot é gratuito e de código aberto?",
+					"a": "Sim. O Ryot é publicado sob a licença GPL-3.0 e, sem uma chave Pro, roda como a versão Community gratuita. Uma chave comprada no site do Ryot ativa os recursos Pro."
+				},
+				{
+					"q": "O Ryot é uma boa alternativa ao Trakt?",
+					"a": "Sim, se você quer seu histórico em uma máquina própria. O Ryot importa um ZIP com a exportação do Trakt sem client ID; importar um usuário ou uma lista direto da API do Trakt exige um."
+				},
+				{
+					"q": "O Ryot importa dados do Goodreads, Hevy ou Strong?",
+					"a": "Sim. O Ryot tem importadores para Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy e o app Strong, entre outros. Um histórico do Hevy entra pelo arquivo CSV que o app do Hevy exporta."
+				},
+				{
+					"q": "O Ryot tem app para celular?",
+					"a": "Ele funciona no celular como PWA: abra o endereço do seu Ryot no navegador do celular e adicione à tela inicial."
+				},
+				{
+					"q": "Como desativo o cadastro no Ryot?",
+					"a": "Defina USERS_ALLOW_REGISTRATION=false nas variáveis de ambiente do Ryot e faça deploy de novo; o padrão é true. Crie primeiro sua própria conta, porque depois ninguém mais consegue se cadastrar, nem você."
+				}
+			]
 		},
 		"ru": {
 			"description": "Трекер фильмов, сериалов, книг, игр и тренировок",
-			"notes": "Откройте адрес и выберите «Create a new account». Затем добавьте USERS_ALLOW_REGISTRATION=false в .env проекта и задеплойте проект заново, чтобы больше никто не мог зарегистрироваться."
+			"notes": "Откройте адрес и выберите «Create a new account». Затем добавьте USERS_ALLOW_REGISTRATION=false в .env проекта и задеплойте проект заново, чтобы больше никто не мог зарегистрироваться.",
+			"sizing": "Ryot: небольшие требования — около 400 MB вместе с Postgres, а годы записей о фильмах, книгах и тренировках занимают мало диска.",
+			"summary": "Self-hosted Ryot — open source альтернатива Trakt, которая хранит историю просмотров, чтения и тренировок в одном месте. В один клик.",
+			"about": [
+				"Ryot — трекер медиа и фитнеса с открытым кодом, который ставят вместо Trakt. Один аккаунт ведет учет фильмов, сериалов, аниме, манги, книг, аудиокниг, подкастов, музыки и видеоигр, со статистикой и календарем будущих релизов. Воспроизведения в Jellyfin, Plex, Kodi или Emby можно отслеживать автоматически. Для тренировок Ryot записывает подходы по базе из более чем 800 упражнений, запускает таймеры отдыха между ними и строит графики вашего прогресса и замеров тела.",
+				"Ryot хостят у себя, чтобы хранить годы истории просмотров и тренировок в собственной базе данных, а фильмы, книги и спортзал держать в одном приложении. Лучше всего он работает рядом с сервером Jellyfin или Plex: просмотры записываются без единого клика. Но есть нюанс: рекомендации, шаблоны тренировок и ссылки, чтобы делиться вашими данными, требуют платного ключа Pro."
+			],
+			"faq": [
+				{
+					"q": "Ryot бесплатный и с открытым кодом?",
+					"a": "Да. Ryot опубликован под лицензией GPL-3.0, а без ключа Pro работает как бесплатная версия Community. Ключ, купленный на сайте Ryot, включает функции Pro."
+				},
+				{
+					"q": "Ryot — хорошая альтернатива Trakt?",
+					"a": "Да, если вы хотите хранить историю просмотров на собственной машине. Ryot импортирует ZIP-архив с экспортом из Trakt без client ID; импорт пользователя или списка напрямую через API Trakt требует его."
+				},
+				{
+					"q": "Умеет ли Ryot импортировать из Goodreads, Hevy или Strong?",
+					"a": "Да. В Ryot есть импорт из Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy и приложения Strong, среди прочего. История Hevy импортируется из CSV-файла, который экспортирует приложение Hevy."
+				},
+				{
+					"q": "Есть ли у Ryot мобильное приложение?",
+					"a": "На телефоне он работает как PWA: откройте адрес вашего Ryot в браузере телефона и добавьте его на домашний экран."
+				},
+				{
+					"q": "Как отключить регистрацию в Ryot?",
+					"a": "Задайте USERS_ALLOW_REGISTRATION=false в переменных окружения Ryot и задеплойте заново; по умолчанию стоит true. Сначала создайте свой аккаунт: после этого зарегистрироваться не сможет никто, включая вас."
+				}
+			]
 		},
 		"uk": {
 			"description": "Трекер фільмів, серіалів, книжок, ігор і тренувань",
-			"notes": "Відкрийте адресу й оберіть «Create a new account». Потім додайте USERS_ALLOW_REGISTRATION=false у файл .env проєкту й задеплойте ще раз, щоб більше ніхто не міг зареєструватися."
+			"notes": "Відкрийте адресу й оберіть «Create a new account». Потім додайте USERS_ALLOW_REGISTRATION=false у файл .env проєкту й задеплойте ще раз, щоб більше ніхто не міг зареєструватися.",
+			"sizing": "Ryot має скромні вимоги: близько 400 MB з Postgres, а роки відстежених фільмів, книг і тренувань займають мало місця на диску.",
+			"summary": "Self-hosted Ryot — альтернатива Trakt із відкритим кодом, що тримає історію переглядів, читання й тренувань в одному місці. В один клік.",
+			"about": [
+				"Ryot — трекер медіа та фітнесу з відкритим кодом, який ставлять замість Trakt. Один акаунт веде облік фільмів, серіалів, аніме, манги, книжок, аудіокниг, подкастів, музики та відеоігор, зі статистикою й календарем майбутніх релізів. Відтворення в Jellyfin, Plex, Kodi чи Emby можна відстежувати автоматично. Для тренувань Ryot записує підходи за базою з понад 800 вправ, запускає таймери відпочинку між ними та будує графіки вашого прогресу й вимірів тіла.",
+				"Ryot хостять у себе, щоб зберігати роки історії переглядів і тренувань у власній базі даних, а фільми, книжки й спортзал тримати в одному застосунку. Найкраще він пасує поруч із сервером Jellyfin або Plex: перегляди записуються без жодного кліку. Але є нюанс: рекомендації, шаблони тренувань і посилання, щоб ділитися вашими даними, потребують платного ключа Pro."
+			],
+			"faq": [
+				{
+					"q": "Ryot безплатний і з відкритим кодом?",
+					"a": "Так. Ryot опублікований за ліцензією GPL-3.0, а без ключа Pro працює як безплатна версія Community. Ключ, куплений на сайті Ryot, вмикає функції Pro."
+				},
+				{
+					"q": "Ryot — добра альтернатива Trakt?",
+					"a": "Так, якщо ви хочете тримати історію переглядів на власній машині. Ryot імпортує ZIP-архів з експортом із Trakt без client ID; імпорт користувача чи списку напряму через API Trakt його потребує."
+				},
+				{
+					"q": "Чи вміє Ryot імпортувати з Goodreads, Hevy або Strong?",
+					"a": "Так. У Ryot є імпорт із Goodreads, StoryGraph, Hardcover, MyAnimeList, AniList, IMDb, Netflix, Audiobookshelf, Hevy і застосунку Strong, серед іншого. Історія Hevy імпортується з CSV-файлу, який експортує застосунок Hevy."
+				},
+				{
+					"q": "Чи є в Ryot мобільний застосунок?",
+					"a": "На телефоні він працює як PWA: відкрийте адресу вашого Ryot у браузері телефона й додайте її на головний екран."
+				},
+				{
+					"q": "Як вимкнути реєстрацію в Ryot?",
+					"a": "Задайте USERS_ALLOW_REGISTRATION=false у змінних середовища Ryot і задеплойте ще раз; типово там true. Спершу створіть власний акаунт: після цього зареєструватися не зможе ніхто, включно з вами."
+				}
+			]
 		}
 	}
 }

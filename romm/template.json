@@ -1,6 +1,11 @@
 {
 	"name": "RomM",
 	"emoji": "🎮",
+	"category": "media",
+	"alternatives": [
+		"LaunchBox"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "romm",
 		"port": 8080
@@ -26,35 +31,259 @@
 	"texts": {
 		"en": {
 			"description": "A library and in-browser player for your retro games",
-			"notes": "Open the address and go through the setup wizard: pick your platforms, then create the admin account. Do it right away: until then the page is open to whoever has the address. Games go into /romm/library/roms/<platform> in the romm service, for example roms/snes: copy them over SFTP or upload them in RomM, then run a scan. Keys of metadata services, such as IGDB_CLIENT_ID and IGDB_CLIENT_SECRET, go into the project’s .env; deploy again after."
+			"notes": "Open the address and go through the setup wizard: pick your platforms, then create the admin account. Do it right away: until then the page is open to whoever has the address. Games go into /romm/library/roms/<platform> in the romm service, for example roms/snes: copy them over SFTP or upload them in RomM, then run a scan. Keys of metadata services, such as IGDB_CLIENT_ID and IGDB_CLIENT_SECRET, go into the project’s .env; deploy again after.",
+			"sizing": "RomM is moderate: about 1 GB with MariaDB; the disk is your games, tiny for cartridges, gigabytes per disc game.",
+			"summary": "RomM is an open-source ROM manager that plays retro games in your browser, a LaunchBox alternative you self-host on your own machine in one click.",
+			"about": [
+				"RomM is an open-source ROM manager and retro game player, a self-hosted web app people run in place of a desktop launcher like LaunchBox. It scans your game folders, one per system, and supports over 400 platforms. Covers, descriptions and screenshots come from more than ten metadata sources. Games for classic consoles play in a browser tab with no setup, and saves stay in sync across your devices and RetroArch.",
+				"People run RomM to keep one game library for a whole household. Each player gets an account with their own saves, and admins set permissions and parental controls that hide games above an age rating. There are no paid features and no tracking. The catch: RomM brings no games, so you supply your own ROMs, and only older systems play well in a browser."
+			],
+			"faq": [
+				{
+					"q": "Is RomM free and open source?",
+					"a": "Yes. RomM is licensed under the AGPL-3.0, and its maintainers say the core will always be free. A small team of maintainers and community contributors builds it, and it takes donations through Open Collective."
+				},
+				{
+					"q": "RomM vs LaunchBox: what is the difference?",
+					"a": "RomM is a server app: every player has an account and games play in the browser. RomM's own FAQ says a local Windows app such as LaunchBox may fit better if all you want is to scan a folder."
+				},
+				{
+					"q": "Which consoles can RomM play in the browser?",
+					"a": "Fourth-generation and older systems play well through EmulatorJS, such as the NES, SNES, Game Boy and Genesis. PlayStation, Nintendo 64 and Saturn are hit-or-miss, PSP and newer are mostly unplayable, and Ruffle and js-dos run Flash and DOS games."
+				},
+				{
+					"q": "Is there a RomM app for Android or iOS?",
+					"a": "On Android, yes: the official Argosy Launcher browses your library, downloads games, launches them in RetroArch or another emulator and syncs saves back. For iOS there is no official app, only community-made ones such as romm-ios-app."
+				},
+				{
+					"q": "Do I need an IGDB key to use RomM?",
+					"a": "No. Hasheous matches games by their files' hashes and fetches titles, covers and descriptions without a key, and the Pethost template turns it on. Credentials for IGDB, ScreenScraper or MobyGames add more sources."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Bibliothek und ein Player im Browser für deine Retro-Spiele",
-			"notes": "Öffne die Adresse und geh den Einrichtungsassistenten durch: Wähl deine Plattformen und erstell dann das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Spiele kommen nach /romm/library/roms/<platform> im Service romm, zum Beispiel roms/snes: Kopier sie per SFTP oder lad sie in RomM hoch und starte dann einen Scan. Die Keys von Metadatenanbietern, zum Beispiel IGDB_CLIENT_ID und IGDB_CLIENT_SECRET, trägst du in die .env des Projekts ein; deploy danach neu."
+			"notes": "Öffne die Adresse und geh den Einrichtungsassistenten durch: Wähl deine Plattformen und erstell dann das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Spiele kommen nach /romm/library/roms/<platform> im Service romm, zum Beispiel roms/snes: Kopier sie per SFTP oder lad sie in RomM hoch und starte dann einen Scan. Die Keys von Metadatenanbietern, zum Beispiel IGDB_CLIENT_ID und IGDB_CLIENT_SECRET, trägst du in die .env des Projekts ein; deploy danach neu.",
+			"sizing": "RomM ist mittelschwer: etwa 1 GB mit MariaDB; die Disk füllen deine Spiele: winzig bei Cartridges, mehrere GB pro Disc-Spiel.",
+			"summary": "RomM selbst hosten: ein Open-Source-ROM-Manager, der Retro-Spiele im Browser spielt, eine Alternative zu LaunchBox. Mit einem Klick auf deiner Maschine.",
+			"about": [
+				"RomM ist ein Open-Source-ROM-Manager und Player für Retro-Spiele, eine selbst gehostete Web-App, die Leute statt eines Desktop-Launchers wie LaunchBox betreiben. RomM scannt deine Spielordner, einen pro System, und unterstützt über 400 Plattformen. Cover, Beschreibungen und Screenshots stammen aus mehr als zehn Metadatenquellen. Spiele für klassische Konsolen laufen ohne Einrichtung in einem Browser-Tab, und Spielstände bleiben zwischen deinen Geräten und RetroArch synchron.",
+				"Wer RomM selbst hostet, führt damit eine einzige Spielebibliothek für den ganzen Haushalt. Jede Person, die spielt, bekommt ein Konto mit eigenen Spielständen, und Admins legen Berechtigungen und eine Kindersicherung fest, die Spiele über einer bestimmten Altersfreigabe ausblendet. Es gibt keine kostenpflichtigen Funktionen und kein Tracking. Der Haken: RomM bringt keine Spiele mit, du musst also deine eigenen ROMs mitbringen, und im Browser laufen nur ältere Systeme gut."
+			],
+			"faq": [
+				{
+					"q": "Ist RomM kostenlos und Open Source?",
+					"a": "Ja. RomM steht unter der AGPL-3.0, und laut den Maintainern bleibt der Kern immer kostenlos. Ein kleines Team aus Maintainern und Mitwirkenden aus der Community entwickelt RomM, Spenden gehen über Open Collective."
+				},
+				{
+					"q": "RomM oder LaunchBox: Was ist der Unterschied?",
+					"a": "RomM ist eine Server-App: Jede Person, die spielt, hat ein Konto, und die Spiele laufen im Browser. Laut der FAQ von RomM selbst passt eine lokale Windows-App wie LaunchBox womöglich besser, wenn du nur einen Ordner scannen willst."
+				},
+				{
+					"q": "Welche Konsolen kann RomM im Browser abspielen?",
+					"a": "Systeme der vierten Generation und älter laufen über EmulatorJS gut, etwa NES, SNES, Game Boy und Genesis. PlayStation, Nintendo 64 und Saturn sind Glückssache, PSP und neuere Systeme sind meist nicht spielbar, und Flash- und DOS-Spiele laufen mit Ruffle und js-dos."
+				},
+				{
+					"q": "Gibt es eine RomM-App für Android oder iOS?",
+					"a": "Für Android ja: Der offizielle Argosy Launcher zeigt deine Bibliothek, lädt Spiele herunter, startet sie in RetroArch oder einem anderen Emulator und synchronisiert die Spielstände zurück. Für iOS gibt es keine offizielle App, nur Apps aus der Community wie romm-ios-app."
+				},
+				{
+					"q": "Brauche ich einen IGDB-Key, um RomM zu nutzen?",
+					"a": "Nein. Hasheous ordnet Spiele über die Hashes ihrer Dateien zu und holt Titel, Cover und Beschreibungen ohne Key; die Pethost-Vorlage schaltet Hasheous ein. Zugangsdaten für IGDB, ScreenScraper oder MobyGames fügen weitere Quellen hinzu."
+				}
+			]
 		},
 		"es": {
 			"description": "Una biblioteca y un reproductor en el navegador para tus juegos retro",
-			"notes": "Abre la dirección y sigue el asistente de configuración: elige tus plataformas y luego crea la cuenta de administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Los juegos van en /romm/library/roms/<platform>, en el servicio romm, por ejemplo roms/snes: cópialos por SFTP o súbelos en RomM, y luego ejecuta un escaneo. Las claves de proveedores de metadatos, por ejemplo IGDB_CLIENT_ID e IGDB_CLIENT_SECRET, van en el .env del proyecto; vuelve a desplegar después."
+			"notes": "Abre la dirección y sigue el asistente de configuración: elige tus plataformas y luego crea la cuenta de administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Los juegos van en /romm/library/roms/<platform>, en el servicio romm, por ejemplo roms/snes: cópialos por SFTP o súbelos en RomM, y luego ejecuta un escaneo. Las claves de proveedores de metadatos, por ejemplo IGDB_CLIENT_ID e IGDB_CLIENT_SECRET, van en el .env del proyecto; vuelve a desplegar después.",
+			"sizing": "RomM es moderado: cerca de 1 GB con MariaDB; el disco son tus juegos: diminutos los de cartucho, GB cada uno de disco óptico.",
+			"summary": "Autoaloja RomM, un gestor de ROMs de código abierto que reproduce juegos retro en el navegador, alternativa a LaunchBox. En tu máquina, en un clic.",
+			"about": [
+				"RomM es un gestor de ROMs y reproductor de juegos retro de código abierto, una aplicación web autoalojada que la gente ejecuta en lugar de un lanzador de escritorio como LaunchBox. Escanea tus carpetas de juegos, una por sistema, y admite más de 400 plataformas. Las carátulas, las descripciones y las capturas de pantalla vienen de más de diez fuentes de metadatos. Los juegos de consolas clásicas se juegan en una pestaña del navegador sin configurar nada, y las partidas guardadas se mantienen sincronizadas entre tus dispositivos y RetroArch.",
+				"La gente ejecuta RomM para tener una sola biblioteca de juegos para todo el hogar. Cada persona que juega tiene una cuenta con sus propias partidas guardadas, y los administradores fijan permisos y controles parentales que ocultan los juegos por encima de una clasificación por edades. No hay funciones de pago ni rastreo. El inconveniente: RomM no trae juegos, así que tú pones tus propias ROMs, y en el navegador solo funcionan bien los sistemas antiguos."
+			],
+			"faq": [
+				{
+					"q": "¿RomM es gratis y de código abierto?",
+					"a": "Sí. RomM usa la licencia AGPL-3.0, y sus mantenedores dicen que el núcleo siempre será gratis. Lo desarrolla un pequeño equipo de mantenedores y colaboradores de la comunidad, y recibe donaciones a través de Open Collective."
+				},
+				{
+					"q": "RomM frente a LaunchBox: ¿cuál es la diferencia?",
+					"a": "RomM es una aplicación de servidor: cada persona que juega tiene una cuenta y los juegos funcionan en el navegador. Las propias preguntas frecuentes de RomM dicen que una aplicación local de Windows como LaunchBox puede encajar mejor si lo único que quieres es escanear una carpeta."
+				},
+				{
+					"q": "¿Qué consolas puede reproducir RomM en el navegador?",
+					"a": "Los sistemas de cuarta generación y anteriores funcionan bien con EmulatorJS, como NES, SNES, Game Boy y Genesis. PlayStation, Nintendo 64 y Saturn van a veces bien y a veces mal, PSP y los sistemas más nuevos casi no se pueden jugar, y Ruffle y js-dos ejecutan juegos de Flash y de DOS."
+				},
+				{
+					"q": "¿Hay una app de RomM para Android o iOS?",
+					"a": "En Android, sí: el Argosy Launcher oficial muestra tu biblioteca, descarga juegos, los abre en RetroArch o en otro emulador y sincroniza de vuelta las partidas guardadas. Para iOS no hay una app oficial, solo apps de la comunidad como romm-ios-app."
+				},
+				{
+					"q": "¿Necesito una clave de IGDB para usar RomM?",
+					"a": "No. Hasheous identifica los juegos por los hashes de sus archivos y obtiene títulos, carátulas y descripciones sin clave, y la plantilla de Pethost activa Hasheous. Las credenciales de IGDB, ScreenScraper o MobyGames agregan más fuentes."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une bibliothèque et un lecteur dans le navigateur pour vos jeux rétro",
-			"notes": "Ouvrez l’adresse et suivez l’assistant de configuration : choisissez vos plateformes, puis créez le compte administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les jeux vont dans /romm/library/roms/<platform>, dans le service romm, par exemple roms/snes : copiez-les en SFTP ou envoyez-les dans RomM, puis lancez un scan. Les clés des fournisseurs de métadonnées, par exemple IGDB_CLIENT_ID et IGDB_CLIENT_SECRET, vont dans le .env du projet ; redéployez ensuite."
+			"notes": "Ouvrez l’adresse et suivez l’assistant de configuration : choisissez vos plateformes, puis créez le compte administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les jeux vont dans /romm/library/roms/<platform>, dans le service romm, par exemple roms/snes : copiez-les en SFTP ou envoyez-les dans RomM, puis lancez un scan. Les clés des fournisseurs de métadonnées, par exemple IGDB_CLIENT_ID et IGDB_CLIENT_SECRET, vont dans le .env du projet ; redéployez ensuite.",
+			"sizing": "RomM est modéré : environ 1 GB avec MariaDB ; le disque, ce sont vos jeux : minuscules en cartouche, des GB par jeu sur disque.",
+			"summary": "Auto-hébergez RomM : gestionnaire de ROM open source pour jouer à vos jeux rétro dans le navigateur, alternative à LaunchBox. En un clic sur votre machine.",
+			"about": [
+				"RomM est un gestionnaire de ROM et un lecteur de jeux rétro open source, une application web auto-hébergée que l’on fait tourner à la place d’un lanceur de bureau comme LaunchBox. Il scanne vos dossiers de jeux, un par système, et prend en charge plus de 400 plateformes. Les jaquettes, les descriptions et les captures d’écran viennent de plus de dix sources de métadonnées. Les jeux des consoles classiques se jouent dans un onglet du navigateur, sans configuration, et les sauvegardes restent synchronisées entre vos appareils et RetroArch.",
+				"On auto-héberge RomM pour avoir une seule bibliothèque de jeux pour tout un foyer. Chaque joueur a un compte avec ses propres sauvegardes, et les administrateurs règlent les droits ainsi qu’un contrôle parental qui masque les jeux au-delà d’une classification par âge. Il n’y a ni fonctionnalité payante ni suivi des utilisateurs. Le revers : RomM n’apporte aucun jeu, il faut donc fournir vos propres ROM, et seuls les systèmes anciens se jouent bien dans un navigateur."
+			],
+			"faq": [
+				{
+					"q": "RomM est-il gratuit et open source ?",
+					"a": "Oui. RomM est sous licence AGPL-3.0, et ses mainteneurs affirment que le cœur restera toujours gratuit. Une petite équipe de mainteneurs et de contributeurs de la communauté le développe, et il accepte les dons via Open Collective."
+				},
+				{
+					"q": "RomM ou LaunchBox : quelle différence ?",
+					"a": "RomM est une application serveur : chaque joueur a un compte et les jeux se jouent dans le navigateur. La FAQ de RomM elle-même indique qu’une application Windows locale comme LaunchBox peut mieux convenir si vous voulez seulement scanner un dossier."
+				},
+				{
+					"q": "Quelles consoles RomM peut-il faire tourner dans le navigateur ?",
+					"a": "Les systèmes de la quatrième génération et plus anciens fonctionnent bien avec EmulatorJS, comme NES, SNES, Game Boy et Genesis. PlayStation, Nintendo 64 et Saturn donnent des résultats aléatoires, la PSP et les systèmes plus récents sont presque injouables, et Ruffle et js-dos font tourner les jeux Flash et DOS."
+				},
+				{
+					"q": "Existe-t-il une application RomM pour Android ou iOS ?",
+					"a": "Sur Android, oui : l’Argosy Launcher officiel affiche votre bibliothèque, télécharge des jeux, les lance dans RetroArch ou un autre émulateur et renvoie les sauvegardes en retour. Pour iOS, il n’existe pas d’application officielle, seulement des applications créées par la communauté comme romm-ios-app."
+				},
+				{
+					"q": "Faut-il une clé IGDB pour utiliser RomM ?",
+					"a": "Non. Hasheous identifie les jeux grâce aux empreintes (hashes) de leurs fichiers et récupère titres, jaquettes et descriptions sans clé, et le template Pethost active Hasheous. Les identifiants IGDB, ScreenScraper ou MobyGames ajoutent d’autres sources."
+				}
+			]
 		},
 		"pl": {
 			"description": "Biblioteka i odtwarzacz w przeglądarce dla twoich gier retro",
-			"notes": "Otwórz adres projektu i przejdź przez kreator konfiguracji: wybierz swoje platformy, a potem utwórz konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Gry trafiają do /romm/library/roms/<platform> w usłudze romm, na przykład roms/snes: skopiuj je przez SFTP albo wgraj w RomM, a potem uruchom skanowanie. Klucze dostawców metadanych, na przykład IGDB_CLIENT_ID i IGDB_CLIENT_SECRET, wpisz do pliku .env projektu; potem wdróż ponownie."
+			"notes": "Otwórz adres projektu i przejdź przez kreator konfiguracji: wybierz swoje platformy, a potem utwórz konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Gry trafiają do /romm/library/roms/<platform> w usłudze romm, na przykład roms/snes: skopiuj je przez SFTP albo wgraj w RomM, a potem uruchom skanowanie. Klucze dostawców metadanych, na przykład IGDB_CLIENT_ID i IGDB_CLIENT_SECRET, wpisz do pliku .env projektu; potem wdróż ponownie.",
+			"sizing": "RomM ma średnie wymagania: około 1 GB z MariaDB; dysk to twoje gry: kartridże zajmują niewiele, gra z płyty to gigabajty.",
+			"summary": "Hostuj RomM u siebie jednym kliknięciem: menedżer ROM-ów open source, który odtwarza gry retro w przeglądarce, alternatywa dla programu LaunchBox.",
+			"about": [
+				"RomM to menedżer ROM-ów i odtwarzacz gier retro open source, hostowana u siebie aplikacja webowa, którą ludzie uruchamiają zamiast pulpitowego launchera takiego jak LaunchBox. Skanuje foldery z grami, po jednym na system, i obsługuje ponad 400 platform. Okładki, opisy i zrzuty ekranu pochodzą z ponad dziesięciu źródeł metadanych. Gry na klasyczne konsole działają w karcie przeglądarki bez żadnej konfiguracji, a zapisy gier pozostają zsynchronizowane między twoimi urządzeniami a RetroArch.",
+				"Ludzie uruchamiają RomM, żeby mieć jedną bibliotekę gier dla całego domu. Każdy gracz dostaje konto z własnymi zapisami, a administratorzy ustawiają uprawnienia i kontrolę rodzicielską, która ukrywa gry powyżej określonej kategorii wiekowej. Nie ma płatnych funkcji ani śledzenia. Haczyk: RomM nie zawiera gier, więc musisz dostarczyć własne ROM-y, a w przeglądarce dobrze działają tylko starsze systemy."
+			],
+			"faq": [
+				{
+					"q": "Czy RomM jest darmowy i open source?",
+					"a": "Tak. RomM jest na licencji AGPL-3.0, a jego maintainerzy mówią, że rdzeń zawsze będzie darmowy. Tworzy go mały zespół maintainerów i współtwórców ze społeczności, a darowizny przyjmuje przez Open Collective."
+				},
+				{
+					"q": "RomM czy LaunchBox: jaka jest różnica?",
+					"a": "RomM to aplikacja serwerowa: każdy gracz ma konto, a gry działają w przeglądarce. Według własnego FAQ RomM lokalna aplikacja na Windows, taka jak LaunchBox, może lepiej pasować, jeśli chcesz tylko przeskanować folder."
+				},
+				{
+					"q": "Jakie konsole RomM odtworzy w przeglądarce?",
+					"a": "Systemy czwartej generacji i starsze działają dobrze przez EmulatorJS, na przykład NES, SNES, Game Boy i Genesis. PlayStation, Nintendo 64 i Saturn to loteria, PSP i nowsze są w większości niegrywalne, a Ruffle i js-dos uruchamiają gry we Flashu i na DOS-ie."
+				},
+				{
+					"q": "Czy jest aplikacja RomM na Androida lub iOS?",
+					"a": "Na Androida tak: oficjalny Argosy Launcher pokazuje twoją bibliotekę, pobiera gry, uruchamia je w RetroArch albo innym emulatorze i synchronizuje zapisy z powrotem. Na iOS nie ma oficjalnej aplikacji, są tylko społecznościowe, takie jak romm-ios-app."
+				},
+				{
+					"q": "Czy potrzebuję klucza IGDB, żeby używać RomM?",
+					"a": "Nie. Hasheous dopasowuje gry po haszach ich plików i pobiera tytuły, okładki i opisy bez klucza, a szablon Pethost włącza Hasheous. Dane dostępowe do IGDB, ScreenScraper lub MobyGames dodają kolejne źródła."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma biblioteca e um player no navegador para os seus jogos retrô",
-			"notes": "Abra o endereço e passe pelo assistente de configuração: escolha suas plataformas e depois crie a conta de administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os jogos vão em /romm/library/roms/<platform>, no serviço romm, por exemplo roms/snes: copie-os por SFTP ou envie-os pelo RomM e depois faça uma varredura. As chaves de provedores de metadados, por exemplo IGDB_CLIENT_ID e IGDB_CLIENT_SECRET, vão no .env do projeto; faça o deploy de novo depois."
+			"notes": "Abra o endereço e passe pelo assistente de configuração: escolha suas plataformas e depois crie a conta de administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os jogos vão em /romm/library/roms/<platform>, no serviço romm, por exemplo roms/snes: copie-os por SFTP ou envie-os pelo RomM e depois faça uma varredura. As chaves de provedores de metadados, por exemplo IGDB_CLIENT_ID e IGDB_CLIENT_SECRET, vão no .env do projeto; faça o deploy de novo depois.",
+			"sizing": "RomM é moderado: cerca de 1 GB com o MariaDB; o disco são os seus jogos, minúsculos os de cartucho, GB cada um de disco óptico.",
+			"summary": "Auto-hospede o RomM com um clique: gerenciador de ROMs open source que roda jogos retrô no navegador, uma alternativa ao LaunchBox na sua máquina.",
+			"about": [
+				"O RomM é um gerenciador de ROMs e player de jogos retrô open source, um app web auto-hospedado que as pessoas rodam no lugar de um launcher de desktop como o LaunchBox. Ele varre as suas pastas de jogos, uma por sistema, e suporta mais de 400 plataformas. Capas, descrições e capturas de tela vêm de mais de dez fontes de metadados. Os jogos de consoles clássicos rodam em uma aba do navegador, sem configuração, e os saves ficam sincronizados entre os seus dispositivos e o RetroArch.",
+				"As pessoas rodam o RomM para manter uma única biblioteca de jogos para a casa toda. Cada jogador tem uma conta com os próprios saves, e os administradores definem permissões e controles parentais que escondem jogos acima de uma classificação etária. Não há recursos pagos nem rastreamento. O porém: o RomM não traz jogos, então você precisa fornecer as suas próprias ROMs, e só sistemas mais antigos rodam bem no navegador."
+			],
+			"faq": [
+				{
+					"q": "O RomM é gratuito e open source?",
+					"a": "Sim. O RomM é licenciado sob a AGPL-3.0, e os mantenedores dizem que o núcleo será sempre gratuito. Uma pequena equipe de mantenedores e colaboradores da comunidade o desenvolve, e ele aceita doações pelo Open Collective."
+				},
+				{
+					"q": "RomM ou LaunchBox: qual é a diferença?",
+					"a": "O RomM é um app de servidor: cada jogador tem uma conta e os jogos rodam no navegador. O FAQ do próprio RomM diz que um app local de Windows, como o LaunchBox, pode servir melhor se tudo o que você quer é varrer uma pasta."
+				},
+				{
+					"q": "Quais consoles o RomM consegue rodar no navegador?",
+					"a": "Sistemas da quarta geração e anteriores rodam bem pelo EmulatorJS, como NES, SNES, Game Boy e Genesis. PlayStation, Nintendo 64 e Saturn funcionam só às vezes, PSP e sistemas mais novos são, na maioria, injogáveis, e o Ruffle e o js-dos rodam jogos de Flash e de DOS."
+				},
+				{
+					"q": "Existe um app do RomM para Android ou iOS?",
+					"a": "No Android, sim: o Argosy Launcher oficial mostra a sua biblioteca, baixa jogos, os inicia no RetroArch ou em outro emulador e sincroniza os saves de volta. Para iOS não há app oficial, só apps feitos pela comunidade, como o romm-ios-app."
+				},
+				{
+					"q": "Preciso de uma chave do IGDB para usar o RomM?",
+					"a": "Não. O Hasheous identifica os jogos pelos hashes dos arquivos e busca títulos, capas e descrições sem chave, e o template do Pethost ativa o Hasheous. As credenciais do IGDB, do ScreenScraper ou do MobyGames adicionam mais fontes."
+				}
+			]
 		},
 		"ru": {
 			"description": "Библиотека и плеер в браузере для ваших ретро-игр",
-			"notes": "Откройте адрес и пройдите мастер настройки: выберите платформы, затем создайте аккаунт администратора. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Игры кладите в /romm/library/roms/<platform> в сервисе romm, например roms/snes: скопируйте их по SFTP или загрузите в RomM, затем запустите сканирование. Ключи провайдеров метаданных, например IGDB_CLIENT_ID и IGDB_CLIENT_SECRET, добавьте в .env проекта; после этого задеплойте проект заново."
+			"notes": "Откройте адрес и пройдите мастер настройки: выберите платформы, затем создайте аккаунт администратора. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Игры кладите в /romm/library/roms/<platform> в сервисе romm, например roms/snes: скопируйте их по SFTP или загрузите в RomM, затем запустите сканирование. Ключи провайдеров метаданных, например IGDB_CLIENT_ID и IGDB_CLIENT_SECRET, добавьте в .env проекта; после этого задеплойте проект заново.",
+			"sizing": "RomM: умеренные требования — около 1 GB вместе с MariaDB; диск занимают игры: картриджи совсем малы, дисковые — гигабайты на игру.",
+			"summary": "Self-hosted RomM в один клик: open-source менеджер ROM, который запускает ретро-игры в браузере, альтернатива LaunchBox на вашей машине.",
+			"about": [
+				"RomM — open-source менеджер ROM и плеер ретро-игр, self-hosted веб-приложение, которое запускают вместо десктопного лаунчера вроде LaunchBox. Он сканирует папки с играми, по одной на каждую систему, и поддерживает более 400 платформ. Обложки, описания и скриншоты берутся из более чем десяти источников метаданных. Игры для классических консолей работают во вкладке браузера без настройки, а сохранения синхронизируются между вашими устройствами и RetroArch.",
+				"RomM хостят у себя, чтобы вести одну библиотеку игр для всех домочадцев. У каждого игрока свой аккаунт со своими сохранениями, а администраторы задают права и родительский контроль, который скрывает игры с возрастным рейтингом выше заданного. Платных функций и трекинга нет. Подвох в том, что RomM не поставляется с играми: ROM нужны ваши собственные, а в браузере хорошо работают только старые системы."
+			],
+			"faq": [
+				{
+					"q": "RomM бесплатный и open source?",
+					"a": "Да. RomM распространяется под лицензией AGPL-3.0, а его мейнтейнеры заявляют, что ядро всегда будет бесплатным. Его делает небольшая команда мейнтейнеров и участников сообщества, а пожертвования принимаются через Open Collective."
+				},
+				{
+					"q": "RomM или LaunchBox: в чем разница?",
+					"a": "RomM — серверное приложение: у каждого игрока свой аккаунт, а игры запускаются в браузере. В собственном FAQ RomM сказано, что локальное приложение для Windows вроде LaunchBox может подойти лучше, если вам нужно только просканировать папку."
+				},
+				{
+					"q": "Какие консоли RomM умеет запускать в браузере?",
+					"a": "Системы четвертого поколения и старше хорошо работают через EmulatorJS, например NES, SNES, Game Boy и Genesis. PlayStation, Nintendo 64 и Saturn — как повезет, PSP и более новые в основном непригодны для игры, а Ruffle и js-dos запускают игры на Flash и DOS."
+				},
+				{
+					"q": "Есть ли приложение RomM для Android или iOS?",
+					"a": "Для Android да: официальный Argosy Launcher показывает вашу библиотеку, скачивает игры, запускает их в RetroArch или другом эмуляторе и синхронизирует сохранения обратно. Для iOS официального приложения нет, только сделанные сообществом, например romm-ios-app."
+				},
+				{
+					"q": "Нужен ли ключ IGDB, чтобы пользоваться RomM?",
+					"a": "Нет. Hasheous сопоставляет игры по хешам их файлов и получает названия, обложки и описания без ключа, а шаблон Pethost включает Hasheous. Учетные данные IGDB, ScreenScraper или MobyGames добавляют другие источники."
+				}
+			]
 		},
 		"uk": {
 			"description": "Бібліотека й плеєр у браузері для ваших ретро-ігор",
-			"notes": "Відкрийте адресу й пройдіть майстер налаштування: оберіть платформи, потім створіть акаунт адміністратора. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Ігри кладіть у /romm/library/roms/<platform> у сервісі romm, наприклад roms/snes: скопіюйте їх через SFTP або завантажте в RomM, а потім запустіть сканування. Ключі провайдерів метаданих, наприклад IGDB_CLIENT_ID та IGDB_CLIENT_SECRET, додайте у файл .env проєкту; після цього задеплойте ще раз."
+			"notes": "Відкрийте адресу й пройдіть майстер налаштування: оберіть платформи, потім створіть акаунт адміністратора. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Ігри кладіть у /romm/library/roms/<platform> у сервісі romm, наприклад roms/snes: скопіюйте їх через SFTP або завантажте в RomM, а потім запустіть сканування. Ключі провайдерів метаданих, наприклад IGDB_CLIENT_ID та IGDB_CLIENT_SECRET, додайте у файл .env проєкту; після цього задеплойте ще раз.",
+			"sizing": "RomM має помірні вимоги: близько 1 GB з MariaDB; диск — це ваші ігри: картриджі крихітні, гра з оптичного диска — гігабайти.",
+			"summary": "Self-hosted RomM в один клік: open-source менеджер ROM, що запускає ретро-ігри в браузері, альтернатива LaunchBox на вашій машині.",
+			"about": [
+				"RomM — open-source менеджер ROM і плеєр ретро-ігор, self-hosted вебзастосунок, який запускають замість десктопного лаунчера на кшталт LaunchBox. Він сканує папки з іграми, по одній на кожну систему, і підтримує понад 400 платформ. Обкладинки, описи та скриншоти беруться з понад десяти джерел метаданих. Ігри для класичних консолей працюють у вкладці браузера без налаштування, а збереження синхронізуються між вашими пристроями та RetroArch.",
+				"RomM хостять у себе, щоб вести одну бібліотеку ігор для всіх домочадців. У кожного гравця свій акаунт зі своїми збереженнями, а адміністратори задають права та батьківський контроль, який приховує ігри, віковий рейтинг яких вищий за заданий. Платних функцій і трекінгу немає. Підводний камінь у тому, що RomM не постачається з іграми: ROM потрібні ваші власні, а в браузері добре працюють лише старі системи."
+			],
+			"faq": [
+				{
+					"q": "RomM безкоштовний і open source?",
+					"a": "Так. RomM поширюється за ліцензією AGPL-3.0, а його мейнтейнери кажуть, що ядро завжди буде безкоштовним. Його створює невелика команда мейнтейнерів і учасників спільноти, а пожертви приймаються через Open Collective."
+				},
+				{
+					"q": "RomM чи LaunchBox: у чому різниця?",
+					"a": "RomM — серверний застосунок: у кожного гравця свій акаунт, а ігри запускаються в браузері. У власному FAQ RomM сказано, що локальний застосунок для Windows на кшталт LaunchBox може підійти краще, якщо вам потрібно лише просканувати папку."
+				},
+				{
+					"q": "Які консолі RomM може запускати в браузері?",
+					"a": "Системи четвертого покоління й старші добре працюють через EmulatorJS, наприклад NES, SNES, Game Boy і Genesis. PlayStation, Nintendo 64 і Saturn — як пощастить, PSP і новіші здебільшого непридатні для гри, а Ruffle і js-dos запускають ігри на Flash і DOS."
+				},
+				{
+					"q": "Чи є застосунок RomM для Android або iOS?",
+					"a": "Для Android так: офіційний Argosy Launcher показує вашу бібліотеку, звантажує ігри, запускає їх у RetroArch чи іншому емуляторі та синхронізує збереження назад. Для iOS офіційного застосунку немає, лише створені спільнотою, наприклад romm-ios-app."
+				},
+				{
+					"q": "Чи потрібен ключ IGDB, щоб користуватися RomM?",
+					"a": "Ні. Hasheous зіставляє ігри за хешами їхніх файлів і отримує назви, обкладинки та описи без ключа, а шаблон Pethost вмикає Hasheous. Облікові дані IGDB, ScreenScraper або MobyGames додають інші джерела."
+				}
+			]
 		}
 	}
 }

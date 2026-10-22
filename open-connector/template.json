@@ -1,6 +1,12 @@
 {
 	"name": "OpenConnector",
 	"emoji": "🔌",
+	"category": "ai",
+	"alternatives": [
+		"Composio",
+		"Pipedream"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "open-connector",
 		"port": 3000
@@ -26,35 +32,259 @@
 	"texts": {
 		"en": {
 			"description": "One MCP server and API for agents to act in GitHub, Gmail, Slack, Notion and hundreds of other services",
-			"notes": "Open the address and sign in to the console with the admin password you gave, then add the services’ API keys or OAuth apps. Agents connect to the address’s /mcp with a token from the console’s Access tab, or with RUNTIME_TOKEN from the project’s .env."
+			"notes": "Open the address and sign in to the console with the admin password you gave, then add the services’ API keys or OAuth apps. Agents connect to the address’s /mcp with a token from the console’s Access tab, or with RUNTIME_TOKEN from the project’s .env.",
+			"sizing": "OpenConnector is light: about 250 MB of memory, and it keeps only connections and logs on disk.",
+			"summary": "OpenConnector is an open-source Composio alternative: AI agents run prebuilt Actions in over 1,000 apps through MCP. Self-host it in one click.",
+			"about": [
+				"OpenConnector is an open-source connector gateway for AI agents, an alternative to Composio and Pipedream. You connect your accounts once, with an API key or OAuth, and agents reach GitHub, Gmail, Notion and over 1,000 other providers through an MCP endpoint or an HTTP API. Each Action comes with request and response schemas that an agent reads before it runs it. The agent gets the result and a safe account label, never the credential. The Web Console shows the catalog, recent runs and the ones that failed.",
+				"People self-host OpenConnector to keep provider credentials on their own server, encrypted with AES-256-GCM, rather than with a third party. A runtime token can be limited to certain Actions or accounts, so a coding agent gets GitHub and nothing else. The catch: for OAuth providers such as Gmail you register your own OAuth app with each service, since only OOMOL's hosted version brings ready-made ones."
+			],
+			"faq": [
+				{
+					"q": "Is OpenConnector free and open source?",
+					"a": "Yes. OpenConnector's code is under the Apache-2.0 license, so you can run it on your own server for free. OOMOL, the company behind it, also runs a hosted version with monthly Connect credits included."
+				},
+				{
+					"q": "Is there an open-source alternative to Composio?",
+					"a": "Yes. OpenConnector is an open-source alternative to Composio and Pipedream, with over 10,000 prebuilt Actions. It uses the same provider and Action ids as OOMOL's hosted runtime, so a setup can move between the two."
+				},
+				{
+					"q": "How do I connect an AI agent to OpenConnector's MCP server?",
+					"a": "Add the app's address with /mcp to an MCP client that supports remote HTTP servers, with a runtime token in an Authorization: Bearer header. The agent finds an Action with search_actions, reads it with get_action_guide and runs it with execute_action."
+				},
+				{
+					"q": "Can OpenConnector use several accounts of the same app?",
+					"a": "Yes. A provider can hold several named connections, such as a default GitHub account and one called work, and the agent picks one with connectionName. A name that does not exist fails rather than falling back to another account."
+				},
+				{
+					"q": "Can I use OpenConnector without MCP?",
+					"a": "Yes. Each Action can be run over HTTP under /v1/actions, and the runtime serves a generated OpenAPI document. OOMOL also publishes a TypeScript Connector SDK and the oo CLI, which run the same Actions."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein MCP-Server und eine API, mit denen Agenten in GitHub, Gmail, Slack, Notion und Hunderten weiteren Diensten handeln",
-			"notes": "Öffne die Adresse, melde dich in der Konsole mit dem angegebenen Admin-Passwort an und trag die API-Keys oder OAuth-Apps der Dienste ein. Agenten verbinden sich mit /mcp unter der Adresse, mit einem Token aus dem Tab Access der Konsole oder mit RUNTIME_TOKEN aus der .env des Projekts."
+			"notes": "Öffne die Adresse, melde dich in der Konsole mit dem angegebenen Admin-Passwort an und trag die API-Keys oder OAuth-Apps der Dienste ein. Agenten verbinden sich mit /mcp unter der Adresse, mit einem Token aus dem Tab Access der Konsole oder mit RUNTIME_TOKEN aus der .env des Projekts.",
+			"sizing": "OpenConnector ist leicht: etwa 250 MB RAM, und auf der Disk liegen nur Verbindungen und Logs.",
+			"summary": "OpenConnector selbst hosten: Open-Source-Alternative zu Composio, mit der Agenten über MCP fertige Actions in über 1.000 Apps ausführen. Mit einem Klick.",
+			"about": [
+				"OpenConnector ist ein Open-Source-Connector-Gateway für KI-Agenten, eine Alternative zu Composio und Pipedream. Du verbindest deine Konten einmal, mit einem API-Key oder per OAuth, und Agenten erreichen GitHub, Gmail, Notion und über 1.000 weitere Anbieter über einen MCP-Endpoint oder eine HTTP-API. Zu jeder Action gehören Schemas für Request und Antwort, die ein Agent liest, bevor er sie ausführt. Der Agent bekommt das Ergebnis und ein unbedenkliches Konto-Label, nie die Zugangsdaten. Die Web Console zeigt den Katalog, die letzten Ausführungen und die fehlgeschlagenen.",
+				"Wer OpenConnector selbst hostet, behält die Zugangsdaten der Anbieter auf der eigenen Maschine, verschlüsselt mit AES-256-GCM, statt bei einem Dritten. Ein Runtime-Token lässt sich auf bestimmte Actions oder Konten beschränken, sodass ein Coding-Agent GitHub bekommt und sonst nichts. Der Haken: Für OAuth-Anbieter wie Gmail registrierst du bei jedem Dienst eine eigene OAuth-App, denn nur die gehostete Version von OOMOL bringt fertige mit."
+			],
+			"faq": [
+				{
+					"q": "Ist OpenConnector kostenlos und Open Source?",
+					"a": "Ja. Der Code von OpenConnector steht unter der Apache-2.0-Lizenz, du kannst ihn also kostenlos auf deiner eigenen Maschine betreiben. OOMOL, die Firma dahinter, betreibt außerdem eine gehostete Version mit monatlichen Connect-Credits inklusive."
+				},
+				{
+					"q": "Gibt es eine Open-Source-Alternative zu Composio?",
+					"a": "Ja. OpenConnector ist eine Open-Source-Alternative zu Composio und Pipedream, mit über 10.000 fertigen Actions. Es nutzt dieselben Anbieter- und Action-IDs wie die gehostete Runtime von OOMOL, ein Setup kann also zwischen beiden wechseln."
+				},
+				{
+					"q": "Wie verbinde ich einen KI-Agenten mit dem MCP-Server von OpenConnector?",
+					"a": "Trag die Adresse der App mit angehängtem /mcp in einen MCP-Client ein, der Remote-HTTP-Server unterstützt, und gib ein Runtime-Token im Header Authorization: Bearer mit. Der Agent findet eine Action mit search_actions, liest sie mit get_action_guide und führt sie mit execute_action aus."
+				},
+				{
+					"q": "Kann OpenConnector mehrere Konten derselben App nutzen?",
+					"a": "Ja. Ein Anbieter kann mehrere benannte Verbindungen haben, etwa ein Standard-GitHub-Konto und eines namens work, und der Agent wählt mit connectionName eine aus. Ein Name, den es nicht gibt, schlägt fehl, statt auf ein anderes Konto zurückzufallen."
+				},
+				{
+					"q": "Kann ich OpenConnector ohne MCP nutzen?",
+					"a": "Ja. Jede Action lässt sich per HTTP unter /v1/actions ausführen, und die Runtime liefert ein generiertes OpenAPI-Dokument. OOMOL veröffentlicht außerdem ein TypeScript Connector SDK und die oo CLI, die dieselben Actions ausführen."
+				}
+			]
 		},
 		"es": {
 			"description": "Un servidor MCP y una API para que los agentes actúen en GitHub, Gmail, Slack, Notion y cientos de servicios más",
-			"notes": "Abre la dirección, entra en la consola con la contraseña de administrador que indicaste y añade las claves de API o las apps OAuth de los servicios. Los agentes se conectan a /mcp en la dirección con un token de la pestaña Access de la consola, o con RUNTIME_TOKEN del .env del proyecto."
+			"notes": "Abre la dirección, entra en la consola con la contraseña de administrador que indicaste y añade las claves de API o las apps OAuth de los servicios. Los agentes se conectan a /mcp en la dirección con un token de la pestaña Access de la consola, o con RUNTIME_TOKEN del .env del proyecto.",
+			"sizing": "OpenConnector es ligero: unos 250 MB de memoria, y en disco guarda solo conexiones y logs.",
+			"summary": "Autoaloja OpenConnector en un clic: alternativa de código abierto a Composio con la que agentes de IA ejecutan Actions listas en más de 1000 apps por MCP.",
+			"about": [
+				"OpenConnector es un gateway de conectores de código abierto para agentes de IA, una alternativa a Composio y Pipedream. Conectas tus cuentas una sola vez, con una clave de API o con OAuth, y los agentes llegan a GitHub, Gmail, Notion y a más de 1000 proveedores adicionales a través de un endpoint MCP o de una API HTTP. Cada Action trae esquemas de petición y de respuesta que el agente lee antes de ejecutarla. El agente recibe el resultado y una etiqueta de cuenta segura, nunca la credencial. La Web Console muestra el catálogo, las ejecuciones recientes y las que fallaron.",
+				"Autoalojas OpenConnector para que las credenciales de los proveedores se queden en tu propia máquina, cifradas con AES-256-GCM, y no en manos de un tercero. Un token de runtime se puede limitar a ciertas Actions o cuentas, así que un agente de programación recibe GitHub y nada más. La contrapartida: para proveedores OAuth como Gmail registras tu propia app OAuth en cada servicio, porque solo la versión alojada de OOMOL trae apps ya preparadas."
+			],
+			"faq": [
+				{
+					"q": "¿OpenConnector es gratis y de código abierto?",
+					"a": "Sí. El código de OpenConnector tiene licencia Apache-2.0, así que puedes ejecutarlo gratis en tu propia máquina. OOMOL, la empresa que está detrás, también ofrece una versión alojada que incluye créditos de Connect mensuales."
+				},
+				{
+					"q": "¿Existe una alternativa de código abierto a Composio?",
+					"a": "Sí. OpenConnector es una alternativa de código abierto a Composio y Pipedream, con más de 10 000 Actions listas para usar. Usa los mismos ids de proveedor y de Action que el runtime alojado de OOMOL, así que una configuración puede pasar de uno a otro."
+				},
+				{
+					"q": "¿Cómo conecto un agente de IA al servidor MCP de OpenConnector?",
+					"a": "Agrega la dirección de la app con /mcp a un cliente MCP que admita servidores HTTP remotos, con un token de runtime en un encabezado Authorization: Bearer. El agente encuentra una Action con search_actions, la lee con get_action_guide y la ejecuta con execute_action."
+				},
+				{
+					"q": "¿Puede OpenConnector usar varias cuentas de la misma app?",
+					"a": "Sí. Un proveedor puede tener varias conexiones con nombre, como una cuenta de GitHub predeterminada y otra llamada work, y el agente elige una con connectionName. Un nombre que no existe falla en vez de recurrir a otra cuenta."
+				},
+				{
+					"q": "¿Puedo usar OpenConnector sin MCP?",
+					"a": "Sí. Cada Action se puede ejecutar por HTTP en /v1/actions, y el runtime sirve un documento OpenAPI generado. OOMOL también publica un Connector SDK para TypeScript y la oo CLI, que ejecutan las mismas Actions."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un serveur MCP et une API pour que les agents agissent dans GitHub, Gmail, Slack, Notion et des centaines d’autres services",
-			"notes": "Ouvrez l’adresse, connectez-vous à la console avec le mot de passe administrateur indiqué, puis ajoutez les clés d’API ou les apps OAuth des services. Les agents se connectent à /mcp sur l’adresse avec un jeton de l’onglet Access de la console, ou avec RUNTIME_TOKEN du .env du projet."
+			"notes": "Ouvrez l’adresse, connectez-vous à la console avec le mot de passe administrateur indiqué, puis ajoutez les clés d’API ou les apps OAuth des services. Les agents se connectent à /mcp sur l’adresse avec un jeton de l’onglet Access de la console, ou avec RUNTIME_TOKEN du .env du projet.",
+			"sizing": "OpenConnector est léger : environ 250 MB de mémoire, et il ne garde que les connexions et les logs sur le disque.",
+			"summary": "Auto-hébergez en un clic OpenConnector, l’alternative open source à Composio : des agents IA exécutent des Actions prêtes dans plus de 1 000 apps via MCP.",
+			"about": [
+				"OpenConnector est une passerelle de connecteurs open source pour agents IA, une alternative à Composio et Pipedream. Vous connectez vos comptes une seule fois, avec une clé d’API ou OAuth, et les agents accèdent à GitHub, Gmail, Notion et à plus de 1 000 autres fournisseurs via un endpoint MCP ou une API HTTP. Chaque Action est fournie avec des schémas de requête et de réponse que l’agent lit avant de l’exécuter. L’agent reçoit le résultat et un libellé de compte sûr, jamais les identifiants. La Web Console affiche le catalogue, les exécutions récentes et celles qui ont échoué.",
+				"Vous auto-hébergez OpenConnector pour garder les identifiants des fournisseurs sur votre propre machine, chiffrés avec AES-256-GCM, plutôt que chez un tiers. Un token runtime peut être limité à certaines Actions ou à certains comptes : un agent de code obtient GitHub et rien d’autre. Le revers : pour les fournisseurs OAuth comme Gmail, vous enregistrez votre propre application OAuth auprès de chaque service, car seule la version hébergée d’OOMOL en apporte de toutes prêtes."
+			],
+			"faq": [
+				{
+					"q": "OpenConnector est-il gratuit et open source ?",
+					"a": "Oui. Le code d’OpenConnector est sous licence Apache-2.0 : vous pouvez l’exécuter gratuitement sur votre propre machine. OOMOL, l’entreprise qui est derrière, propose aussi une version hébergée avec des crédits Connect mensuels inclus."
+				},
+				{
+					"q": "Existe-t-il une alternative open source à Composio ?",
+					"a": "Oui. OpenConnector est une alternative open source à Composio et Pipedream, avec plus de 10 000 Actions prêtes à l’emploi. Il utilise les mêmes ids de fournisseur et d’Action que le runtime hébergé d’OOMOL : une installation peut passer de l’un à l’autre."
+				},
+				{
+					"q": "Comment connecter un agent IA au serveur MCP d’OpenConnector ?",
+					"a": "Ajoutez l’adresse de l’application suivie de /mcp à un client MCP qui prend en charge les serveurs HTTP distants, avec un token runtime dans un en-tête Authorization: Bearer. L’agent trouve une Action avec search_actions, la lit avec get_action_guide et l’exécute avec execute_action."
+				},
+				{
+					"q": "OpenConnector peut-il utiliser plusieurs comptes de la même application ?",
+					"a": "Oui. Un fournisseur peut avoir plusieurs connexions nommées, comme un compte GitHub par défaut et un autre appelé work, et l’agent en choisit une avec connectionName. Un nom qui n’existe pas échoue au lieu de se rabattre sur un autre compte."
+				},
+				{
+					"q": "Puis-je utiliser OpenConnector sans MCP ?",
+					"a": "Oui. Chaque Action peut être exécutée en HTTP sous /v1/actions, et le runtime sert un document OpenAPI généré. OOMOL publie aussi un Connector SDK TypeScript et la oo CLI, qui exécutent les mêmes Actions."
+				}
+			]
 		},
 		"pl": {
 			"description": "Jeden serwer MCP i API, przez które agenci działają w GitHubie, Gmailu, Slacku, Notion i setkach innych usług",
-			"notes": "Otwórz adres projektu, zaloguj się do konsoli hasłem administratora, które podano, i dodaj klucze API lub aplikacje OAuth usług. Agenci łączą się z /mcp pod adresem projektu tokenem z zakładki Access w konsoli albo RUNTIME_TOKEN z pliku .env projektu."
+			"notes": "Otwórz adres projektu, zaloguj się do konsoli hasłem administratora, które podano, i dodaj klucze API lub aplikacje OAuth usług. Agenci łączą się z /mcp pod adresem projektu tokenem z zakładki Access w konsoli albo RUNTIME_TOKEN z pliku .env projektu.",
+			"sizing": "OpenConnector ma małe wymagania: około 250 MB pamięci, a na dysku trzyma tylko połączenia i logi.",
+			"summary": "Hostuj u siebie OpenConnector jednym kliknięciem. Alternatywa dla Composio open source: agenci AI uruchamiają gotowe Actions w 1000+ aplikacji przez MCP.",
+			"about": [
+				"OpenConnector to gateway konektorów typu open source dla agentów AI, alternatywa dla Composio i Pipedream. Raz łączysz swoje konta, kluczem API lub przez OAuth, a agenci docierają do GitHuba, Gmaila, Notion i ponad 1000 innych dostawców przez endpoint MCP albo API HTTP. Każda Action ma schematy żądania i odpowiedzi, które agent czyta, zanim ją uruchomi. Agent dostaje wynik i bezpieczną etykietę konta, nigdy dane uwierzytelniające. Web Console pokazuje katalog, ostatnie uruchomienia i te, które się nie powiodły.",
+				"OpenConnector hostujesz u siebie, żeby dane uwierzytelniające dostawców zostały na twojej własnej maszynie, zaszyfrowane AES-256-GCM, a nie u podmiotu trzeciego. Token runtime można ograniczyć do wybranych Actions albo kont, więc agent piszący kod dostaje GitHuba i nic więcej. Haczyk: dla dostawców OAuth, takich jak Gmail, rejestrujesz własną aplikację OAuth w każdym serwisie, bo gotowe ma tylko hostowana wersja OOMOL."
+			],
+			"faq": [
+				{
+					"q": "Czy OpenConnector jest darmowy i open source?",
+					"a": "Tak. Kod OpenConnector jest na licencji Apache-2.0, więc możesz go uruchamiać na własnej maszynie za darmo. OOMOL, firma, która za nim stoi, prowadzi też hostowaną wersję z miesięcznymi kredytami Connect w cenie."
+				},
+				{
+					"q": "Czy istnieje alternatywa dla Composio typu open source?",
+					"a": "Tak. OpenConnector to alternatywa dla Composio i Pipedream typu open source, z ponad 10 000 gotowych Actions. Używa tych samych id dostawców i Actions co hostowany runtime OOMOL, więc konfigurację można przenosić z jednego do drugiego."
+				},
+				{
+					"q": "Jak podłączyć agenta AI do serwera MCP OpenConnector?",
+					"a": "Dodaj adres aplikacji z /mcp do klienta MCP, który obsługuje zdalne serwery HTTP, z tokenem runtime w nagłówku Authorization: Bearer. Agent znajduje Action przez search_actions, czyta ją przez get_action_guide i uruchamia przez execute_action."
+				},
+				{
+					"q": "Czy OpenConnector może używać kilku kont tej samej aplikacji?",
+					"a": "Tak. Dostawca może mieć kilka nazwanych połączeń, na przykład domyślne konto GitHub i drugie o nazwie work, a agent wybiera jedno przez connectionName. Nazwa, która nie istnieje, kończy się błędem zamiast cofnięcia się do innego konta."
+				},
+				{
+					"q": "Czy mogę używać OpenConnector bez MCP?",
+					"a": "Tak. Każdą Action można uruchomić przez HTTP pod /v1/actions, a runtime udostępnia wygenerowany dokument OpenAPI. OOMOL publikuje też Connector SDK dla TypeScriptu i oo CLI, które uruchamiają te same Actions."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um servidor MCP e uma API para agentes agirem no GitHub, Gmail, Slack, Notion e centenas de outros serviços",
-			"notes": "Abra o endereço, entre no console com a senha de administrador que você informou e adicione as chaves de API ou os apps OAuth dos serviços. Os agentes se conectam a /mcp no endereço com um token da aba Access do console, ou com RUNTIME_TOKEN do .env do projeto."
+			"notes": "Abra o endereço, entre no console com a senha de administrador que você informou e adicione as chaves de API ou os apps OAuth dos serviços. Os agentes se conectam a /mcp no endereço com um token da aba Access do console, ou com RUNTIME_TOKEN do .env do projeto.",
+			"sizing": "OpenConnector é leve: cerca de 250 MB de memória, e no disco guarda só conexões e logs.",
+			"summary": "Auto-hospede o OpenConnector em um clique, alternativa de código aberto ao Composio: agentes de IA rodam Actions prontas em mais de 1.000 apps via MCP.",
+			"about": [
+				"O OpenConnector é um gateway de conectores de código aberto para agentes de IA, uma alternativa ao Composio e ao Pipedream. Você conecta suas contas uma vez, com uma chave de API ou OAuth, e os agentes chegam ao GitHub, ao Gmail, ao Notion e a mais de 1.000 outros provedores por um endpoint MCP ou por uma API HTTP. Cada Action vem com schemas de requisição e de resposta que o agente lê antes de rodá-la. O agente recebe o resultado e um rótulo de conta seguro, nunca a credencial. O Web Console mostra o catálogo, as execuções recentes e as que falharam.",
+				"Auto-hospedar o OpenConnector mantém as credenciais dos provedores na sua própria máquina, criptografadas com AES-256-GCM, em vez de com um terceiro. Um token de runtime pode ser limitado a certas Actions ou contas, então um agente de código recebe o GitHub e mais nada. O porém: para provedores OAuth como o Gmail, você registra seu próprio app OAuth em cada serviço, já que só a versão hospedada da OOMOL traz apps prontos."
+			],
+			"faq": [
+				{
+					"q": "O OpenConnector é gratuito e de código aberto?",
+					"a": "Sim. O código do OpenConnector está sob a licença Apache-2.0, então você pode rodá-lo de graça na sua própria máquina. A OOMOL, empresa por trás dele, também mantém uma versão hospedada com créditos Connect mensais incluídos."
+				},
+				{
+					"q": "Existe uma alternativa de código aberto ao Composio?",
+					"a": "Sim. O OpenConnector é uma alternativa de código aberto ao Composio e ao Pipedream, com mais de 10.000 Actions prontas. Ele usa os mesmos ids de provedor e de Action do runtime hospedado da OOMOL, então uma configuração pode ir de um para o outro."
+				},
+				{
+					"q": "Como conecto um agente de IA ao servidor MCP do OpenConnector?",
+					"a": "Adicione o endereço do app com /mcp a um cliente MCP que aceite servidores HTTP remotos, com um token de runtime em um header Authorization: Bearer. O agente encontra uma Action com search_actions, lê com get_action_guide e a roda com execute_action."
+				},
+				{
+					"q": "O OpenConnector pode usar várias contas do mesmo app?",
+					"a": "Sim. Um provedor pode ter várias conexões nomeadas, como uma conta padrão do GitHub e outra chamada work, e o agente escolhe uma com connectionName. Um nome que não existe falha em vez de recorrer a outra conta."
+				},
+				{
+					"q": "Posso usar o OpenConnector sem MCP?",
+					"a": "Sim. Cada Action pode ser rodada por HTTP em /v1/actions, e o runtime serve um documento OpenAPI gerado. A OOMOL também publica um Connector SDK para TypeScript e a oo CLI, que rodam as mesmas Actions."
+				}
+			]
 		},
 		"ru": {
 			"description": "Один MCP-сервер и API, через которые агенты действуют в GitHub, Gmail, Slack, Notion и сотнях других сервисов",
-			"notes": "Откройте адрес, войдите в консоль с паролем администратора, который вы указали, и добавьте API-ключи или OAuth-приложения сервисов. Агенты подключаются к /mcp по адресу проекта с токеном со вкладки Access консоли или с RUNTIME_TOKEN из .env проекта."
+			"notes": "Откройте адрес, войдите в консоль с паролем администратора, который вы указали, и добавьте API-ключи или OAuth-приложения сервисов. Агенты подключаются к /mcp по адресу проекта с токеном со вкладки Access консоли или с RUNTIME_TOKEN из .env проекта.",
+			"sizing": "OpenConnector: небольшие требования — около 250 MB памяти, а на диске только подключения и логи.",
+			"summary": "OpenConnector self-hosted в один клик: альтернатива Composio с открытым кодом. ИИ-агенты запускают готовые Actions в 1000+ приложениях через MCP.",
+			"about": [
+				"OpenConnector — это шлюз коннекторов для ИИ-агентов с открытым исходным кодом, альтернатива Composio и Pipedream. Вы один раз подключаете свои аккаунты по API-ключу или через OAuth, а агенты получают доступ к GitHub, Gmail, Notion и более чем 1000 других провайдеров через MCP-эндпоинт или HTTP API. К каждому Action прилагаются схемы запроса и ответа, которые агент читает перед запуском. Агент получает результат и безопасную метку аккаунта, но никогда не получает учетные данные. Web Console показывает каталог, недавние запуски и те, что завершились ошибкой.",
+				"OpenConnector запускают у себя, чтобы учетные данные провайдеров хранились на собственной машине, зашифрованные AES-256-GCM, а не у третьей стороны. Runtime-токен можно ограничить определенными Actions или аккаунтами, так что агент, который пишет код, получает GitHub и больше ничего. Есть нюанс: для OAuth-провайдеров вроде Gmail нужно зарегистрировать собственное OAuth-приложение в каждом сервисе, потому что готовые есть только в облачной версии от OOMOL."
+			],
+			"faq": [
+				{
+					"q": "OpenConnector бесплатный и с открытым исходным кодом?",
+					"a": "Да. Код OpenConnector распространяется под лицензией Apache-2.0, так что его можно бесплатно запускать на своей машине. OOMOL, компания, которая за ним стоит, также предлагает облачную версию с ежемесячными кредитами Connect в комплекте."
+				},
+				{
+					"q": "Есть ли open source альтернатива Composio?",
+					"a": "Да. OpenConnector — open source альтернатива Composio и Pipedream, с более чем 10 000 готовых Actions. Он использует те же id провайдеров и Actions, что и облачный runtime OOMOL, поэтому настройку можно переносить между ними."
+				},
+				{
+					"q": "Как подключить ИИ-агента к MCP-серверу OpenConnector?",
+					"a": "Добавьте адрес приложения с /mcp в MCP-клиент, который поддерживает удаленные HTTP-серверы, с runtime-токеном в заголовке Authorization: Bearer. Агент находит Action через search_actions, читает его через get_action_guide и запускает через execute_action."
+				},
+				{
+					"q": "Может ли OpenConnector работать с несколькими аккаунтами одного приложения?",
+					"a": "Да. У провайдера может быть несколько именованных подключений, например аккаунт GitHub по умолчанию и еще один с именем work, а агент выбирает нужный через connectionName. Несуществующее имя приводит к ошибке, а не к переключению на другой аккаунт."
+				},
+				{
+					"q": "Можно ли пользоваться OpenConnector без MCP?",
+					"a": "Да. Каждый Action можно запустить по HTTP по пути /v1/actions, а runtime отдает сгенерированный документ OpenAPI. OOMOL также публикует TypeScript Connector SDK и oo CLI, которые запускают те же Actions."
+				}
+			]
 		},
 		"uk": {
 			"description": "Один MCP-сервер і API, через які агенти діють у GitHub, Gmail, Slack, Notion і сотнях інших сервісів",
-			"notes": "Відкрийте адресу, увійдіть у консоль із паролем адміністратора, який ви вказали, і додайте API-ключі або OAuth-застосунки сервісів. Агенти підключаються до /mcp за адресою проєкту з токеном із вкладки Access консолі або з RUNTIME_TOKEN із .env проєкту."
+			"notes": "Відкрийте адресу, увійдіть у консоль із паролем адміністратора, який ви вказали, і додайте API-ключі або OAuth-застосунки сервісів. Агенти підключаються до /mcp за адресою проєкту з токеном із вкладки Access консолі або з RUNTIME_TOKEN із .env проєкту.",
+			"sizing": "OpenConnector має скромні вимоги: близько 250 MB пам’яті, а на диску зберігає лише підключення та логи.",
+			"summary": "Self-hosted OpenConnector — альтернатива Composio з відкритим кодом: ШІ-агенти запускають готові Actions у понад 1000 застосунках через MCP.",
+			"about": [
+				"OpenConnector — це шлюз конекторів із відкритим кодом для ШІ-агентів, альтернатива Composio і Pipedream. Ви один раз підключаєте свої акаунти за допомогою API-ключа або через OAuth, а агенти отримують доступ до GitHub, Gmail, Notion і понад 1000 інших провайдерів через MCP-ендпоінт або HTTP API. До кожного Action додаються схеми запиту й відповіді, які агент читає перед запуском. Агент отримує результат і безпечну мітку акаунта, але облікових даних не бачить ніколи. Web Console показує каталог, нещодавні запуски та ті, що завершилися помилкою.",
+				"OpenConnector хостять у себе, щоб облікові дані провайдерів лежали на власній машині, зашифровані AES-256-GCM, а не у третьої сторони. Runtime-токен можна обмежити певними Actions або акаунтами, тож агент, що пише код, отримує GitHub і більше нічого. Є нюанс: для OAuth-провайдерів на кшталт Gmail потрібно зареєструвати власний OAuth-застосунок у кожному сервісі, бо готові є лише в хмарній версії від OOMOL."
+			],
+			"faq": [
+				{
+					"q": "OpenConnector безплатний і з відкритим кодом?",
+					"a": "Так. Код OpenConnector має ліцензію Apache-2.0, тож його можна безкоштовно запускати на власній машині. OOMOL, компанія, що за ним стоїть, також пропонує хмарну версію з щомісячними кредитами Connect у комплекті."
+				},
+				{
+					"q": "Чи є альтернатива Composio з відкритим кодом?",
+					"a": "Так. OpenConnector — альтернатива Composio і Pipedream з відкритим кодом, із понад 10 000 готових Actions. Він використовує ті самі id провайдерів і Actions, що й хмарний runtime від OOMOL, тож налаштування можна переносити між ними."
+				},
+				{
+					"q": "Як підключити ШІ-агента до MCP-сервера OpenConnector?",
+					"a": "Додайте адресу застосунку з /mcp до MCP-клієнта, який підтримує віддалені HTTP-сервери, із runtime-токеном у заголовку Authorization: Bearer. Агент знаходить Action через search_actions, читає його через get_action_guide і запускає через execute_action."
+				},
+				{
+					"q": "Чи може OpenConnector працювати з кількома акаунтами одного застосунку?",
+					"a": "Так. У провайдера може бути кілька іменованих підключень, наприклад типовий акаунт GitHub і ще один під назвою work, а агент обирає потрібне через connectionName. Неіснуюче ім’я призводить до помилки, а не до переходу на інший акаунт."
+				},
+				{
+					"q": "Чи можна користуватися OpenConnector без MCP?",
+					"a": "Так. Кожен Action можна запустити через HTTP за адресою /v1/actions, а runtime віддає згенерований документ OpenAPI. OOMOL також публікує TypeScript Connector SDK і oo CLI, які запускають ті самі Actions."
+				}
+			]
 		}
 	}
 }

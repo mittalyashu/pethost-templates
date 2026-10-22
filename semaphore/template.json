@@ -1,6 +1,12 @@
 {
 	"name": "Semaphore UI",
 	"emoji": "🚦",
+	"category": "automation",
+	"alternatives": [
+		"AWX",
+		"Ansible Tower"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "semaphore",
 		"port": 3000
@@ -14,35 +20,259 @@
 	"texts": {
 		"en": {
 			"description": "A web UI for Ansible, Terraform and other automation",
-			"notes": "Sign in as admin with the password you gave. Then make a project and add its repository, inventory and keys."
+			"notes": "Sign in as admin with the password you gave. Then make a project and add its repository, inventory and keys.",
+			"sizing": "Semaphore UI is light: under 100 MB at rest, plus what each Ansible or Terraform run takes while it runs.",
+			"summary": "Semaphore UI is an open-source web UI for Ansible, Terraform and scripts, an AWX alternative. Self-host it with Docker in one click.",
+			"about": [
+				"Semaphore UI is an open-source web UI for Ansible that teams run instead of AWX. It runs Ansible playbooks, Terraform and OpenTofu code, and Bash, PowerShell and Python scripts from task templates that pull from your Git repositories. A template runs on demand, on a cron schedule or when a new commit lands on its branch. Every run keeps its log, so you can see what ran, when and who started it. SSH keys and passwords stay encrypted in the Key Store, and people run deploys from the browser without keeping keys on their laptops.",
+				"A tool that holds the keys to every server is one people prefer to self-host. Semaphore UI is a Go application that runs as one binary or container over SQLite, MySQL or PostgreSQL, and its code is MIT-licensed. The catch is that some team features, such as project runners placed inside private networks, need a paid Pro license."
+			],
+			"faq": [
+				{
+					"q": "Is Semaphore UI free and open source?",
+					"a": "Yes. Its code is under the MIT license, and the free Community edition includes task templates, cron schedules, workflows, notifications and the REST API. A paid Pro license key adds extras such as a built-in Terraform state backend."
+				},
+				{
+					"q": "Semaphore UI vs AWX: what is the difference?",
+					"a": "AWX's recommended install runs on Kubernetes, and its Docker setup is meant for development and testing. Semaphore UI runs standalone on one server, and it has its own templates for Terraform, OpenTofu and scripts, where AWX centers on Ansible."
+				},
+				{
+					"q": "Can Semaphore UI run Terraform and OpenTofu?",
+					"a": "Yes. A Terraform/OpenTofu template runs terraform init before each run, passes TF_VAR_ keys from a Variable Group as variables and supports workspaces. An apply without Auto Approve waits until someone clicks Confirm or Reject."
+				},
+				{
+					"q": "What user roles does Semaphore UI have?",
+					"a": "Each project has four: Owner; Manager, who can do almost everything except delete the project or change Owners; Task Runner, who can run any task template and only read the rest; and Guest, who can only read."
+				},
+				{
+					"q": "Can Semaphore UI send alerts when a task fails?",
+					"a": "Yes, by email, Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk or Gotify. Chat channels report successes, failures and tasks waiting for confirmation; email reports failures only and needs an SMTP server."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Web-Oberfläche für Ansible, Terraform und andere Automatisierung",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast. Leg dann ein Projekt an und füg sein Repository, sein Inventory und seine Schlüssel hinzu."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast. Leg dann ein Projekt an und füg sein Repository, sein Inventory und seine Schlüssel hinzu.",
+			"sizing": "Semaphore UI ist leicht: unter 100 MB im Leerlauf, plus das, was jeder Ansible- oder Terraform-Lauf beim Laufen braucht.",
+			"summary": "Semaphore UI mit Docker selbst hosten, mit einem Klick: Open-Source-Web-Oberfläche für Ansible, Terraform und Skripte. Eine AWX-Alternative.",
+			"about": [
+				"Semaphore UI ist eine Open-Source-Web-Oberfläche für Ansible, die Teams anstelle von AWX betreiben. Sie führt Ansible-Playbooks, Terraform- und OpenTofu-Code sowie Bash-, PowerShell- und Python-Skripte aus, und zwar aus Task-Templates, die aus deinen Git-Repositorys laden. Ein Template läuft auf Abruf, nach einem Cron-Zeitplan oder wenn ein neuer Commit auf seinem Branch landet. Zu jedem Lauf bleibt das Log erhalten, sodass du siehst, was wann lief und wer ihn gestartet hat. SSH-Keys und Passwörter bleiben im Key Store verschlüsselt, und Deploys laufen aus dem Browser, ohne dass jemand Keys auf dem Laptop haben muss.",
+				"Ein Tool, das die Keys zu allen Servern hält, hostet man lieber selbst. Semaphore UI ist eine Go-Anwendung, die als einzelne Binärdatei oder als Container läuft, auf SQLite, MySQL oder PostgreSQL, und ihr Code steht unter der MIT-Lizenz. Der Haken: Einige Team-Funktionen, etwa Projekt-Runner, die du innerhalb privater Netzwerke aufstellst, brauchen eine kostenpflichtige Pro-Lizenz."
+			],
+			"faq": [
+				{
+					"q": "Ist Semaphore UI kostenlos und Open Source?",
+					"a": "Ja. Der Code steht unter der MIT-Lizenz, und die kostenlose Community-Edition enthält Task-Templates, Cron-Zeitpläne, Workflows, Benachrichtigungen und die REST-API. Ein kostenpflichtiger Pro-Lizenzschlüssel ergänzt Extras, zum Beispiel ein integriertes Terraform-State-Backend."
+				},
+				{
+					"q": "Semaphore UI oder AWX: Was ist der Unterschied?",
+					"a": "Die empfohlene Installation von AWX läuft auf Kubernetes, und sein Docker-Setup ist für Entwicklung und Tests gedacht. Semaphore UI läuft eigenständig auf einer einzigen Maschine und bringt eigene Templates für Terraform, OpenTofu und Skripte mit, während AWX auf Ansible ausgerichtet ist."
+				},
+				{
+					"q": "Kann Semaphore UI Terraform und OpenTofu ausführen?",
+					"a": "Ja. Ein Terraform/OpenTofu-Template führt vor jedem Lauf terraform init aus, übergibt TF_VAR_-Keys aus einer Variable Group als Variablen und unterstützt Workspaces. Ein Apply ohne Auto Approve wartet, bis jemand auf Confirm oder Reject klickt."
+				},
+				{
+					"q": "Welche Benutzerrollen hat Semaphore UI?",
+					"a": "Jedes Projekt hat vier: Owner; Manager, der fast alles darf, außer das Projekt zu löschen oder die Owner zu ändern; Task Runner, der jedes Task-Template ausführen, den Rest aber nur lesen darf; und Guest, der nur lesen darf."
+				},
+				{
+					"q": "Kann Semaphore UI Benachrichtigungen senden, wenn ein Task fehlschlägt?",
+					"a": "Ja, per E-Mail, Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk oder Gotify. Chat-Kanäle melden Erfolge, Fehlschläge und Tasks, die auf Bestätigung warten; die E-Mail meldet nur Fehlschläge und braucht einen SMTP-Server."
+				}
+			]
 		},
 		"es": {
 			"description": "Una interfaz web para Ansible, Terraform y otra automatización",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste. Luego crea un proyecto y agrega su repositorio, su inventario y sus claves."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste. Luego crea un proyecto y agrega su repositorio, su inventario y sus claves.",
+			"sizing": "Semaphore UI es ligero: menos de 100 MB en reposo, más lo que consume cada ejecución de Ansible o Terraform mientras dura.",
+			"summary": "Autoaloja Semaphore UI con Docker en un clic: la interfaz web de código abierto para Ansible, Terraform y scripts. Una alternativa a AWX.",
+			"about": [
+				"Semaphore UI es una interfaz web de código abierto para Ansible que los equipos usan en lugar de AWX. Ejecuta playbooks de Ansible, código de Terraform y OpenTofu, y scripts de Bash, PowerShell y Python desde plantillas de tareas que se alimentan de tus repositorios de Git. Una plantilla se ejecuta a demanda, con una programación cron o cuando llega un commit nuevo a su rama. Cada ejecución conserva su log, así que puedes ver qué se ejecutó, cuándo y quién lo inició. Las claves SSH y las contraseñas se mantienen cifradas en el Key Store, y los despliegues se lanzan desde el navegador sin que nadie tenga claves en su equipo.",
+				"Una herramienta que guarda las claves de todos los servidores es de las que se prefiere autoalojar. Semaphore UI es una aplicación en Go que se ejecuta como un solo binario o contenedor sobre SQLite, MySQL o PostgreSQL, y su código tiene licencia MIT. El inconveniente: algunas funciones para equipos, como los runners de proyecto que se colocan dentro de redes privadas, requieren una licencia Pro de pago."
+			],
+			"faq": [
+				{
+					"q": "¿Semaphore UI es gratis y de código abierto?",
+					"a": "Sí. Su código tiene licencia MIT, y la edición Community gratuita incluye plantillas de tareas, programaciones cron, workflows, notificaciones y la API REST. Una clave de licencia Pro de pago agrega extras, como un backend de estado de Terraform integrado."
+				},
+				{
+					"q": "Semaphore UI frente a AWX: ¿cuál es la diferencia?",
+					"a": "La instalación recomendada de AWX se ejecuta en Kubernetes, y su configuración con Docker está pensada para desarrollo y pruebas. Semaphore UI funciona por sí solo en una única máquina y tiene sus propias plantillas para Terraform, OpenTofu y scripts, mientras que AWX se centra en Ansible."
+				},
+				{
+					"q": "¿Semaphore UI puede ejecutar Terraform y OpenTofu?",
+					"a": "Sí. Una plantilla de Terraform/OpenTofu ejecuta terraform init antes de cada ejecución, pasa como variables las claves TF_VAR_ de un Variable Group y admite workspaces. Un apply sin Auto Approve espera hasta que alguien haga clic en Confirm o Reject."
+				},
+				{
+					"q": "¿Qué roles de usuario tiene Semaphore UI?",
+					"a": "Cada proyecto tiene cuatro: Owner; Manager, que puede hacer casi todo salvo eliminar el proyecto o cambiar a los Owners; Task Runner, que puede ejecutar cualquier plantilla de tareas y solo lee el resto; y Guest, que solo puede leer."
+				},
+				{
+					"q": "¿Semaphore UI puede enviar alertas cuando falla una tarea?",
+					"a": "Sí, por correo, Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk o Gotify. Los canales de chat informan de las tareas exitosas, de las fallidas y de las que esperan confirmación; el correo solo informa de las fallidas y necesita un servidor SMTP."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une interface web pour Ansible, Terraform et d’autres automatisations",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Créez ensuite un projet et ajoutez son dépôt, son inventaire et ses clés."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Créez ensuite un projet et ajoutez son dépôt, son inventaire et ses clés.",
+			"sizing": "Semaphore UI est léger : moins de 100 MB au repos, plus ce que prend chaque exécution d’Ansible ou de Terraform tant qu’elle dure.",
+			"summary": "Auto-hébergez Semaphore UI avec Docker en un clic : l’interface web open source pour Ansible, Terraform et les scripts. Une alternative à AWX.",
+			"about": [
+				"Semaphore UI est une interface web open source pour Ansible, que les équipes utilisent à la place d’AWX. Elle exécute des playbooks Ansible, du code Terraform et OpenTofu, ainsi que des scripts Bash, PowerShell et Python, à partir de templates de tâches qui puisent dans vos dépôts Git. Un template s’exécute à la demande, selon un calendrier cron ou quand un nouveau commit arrive sur sa branche. Chaque exécution garde son journal : vous voyez ce qui a tourné, quand et qui l’a lancé. Les clés SSH et les mots de passe restent chiffrés dans le Key Store, et les déploiements se lancent depuis le navigateur, sans que personne garde de clés sur son portable.",
+				"Un outil qui détient les clés de chaque serveur, beaucoup préfèrent l’auto-héberger. Semaphore UI est une application Go qui tourne comme un seul binaire ou conteneur, avec SQLite, MySQL ou PostgreSQL, et son code est sous licence MIT. Le revers : certaines fonctions d’équipe, comme les runners de projet placés dans des réseaux privés, demandent une licence Pro payante."
+			],
+			"faq": [
+				{
+					"q": "Semaphore UI est-il gratuit et open source ?",
+					"a": "Oui. Son code est sous licence MIT, et l’édition Community gratuite comprend les templates de tâches, les calendriers cron, les workflows, les notifications et l’API REST. Une clé de licence Pro payante ajoute des extras, comme un backend d’état Terraform intégré."
+				},
+				{
+					"q": "Semaphore UI ou AWX : quelle différence ?",
+					"a": "L’installation recommandée d’AWX tourne sur Kubernetes, et sa configuration Docker est prévue pour le développement et les tests. Semaphore UI fonctionne seul sur une seule machine et a ses propres templates pour Terraform, OpenTofu et les scripts, là où AWX est centré sur Ansible."
+				},
+				{
+					"q": "Semaphore UI peut-il exécuter Terraform et OpenTofu ?",
+					"a": "Oui. Un template Terraform/OpenTofu exécute terraform init avant chaque exécution, transmet comme variables les clés TF_VAR_ d’un Variable Group et prend en charge les workspaces. Un apply sans Auto Approve attend que quelqu’un clique sur Confirm ou Reject."
+				},
+				{
+					"q": "Quels rôles d’utilisateur Semaphore UI propose-t-il ?",
+					"a": "Chaque projet en a quatre : Owner ; Manager, qui peut presque tout faire sauf supprimer le projet ou changer les Owners ; Task Runner, qui peut lancer n’importe quel template de tâches et ne fait que lire le reste ; et Guest, qui ne peut que lire."
+				},
+				{
+					"q": "Semaphore UI peut-il envoyer des alertes quand une tâche échoue ?",
+					"a": "Oui, par e-mail, Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk ou Gotify. Les canaux de discussion signalent les réussites, les échecs et les tâches qui attendent une confirmation ; l’e-mail ne signale que les échecs et demande un serveur SMTP."
+				}
+			]
 		},
 		"pl": {
 			"description": "Interfejs webowy do Ansible, Terraform i innej automatyzacji",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Potem utwórz projekt i dodaj jego repozytorium, inventory i klucze."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Potem utwórz projekt i dodaj jego repozytorium, inventory i klucze.",
+			"sizing": "Semaphore UI ma małe wymagania: poniżej 100 MB w spoczynku, plus to, co bierze każde trwające uruchomienie Ansible lub Terraform.",
+			"summary": "Hostuj Semaphore UI u siebie w Dockerze jednym kliknięciem: interfejs webowy open source do Ansible, Terraform i skryptów. Alternatywa dla AWX.",
+			"about": [
+				"Semaphore UI to interfejs webowy open source do Ansible, którego zespoły używają zamiast AWX. Uruchamia playbooki Ansible, kod Terraform i OpenTofu oraz skrypty Bash, PowerShell i Python z szablonów zadań, które czerpią z twoich repozytoriów Git. Szablon uruchamia się na żądanie, według harmonogramu cron albo gdy na jego branchu pojawi się nowy commit. Każde uruchomienie zachowuje swój log, więc widzisz, co się uruchomiło, kiedy i kto to wystartował. Klucze SSH i hasła pozostają zaszyfrowane w Key Store, a wdrożenia uruchamia się z przeglądarki, bez trzymania kluczy na laptopach.",
+				"Narzędzie z kluczami do każdego serwera ludzie wolą hostować u siebie (self-hosted). Semaphore UI to aplikacja w Go, która działa jako jeden plik binarny albo kontener z bazą SQLite, MySQL lub PostgreSQL, a jej kod jest na licencji MIT. Haczyk: niektóre funkcje dla zespołów, na przykład runnery projektu umieszczone w sieciach prywatnych, wymagają płatnej licencji Pro."
+			],
+			"faq": [
+				{
+					"q": "Czy Semaphore UI jest darmowy i open source?",
+					"a": "Tak. Jego kod jest na licencji MIT, a darmowa edycja Community zawiera szablony zadań, harmonogramy cron, workflow, powiadomienia i REST API. Płatny klucz licencyjny Pro dodaje dodatki, takie jak wbudowany backend stanu Terraform."
+				},
+				{
+					"q": "Semaphore UI czy AWX: jaka jest różnica?",
+					"a": "Zalecana instalacja AWX działa na Kubernetes, a jego konfiguracja z Dockerem jest przeznaczona do prac deweloperskich i testów. Semaphore UI działa samodzielnie na jednej maszynie i ma własne szablony dla Terraform, OpenTofu i skryptów, podczas gdy AWX koncentruje się na Ansible."
+				},
+				{
+					"q": "Czy Semaphore UI potrafi uruchamiać Terraform i OpenTofu?",
+					"a": "Tak. Szablon Terraform/OpenTofu przed każdym uruchomieniem wykonuje terraform init, przekazuje klucze TF_VAR_ z Variable Group jako zmienne i obsługuje workspace’y. Apply bez Auto Approve czeka, aż ktoś kliknie Confirm lub Reject."
+				},
+				{
+					"q": "Jakie role użytkowników ma Semaphore UI?",
+					"a": "Każdy projekt ma cztery: Owner; Manager, który może prawie wszystko poza usunięciem projektu i zmianą Ownerów; Task Runner, który może uruchomić dowolny szablon zadań, a resztę tylko czytać; oraz Guest, który może tylko czytać."
+				},
+				{
+					"q": "Czy Semaphore UI może wysyłać alerty, gdy zadanie się nie uda?",
+					"a": "Tak, przez e-mail, Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk lub Gotify. Kanały czatu informują o zadaniach, które się udały, nie udały lub czekają na potwierdzenie; e-mail informuje tylko o tych nieudanych i wymaga serwera SMTP."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma interface web para Ansible, Terraform e outras automações",
-			"notes": "Entre como admin com a senha que você definiu. Depois crie um projeto e adicione o repositório, o inventário e as chaves dele."
+			"notes": "Entre como admin com a senha que você definiu. Depois crie um projeto e adicione o repositório, o inventário e as chaves dele.",
+			"sizing": "Semaphore UI é leve: menos de 100 MB em repouso, mais o que cada execução de Ansible ou Terraform usa enquanto dura.",
+			"summary": "Auto-hospede o Semaphore UI com Docker em um clique: a interface web de código aberto para Ansible, Terraform e scripts. Alternativa ao AWX.",
+			"about": [
+				"O Semaphore UI é uma interface web de código aberto para Ansible que equipes usam no lugar do AWX. Ele roda playbooks do Ansible, código Terraform e OpenTofu e scripts Bash, PowerShell e Python a partir de templates de tarefas que puxam dos seus repositórios Git. Um template roda sob demanda, em um agendamento cron ou quando um novo commit chega à sua branch. Cada execução guarda o próprio log, então você vê o que rodou, quando e quem iniciou. As chaves SSH e as senhas ficam criptografadas no Key Store, e os deploys saem do navegador, sem que ninguém precise guardar chaves no próprio notebook.",
+				"Uma ferramenta que guarda as chaves de todos os servidores é daquelas que as pessoas preferem auto-hospedar. O Semaphore UI é uma aplicação em Go que roda como um único binário ou container, com SQLite, MySQL ou PostgreSQL, e o código dele usa a licença MIT. O porém: alguns recursos para equipes, como runners de projeto colocados dentro de redes privadas, exigem uma licença Pro paga."
+			],
+			"faq": [
+				{
+					"q": "O Semaphore UI é gratuito e de código aberto?",
+					"a": "Sim. O código dele usa a licença MIT, e a edição Community gratuita inclui templates de tarefas, agendamentos cron, workflows, notificações e a API REST. Uma chave de licença Pro paga acrescenta extras, como um backend de estado do Terraform embutido."
+				},
+				{
+					"q": "Semaphore UI ou AWX: qual é a diferença?",
+					"a": "A instalação recomendada do AWX roda no Kubernetes, e a configuração dele com Docker serve para desenvolvimento e testes. O Semaphore UI roda de forma independente em uma só máquina e tem templates próprios para Terraform, OpenTofu e scripts, enquanto o AWX é centrado no Ansible."
+				},
+				{
+					"q": "O Semaphore UI consegue rodar Terraform e OpenTofu?",
+					"a": "Sim. Um template Terraform/OpenTofu roda terraform init antes de cada execução, passa as chaves TF_VAR_ de um Variable Group como variáveis e é compatível com workspaces. Um apply sem Auto Approve espera até alguém clicar em Confirm ou Reject."
+				},
+				{
+					"q": "Que papéis de usuário o Semaphore UI tem?",
+					"a": "Cada projeto tem quatro: Owner; Manager, que pode fazer quase tudo, exceto excluir o projeto ou mudar os Owners; Task Runner, que pode rodar qualquer template de tarefas e só lê o restante; e Guest, que só pode ler."
+				},
+				{
+					"q": "O Semaphore UI pode enviar alertas quando uma tarefa falha?",
+					"a": "Sim, por e-mail, Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk ou Gotify. Os canais de chat avisam sobre sucessos, falhas e tarefas aguardando confirmação; o e-mail avisa só sobre falhas e precisa de um servidor SMTP."
+				}
+			]
 		},
 		"ru": {
 			"description": "Веб-интерфейс для Ansible, Terraform и другой автоматизации",
-			"notes": "Войдите как admin с паролем, который вы задали. Затем создайте проект и добавьте в него репозиторий, инвентарь и ключи."
+			"notes": "Войдите как admin с паролем, который вы задали. Затем создайте проект и добавьте в него репозиторий, инвентарь и ключи.",
+			"sizing": "Semaphore UI: небольшие требования — менее 100 MB в простое, плюс то, что берет каждый запуск Ansible или Terraform, пока он идет.",
+			"summary": "Self-hosted Semaphore UI в один клик через Docker: веб-интерфейс с открытым кодом для Ansible, Terraform и скриптов. Альтернатива AWX.",
+			"about": [
+				"Semaphore UI — веб-интерфейс с открытым кодом для Ansible, который команды запускают вместо AWX. Он выполняет плейбуки Ansible, код Terraform и OpenTofu, а также скрипты на Bash, PowerShell и Python из шаблонов задач, которые подтягивают данные из ваших Git-репозиториев. Шаблон запускается по требованию, по расписанию cron или когда в его ветке появляется новый коммит. Каждый запуск сохраняет свой лог, так что видно, что запускалось, когда и кто это сделал. SSH-ключи и пароли хранятся в Key Store в зашифрованном виде, а деплои запускают из браузера, не держа ключи на своих ноутбуках.",
+				"Инструмент, который хранит ключи от всех серверов, обычно предпочитают хостить у себя. Semaphore UI — приложение на Go, которое работает как один бинарник или контейнер поверх SQLite, MySQL или PostgreSQL, а его код под лицензией MIT. Но есть нюанс: для некоторых командных возможностей, например раннеров проекта, размещенных внутри приватных сетей, нужна платная лицензия Pro."
+			],
+			"faq": [
+				{
+					"q": "Semaphore UI бесплатный и с открытым кодом?",
+					"a": "Да. Его код под лицензией MIT, а бесплатная редакция Community включает шаблоны задач, расписания cron, воркфлоу, уведомления и REST API. Платный лицензионный ключ Pro добавляет дополнительные возможности, например встроенный бэкенд состояния Terraform."
+				},
+				{
+					"q": "Semaphore UI или AWX: в чем разница?",
+					"a": "Рекомендуемая установка AWX работает в Kubernetes, а его вариант с Docker предназначен для разработки и тестирования. Semaphore UI работает автономно на одной машине и имеет собственные шаблоны для Terraform, OpenTofu и скриптов, тогда как AWX сосредоточен на Ansible."
+				},
+				{
+					"q": "Может ли Semaphore UI запускать Terraform и OpenTofu?",
+					"a": "Да. Шаблон Terraform/OpenTofu перед каждым запуском выполняет terraform init, передает ключи TF_VAR_ из Variable Group как переменные и поддерживает workspaces. Apply без Auto Approve ждет, пока кто-нибудь нажмет Confirm или Reject."
+				},
+				{
+					"q": "Какие роли пользователей есть в Semaphore UI?",
+					"a": "В каждом проекте их четыре: Owner; Manager, который может почти все, кроме удаления проекта и изменения Owner; Task Runner, который может запускать любой шаблон задач, а остальное только читать; и Guest, который может только читать."
+				},
+				{
+					"q": "Может ли Semaphore UI присылать оповещения, если задача завершилась ошибкой?",
+					"a": "Да, по почте, в Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk или Gotify. Чат-каналы сообщают об успехах, ошибках и задачах, ожидающих подтверждения; почта сообщает только об ошибках и требует SMTP-сервера."
+				}
+			]
 		},
 		"uk": {
 			"description": "Вебінтерфейс для Ansible, Terraform та іншої автоматизації",
-			"notes": "Увійдіть як admin із паролем, який ви вказали. Потім створіть проєкт і додайте до нього репозиторій, інвентар і ключі."
+			"notes": "Увійдіть як admin із паролем, який ви вказали. Потім створіть проєкт і додайте до нього репозиторій, інвентар і ключі.",
+			"sizing": "Semaphore UI має скромні вимоги: менше 100 MB без навантаження, плюс те, що бере кожен запуск Ansible або Terraform, поки триває.",
+			"summary": "Self-hosted Semaphore UI в один клік через Docker: вебінтерфейс із відкритим кодом для Ansible, Terraform і скриптів. Альтернатива AWX.",
+			"about": [
+				"Semaphore UI — вебінтерфейс із відкритим кодом для Ansible, який команди запускають замість AWX. Він виконує плейбуки Ansible, код Terraform і OpenTofu, а також скрипти на Bash, PowerShell і Python із шаблонів завдань, що підтягують дані з ваших Git-репозиторіїв. Шаблон запускається на вимогу, за розкладом cron або коли в його гілці з’являється новий коміт. Кожен запуск зберігає свій лог, тож видно, що запускалося, коли і хто це зробив. SSH-ключі та паролі залишаються зашифрованими в Key Store, а деплої запускають із браузера, не тримаючи ключів на своїх ноутбуках.",
+				"Інструмент, що тримає ключі до всіх серверів, люди воліють хостити в себе. Semaphore UI — застосунок на Go, який працює як один бінарний файл або контейнер поверх SQLite, MySQL чи PostgreSQL, а його код — під ліцензією MIT. Але є нюанс: для деяких командних можливостей, наприклад раннерів проєкту, розміщених усередині приватних мереж, потрібна платна ліцензія Pro."
+			],
+			"faq": [
+				{
+					"q": "Semaphore UI безкоштовний і з відкритим кодом?",
+					"a": "Так. Його код — під ліцензією MIT, а безкоштовна редакція Community містить шаблони завдань, розклади cron, воркфлоу, сповіщення та REST API. Платний ліцензійний ключ Pro додає додаткові можливості, як-от вбудований бекенд стану Terraform."
+				},
+				{
+					"q": "Semaphore UI чи AWX: у чому різниця?",
+					"a": "Рекомендоване встановлення AWX працює в Kubernetes, а його варіант із Docker призначений для розробки й тестування. Semaphore UI працює автономно на одній машині та має власні шаблони для Terraform, OpenTofu і скриптів, тоді як AWX зосереджений на Ansible."
+				},
+				{
+					"q": "Чи може Semaphore UI запускати Terraform і OpenTofu?",
+					"a": "Так. Шаблон Terraform/OpenTofu перед кожним запуском виконує terraform init, передає ключі TF_VAR_ із Variable Group як змінні та підтримує workspaces. Apply без Auto Approve чекає, доки хтось натисне Confirm або Reject."
+				},
+				{
+					"q": "Які ролі користувачів є в Semaphore UI?",
+					"a": "У кожному проєкті їх чотири: Owner; Manager, який може майже все, окрім видалення проєкту чи зміни Owner; Task Runner, який може запускати будь-який шаблон завдань, а решту лише читати; і Guest, який може лише читати."
+				},
+				{
+					"q": "Чи може Semaphore UI надсилати сповіщення, коли завдання завершується невдало?",
+					"a": "Так, поштою, у Telegram, Slack, Microsoft Teams, Rocket.Chat, DingTalk або Gotify. Чат-канали повідомляють про вдалі й невдалі завдання та про ті, що чекають підтвердження; пошта повідомляє лише про невдалі й потребує SMTP-сервера."
+				}
+			]
 		}
 	}
 }

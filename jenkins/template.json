@@ -1,6 +1,13 @@
 {
 	"name": "Jenkins",
 	"emoji": "🤵",
+	"category": "automation",
+	"alternatives": [
+		"GitHub Actions",
+		"CircleCI",
+		"Travis CI"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "jenkins",
 		"port": 8080
@@ -9,35 +16,259 @@
 	"texts": {
 		"en": {
 			"description": "An automation server for builds, tests and deploys",
-			"notes": "Open the address and paste the setup password from the jenkins service’s log, on the Logs tab. The wizard then installs plugins and makes your admin account. Jobs, plugins and settings are kept in /var/jenkins_home."
+			"notes": "Open the address and paste the setup password from the jenkins service’s log, on the Logs tab. The wizard then installs plugins and makes your admin account. Jobs, plugins and settings are kept in /var/jenkins_home.",
+			"sizing": "Jenkins is heavy: the controller takes about 1 GB, each build more, and workspaces and artifacts fill tens of GB.",
+			"summary": "Jenkins is an open-source automation server for CI/CD. Self-host it in one click on a machine of your own, an alternative to GitHub Actions.",
+			"about": [
+				"Jenkins is an open-source automation server for CI/CD, and a self-hosted alternative to GitHub Actions. A push to a repository starts a build, runs the tests and ships the result. The pipeline is code: a Jenkinsfile in the repository lists stages like Build, Test and Deploy and is reviewed like any other change. Every branch and pull request can get its own pipeline automatically. More than 2,000 community plugins connect it to practically any tool in a CI/CD chain, and when one server is not enough, agents on other machines run builds side by side.",
+				"People run Jenkins themselves to keep source code, build logs and build credentials on a server they control, and to decide how many builds run at once. It is free under the MIT License, and it keeps jobs and build records as files, not in a database. The catch is upkeep: someone has to keep Jenkins and its plugins up to date."
+			],
+			"faq": [
+				{
+					"q": "Is Jenkins free and open source?",
+					"a": "Yes. Jenkins is free and open source under the MIT License, and the plugins it installs come from the project's own catalog of open-source community plugins."
+				},
+				{
+					"q": "Is Jenkins a good alternative to GitHub Actions?",
+					"a": "Yes, if you want builds, logs and credentials on a server you control. Pipelines live in a Jenkinsfile in your repository and can run on agents you add; in exchange, you keep Jenkins and its plugins up to date."
+				},
+				{
+					"q": "Do I need agents to run Jenkins?",
+					"a": "No. Out of the box, Jenkins runs builds on the controller itself. The project advises moving them to agents so a heavy build cannot overload it; with this template, agents connect over WebSocket, needing no extra port."
+				},
+				{
+					"q": "How do I manage users and permissions in Jenkins?",
+					"a": "Jenkins keeps accounts in its own user database. The Matrix Authorization Strategy plugin adds rights per user, group or project, and other plugins add LDAP and single sign-on with SAML or OpenID Connect."
+				},
+				{
+					"q": "Can Jenkins in Docker run docker commands?",
+					"a": "Not out of the box: the official jenkins/jenkins image has no Docker CLI. The Jenkins docs add one in a custom image, with the docker-ce-cli package and the docker-workflow plugin, pointed at a separate Docker daemon."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Automatisierungsserver für Builds, Tests und Deploys",
-			"notes": "Öffne die Adresse und füg das Setup-Passwort aus dem Log des Service jenkins ein, im Tab „Logs“. Der Assistent installiert dann Plugins und legt dein Admin-Konto an. Jobs, Plugins und Einstellungen bleiben in /var/jenkins_home erhalten."
+			"notes": "Öffne die Adresse und füg das Setup-Passwort aus dem Log des Service jenkins ein, im Tab „Logs“. Der Assistent installiert dann Plugins und legt dein Admin-Konto an. Jobs, Plugins und Einstellungen bleiben in /var/jenkins_home erhalten.",
+			"sizing": "Jenkins ist schwer: der Controller braucht etwa 1 GB, jeder Build mehr, und Workspaces und Artefakte füllen Dutzende GB.",
+			"summary": "Jenkins selbst hosten: der Open-Source-Automatisierungsserver für CI/CD, mit einem Klick auf deiner Maschine. Eine Alternative zu GitHub Actions.",
+			"about": [
+				"Jenkins ist ein Open-Source-Automatisierungsserver für CI/CD und eine Alternative zu GitHub Actions, die du selbst hosten kannst. Ein Push ins Repository startet einen Build, lässt die Tests laufen und liefert das Ergebnis aus. Die Pipeline ist Code: Ein Jenkinsfile im Repository listet Stages wie Build, Test und Deploy auf und wird wie jede andere Änderung geprüft. Jeder Branch und jeder Pull Request kann automatisch eine eigene Pipeline bekommen. Über 2.000 Community-Plugins binden praktisch jedes Tool einer CI/CD-Kette an, und wenn eine Maschine nicht reicht, lassen Agenten auf anderen Maschinen Builds parallel laufen.",
+				"Wer Jenkins selbst hostet, behält Quellcode, Build-Logs und die Zugangsdaten der Builds auf einer Maschine unter eigener Kontrolle und bestimmt selbst, wie viele Builds gleichzeitig laufen. Jenkins ist kostenlos unter der MIT-Lizenz und legt Jobs und Build-Verlauf als Dateien ab, nicht in einer Datenbank. Der Haken ist die Pflege: Jemand muss Jenkins und seine Plugins aktuell halten."
+			],
+			"faq": [
+				{
+					"q": "Ist Jenkins kostenlos und Open Source?",
+					"a": "Ja. Jenkins ist kostenlos und Open Source unter der MIT-Lizenz. Auch die Plugins, die es installiert, kommen aus dem Katalog des Jenkins-Projekts: Open-Source-Plugins der Community."
+				},
+				{
+					"q": "Ist Jenkins eine gute Alternative zu GitHub Actions?",
+					"a": "Ja, wenn du Builds, Logs und Zugangsdaten auf einer Maschine haben willst, die du kontrollierst. Pipelines liegen als Jenkinsfile in deinem Repository und können auf Agenten laufen, die du hinzufügst. Dafür hältst du Jenkins und seine Plugins selbst aktuell."
+				},
+				{
+					"q": "Brauche ich Agenten, um Jenkins zu nutzen?",
+					"a": "Nein. Direkt nach der Installation führt Jenkins Builds auf dem Controller selbst aus. Das Projekt rät, sie auf Agenten auszulagern, damit ein schwerer Build den Controller nicht überlastet. Mit dieser Vorlage verbinden sich Agenten per WebSocket und brauchen keinen zusätzlichen Port."
+				},
+				{
+					"q": "Wie verwalte ich Benutzer und Berechtigungen in Jenkins?",
+					"a": "Jenkins speichert Konten in einer eigenen Benutzerdatenbank. Das Plugin Matrix Authorization Strategy ergänzt Rechte pro Benutzer, Gruppe oder Projekt, und weitere Plugins bringen LDAP und Single Sign-on per SAML oder OpenID Connect."
+				},
+				{
+					"q": "Kann Jenkins in Docker docker-Befehle ausführen?",
+					"a": "Nicht von Haus aus: Das offizielle Image jenkins/jenkins enthält kein Docker-CLI. Die Jenkins-Dokumentation ergänzt es in einem eigenen Image, mit dem Paket docker-ce-cli und dem Plugin docker-workflow, und lässt es auf einen separaten Docker-Daemon zeigen."
+				}
+			]
 		},
 		"es": {
 			"description": "Un servidor de automatización para builds, pruebas y despliegues",
-			"notes": "Abre la dirección y pega la contraseña de instalación del log del servicio jenkins, en la pestaña Logs. Luego el asistente instala plugins y crea tu cuenta de administrador. Los jobs, los plugins y la configuración se conservan en /var/jenkins_home."
+			"notes": "Abre la dirección y pega la contraseña de instalación del log del servicio jenkins, en la pestaña Logs. Luego el asistente instala plugins y crea tu cuenta de administrador. Los jobs, los plugins y la configuración se conservan en /var/jenkins_home.",
+			"sizing": "Jenkins es pesado: el controlador ocupa cerca de 1 GB, cada build más, y los workspaces y artefactos llenan decenas de GB.",
+			"summary": "Autoaloja Jenkins, el servidor de automatización de código abierto para CI/CD, con un clic en tu máquina. Una alternativa a GitHub Actions.",
+			"about": [
+				"Jenkins es un servidor de automatización de código abierto para CI/CD y una alternativa a GitHub Actions que puedes autoalojar. Un push al repositorio lanza un build, ejecuta las pruebas y entrega el resultado. El pipeline es código: un Jenkinsfile en el repositorio enumera etapas como Build, Test y Deploy y se revisa como cualquier otro cambio. Cada rama y cada pull request pueden tener su propio pipeline de forma automática. Más de 2000 plugins de la comunidad lo conectan con prácticamente cualquier herramienta de una cadena de CI/CD y, cuando una máquina no basta, agentes en otras máquinas ejecutan builds en paralelo.",
+				"Autoalojar Jenkins te deja el código fuente, los logs y las credenciales de los builds en una máquina que controlas, y tú decides cuántos builds corren a la vez. Es gratuito con licencia MIT y guarda los jobs y el historial de builds como archivos, no en una base de datos. La contrapartida es el mantenimiento: alguien tiene que mantener al día Jenkins y sus plugins."
+			],
+			"faq": [
+				{
+					"q": "¿Jenkins es gratis y de código abierto?",
+					"a": "Sí. Jenkins es gratuito y de código abierto, con licencia MIT. Los plugins que instala también salen del catálogo del propio proyecto: plugins de código abierto creados por la comunidad."
+				},
+				{
+					"q": "¿Jenkins es una buena alternativa a GitHub Actions?",
+					"a": "Sí, si quieres tener los builds, los logs y las credenciales en una máquina que controlas. Los pipelines viven en un Jenkinsfile de tu repositorio y pueden ejecutarse en agentes que tú agregas. A cambio, tú mantienes al día Jenkins y sus plugins."
+				},
+				{
+					"q": "¿Necesito agentes para usar Jenkins?",
+					"a": "No. De fábrica, Jenkins ejecuta los builds en el propio controlador. El proyecto aconseja pasarlos a agentes para que un build pesado no lo sobrecargue; con esta plantilla, los agentes se conectan por WebSocket y no necesitan ningún puerto extra."
+				},
+				{
+					"q": "¿Cómo administro usuarios y permisos en Jenkins?",
+					"a": "Jenkins guarda las cuentas en su propia base de datos de usuarios. El plugin Matrix Authorization Strategy agrega permisos por usuario, grupo o proyecto, y otros plugins incorporan LDAP e inicio de sesión único con SAML u OpenID Connect."
+				},
+				{
+					"q": "¿Puede Jenkins en Docker ejecutar comandos docker?",
+					"a": "No de fábrica: la imagen oficial jenkins/jenkins no incluye la CLI de Docker. La documentación de Jenkins la agrega en una imagen propia, con el paquete docker-ce-cli y el plugin docker-workflow, y la apunta a un daemon de Docker aparte."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un serveur d’automatisation pour les builds, les tests et les déploiements",
-			"notes": "Ouvrez l’adresse et collez le mot de passe d’installation tiré du log du service jenkins, dans l’onglet Logs. L’assistant installe ensuite les plugins et crée votre compte administrateur. Les jobs, les plugins et les réglages sont conservés dans /var/jenkins_home."
+			"notes": "Ouvrez l’adresse et collez le mot de passe d’installation tiré du log du service jenkins, dans l’onglet Logs. L’assistant installe ensuite les plugins et crée votre compte administrateur. Les jobs, les plugins et les réglages sont conservés dans /var/jenkins_home.",
+			"sizing": "Jenkins est lourd : le contrôleur prend environ 1 GB, chaque build plus, et workspaces et artefacts font des dizaines de GB.",
+			"summary": "Auto-hébergez Jenkins, le serveur d’automatisation open source pour la CI/CD, en un clic sur votre machine. Une alternative à GitHub Actions.",
+			"about": [
+				"Jenkins est un serveur d’automatisation open source pour la CI/CD, et une alternative à GitHub Actions que vous pouvez auto-héberger. Un push vers un dépôt lance un build, exécute les tests et livre le résultat. Le pipeline est du code : un Jenkinsfile dans le dépôt liste des étapes comme Build, Test et Deploy et se relit comme n’importe quelle autre modification. Chaque branche et chaque pull request peuvent recevoir leur propre pipeline automatiquement. Plus de 2 000 plugins de la communauté le relient à pratiquement tous les outils d’une chaîne CI/CD, et quand une machine ne suffit plus, des agents sur d’autres machines exécutent des builds en parallèle.",
+				"Auto-héberger Jenkins, c’est garder votre code source, vos logs de build et les identifiants des builds sur une machine que vous contrôlez, et décider vous-même du nombre de builds simultanés. Il est gratuit sous licence MIT et garde ses jobs et l’historique des builds dans des fichiers, pas dans une base de données. Le revers, c’est l’entretien : il faut tenir Jenkins et ses plugins à jour."
+			],
+			"faq": [
+				{
+					"q": "Jenkins est-il gratuit et open source ?",
+					"a": "Oui. Jenkins est gratuit et open source, sous licence MIT. Les plugins qu’il installe viennent eux aussi du catalogue du projet : des plugins open source créés par la communauté."
+				},
+				{
+					"q": "Jenkins est-il une bonne alternative à GitHub Actions ?",
+					"a": "Oui, si vous voulez garder vos builds, vos logs et vos identifiants sur une machine que vous contrôlez. Les pipelines vivent dans un Jenkinsfile de votre dépôt et peuvent tourner sur des agents que vous ajoutez. En échange, c’est à vous de tenir Jenkins et ses plugins à jour."
+				},
+				{
+					"q": "Faut-il des agents pour faire tourner Jenkins ?",
+					"a": "Non. Par défaut, Jenkins exécute les builds sur le contrôleur lui-même. Le projet conseille de les confier à des agents, pour qu’un build lourd ne le surcharge pas ; avec ce template, les agents se connectent en WebSocket, sans port supplémentaire."
+				},
+				{
+					"q": "Comment gérer les utilisateurs et les droits dans Jenkins ?",
+					"a": "Jenkins garde les comptes dans sa propre base d’utilisateurs. Le plugin Matrix Authorization Strategy ajoute des droits par utilisateur, par groupe ou par projet, et d’autres plugins apportent LDAP et l’authentification unique avec SAML ou OpenID Connect."
+				},
+				{
+					"q": "Jenkins dans Docker peut-il exécuter des commandes docker ?",
+					"a": "Pas d’emblée : l’image officielle jenkins/jenkins n’a pas de CLI Docker. La documentation de Jenkins en ajoute une dans une image personnalisée, avec le paquet docker-ce-cli et le plugin docker-workflow, et la fait pointer vers un daemon Docker distinct."
+				}
+			]
 		},
 		"pl": {
 			"description": "Serwer automatyzacji do buildów, testów i wdrożeń",
-			"notes": "Otwórz adres projektu i wklej hasło instalacyjne z logu usługi jenkins, w zakładce Logi. Kreator zainstaluje wtedy wtyczki i założy twoje konto administratora. Zadania, wtyczki i ustawienia zostają w /var/jenkins_home."
+			"notes": "Otwórz adres projektu i wklej hasło instalacyjne z logu usługi jenkins, w zakładce Logi. Kreator zainstaluje wtedy wtyczki i założy twoje konto administratora. Zadania, wtyczki i ustawienia zostają w /var/jenkins_home.",
+			"sizing": "Jenkins ma duże wymagania: kontroler zajmuje około 1 GB, każdy build więcej, a workspace’y i artefakty zapełniają dziesiątki GB.",
+			"summary": "Hostuj Jenkinsa u siebie jednym kliknięciem: serwer automatyzacji open source do CI/CD na twojej maszynie. Alternatywa dla GitHub Actions.",
+			"about": [
+				"Jenkins to serwer automatyzacji open source do CI/CD i alternatywa dla GitHub Actions, którą możesz hostować u siebie (self-hosted). Push do repozytorium uruchamia build, odpala testy i dostarcza wynik. Pipeline to kod: Jenkinsfile w repozytorium wypisuje etapy, takie jak Build, Test i Deploy, i przechodzi review jak każda inna zmiana. Każdy branch i każdy pull request może dostać własny pipeline automatycznie. Ponad 2000 pluginów społeczności łączy Jenkinsa z praktycznie każdym narzędziem łańcucha CI/CD, a gdy jedna maszyna nie wystarcza, agenci na innych maszynach uruchamiają buildy równolegle.",
+				"Jenkinsa hostuje się u siebie, żeby kod źródłowy, logi buildów i poświadczenia buildów zostały na maszynie pod twoją kontrolą i żeby samemu decydować, ile buildów działa naraz. Jest darmowy na licencji MIT, a zadania i historię buildów trzyma w plikach, nie w bazie danych. Haczyk to utrzymanie: ktoś musi dbać o aktualność Jenkinsa i jego pluginów."
+			],
+			"faq": [
+				{
+					"q": "Czy Jenkins jest darmowy i open source?",
+					"a": "Tak. Jenkins jest darmowy i open source, na licencji MIT. Pluginy, które instaluje, pochodzą z katalogu samego projektu: to pluginy open source tworzone przez społeczność."
+				},
+				{
+					"q": "Czy Jenkins to dobra alternatywa dla GitHub Actions?",
+					"a": "Tak, jeśli chcesz mieć buildy, logi i poświadczenia na maszynie, którą kontrolujesz. Pipeline definiujesz w pliku Jenkinsfile w swoim repozytorium, a uruchamiać go możesz na agentach, które dodasz. W zamian sam dbasz o aktualność Jenkinsa i jego pluginów."
+				},
+				{
+					"q": "Czy potrzebuję agentów, żeby używać Jenkinsa?",
+					"a": "Nie. Domyślnie Jenkins uruchamia buildy na samym kontrolerze. Projekt zaleca przenieść je na agentów, żeby ciężki build nie przeciążył kontrolera. Z tym szablonem agenci łączą się przez WebSocket i nie potrzebują dodatkowego portu."
+				},
+				{
+					"q": "Jak zarządzać użytkownikami i uprawnieniami w Jenkinsie?",
+					"a": "Jenkins trzyma konta we własnej bazie użytkowników. Plugin Matrix Authorization Strategy dodaje uprawnienia dla użytkownika, grupy lub projektu, a inne pluginy dokładają LDAP i logowanie jednokrotne przez SAML albo OpenID Connect."
+				},
+				{
+					"q": "Czy Jenkins w Dockerze może uruchamiać polecenia docker?",
+					"a": "Nie od razu: oficjalny obraz jenkins/jenkins nie ma Docker CLI. Dokumentacja Jenkinsa dodaje je we własnym obrazie, z pakietem docker-ce-cli i pluginem docker-workflow, i kieruje na osobnego demona Dockera."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um servidor de automação para builds, testes e deploys",
-			"notes": "Abra o endereço e cole a senha de instalação do log do serviço jenkins, na aba Logs. O assistente então instala os plugins e cria sua conta de administrador. Jobs, plugins e configurações ficam guardados em /var/jenkins_home."
+			"notes": "Abra o endereço e cole a senha de instalação do log do serviço jenkins, na aba Logs. O assistente então instala os plugins e cria sua conta de administrador. Jobs, plugins e configurações ficam guardados em /var/jenkins_home.",
+			"sizing": "Jenkins é pesado: o controlador usa cerca de 1 GB, cada build mais, e workspaces e artefatos ocupam dezenas de GB.",
+			"summary": "Hospede o Jenkins por conta própria com um clique: o servidor de automação open source para CI/CD na sua máquina. Alternativa ao GitHub Actions.",
+			"about": [
+				"O Jenkins é um servidor de automação open source para CI/CD e uma alternativa ao GitHub Actions que você pode auto-hospedar. Um push no repositório inicia um build, roda os testes e entrega o resultado. O pipeline é código: um Jenkinsfile no repositório lista etapas como Build, Test e Deploy e é revisado como qualquer outra mudança. Cada branch e cada pull request pode ganhar o próprio pipeline automaticamente. Mais de 2.000 plugins da comunidade ligam o Jenkins a praticamente qualquer ferramenta de uma cadeia de CI/CD e, quando uma máquina não basta, agentes em outras máquinas rodam builds em paralelo.",
+				"Auto-hospedar o Jenkins mantém o código-fonte, os logs de build e as credenciais dos builds em uma máquina que você controla, e deixa você decidir quantos builds rodam ao mesmo tempo. Ele é gratuito sob a licença MIT e guarda jobs e histórico de builds como arquivos, não em um banco de dados. O porém é a manutenção: alguém precisa manter o Jenkins e seus plugins atualizados."
+			],
+			"faq": [
+				{
+					"q": "O Jenkins é gratuito e open source?",
+					"a": "Sim. O Jenkins é gratuito e open source, sob a licença MIT. Os plugins que ele instala também vêm do catálogo do próprio projeto, com plugins open source feitos pela comunidade."
+				},
+				{
+					"q": "O Jenkins é uma boa alternativa ao GitHub Actions?",
+					"a": "É, se você quer builds, logs e credenciais em uma máquina que você controla. Os pipelines ficam em um Jenkinsfile no seu repositório e podem rodar em agentes que você adiciona. Em troca, você mesmo mantém o Jenkins e seus plugins atualizados."
+				},
+				{
+					"q": "Preciso de agentes para rodar o Jenkins?",
+					"a": "Não. De fábrica, o Jenkins roda os builds no próprio controlador. O projeto recomenda levá-los para agentes, para que um build pesado não sobrecarregue o controlador; com este template, os agentes se conectam por WebSocket e não precisam de porta extra."
+				},
+				{
+					"q": "Como gerencio usuários e permissões no Jenkins?",
+					"a": "O Jenkins guarda as contas no próprio banco de usuários. O plugin Matrix Authorization Strategy adiciona permissões por usuário, grupo ou projeto, e outros plugins trazem LDAP e login único com SAML ou OpenID Connect."
+				},
+				{
+					"q": "O Jenkins no Docker consegue rodar comandos docker?",
+					"a": "Não de fábrica: a imagem oficial jenkins/jenkins não tem a CLI do Docker. A documentação do Jenkins a adiciona em uma imagem própria, com o pacote docker-ce-cli e o plugin docker-workflow, e a aponta para um daemon do Docker separado."
+				}
+			]
 		},
 		"ru": {
 			"description": "Сервер автоматизации для сборок, тестов и деплоев",
-			"notes": "Откройте адрес и вставьте пароль установки из лога сервиса jenkins на вкладке «Логи». Затем мастер установит плагины и создаст ваш аккаунт администратора. Задачи, плагины и настройки хранятся в /var/jenkins_home."
+			"notes": "Откройте адрес и вставьте пароль установки из лога сервиса jenkins на вкладке «Логи». Затем мастер установит плагины и создаст ваш аккаунт администратора. Задачи, плагины и настройки хранятся в /var/jenkins_home.",
+			"sizing": "Jenkins: высокие требования — контроллер занимает около 1 GB, каждая сборка больше, а рабочие папки и артефакты — десятки GB.",
+			"summary": "Jenkins self-hosted в один клик на вашей машине: сервер автоматизации CI/CD с открытым исходным кодом. Альтернатива GitHub Actions.",
+			"about": [
+				"Jenkins — сервер автоматизации CI/CD с открытым исходным кодом и self-hosted альтернатива GitHub Actions. Пуш в репозиторий запускает сборку, прогоняет тесты и доставляет результат. Пайплайн — это код: Jenkinsfile в репозитории перечисляет стадии вроде Build, Test и Deploy и проходит ревью, как любое другое изменение. Для каждой ветки и каждого pull request Jenkins может сам создать отдельный пайплайн. Более 2000 плагинов от сообщества подключают его практически к любому инструменту CI/CD-цепочки, а когда одной машины мало, агенты на других машинах запускают сборки параллельно.",
+				"Jenkins ставят на своем сервере, чтобы исходный код, логи сборок и учетные данные для сборок оставались под вашим контролем и чтобы самим решать, сколько сборок идет одновременно. Он бесплатный, под лицензией MIT, а задачи и историю сборок хранит в файлах, а не в базе данных. Подвох — в обслуживании: кто-то должен следить за обновлениями Jenkins и его плагинов."
+			],
+			"faq": [
+				{
+					"q": "Jenkins бесплатный и с открытым исходным кодом?",
+					"a": "Да. Jenkins бесплатен, его исходный код открыт под лицензией MIT. Плагины он тоже ставит из каталога самого проекта: это плагины с открытым кодом, которые делает сообщество."
+				},
+				{
+					"q": "Jenkins — хорошая альтернатива GitHub Actions?",
+					"a": "Да, если вы хотите держать сборки, логи и учетные данные на машине под своим контролем. Пайплайны описываются в Jenkinsfile в вашем репозитории и могут работать на агентах, которых вы добавляете. Взамен Jenkins и его плагины вы обновляете сами."
+				},
+				{
+					"q": "Нужны ли агенты, чтобы запустить Jenkins?",
+					"a": "Нет. Из коробки Jenkins запускает сборки на самом контроллере. Проект советует вынести их на агентов, чтобы тяжелая сборка не перегрузила контроллер; с этим шаблоном агенты подключаются по WebSocket, и дополнительный порт не нужен."
+				},
+				{
+					"q": "Как управлять пользователями и правами в Jenkins?",
+					"a": "Jenkins хранит аккаунты в собственной базе пользователей. Плагин Matrix Authorization Strategy добавляет права по пользователям, группам или проектам, а другие плагины подключают LDAP и единый вход (SSO) через SAML или OpenID Connect."
+				},
+				{
+					"q": "Может ли Jenkins в Docker выполнять команды docker?",
+					"a": "Из коробки нет: в официальном образе jenkins/jenkins нет Docker CLI. В документации Jenkins его добавляют в собственном образе, с пакетом docker-ce-cli и плагином docker-workflow, и направляют на отдельный демон Docker."
+				}
+			]
 		},
 		"uk": {
 			"description": "Сервер автоматизації для збірок, тестів і деплоїв",
-			"notes": "Відкрийте адресу й вставте пароль установлення з логу сервісу jenkins на вкладці «Логи». Потім майстер установить плагіни й створить ваш акаунт адміністратора. Завдання, плагіни й налаштування зберігаються в /var/jenkins_home."
+			"notes": "Відкрийте адресу й вставте пароль установлення з логу сервісу jenkins на вкладці «Логи». Потім майстер установить плагіни й створить ваш акаунт адміністратора. Завдання, плагіни й налаштування зберігаються в /var/jenkins_home.",
+			"sizing": "Jenkins має високі вимоги: контролер бере близько 1 GB, кожна збірка більше, а робочі простори й артефакти заповнюють десятки GB.",
+			"summary": "Jenkins self-hosted в один клік на вашій машині: сервер автоматизації CI/CD з відкритим кодом. Альтернатива GitHub Actions.",
+			"about": [
+				"Jenkins — сервер автоматизації CI/CD з відкритим кодом і self-hosted альтернатива GitHub Actions. Пуш у репозиторій запускає збірку, проганяє тести й доставляє результат. Пайплайн — це код: Jenkinsfile у репозиторії перелічує стадії на кшталт Build, Test і Deploy та проходить рев’ю, як і будь-яка інша зміна. Для кожної гілки й кожного pull request Jenkins може сам створити окремий пайплайн. Понад 2000 плагінів від спільноти підключають його практично до будь-якого інструмента CI/CD-ланцюжка, а коли однієї машини замало, агенти на інших машинах запускають збірки паралельно.",
+				"Jenkins ставлять на власному сервері, щоб вихідний код, логи збірок і облікові дані для збірок лишалися під вашим контролем, і щоб самим вирішувати, скільки збірок іде одночасно. Він безкоштовний, під ліцензією MIT, а завдання й історію збірок зберігає у файлах, а не в базі даних. Підводний камінь — обслуговування: хтось має стежити за оновленнями Jenkins і його плагінів."
+			],
+			"faq": [
+				{
+					"q": "Jenkins безкоштовний і з відкритим кодом?",
+					"a": "Так. Jenkins безкоштовний, його код відкритий за ліцензією MIT. Плагіни він теж встановлює з каталогу самого проєкту: це плагіни з відкритим кодом, які створює спільнота."
+				},
+				{
+					"q": "Jenkins — хороша альтернатива GitHub Actions?",
+					"a": "Так, якщо ви хочете тримати збірки, логи й облікові дані на машині під своїм контролем. Пайплайни описують у Jenkinsfile у вашому репозиторії, і виконуватися вони можуть на агентах, яких ви додаєте. Натомість Jenkins і його плагіни ви оновлюєте самі."
+				},
+				{
+					"q": "Чи потрібні агенти, щоб запустити Jenkins?",
+					"a": "Ні. З коробки Jenkins запускає збірки на самому контролері. Проєкт радить винести їх на агентів, щоб важка збірка не перевантажила контролер; з цим шаблоном агенти підключаються через WebSocket, і додатковий порт не потрібен."
+				},
+				{
+					"q": "Як керувати користувачами й правами в Jenkins?",
+					"a": "Jenkins зберігає акаунти у власній базі користувачів. Плагін Matrix Authorization Strategy додає права за користувачем, групою або проєктом, а інші плагіни підключають LDAP і єдиний вхід (SSO) через SAML або OpenID Connect."
+				},
+				{
+					"q": "Чи може Jenkins у Docker виконувати команди docker?",
+					"a": "З коробки ні: в офіційному образі jenkins/jenkins немає Docker CLI. У документації Jenkins його додають у власному образі, з пакетом docker-ce-cli і плагіном docker-workflow, та спрямовують на окремий демон Docker."
+				}
+			]
 		}
 	}
 }

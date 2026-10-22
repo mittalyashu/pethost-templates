@@ -1,6 +1,11 @@
 {
 	"name": "Memos",
 	"emoji": "📝",
+	"category": "notes",
+	"alternatives": [
+		"Google Keep"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "memos",
 		"port": 5230
@@ -9,35 +14,259 @@
 	"texts": {
 		"en": {
 			"description": "Short Markdown notes on a private timeline",
-			"notes": "Open the address and create the first account: it becomes the admin. Do it right away: until then the page is open to whoever has the address. To keep the instance to yourself, turn off registration in Settings."
+			"notes": "Open the address and create the first account: it becomes the admin. Do it right away: until then the page is open to whoever has the address. To keep the instance to yourself, turn off registration in Settings.",
+			"sizing": "Memos is very light: tens of megabytes of memory, and years of notes take well under a gigabyte.",
+			"summary": "Memos is an open-source Google Keep alternative: quick Markdown notes, tagged and kept by the day. Self-host it with Docker in one click.",
+			"about": [
+				"Memos is an open-source note-taking app for quick thoughts, the kind many people jot down in Google Keep. A memo can be one sentence or a longer entry in Markdown: you add #tags as you type, and it stays under the day you wrote it on a timeline. Search, nested tags, saved Views and a Calendar bring old memos back. Each memo is private until you share it with a link, make it public, or post it to a Space you share with others.",
+				"People self-host Memos to keep their notes on their own server, with no outside account. It is MIT-licensed and sends no usage data or analytics. A Telegram bot and a built-in MCP server let you add memos from a chat or an AI assistant. The catch is moving in: Memos imports only its own export, not notes from other apps."
+			],
+			"faq": [
+				{
+					"q": "Is Memos free and open source?",
+					"a": "Yes. Memos is released under the MIT License, with no license fee, subscription or per-seat price. The only cost is the server it runs on."
+				},
+				{
+					"q": "Can Memos replace Google Keep?",
+					"a": "For quick notes, yes. Memos has Markdown task lists, tags, and images, audio, video and documents attached to a memo, and its Web Clipper for Chrome and Firefox saves pages from the browser."
+				},
+				{
+					"q": "Does Memos have a mobile app?",
+					"a": "Memos works on phones as a Progressive Web App: open your instance in the browser and add it to the home screen, where it opens in its own window."
+				},
+				{
+					"q": "How do I export my notes from Memos?",
+					"a": "In Settings, Export & Import downloads every memo you wrote, with its attached files, as a ZIP of Markdown and JSON. Another Memos instance can import that ZIP into an account there."
+				},
+				{
+					"q": "Does Memos support multiple users?",
+					"a": "Yes. Memos has two roles, Admin and User, and the first account created is the admin. Others register with a password, or sign in through an OAuth2 single sign-on provider a team already uses."
+				}
+			]
 		},
 		"de": {
 			"description": "Kurze Markdown-Notizen in einer privaten Timeline",
-			"notes": "Öffne die Adresse und erstell das erste Konto: Es wird zum Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Willst du die Instanz für dich allein, schalte die Registrierung unter „Settings“ aus."
+			"notes": "Öffne die Adresse und erstell das erste Konto: Es wird zum Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Willst du die Instanz für dich allein, schalte die Registrierung unter „Settings“ aus.",
+			"sizing": "Memos ist sehr leicht: Dutzende MB RAM, und Notizen aus Jahren brauchen weit unter 1 GB.",
+			"summary": "Memos selbst hosten: Open-Source-Alternative zu Google Keep für schnelle Markdown-Notizen mit Tags, pro Tag abgelegt. Mit Docker in einem Klick.",
+			"about": [
+				"Memos ist eine Open-Source-App für schnelle Gedanken, wie sie viele sonst in Google Keep festhalten. Ein Memo kann ein einzelner Satz sein oder ein längerer Eintrag in Markdown: Du setzt beim Tippen #Tags, und es bleibt auf der Timeline unter dem Tag, an dem du es geschrieben hast. Suche, verschachtelte Tags, gespeicherte Views und ein Calendar holen alte Memos zurück. Jedes Memo ist privat, bis du es per Link teilst, öffentlich machst oder in einem Space postest, den du mit anderen teilst.",
+				"Du hostest Memos selbst, damit deine Notizen auf deiner eigenen Maschine bleiben, ohne externes Konto. Die Lizenz ist MIT, und Memos sendet weder Nutzungsdaten noch Analytics. Mit einem Telegram-Bot und einem eingebauten MCP-Server fügst du Memos aus einem Chat oder von einem KI-Assistenten hinzu. Der Haken ist der Umzug: Memos importiert nur den eigenen Export, keine Notizen aus anderen Apps."
+			],
+			"faq": [
+				{
+					"q": "Ist Memos kostenlos und Open Source?",
+					"a": "Ja. Memos steht unter der MIT-Lizenz, ohne Lizenzgebühr, Abo oder Preis pro Platz. Kosten entstehen nur für die Maschine, auf der es läuft."
+				},
+				{
+					"q": "Kann Memos Google Keep ersetzen?",
+					"a": "Für schnelle Notizen ja. Memos hat Aufgabenlisten in Markdown, Tags sowie Bilder, Audio, Video und Dokumente, die an ein Memo angehängt werden, und sein Web Clipper für Chrome und Firefox speichert Seiten aus dem Browser."
+				},
+				{
+					"q": "Hat Memos eine mobile App?",
+					"a": "Memos läuft auf dem Handy als Progressive Web App: Öffne deine Instanz im Browser und füge sie zum Home-Bildschirm hinzu, dann öffnet sie sich in einem eigenen Fenster."
+				},
+				{
+					"q": "Wie exportiere ich meine Notizen aus Memos?",
+					"a": "Unter Settings lädt „Export & Import“ jedes Memo, das du geschrieben hast, samt angehängter Dateien als ZIP aus Markdown und JSON herunter. Eine andere Memos-Instanz kann dieses ZIP in ein Konto dort importieren."
+				},
+				{
+					"q": "Können mehrere Personen Memos nutzen?",
+					"a": "Ja. Memos kennt zwei Rollen, Admin und User, und das erste angelegte Konto ist der Admin. Alle anderen registrieren sich mit einem Passwort oder melden sich über einen OAuth2-Single-Sign-on-Anbieter an, den ein Team schon nutzt."
+				}
+			]
 		},
 		"es": {
 			"description": "Notas breves en Markdown en una línea de tiempo privada",
-			"notes": "Abre la dirección y crea la primera cuenta: será la del administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Para que la instancia sea solo tuya, desactiva el registro en Settings."
+			"notes": "Abre la dirección y crea la primera cuenta: será la del administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Para que la instancia sea solo tuya, desactiva el registro en Settings.",
+			"sizing": "Memos es muy ligero: decenas de MB de memoria, y años de notas ocupan bastante menos de 1 GB.",
+			"summary": "Autoaloja Memos, la alternativa de código abierto a Google Keep para notas rápidas en Markdown, con etiquetas y guardadas por día. Con Docker, en un clic.",
+			"about": [
+				"Memos es una app de notas de código abierto para ideas rápidas, de las que mucha gente apunta en Google Keep. Un memo puede ser una sola frase o una entrada más larga en Markdown: agregas #etiquetas mientras escribes, y queda en una línea de tiempo bajo el día en que lo escribiste. La búsqueda, las etiquetas anidadas, las Views guardadas y un Calendar traen de vuelta los memos antiguos. Cada memo es privado hasta que lo compartes con un enlace, lo haces público o lo publicas en un Space que compartes con otras personas.",
+				"Autoalojas Memos para que tus notas se queden en tu propia máquina, sin una cuenta externa. Tiene licencia MIT y no envía datos de uso ni analítica. Con un bot de Telegram y un servidor MCP integrado puedes agregar memos desde un chat o desde un asistente de IA. El inconveniente es la mudanza: Memos solo importa su propia exportación, no notas de otras apps."
+			],
+			"faq": [
+				{
+					"q": "¿Memos es gratis y de código abierto?",
+					"a": "Sí. Memos se publica con licencia MIT, sin pago por licencia, suscripción ni precio por usuario. Lo único que pagas es la máquina en la que se ejecuta."
+				},
+				{
+					"q": "¿Memos puede reemplazar a Google Keep?",
+					"a": "Para notas rápidas, sí. Memos tiene listas de tareas en Markdown, etiquetas, e imágenes, audio, video y documentos adjuntos a un memo, y su Web Clipper para Chrome y Firefox guarda páginas desde el navegador."
+				},
+				{
+					"q": "¿Memos tiene una app para el teléfono?",
+					"a": "Memos funciona en el teléfono como Progressive Web App: abre tu instancia en el navegador y agrégala a la pantalla de inicio, donde se abre en su propia ventana."
+				},
+				{
+					"q": "¿Cómo exporto mis notas de Memos?",
+					"a": "En Settings, “Export & Import” descarga todos los memos que escribiste, con sus archivos adjuntos, como un ZIP de Markdown y JSON. Otra instancia de Memos puede importar ese ZIP en una cuenta suya."
+				},
+				{
+					"q": "¿Memos admite varios usuarios?",
+					"a": "Sí. Memos tiene dos roles, Admin y User, y la primera cuenta creada es la de Admin. Los demás se registran con una contraseña o inician sesión con un proveedor de inicio de sesión único OAuth2 que un equipo ya use."
+				}
+			]
 		},
 		"fr": {
 			"description": "De courtes notes en Markdown sur un fil privé",
-			"notes": "Ouvrez l’adresse et créez le premier compte : il devient l’administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Pour garder l’instance rien que pour vous, désactivez les inscriptions dans Settings."
+			"notes": "Ouvrez l’adresse et créez le premier compte : il devient l’administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Pour garder l’instance rien que pour vous, désactivez les inscriptions dans Settings.",
+			"sizing": "Memos est très léger : quelques dizaines de MB de mémoire, et des années de notes pèsent bien moins de 1 GB.",
+			"summary": "Auto-hébergez Memos, l’alternative open source à Google Keep pour des notes Markdown rapides, avec tags, classées par jour. Avec Docker, en un clic.",
+			"about": [
+				"Memos est une application de notes open source pour les idées rapides, celles que beaucoup notent dans Google Keep. Un mémo peut tenir en une phrase ou en une entrée plus longue en Markdown : vous ajoutez des #tags en écrivant, et il reste dans le fil, rangé sous le jour où vous l’avez écrit. La recherche, les tags imbriqués, les Views enregistrées et un Calendar font ressurgir les anciens mémos. Chaque mémo est privé jusqu’à ce que vous le partagiez par un lien, le rendiez public ou le publiiez dans un Space que vous partagez avec d’autres.",
+				"Vous auto-hébergez Memos pour garder vos notes sur votre propre machine, sans compte extérieur. Il est sous licence MIT et n’envoie ni données d’utilisation ni statistiques. Un bot Telegram et un serveur MCP intégré permettent d’ajouter des mémos depuis une discussion ou un assistant IA. Le revers, c’est l’emménagement : Memos n’importe que son propre export, pas les notes d’autres applications."
+			],
+			"faq": [
+				{
+					"q": "Memos est-il gratuit et open source ?",
+					"a": "Oui. Memos est publié sous licence MIT, sans frais de licence, abonnement ni prix par utilisateur. Le seul coût est la machine sur laquelle il tourne."
+				},
+				{
+					"q": "Memos peut-il remplacer Google Keep ?",
+					"a": "Pour des notes rapides, oui. Memos propose des listes de tâches en Markdown, des tags, ainsi que des images, de l’audio, de la vidéo et des documents joints à un mémo, et son Web Clipper pour Chrome et Firefox enregistre des pages depuis le navigateur."
+				},
+				{
+					"q": "Memos a-t-il une application mobile ?",
+					"a": "Memos fonctionne sur téléphone comme Progressive Web App : ouvrez votre instance dans le navigateur et ajoutez-la à l’écran d’accueil, où elle s’ouvre dans sa propre fenêtre."
+				},
+				{
+					"q": "Comment exporter mes notes depuis Memos ?",
+					"a": "Dans Settings, « Export & Import » télécharge chaque mémo que vous avez écrit, avec ses fichiers joints, sous la forme d’un ZIP de Markdown et de JSON. Une autre instance de Memos peut importer ce ZIP dans un compte qui s’y trouve."
+				},
+				{
+					"q": "Memos prend-il en charge plusieurs utilisateurs ?",
+					"a": "Oui. Memos a deux rôles, Admin et User, et le premier compte créé est l’admin. Les autres s’inscrivent avec un mot de passe ou se connectent via un fournisseur d’authentification unique OAuth2 que l’équipe utilise déjà."
+				}
+			]
 		},
 		"pl": {
 			"description": "Krótkie notatki Markdown na prywatnej osi czasu",
-			"notes": "Otwórz adres projektu i załóż pierwsze konto: zostaje administratorem. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Żeby instancja była tylko dla ciebie, wyłącz rejestrację w Settings."
+			"notes": "Otwórz adres projektu i załóż pierwsze konto: zostaje administratorem. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Żeby instancja była tylko dla ciebie, wyłącz rejestrację w Settings.",
+			"sizing": "Memos ma bardzo małe wymagania: dziesiątki MB pamięci, a lata notatek zajmują znacznie poniżej 1 GB.",
+			"summary": "Memos to alternatywa open source dla Google Keep: szybkie notatki w Markdown z tagami, trzymane dzień po dniu. Hostuj u siebie z Dockerem w jeden klik.",
+			"about": [
+				"Memos to aplikacja open source do szybkich notatek, takich, jakie wiele osób zapisuje w Google Keep. Notatka może być jednym zdaniem albo dłuższym wpisem w Markdown: w trakcie pisania dodajesz #tagi, a ona zostaje na osi czasu pod dniem, w którym powstała. Wyszukiwanie, zagnieżdżone tagi, zapisane Views i Calendar przywracają stare notatki. Każda notatka jest prywatna, dopóki nie udostępnisz jej linkiem, nie upublicznisz jej albo nie opublikujesz w Space, który dzielisz z innymi.",
+				"Memos hostujesz u siebie, żeby notatki zostały na własnej maszynie, bez zewnętrznego konta. Licencja to MIT, a aplikacja nie wysyła danych o użyciu ani analityki. Bot na Telegramie i wbudowany serwer MCP pozwalają dodawać notatki z czatu albo od asystenta AI. Haczyk to przeprowadzka: Memos importuje tylko własny eksport, a nie notatki z innych aplikacji."
+			],
+			"faq": [
+				{
+					"q": "Czy Memos jest darmowy i open source?",
+					"a": "Tak. Memos jest wydany na licencji MIT, bez opłaty licencyjnej, subskrypcji i ceny za użytkownika. Płacisz tylko za maszynę, na której działa."
+				},
+				{
+					"q": "Czy Memos może zastąpić Google Keep?",
+					"a": "Do szybkich notatek tak. Memos ma listy zadań w Markdown, tagi oraz obrazy, audio, wideo i dokumenty dołączane do notatki, a jego Web Clipper dla Chrome i Firefoksa zapisuje strony z przeglądarki."
+				},
+				{
+					"q": "Czy Memos ma aplikację mobilną?",
+					"a": "Memos działa na telefonach jako Progressive Web App: otwórz swoją instancję w przeglądarce i dodaj ją do ekranu głównego, gdzie otwiera się we własnym oknie."
+				},
+				{
+					"q": "Jak wyeksportować notatki z Memos?",
+					"a": "W Settings opcja „Export & Import” pobiera każdą napisaną notatkę wraz z dołączonymi plikami jako ZIP z Markdown i JSON. Inna instancja Memos może zaimportować ten ZIP do konta w niej."
+				},
+				{
+					"q": "Czy Memos obsługuje wielu użytkowników?",
+					"a": "Tak. Memos ma dwie role, Admin i User, a pierwsze utworzone konto jest kontem admina. Pozostałe osoby rejestrują się hasłem albo logują przez dostawcę jednokrotnego logowania OAuth2, z którego zespół już korzysta."
+				}
+			]
 		},
 		"pt": {
 			"description": "Notas curtas em Markdown em uma linha do tempo privada",
-			"notes": "Abra o endereço e crie a primeira conta: ela vira a conta de administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Para manter a instância só para você, desative o cadastro em Settings."
+			"notes": "Abra o endereço e crie a primeira conta: ela vira a conta de administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Para manter a instância só para você, desative o cadastro em Settings.",
+			"sizing": "Memos é muito leve: dezenas de MB de memória, e anos de notas ocupam bem menos de 1 GB.",
+			"summary": "Auto-hospede o Memos, alternativa de código aberto ao Google Keep para notas rápidas em Markdown, com tags e organizadas por dia. Com Docker, em um clique.",
+			"about": [
+				"O Memos é um app de notas de código aberto para ideias rápidas, do tipo que muita gente anota no Google Keep. Um memo pode ser uma frase ou uma entrada mais longa em Markdown: você adiciona #tags enquanto digita, e ele fica na linha do tempo sob o dia em que você o escreveu. Busca, tags aninhadas, Views salvas e um Calendar trazem os memos antigos de volta. Cada memo é privado até você compartilhá-lo por um link, torná-lo público ou publicá-lo em um Space que você divide com outras pessoas.",
+				"Auto-hospedar o Memos mantém suas notas na sua própria máquina, sem conta externa. A licença é MIT, e o app não envia dados de uso nem analytics. Um bot do Telegram e um servidor MCP embutido permitem adicionar memos a partir de um chat ou de um assistente de IA. O porém é a mudança: o Memos importa apenas a própria exportação, não notas de outros apps."
+			],
+			"faq": [
+				{
+					"q": "O Memos é gratuito e de código aberto?",
+					"a": "Sim. O Memos é distribuído sob a licença MIT, sem taxa de licença, assinatura ou preço por usuário. O único custo é a máquina em que ele roda."
+				},
+				{
+					"q": "O Memos pode substituir o Google Keep?",
+					"a": "Para notas rápidas, sim. O Memos tem listas de tarefas em Markdown, tags e imagens, áudio, vídeo e documentos anexados a um memo, e o Web Clipper dele para Chrome e Firefox salva páginas direto do navegador."
+				},
+				{
+					"q": "O Memos tem app para celular?",
+					"a": "O Memos funciona no celular como Progressive Web App: abra sua instância no navegador e adicione-a à tela inicial, onde ela abre em uma janela própria."
+				},
+				{
+					"q": "Como exporto minhas notas do Memos?",
+					"a": "Em Settings, “Export & Import” baixa todos os memos que você escreveu, com os arquivos anexados, como um ZIP de Markdown e JSON. Outra instância do Memos pode importar esse ZIP para uma conta dela."
+				},
+				{
+					"q": "O Memos aceita vários usuários?",
+					"a": "Sim. O Memos tem dois papéis, Admin e User, e a primeira conta criada é a de admin. Os demais se cadastram com uma senha ou entram por um provedor de login único OAuth2 que a equipe já usa."
+				}
+			]
 		},
 		"ru": {
 			"description": "Короткие Markdown-заметки в личной ленте",
-			"notes": "Откройте адрес и создайте первый аккаунт: он станет администратором. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Чтобы оставить Memos только себе, выключите регистрацию в разделе Settings."
+			"notes": "Откройте адрес и создайте первый аккаунт: он станет администратором. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Чтобы оставить Memos только себе, выключите регистрацию в разделе Settings.",
+			"sizing": "Memos: совсем небольшие требования — десятки MB памяти, а годы заметок занимают намного меньше 1 GB.",
+			"summary": "Self-hosted Memos — open source альтернатива Google Keep: быстрые заметки в Markdown с тегами, по дням. Запускается в Docker на вашей машине в один клик.",
+			"about": [
+				"Memos — это open source приложение для быстрых заметок, из тех, что многие записывают в Google Keep. Заметка может быть одним предложением или длинной записью в Markdown: вы добавляете #теги по ходу набора, и она остается в ленте под тем днем, когда вы ее написали. Вернуть старые заметки помогают поиск, вложенные теги, сохраненные Views и Calendar. Каждая заметка приватна, пока вы не поделитесь ею по ссылке, не сделаете ее публичной или не опубликуете в Space, которым делитесь с другими.",
+				"Memos хостят у себя, чтобы заметки лежали на собственной машине, без стороннего аккаунта. Лицензия MIT, данные об использовании и аналитику приложение не отправляет. Telegram-бот и встроенный MCP-сервер позволяют добавлять заметки из чата или от ИИ-ассистента. Но с переездом есть нюанс: Memos импортирует только свой экспорт, а не заметки из других приложений."
+			],
+			"faq": [
+				{
+					"q": "Memos бесплатный и с открытым кодом?",
+					"a": "Да. Memos выпущен под лицензией MIT: без платы за лицензию, подписки и цены за пользователя. Платить приходится только за машину, на которой он работает."
+				},
+				{
+					"q": "Может ли Memos заменить Google Keep?",
+					"a": "Для быстрых заметок — да. В Memos есть списки задач в Markdown, теги, а к заметке можно прикрепить изображения, аудио, видео и документы; Web Clipper для Chrome и Firefox сохраняет страницы прямо из браузера."
+				},
+				{
+					"q": "Есть ли у Memos мобильное приложение?",
+					"a": "На телефоне Memos работает как Progressive Web App: откройте свой экземпляр в браузере и добавьте его на главный экран, после чего он запускается в отдельном окне."
+				},
+				{
+					"q": "Как экспортировать заметки из Memos?",
+					"a": "В Settings раздел «Export & Import» скачивает все написанные вами заметки вместе с прикрепленными файлами в виде ZIP из Markdown и JSON. Другой экземпляр Memos может импортировать этот ZIP в свой аккаунт."
+				},
+				{
+					"q": "Memos поддерживает нескольких пользователей?",
+					"a": "Да. В Memos две роли, Admin и User, и первый созданный аккаунт становится Admin. Остальные регистрируются по паролю или входят через OAuth2-провайдера единого входа, который команда уже использует."
+				}
+			]
 		},
 		"uk": {
 			"description": "Короткі нотатки в Markdown на приватній стрічці",
-			"notes": "Відкрийте адресу і створіть перший акаунт: він стане адміністратором. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Щоб лишити застосунок тільки собі, вимкніть реєстрацію в Settings."
+			"notes": "Відкрийте адресу і створіть перший акаунт: він стане адміністратором. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Щоб лишити застосунок тільки собі, вимкніть реєстрацію в Settings.",
+			"sizing": "Memos має дуже скромні вимоги: десятки MB пам’яті, а роки нотаток займають значно менше 1 GB.",
+			"summary": "Self-hosted Memos — альтернатива Google Keep із відкритим кодом: швидкі нотатки в Markdown із тегами, по днях. Запускається в Docker в один клік.",
+			"about": [
+				"Memos — це застосунок для швидких нотаток із відкритим кодом, з тих, що багато хто записує в Google Keep. Нотатка може бути одним реченням або довшим записом у Markdown: ви додаєте #теги під час набору, і вона лишається на стрічці під тим днем, коли ви її написали. Старі нотатки повертають пошук, вкладені теги, збережені Views і Calendar. Кожна нотатка приватна, доки ви не поділитеся нею за посиланням, не зробите її публічною або не опублікуєте в Space, яким ділитеся з іншими.",
+				"Memos хостять у себе, щоб нотатки лежали на власній машині, без стороннього акаунта. Ліцензія MIT, даних про використання й аналітики застосунок не надсилає. Telegram-бот і вбудований MCP-сервер дають змогу додавати нотатки з чату або від ШІ-асистента. Але з переїздом є нюанс: Memos імпортує лише власний експорт, а не нотатки з інших застосунків."
+			],
+			"faq": [
+				{
+					"q": "Memos безплатний і з відкритим кодом?",
+					"a": "Так. Memos випущено за ліцензією MIT: без плати за ліцензію, підписки та ціни за користувача. Платити доводиться лише за машину, на якій він працює."
+				},
+				{
+					"q": "Чи може Memos замінити Google Keep?",
+					"a": "Для швидких нотаток — так. У Memos є списки завдань у Markdown, теги, а до нотатки можна прикріпити зображення, аудіо, відео й документи; Web Clipper для Chrome і Firefox зберігає сторінки просто з браузера."
+				},
+				{
+					"q": "Чи є в Memos мобільний застосунок?",
+					"a": "На телефоні Memos працює як Progressive Web App: відкрийте свій екземпляр у браузері й додайте його на головний екран, після чого він запускається в окремому вікні."
+				},
+				{
+					"q": "Як експортувати нотатки з Memos?",
+					"a": "У Settings розділ «Export & Import» завантажує всі написані вами нотатки разом із прикріпленими файлами у вигляді ZIP із Markdown і JSON. Інший екземпляр Memos може імпортувати цей ZIP у свій акаунт."
+				},
+				{
+					"q": "Чи підтримує Memos кількох користувачів?",
+					"a": "Так. У Memos дві ролі, Admin і User, а перший створений акаунт стає Admin. Решта реєструються за паролем або входять через OAuth2-провайдера єдиного входу, який команда вже використовує."
+				}
+			]
 		}
 	}
 }

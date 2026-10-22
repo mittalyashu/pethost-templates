@@ -1,6 +1,12 @@
 {
 	"name": "ntfy",
 	"emoji": "🔔",
+	"category": "monitoring",
+	"alternatives": [
+		"Pushover",
+		"Pushbullet"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "ntfy",
 		"port": 80
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "Push notifications to your phone and desktop from scripts, over HTTP",
-			"notes": "Sign in as admin with the admin password you gave. Topics are closed to everyone else: give a phone or a script its own user in the ntfy service’s terminal, with ntfy user add and ntfy access. In the ntfy app, add https://{host} as the server. Messages are kept in /var/lib/ntfy."
+			"notes": "Sign in as admin with the admin password you gave. Topics are closed to everyone else: give a phone or a script its own user in the ntfy service’s terminal, with ntfy user add and ntfy access. In the ntfy app, add https://{host} as the server. Messages are kept in /var/lib/ntfy.",
+			"sizing": "ntfy is very light: tens of megabytes of memory, and its message cache stays small.",
+			"summary": "Self-host ntfy, the open-source Pushover alternative: any script, cron job or monitor can push an alert to your phone or browser.",
+			"about": [
+				"ntfy is an open-source push notification service that people run instead of Pushover. A script, cron job or CI step sends one HTTP request to a topic, and every phone and browser subscribed to it shows the message. A notification can carry a priority from min to urgent, emoji tags, an attachment and up to three action buttons. Apps for Android, iOS and the browser receive them, and Uptime Kuma, Home Assistant and Healthchecks.io are among ntfy's official integrations.",
+				"People self-host it for privacy. The public ntfy.sh also publishes every message to Google's Firebase Cloud Messaging, and its free use has limits; on a server of your own, messages go nowhere else and you set the limits. The catch is the iPhone: iOS restricts background work, so instant delivery from a private server needs a relay through ntfy.sh, which receives only a message ID and a topic hash. Without it, notifications can arrive hours late."
+			],
+			"faq": [
+				{
+					"q": "Is ntfy free and open source?",
+					"a": "Yes. ntfy is dual-licensed under Apache 2.0 and GPLv2, and its server, web app and Android and iOS apps are open source. The public server at ntfy.sh is free without sign-up, with paid plans for higher limits."
+				},
+				{
+					"q": "ntfy vs Pushover: what is the difference?",
+					"a": "ntfy is open source and its server can run on your own machine. It also needs no account: on ntfy.sh, anyone who knows a topic's name can publish or subscribe, so the name works like a password."
+				},
+				{
+					"q": "How do I send a notification to ntfy with curl?",
+					"a": "POST or PUT the message to the topic's URL: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority and Tags go in headers, and a server with access control takes -u user:password or an access token."
+				},
+				{
+					"q": "Does ntfy support UnifiedPush?",
+					"a": "Yes. The ntfy Android app can act as a UnifiedPush distributor, so apps such as Element, Tusky and Fedilab receive their push messages through your ntfy server rather than Google's Firebase Cloud Messaging."
+				},
+				{
+					"q": "How do I make a self-hosted ntfy server private?",
+					"a": "Set auth-default-access to deny-all, create users with ntfy user add, and grant each one topics with ntfy access, for example ntfy access phil alerts rw. The Pethost template starts this way, with an admin user."
+				}
+			]
 		},
 		"de": {
 			"description": "Push-Benachrichtigungen per HTTP an Handy und Desktop, aus deinen Skripten",
-			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an. Für alle anderen sind die Topics geschlossen: Leg für ein Handy oder ein Skript einen eigenen Nutzer im Terminal des Service ntfy an, mit ntfy user add und ntfy access. Trag in der ntfy-App https://{host} als Server ein. Die Nachrichten bleiben in /var/lib/ntfy erhalten."
+			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an. Für alle anderen sind die Topics geschlossen: Leg für ein Handy oder ein Skript einen eigenen Nutzer im Terminal des Service ntfy an, mit ntfy user add und ntfy access. Trag in der ntfy-App https://{host} als Server ein. Die Nachrichten bleiben in /var/lib/ntfy erhalten.",
+			"sizing": "ntfy ist sehr leicht: Dutzende MB RAM, und sein Nachrichten-Cache bleibt klein.",
+			"summary": "ntfy selbst hosten: die Open-Source-Alternative zu Pushover. Jedes Skript, jeder Cronjob oder Monitor schickt einen Alert aufs Handy oder in den Browser.",
+			"about": [
+				"ntfy ist eine Open-Source-Lösung für Push-Benachrichtigungen, die viele statt Pushover nutzen. Ein Skript, ein Cronjob oder ein CI-Schritt schickt einen HTTP-Request an ein Topic, und alle Handys und Browser, die es abonniert haben, zeigen die Nachricht an. Eine Benachrichtigung kann eine Priorität von min bis urgent, Emoji-Tags, einen Anhang und bis zu drei Aktions-Buttons tragen. Empfangen werden sie von Apps für Android und iOS sowie im Browser, und Uptime Kuma, Home Assistant und Healthchecks.io gehören zu den offiziellen Integrationen von ntfy.",
+				"Viele hosten ntfy aus Datenschutzgründen selbst. Das öffentliche ntfy.sh gibt außerdem jede Nachricht an Firebase Cloud Messaging von Google weiter, und die kostenlose Nutzung hat Limits; auf einem eigenen Server gehen die Nachrichten nirgendwo anders hin, und du legst die Limits fest. Der Haken ist das iPhone: iOS schränkt Hintergrundarbeit ein, deshalb braucht die sofortige Zustellung von einem privaten Server ein Relay über ntfy.sh, das nur eine Nachrichten-ID und einen Topic-Hash erhält. Ohne es können Benachrichtigungen Stunden zu spät ankommen."
+			],
+			"faq": [
+				{
+					"q": "Ist ntfy kostenlos und Open Source?",
+					"a": "Ja. ntfy steht unter einer Doppellizenz, Apache 2.0 und GPLv2, und sein Server, die Web-App sowie die Android- und iOS-Apps sind Open Source. Der öffentliche Server unter ntfy.sh ist ohne Anmeldung kostenlos, mit kostenpflichtigen Tarifen für höhere Limits."
+				},
+				{
+					"q": "ntfy oder Pushover: Was ist der Unterschied?",
+					"a": "ntfy ist Open Source, und sein Server kann auf deiner eigenen Maschine laufen. Außerdem braucht es kein Konto: Auf ntfy.sh kann, wer den Namen eines Topics kennt, dorthin senden oder es abonnieren, der Name wirkt also wie ein Passwort."
+				},
+				{
+					"q": "Wie schicke ich mit curl eine Benachrichtigung an ntfy?",
+					"a": "Schick die Nachricht per POST oder PUT an die URL des Topics: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority und Tags gehen als Header mit, und ein Server mit Zugriffskontrolle nimmt -u user:password oder ein Access-Token."
+				},
+				{
+					"q": "Unterstützt ntfy UnifiedPush?",
+					"a": "Ja. Die ntfy-App für Android kann als UnifiedPush-Distributor arbeiten, sodass Apps wie Element, Tusky und Fedilab ihre Push-Nachrichten über deinen ntfy-Server erhalten statt über Googles Firebase Cloud Messaging."
+				},
+				{
+					"q": "Wie mache ich einen selbst gehosteten ntfy-Server privat?",
+					"a": "Setze auth-default-access auf deny-all, lege Nutzer mit ntfy user add an und gib jedem davon mit ntfy access Zugriff auf Topics, zum Beispiel ntfy access phil alerts rw. Die Pethost-Vorlage startet so, mit einem Admin-Nutzer."
+				}
+			]
 		},
 		"es": {
 			"description": "Notificaciones push al móvil y al escritorio desde tus scripts, por HTTP",
-			"notes": "Entra como admin con la contraseña de administrador que indicaste. Los temas están cerrados para los demás: crea un usuario propio para un móvil o un script en el shell del servicio ntfy, con ntfy user add y ntfy access. En la app de ntfy, agrega https://{host} como servidor. Los mensajes se conservan en /var/lib/ntfy."
+			"notes": "Entra como admin con la contraseña de administrador que indicaste. Los temas están cerrados para los demás: crea un usuario propio para un móvil o un script en el shell del servicio ntfy, con ntfy user add y ntfy access. En la app de ntfy, agrega https://{host} como servidor. Los mensajes se conservan en /var/lib/ntfy.",
+			"sizing": "ntfy es muy ligero: decenas de MB de memoria, y su caché de mensajes se mantiene pequeña.",
+			"summary": "Autoaloja ntfy, la alternativa de código abierto a Pushover: cualquier script, cron job o monitor puede enviar una alerta a tu móvil o navegador.",
+			"about": [
+				"ntfy es un servicio de notificaciones push de código abierto que mucha gente usa en lugar de Pushover. Un script, un cron job o un paso de CI envía una petición HTTP a un tema, y todos los móviles y navegadores suscritos a él muestran el mensaje. Una notificación puede llevar una prioridad de min a urgent, etiquetas con emojis, un adjunto y hasta tres botones de acción. Las reciben apps para Android, iOS y el navegador, y Uptime Kuma, Home Assistant y Healthchecks.io están entre las integraciones oficiales de ntfy.",
+				"Mucha gente lo autoaloja por privacidad. El ntfy.sh público además publica cada mensaje en Firebase Cloud Messaging de Google, y su uso gratuito tiene límites; en un servidor propio, los mensajes no van a ningún otro sitio y los límites los pones tú. El inconveniente es el iPhone: iOS restringe el trabajo en segundo plano, así que para recibir los mensajes al instante desde un servidor privado hace falta un relé a través de ntfy.sh, que solo recibe un ID de mensaje y un hash del tema. Sin él, las notificaciones pueden llegar con horas de retraso."
+			],
+			"faq": [
+				{
+					"q": "¿ntfy es gratis y de código abierto?",
+					"a": "Sí. ntfy tiene doble licencia, Apache 2.0 y GPLv2, y su servidor, su app web y sus apps para Android e iOS son de código abierto. El servidor público de ntfy.sh es gratuito y no pide registro, con planes de pago para límites más altos."
+				},
+				{
+					"q": "ntfy frente a Pushover: ¿en qué se diferencian?",
+					"a": "ntfy es de código abierto y su servidor puede ejecutarse en tu propia máquina. Además no necesita cuenta: en ntfy.sh, cualquiera que conozca el nombre de un tema puede publicar en él o suscribirse, así que el nombre funciona como una contraseña."
+				},
+				{
+					"q": "¿Cómo envío una notificación a ntfy con curl?",
+					"a": "Envía el mensaje con POST o PUT a la URL del tema: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority y Tags van en headers, y un servidor con control de acceso acepta -u user:password o un token de acceso."
+				},
+				{
+					"q": "¿ntfy es compatible con UnifiedPush?",
+					"a": "Sí. La app de ntfy para Android puede actuar como distribuidor de UnifiedPush, de modo que apps como Element, Tusky y Fedilab reciben sus mensajes push a través de tu servidor ntfy en lugar del Firebase Cloud Messaging de Google."
+				},
+				{
+					"q": "¿Cómo hago privado un servidor ntfy autoalojado?",
+					"a": "Pon auth-default-access en deny-all, crea usuarios con ntfy user add y da a cada uno acceso a sus temas con ntfy access, por ejemplo ntfy access phil alerts rw. La plantilla de Pethost arranca así, con un usuario admin."
+				}
+			]
 		},
 		"fr": {
 			"description": "Notifications push vers le téléphone et le bureau depuis vos scripts, par HTTP",
-			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué. Les topics sont fermés à tous les autres : créez un utilisateur pour un téléphone ou un script dans le terminal du service ntfy, avec ntfy user add et ntfy access. Dans l’app ntfy, ajoutez https://{host} comme serveur. Les messages sont conservés dans /var/lib/ntfy."
+			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué. Les topics sont fermés à tous les autres : créez un utilisateur pour un téléphone ou un script dans le terminal du service ntfy, avec ntfy user add et ntfy access. Dans l’app ntfy, ajoutez https://{host} comme serveur. Les messages sont conservés dans /var/lib/ntfy.",
+			"sizing": "ntfy est très léger : quelques dizaines de MB de mémoire, et son cache de messages reste petit.",
+			"summary": "Auto-hébergez ntfy, l’alternative open source à Pushover : script, tâche cron ou outil de monitoring, tout peut alerter votre téléphone ou navigateur.",
+			"about": [
+				"ntfy est un service de notifications push open source que beaucoup utilisent à la place de Pushover. Un script, une tâche cron ou une étape de CI envoie une requête HTTP à un topic, et tous les téléphones et navigateurs abonnés affichent le message. Une notification peut porter une priorité de min à urgent, des tags emoji, une pièce jointe et jusqu’à trois boutons d’action. Des applications pour Android, iOS et le navigateur les reçoivent, et Uptime Kuma, Home Assistant et Healthchecks.io font partie des intégrations officielles de ntfy.",
+				"Beaucoup de gens l’auto-hébergent pour la confidentialité. Le ntfy.sh public publie en plus chaque message sur Firebase Cloud Messaging de Google, et son usage gratuit a des limites ; sur un serveur à vous, les messages ne vont nulle part ailleurs et vous fixez les limites. Le hic, c’est l’iPhone : iOS restreint le travail en arrière-plan, donc une livraison instantanée depuis un serveur privé passe par un relais via ntfy.sh, qui ne reçoit qu’un ID de message et un hash du topic. Sans lui, les notifications peuvent arriver avec des heures de retard."
+			],
+			"faq": [
+				{
+					"q": "ntfy est-il gratuit et open source ?",
+					"a": "Oui. ntfy est sous double licence, Apache 2.0 et GPLv2, et son serveur, son application web et ses applications Android et iOS sont open source. Le serveur public sur ntfy.sh est gratuit et sans inscription, avec des offres payantes pour des limites plus élevées."
+				},
+				{
+					"q": "ntfy ou Pushover : quelle différence ?",
+					"a": "ntfy est open source et son serveur peut tourner sur votre propre machine. Il n’exige pas non plus de compte : sur ntfy.sh, toute personne qui connaît le nom d’un topic peut y publier ou s’y abonner, si bien que le nom joue le rôle d’un mot de passe."
+				},
+				{
+					"q": "Comment envoyer une notification à ntfy avec curl ?",
+					"a": "Envoyez le message en POST ou en PUT à l’URL du topic : curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority et Tags passent dans des en-têtes, et un serveur avec contrôle d’accès accepte -u user:password ou un token d’accès."
+				},
+				{
+					"q": "ntfy prend-il en charge UnifiedPush ?",
+					"a": "Oui. L’application ntfy pour Android peut servir de distributeur UnifiedPush, si bien que des applications comme Element, Tusky et Fedilab reçoivent leurs messages push par votre serveur ntfy plutôt que par Firebase Cloud Messaging de Google."
+				},
+				{
+					"q": "Comment rendre privé un serveur ntfy auto-hébergé ?",
+					"a": "Mettez auth-default-access sur deny-all, créez des utilisateurs avec ntfy user add et donnez à chacun l’accès à ses topics avec ntfy access, par exemple ntfy access phil alerts rw. Le template Pethost démarre ainsi, avec un utilisateur admin."
+				}
+			]
 		},
 		"pl": {
 			"description": "Powiadomienia push na telefon i pulpit z twoich skryptów, przez HTTP",
-			"notes": "Zaloguj się jako admin hasłem administratora, które podano. Dla wszystkich innych tematy są zamknięte: utwórz osobnego użytkownika dla telefonu lub skryptu w terminalu usługi ntfy, poleceniami ntfy user add i ntfy access. W aplikacji ntfy dodaj https://{host} jako serwer. Wiadomości zostają w /var/lib/ntfy."
+			"notes": "Zaloguj się jako admin hasłem administratora, które podano. Dla wszystkich innych tematy są zamknięte: utwórz osobnego użytkownika dla telefonu lub skryptu w terminalu usługi ntfy, poleceniami ntfy user add i ntfy access. W aplikacji ntfy dodaj https://{host} jako serwer. Wiadomości zostają w /var/lib/ntfy.",
+			"sizing": "ntfy ma bardzo małe wymagania: dziesiątki MB pamięci, a cache wiadomości zostaje niewielki.",
+			"summary": "Hostuj ntfy u siebie, alternatywę open source dla Pushovera: skrypt, zadanie cron czy narzędzie do monitoringu wyśle alert na telefon lub do przeglądarki.",
+			"about": [
+				"ntfy to rozwiązanie open source do powiadomień push, z którego wiele osób korzysta zamiast Pushovera. Skrypt, zadanie cron lub krok CI wysyła żądanie HTTP do tematu, a wszystkie telefony i przeglądarki, które go subskrybują, pokazują wiadomość. Powiadomienie może mieć priorytet od min do urgent, tagi z emoji, załącznik i do trzech przycisków akcji. Odbierają je aplikacje na Androida i iOS oraz przeglądarka, a Uptime Kuma, Home Assistant i Healthchecks.io należą do oficjalnych integracji ntfy.",
+				"Wiele osób hostuje ntfy u siebie ze względu na prywatność. Publiczny ntfy.sh dodatkowo publikuje każdą wiadomość w Firebase Cloud Messaging od Google, a darmowe korzystanie ma limity; na własnym serwerze wiadomości nie trafiają nigdzie indziej, a limity ustalasz ty. Haczyk to iPhone: iOS ogranicza pracę w tle, więc natychmiastowe dostarczanie z prywatnego serwera wymaga przekaźnika przez ntfy.sh, który dostaje tylko ID wiadomości i hash tematu. Bez niego powiadomienia mogą przychodzić z opóźnieniem sięgającym godzin."
+			],
+			"faq": [
+				{
+					"q": "Czy ntfy jest darmowy i open source?",
+					"a": "Tak. ntfy ma podwójną licencję, Apache 2.0 i GPLv2, a jego serwer, aplikacja webowa oraz aplikacje na Androida i iOS są open source. Publiczny serwer ntfy.sh jest darmowy i bez rejestracji, a płatne plany dają wyższe limity."
+				},
+				{
+					"q": "ntfy czy Pushover: jaka jest różnica?",
+					"a": "ntfy jest open source, a jego serwer możesz uruchomić na własnej maszynie. Nie wymaga też konta: na ntfy.sh każdy, kto zna nazwę tematu, może wysyłać do niego wiadomości albo go subskrybować, więc nazwa działa jak hasło."
+				},
+				{
+					"q": "Jak wysłać powiadomienie do ntfy za pomocą curl?",
+					"a": "Wyślij wiadomość metodą POST lub PUT na adres tematu: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority i Tags podajesz w nagłówkach, a serwer z kontrolą dostępu przyjmuje -u user:password albo token dostępu."
+				},
+				{
+					"q": "Czy ntfy obsługuje UnifiedPush?",
+					"a": "Tak. Aplikacja ntfy na Androida może działać jako dystrybutor UnifiedPush, więc aplikacje takie jak Element, Tusky i Fedilab dostają wiadomości push przez twój serwer ntfy, a nie przez Firebase Cloud Messaging od Google."
+				},
+				{
+					"q": "Jak zrobić prywatny serwer ntfy hostowany u siebie?",
+					"a": "Ustaw auth-default-access na deny-all, utwórz użytkowników poleceniem ntfy user add i każdemu przyznaj dostęp do tematów poleceniem ntfy access, na przykład ntfy access phil alerts rw. Szablon Pethost startuje właśnie tak, z użytkownikiem admin."
+				}
+			]
 		},
 		"pt": {
 			"description": "Notificações push no celular e no desktop a partir dos seus scripts, por HTTP",
-			"notes": "Entre como admin com a senha de administrador que você informou. Os tópicos ficam fechados para os demais: crie um usuário para um celular ou um script no terminal do serviço ntfy, com ntfy user add e ntfy access. No app ntfy, adicione https://{host} como servidor. As mensagens ficam guardadas em /var/lib/ntfy."
+			"notes": "Entre como admin com a senha de administrador que você informou. Os tópicos ficam fechados para os demais: crie um usuário para um celular ou um script no terminal do serviço ntfy, com ntfy user add e ntfy access. No app ntfy, adicione https://{host} como servidor. As mensagens ficam guardadas em /var/lib/ntfy.",
+			"sizing": "ntfy é muito leve: dezenas de MB de memória, e o cache de mensagens continua pequeno.",
+			"summary": "Auto-hospede o ntfy, a alternativa de código aberto ao Pushover: qualquer script, cron job ou monitor envia um alerta para seu celular ou navegador.",
+			"about": [
+				"O ntfy é um serviço de notificações push de código aberto que muita gente usa no lugar do Pushover. Um script, um cron job ou uma etapa de CI envia uma requisição HTTP para um tópico, e todo celular e navegador inscrito nele mostra a mensagem. Uma notificação pode levar uma prioridade de min a urgent, tags de emoji, um anexo e até três botões de ação. Apps para Android, iOS e o navegador as recebem, e Uptime Kuma, Home Assistant e Healthchecks.io estão entre as integrações oficiais do ntfy.",
+				"Muita gente hospeda o ntfy por conta própria por causa da privacidade. O ntfy.sh público também publica cada mensagem no Firebase Cloud Messaging do Google, e o uso gratuito tem limites; em um servidor próprio, as mensagens não vão para outro lugar e você define os limites. O porém é o iPhone: o iOS restringe o trabalho em segundo plano, então a entrega instantânea a partir de um servidor privado precisa de um relay pelo ntfy.sh, que recebe só um ID de mensagem e um hash do tópico. Sem ele, as notificações podem chegar com horas de atraso."
+			],
+			"faq": [
+				{
+					"q": "O ntfy é gratuito e de código aberto?",
+					"a": "Sim. O ntfy tem licença dupla, Apache 2.0 e GPLv2, e o servidor, o app web e os apps para Android e iOS são de código aberto. O servidor público em ntfy.sh é gratuito e não exige cadastro, com planos pagos para limites maiores."
+				},
+				{
+					"q": "ntfy ou Pushover: qual é a diferença?",
+					"a": "O ntfy é de código aberto e o servidor dele pode rodar na sua própria máquina. Ele também não precisa de conta: no ntfy.sh, qualquer pessoa que saiba o nome de um tópico pode publicar nele ou se inscrever, então o nome funciona como uma senha."
+				},
+				{
+					"q": "Como envio uma notificação para o ntfy com curl?",
+					"a": "Envie a mensagem com POST ou PUT para a URL do tópico: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority e Tags vão em headers, e um servidor com controle de acesso aceita -u user:password ou um token de acesso."
+				},
+				{
+					"q": "O ntfy é compatível com UnifiedPush?",
+					"a": "Sim. O app do ntfy para Android pode atuar como distribuidor do UnifiedPush, então apps como Element, Tusky e Fedilab recebem as mensagens push pelo seu servidor ntfy, e não pelo Firebase Cloud Messaging do Google."
+				},
+				{
+					"q": "Como deixar privado um servidor ntfy auto-hospedado?",
+					"a": "Defina auth-default-access como deny-all, crie usuários com ntfy user add e dê a cada um acesso aos tópicos dele com ntfy access, por exemplo ntfy access phil alerts rw. O template do Pethost começa assim, com um usuário admin."
+				}
+			]
 		},
 		"ru": {
 			"description": "Push-уведомления на телефон и компьютер из ваших скриптов, по HTTP",
-			"notes": "Войдите как admin с паролем администратора, который вы указали. Для всех остальных топики закрыты: заведите отдельного пользователя для телефона или скрипта в терминале сервиса ntfy, командами ntfy user add и ntfy access. В приложении ntfy добавьте https://{host} как сервер. Сообщения хранятся в /var/lib/ntfy."
+			"notes": "Войдите как admin с паролем администратора, который вы указали. Для всех остальных топики закрыты: заведите отдельного пользователя для телефона или скрипта в терминале сервиса ntfy, командами ntfy user add и ntfy access. В приложении ntfy добавьте https://{host} как сервер. Сообщения хранятся в /var/lib/ntfy.",
+			"sizing": "ntfy: совсем небольшие требования — десятки MB памяти, а кеш сообщений остается небольшим.",
+			"summary": "Self-hosted ntfy: open source альтернатива Pushover. Любой скрипт, cron-задача или система мониторинга отправит оповещение на телефон или в браузер.",
+			"about": [
+				"ntfy — это open source система push-уведомлений, которую многие используют вместо Pushover. Скрипт, cron-задача или шаг CI отправляет HTTP-запрос в топик, и каждый телефон и браузер, подписанные на него, показывают сообщение. Уведомление может нести приоритет от min до urgent, теги с эмодзи, вложение и до трех кнопок действий. Принимают их приложения для Android, iOS и браузер, а Uptime Kuma, Home Assistant и Healthchecks.io входят в официальные интеграции ntfy.",
+				"Self-hosted ntfy выбирают ради приватности. Публичный ntfy.sh еще и публикует каждое сообщение в Google Firebase Cloud Messaging, а бесплатное использование имеет лимиты; на собственном сервере сообщения никуда больше не уходят, а лимиты задаете вы. Подвох в iPhone: iOS ограничивает фоновую работу, поэтому мгновенная доставка с приватного сервера требует релея через ntfy.sh, который получает только ID сообщения и хеш топика. Без него уведомления могут приходить с опозданием на часы."
+			],
+			"faq": [
+				{
+					"q": "ntfy бесплатный и с открытым исходным кодом?",
+					"a": "Да. ntfy выпускается под двумя лицензиями, Apache 2.0 и GPLv2, а его сервер, веб-приложение и приложения для Android и iOS имеют открытый код. Публичный сервер ntfy.sh бесплатен и не требует регистрации, а повышенные лимиты дают платные тарифы."
+				},
+				{
+					"q": "ntfy или Pushover: в чем разница?",
+					"a": "У ntfy открытый код, и его сервер можно запустить на вашей собственной машине. Кроме того, ему не нужен аккаунт: на ntfy.sh любой, кто знает название топика, может публиковать в него сообщения или подписаться на него, так что название работает как пароль."
+				},
+				{
+					"q": "Как отправить уведомление в ntfy через curl?",
+					"a": "Отправьте сообщение методом POST или PUT на URL топика: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority и Tags передаются в заголовках, а сервер с контролем доступа принимает -u user:password или токен доступа."
+				},
+				{
+					"q": "Поддерживает ли ntfy UnifiedPush?",
+					"a": "Да. Приложение ntfy для Android может работать как дистрибьютор UnifiedPush, поэтому приложения вроде Element, Tusky и Fedilab получают push-сообщения через ваш сервер ntfy, а не через Google Firebase Cloud Messaging."
+				},
+				{
+					"q": "Как сделать self-hosted сервер ntfy приватным?",
+					"a": "Задайте для auth-default-access значение deny-all, создайте пользователей командой ntfy user add и дайте каждому доступ к нужным топикам командой ntfy access, например ntfy access phil alerts rw. Шаблон Pethost запускается именно так, с пользователем admin."
+				}
+			]
 		},
 		"uk": {
 			"description": "Push-сповіщення на телефон і комп’ютер із ваших скриптів, через HTTP",
-			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали. Для всіх інших топіки закриті: створіть окремого користувача для телефона чи скрипта в терміналі сервісу ntfy, командами ntfy user add і ntfy access. У застосунку ntfy додайте https://{host} як сервер. Повідомлення зберігаються в /var/lib/ntfy."
+			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали. Для всіх інших топіки закриті: створіть окремого користувача для телефона чи скрипта в терміналі сервісу ntfy, командами ntfy user add і ntfy access. У застосунку ntfy додайте https://{host} як сервер. Повідомлення зберігаються в /var/lib/ntfy.",
+			"sizing": "ntfy має дуже скромні вимоги: десятки MB пам’яті, а кеш повідомлень лишається невеликим.",
+			"summary": "Self-hosted ntfy: альтернатива Pushover із відкритим кодом. Скрипт, cron-завдання чи система моніторингу надішлуть сповіщення на телефон або в браузер.",
+			"about": [
+				"ntfy — це система push-сповіщень із відкритим кодом, яку багато хто використовує замість Pushover. Скрипт, cron-завдання чи крок CI надсилає HTTP-запит у топік, і кожен телефон та браузер, підписані на нього, показують повідомлення. Сповіщення може мати пріоритет від min до urgent, теги з емодзі, вкладення й до трьох кнопок дій. Приймають їх застосунки для Android, iOS і браузер, а Uptime Kuma, Home Assistant та Healthchecks.io входять до офіційних інтеграцій ntfy.",
+				"Self-hosted ntfy обирають заради приватності. Публічний ntfy.sh ще й публікує кожне повідомлення в Google Firebase Cloud Messaging, а безкоштовне використання має ліміти; на власному сервері повідомлення нікуди більше не потрапляють, а ліміти задаєте ви. Підступ в iPhone: iOS обмежує фонову роботу, тож миттєва доставка з приватного сервера потребує релея через ntfy.sh, який отримує лише ID повідомлення й хеш топіка. Без нього сповіщення можуть приходити із запізненням на години."
+			],
+			"faq": [
+				{
+					"q": "Чи ntfy безкоштовний і з відкритим кодом?",
+					"a": "Так. ntfy має подвійну ліцензію, Apache 2.0 і GPLv2, а його сервер, вебзастосунок і застосунки для Android та iOS мають відкритий код. Публічний сервер ntfy.sh безкоштовний і не потребує реєстрації, а вищі ліміти дають платні тарифи."
+				},
+				{
+					"q": "ntfy чи Pushover: у чому різниця?",
+					"a": "ntfy має відкритий код, а його сервер можна запустити на вашій власній машині. Йому також не потрібен акаунт: на ntfy.sh кожен, хто знає назву топіка, може публікувати в нього повідомлення або підписатися на нього, тож назва працює як пароль."
+				},
+				{
+					"q": "Як надіслати сповіщення в ntfy через curl?",
+					"a": "Надішліть повідомлення методом POST або PUT на URL топіка: curl -d \"Backup done\" https://ntfy.example.com/backups. Title, Priority і Tags передаються в заголовках, а сервер із контролем доступу приймає -u user:password або токен доступу."
+				},
+				{
+					"q": "Чи підтримує ntfy UnifiedPush?",
+					"a": "Так. Застосунок ntfy для Android може працювати як дистриб’ютор UnifiedPush, тож застосунки на кшталт Element, Tusky і Fedilab отримують push-повідомлення через ваш сервер ntfy, а не через Google Firebase Cloud Messaging."
+				},
+				{
+					"q": "Як зробити self-hosted сервер ntfy приватним?",
+					"a": "Задайте для auth-default-access значення deny-all, створіть користувачів командою ntfy user add і дайте кожному доступ до потрібних топіків командою ntfy access, наприклад ntfy access phil alerts rw. Шаблон Pethost запускається саме так, із користувачем admin."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,13 @@
 {
 	"name": "Spree Commerce",
 	"emoji": "🛒",
+	"category": "websites",
+	"alternatives": [
+		"Shopify",
+		"BigCommerce",
+		"commercetools"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "spree",
 		"port": 3000
@@ -42,35 +49,259 @@
 	"texts": {
 		"en": {
 			"description": "An open-source e-commerce platform: products, orders, payments and a headless API for any storefront",
-			"notes": "Sign in to https://{host}/admin with the email and the admin password you gave: Spree makes that admin at the first start. Products, payment methods and shipping are set up there."
+			"notes": "Sign in to https://{host}/admin with the email and the admin password you gave: Spree makes that admin at the first start. Products, payment methods and shipping are set up there.",
+			"sizing": "Spree Commerce is moderate: about 650 MB with its Postgres, and product images are what grow on disk.",
+			"summary": "Spree Commerce is an open-source headless e-commerce platform and Shopify alternative. Self-host it with Docker Compose in one click.",
+			"about": [
+				"Spree Commerce is an open-source headless e-commerce platform that businesses run instead of Shopify. It is the back office of a shop: a catalog with variants, orders, payments, shipping, promotions and gift cards, all managed in its Admin Dashboard. Markets set the currency, language, payment methods and shipping for each country, and price lists with customer groups handle wholesale. Shoppers never see Spree itself: they buy through a storefront that calls its REST API.",
+				"People self-host it to own the code, the data and the checkout, with no fee taken from sales. The core is BSD 3-Clause and built on Ruby on Rails, so a developer can change any part of it. Spree suits a team building its own shop more than someone after a ready theme. The catch is that work: the storefront is a second app to deploy, and no email goes out until an SMTP server is set."
+			],
+			"faq": [
+				{
+					"q": "Is Spree Commerce free and open source?",
+					"a": "Yes. The core is under the BSD 3-Clause license, free to use and change, with no platform or transaction fees. A paid Enterprise Edition adds modules such as multi-tenant SaaS and SSO, plus SLA-backed support."
+				},
+				{
+					"q": "Does Spree come with a storefront?",
+					"a": "Not in its Docker image, which runs the Admin Dashboard and the REST API. Spree's open-source storefront is a separate Next.js app for Vercel, Docker or any Node.js host, or you build your own on the Store API."
+				},
+				{
+					"q": "Which payment providers does Spree support?",
+					"a": "Stripe, Adyen and PayPal, through official plugins that the stock Docker image already includes. With Stripe, the Next.js storefront also takes Apple Pay, Google Pay, Klarna and Affirm. Other gateways can be added with the Payment Provider SDK."
+				},
+				{
+					"q": "Can I import products into Spree from a CSV file?",
+					"a": "Yes. Import on the Products tab takes a CSV, maps its columns to Spree's fields and handles multi-variant products. Exporting the catalog, editing the file and importing it again updates products in bulk, matched by slug."
+				},
+				{
+					"q": "How do I add staff users to the Spree admin?",
+					"a": "In the admin's Users settings, Send Invitation emails a link with a role and an expiry date, and the person creates an account that opens the dashboard. The email goes out only once Spree has an SMTP server configured."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Open-Source-E-Commerce-Plattform: Produkte, Bestellungen, Zahlungen und eine Headless-API für jeden Storefront",
-			"notes": "Melde dich unter https://{host}/admin mit der angegebenen E-Mail und dem Admin-Passwort an: Spree legt diesen Admin beim ersten Start an. Dort richtest du Produkte, Zahlungsarten und Versand ein."
+			"notes": "Melde dich unter https://{host}/admin mit der angegebenen E-Mail und dem Admin-Passwort an: Spree legt diesen Admin beim ersten Start an. Dort richtest du Produkte, Zahlungsarten und Versand ein.",
+			"sizing": "Spree Commerce ist mittelschwer: etwa 650 MB mit Postgres, und auf der Disk wachsen vor allem Produktbilder.",
+			"summary": "Spree Commerce selbst hosten: Open-Source-Plattform für Headless-E-Commerce, eine Shopify-Alternative. Mit Docker Compose in einem Klick.",
+			"about": [
+				"Spree Commerce ist eine Open-Source-Plattform für Headless-E-Commerce, die Unternehmen statt Shopify betreiben. Sie ist das Back Office eines Shops: ein Katalog mit Varianten, Bestellungen, Zahlungen, Versand, Aktionen und Geschenkkarten, alles verwaltet im Admin Dashboard. Markets legen für jedes Land Währung, Sprache, Zahlungsarten und Versand fest, und Preislisten mit Kundengruppen decken den Großhandel ab. Wer einkauft, sieht Spree selbst nie: Gekauft wird über einen Storefront, der seine REST API aufruft.",
+				"Du hostest Spree selbst, damit Code, Daten und Checkout bei dir liegen, ohne Provision auf Verkäufe. Der Kern steht unter der BSD-3-Clause-Lizenz und basiert auf Ruby on Rails, sodass sich jeder Teil im Code ändern lässt. Spree passt eher zu einem Team, das seinen eigenen Shop baut, als zu jemandem, der ein fertiges Theme sucht. Der Haken ist genau diese Arbeit: Der Storefront ist eine zweite App, die du deployen musst, und keine E-Mail geht raus, bis ein SMTP-Server eingerichtet ist."
+			],
+			"faq": [
+				{
+					"q": "Ist Spree Commerce kostenlos und Open Source?",
+					"a": "Ja. Der Kern steht unter der BSD-3-Clause-Lizenz, ist frei nutzbar und änderbar und kommt ohne Plattform- und Transaktionsgebühren aus. Eine kostenpflichtige Enterprise Edition ergänzt Module wie Multi-Tenant-SaaS und SSO sowie Support mit SLA."
+				},
+				{
+					"q": "Bringt Spree einen Storefront mit?",
+					"a": "Nicht im Docker-Image, das das Admin Dashboard und die REST API ausführt. Der Open-Source-Storefront von Spree ist eine eigene Next.js-App für Vercel, Docker oder jeden Node.js-Host, oder du baust deinen eigenen auf der Store API."
+				},
+				{
+					"q": "Welche Zahlungsanbieter unterstützt Spree?",
+					"a": "Stripe, Adyen und PayPal, über offizielle Plugins, die das Standard-Docker-Image schon enthält. Mit Stripe nimmt der Next.js-Storefront auch Apple Pay, Google Pay, Klarna und Affirm an. Weitere Gateways lassen sich mit dem Payment Provider SDK ergänzen."
+				},
+				{
+					"q": "Kann ich Produkte per CSV-Datei in Spree importieren?",
+					"a": "Ja. „Import“ im Tab „Products“ nimmt eine CSV-Datei entgegen, ordnet ihre Spalten den Feldern von Spree zu und verarbeitet Produkte mit mehreren Varianten. Wer den Katalog exportiert, die Datei bearbeitet und wieder importiert, aktualisiert Produkte gesammelt; zugeordnet wird über den Slug."
+				},
+				{
+					"q": "Wie füge ich im Spree-Admin Teammitglieder hinzu?",
+					"a": "In den Einstellungen „Users“ des Admins verschickt „Send Invitation“ per E-Mail einen Link mit einer Rolle und einem Ablaufdatum, und die Person legt ein Konto an, mit dem sie das Dashboard öffnet. Die E-Mail geht erst raus, wenn in Spree ein SMTP-Server eingerichtet ist."
+				}
+			]
 		},
 		"es": {
 			"description": "Una plataforma de comercio electrónico de código abierto: productos, pedidos, pagos y una API headless para cualquier tienda",
-			"notes": "Entra en https://{host}/admin con el correo y la contraseña de administrador que indicaste: Spree crea ese administrador en el primer arranque. Ahí se configuran los productos, los métodos de pago y los envíos."
+			"notes": "Entra en https://{host}/admin con el correo y la contraseña de administrador que indicaste: Spree crea ese administrador en el primer arranque. Ahí se configuran los productos, los métodos de pago y los envíos.",
+			"sizing": "Spree Commerce es moderado: unos 650 MB con su Postgres, y lo que crece en disco son las imágenes de los productos.",
+			"summary": "Autoaloja Spree Commerce, plataforma de comercio electrónico headless de código abierto y alternativa a Shopify. Con Docker Compose en un clic.",
+			"about": [
+				"Spree Commerce es una plataforma de comercio electrónico headless de código abierto que las empresas usan en lugar de Shopify. Es el back office de una tienda: un catálogo con variantes, pedidos, pagos, envíos, promociones y tarjetas regalo, todo administrado desde el Admin Dashboard. Los Markets definen la moneda, el idioma, los métodos de pago y los envíos de cada país, y las listas de precios con grupos de clientes resuelven la venta mayorista. Los compradores nunca ven Spree: compran a través de un storefront que llama a su API REST.",
+				"Autoalojas Spree para tener en tus manos el código, los datos y el checkout, sin comisión sobre las ventas. El núcleo tiene licencia BSD 3-Clause y está hecho con Ruby on Rails, así que un desarrollador puede cambiar cualquiera de sus partes. Spree encaja mejor con un equipo que construye su propia tienda que con quien busca un tema ya hecho. El inconveniente es ese trabajo: el storefront es una segunda app que hay que desplegar, y no sale ningún correo hasta que se configura un servidor SMTP."
+			],
+			"faq": [
+				{
+					"q": "¿Spree Commerce es gratis y de código abierto?",
+					"a": "Sí. El núcleo tiene licencia BSD 3-Clause, se puede usar y modificar libremente y no cobra tarifas de plataforma ni de transacción. Una Enterprise Edition de pago agrega módulos como SaaS multi-tenant y SSO, además de soporte con SLA."
+				},
+				{
+					"q": "¿Spree incluye un storefront?",
+					"a": "No en su imagen de Docker, que ejecuta el Admin Dashboard y la API REST. El storefront de código abierto de Spree es una app Next.js aparte, para Vercel, Docker o cualquier host con Node.js, o puedes crear el tuyo sobre la Store API."
+				},
+				{
+					"q": "¿Qué proveedores de pago admite Spree?",
+					"a": "Stripe, Adyen y PayPal, mediante plugins oficiales que la imagen de Docker estándar ya incluye. Con Stripe, el storefront Next.js también acepta Apple Pay, Google Pay, Klarna y Affirm. Se pueden agregar otras pasarelas con el Payment Provider SDK."
+				},
+				{
+					"q": "¿Puedo importar productos a Spree desde un archivo CSV?",
+					"a": "Sí. “Import”, en la pestaña “Products”, toma un CSV, asigna sus columnas a los campos de Spree y maneja productos con varias variantes. Exportar el catálogo, editar el archivo e importarlo de nuevo actualiza productos en bloque, y se identifican por el slug."
+				},
+				{
+					"q": "¿Cómo agrego miembros del equipo al admin de Spree?",
+					"a": "En los ajustes “Users” del admin, “Send Invitation” envía por correo un enlace con un rol y una fecha de expiración, y la persona crea una cuenta con la que abre el panel. El correo solo sale cuando Spree tiene un servidor SMTP configurado."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une plateforme d’e-commerce open source : produits, commandes, paiements et une API headless pour n’importe quelle vitrine",
-			"notes": "Connectez-vous à https://{host}/admin avec l’e-mail et le mot de passe administrateur indiqués : Spree crée cet administrateur au premier démarrage. Les produits, les moyens de paiement et la livraison s’y configurent."
+			"notes": "Connectez-vous à https://{host}/admin avec l’e-mail et le mot de passe administrateur indiqués : Spree crée cet administrateur au premier démarrage. Les produits, les moyens de paiement et la livraison s’y configurent.",
+			"sizing": "Spree Commerce est modéré : environ 650 MB avec son Postgres, et ce sont les images de produits qui grossissent sur le disque.",
+			"summary": "Auto-hébergez Spree Commerce, la plateforme e-commerce headless open source, une alternative à Shopify. Avec Docker Compose, en un clic.",
+			"about": [
+				"Spree Commerce est une plateforme d’e-commerce headless open source que des entreprises utilisent à la place de Shopify. C’est le back-office d’une boutique : un catalogue avec variantes, des commandes, des paiements, la livraison, des promotions et des cartes cadeaux, le tout géré dans son Admin Dashboard. Les Markets définissent la devise, la langue, les moyens de paiement et la livraison de chaque pays, et des listes de prix avec des groupes de clients gèrent la vente en gros. Les acheteurs ne voient jamais Spree : ils achètent via une vitrine qui appelle son API REST.",
+				"Vous auto-hébergez Spree pour garder le code, les données et le tunnel de commande entre vos mains, sans commission sur les ventes. Le noyau est sous licence BSD 3-Clause et construit sur Ruby on Rails, donc un développeur peut modifier n’importe quelle partie. Spree convient mieux à une équipe qui construit sa propre boutique qu’à quelqu’un qui veut un thème tout prêt. Le hic, c’est ce travail : la vitrine est une seconde application à déployer, et aucun e-mail ne part tant qu’un serveur SMTP n’est pas configuré."
+			],
+			"faq": [
+				{
+					"q": "Spree Commerce est-il gratuit et open source ?",
+					"a": "Oui. Le noyau est sous licence BSD 3-Clause, libre d’utilisation et de modification, sans frais de plateforme ni de transaction. Une Enterprise Edition payante ajoute des modules comme le SaaS multi-tenant et le SSO, ainsi qu’un support avec SLA."
+				},
+				{
+					"q": "Spree est-il livré avec une vitrine ?",
+					"a": "Pas dans son image Docker, qui exécute l’Admin Dashboard et l’API REST. La vitrine open source de Spree est une application Next.js à part, pour Vercel, Docker ou n’importe quel hôte Node.js, ou vous construisez la vôtre sur la Store API."
+				},
+				{
+					"q": "Quels prestataires de paiement Spree prend-il en charge ?",
+					"a": "Stripe, Adyen et PayPal, grâce à des plugins officiels que l’image Docker standard inclut déjà. Avec Stripe, la vitrine Next.js accepte aussi Apple Pay, Google Pay, Klarna et Affirm. D’autres passerelles peuvent s’ajouter avec le Payment Provider SDK."
+				},
+				{
+					"q": "Puis-je importer des produits dans Spree depuis un fichier CSV ?",
+					"a": "Oui. « Import », dans l’onglet « Products », accepte un CSV, associe ses colonnes aux champs de Spree et gère les produits à plusieurs variantes. En exportant le catalogue, en modifiant le fichier puis en le réimportant, vous mettez à jour des produits en masse, repérés par leur slug."
+				},
+				{
+					"q": "Comment ajouter des membres de l’équipe à l’admin de Spree ?",
+					"a": "Dans les paramètres « Users » de l’admin, « Send Invitation » envoie par e-mail un lien avec un rôle et une date d’expiration, et la personne crée un compte qui ouvre le tableau de bord. L’e-mail ne part qu’une fois un serveur SMTP configuré dans Spree."
+				}
+			]
 		},
 		"pl": {
 			"description": "Otwartoźródłowa platforma e-commerce: produkty, zamówienia, płatności i headless API dla dowolnego sklepu",
-			"notes": "Zaloguj się na https://{host}/admin adresem e-mail i hasłem administratora, które podano: Spree tworzy tego administratora przy pierwszym starcie. Tam ustawia się produkty, metody płatności i wysyłkę."
+			"notes": "Zaloguj się na https://{host}/admin adresem e-mail i hasłem administratora, które podano: Spree tworzy tego administratora przy pierwszym starcie. Tam ustawia się produkty, metody płatności i wysyłkę.",
+			"sizing": "Spree Commerce ma średnie wymagania: około 650 MB z Postgresem, a dysk zapełniają zdjęcia produktów.",
+			"summary": "Hostuj u siebie Spree Commerce, platformę headless e-commerce open source i alternatywę dla Shopify. Z Docker Compose jednym kliknięciem.",
+			"about": [
+				"Spree Commerce to platforma headless e-commerce open source, którą firmy uruchamiają zamiast Shopify. To zaplecze sklepu: katalog z wariantami, zamówienia, płatności, wysyłka, promocje i karty podarunkowe, wszystko zarządzane w Admin Dashboard. Markets ustawiają walutę, język, metody płatności i wysyłkę dla każdego kraju, a cenniki z grupami klientów obsługują sprzedaż hurtową. Kupujący nigdy nie widzą samego Spree: kupują przez storefront, który wywołuje jego REST API.",
+				"Spree hostujesz u siebie, żeby kod, dane i checkout zostały w twoich rękach, bez prowizji od sprzedaży. Rdzeń działa na licencji BSD 3-Clause i jest zbudowany na Ruby on Rails, więc programista może zmienić dowolną jego część. Spree pasuje bardziej do zespołu, który buduje własny sklep, niż do kogoś, kto szuka gotowego motywu. Haczyk to właśnie ta praca: storefront to druga aplikacja do wdrożenia, a żadna wiadomość e-mail nie wyjdzie, dopóki nie ustawisz serwera SMTP."
+			],
+			"faq": [
+				{
+					"q": "Czy Spree Commerce jest darmowy i open source?",
+					"a": "Tak. Rdzeń działa na licencji BSD 3-Clause, można go dowolnie używać i zmieniać, bez opłat platformowych i transakcyjnych. Płatna Enterprise Edition dodaje moduły takie jak multi-tenant SaaS i SSO oraz wsparcie objęte SLA."
+				},
+				{
+					"q": "Czy Spree ma własny storefront?",
+					"a": "Nie w obrazie Dockera, który uruchamia Admin Dashboard i REST API. Storefront Spree open source to osobna aplikacja Next.js, którą uruchomisz na Vercel, w Dockerze lub na dowolnym hoście z Node.js, albo zbudujesz własny na Store API."
+				},
+				{
+					"q": "Jakich dostawców płatności obsługuje Spree?",
+					"a": "Stripe, Adyen i PayPal, przez oficjalne pluginy, które standardowy obraz Dockera już zawiera. Ze Stripe storefront Next.js przyjmuje też Apple Pay, Google Pay, Klarna i Affirm. Inne bramki można dodać przez Payment Provider SDK."
+				},
+				{
+					"q": "Czy mogę zaimportować produkty do Spree z pliku CSV?",
+					"a": "Tak. „Import” w zakładce „Products” przyjmuje plik CSV, przypisuje jego kolumny do pól Spree i obsługuje produkty z wieloma wariantami. Wyeksportowanie katalogu, edycja pliku i ponowny import aktualizują produkty hurtowo, dopasowane po slugu."
+				},
+				{
+					"q": "Jak dodać członków zespołu do panelu admina Spree?",
+					"a": "W ustawieniach „Users” panelu admina „Send Invitation” wysyła e-mailem link z rolą i datą wygaśnięcia, a osoba zakłada konto, które otwiera dashboard. E-mail wychodzi dopiero wtedy, gdy w Spree skonfigurowano serwer SMTP."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma plataforma de e-commerce de código aberto: produtos, pedidos, pagamentos e uma API headless para qualquer loja",
-			"notes": "Entre em https://{host}/admin com o e-mail e a senha de administrador que você informou: o Spree cria esse administrador na primeira inicialização. Produtos, formas de pagamento e frete são configurados lá."
+			"notes": "Entre em https://{host}/admin com o e-mail e a senha de administrador que você informou: o Spree cria esse administrador na primeira inicialização. Produtos, formas de pagamento e frete são configurados lá.",
+			"sizing": "Spree Commerce é moderado: cerca de 650 MB com o Postgres, e o que cresce no disco são as imagens dos produtos.",
+			"summary": "Hospede o Spree Commerce por conta própria: plataforma de e-commerce headless de código aberto, alternativa à Shopify. Com Docker Compose, em um clique.",
+			"about": [
+				"O Spree Commerce é uma plataforma de e-commerce headless de código aberto que empresas usam no lugar da Shopify. Ele é o back office de uma loja: catálogo com variantes, pedidos, pagamentos, frete, promoções e cartões-presente, tudo gerenciado no Admin Dashboard. Os Markets definem moeda, idioma, formas de pagamento e frete de cada país, e listas de preços com grupos de clientes cuidam do atacado. Quem compra nunca vê o Spree em si: compra por um storefront que chama a REST API dele.",
+				"Você hospeda o Spree por conta própria para ter nas suas mãos o código, os dados e o checkout, sem comissão sobre as vendas. O núcleo usa a licença BSD 3-Clause e é feito em Ruby on Rails, então um desenvolvedor pode alterar qualquer parte dele. O Spree serve mais a uma equipe que monta a própria loja do que a quem quer um tema pronto. O porém é esse trabalho: o storefront é um segundo app para fazer deploy, e nenhum e-mail sai até que um servidor SMTP seja configurado."
+			],
+			"faq": [
+				{
+					"q": "O Spree Commerce é gratuito e de código aberto?",
+					"a": "Sim. O núcleo tem licença BSD 3-Clause, é livre para usar e alterar e não tem taxas de plataforma nem de transação. Uma Enterprise Edition paga adiciona módulos como SaaS multi-tenant e SSO, além de suporte com SLA."
+				},
+				{
+					"q": "O Spree vem com um storefront?",
+					"a": "Não na imagem Docker dele, que roda o Admin Dashboard e a REST API. O storefront de código aberto do Spree é um app Next.js separado, para Vercel, Docker ou qualquer host com Node.js, ou você cria o seu na Store API."
+				},
+				{
+					"q": "Quais provedores de pagamento o Spree suporta?",
+					"a": "Stripe, Adyen e PayPal, por meio de plugins oficiais que a imagem Docker padrão já inclui. Com o Stripe, o storefront em Next.js também aceita Apple Pay, Google Pay, Klarna e Affirm. Outros gateways podem ser adicionados com o Payment Provider SDK."
+				},
+				{
+					"q": "Posso importar produtos para o Spree de um arquivo CSV?",
+					"a": "Sim. O “Import” na aba “Products” recebe um CSV, mapeia as colunas dele para os campos do Spree e lida com produtos de várias variantes. Exportar o catálogo, editar o arquivo e importar de novo atualiza produtos em lote, identificados pelo slug."
+				},
+				{
+					"q": "Como adiciono membros da equipe ao admin do Spree?",
+					"a": "Nas configurações “Users” do admin, “Send Invitation” envia por e-mail um link com uma função e uma data de expiração, e a pessoa cria uma conta que abre o painel. O e-mail só sai depois que o Spree tem um servidor SMTP configurado."
+				}
+			]
 		},
 		"ru": {
 			"description": "Платформа электронной коммерции с открытым кодом: товары, заказы, платежи и headless API для любой витрины",
-			"notes": "Войдите на https://{host}/admin с почтой и паролем администратора, которые вы указали: Spree создаёт этого администратора при первом запуске. Там настраиваются товары, способы оплаты и доставка."
+			"notes": "Войдите на https://{host}/admin с почтой и паролем администратора, которые вы указали: Spree создаёт этого администратора при первом запуске. Там настраиваются товары, способы оплаты и доставка.",
+			"sizing": "Spree Commerce: умеренные требования — около 650 MB вместе с Postgres, а диск растет за счет картинок товаров.",
+			"summary": "Self-hosted Spree Commerce — headless e-commerce платформа с открытым кодом, альтернатива Shopify. Ставится через Docker Compose в один клик.",
+			"about": [
+				"Spree Commerce — это headless-платформа электронной коммерции с открытым кодом, которую компании запускают вместо Shopify. Это бэк-офис магазина: каталог с вариантами, заказы, платежи, доставка, акции и подарочные карты, и управлять всем этим можно в Admin Dashboard. Markets задают валюту, язык, способы оплаты и доставку для каждой страны, а прайс-листы с группами клиентов закрывают опт. Покупатели самого Spree никогда не видят: они покупают через витрину, которая обращается к его REST API.",
+				"Spree хостят у себя, чтобы код, данные и оформление заказа оставались в ваших руках, а с продаж никто не брал комиссию. Ядро распространяется под лицензией BSD 3-Clause и создано на базе Ruby on Rails, поэтому разработчик может изменить любую его часть. Spree подходит скорее команде, которая строит собственный магазин, чем тому, кто ищет готовую тему. Подвох — в самой этой работе: витрина — второе приложение, которое нужно задеплоить, и ни одно письмо не уйдет, пока не настроен SMTP-сервер."
+			],
+			"faq": [
+				{
+					"q": "Spree Commerce бесплатный и с открытым кодом?",
+					"a": "Да. Ядро распространяется под лицензией BSD 3-Clause, его можно свободно использовать и менять, комиссий за платформу и за транзакции нет. Платная Enterprise Edition добавляет модули вроде multi-tenant SaaS и SSO, а также поддержку с SLA."
+				},
+				{
+					"q": "Есть ли в Spree готовая витрина?",
+					"a": "Не в его Docker-образе, который запускает Admin Dashboard и REST API. Витрина Spree с открытым кодом — отдельное приложение на Next.js для Vercel, Docker или любого хоста с Node.js, либо вы делаете свою на Store API."
+				},
+				{
+					"q": "Какие платежные системы поддерживает Spree?",
+					"a": "Stripe, Adyen и PayPal через официальные плагины, которые уже входят в стандартный Docker-образ. Со Stripe витрина на Next.js принимает еще Apple Pay, Google Pay, Klarna и Affirm. Другие шлюзы можно добавить через Payment Provider SDK."
+				},
+				{
+					"q": "Можно ли импортировать товары в Spree из CSV-файла?",
+					"a": "Да. «Import» на вкладке «Products» принимает CSV, сопоставляет его столбцы с полями Spree и справляется с товарами с несколькими вариантами. Если экспортировать каталог, отредактировать файл и импортировать его снова, товары обновятся массово, сопоставление идет по slug."
+				},
+				{
+					"q": "Как добавить сотрудников в админку Spree?",
+					"a": "В настройках «Users» админки «Send Invitation» отправляет по почте ссылку с ролью и сроком действия, а человек создает аккаунт, который открывает дашборд. Письмо уходит, только когда в Spree настроен SMTP-сервер."
+				}
+			]
 		},
 		"uk": {
 			"description": "Платформа електронної комерції з відкритим кодом: товари, замовлення, платежі й headless API для будь-якої вітрини",
-			"notes": "Увійдіть на https://{host}/admin із поштою й паролем адміністратора, які ви вказали: Spree створює цього адміністратора під час першого запуску. Там налаштовуються товари, способи оплати й доставка."
+			"notes": "Увійдіть на https://{host}/admin із поштою й паролем адміністратора, які ви вказали: Spree створює цього адміністратора під час першого запуску. Там налаштовуються товари, способи оплати й доставка.",
+			"sizing": "Spree Commerce має помірні вимоги: близько 650 MB з Postgres, а диск заповнюють фото товарів.",
+			"summary": "Self-hosted Spree Commerce — headless-платформа електронної комерції з відкритим кодом, альтернатива Shopify. З Docker Compose в один клік.",
+			"about": [
+				"Spree Commerce — це headless-платформа електронної комерції з відкритим кодом, яку компанії запускають замість Shopify. Це бек-офіс магазину: каталог із варіантами, замовлення, платежі, доставка, акції та подарункові картки, усе керується в Admin Dashboard. Markets задають валюту, мову, способи оплати й доставку для кожної країни, а прайс-листи з групами клієнтів закривають опт. Покупці самого Spree ніколи не бачать: вони купують через вітрину, яка звертається до його REST API.",
+				"Spree хостять у себе, щоб код, дані й оформлення замовлення лишалися у ваших руках, а з продажів ніхто не брав комісії. Ядро має ліцензію BSD 3-Clause і створене на Ruby on Rails, тож розробник може змінити будь-яку його частину. Spree більше підходить команді, яка будує власний магазин, ніж тому, хто шукає готову тему. Загвоздка — у цій роботі: вітрина — це другий застосунок, який треба задеплоїти, і жоден лист не піде, поки не налаштовано SMTP-сервер."
+			],
+			"faq": [
+				{
+					"q": "Spree Commerce безплатний і з відкритим кодом?",
+					"a": "Так. Ядро має ліцензію BSD 3-Clause, його можна вільно використовувати й змінювати, комісій за платформу чи за транзакції немає. Платна Enterprise Edition додає модулі на кшталт multi-tenant SaaS і SSO, а також підтримку з SLA."
+				},
+				{
+					"q": "Чи є у Spree готова вітрина?",
+					"a": "Не в його Docker-образі, який запускає Admin Dashboard і REST API. Вітрина Spree з відкритим кодом — окремий застосунок на Next.js для Vercel, Docker або будь-якого хоста з Node.js, або ви робите власну на Store API."
+				},
+				{
+					"q": "Які платіжні системи підтримує Spree?",
+					"a": "Stripe, Adyen і PayPal через офіційні плагіни, які вже входять у стандартний Docker-образ. Зі Stripe вітрина на Next.js приймає ще Apple Pay, Google Pay, Klarna й Affirm. Інші шлюзи можна додати через Payment Provider SDK."
+				},
+				{
+					"q": "Чи можна імпортувати товари в Spree з CSV-файлу?",
+					"a": "Так. «Import» на вкладці «Products» приймає CSV, зіставляє його стовпці з полями Spree й обробляє товари з кількома варіантами. Якщо експортувати каталог, відредагувати файл і імпортувати його знову, товари оновляться масово, зіставлення йде за slug."
+				},
+				{
+					"q": "Як додати співробітників в адмінку Spree?",
+					"a": "У налаштуваннях «Users» адмінки «Send Invitation» надсилає поштою посилання з роллю та терміном дії, а людина створює акаунт, який відкриває дашборд. Лист іде, лише коли в Spree налаштовано SMTP-сервер."
+				}
+			]
 		}
 	}
 }

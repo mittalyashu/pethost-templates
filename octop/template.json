@@ -1,6 +1,11 @@
 {
 	"name": "Octop",
 	"emoji": "🐙",
+	"category": "ai",
+	"alternatives": [
+		"ChatGPT"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "octop",
 		"port": 8088
@@ -14,35 +19,259 @@
 	"texts": {
 		"en": {
 			"description": "A self-hosted AI assistant for a team or a family: several users, expert agents, Telegram, Discord and more",
-			"notes": "Sign in as admin with the admin password you gave; it needs at least 8 characters, with letters and digits, or the first page asks for the code Octop writes to /data/octop-login.txt in its container. Then add a model provider’s key in the settings."
+			"notes": "Sign in as admin with the admin password you gave; it needs at least 8 characters, with letters and digits, or the first page asks for the code Octop writes to /data/octop-login.txt in its container. Then add a model provider’s key in the settings.",
+			"sizing": "Octop is light: about 350 MB of memory, as the models run at your provider; a family's chats take little disk.",
+			"summary": "Octop is an open-source, multi-user AI assistant from Tencent Cloud and a ChatGPT alternative. Self-host it with Docker in one click.",
+			"about": [
+				"Octop is an open-source AI assistant from Tencent Cloud, a ChatGPT alternative for a household or a small team. Each person has their own account and builds experts: agents with their own model, persona, skills and memory. You talk to them in the web dashboard or from Telegram, Discord, WeChat and other messengers. Experts run scheduled jobs described in plain words, answer from a knowledge base of your documents, and use tools like Notion or Obsidian through connectors.",
+				"People self-host Octop so that chats, workspaces and credentials stay on a machine they control, and to pick the model for each expert, a local one included. Risky shell commands wait for approval, and sensitive data is redacted before it leaves the workspace. The catch is that Octop brings no model of its own: it needs an API key from a provider, paid by use, or an Ollama server strong enough to run one."
+			],
+			"faq": [
+				{
+					"q": "Is Octop free and open source?",
+					"a": "Yes. Octop is open source under the MIT license, and the software has no per-user price. What you pay for is the AI model behind it, unless you run local models through Ollama."
+				},
+				{
+					"q": "Octop vs ChatGPT: what is the difference?",
+					"a": "ChatGPT is OpenAI's hosted service with its own models. Octop is an assistant you run yourself: it calls whichever model you choose, OpenAI's included, and every user sets up their own experts."
+				},
+				{
+					"q": "Which AI models does Octop support?",
+					"a": "Octop has presets for OpenAI, Anthropic's Claude, DeepSeek, Zhipu GLM, Kimi and Ollama, and takes any OpenAI-compatible, Anthropic or AWS Bedrock endpoint as a custom provider. Each expert can use a different model."
+				},
+				{
+					"q": "Can multiple users share one Octop?",
+					"a": "Yes. The admin manages accounts and roles under Settings, and each user's experts and workspaces are kept apart from the others'. Octop can also sign people in through LDAP or Active Directory."
+				},
+				{
+					"q": "Does Octop have a mobile app?",
+					"a": "Not yet: native mobile apps are in closed beta. Until they ship, connect Octop to Telegram, Discord or WeChat and talk to your experts from the phone. Desktop apps exist for Windows, macOS and Linux."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein selbst gehosteter KI-Assistent für ein Team oder eine Familie: mehrere Nutzer, Experten-Agenten, Telegram, Discord und mehr",
-			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an; es braucht mindestens 8 Zeichen mit Buchstaben und Ziffern, sonst fragt die erste Seite nach dem Code, den Octop in seinem Container nach /data/octop-login.txt schreibt. Trag dann in den Einstellungen den Key eines Modellanbieters ein."
+			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an; es braucht mindestens 8 Zeichen mit Buchstaben und Ziffern, sonst fragt die erste Seite nach dem Code, den Octop in seinem Container nach /data/octop-login.txt schreibt. Trag dann in den Einstellungen den Key eines Modellanbieters ein.",
+			"sizing": "Octop ist leicht: etwa 350 MB RAM, da die Modelle bei deinem Anbieter laufen; die Chats einer Familie brauchen wenig Disk.",
+			"summary": "Octop selbst hosten: der Open-Source-KI-Assistent von Tencent Cloud für mehrere Personen, eine ChatGPT-Alternative. Mit Docker in einem Klick.",
+			"about": [
+				"Octop ist ein Open-Source-KI-Assistent von Tencent Cloud, eine ChatGPT-Alternative für einen Haushalt oder ein kleines Team. Jede Person hat ein eigenes Konto und baut Experten: Agenten mit eigenem Modell, eigener Persona, eigenen Skills und eigenem Gedächtnis. Du sprichst mit ihnen im Web-Dashboard oder über Telegram, Discord, WeChat und andere Messenger. Experten führen geplante Aufgaben aus, die du in normalen Worten beschreibst, antworten aus einer Wissensdatenbank deiner Dokumente und nutzen über Connectors Tools wie Notion oder Obsidian.",
+				"Du hostest Octop selbst, damit Chats, Workspaces und Zugangsdaten auf einer Maschine bleiben, die du kontrollierst, und um für jeden Experten das Modell zu wählen, auch ein lokales. Riskante Shell-Befehle warten auf eine Freigabe, und sensible Daten werden unkenntlich gemacht, bevor sie den Workspace verlassen. Der Haken: Octop bringt kein eigenes Modell mit. Es braucht einen API-Key eines Anbieters, den du nach Nutzung bezahlst, oder einen Ollama-Server, der stark genug ist, eins auszuführen."
+			],
+			"faq": [
+				{
+					"q": "Ist Octop kostenlos und Open Source?",
+					"a": "Ja. Octop ist Open Source unter der MIT-Lizenz, und für die Software fällt kein Preis pro Person an. Bezahlen musst du das KI-Modell dahinter, es sei denn, du betreibst lokale Modelle über Ollama."
+				},
+				{
+					"q": "Octop vs. ChatGPT: Was ist der Unterschied?",
+					"a": "ChatGPT ist der gehostete Dienst von OpenAI mit eigenen Modellen. Octop ist ein Assistent, den du selbst betreibst: Er ruft das Modell auf, das du wählst, auch das von OpenAI, und jede Person richtet ihre eigenen Experten ein."
+				},
+				{
+					"q": "Welche KI-Modelle unterstützt Octop?",
+					"a": "Octop hat Voreinstellungen für OpenAI, Claude von Anthropic, DeepSeek, Zhipu GLM, Kimi und Ollama und nimmt jeden OpenAI-kompatiblen, Anthropic- oder AWS-Bedrock-Endpoint als eigenen Anbieter an. Jeder Experte kann ein anderes Modell nutzen."
+				},
+				{
+					"q": "Können mehrere Personen ein Octop gemeinsam nutzen?",
+					"a": "Ja. Der Admin verwaltet Konten und Rollen unter „Settings“, und die Experten und Workspaces jeder Person sind von denen der anderen getrennt. Octop kann Leute auch über LDAP oder Active Directory anmelden."
+				},
+				{
+					"q": "Gibt es Octop als App fürs Handy?",
+					"a": "Noch nicht: Native Mobile-Apps sind in der geschlossenen Beta. Bis sie erscheinen, verbinde Octop mit Telegram, Discord oder WeChat und sprich vom Handy aus mit deinen Experten. Desktop-Apps gibt es für Windows, macOS und Linux."
+				}
+			]
 		},
 		"es": {
 			"description": "Un asistente de IA autoalojado para un equipo o una familia: varios usuarios, agentes expertos, Telegram, Discord y más",
-			"notes": "Entra como admin con la contraseña de administrador que indicaste; necesita al menos 8 caracteres, con letras y números, o la primera página pide el código que Octop escribe en /data/octop-login.txt de su contenedor. Luego añade en los ajustes la clave de un proveedor de modelos."
+			"notes": "Entra como admin con la contraseña de administrador que indicaste; necesita al menos 8 caracteres, con letras y números, o la primera página pide el código que Octop escribe en /data/octop-login.txt de su contenedor. Luego añade en los ajustes la clave de un proveedor de modelos.",
+			"sizing": "Octop es ligero: unos 350 MB de memoria, pues los modelos se ejecutan en tu proveedor; los chats de una familia ocupan poco disco.",
+			"summary": "Autoaloja Octop, el asistente de IA de código abierto y multiusuario de Tencent Cloud, una alternativa a ChatGPT, con Docker en un clic.",
+			"about": [
+				"Octop es un asistente de IA de código abierto de Tencent Cloud, una alternativa a ChatGPT para una familia o un equipo pequeño. Cada persona tiene su propia cuenta y crea expertos: agentes con su propio modelo, personalidad, skills y memoria. Hablas con ellos en el panel web o desde Telegram, Discord, WeChat y otras apps de mensajería. Los expertos ejecutan tareas programadas que describes con tus palabras, responden desde una base de conocimiento de tus documentos y usan herramientas como Notion u Obsidian mediante conectores.",
+				"Autoalojas Octop para que los chats, los workspaces y las credenciales se queden en una máquina que controlas, y para elegir el modelo de cada experto, incluso uno local. Los comandos de shell arriesgados esperan aprobación, y los datos sensibles se enmascaran antes de salir del workspace. La pega es que Octop no trae ningún modelo propio: necesita una clave de API de un proveedor, que se paga por uso, o un servidor Ollama lo bastante potente para ejecutar uno."
+			],
+			"faq": [
+				{
+					"q": "¿Octop es gratis y de código abierto?",
+					"a": "Sí. Octop es de código abierto con licencia MIT, y el software no tiene precio por usuario. Lo que pagas es el modelo de IA que hay detrás, salvo que ejecutes modelos locales con Ollama."
+				},
+				{
+					"q": "Octop frente a ChatGPT: ¿cuál es la diferencia?",
+					"a": "ChatGPT es el servicio alojado de OpenAI, con sus propios modelos. Octop es un asistente que ejecutas tú: llama al modelo que elijas, incluidos los de OpenAI, y cada usuario configura sus propios expertos."
+				},
+				{
+					"q": "¿Qué modelos de IA admite Octop?",
+					"a": "Octop trae ajustes predefinidos para OpenAI, Claude de Anthropic, DeepSeek, Zhipu GLM, Kimi y Ollama, y acepta como proveedor personalizado cualquier endpoint compatible con OpenAI, de Anthropic o de AWS Bedrock. Cada experto puede usar un modelo distinto."
+				},
+				{
+					"q": "¿Pueden varios usuarios compartir un mismo Octop?",
+					"a": "Sí. El admin administra las cuentas y los roles en “Settings”, y los expertos y workspaces de cada usuario están separados de los de los demás. Octop también permite iniciar sesión con LDAP o Active Directory."
+				},
+				{
+					"q": "¿Octop tiene app móvil?",
+					"a": "Todavía no: las apps móviles nativas están en beta cerrada. Mientras tanto, conecta Octop a Telegram, Discord o WeChat y habla con tus expertos desde el teléfono. Hay apps de escritorio para Windows, macOS y Linux."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un assistant IA auto-hébergé pour une équipe ou une famille : plusieurs utilisateurs, des agents experts, Telegram, Discord et plus",
-			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué ; il lui faut au moins 8 caractères, avec des lettres et des chiffres, sinon la première page demande le code qu’Octop écrit dans /data/octop-login.txt de son conteneur. Ajoutez ensuite dans les réglages la clé d’un fournisseur de modèles."
+			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué ; il lui faut au moins 8 caractères, avec des lettres et des chiffres, sinon la première page demande le code qu’Octop écrit dans /data/octop-login.txt de son conteneur. Ajoutez ensuite dans les réglages la clé d’un fournisseur de modèles.",
+			"sizing": "Octop est léger : environ 350 MB de mémoire, car les modèles tournent chez votre fournisseur ; chats de famille : peu de disque.",
+			"summary": "Auto-hébergez Octop, l’assistant IA open source et multi-utilisateur de Tencent Cloud, une alternative à ChatGPT, avec Docker en un clic.",
+			"about": [
+				"Octop est un assistant IA open source de Tencent Cloud, une alternative à ChatGPT pour un foyer ou une petite équipe. Chaque personne a son propre compte et crée des experts : des agents avec leur propre modèle, leur persona, leurs skills et leur mémoire. Vous leur parlez dans l’interface web ou depuis Telegram, Discord, WeChat et d’autres messageries. Les experts exécutent des tâches planifiées décrites avec vos propres mots, répondent à partir d’une base de connaissances de vos documents et utilisent des outils comme Notion ou Obsidian via des connecteurs.",
+				"Vous auto-hébergez Octop pour que les conversations, les espaces de travail et les identifiants restent sur une machine que vous contrôlez, et pour choisir le modèle de chaque expert, y compris un modèle local. Les commandes shell risquées attendent une approbation, et les données sensibles sont masquées avant de quitter l’espace de travail. Le revers : Octop n’apporte aucun modèle, il lui faut une clé d’API chez un fournisseur, payée à l’usage, ou un serveur Ollama assez puissant pour en faire tourner un."
+			],
+			"faq": [
+				{
+					"q": "Octop est-il gratuit et open source ?",
+					"a": "Oui. Octop est open source sous licence MIT, et le logiciel n’a pas de prix par utilisateur. Ce que vous payez, c’est le modèle d’IA derrière, sauf si vous faites tourner des modèles locaux avec Ollama."
+				},
+				{
+					"q": "Octop ou ChatGPT : quelle différence ?",
+					"a": "ChatGPT est le service hébergé d’OpenAI, avec ses propres modèles. Octop est un assistant que vous faites tourner vous-même : il appelle le modèle de votre choix, y compris ceux d’OpenAI, et chaque utilisateur configure ses propres experts."
+				},
+				{
+					"q": "Quels modèles d’IA Octop prend-il en charge ?",
+					"a": "Octop propose des préréglages pour OpenAI, Claude d’Anthropic, DeepSeek, Zhipu GLM, Kimi et Ollama, et accepte comme fournisseur personnalisé tout endpoint compatible OpenAI, Anthropic ou AWS Bedrock. Chaque expert peut utiliser un modèle différent."
+				},
+				{
+					"q": "Plusieurs utilisateurs peuvent-ils partager un même Octop ?",
+					"a": "Oui. L’admin gère les comptes et les rôles dans « Settings », et les experts et espaces de travail de chaque utilisateur sont séparés de ceux des autres. Octop peut aussi connecter les gens via LDAP ou Active Directory."
+				},
+				{
+					"q": "Octop a-t-il une application mobile ?",
+					"a": "Pas encore : les applications mobiles natives sont en bêta fermée. En attendant, connectez Octop à Telegram, Discord ou WeChat et parlez à vos experts depuis le téléphone. Des applications de bureau existent pour Windows, macOS et Linux."
+				}
+			]
 		},
 		"pl": {
 			"description": "Samodzielnie hostowany asystent AI dla zespołu lub rodziny: wielu użytkowników, agenci-eksperci, Telegram, Discord i więcej",
-			"notes": "Zaloguj się jako admin hasłem administratora, które podano; musi mieć co najmniej 8 znaków, z literami i cyframi, inaczej pierwsza strona poprosi o kod, który Octop zapisuje w /data/octop-login.txt w swoim kontenerze. Potem w ustawieniach dodaj klucz dostawcy modeli."
+			"notes": "Zaloguj się jako admin hasłem administratora, które podano; musi mieć co najmniej 8 znaków, z literami i cyframi, inaczej pierwsza strona poprosi o kod, który Octop zapisuje w /data/octop-login.txt w swoim kontenerze. Potem w ustawieniach dodaj klucz dostawcy modeli.",
+			"sizing": "Octop ma małe wymagania: około 350 MB pamięci, bo modele działają u twojego dostawcy; czaty rodziny zajmują mało miejsca na dysku.",
+			"summary": "Hostuj u siebie Octop, wieloużytkownikowego asystenta AI open source od Tencent Cloud i alternatywę dla ChatGPT, w Dockerze jednym kliknięciem.",
+			"about": [
+				"Octop to asystent AI open source od Tencent Cloud, alternatywa dla ChatGPT dla domu lub małego zespołu. Każda osoba ma własne konto i tworzy ekspertów: agentów z własnym modelem, personą, skillami i pamięcią. Rozmawiasz z nimi w panelu webowym albo z Telegrama, Discorda, WeChata i innych komunikatorów. Eksperci wykonują zaplanowane zadania opisane zwykłymi słowami, odpowiadają na podstawie bazy wiedzy z twoich dokumentów i korzystają z narzędzi takich jak Notion czy Obsidian przez konektory.",
+				"Octop hostujesz u siebie, żeby czaty, workspace’y i dane dostępowe zostały na maszynie, którą kontrolujesz, i żeby wybierać model dla każdego eksperta, także lokalny. Ryzykowne polecenia powłoki czekają na zatwierdzenie, a wrażliwe dane są maskowane, zanim opuszczą workspace. Haczyk: Octop nie ma własnego modelu, potrzebuje klucza API od dostawcy, płatnego za użycie, albo serwera Ollama dość mocnego, by go uruchomić."
+			],
+			"faq": [
+				{
+					"q": "Czy Octop jest darmowy i open source?",
+					"a": "Tak. Octop jest open source na licencji MIT, a samo oprogramowanie nie ma ceny za użytkownika. Płacisz za model AI, który za nim stoi, chyba że uruchamiasz modele lokalne przez Ollamę."
+				},
+				{
+					"q": "Octop czy ChatGPT: jaka jest różnica?",
+					"a": "ChatGPT to hostowana usługa OpenAI z własnymi modelami. Octop to asystent, którego uruchamiasz sam: korzysta z dowolnego modelu, który wybierzesz, także od OpenAI, a każdy użytkownik konfiguruje własnych ekspertów."
+				},
+				{
+					"q": "Jakie modele AI obsługuje Octop?",
+					"a": "Octop ma gotowe presety dla OpenAI, Claude’a od Anthropic, DeepSeek, Zhipu GLM, Kimi i Ollamy, a jako własnego dostawcę przyjmuje dowolny endpoint zgodny z OpenAI, Anthropic albo AWS Bedrock. Każdy ekspert może używać innego modelu."
+				},
+				{
+					"q": "Czy kilka osób może korzystać z jednej instancji Octop?",
+					"a": "Tak. Admin zarządza kontami i rolami w „Settings”, a eksperci i workspace’y każdego użytkownika są oddzielone od cudzych. Octop może też logować ludzi przez LDAP albo Active Directory."
+				},
+				{
+					"q": "Czy Octop ma aplikację mobilną?",
+					"a": "Jeszcze nie: natywne aplikacje mobilne są w zamkniętej becie. Do czasu premiery połącz Octop z Telegramem, Discordem albo WeChatem i rozmawiaj z ekspertami z telefonu. Aplikacje desktopowe są dostępne dla Windows, macOS i Linuksa."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um assistente de IA auto-hospedado para uma equipe ou uma família: vários usuários, agentes especialistas, Telegram, Discord e mais",
-			"notes": "Entre como admin com a senha de administrador que você informou; ela precisa de pelo menos 8 caracteres, com letras e números, ou a primeira página pede o código que o Octop grava em /data/octop-login.txt no contêiner dele. Depois adicione nas configurações a chave de um provedor de modelos."
+			"notes": "Entre como admin com a senha de administrador que você informou; ela precisa de pelo menos 8 caracteres, com letras e números, ou a primeira página pede o código que o Octop grava em /data/octop-login.txt no contêiner dele. Depois adicione nas configurações a chave de um provedor de modelos.",
+			"sizing": "Octop é leve: cerca de 350 MB de memória, já que os modelos rodam no seu provedor; os chats de uma família ocupam pouco disco.",
+			"summary": "Hospede o Octop por conta própria, o assistente de IA de código aberto e multiusuário da Tencent Cloud, alternativa ao ChatGPT, com Docker em um clique.",
+			"about": [
+				"O Octop é um assistente de IA de código aberto da Tencent Cloud, uma alternativa ao ChatGPT para uma família ou uma equipe pequena. Cada pessoa tem sua própria conta e cria especialistas: agentes com modelo, persona, skills e memória próprios. Você conversa com eles no painel web ou pelo Telegram, Discord, WeChat e outros apps de mensagem. Os especialistas executam tarefas agendadas descritas com suas palavras, respondem a partir de uma base de conhecimento com seus documentos e usam ferramentas como Notion ou Obsidian por meio de conectores.",
+				"Auto-hospedar o Octop mantém chats, workspaces e credenciais em uma máquina que você controla, e permite escolher o modelo de cada especialista, inclusive um local. Comandos de shell arriscados esperam aprovação, e dados sensíveis são ocultados antes de sair do workspace. O porém: o Octop não traz modelo próprio e precisa de uma chave de API de um provedor, paga por uso, ou de um servidor Ollama forte o bastante para rodar um."
+			],
+			"faq": [
+				{
+					"q": "O Octop é gratuito e de código aberto?",
+					"a": "Sim. O Octop é de código aberto sob a licença MIT, e o software não tem preço por usuário. O que você paga é o modelo de IA por trás, a menos que rode modelos locais pelo Ollama."
+				},
+				{
+					"q": "Octop ou ChatGPT: qual é a diferença?",
+					"a": "O ChatGPT é o serviço hospedado da OpenAI, com modelos próprios. O Octop é um assistente que você mesmo roda: ele chama o modelo que você escolher, inclusive os da OpenAI, e cada usuário configura seus próprios especialistas."
+				},
+				{
+					"q": "Quais modelos de IA o Octop suporta?",
+					"a": "O Octop tem predefinições para OpenAI, Claude da Anthropic, DeepSeek, Zhipu GLM, Kimi e Ollama, e aceita como provedor personalizado qualquer endpoint compatível com OpenAI, da Anthropic ou do AWS Bedrock. Cada especialista pode usar um modelo diferente."
+				},
+				{
+					"q": "Vários usuários podem compartilhar um mesmo Octop?",
+					"a": "Sim. O admin gerencia contas e papéis em “Settings”, e cada usuário tem seus especialistas e workspaces isolados dos demais. O Octop também pode autenticar pessoas por LDAP ou Active Directory."
+				},
+				{
+					"q": "O Octop tem app para celular?",
+					"a": "Ainda não: os apps móveis nativos estão em beta fechado. Até lançarem, conecte o Octop ao Telegram, Discord ou WeChat e converse com seus especialistas pelo celular. Há apps de desktop para Windows, macOS e Linux."
+				}
+			]
 		},
 		"ru": {
 			"description": "ИИ-ассистент на своём сервере для команды или семьи: несколько пользователей, агенты-эксперты, Telegram, Discord и другое",
-			"notes": "Войдите как admin с паролем администратора, который вы указали; в нём нужно не меньше 8 символов, с буквами и цифрами, иначе первая страница спросит код, который Octop пишет в /data/octop-login.txt в своём контейнере. Затем добавьте в настройках ключ провайдера моделей."
+			"notes": "Войдите как admin с паролем администратора, который вы указали; в нём нужно не меньше 8 символов, с буквами и цифрами, иначе первая страница спросит код, который Octop пишет в /data/octop-login.txt в своём контейнере. Затем добавьте в настройках ключ провайдера моделей.",
+			"sizing": "Octop: небольшие требования — около 350 MB памяти, модели работают у вашего провайдера; чаты семьи занимают мало диска.",
+			"summary": "Self-hosted Octop — open source ИИ-ассистент от Tencent Cloud для нескольких пользователей и альтернатива ChatGPT. С Docker, в один клик.",
+			"about": [
+				"Octop — это open source ИИ-ассистент от Tencent Cloud, альтернатива ChatGPT для семьи или небольшой команды. У каждого человека свой аккаунт, и он создает экспертов: агентов со своей моделью, персоной, скиллами и памятью. Вы общаетесь с ними в веб-панели или из Telegram, Discord, WeChat и других мессенджеров. Эксперты выполняют задания по расписанию, которые вы описываете обычными словами, отвечают по базе знаний из ваших документов и пользуются инструментами вроде Notion или Obsidian через коннекторы.",
+				"Octop хостят у себя, чтобы чаты, рабочие пространства и учетные данные оставались на машине, которую вы контролируете, и чтобы выбирать модель для каждого эксперта, в том числе локальную. Рискованные команды в шелле ждут подтверждения, а чувствительные данные маскируются до того, как покинут рабочее пространство. Есть одно но: своей модели у Octop нет, ему нужен API-ключ провайдера с оплатой по использованию или сервер Ollama, достаточно мощный, чтобы ее запустить."
+			],
+			"faq": [
+				{
+					"q": "Octop бесплатный и с открытым кодом?",
+					"a": "Да. Octop — open source под лицензией MIT, и у самой программы нет цены за пользователя. Платить приходится за ИИ-модель, которая за ним стоит, если только вы не запускаете локальные модели через Ollama."
+				},
+				{
+					"q": "Octop или ChatGPT: в чем разница?",
+					"a": "ChatGPT — облачный сервис OpenAI со своими моделями. Octop — ассистент, который вы запускаете сами: он обращается к любой модели на ваш выбор, в том числе от OpenAI, а каждый пользователь настраивает собственных экспертов."
+				},
+				{
+					"q": "Какие ИИ-модели поддерживает Octop?",
+					"a": "В Octop есть пресеты для OpenAI, Claude от Anthropic, DeepSeek, Zhipu GLM, Kimi и Ollama, а любой эндпоинт, совместимый с OpenAI, Anthropic или AWS Bedrock, можно подключить как собственного провайдера. Каждый эксперт может использовать свою модель."
+				},
+				{
+					"q": "Могут ли несколько пользователей пользоваться одним Octop?",
+					"a": "Да. Админ управляет аккаунтами и ролями в разделе «Settings», а эксперты и рабочие пространства каждого пользователя отделены от чужих. Octop также умеет пускать людей через LDAP или Active Directory."
+				},
+				{
+					"q": "Есть ли у Octop мобильное приложение?",
+					"a": "Пока нет: нативные мобильные приложения в закрытой бете. До их выхода подключите Octop к Telegram, Discord или WeChat и общайтесь с экспертами с телефона. Есть десктопные приложения для Windows, macOS и Linux."
+				}
+			]
 		},
 		"uk": {
 			"description": "ШІ-асистент на власному сервері для команди чи родини: кілька користувачів, агенти-експерти, Telegram, Discord та інше",
-			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали; у ньому потрібно щонайменше 8 символів, з літерами й цифрами, інакше перша сторінка запитає код, який Octop пише в /data/octop-login.txt у своєму контейнері. Потім додайте в налаштуваннях ключ провайдера моделей."
+			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали; у ньому потрібно щонайменше 8 символів, з літерами й цифрами, інакше перша сторінка запитає код, який Octop пише в /data/octop-login.txt у своєму контейнері. Потім додайте в налаштуваннях ключ провайдера моделей.",
+			"sizing": "Octop має скромні вимоги: близько 350 MB пам’яті, бо моделі працюють у вашого провайдера; чати сім’ї займають мало місця на диску.",
+			"summary": "Self-hosted Octop — ШІ-асистент з відкритим кодом від Tencent Cloud для кількох користувачів і альтернатива ChatGPT. З Docker, в один клік.",
+			"about": [
+				"Octop — це ШІ-асистент з відкритим кодом від Tencent Cloud, альтернатива ChatGPT для родини чи невеликої команди. Кожна людина має свій акаунт і створює експертів: агентів зі своєю моделлю, персоною, скілами та пам’яттю. З ними спілкуються у вебпанелі або з Telegram, Discord, WeChat та інших месенджерів. Експерти виконують завдання за розкладом, які ви описуєте звичайними словами, відповідають за базою знань із ваших документів і користуються інструментами на кшталт Notion чи Obsidian через конектори.",
+				"Octop хостять у себе, щоб чати, робочі простори та облікові дані лишалися на машині, яку ви контролюєте, і щоб обирати модель для кожного експерта, зокрема локальну. Ризиковані команди в оболонці чекають підтвердження, а чутливі дані маскуються, перш ніж залишити робочий простір. Є одне але: власної моделі в Octop немає, потрібен API-ключ провайдера з оплатою за використання або сервер Ollama, достатньо потужний, щоб її запустити."
+			],
+			"faq": [
+				{
+					"q": "Octop безплатний і з відкритим кодом?",
+					"a": "Так. Octop має відкритий код за ліцензією MIT, а сама програма не коштує за користувача. Платити доводиться за ШІ-модель, яка за ним стоїть, хіба що ви запускаєте локальні моделі через Ollama."
+				},
+				{
+					"q": "Octop чи ChatGPT: у чому різниця?",
+					"a": "ChatGPT — хмарний сервіс OpenAI зі своїми моделями. Octop — асистент, який ви запускаєте самі: він звертається до будь-якої моделі на ваш вибір, зокрема й від OpenAI, а кожен користувач налаштовує власних експертів."
+				},
+				{
+					"q": "Які ШІ-моделі підтримує Octop?",
+					"a": "В Octop є пресети для OpenAI, Claude від Anthropic, DeepSeek, Zhipu GLM, Kimi та Ollama, а будь-який ендпоінт, сумісний з OpenAI, Anthropic чи AWS Bedrock, можна підключити як власного провайдера. Кожен експерт може використовувати іншу модель."
+				},
+				{
+					"q": "Чи можуть кілька користувачів працювати в одному Octop?",
+					"a": "Так. Адмін керує акаунтами та ролями в розділі «Settings», а експерти й робочі простори кожного користувача відокремлені від чужих. Octop також дає змогу входити через LDAP або Active Directory."
+				},
+				{
+					"q": "Чи є в Octop мобільний застосунок?",
+					"a": "Поки що ні: нативні мобільні застосунки в закритій бета-версії. Доти підключіть Octop до Telegram, Discord чи WeChat і спілкуйтеся з експертами з телефона. Десктопні застосунки є для Windows, macOS і Linux."
+				}
+			]
 		}
 	}
 }

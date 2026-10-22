@@ -1,6 +1,12 @@
 {
 	"name": "Gopeed",
 	"emoji": "⬇️",
+	"category": "files",
+	"alternatives": [
+		"Internet Download Manager",
+		"Motrix"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "gopeed",
 		"port": 9999
@@ -14,35 +20,259 @@
 	"texts": {
 		"en": {
 			"description": "A fast download manager in the browser: HTTP, BitTorrent and magnet links, with extensions",
-			"notes": "Sign in as gopeed with the admin password you gave. Files are downloaded into the project’s volume on your machine; open a finished one from the task list to save it to your computer."
+			"notes": "Sign in as gopeed with the admin password you gave. Files are downloaded into the project’s volume on your machine; open a finished one from the task list to save it to your computer.",
+			"sizing": "Gopeed is very light: under 100 MB of memory; the disk is your downloads, a few gigabytes for each film.",
+			"summary": "Gopeed is an open-source IDM alternative for HTTP, torrents, magnet links and ed2k. Self-host it with Docker on your own machine in one click.",
+			"about": [
+				"Gopeed is an open-source download manager, a free alternative to Internet Download Manager that also handles BitTorrent. One task list takes HTTP and HTTPS links, torrent files, magnet links and ed2k, and a large HTTP file comes down over several connections at once. JavaScript extensions add sources such as YouTube, Hugging Face and MediaFire, and a REST API lets scripts create and manage tasks.",
+				"Run as a self-hosted web app, it takes the downloading off your own computer: paste a magnet link from your phone, close the tab, and collect the file when it is done. Gopeed is GPLv3 software with no paywall. The catch is that every file lands on the server first, so a large download needs room on its disk before you copy it home. It suits people who pull big files or torrents and would rather their laptop did not stay awake for them."
+			],
+			"faq": [
+				{
+					"q": "Is Gopeed free and open source?",
+					"a": "Yes. Gopeed is free and open source under the GPLv3 licence, with no ads and no tracking. Its source is on GitHub at GopeedLab/gopeed."
+				},
+				{
+					"q": "Is Gopeed a good alternative to IDM?",
+					"a": "Yes, especially if you also download torrents. Gopeed's own comparison marks it free, open source and cross-platform with BitTorrent and magnet support, and IDM as paid, Windows-only and without either. Unlike Motrix, it is not built on Electron."
+				},
+				{
+					"q": "Does Gopeed have an Android or iOS app?",
+					"a": "Android has an APK you install directly. iOS gets only an .ipa you sign and install yourself, since Apple does not allow BitTorrent apps in the App Store. The web version also opens in a phone's browser."
+				},
+				{
+					"q": "Can the Gopeed browser extension send downloads to a server?",
+					"a": "Yes. Its Remote Download setting sends tasks to a Gopeed web or Docker server, given the server's URL and API token. A server that asks for a password accepts the extension only once GOPEED_APITOKEN sets that token."
+				},
+				{
+					"q": "What is the default Gopeed username and password in Docker?",
+					"a": "The username defaults to gopeed and there is no default password: without GOPEED_PASSWORD, the web version asks for no sign-in at all. This template sets the password to the one you enter when you deploy it."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein schneller Download-Manager im Browser: HTTP, BitTorrent und Magnet-Links, mit Erweiterungen",
-			"notes": "Melde dich als gopeed mit dem angegebenen Admin-Passwort an. Die Dateien werden in das Volume des Projekts auf deiner Maschine geladen; öffne eine fertige in der Aufgabenliste, um sie auf deinem Computer zu speichern."
+			"notes": "Melde dich als gopeed mit dem angegebenen Admin-Passwort an. Die Dateien werden in das Volume des Projekts auf deiner Maschine geladen; öffne eine fertige in der Aufgabenliste, um sie auf deinem Computer zu speichern.",
+			"sizing": "Gopeed ist sehr leicht: unter 100 MB RAM; die Disk füllen deine Downloads, ein paar GB pro Film.",
+			"summary": "Gopeed selbst hosten: Open-Source-Alternative zu IDM für HTTP, Torrents, Magnet-Links und ed2k. Mit Docker auf deiner eigenen Maschine, in einem Klick.",
+			"about": [
+				"Gopeed ist ein Open-Source-Download-Manager, eine kostenlose Alternative zum Internet Download Manager, die auch BitTorrent beherrscht. Eine Aufgabenliste nimmt HTTP- und HTTPS-Links, Torrent-Dateien, Magnet-Links und ed2k auf, und eine große HTTP-Datei kommt über mehrere Verbindungen gleichzeitig herunter. JavaScript-Erweiterungen fügen Quellen wie YouTube, Hugging Face und MediaFire hinzu, und über eine REST-API können Skripte Aufgaben anlegen und verwalten.",
+				"Als selbst gehostete Web-App nimmt Gopeed deinem eigenen Rechner das Herunterladen ab: Du fügst von deinem Handy einen Magnet-Link ein, schließt den Tab und holst die Datei ab, wenn sie fertig ist. Gopeed ist GPLv3-Software ohne Bezahlschranke. Der Haken: Jede Datei landet zuerst auf dem Server, ein großer Download braucht also Platz auf dessen Disk, bevor du die Datei auf deinen Rechner kopierst. Es passt zu Leuten, die große Dateien oder Torrents herunterladen und dafür lieber nicht ihren Laptop wach halten."
+			],
+			"faq": [
+				{
+					"q": "Ist Gopeed kostenlos und Open Source?",
+					"a": "Ja. Gopeed ist kostenlos und Open Source unter der GPLv3-Lizenz, ohne Werbung und ohne Tracking. Der Quellcode liegt auf GitHub unter GopeedLab/gopeed."
+				},
+				{
+					"q": "Ist Gopeed eine gute Alternative zu IDM?",
+					"a": "Ja, besonders wenn du auch Torrents herunterlädst. Gopeeds eigener Vergleich führt Gopeed als kostenlos, Open Source und plattformübergreifend auf, mit BitTorrent- und Magnet-Unterstützung, IDM dagegen als kostenpflichtig, nur für Windows und ohne beides. Anders als Motrix basiert Gopeed nicht auf Electron."
+				},
+				{
+					"q": "Gibt es Gopeed als App für Android oder iOS?",
+					"a": "Für Android gibt es eine APK-Datei, die du direkt installierst. Für iOS gibt es nur eine .ipa, die du selbst signierst und installierst, denn Apple erlaubt keine BitTorrent-Apps im App Store. Die Web-Version lässt sich auch im Browser eines Handys öffnen."
+				},
+				{
+					"q": "Kann die Gopeed-Browsererweiterung Downloads an einen Server schicken?",
+					"a": "Ja. Die Einstellung „Remote Download“ schickt Aufgaben an einen Gopeed-Web- oder Docker-Server, wenn du die URL des Servers und das API-Token angibst. Verlangt ein Server ein Passwort, nimmt er die Erweiterung erst an, wenn GOPEED_APITOKEN dieses Token festlegt."
+				},
+				{
+					"q": "Was sind der Standard-Benutzername und das Standardpasswort von Gopeed in Docker?",
+					"a": "Der Benutzername ist standardmäßig gopeed, ein Standardpasswort gibt es nicht: Ohne GOPEED_PASSWORD verlangt die Web-Version gar keine Anmeldung. Diese Vorlage setzt das Passwort auf das, das du beim Deploy eingibst."
+				}
+			]
 		},
 		"es": {
 			"description": "Un gestor de descargas rápido en el navegador: HTTP, BitTorrent y enlaces magnet, con extensiones",
-			"notes": "Entra como gopeed con la contraseña de administrador que indicaste. Los archivos se descargan en el volumen del proyecto en tu máquina; abre uno terminado desde la lista de tareas para guardarlo en tu ordenador."
+			"notes": "Entra como gopeed con la contraseña de administrador que indicaste. Los archivos se descargan en el volumen del proyecto en tu máquina; abre uno terminado desde la lista de tareas para guardarlo en tu ordenador.",
+			"sizing": "Gopeed es muy ligero: menos de 100 MB de memoria; el disco son tus descargas, unos pocos GB por película.",
+			"summary": "Autoaloja Gopeed, la alternativa de código abierto a IDM para HTTP, torrents, enlaces magnet y ed2k. Con Docker en tu propia máquina, en un clic.",
+			"about": [
+				"Gopeed es un gestor de descargas de código abierto, una alternativa gratuita a Internet Download Manager que también admite BitTorrent. Una sola lista de tareas acepta enlaces HTTP y HTTPS, archivos torrent, enlaces magnet y ed2k, y un archivo HTTP grande se descarga por varias conexiones a la vez. Las extensiones de JavaScript agregan fuentes como YouTube, Hugging Face y MediaFire, y una API REST permite que los scripts creen y administren tareas.",
+				"Al usarlo como aplicación web autoalojada, las descargas dejan de depender de tu propio equipo: pega un enlace magnet desde el móvil, cierra la pestaña y recoge el archivo cuando termine. Gopeed es software GPLv3 y no tiene muro de pago. El inconveniente: cada archivo llega primero al servidor, así que una descarga grande necesita espacio en su disco antes de que la copies a tu equipo. Es para quien descarga archivos grandes o torrents y prefiere no mantener su equipo encendido para eso."
+			],
+			"faq": [
+				{
+					"q": "¿Gopeed es gratis y de código abierto?",
+					"a": "Sí. Gopeed es gratis y de código abierto bajo la licencia GPLv3, sin anuncios ni rastreo. Su código fuente está en GitHub, en GopeedLab/gopeed."
+				},
+				{
+					"q": "¿Gopeed es una buena alternativa a IDM?",
+					"a": "Sí, sobre todo si también descargas torrents. La comparación del propio Gopeed lo marca como gratis, de código abierto y multiplataforma, con compatibilidad con BitTorrent y enlaces magnet, y a IDM como de pago, solo para Windows y sin ninguna de las dos cosas. A diferencia de Motrix, no está construido sobre Electron."
+				},
+				{
+					"q": "¿Gopeed tiene app para Android o iOS?",
+					"a": "En Android hay un APK que se instala directamente. En iOS solo hay un .ipa que tienes que firmar e instalar tú, porque Apple no permite apps de BitTorrent en la App Store. La versión web también se abre en el navegador del móvil."
+				},
+				{
+					"q": "¿La extensión de navegador de Gopeed puede enviar descargas a un servidor?",
+					"a": "Sí. Su ajuste “Remote Download” envía las tareas a un servidor web o Docker de Gopeed, con la URL del servidor y el token de API. Si el servidor pide contraseña, solo acepta la extensión cuando GOPEED_APITOKEN define ese token."
+				},
+				{
+					"q": "¿Cuáles son el usuario y la contraseña por defecto de Gopeed en Docker?",
+					"a": "El usuario por defecto es gopeed y no hay contraseña por defecto: sin GOPEED_PASSWORD, la versión web no pide inicio de sesión. Esta plantilla usa como contraseña la que escribes al desplegarla."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un gestionnaire de téléchargements rapide dans le navigateur : HTTP, BitTorrent et liens magnet, avec des extensions",
-			"notes": "Connectez-vous en tant que gopeed avec le mot de passe administrateur indiqué. Les fichiers sont téléchargés dans le volume du projet sur votre machine ; ouvrez-en un terminé depuis la liste des tâches pour l’enregistrer sur votre ordinateur."
+			"notes": "Connectez-vous en tant que gopeed avec le mot de passe administrateur indiqué. Les fichiers sont téléchargés dans le volume du projet sur votre machine ; ouvrez-en un terminé depuis la liste des tâches pour l’enregistrer sur votre ordinateur.",
+			"sizing": "Gopeed est très léger : moins de 100 MB de mémoire ; le disque, ce sont vos téléchargements, quelques GB par film.",
+			"summary": "Auto-hébergez Gopeed, l’alternative open source à IDM pour HTTP, torrents, liens magnet et ed2k. Avec Docker sur votre propre machine, en un clic.",
+			"about": [
+				"Gopeed est un gestionnaire de téléchargements open source, une alternative gratuite à Internet Download Manager qui gère aussi BitTorrent. Une seule liste de tâches accepte les liens HTTP et HTTPS, les fichiers torrent, les liens magnet et ed2k, et un gros fichier HTTP se télécharge sur plusieurs connexions à la fois. Des extensions JavaScript ajoutent des sources comme YouTube, Hugging Face et MediaFire, et une API REST permet à des scripts de créer et de gérer des tâches.",
+				"Utilisé comme application web auto-hébergée, il décharge votre ordinateur des téléchargements : collez un lien magnet depuis votre téléphone, fermez l’onglet et récupérez le fichier une fois terminé. Gopeed est un logiciel GPLv3, sans paywall. Le revers : chaque fichier arrive d’abord sur le serveur, donc un gros téléchargement a besoin de place sur son disque avant que vous le copiiez sur votre ordinateur. Il convient aux personnes qui téléchargent de gros fichiers ou des torrents et préfèrent que leur ordinateur n’ait pas à rester allumé pour cela."
+			],
+			"faq": [
+				{
+					"q": "Gopeed est-il gratuit et open source ?",
+					"a": "Oui. Gopeed est gratuit et open source sous licence GPLv3, sans publicité ni suivi. Son code source est sur GitHub, dans le dépôt GopeedLab/gopeed."
+				},
+				{
+					"q": "Gopeed est-il une bonne alternative à IDM ?",
+					"a": "Oui, surtout si vous téléchargez aussi des torrents. Dans le comparatif de Gopeed lui-même, il est gratuit, open source et multiplateforme, avec BitTorrent et les liens magnet, alors qu’IDM est payant, réservé à Windows et sans l’un ni l’autre. Contrairement à Motrix, il n’est pas basé sur Electron."
+				},
+				{
+					"q": "Gopeed a-t-il une application Android ou iOS ?",
+					"a": "Sur Android, il y a un APK à installer directement. Sur iOS, il n’y a qu’un .ipa que vous signez et installez vous-même, car Apple n’autorise pas les applications BitTorrent dans l’App Store. La version web s’ouvre aussi dans le navigateur d’un téléphone."
+				},
+				{
+					"q": "L’extension de navigateur Gopeed peut-elle envoyer des téléchargements vers un serveur ?",
+					"a": "Oui. Son paramètre « Remote Download » envoie les tâches à un serveur web ou Docker Gopeed, à partir de l’URL du serveur et d’un token d’API. Un serveur qui demande un mot de passe n’accepte l’extension que si GOPEED_APITOKEN définit ce token."
+				},
+				{
+					"q": "Quels sont le nom d’utilisateur et le mot de passe par défaut de Gopeed dans Docker ?",
+					"a": "Le nom d’utilisateur par défaut est gopeed, et il n’y a pas de mot de passe par défaut : sans GOPEED_PASSWORD, la version web ne demande aucune connexion. Ce template définit le mot de passe avec celui que vous saisissez au déploiement."
+				}
+			]
 		},
 		"pl": {
 			"description": "Szybki menedżer pobierania w przeglądarce: HTTP, BitTorrent i linki magnet, z rozszerzeniami",
-			"notes": "Zaloguj się jako gopeed hasłem administratora, które podano. Pliki są pobierane do woluminu projektu na twojej maszynie; otwórz gotowy z listy zadań, aby zapisać go na komputerze."
+			"notes": "Zaloguj się jako gopeed hasłem administratora, które podano. Pliki są pobierane do woluminu projektu na twojej maszynie; otwórz gotowy z listy zadań, aby zapisać go na komputerze.",
+			"sizing": "Gopeed ma bardzo małe wymagania: poniżej 100 MB pamięci; dysk to twoje pobrania, kilka GB na każdy film.",
+			"summary": "Hostuj Gopeed u siebie: alternatywa open source dla IDM do HTTP, torrentów, linków magnet i ed2k. W Dockerze na własnej maszynie, jednym kliknięciem.",
+			"about": [
+				"Gopeed to menedżer pobierania open source, darmowa alternatywa dla programu Internet Download Manager, która obsługuje też BitTorrent. Jedna lista zadań przyjmuje linki HTTP i HTTPS, pliki torrent, linki magnet i ed2k, a duży plik HTTP pobiera się kilkoma połączeniami naraz. Rozszerzenia JavaScript dodają źródła, takie jak YouTube, Hugging Face i MediaFire, a REST API pozwala skryptom tworzyć zadania i nimi zarządzać.",
+				"Uruchomiony jako aplikacja webowa hostowana u siebie, zdejmuje pobieranie z twojego komputera: wklejasz link magnet z telefonu, zamykasz zakładkę i odbierasz plik, gdy będzie gotowy. Gopeed to oprogramowanie na licencji GPLv3, bez paywalla. Haczyk: każdy plik trafia najpierw na serwer, więc duże pobieranie potrzebuje miejsca na jego dysku, zanim skopiujesz plik na swój komputer. Pasuje do osób, które pobierają duże pliki lub torrenty i wolą, żeby ich laptop nie musiał być przy tym włączony."
+			],
+			"faq": [
+				{
+					"q": "Czy Gopeed jest darmowy i open source?",
+					"a": "Tak. Gopeed jest darmowy i open source, na licencji GPLv3, bez reklam i bez śledzenia. Kod źródłowy jest na GitHubie, w repozytorium GopeedLab/gopeed."
+				},
+				{
+					"q": "Czy Gopeed to dobra alternatywa dla IDM?",
+					"a": "Tak, zwłaszcza jeśli pobierasz też torrenty. W porównaniu, które publikuje sam Gopeed, jest on darmowy, open source i wieloplatformowy, z obsługą BitTorrenta i linków magnet, a IDM jest płatny, działa tylko w Windowsie i nie ma ani jednego, ani drugiego. W odróżnieniu od Motrix nie jest zbudowany na Electronie."
+				},
+				{
+					"q": "Czy Gopeed ma aplikację na Androida lub iOS?",
+					"a": "Na Androida jest APK, który instaluje się bezpośrednio. Na iOS jest tylko plik .ipa, który sam podpisujesz i instalujesz, bo Apple nie dopuszcza aplikacji BitTorrent w App Store. Wersję webową można też otworzyć w przeglądarce w telefonie."
+				},
+				{
+					"q": "Czy rozszerzenie Gopeed do przeglądarki może wysyłać pobrania na serwer?",
+					"a": "Tak. Ustawienie „Remote Download” wysyła zadania na serwer Gopeed w wersji webowej lub w Dockerze, po podaniu adresu URL serwera i tokena API. Serwer, który wymaga hasła, przyjmuje rozszerzenie dopiero wtedy, gdy GOPEED_APITOKEN ustawia ten token."
+				},
+				{
+					"q": "Jaka jest domyślna nazwa użytkownika i hasło Gopeed w Dockerze?",
+					"a": "Domyślna nazwa użytkownika to gopeed, a domyślnego hasła nie ma: bez GOPEED_PASSWORD wersja webowa w ogóle nie prosi o logowanie. Ten szablon ustawia hasło takie, jakie wpiszesz przy wdrożeniu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um gerenciador de downloads rápido no navegador: HTTP, BitTorrent e links magnet, com extensões",
-			"notes": "Entre como gopeed com a senha de administrador que você informou. Os arquivos são baixados para o volume do projeto na sua máquina; abra um concluído na lista de tarefas para salvá-lo no seu computador."
+			"notes": "Entre como gopeed com a senha de administrador que você informou. Os arquivos são baixados para o volume do projeto na sua máquina; abra um concluído na lista de tarefas para salvá-lo no seu computador.",
+			"sizing": "Gopeed é muito leve: menos de 100 MB de memória; o disco são os seus downloads, alguns GB por filme.",
+			"summary": "Auto-hospede o Gopeed, alternativa de código aberto ao IDM para HTTP, torrents, links magnet e ed2k. Com Docker na sua própria máquina, em um clique.",
+			"about": [
+				"O Gopeed é um gerenciador de downloads de código aberto, uma alternativa gratuita ao Internet Download Manager que também lida com BitTorrent. Uma única lista de tarefas aceita links HTTP e HTTPS, arquivos torrent, links magnet e ed2k, e um arquivo HTTP grande é baixado por várias conexões ao mesmo tempo. Extensões em JavaScript acrescentam fontes como YouTube, Hugging Face e MediaFire, e uma API REST permite que scripts criem e gerenciem tarefas.",
+				"Rodando como um app web auto-hospedado, ele tira o download do seu próprio computador: cole um link magnet pelo celular, feche a aba e pegue o arquivo quando estiver pronto. O Gopeed é um software GPLv3, sem paywall. O porém: todo arquivo cai primeiro no servidor, então um download grande precisa de espaço no disco dele antes de você copiá-lo para o seu computador. Ele serve para quem baixa arquivos grandes ou torrents e prefere que o notebook não precise ficar ligado por isso."
+			],
+			"faq": [
+				{
+					"q": "O Gopeed é gratuito e de código aberto?",
+					"a": "Sim. O Gopeed é gratuito e de código aberto, sob a licença GPLv3, sem anúncios e sem rastreamento. O código-fonte está no GitHub, em GopeedLab/gopeed."
+				},
+				{
+					"q": "O Gopeed é uma boa alternativa ao IDM?",
+					"a": "Sim, principalmente se você também baixa torrents. A comparação do próprio Gopeed o marca como gratuito, de código aberto e multiplataforma, com suporte a BitTorrent e links magnet, e o IDM como pago, só para Windows e sem nenhum dos dois. Diferentemente do Motrix, ele não é construído sobre o Electron."
+				},
+				{
+					"q": "O Gopeed tem app para Android ou iOS?",
+					"a": "No Android há um APK que você instala diretamente. No iOS há apenas um .ipa que você mesmo assina e instala, já que a Apple não permite apps de BitTorrent na App Store. A versão web também abre no navegador do celular."
+				},
+				{
+					"q": "A extensão de navegador do Gopeed pode enviar downloads para um servidor?",
+					"a": "Pode. A configuração “Remote Download” envia as tarefas para um servidor web ou Docker do Gopeed, com a URL do servidor e o token de API. Um servidor que pede senha só aceita a extensão quando GOPEED_APITOKEN define esse token."
+				},
+				{
+					"q": "Qual é o usuário e a senha padrão do Gopeed no Docker?",
+					"a": "O usuário padrão é gopeed e não existe senha padrão: sem GOPEED_PASSWORD, a versão web não pede nenhum login. Este template define a senha como a que você informa ao fazer o deploy."
+				}
+			]
 		},
 		"ru": {
 			"description": "Быстрый менеджер загрузок в браузере: HTTP, BitTorrent и magnet-ссылки, с расширениями",
-			"notes": "Войдите как gopeed с паролем администратора, который вы указали. Файлы скачиваются в том проекта на вашей машине; откройте готовый в списке задач, чтобы сохранить его на свой компьютер."
+			"notes": "Войдите как gopeed с паролем администратора, который вы указали. Файлы скачиваются в том проекта на вашей машине; откройте готовый в списке задач, чтобы сохранить его на свой компьютер.",
+			"sizing": "Gopeed: совсем небольшие требования — менее 100 MB памяти; диск занимают ваши загрузки, по несколько GB на фильм.",
+			"summary": "Self-hosted Gopeed: open source альтернатива IDM для HTTP, торрентов, magnet-ссылок и ed2k. Запускается в Docker на вашей машине в один клик.",
+			"about": [
+				"Gopeed — это open source менеджер загрузок, бесплатная альтернатива Internet Download Manager, которая умеет и BitTorrent. Один список задач принимает ссылки HTTP и HTTPS, торрент-файлы, magnet-ссылки и ed2k, а большой файл по HTTP скачивается сразу в несколько соединений. Расширения на JavaScript добавляют источники вроде YouTube, Hugging Face и MediaFire, а REST API позволяет скриптам создавать задачи и управлять ими.",
+				"Как self-hosted веб-приложение Gopeed снимает загрузки с вашего компьютера: вставьте magnet-ссылку с телефона, закройте вкладку и заберите файл, когда он будет готов. Gopeed — программа под GPLv3 без платных функций. Подвох в том, что каждый файл сначала оказывается на сервере, поэтому большой файл требует места на его диске, прежде чем вы скопируете его к себе. Он подойдет тем, кто скачивает большие файлы или торренты и предпочитает не держать ради этого ноутбук включенным."
+			],
+			"faq": [
+				{
+					"q": "Gopeed бесплатный и с открытым исходным кодом?",
+					"a": "Да. Gopeed бесплатный и с открытым исходным кодом, лицензия GPLv3, без рекламы и без отслеживания. Исходный код лежит на GitHub: GopeedLab/gopeed."
+				},
+				{
+					"q": "Gopeed — хорошая альтернатива IDM?",
+					"a": "Да, особенно если вы скачиваете еще и торренты. В собственном сравнении Gopeed он отмечен как бесплатный, с открытым исходным кодом и кросс-платформенный, с поддержкой BitTorrent и magnet-ссылок, а IDM — как платный, только для Windows и без того и другого. В отличие от Motrix, он не построен на Electron."
+				},
+				{
+					"q": "Есть ли у Gopeed приложение для Android или iOS?",
+					"a": "Для Android есть APK, который устанавливается напрямую. Для iOS есть только .ipa, который вы подписываете и устанавливаете сами, потому что Apple не разрешает приложения с BitTorrent в App Store. Веб-версия также открывается в браузере телефона."
+				},
+				{
+					"q": "Может ли расширение Gopeed для браузера отправлять загрузки на сервер?",
+					"a": "Да. Настройка «Remote Download» отправляет задачи на веб-сервер или Docker-сервер Gopeed, если указать URL сервера и API-токен. Сервер, который требует пароль, принимает расширение, только когда GOPEED_APITOKEN задает этот токен."
+				},
+				{
+					"q": "Какие имя пользователя и пароль по умолчанию у Gopeed в Docker?",
+					"a": "Имя пользователя по умолчанию — gopeed, а пароля по умолчанию нет: без GOPEED_PASSWORD веб-версия вообще не просит входа. Этот шаблон задает пароль, который вы вводите при деплое."
+				}
+			]
 		},
 		"uk": {
 			"description": "Швидкий менеджер завантажень у браузері: HTTP, BitTorrent і magnet-посилання, з розширеннями",
-			"notes": "Увійдіть як gopeed із паролем адміністратора, який ви вказали. Файли завантажуються в том проєкту на вашій машині; відкрийте готовий у списку завдань, щоб зберегти його на свій комп’ютер."
+			"notes": "Увійдіть як gopeed із паролем адміністратора, який ви вказали. Файли завантажуються в том проєкту на вашій машині; відкрийте готовий у списку завдань, щоб зберегти його на свій комп’ютер.",
+			"sizing": "Gopeed має дуже скромні вимоги: менше 100 MB пам’яті; диск — це ваші звантаження, кілька GB на кожен фільм.",
+			"summary": "Self-hosted Gopeed: альтернатива IDM із відкритим кодом для HTTP, торентів, magnet-посилань і ed2k. Запускається в Docker на вашій машині в один клік.",
+			"about": [
+				"Gopeed — це менеджер завантажень із відкритим кодом, безкоштовна альтернатива Internet Download Manager, що вміє й BitTorrent. Один список завдань приймає посилання HTTP і HTTPS, торент-файли, magnet-посилання та ed2k, а великий файл за HTTP завантажується одразу кількома з’єднаннями. Розширення на JavaScript додають джерела, як-от YouTube, Hugging Face і MediaFire, а REST API дає змогу скриптам створювати завдання й керувати ними.",
+				"Як self-hosted вебзастосунок Gopeed знімає завантаження з вашого комп’ютера: вставте magnet-посилання з телефона, закрийте вкладку й заберіть файл, коли він буде готовий. Gopeed — програма під GPLv3 без платних функцій. Нюанс у тому, що кожен файл спершу потрапляє на сервер, тож для великого завантаження на його диску потрібне місце, перш ніж ви скопіюєте файл до себе. Він підійде тим, хто завантажує великі файли чи торенти й воліє не тримати задля цього ноутбук увімкненим."
+			],
+			"faq": [
+				{
+					"q": "Чи Gopeed безкоштовний і з відкритим кодом?",
+					"a": "Так. Gopeed безкоштовний і має відкритий код за ліцензією GPLv3, без реклами й без відстеження. Вихідний код лежить на GitHub: GopeedLab/gopeed."
+				},
+				{
+					"q": "Чи Gopeed — хороша альтернатива IDM?",
+					"a": "Так, особливо якщо ви завантажуєте ще й торенти. У власному порівнянні Gopeed він позначений як безкоштовний, із відкритим кодом і кросплатформний, з підтримкою BitTorrent і magnet-посилань, а IDM — як платний, лише для Windows і без жодного з цих двох. На відміну від Motrix, він не збудований на Electron."
+				},
+				{
+					"q": "Чи є в Gopeed застосунок для Android або iOS?",
+					"a": "Для Android є APK, який встановлюється напряму. Для iOS є лише .ipa, який ви підписуєте й встановлюєте самі, бо Apple не дозволяє застосунки з BitTorrent в App Store. Вебверсія також відкривається в браузері телефона."
+				},
+				{
+					"q": "Чи може розширення Gopeed для браузера надсилати завантаження на сервер?",
+					"a": "Так. Налаштування «Remote Download» надсилає завдання на вебсервер або Docker-сервер Gopeed, якщо вказати URL сервера й API-токен. Сервер, що вимагає пароль, приймає розширення, лише коли GOPEED_APITOKEN задає цей токен."
+				},
+				{
+					"q": "Які типові ім’я користувача й пароль у Gopeed у Docker?",
+					"a": "Типове ім’я користувача — gopeed, а типового пароля немає: без GOPEED_PASSWORD вебверсія взагалі не просить входу. Цей шаблон задає пароль, який ви вводите під час деплою."
+				}
+			]
 		}
 	}
 }

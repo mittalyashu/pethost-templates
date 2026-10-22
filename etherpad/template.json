@@ -1,6 +1,11 @@
 {
 	"name": "Etherpad",
 	"emoji": "📝",
+	"category": "notes",
+	"alternatives": [
+		"Google Docs"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "etherpad",
 		"port": 9001
@@ -18,35 +23,259 @@
 	"texts": {
 		"en": {
 			"description": "Documents edited together in real time: each author in their own colour, with chat, history and plugins",
-			"notes": "Open the address, name a pad and share its link. Anyone with the address can create and edit pads. The admin pages are at https://{host}/admin: sign in as admin with the admin password you gave to install plugins and manage pads."
+			"notes": "Open the address, name a pad and share its link. Anyone with the address can create and edit pads. The admin pages are at https://{host}/admin: sign in as admin with the admin password you gave to install plugins and manage pads.",
+			"sizing": "Etherpad is light: about 400 MB with Postgres, and years of pads with their full history take a few gigabytes.",
+			"summary": "Etherpad is an open-source real-time collaborative editor and Google Docs alternative. Self-host it with Docker Compose in one click.",
+			"about": [
+				"Etherpad is an open-source real-time collaborative editor that people run instead of Google Docs. Several people type into one pad at once, and each author's text keeps its own colour, so who wrote what shows at a glance. Every revision is kept: the Timeslider replays a pad's history character by character. A chat runs beside the text, so the talk about a draft stays with it.",
+				"People self-host Etherpad so the text and its history stay on their own server. The code is Apache 2.0, the project says it sends no telemetry, and Wikimedia, universities and public bodies run their own. Plugins add comments, tables, images and sign-in over OpenID Connect or LDAP. Two catches: out of the box nobody signs in, so the address alone lets anyone create and edit pads, and the editor is plain, with headings and text colour left to plugins."
+			],
+			"faq": [
+				{
+					"q": "Is Etherpad free and open source?",
+					"a": "Yes. Etherpad is free software under the Apache License 2.0, developed on GitHub at ether/etherpad by a small volunteer team since 2009."
+				},
+				{
+					"q": "Can Etherpad export to Word or PDF?",
+					"a": "Yes. Out of the box a pad exports to Word (.docx), PDF, HTML and plain text, and imports .docx, HTML and text. ODT and DOC, and importing RTF or PDF, need LibreOffice, which the official Docker image leaves out."
+				},
+				{
+					"q": "How do I make Etherpad private?",
+					"a": "Set REQUIRE_AUTHENTICATION to true and a USER_PASSWORD in the etherpad service's environment: every visitor then signs in, as the account user with that password. For an account per person, the ep_openid_connect plugin signs people in through an OpenID Connect provider."
+				},
+				{
+					"q": "Does Etherpad have an API?",
+					"a": "Yes. Its HTTP API creates and deletes pads, reads and sets their text or HTML, and manages groups, authors, sessions and chat. The OpenAPI definition is served at /api/openapi.json."
+				},
+				{
+					"q": "Can I share an Etherpad pad read-only?",
+					"a": "Yes. Tick Read only in the pad's Share and Embed dialog and pass on the link it gives: whoever opens it can read the pad but not change it."
+				}
+			]
 		},
 		"de": {
 			"description": "Dokumente, die gemeinsam in Echtzeit bearbeitet werden: jede Person in ihrer eigenen Farbe, mit Chat, Verlauf und Plugins",
-			"notes": "Öffne die Adresse, gib einem Pad einen Namen und teile seinen Link. Jeder mit der Adresse kann Pads anlegen und bearbeiten. Die Admin-Seiten sind unter https://{host}/admin: Melde dich als admin mit dem angegebenen Admin-Passwort an, um Plugins zu installieren und Pads zu verwalten."
+			"notes": "Öffne die Adresse, gib einem Pad einen Namen und teile seinen Link. Jeder mit der Adresse kann Pads anlegen und bearbeiten. Die Admin-Seiten sind unter https://{host}/admin: Melde dich als admin mit dem angegebenen Admin-Passwort an, um Plugins zu installieren und Pads zu verwalten.",
+			"sizing": "Etherpad ist leicht: etwa 400 MB mit Postgres, und Pads aus Jahren samt komplettem Verlauf brauchen ein paar GB.",
+			"summary": "Etherpad ist ein Open-Source-Editor für Zusammenarbeit in Echtzeit, eine Alternative zu Google Docs. Mit Docker Compose in einem Klick selbst hosten.",
+			"about": [
+				"Etherpad ist ein Open-Source-Editor für gemeinsames Schreiben in Echtzeit, den viele statt Google Docs einsetzen. Mehrere Personen tippen gleichzeitig in ein Pad, und der Text jeder Person behält seine eigene Farbe, sodass auf einen Blick zu sehen ist, wer was geschrieben hat. Jede Revision bleibt erhalten: Der Timeslider spielt den Verlauf eines Pads Zeichen für Zeichen ab. Neben dem Text läuft ein Chat, damit das Gespräch über einen Entwurf bei ihm bleibt.",
+				"Du hostest Etherpad selbst, damit der Text und sein Verlauf auf deinem eigenen Server bleiben. Der Code steht unter Apache 2.0, laut dem Projekt sendet Etherpad keine Telemetrie, und Wikimedia, Universitäten und Behörden betreiben ihre eigenen Instanzen. Plugins ergänzen Kommentare, Tabellen, Bilder und die Anmeldung über OpenID Connect oder LDAP. Zwei Haken: Ab Werk meldet sich niemand an, die Adresse allein genügt also, um Pads anzulegen und zu bearbeiten, und der Editor ist schlicht, Überschriften und Textfarbe überlässt er den Plugins."
+			],
+			"faq": [
+				{
+					"q": "Ist Etherpad kostenlos und Open Source?",
+					"a": "Ja. Etherpad ist freie Software unter der Apache License 2.0 und wird seit 2009 von einem kleinen Team Freiwilliger auf GitHub unter ether/etherpad entwickelt."
+				},
+				{
+					"q": "Kann Etherpad nach Word oder PDF exportieren?",
+					"a": "Ja. Ab Werk exportiert ein Pad nach Word (.docx), PDF, HTML und als reinen Text und importiert .docx, HTML und Text. ODT und DOC sowie der Import von RTF oder PDF brauchen LibreOffice, das im offiziellen Docker-Image fehlt."
+				},
+				{
+					"q": "Wie mache ich Etherpad privat?",
+					"a": "Setze REQUIRE_AUTHENTICATION auf true und lege ein USER_PASSWORD in den Umgebungsvariablen des Services etherpad fest: Dann müssen sich alle, die die Adresse öffnen, anmelden, und zwar mit dem Konto user und diesem Passwort. Für ein Konto pro Person meldet das Plugin ep_openid_connect die Leute über einen OpenID-Connect-Anbieter an."
+				},
+				{
+					"q": "Hat Etherpad eine API?",
+					"a": "Ja. Die HTTP-API legt Pads an und löscht sie, liest und setzt ihren Text oder ihr HTML und verwaltet Gruppen, Autorinnen und Autoren, Sessions und den Chat. Die OpenAPI-Definition liegt unter /api/openapi.json."
+				},
+				{
+					"q": "Kann ich ein Pad in Etherpad schreibgeschützt teilen?",
+					"a": "Ja. Hake im Dialog „Share and Embed“ des Pads „Read only“ an und gib den Link weiter, den du dort bekommst: Wer ihn öffnet, kann das Pad lesen, aber nicht ändern."
+				}
+			]
 		},
 		"es": {
 			"description": "Documentos editados en equipo en tiempo real: cada autor con su propio color, con chat, historial y plugins",
-			"notes": "Abre la dirección, pon nombre a un pad y comparte su enlace. Cualquiera con la dirección puede crear y editar pads. Las páginas de administración están en https://{host}/admin: entra como admin con la contraseña de administrador que indicaste para instalar plugins y gestionar los pads."
+			"notes": "Abre la dirección, pon nombre a un pad y comparte su enlace. Cualquiera con la dirección puede crear y editar pads. Las páginas de administración están en https://{host}/admin: entra como admin con la contraseña de administrador que indicaste para instalar plugins y gestionar los pads.",
+			"sizing": "Etherpad es ligero: unos 400 MB con Postgres, y años de pads con todo su historial ocupan unos pocos GB.",
+			"summary": "Etherpad es un editor colaborativo en tiempo real de código abierto y una alternativa a Google Docs. Autoalójalo con Docker Compose en un clic.",
+			"about": [
+				"Etherpad es un editor colaborativo en tiempo real de código abierto que mucha gente usa en lugar de Google Docs. Varias personas escriben a la vez en un mismo pad, y el texto de cada autor conserva su propio color, así que se ve de un vistazo quién escribió qué. Se guarda cada revisión: el Timeslider reproduce el historial de un pad carácter por carácter. Junto al texto hay un chat, de modo que la conversación sobre un borrador se queda con él.",
+				"Quienes autoalojan Etherpad lo hacen para que el texto y su historial se queden en su propio servidor. El código está bajo Apache 2.0, el proyecto dice que no envía telemetría, y Wikimedia, universidades y organismos públicos alojan el suyo. Los plugins agregan comentarios, tablas, imágenes e inicio de sesión con OpenID Connect o LDAP. Hay dos inconvenientes: de fábrica nadie inicia sesión, así que basta la dirección para que cualquiera cree y edite pads, y el editor es sencillo, con los encabezados y el color del texto en manos de los plugins."
+			],
+			"faq": [
+				{
+					"q": "¿Etherpad es gratis y de código abierto?",
+					"a": "Sí. Etherpad es software libre bajo la Apache License 2.0, desarrollado en GitHub, en ether/etherpad, por un pequeño equipo de voluntarios desde 2009."
+				},
+				{
+					"q": "¿Etherpad puede exportar a Word o PDF?",
+					"a": "Sí. De fábrica, un pad se puede exportar a Word (.docx), PDF, HTML y texto sin formato, e importar desde .docx, HTML y texto. ODT y DOC, y la importación de RTF o PDF, necesitan LibreOffice, que la imagen oficial de Docker no incluye."
+				},
+				{
+					"q": "¿Cómo hago privado Etherpad?",
+					"a": "Pon REQUIRE_AUTHENTICATION en true y define un USER_PASSWORD en las variables de entorno del servicio etherpad: así cada visitante tendrá que iniciar sesión con la cuenta user y esa contraseña. Si quieres una cuenta por persona, el plugin ep_openid_connect permite que las personas inicien sesión mediante un proveedor de OpenID Connect."
+				},
+				{
+					"q": "¿Etherpad tiene una API?",
+					"a": "Sí. Su API HTTP crea y elimina pads, lee y establece su texto o su HTML, y administra grupos, autores, sesiones y chat. La definición OpenAPI se sirve en /api/openapi.json."
+				},
+				{
+					"q": "¿Puedo compartir un pad de Etherpad en solo lectura?",
+					"a": "Sí. Marca “Read only” en el diálogo “Share and Embed” del pad y comparte el enlace que te da: quien lo abra podrá leer el pad, pero no cambiarlo."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des documents rédigés à plusieurs en temps réel : chaque auteur dans sa couleur, avec chat, historique et plugins",
-			"notes": "Ouvrez l’adresse, nommez un pad et partagez son lien. Toute personne qui a l’adresse peut créer et modifier des pads. L’administration est à https://{host}/admin : connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué pour installer des plugins et gérer les pads."
+			"notes": "Ouvrez l’adresse, nommez un pad et partagez son lien. Toute personne qui a l’adresse peut créer et modifier des pads. L’administration est à https://{host}/admin : connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué pour installer des plugins et gérer les pads.",
+			"sizing": "Etherpad est léger : environ 400 MB avec Postgres, et des années de pads avec tout leur historique prennent quelques GB.",
+			"summary": "Etherpad est un éditeur collaboratif open source en temps réel, une alternative à Google Docs. Auto-hébergez-le avec Docker Compose en un clic.",
+			"about": [
+				"Etherpad est un éditeur collaboratif open source en temps réel que beaucoup utilisent à la place de Google Docs. Plusieurs personnes écrivent en même temps dans un même pad, et le texte de chaque auteur garde sa propre couleur : on voit d’un coup d’œil qui a écrit quoi. Chaque révision est conservée : le Timeslider rejoue l’historique d’un pad caractère par caractère. Un chat tourne à côté du texte, si bien que la discussion sur un brouillon reste avec lui.",
+				"Vous auto-hébergez Etherpad pour garder le texte et son historique sur votre propre serveur. Le code est sous licence Apache 2.0, le projet affirme n’envoyer aucune télémétrie, et Wikimedia, des universités et des administrations publiques font tourner le leur. Des plugins ajoutent commentaires, tableaux, images et connexion par OpenID Connect ou LDAP. Deux revers : par défaut, personne ne se connecte, si bien que l’adresse seule permet à n’importe qui de créer et de modifier des pads, et l’éditeur reste sobre, les titres et la couleur du texte étant laissés aux plugins."
+			],
+			"faq": [
+				{
+					"q": "Etherpad est-il gratuit et open source ?",
+					"a": "Oui. Etherpad est un logiciel libre sous licence Apache 2.0, développé sur GitHub, dans ether/etherpad, par une petite équipe de bénévoles depuis 2009."
+				},
+				{
+					"q": "Etherpad peut-il exporter vers Word ou PDF ?",
+					"a": "Oui. Par défaut, un pad s’exporte vers Word (.docx), PDF, HTML et texte brut, et il importe les fichiers .docx, HTML et texte. Pour ODT et DOC, ainsi que pour l’import de RTF ou de PDF, il faut LibreOffice, absent de l’image Docker officielle."
+				},
+				{
+					"q": "Comment rendre Etherpad privé ?",
+					"a": "Définissez REQUIRE_AUTHENTICATION sur true et un USER_PASSWORD dans les variables d’environnement du service etherpad : chaque visiteur devra alors se connecter avec le compte user et ce mot de passe. Pour un compte par personne, le plugin ep_openid_connect connecte les gens via un fournisseur OpenID Connect."
+				},
+				{
+					"q": "Etherpad a-t-il une API ?",
+					"a": "Oui. Son API HTTP crée et supprime des pads, lit et définit leur texte ou leur HTML, et gère les groupes, les auteurs, les sessions et le chat. La définition OpenAPI est servie à l’adresse /api/openapi.json."
+				},
+				{
+					"q": "Puis-je partager un pad Etherpad en lecture seule ?",
+					"a": "Oui. Cochez « Read only » dans la boîte de dialogue « Share and Embed » du pad et transmettez le lien qu’elle donne : quiconque l’ouvre peut lire le pad, mais pas le modifier."
+				}
+			]
 		},
 		"pl": {
 			"description": "Dokumenty edytowane wspólnie w czasie rzeczywistym: każdy autor w swoim kolorze, z czatem, historią i wtyczkami",
-			"notes": "Otwórz adres projektu, nazwij pad i udostępnij jego link. Każdy, kto zna adres, może tworzyć i edytować pady. Strony administracyjne są pod https://{host}/admin: zaloguj się jako admin hasłem administratora, które podano, żeby instalować wtyczki i zarządzać padami."
+			"notes": "Otwórz adres projektu, nazwij pad i udostępnij jego link. Każdy, kto zna adres, może tworzyć i edytować pady. Strony administracyjne są pod https://{host}/admin: zaloguj się jako admin hasłem administratora, które podano, żeby instalować wtyczki i zarządzać padami.",
+			"sizing": "Etherpad ma małe wymagania: około 400 MB z Postgresem, a lata padów z pełną historią zajmują kilka GB.",
+			"summary": "Etherpad to edytor open source do współpracy w czasie rzeczywistym, alternatywa dla Google Docs. Hostuj go u siebie z Docker Compose jednym kliknięciem.",
+			"about": [
+				"Etherpad to edytor open source do wspólnej pracy w czasie rzeczywistym, którego ludzie używają zamiast Google Docs. Kilka osób pisze naraz w jednym padzie, a tekst każdego autora zachowuje swój kolor, więc od razu widać, kto co napisał. Każda wersja jest zapisywana: Timeslider odtwarza historię pada znak po znaku. Obok tekstu działa czat, więc rozmowa o szkicu zostaje przy nim.",
+				"Etherpad hostuje się u siebie, żeby tekst i jego historia zostały na własnym serwerze. Kod jest na licencji Apache 2.0, projekt twierdzi, że nie wysyła telemetrii, a Wikimedia, uniwersytety i instytucje publiczne uruchamiają własne instancje. Wtyczki dodają komentarze, tabele, obrazy i logowanie przez OpenID Connect lub LDAP. Są dwa haczyki: domyślnie nikt się nie loguje, więc sam adres pozwala każdemu tworzyć i edytować pady, a edytor jest prosty, z nagłówkami i kolorem tekstu zostawionymi wtyczkom."
+			],
+			"faq": [
+				{
+					"q": "Czy Etherpad jest darmowy i open source?",
+					"a": "Tak. Etherpad to wolne oprogramowanie na licencji Apache License 2.0, rozwijane na GitHubie w ether/etherpad przez niewielki zespół wolontariuszy od 2009 roku."
+				},
+				{
+					"q": "Czy Etherpad potrafi eksportować do formatu Word lub PDF?",
+					"a": "Tak. Domyślnie pad eksportuje się do formatów Word (.docx), PDF, HTML i zwykłego tekstu, a importować można pliki .docx, HTML i tekst. ODT i DOC oraz import RTF lub PDF wymagają LibreOffice, którego oficjalny obraz Dockera nie zawiera."
+				},
+				{
+					"q": "Jak ustawić Etherpad jako prywatny?",
+					"a": "Ustaw REQUIRE_AUTHENTICATION na true i USER_PASSWORD w zmiennych środowiskowych usługi etherpad: każdy odwiedzający będzie się wtedy logować na konto user, podając to hasło. Dla osobnego konta każdej osoby wtyczka ep_openid_connect loguje ludzi przez dostawcę OpenID Connect."
+				},
+				{
+					"q": "Czy Etherpad ma API?",
+					"a": "Tak. Jego API HTTP tworzy i usuwa pady, odczytuje i ustawia ich tekst lub HTML oraz zarządza grupami, autorami, sesjami i czatem. Definicja OpenAPI jest dostępna pod /api/openapi.json."
+				},
+				{
+					"q": "Czy mogę udostępnić pad Etherpad tylko do odczytu?",
+					"a": "Tak. Zaznacz „Read only” w oknie „Share and Embed” pada i przekaż podany tam link: kto go otworzy, może pad czytać, ale nie zmieniać."
+				}
+			]
 		},
 		"pt": {
 			"description": "Documentos editados em conjunto em tempo real: cada autor com a sua cor, com chat, histórico e plugins",
-			"notes": "Abra o endereço, dê um nome a um pad e compartilhe o link dele. Qualquer pessoa com o endereço pode criar e editar pads. As páginas de administração ficam em https://{host}/admin: entre como admin com a senha de administrador que você informou para instalar plugins e gerir os pads."
+			"notes": "Abra o endereço, dê um nome a um pad e compartilhe o link dele. Qualquer pessoa com o endereço pode criar e editar pads. As páginas de administração ficam em https://{host}/admin: entre como admin com a senha de administrador que você informou para instalar plugins e gerir os pads.",
+			"sizing": "Etherpad é leve: cerca de 400 MB com o Postgres, e anos de pads com todo o histórico ocupam alguns GB.",
+			"summary": "O Etherpad é um editor colaborativo em tempo real de código aberto, alternativa ao Google Docs. Hospede por conta própria com Docker Compose em um clique.",
+			"about": [
+				"O Etherpad é um editor colaborativo em tempo real de código aberto que muita gente usa no lugar do Google Docs. Várias pessoas digitam ao mesmo tempo em um mesmo pad, e o texto de cada autor mantém a sua própria cor, então dá para ver num relance quem escreveu o quê. Cada revisão é guardada: o Timeslider reproduz o histórico de um pad caractere por caractere. Um chat fica ao lado do texto, e a conversa sobre um rascunho fica junto dele.",
+				"Você hospeda o Etherpad por conta própria para que o texto e o histórico dele fiquem no seu próprio servidor. O código é Apache 2.0, o projeto diz que não envia telemetria, e a Wikimedia, universidades e órgãos públicos rodam instâncias próprias. Plugins acrescentam comentários, tabelas, imagens e login por OpenID Connect ou LDAP. Há dois poréns: de fábrica ninguém faz login, então só o endereço já deixa qualquer pessoa criar e editar pads, e o editor é simples, com títulos e cor do texto deixados para os plugins."
+			],
+			"faq": [
+				{
+					"q": "O Etherpad é gratuito e de código aberto?",
+					"a": "Sim. O Etherpad é software livre sob a Apache License 2.0, desenvolvido no GitHub, em ether/etherpad, por uma pequena equipe de voluntários desde 2009."
+				},
+				{
+					"q": "O Etherpad exporta para Word ou PDF?",
+					"a": "Sim. De fábrica, um pad exporta para Word (.docx), PDF, HTML e texto simples, e importa .docx, HTML e texto. ODT e DOC, e a importação de RTF ou PDF, precisam do LibreOffice, que a imagem oficial do Docker deixa de fora."
+				},
+				{
+					"q": "Como deixo o Etherpad privado?",
+					"a": "Defina REQUIRE_AUTHENTICATION como true e um USER_PASSWORD nas variáveis de ambiente do serviço etherpad: todo visitante passa a entrar com a conta user e essa senha. Para uma conta por pessoa, o plugin ep_openid_connect faz o login das pessoas por um provedor OpenID Connect."
+				},
+				{
+					"q": "O Etherpad tem API?",
+					"a": "Sim. A API HTTP dele cria e apaga pads, lê e define o texto ou o HTML deles, e gerencia grupos, autores, sessões e chat. A definição OpenAPI fica em /api/openapi.json."
+				},
+				{
+					"q": "Posso compartilhar um pad do Etherpad somente para leitura?",
+					"a": "Sim. Marque “Read only” na caixa “Share and Embed” do pad e repasse o link que ela dá: quem abrir poderá ler o pad, mas não alterá-lo."
+				}
+			]
 		},
 		"ru": {
 			"description": "Документы, которые редактируют вместе в реальном времени: у каждого автора свой цвет, есть чат, история и плагины",
-			"notes": "Откройте адрес, назовите пад и поделитесь его ссылкой. Создавать и редактировать пады может любой, у кого есть адрес. Админка — по адресу https://{host}/admin: войдите как admin с паролем администратора, который вы указали, чтобы ставить плагины и управлять падами."
+			"notes": "Откройте адрес, назовите пад и поделитесь его ссылкой. Создавать и редактировать пады может любой, у кого есть адрес. Админка — по адресу https://{host}/admin: войдите как admin с паролем администратора, который вы указали, чтобы ставить плагины и управлять падами.",
+			"sizing": "Etherpad: небольшие требования — около 400 MB вместе с Postgres, а годы документов с полной историей занимают несколько GB.",
+			"summary": "Etherpad — open source редактор для совместной работы в реальном времени, альтернатива Google Docs. Self-hosted на Docker Compose в один клик.",
+			"about": [
+				"Etherpad — это open source редактор для совместной работы в реальном времени, который ставят вместо Google Docs. Несколько человек печатают в одном паде одновременно, и текст каждого автора сохраняет свой цвет, так что сразу видно, кто что написал. Каждая версия сохраняется: Timeslider воспроизводит историю пада символ за символом. Рядом с текстом работает чат, поэтому обсуждение черновика остается вместе с ним.",
+				"Etherpad хостят у себя, чтобы текст и его история оставались на собственном сервере. Код под лицензией Apache 2.0, проект заявляет, что не отправляет телеметрию, а Wikimedia, университеты и государственные организации запускают собственные экземпляры. Плагины добавляют комментарии, таблицы, изображения и вход через OpenID Connect или LDAP. Но есть два нюанса: из коробки никто не входит, поэтому по одному адресу любой может создавать и редактировать пады, а редактор простой, заголовки и цвет текста оставлены плагинам."
+			],
+			"faq": [
+				{
+					"q": "Etherpad бесплатный и с открытым исходным кодом?",
+					"a": "Да. Etherpad — свободное ПО по лицензии Apache License 2.0, его с 2009 года разрабатывает небольшая команда волонтеров на GitHub, в ether/etherpad."
+				},
+				{
+					"q": "Умеет ли Etherpad экспортировать в Word или PDF?",
+					"a": "Да. Из коробки пад экспортируется в Word (.docx), PDF, HTML и простой текст, а импортировать можно .docx, HTML и текст. Для ODT и DOC, а также для импорта RTF или PDF нужен LibreOffice, которого в официальном Docker-образе нет."
+				},
+				{
+					"q": "Как сделать Etherpad приватным?",
+					"a": "Поставьте REQUIRE_AUTHENTICATION в true и задайте USER_PASSWORD в переменных окружения сервиса etherpad: тогда каждый посетитель будет входить под аккаунтом user с этим паролем. Для отдельного аккаунта каждому человеку плагин ep_openid_connect позволяет входить через провайдера OpenID Connect."
+				},
+				{
+					"q": "Есть ли у Etherpad API?",
+					"a": "Да. Его HTTP API создает и удаляет пады, читает и задает их текст или HTML, а также управляет группами, авторами, сессиями и чатом. Определение OpenAPI отдается по адресу /api/openapi.json."
+				},
+				{
+					"q": "Можно ли поделиться падом Etherpad только для чтения?",
+					"a": "Да. Отметьте «Read only» в диалоге «Share and Embed» пада и передайте полученную ссылку: тот, кто ее откроет, сможет читать пад, но не менять его."
+				}
+			]
 		},
 		"uk": {
 			"description": "Документи, які редагують разом у реальному часі: у кожного автора свій колір, є чат, історія й плагіни",
-			"notes": "Відкрийте адресу, назвіть пад і поділіться його посиланням. Створювати й редагувати пади може будь-хто, у кого є адреса. Адмінка — за адресою https://{host}/admin: увійдіть як admin із паролем адміністратора, який ви вказали, щоб ставити плагіни й керувати падами."
+			"notes": "Відкрийте адресу, назвіть пад і поділіться його посиланням. Створювати й редагувати пади може будь-хто, у кого є адреса. Адмінка — за адресою https://{host}/admin: увійдіть як admin із паролем адміністратора, який ви вказали, щоб ставити плагіни й керувати падами.",
+			"sizing": "Etherpad має скромні вимоги: близько 400 MB з Postgres, а роки падів із повною історією займають кілька GB.",
+			"summary": "Etherpad — редактор з відкритим кодом для спільної роботи в реальному часі, альтернатива Google Docs. Self-hosted на Docker Compose в один клік.",
+			"about": [
+				"Etherpad — це редактор з відкритим кодом для спільної роботи в реальному часі, який ставлять замість Google Docs. Кілька людей друкують в одному паді одночасно, і текст кожного автора зберігає свій колір, тож одразу видно, хто що написав. Кожна версія зберігається: Timeslider відтворює історію пада символ за символом. Поруч із текстом працює чат, тому обговорення чернетки лишається разом із нею.",
+				"Etherpad хостять у себе, щоб текст і його історія залишалися на власному сервері. Код має ліцензію Apache 2.0, проєкт заявляє, що не надсилає телеметрію, а Wikimedia, університети й державні установи запускають власні екземпляри. Плагіни додають коментарі, таблиці, зображення та вхід через OpenID Connect або LDAP. Але є два нюанси: з коробки ніхто не входить, тож за самою адресою будь-хто може створювати й редагувати пади, а редактор простий, заголовки та колір тексту залишено плагінам."
+			],
+			"faq": [
+				{
+					"q": "Чи Etherpad безкоштовний і з відкритим кодом?",
+					"a": "Так. Etherpad — вільне програмне забезпечення за ліцензією Apache License 2.0, його з 2009 року розробляє невелика команда волонтерів на GitHub, у ether/etherpad."
+				},
+				{
+					"q": "Чи вміє Etherpad експортувати у Word або PDF?",
+					"a": "Так. З коробки пад експортується у Word (.docx), PDF, HTML і простий текст, а імпортувати можна .docx, HTML і текст. Для ODT і DOC, а також для імпорту RTF чи PDF потрібен LibreOffice, якого в офіційному Docker-образі немає."
+				},
+				{
+					"q": "Як зробити Etherpad приватним?",
+					"a": "Поставте REQUIRE_AUTHENTICATION у true і задайте USER_PASSWORD у змінних середовища сервісу etherpad: тоді кожен відвідувач входитиме під акаунтом user із цим паролем. Для окремого акаунта кожній людині плагін ep_openid_connect дозволяє входити через провайдера OpenID Connect."
+				},
+				{
+					"q": "Чи є в Etherpad API?",
+					"a": "Так. Його HTTP API створює й видаляє пади, читає та задає їхній текст або HTML, а також керує групами, авторами, сесіями й чатом. Визначення OpenAPI віддається за адресою /api/openapi.json."
+				},
+				{
+					"q": "Чи можна поділитися падом Etherpad лише для читання?",
+					"a": "Так. Позначте «Read only» у діалозі «Share and Embed» пада й передайте отримане посилання: хто його відкриє, зможе читати пад, але не змінювати."
+				}
+			]
 		}
 	}
 }

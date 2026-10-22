@@ -1,6 +1,11 @@
 {
 	"name": "Apache Answer",
 	"emoji": "💬",
+	"category": "community",
+	"alternatives": [
+		"Stack Overflow for Teams"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "answer",
 		"port": 80
@@ -22,35 +27,259 @@
 	"texts": {
 		"en": {
 			"description": "Questions and answers for a community, a help center or a team, a Stack Overflow of your own",
-			"notes": "Sign in with the email and the admin password you gave (8 to 32 characters); the admin’s user name is admin. Sign-ups are confirmed by email, so add an SMTP server under Admin → Settings → SMTP before you invite people."
+			"notes": "Sign in with the email and the admin password you gave (8 to 32 characters); the admin’s user name is admin. Sign-ups are confirmed by email, so add an SMTP server under Admin → Settings → SMTP before you invite people.",
+			"sizing": "Apache Answer is light: about 150 MB of memory, and tens of thousands of questions take well under a gigabyte.",
+			"summary": "Apache Answer is an open-source Q&A platform, a Stack Overflow for Teams alternative. Self-host it on your own machine in one click.",
+			"about": [
+				"Apache Answer is an open-source Q&A platform, a question-and-answer site that teams run instead of Stack Overflow for Teams. People write questions and answers in Markdown with a live preview, vote on them, and the asker accepts the answer that worked. Tags group the questions, and search narrows by tag, author or score. Good posts earn reputation and badges, and reputation unlocks privileges such as editing other people's posts, with every revision kept in the post's history.",
+				"Apache Answer suits a product's help center, an open-source project's community or a company's internal knowledge base. Self-host it and the questions stay in your own database. Admins set how much reputation each privilege takes, from a lenient preset for a small private team to a strict one for a mature public community. The catch is email: by default new accounts confirm their address, so connect an SMTP server before you invite anyone."
+			],
+			"faq": [
+				{
+					"q": "Is Apache Answer free and open source?",
+					"a": "Yes. It is released under the Apache License 2.0, so it is free to run, change and use in a company. It is a top-level project of the Apache Software Foundation, written in Go with a React interface."
+				},
+				{
+					"q": "Apache Answer vs Stack Overflow for Teams",
+					"a": "The core is the same: ask, answer, vote, accept. The difference is who runs it. Apache Answer is open source, has no per-user fee, and takes plugins for login, search, file storage and Slack notifications."
+				},
+				{
+					"q": "Does Apache Answer support SSO or Google login?",
+					"a": "Yes, over OAuth2. The official Docker image includes the OAuth2 Basic connector, which an admin points at Google, GitHub, Okta or another OAuth2 provider in its plugin settings. Other plugins are added by rebuilding with answer build."
+				},
+				{
+					"q": "Can Apache Answer be private for an internal team?",
+					"a": "Yes. With Login required turned on, only signed-in users can see the site. Admins can also close new registrations or accept sign-ups only from the company's email domains."
+				},
+				{
+					"q": "Does Apache Answer use SQLite, MySQL or PostgreSQL?",
+					"a": "It supports all three, and this template uses SQLite. The project's FAQ recommends SQLite for trying Answer out and MySQL for real use, and Answer cannot yet migrate data from one database type to another."
+				}
+			]
 		},
 		"de": {
 			"description": "Fragen und Antworten für eine Community, ein Help Center oder ein Team, ein eigenes Stack Overflow",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an (8 bis 32 Zeichen); der Benutzername des Admins ist admin. Registrierungen werden per E-Mail bestätigt: Trag unter Admin → Settings → SMTP einen SMTP-Server ein, bevor du Leute einlädst."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an (8 bis 32 Zeichen); der Benutzername des Admins ist admin. Registrierungen werden per E-Mail bestätigt: Trag unter Admin → Settings → SMTP einen SMTP-Server ein, bevor du Leute einlädst.",
+			"sizing": "Apache Answer ist leicht: etwa 150 MB RAM, und Zehntausende Fragen brauchen weit unter 1 GB.",
+			"summary": "Apache Answer selbst hosten: Open-Source-Plattform für Fragen und Antworten, Alternative zu Stack Overflow for Teams. In einem Klick auf deiner Maschine.",
+			"about": [
+				"Apache Answer ist eine Open-Source-Q&A-Plattform, eine Seite für Fragen und Antworten, die Teams statt Stack Overflow for Teams betreiben. Man schreibt Fragen und Antworten in Markdown mit Live-Vorschau und stimmt darüber ab, und wer gefragt hat, akzeptiert die Antwort, die geholfen hat. Tags gruppieren die Fragen, und die Suche lässt sich nach Tag, Person oder Punktzahl eingrenzen. Gute Beiträge bringen Reputation und Badges ein, und mit Reputation schalten sich Privilegien frei, etwa die Beiträge anderer zu bearbeiten, wobei jede Revision im Verlauf des Beitrags erhalten bleibt.",
+				"Apache Answer passt zum Help Center eines Produkts, zur Community eines Open-Source-Projekts oder zur internen Wissensdatenbank eines Unternehmens. Hostest du es selbst, bleiben die Fragen in deiner eigenen Datenbank. Admins legen fest, wie viel Reputation jedes Privileg voraussetzt, von einer nachsichtigen Voreinstellung für ein kleines privates Team bis zu einer strengen für eine etablierte öffentliche Community. Der Haken ist die E-Mail: Neue Konten bestätigen ihre Adresse standardmäßig, also verbinde einen SMTP-Server, bevor du jemanden einlädst."
+			],
+			"faq": [
+				{
+					"q": "Ist Apache Answer kostenlos und Open Source?",
+					"a": "Ja. Es steht unter der Apache License 2.0 und lässt sich daher kostenlos betreiben, ändern und in einem Unternehmen einsetzen. Es ist ein Top-Level-Projekt der Apache Software Foundation, geschrieben in Go mit einer React-Oberfläche."
+				},
+				{
+					"q": "Apache Answer oder Stack Overflow for Teams: Was ist der Unterschied?",
+					"a": "Der Kern ist derselbe: fragen, antworten, abstimmen, akzeptieren. Der Unterschied liegt darin, wer es betreibt. Apache Answer ist Open Source, hat keine Gebühr pro Person und unterstützt Plugins für Login, Suche, Dateispeicher und Slack-Benachrichtigungen."
+				},
+				{
+					"q": "Unterstützt Apache Answer SSO oder Google-Login?",
+					"a": "Ja, über OAuth2. Das offizielle Docker-Image enthält den OAuth2-Basic-Connector, den ein Admin in den Plugin-Einstellungen auf Google, GitHub, Okta oder einen anderen OAuth2-Anbieter richtet. Weitere Plugins kommen dazu, indem man mit answer build neu baut."
+				},
+				{
+					"q": "Kann Apache Answer für ein internes Team privat sein?",
+					"a": "Ja. Ist „Login required“ eingeschaltet, ist die Seite nur für angemeldete Personen sichtbar. Admins können außerdem neue Registrierungen schließen oder nur Registrierungen von den E-Mail-Domains des Unternehmens zulassen."
+				},
+				{
+					"q": "Nutzt Apache Answer SQLite, MySQL oder PostgreSQL?",
+					"a": "Es unterstützt alle drei, und diese Vorlage verwendet SQLite. Die FAQ des Projekts empfiehlt SQLite zum Ausprobieren von Answer und MySQL für den echten Einsatz, und Answer kann Daten noch nicht von einem Datenbanktyp in einen anderen migrieren."
+				}
+			]
 		},
 		"es": {
 			"description": "Preguntas y respuestas para una comunidad, un centro de ayuda o un equipo, tu propio Stack Overflow",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste (de 8 a 32 caracteres); el usuario del administrador es admin. Los registros se confirman por correo, así que añade un servidor SMTP en Admin → Settings → SMTP antes de invitar a nadie."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste (de 8 a 32 caracteres); el usuario del administrador es admin. Los registros se confirman por correo, así que añade un servidor SMTP en Admin → Settings → SMTP antes de invitar a nadie.",
+			"sizing": "Apache Answer es ligero: unos 150 MB de memoria, y decenas de miles de preguntas ocupan bastante menos de 1 GB.",
+			"summary": "Autoaloja Apache Answer, la plataforma de preguntas y respuestas de código abierto y alternativa a Stack Overflow for Teams. En tu máquina, en un clic.",
+			"about": [
+				"Apache Answer es una plataforma de preguntas y respuestas (Q&A) de código abierto, un sitio que los equipos usan en lugar de Stack Overflow for Teams. Las personas escriben preguntas y respuestas en Markdown con vista previa en tiempo real, votan por ellas, y quien preguntó acepta la respuesta que le sirvió. Los tags agrupan las preguntas, y la búsqueda se acota por tag, autor o puntuación. Las buenas publicaciones ganan reputación e insignias, y la reputación desbloquea privilegios como editar las publicaciones de otros, con cada revisión guardada en el historial de la publicación.",
+				"Apache Answer sirve para el centro de ayuda de un producto, la comunidad de un proyecto de código abierto o la base de conocimiento interna de una empresa. Si lo autoalojas, las preguntas se quedan en tu propia base de datos. Los administradores definen cuánta reputación exige cada privilegio, desde una configuración predefinida permisiva para un equipo privado pequeño hasta una estricta para una comunidad pública madura. El inconveniente es el correo: por defecto las cuentas nuevas confirman su dirección, así que conecta un servidor SMTP antes de invitar a nadie."
+			],
+			"faq": [
+				{
+					"q": "¿Apache Answer es gratis y de código abierto?",
+					"a": "Sí. Se publica bajo la Apache License 2.0, así que es gratis para ejecutar, modificar y usar en una empresa. Es un proyecto de primer nivel de la Apache Software Foundation, escrito en Go con una interfaz en React."
+				},
+				{
+					"q": "Apache Answer frente a Stack Overflow for Teams: ¿cuál es la diferencia?",
+					"a": "El núcleo es el mismo: preguntar, responder, votar, aceptar. La diferencia está en quién lo administra. Apache Answer es de código abierto, no cobra por usuario y admite plugins para inicio de sesión, búsqueda, almacenamiento de archivos y notificaciones de Slack."
+				},
+				{
+					"q": "¿Apache Answer admite SSO o inicio de sesión con Google?",
+					"a": "Sí, mediante OAuth2. La imagen oficial de Docker incluye el conector OAuth2 Basic, que un administrador apunta a Google, GitHub, Okta u otro proveedor de OAuth2 en la configuración del plugin. Otros plugins se agregan reconstruyendo con answer build."
+				},
+				{
+					"q": "¿Apache Answer puede ser privado para un equipo interno?",
+					"a": "Sí. Con “Login required” activado, solo ven el sitio quienes iniciaron sesión. Los administradores también pueden cerrar los registros nuevos o aceptar registros solo de los dominios de correo de la empresa."
+				},
+				{
+					"q": "¿Apache Answer usa SQLite, MySQL o PostgreSQL?",
+					"a": "Admite los tres, y esta plantilla usa SQLite. Las preguntas frecuentes del proyecto recomiendan SQLite para probar Answer y MySQL para un uso real, y Answer todavía no puede migrar datos de un tipo de base de datos a otro."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des questions et des réponses pour une communauté, un centre d’aide ou une équipe, votre propre Stack Overflow",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués (8 à 32 caractères) ; le nom d’utilisateur de l’administrateur est admin. Les inscriptions sont confirmées par e-mail : ajoutez un serveur SMTP dans Admin → Settings → SMTP avant d’inviter du monde."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués (8 à 32 caractères) ; le nom d’utilisateur de l’administrateur est admin. Les inscriptions sont confirmées par e-mail : ajoutez un serveur SMTP dans Admin → Settings → SMTP avant d’inviter du monde.",
+			"sizing": "Apache Answer est léger : environ 150 MB de mémoire, et des dizaines de milliers de questions pèsent bien moins de 1 GB.",
+			"summary": "Auto-hébergez Apache Answer, la plateforme de questions-réponses open source et alternative à Stack Overflow for Teams. Sur votre machine, en un clic.",
+			"about": [
+				"Apache Answer est une plateforme de questions-réponses (Q&A) open source, un site que des équipes font tourner à la place de Stack Overflow for Teams. On y écrit questions et réponses en Markdown avec un aperçu en direct, on vote, et la personne qui a posé la question accepte la réponse qui a fonctionné. Des tags regroupent les questions, et la recherche se restreint par tag, auteur ou score. Les bonnes publications font gagner de la réputation et des badges, et la réputation débloque des privilèges, comme modifier les publications des autres, chaque révision restant dans l’historique de la publication.",
+				"Apache Answer convient au centre d’aide d’un produit, à la communauté d’un projet open source ou à la base de connaissances interne d’une entreprise. Si vous l’auto-hébergez, les questions restent dans votre propre base de données. Les administrateurs fixent la réputation qu’exige chaque privilège, d’un préréglage permissif pour une petite équipe privée à un préréglage strict pour une communauté publique bien établie. Le revers : l’e-mail. Par défaut, les nouveaux comptes confirment leur adresse, alors connectez un serveur SMTP avant d’inviter qui que ce soit."
+			],
+			"faq": [
+				{
+					"q": "Apache Answer est-il gratuit et open source ?",
+					"a": "Oui. Il est publié sous l’Apache License 2.0, donc gratuit à faire tourner, à modifier et à utiliser en entreprise. C’est un projet de premier niveau de l’Apache Software Foundation, écrit en Go avec une interface React."
+				},
+				{
+					"q": "Apache Answer ou Stack Overflow for Teams : quelle différence ?",
+					"a": "Le cœur est le même : poser, répondre, voter, accepter. La différence, c’est qui le fait tourner. Apache Answer est open source, sans frais par utilisateur, et accepte des plugins pour la connexion, la recherche, le stockage de fichiers et les notifications Slack."
+				},
+				{
+					"q": "Apache Answer gère-t-il le SSO ou la connexion avec Google ?",
+					"a": "Oui, via OAuth2. L’image Docker officielle inclut le connecteur OAuth2 Basic, qu’un administrateur dirige vers Google, GitHub, Okta ou un autre fournisseur OAuth2 dans les paramètres du plugin. D’autres plugins s’ajoutent en reconstruisant avec answer build."
+				},
+				{
+					"q": "Apache Answer peut-il rester privé pour une équipe interne ?",
+					"a": "Oui. Avec « Login required » activé, seuls les utilisateurs connectés voient le site. Les administrateurs peuvent aussi fermer les nouvelles inscriptions ou n’accepter que celles venant des domaines e-mail de l’entreprise."
+				},
+				{
+					"q": "Apache Answer utilise-t-il SQLite, MySQL ou PostgreSQL ?",
+					"a": "Il prend en charge les trois, et ce template utilise SQLite. La FAQ du projet recommande SQLite pour essayer Answer et MySQL pour un usage réel, et Answer ne sait pas encore migrer des données d’un type de base à un autre."
+				}
+			]
 		},
 		"pl": {
 			"description": "Pytania i odpowiedzi dla społeczności, centrum pomocy albo zespołu, własny Stack Overflow",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano (od 8 do 32 znaków); nazwa użytkownika administratora to admin. Rejestracje są potwierdzane e-mailem, więc zanim zaprosisz ludzi, dodaj serwer SMTP w Admin → Settings → SMTP."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano (od 8 do 32 znaków); nazwa użytkownika administratora to admin. Rejestracje są potwierdzane e-mailem, więc zanim zaprosisz ludzi, dodaj serwer SMTP w Admin → Settings → SMTP.",
+			"sizing": "Apache Answer ma małe wymagania: około 150 MB pamięci, a dziesiątki tysięcy pytań zajmują znacznie poniżej 1 GB.",
+			"summary": "Hostuj u siebie Apache Answer, platformę pytań i odpowiedzi open source, alternatywę dla Stack Overflow for Teams. Na własnej maszynie, w jeden klik.",
+			"about": [
+				"Apache Answer to platforma pytań i odpowiedzi (Q&A) open source, serwis, który zespoły uruchamiają zamiast Stack Overflow for Teams. Ludzie piszą pytania i odpowiedzi w Markdownie z podglądem na żywo, głosują na nie, a autor pytania akceptuje odpowiedź, która zadziałała. Tagi grupują pytania, a wyszukiwanie zawęża się po tagu, autorze lub liczbie punktów. Dobre wpisy zdobywają reputację i odznaki, a reputacja odblokowuje uprawnienia, takie jak edytowanie wpisów innych osób, przy czym każda rewizja zostaje w historii wpisu.",
+				"Apache Answer pasuje do centrum pomocy produktu, społeczności projektu open source albo wewnętrznej bazy wiedzy firmy. Hostujesz go u siebie, więc pytania zostają w twojej własnej bazie danych. Administratorzy ustawiają, ile reputacji wymaga każde uprawnienie, od łagodnego presetu dla małego prywatnego zespołu po surowy dla dojrzałej publicznej społeczności. Haczyk to e-mail: domyślnie nowe konta potwierdzają adres, więc zanim kogokolwiek zaprosisz, podłącz serwer SMTP."
+			],
+			"faq": [
+				{
+					"q": "Czy Apache Answer jest darmowy i open source?",
+					"a": "Tak. Jest wydany na licencji Apache License 2.0, więc można go za darmo uruchamiać, zmieniać i używać w firmie. To projekt najwyższego poziomu Apache Software Foundation, napisany w Go, z interfejsem w React."
+				},
+				{
+					"q": "Apache Answer czy Stack Overflow for Teams: jaka jest różnica?",
+					"a": "Rdzeń jest ten sam: pytać, odpowiadać, głosować, akceptować. Różnica polega na tym, kto to uruchamia. Apache Answer jest open source, nie ma opłaty za użytkownika i obsługuje pluginy do logowania, wyszukiwania, przechowywania plików i powiadomień w Slacku."
+				},
+				{
+					"q": "Czy Apache Answer obsługuje SSO albo logowanie przez Google?",
+					"a": "Tak, przez OAuth2. Oficjalny obraz Dockera zawiera konektor OAuth2 Basic, który administrator kieruje na Google, GitHub, Okta albo innego dostawcę OAuth2 w ustawieniach pluginu. Inne pluginy dodaje się, budując od nowa przez answer build."
+				},
+				{
+					"q": "Czy Apache Answer może być prywatny dla wewnętrznego zespołu?",
+					"a": "Tak. Przy włączonym „Login required” serwis widzą tylko zalogowani użytkownicy. Administratorzy mogą też zamknąć nowe rejestracje albo przyjmować rejestracje tylko z domen e-mail firmy."
+				},
+				{
+					"q": "Czy Apache Answer używa SQLite, MySQL czy PostgreSQL?",
+					"a": "Obsługuje wszystkie trzy, a ten szablon używa SQLite. FAQ projektu poleca SQLite do wypróbowania Answera, a MySQL do prawdziwego użycia, i Answer nie potrafi jeszcze przenosić danych z jednego typu bazy do drugiego."
+				}
+			]
 		},
 		"pt": {
 			"description": "Perguntas e respostas para uma comunidade, uma central de ajuda ou uma equipe, o seu próprio Stack Overflow",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou (de 8 a 32 caracteres); o usuário do administrador é admin. Os cadastros são confirmados por e-mail, então adicione um servidor SMTP em Admin → Settings → SMTP antes de convidar alguém."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou (de 8 a 32 caracteres); o usuário do administrador é admin. Os cadastros são confirmados por e-mail, então adicione um servidor SMTP em Admin → Settings → SMTP antes de convidar alguém.",
+			"sizing": "Apache Answer é leve: cerca de 150 MB de memória, e dezenas de milhares de perguntas ocupam bem menos de 1 GB.",
+			"summary": "Auto-hospede o Apache Answer: plataforma de perguntas e respostas de código aberto, alternativa ao Stack Overflow for Teams. Na sua máquina, em um clique.",
+			"about": [
+				"O Apache Answer é uma plataforma de perguntas e respostas (Q&A) de código aberto, um site que as equipes usam no lugar do Stack Overflow for Teams. As pessoas escrevem perguntas e respostas em Markdown com prévia ao vivo, votam nelas, e quem perguntou aceita a resposta que funcionou. Tags agrupam as perguntas, e a busca se refina por tag, autor ou pontuação. Boas postagens rendem reputação e emblemas, e a reputação libera privilégios, como editar as postagens de outras pessoas, com cada revisão guardada no histórico da postagem.",
+				"O Apache Answer serve para a central de ajuda de um produto, a comunidade de um projeto de código aberto ou a base de conhecimento interna de uma empresa. Se você o auto-hospeda, as perguntas ficam no seu próprio banco de dados. Os administradores definem quanta reputação cada privilégio exige, de uma predefinição permissiva para uma equipe privada pequena a uma rígida para uma comunidade pública madura. O porém é o e-mail: por padrão, as contas novas confirmam o endereço, então conecte um servidor SMTP antes de convidar alguém."
+			],
+			"faq": [
+				{
+					"q": "O Apache Answer é gratuito e de código aberto?",
+					"a": "Sim. Ele é lançado sob a Apache License 2.0, então é gratuito para rodar, modificar e usar em uma empresa. É um projeto de nível superior da Apache Software Foundation, escrito em Go com uma interface em React."
+				},
+				{
+					"q": "Apache Answer ou Stack Overflow for Teams: qual é a diferença?",
+					"a": "O núcleo é o mesmo: perguntar, responder, votar, aceitar. A diferença é quem o roda. O Apache Answer é de código aberto, não cobra por usuário e aceita plugins de login, busca, armazenamento de arquivos e notificações do Slack."
+				},
+				{
+					"q": "O Apache Answer suporta SSO ou login com o Google?",
+					"a": "Sim, via OAuth2. A imagem oficial do Docker inclui o conector OAuth2 Basic, que um administrador aponta para o Google, o GitHub, o Okta ou outro provedor OAuth2 nas configurações do plugin. Outros plugins são adicionados reconstruindo com answer build."
+				},
+				{
+					"q": "O Apache Answer pode ser privado para uma equipe interna?",
+					"a": "Sim. Com “Login required” ativado, só quem fez login vê o site. Os administradores também podem fechar os novos cadastros ou aceitar cadastros só dos domínios de e-mail da empresa."
+				},
+				{
+					"q": "O Apache Answer usa SQLite, MySQL ou PostgreSQL?",
+					"a": "Ele suporta os três, e este template usa SQLite. O FAQ do projeto recomenda SQLite para experimentar o Answer e MySQL para uso real, e o Answer ainda não consegue migrar dados de um tipo de banco para outro."
+				}
+			]
 		},
 		"ru": {
 			"description": "Вопросы и ответы для сообщества, справочного центра или команды, свой Stack Overflow",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали (от 8 до 32 символов); имя пользователя администратора — admin. Регистрации подтверждаются письмом, поэтому, прежде чем звать людей, добавьте SMTP-сервер в Admin → Settings → SMTP."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали (от 8 до 32 символов); имя пользователя администратора — admin. Регистрации подтверждаются письмом, поэтому, прежде чем звать людей, добавьте SMTP-сервер в Admin → Settings → SMTP.",
+			"sizing": "Apache Answer: небольшие требования — около 150 MB памяти, а десятки тысяч вопросов занимают намного меньше 1 GB.",
+			"summary": "Self-hosted Apache Answer — open source платформа вопросов и ответов, альтернатива Stack Overflow for Teams. На вашей машине, в один клик.",
+			"about": [
+				"Apache Answer — это open source платформа вопросов и ответов (Q&A), сайт, который команды запускают вместо Stack Overflow for Teams. Вопросы и ответы пишут в Markdown с предпросмотром в реальном времени, за них голосуют, а автор вопроса принимает ответ, который помог. Теги группируют вопросы, а поиск сужается по тегу, автору или оценке. Хорошие посты приносят репутацию и значки, а репутация открывает привилегии, например редактирование чужих постов, причем каждая ревизия сохраняется в истории поста.",
+				"Apache Answer подходит для справочного центра продукта, сообщества open source проекта или внутренней базы знаний компании. Его хостят у себя, и тогда вопросы остаются в вашей собственной базе данных. Администраторы задают, сколько репутации требует каждая привилегия: от мягкого пресета для небольшой закрытой команды до строгого для зрелого публичного сообщества. Но есть нюанс: почта. По умолчанию новые аккаунты подтверждают адрес, поэтому подключите SMTP-сервер, прежде чем кого-то приглашать."
+			],
+			"faq": [
+				{
+					"q": "Apache Answer бесплатный и с открытым кодом?",
+					"a": "Да. Он выпущен под лицензией Apache License 2.0, поэтому его можно бесплатно запускать, изменять и использовать в компании. Это проект верхнего уровня Apache Software Foundation, написанный на Go, с интерфейсом на React."
+				},
+				{
+					"q": "Apache Answer или Stack Overflow for Teams: в чем разница?",
+					"a": "Основа та же: спросить, ответить, проголосовать, принять ответ. Разница в том, кто его запускает. Apache Answer с открытым кодом, без платы за каждого пользователя и с поддержкой плагинов для входа, поиска, хранения файлов и уведомлений в Slack."
+				},
+				{
+					"q": "Поддерживает ли Apache Answer SSO или вход через Google?",
+					"a": "Да, через OAuth2. В официальный Docker-образ входит коннектор OAuth2 Basic, который администратор направляет на Google, GitHub, Okta или другого провайдера OAuth2 в настройках плагина. Другие плагины добавляются пересборкой через answer build."
+				},
+				{
+					"q": "Может ли Apache Answer быть закрытым для внутренней команды?",
+					"a": "Да. Если включить «Login required», сайт увидят только вошедшие пользователи. Администраторы могут также закрыть новые регистрации или принимать регистрацию только с почтовых доменов компании."
+				},
+				{
+					"q": "Apache Answer использует SQLite, MySQL или PostgreSQL?",
+					"a": "Поддерживает все три, а этот шаблон использует SQLite. В FAQ проекта SQLite рекомендуют для знакомства с Answer, а MySQL для реальной работы, и Answer пока не умеет переносить данные из одного типа базы в другой."
+				}
+			]
 		},
 		"uk": {
 			"description": "Питання й відповіді для спільноти, довідкового центру чи команди, свій Stack Overflow",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали (від 8 до 32 символів); ім’я користувача адміністратора — admin. Реєстрації підтверджуються листом, тож перш ніж кликати людей, додайте SMTP-сервер в Admin → Settings → SMTP."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали (від 8 до 32 символів); ім’я користувача адміністратора — admin. Реєстрації підтверджуються листом, тож перш ніж кликати людей, додайте SMTP-сервер в Admin → Settings → SMTP.",
+			"sizing": "Apache Answer має скромні вимоги: близько 150 MB пам’яті, а десятки тисяч запитань займають значно менше 1 GB.",
+			"summary": "Self-hosted Apache Answer — платформа питань і відповідей із відкритим кодом, альтернатива Stack Overflow for Teams. На вашій машині, в один клік.",
+			"about": [
+				"Apache Answer — це платформа питань і відповідей (Q&A) із відкритим кодом, сайт, який команди запускають замість Stack Overflow for Teams. Питання й відповіді пишуть у Markdown із попереднім переглядом у реальному часі, за них голосують, а автор питання приймає відповідь, яка допомогла. Теги групують питання, а пошук звужується за тегом, автором або оцінкою. Гарні пости приносять репутацію та значки, а репутація відкриває привілеї, наприклад редагування чужих постів, причому кожна ревізія зберігається в історії поста.",
+				"Apache Answer підходить для довідкового центру продукту, спільноти проєкту з відкритим кодом або внутрішньої бази знань компанії. Його хостять у себе, і тоді питання лишаються у вашій власній базі даних. Адміністратори задають, скільки репутації потребує кожен привілей: від м’якого пресета для невеликої закритої команди до суворого для зрілої публічної спільноти. Але є нюанс: пошта. За замовчуванням нові акаунти підтверджують адресу, тож підключіть SMTP-сервер, перш ніж когось запрошувати."
+			],
+			"faq": [
+				{
+					"q": "Apache Answer безплатний і з відкритим кодом?",
+					"a": "Так. Його випущено за ліцензією Apache License 2.0, тож його можна безплатно запускати, змінювати й використовувати в компанії. Це проєкт верхнього рівня Apache Software Foundation, написаний на Go, з інтерфейсом на React."
+				},
+				{
+					"q": "Apache Answer чи Stack Overflow for Teams: у чому різниця?",
+					"a": "Основа та сама: запитати, відповісти, проголосувати, прийняти відповідь. Різниця в тому, хто його запускає. Apache Answer має відкритий код, не бере плати за кожного користувача й підтримує плагіни для входу, пошуку, зберігання файлів і сповіщень у Slack."
+				},
+				{
+					"q": "Чи підтримує Apache Answer SSO або вхід через Google?",
+					"a": "Так, через OAuth2. В офіційний Docker-образ входить конектор OAuth2 Basic, який адміністратор спрямовує на Google, GitHub, Okta чи іншого провайдера OAuth2 в налаштуваннях плагіна. Інші плагіни додаються перебудовою через answer build."
+				},
+				{
+					"q": "Чи може Apache Answer бути закритим для внутрішньої команди?",
+					"a": "Так. Якщо ввімкнути «Login required», сайт бачитимуть лише користувачі, що увійшли. Адміністратори також можуть закрити нові реєстрації або приймати реєстрацію лише з поштових доменів компанії."
+				},
+				{
+					"q": "Apache Answer використовує SQLite, MySQL чи PostgreSQL?",
+					"a": "Підтримує всі три, а цей шаблон використовує SQLite. У FAQ проєкту SQLite радять для знайомства з Answer, а MySQL для реальної роботи, і Answer поки не вміє переносити дані з одного типу бази в інший."
+				}
+			]
 		}
 	}
 }

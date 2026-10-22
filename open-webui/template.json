@@ -1,6 +1,11 @@
 {
 	"name": "Open WebUI",
 	"emoji": "💬",
+	"category": "ai",
+	"alternatives": [
+		"ChatGPT"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "open-webui",
 		"port": 8080
@@ -18,35 +23,259 @@
 	"texts": {
 		"en": {
 			"description": "A chat interface for OpenAI-compatible AI models",
-			"notes": "Open the address and sign up: the first account is the administrator, and sign-ups close after it. Do it right away: until then the page is open to whoever has the address. Model providers are added under Admin Panel > Settings > Connections."
+			"notes": "Open the address and sign up: the first account is the administrator, and sign-ups close after it. Do it right away: until then the page is open to whoever has the address. Model providers are added under Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI is light: about 300 MB of memory, more once it reads your documents; chats take little disk.",
+			"summary": "Open WebUI is a free ChatGPT alternative: one chat for OpenAI, Claude, OpenRouter or Ollama models, on your own machine in one click.",
+			"about": [
+				"Open WebUI is a free, self-hosted AI chat interface that people run as their own ChatGPT. It connects to OpenAI, Claude, OpenRouter or a local Ollama, and puts all their models in one picker. One chat can ask several models at once. Upload a file or build a Knowledge base, and the answers draw on your documents. Web search, hands-free voice calls and image generation are built in.",
+				"People run it to keep their chats and files on a server they control, and to give a family or a team the same models with no per-seat price, while roles and groups decide who can use what. The catch is that Open WebUI brings no model of its own: you pay a provider for API use, or run the models on your own hardware."
+			],
+			"faq": [
+				{
+					"q": "Is Open WebUI open source?",
+					"a": "Not by the OSI's definition since version 0.6.6. Its code is public and free to use, but an install with over 50 users in 30 days may remove the Open WebUI branding only with written permission or an enterprise licence."
+				},
+				{
+					"q": "Can Open WebUI use Claude?",
+					"a": "Yes. Add https://api.anthropic.com/v1 and an Anthropic API key as an OpenAI connection, and Open WebUI lists the Claude models itself. Streaming and tool calling work; prompt caching and extended thinking need a pipe function or a proxy."
+				},
+				{
+					"q": "Does Open WebUI need Ollama?",
+					"a": "No. Ollama is one way to run local models, and any OpenAI-compatible API, such as OpenAI or OpenRouter, works without it. This template runs no Ollama and starts with its connection turned off."
+				},
+				{
+					"q": "Can I import my ChatGPT chats into Open WebUI?",
+					"a": "Yes. In Settings > Data Controls, Import Chats reads conversations exported from ChatGPT and converts them automatically. Export Chats saves all your chats as one JSON file."
+				},
+				{
+					"q": "Is there an Open WebUI mobile app?",
+					"a": "It installs from the browser: every Open WebUI instance is a Progressive Web App. On an iPhone, open its address in Safari, tap Share, then Add to Home Screen; on Android, use Install app in Chrome's menu."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Chat-Oberfläche für OpenAI-kompatible KI-Modelle",
-			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das Admin-Konto, danach ist die Registrierung geschlossen. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Modellanbieter fügst du unter „Admin Panel > Settings > Connections“ hinzu."
+			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das Admin-Konto, danach ist die Registrierung geschlossen. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Modellanbieter fügst du unter „Admin Panel > Settings > Connections“ hinzu.",
+			"sizing": "Open WebUI ist leicht: etwa 300 MB RAM, mehr, sobald es deine Dokumente liest; Chats brauchen wenig Disk.",
+			"summary": "Open WebUI selbst hosten: kostenlose ChatGPT-Alternative, ein Chat für Modelle von OpenAI, Claude, OpenRouter oder Ollama, per Klick auf deiner Maschine.",
+			"about": [
+				"Open WebUI ist eine kostenlose, selbst gehostete KI-Chat-Oberfläche, die viele als ihr eigenes ChatGPT betreiben. Sie verbindet sich mit OpenAI, Claude, OpenRouter oder einem lokalen Ollama und zeigt alle Modelle in einer Auswahl. In einem Chat kannst du mehrere Modelle gleichzeitig fragen. Lade eine Datei hoch oder baue eine Knowledge Base auf, und die Antworten greifen auf deine Dokumente zurück. Websuche, freihändige Sprachanrufe und Bildgenerierung sind eingebaut.",
+				"Man hostet Open WebUI selbst, um Chats und Dateien auf einem Server zu behalten, den man kontrolliert, und um einer Familie oder einem Team dieselben Modelle ohne Gebühr pro Platz zu geben. Rollen und Gruppen legen dabei fest, wer was nutzen darf. Der Haken: Open WebUI bringt kein eigenes Modell mit. Du bezahlst einen Anbieter für die API-Nutzung oder betreibst die Modelle auf eigener Hardware."
+			],
+			"faq": [
+				{
+					"q": "Ist Open WebUI Open Source?",
+					"a": "Seit Version 0.6.6 nicht mehr nach der Definition der OSI. Der Code ist öffentlich und kostenlos nutzbar, aber eine Installation, die in 30 Tagen von mehr als 50 Personen genutzt wird, darf das Open-WebUI-Branding nur mit schriftlicher Erlaubnis oder einer Enterprise-Lizenz entfernen."
+				},
+				{
+					"q": "Kann Open WebUI Claude nutzen?",
+					"a": "Ja. Füg https://api.anthropic.com/v1 und einen Anthropic-API-Key als OpenAI-Verbindung hinzu, dann listet Open WebUI die Claude-Modelle selbst auf. Streaming und Tool Calling funktionieren; Prompt Caching und Extended Thinking brauchen eine Pipe-Funktion oder einen Proxy."
+				},
+				{
+					"q": "Braucht Open WebUI Ollama?",
+					"a": "Nein. Ollama ist eine Möglichkeit, lokale Modelle zu betreiben, und jede OpenAI-kompatible API, etwa von OpenAI oder OpenRouter, funktioniert auch ohne. Diese Vorlage betreibt kein Ollama und startet mit ausgeschalteter Verbindung dazu."
+				},
+				{
+					"q": "Kann ich meine ChatGPT-Chats in Open WebUI importieren?",
+					"a": "Ja. Unter „Settings > Data Controls“ liest „Import Chats“ aus ChatGPT exportierte Unterhaltungen und wandelt sie automatisch um. „Export Chats“ speichert alle deine Chats als eine JSON-Datei."
+				},
+				{
+					"q": "Gibt es eine mobile App für Open WebUI?",
+					"a": "Installieren geht direkt aus dem Browser: Jede Open-WebUI-Instanz ist eine Progressive Web App. Öffne auf dem iPhone ihre Adresse in Safari, tippe auf „Share“ und dann auf „Add to Home Screen“; unter Android nutzt du „Install app“ im Chrome-Menü."
+				}
+			]
 		},
 		"es": {
 			"description": "Una interfaz de chat para modelos de IA compatibles con OpenAI",
-			"notes": "Abre la dirección y regístrate: la primera cuenta es la del administrador, y después se cierra el registro. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Los proveedores de modelos se agregan en Admin Panel > Settings > Connections."
+			"notes": "Abre la dirección y regístrate: la primera cuenta es la del administrador, y después se cierra el registro. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Los proveedores de modelos se agregan en Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI es ligero: unos 300 MB de memoria, más al leer tus documentos; los chats ocupan poco disco.",
+			"summary": "Autoaloja Open WebUI, una alternativa gratuita a ChatGPT: un solo chat para modelos de OpenAI, Claude, OpenRouter u Ollama, en tu máquina con un clic.",
+			"about": [
+				"Open WebUI es una interfaz de chat con IA gratuita y autoalojada que se usa como un ChatGPT propio. Se conecta a OpenAI, Claude, OpenRouter o a un Ollama local, y reúne todos sus modelos en un solo selector. Un mismo chat puede consultar varios modelos a la vez. Sube un archivo o crea una base de conocimiento, y las respuestas se apoyan en tus documentos. Búsqueda web, llamadas de voz con manos libres y generación de imágenes vienen integradas.",
+				"La gente lo autoaloja para tener sus chats y archivos en un servidor que controla, y para dar a una familia o a un equipo los mismos modelos sin pagar por usuario, mientras los roles y los grupos deciden quién puede usar qué. El inconveniente es que Open WebUI no trae ningún modelo propio: le pagas a un proveedor por el uso de su API o ejecutas los modelos en tu propio hardware."
+			],
+			"faq": [
+				{
+					"q": "¿Es Open WebUI de código abierto?",
+					"a": "No según la definición de la OSI, desde la versión 0.6.6. Su código es público y gratuito, pero una instalación con más de 50 usuarios en 30 días solo puede quitar la marca de Open WebUI con permiso por escrito o una licencia Enterprise."
+				},
+				{
+					"q": "¿Puede Open WebUI usar Claude?",
+					"a": "Sí. Agrega https://api.anthropic.com/v1 y una clave de API de Anthropic como conexión de OpenAI, y Open WebUI lista por su cuenta los modelos de Claude. El streaming y las llamadas a herramientas funcionan; el prompt caching y el pensamiento extendido requieren una pipe function o un proxy."
+				},
+				{
+					"q": "¿Necesita Open WebUI a Ollama?",
+					"a": "No. Ollama es una forma de ejecutar modelos locales, y cualquier API compatible con OpenAI, como OpenAI u OpenRouter, funciona sin él. Esta plantilla no ejecuta Ollama y empieza con su conexión desactivada."
+				},
+				{
+					"q": "¿Puedo importar mis chats de ChatGPT a Open WebUI?",
+					"a": "Sí. En “Settings > Data Controls”, “Import Chats” lee las conversaciones exportadas de ChatGPT y las convierte automáticamente. “Export Chats” guarda todos tus chats en un único archivo JSON."
+				},
+				{
+					"q": "¿Hay una app móvil de Open WebUI?",
+					"a": "Se instala desde el navegador: cada instancia de Open WebUI es una Progressive Web App. En un iPhone, abre su dirección en Safari, toca “Share” y luego “Add to Home Screen”; en Android, usa “Install app” en el menú de Chrome."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une interface de chat pour les modèles d’IA compatibles OpenAI",
-			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est l’administrateur, et les inscriptions se ferment ensuite. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les fournisseurs de modèles s’ajoutent dans Admin Panel > Settings > Connections."
+			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est l’administrateur, et les inscriptions se ferment ensuite. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les fournisseurs de modèles s’ajoutent dans Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI est léger : environ 300 MB de mémoire, plus dès qu’il lit vos documents ; les conversations pèsent peu sur le disque.",
+			"summary": "Open WebUI auto-hébergé en un clic sur votre machine : alternative gratuite à ChatGPT, un seul chat pour les modèles OpenAI, Claude, OpenRouter ou Ollama.",
+			"about": [
+				"Open WebUI est une interface de chat IA gratuite et auto-hébergée, que l’on fait tourner comme son propre ChatGPT. Elle se connecte à OpenAI, Claude, OpenRouter ou à un Ollama local, et réunit tous leurs modèles dans un seul sélecteur. Un même chat peut interroger plusieurs modèles à la fois. Envoyez un fichier ou créez une base de connaissances, et les réponses s’appuient sur vos documents. La recherche web, les appels vocaux mains libres et la génération d’images sont intégrés.",
+				"On auto-héberge Open WebUI pour garder ses chats et ses fichiers sur un serveur que l’on contrôle, et pour donner à une famille ou à une équipe les mêmes modèles sans tarif par utilisateur, tandis que des rôles et des groupes décident qui peut utiliser quoi. La contrepartie : Open WebUI n’apporte aucun modèle, vous payez un fournisseur pour l’usage de l’API ou vous faites tourner les modèles sur votre propre matériel."
+			],
+			"faq": [
+				{
+					"q": "Open WebUI est-il open source ?",
+					"a": "Pas selon la définition de l’OSI, depuis la version 0.6.6. Son code est public et gratuit, mais une installation de plus de 50 utilisateurs en 30 jours ne peut retirer la marque Open WebUI qu’avec une autorisation écrite ou une licence entreprise."
+				},
+				{
+					"q": "Open WebUI peut-il utiliser Claude ?",
+					"a": "Oui. Ajoutez https://api.anthropic.com/v1 et une clé d’API Anthropic comme connexion OpenAI, et Open WebUI liste lui-même les modèles Claude. Le streaming et l’appel d’outils fonctionnent ; le prompt caching et la réflexion étendue demandent une pipe function ou un proxy."
+				},
+				{
+					"q": "Open WebUI a-t-il besoin d’Ollama ?",
+					"a": "Non. Ollama n’est qu’une façon de faire tourner des modèles en local, et toute API compatible OpenAI, comme OpenAI ou OpenRouter, fonctionne sans lui. Ce template ne fait tourner aucun Ollama et démarre avec sa connexion désactivée."
+				},
+				{
+					"q": "Puis-je importer mes chats ChatGPT dans Open WebUI ?",
+					"a": "Oui. Dans « Settings > Data Controls », « Import Chats » lit les conversations exportées de ChatGPT et les convertit automatiquement. « Export Chats » enregistre tous vos chats dans un seul fichier JSON."
+				},
+				{
+					"q": "Existe-t-il une application mobile Open WebUI ?",
+					"a": "Elle s’installe depuis le navigateur : chaque instance d’Open WebUI est une Progressive Web App. Sur un iPhone, ouvrez son adresse dans Safari, touchez « Share », puis « Add to Home Screen » ; sur Android, utilisez « Install app » dans le menu de Chrome."
+				}
+			]
 		},
 		"pl": {
 			"description": "Interfejs czatu dla modeli AI zgodnych z OpenAI",
-			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto jest administratorem, a po nim rejestracja się zamyka. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Dostawców modeli dodasz w Admin Panel > Settings > Connections."
+			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto jest administratorem, a po nim rejestracja się zamyka. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Dostawców modeli dodasz w Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI ma małe wymagania: około 300 MB pamięci, więcej gdy czyta twoje dokumenty; czaty zajmują mało miejsca na dysku.",
+			"summary": "Hostuj Open WebUI u siebie: darmowa alternatywa dla ChatGPT, jeden czat dla modeli OpenAI, Claude, OpenRouter lub Ollama, na twojej maszynie w jeden klik.",
+			"about": [
+				"Open WebUI to darmowy, hostowany u siebie interfejs czatu z AI, który ludzie uruchamiają jako własnego ChatGPT. Łączy się z OpenAI, Claude, OpenRouter albo z lokalną Ollamą i zbiera wszystkie ich modele w jednym menu wyboru. W jednym czacie można zapytać kilka modeli naraz. Wgraj plik albo zbuduj bazę wiedzy, a odpowiedzi będą czerpać z twoich dokumentów. Wyszukiwanie w sieci, rozmowy głosowe bez użycia rąk i generowanie obrazów są wbudowane.",
+				"Ludzie hostują go u siebie, żeby trzymać czaty i pliki na serwerze, który kontrolują, i żeby rodzina albo zespół miały te same modele bez opłaty za użytkownika, a role i grupy decydowały, kto czego może używać. Haczyk: Open WebUI nie ma własnego modelu, więc płacisz dostawcy za użycie API albo uruchamiasz modele na własnym sprzęcie."
+			],
+			"faq": [
+				{
+					"q": "Czy Open WebUI jest open source?",
+					"a": "Nie według definicji OSI, od wersji 0.6.6. Jego kod jest publiczny i darmowy w użyciu, ale instalacja z ponad 50 użytkownikami w ciągu 30 dni może usunąć branding Open WebUI tylko za pisemną zgodą albo z licencją enterprise."
+				},
+				{
+					"q": "Czy Open WebUI może używać Claude’a?",
+					"a": "Tak. Dodaj https://api.anthropic.com/v1 i klucz API Anthropic jako połączenie OpenAI, a Open WebUI sam pokaże modele Claude. Streaming i wywoływanie narzędzi działają; prompt caching i rozszerzone myślenie wymagają funkcji pipe albo proxy."
+				},
+				{
+					"q": "Czy Open WebUI wymaga Ollamy?",
+					"a": "Nie. Ollama to jeden ze sposobów uruchamiania lokalnych modeli, a każde API zgodne z OpenAI, na przykład OpenAI czy OpenRouter, działa bez niej. Ten szablon nie uruchamia Ollamy i startuje z wyłączonym połączeniem z nią."
+				},
+				{
+					"q": "Czy mogę zaimportować czaty z ChatGPT do Open WebUI?",
+					"a": "Tak. W „Settings > Data Controls” opcja „Import Chats” czyta rozmowy wyeksportowane z ChatGPT i automatycznie je konwertuje. „Export Chats” zapisuje wszystkie twoje czaty w jednym pliku JSON."
+				},
+				{
+					"q": "Czy jest aplikacja mobilna Open WebUI?",
+					"a": "Instaluje się ją z przeglądarki: każda instancja Open WebUI to Progressive Web App. Na iPhonie otwórz jej adres w Safari, stuknij „Share”, potem „Add to Home Screen”; na Androidzie użyj „Install app” w menu Chrome’a."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma interface de chat para modelos de IA compatíveis com a OpenAI",
-			"notes": "Abra o endereço e cadastre-se: a primeira conta é a do administrador, e o cadastro fecha depois dela. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os provedores de modelos são adicionados em Admin Panel > Settings > Connections."
+			"notes": "Abra o endereço e cadastre-se: a primeira conta é a do administrador, e o cadastro fecha depois dela. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os provedores de modelos são adicionados em Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI é leve: cerca de 300 MB de memória, mais quando lê seus documentos; os chats ocupam pouco disco.",
+			"summary": "Auto-hospede o Open WebUI, alternativa gratuita ao ChatGPT: um só chat para modelos da OpenAI, Claude, OpenRouter ou Ollama, na sua máquina com um clique.",
+			"about": [
+				"O Open WebUI é uma interface de chat com IA gratuita e auto-hospedada, que as pessoas usam como o próprio ChatGPT. Ele se conecta à OpenAI, ao Claude, ao OpenRouter ou a um Ollama local, e reúne todos os modelos em um só seletor. Um mesmo chat pode consultar vários modelos de uma vez. Envie um arquivo ou crie uma base de conhecimento, e as respostas passam a usar seus documentos. Busca na web, chamadas de voz com mãos livres e geração de imagens já vêm integradas.",
+				"As pessoas auto-hospedam o Open WebUI para manter seus chats e arquivos em um servidor que elas controlam, e para dar a uma família ou a uma equipe os mesmos modelos sem cobrança por usuário, enquanto papéis e grupos decidem quem pode usar o quê. O porém: o Open WebUI não traz nenhum modelo próprio, então você paga a um provedor pelo uso da API ou roda os modelos no seu próprio hardware."
+			],
+			"faq": [
+				{
+					"q": "O Open WebUI é de código aberto?",
+					"a": "Não pela definição da OSI, desde a versão 0.6.6. O código é público e gratuito, mas uma instalação com mais de 50 usuários em 30 dias só pode remover a marca Open WebUI com permissão por escrito ou uma licença enterprise."
+				},
+				{
+					"q": "O Open WebUI consegue usar o Claude?",
+					"a": "Sim. Adicione https://api.anthropic.com/v1 e uma chave de API da Anthropic como conexão OpenAI, e o Open WebUI lista os modelos do Claude por conta própria. O streaming e a chamada de ferramentas funcionam; o cache de prompts e o pensamento estendido exigem uma pipe function ou um proxy."
+				},
+				{
+					"q": "O Open WebUI precisa do Ollama?",
+					"a": "Não. O Ollama é uma das formas de rodar modelos locais, e qualquer API compatível com a OpenAI, como a da OpenAI ou a do OpenRouter, funciona sem ele. Este template não roda o Ollama e começa com a conexão dele desativada."
+				},
+				{
+					"q": "Posso importar meus chats do ChatGPT para o Open WebUI?",
+					"a": "Sim. Em “Settings > Data Controls”, “Import Chats” lê as conversas exportadas do ChatGPT e as converte automaticamente. “Export Chats” salva todos os seus chats em um único arquivo JSON."
+				},
+				{
+					"q": "Existe um app do Open WebUI para celular?",
+					"a": "Ele se instala pelo navegador: toda instância do Open WebUI é um Progressive Web App. No iPhone, abra o endereço dela no Safari, toque em “Share” e depois em “Add to Home Screen”; no Android, use “Install app” no menu do Chrome."
+				}
+			]
 		},
 		"ru": {
 			"description": "Чат-интерфейс для ИИ-моделей, совместимых с OpenAI",
-			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт становится администратором, и после него регистрация закрывается. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Провайдеры моделей добавляются в Admin Panel > Settings > Connections."
+			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт становится администратором, и после него регистрация закрывается. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Провайдеры моделей добавляются в Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI: небольшие требования — около 300 MB памяти, больше при чтении ваших документов; чаты занимают мало диска.",
+			"summary": "Self-hosted Open WebUI в один клик: бесплатная альтернатива ChatGPT, один чат для моделей OpenAI, Claude, OpenRouter и Ollama на вашей машине.",
+			"about": [
+				"Open WebUI — бесплатный self-hosted чат-интерфейс для ИИ, который запускают как собственный ChatGPT. Он подключается к OpenAI, Claude, OpenRouter или локальной Ollama и собирает все их модели в одном списке выбора. В одном чате можно спросить сразу несколько моделей. Загрузите файл или создайте базу знаний, и ответы будут опираться на ваши документы. Веб-поиск, голосовые звонки в режиме hands-free и генерация изображений встроены.",
+				"Open WebUI хостят у себя, чтобы держать чаты и файлы на сервере, который вы контролируете, и чтобы дать семье или команде одни и те же модели без платы за каждого пользователя, а роли и группы определяли, кто чем может пользоваться. Но есть нюанс: своей модели у Open WebUI нет, поэтому вы платите провайдеру за использование API или запускаете модели на собственном железе."
+			],
+			"faq": [
+				{
+					"q": "Open WebUI — это open source?",
+					"a": "Нет, если считать по определению OSI, начиная с версии 0.6.6. Код опубликован и бесплатен в использовании, но установка с более чем 50 пользователями за 30 дней может убрать брендинг Open WebUI только с письменного разрешения или по enterprise-лицензии."
+				},
+				{
+					"q": "Может ли Open WebUI работать с Claude?",
+					"a": "Да. Добавьте https://api.anthropic.com/v1 и API-ключ Anthropic как подключение OpenAI, и Open WebUI сам покажет модели Claude. Стриминг и вызов инструментов работают; для кеширования промптов и расширенного мышления нужна pipe-функция или прокси."
+				},
+				{
+					"q": "Нужна ли Open WebUI Ollama?",
+					"a": "Нет. Ollama — один из способов запускать локальные модели, а любой OpenAI-совместимый API, например OpenAI или OpenRouter, работает и без нее. Этот шаблон не запускает Ollama и стартует с отключенным подключением к ней."
+				},
+				{
+					"q": "Можно ли импортировать чаты из ChatGPT в Open WebUI?",
+					"a": "Да. В «Settings > Data Controls» пункт «Import Chats» читает диалоги, экспортированные из ChatGPT, и сам их конвертирует. «Export Chats» сохраняет все ваши чаты одним JSON-файлом."
+				},
+				{
+					"q": "Есть ли мобильное приложение Open WebUI?",
+					"a": "Оно ставится из браузера: каждый экземпляр Open WebUI — это Progressive Web App. На iPhone откройте его адрес в Safari, нажмите «Share», затем «Add to Home Screen»; на Android используйте «Install app» в меню Chrome."
+				}
+			]
 		},
 		"uk": {
 			"description": "Чат-інтерфейс для ШІ-моделей, сумісних з OpenAI",
-			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт стає адміністратором, і після нього реєстрація закривається. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Провайдерів моделей додають в Admin Panel > Settings > Connections."
+			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт стає адміністратором, і після нього реєстрація закривається. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Провайдерів моделей додають в Admin Panel > Settings > Connections.",
+			"sizing": "Open WebUI має скромні вимоги: близько 300 MB пам’яті, більше — коли читає ваші документи; чати займають мало місця на диску.",
+			"summary": "Self-hosted Open WebUI в один клік: безкоштовна альтернатива ChatGPT, один чат для моделей OpenAI, Claude, OpenRouter і Ollama на вашій машині.",
+			"about": [
+				"Open WebUI — безкоштовний self-hosted чат-інтерфейс для ШІ, який запускають як власний ChatGPT. Він підключається до OpenAI, Claude, OpenRouter або локальної Ollama і збирає всі їхні моделі в одному списку вибору. В одному чаті можна запитати одразу кілька моделей. Завантажте файл або створіть базу знань, і відповіді спиратимуться на ваші документи. Вебпошук, голосові дзвінки в режимі hands-free та генерація зображень уже вбудовані.",
+				"Open WebUI хостять у себе, щоб тримати чати й файли на сервері, який ви контролюєте, і щоб дати родині чи команді одні й ті самі моделі без плати за кожного користувача, а ролі та групи визначали, хто чим може користуватися. Але є нюанс: власної моделі в Open WebUI немає, тож ви платите провайдеру за використання API або запускаєте моделі на власному обладнанні."
+			],
+			"faq": [
+				{
+					"q": "Чи має Open WebUI відкритий код?",
+					"a": "Ні, якщо рахувати за визначенням OSI, починаючи з версії 0.6.6. Код опубліковано, і користуватися ним можна безкоштовно, але встановлення з понад 50 користувачами за 30 днів може прибрати брендинг Open WebUI лише з письмового дозволу або за enterprise-ліцензією."
+				},
+				{
+					"q": "Чи може Open WebUI працювати з Claude?",
+					"a": "Так. Додайте https://api.anthropic.com/v1 і API-ключ Anthropic як підключення OpenAI, і Open WebUI сам покаже моделі Claude. Стримінг і виклик інструментів працюють; для кешування промптів і розширеного мислення потрібні pipe-функція або проксі."
+				},
+				{
+					"q": "Чи потрібна Open WebUI Ollama?",
+					"a": "Ні. Ollama — один зі способів запускати локальні моделі, а будь-який OpenAI-сумісний API, наприклад OpenAI чи OpenRouter, працює й без неї. Цей шаблон не запускає Ollama і стартує з вимкненим підключенням до неї."
+				},
+				{
+					"q": "Чи можна імпортувати чати з ChatGPT в Open WebUI?",
+					"a": "Так. У «Settings > Data Controls» пункт «Import Chats» читає розмови, експортовані з ChatGPT, і сам їх конвертує. «Export Chats» зберігає всі ваші чати одним JSON-файлом."
+				},
+				{
+					"q": "Чи є мобільний застосунок Open WebUI?",
+					"a": "Він встановлюється з браузера: кожен екземпляр Open WebUI — це Progressive Web App. На iPhone відкрийте його адресу в Safari, торкніться «Share», потім «Add to Home Screen»; на Android скористайтеся «Install app» у меню Chrome."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,11 @@
 {
 	"name": "Grav",
 	"emoji": "🪐",
+	"category": "websites",
+	"alternatives": [
+		"WordPress"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "grav",
 		"port": 80
@@ -18,35 +23,259 @@
 	"texts": {
 		"en": {
 			"description": "A flat-file CMS: a fast website or blog with an admin panel and no database",
-			"notes": "Open https://{host}/admin and sign in as admin with the admin password you gave: at least 8 characters, with an upper-case letter, a lower-case letter and a digit. Pages, themes and plugins are managed there."
+			"notes": "Open https://{host}/admin and sign in as admin with the admin password you gave: at least 8 characters, with an upper-case letter, a lower-case letter and a digit. Pages, themes and plugins are managed there.",
+			"sizing": "Grav is very light: under 100 MB of memory, and a site's pages and images take little disk.",
+			"summary": "Grav is an open-source flat-file CMS and WordPress alternative that keeps pages as Markdown files. Self-host it with Docker in one click.",
+			"about": [
+				"Grav is an open-source flat-file CMS, a WordPress alternative that keeps each page as a Markdown file in a folder instead of rows in a database. Settings are YAML files and themes are Twig templates. You write and arrange pages in a browser admin, or straight in the files. Images are resized and cached on the fly, and themes and plugins install from GPM, its package manager.",
+				"People self-host Grav for a site that is only files, with no database server to run or upgrade. It is free under the MIT license. Grav 2 adds a REST API and an MCP server, so an AI agent can edit pages with the permissions of the user whose API key it holds. The catch is that layouts are Twig templates, so reshaping a theme takes some code."
+			],
+			"faq": [
+				{
+					"q": "Is Grav CMS free?",
+					"a": "Yes. Grav is open source under the MIT license. The Grav team also sells premium plugins and themes, such as SEO Magic and the Helios documentation theme."
+				},
+				{
+					"q": "Does Grav need a database?",
+					"a": "No. Pages live as Markdown files in user/pages and settings as YAML in user/config, so a backup is a zip of the folder and the whole site can be kept in Git."
+				},
+				{
+					"q": "How do I migrate from WordPress to Grav?",
+					"a": "Install the wp2grav_exporter plugin in WordPress and run wp wp2grav-all with WP-CLI. It exports posts, pages, users, roles and site settings for Grav's user folder, and accounts get new random passwords."
+				},
+				{
+					"q": "How do I upgrade Grav 1.7 to 2.0?",
+					"a": "Not with bin/gpm self-upgrade: 2.0 is a fresh install. On 1.7.50 or later, the Migrate to Grav 2.0 plugin stages it in a grav-2 subfolder with your pages, config and accounts, and promotes it after you test it."
+				},
+				{
+					"q": "Does Grav support multiple languages?",
+					"a": "Yes. One Grav site can serve many languages with automatic route mapping, and the Grav 2 admin is multilingual too, with right-to-left layouts."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Flat-File-CMS: eine schnelle Website oder ein Blog mit Admin-Bereich und ohne Datenbank",
-			"notes": "Öffne https://{host}/admin und melde dich als admin mit dem angegebenen Admin-Passwort an: mindestens 8 Zeichen, mit einem Großbuchstaben, einem Kleinbuchstaben und einer Ziffer. Dort verwaltest du Seiten, Themes und Plugins."
+			"notes": "Öffne https://{host}/admin und melde dich als admin mit dem angegebenen Admin-Passwort an: mindestens 8 Zeichen, mit einem Großbuchstaben, einem Kleinbuchstaben und einer Ziffer. Dort verwaltest du Seiten, Themes und Plugins.",
+			"sizing": "Grav ist sehr leicht: unter 100 MB RAM, und die Seiten und Bilder einer Website brauchen wenig Disk.",
+			"summary": "Grav mit Docker in einem Klick selbst hosten: ein Open-Source-Flat-File-CMS, das Seiten als Markdown-Dateien ablegt, eine Alternative zu WordPress.",
+			"about": [
+				"Grav ist ein Open-Source-Flat-File-CMS, eine Alternative zu WordPress: Jede Seite liegt als Markdown-Datei in einem Ordner statt als Zeilen in einer Datenbank. Einstellungen sind YAML-Dateien, Themes sind Twig-Templates. Seiten schreibst und ordnest du im Admin-Bereich im Browser oder direkt in den Dateien. Bilder werden bei Bedarf skaliert und zwischengespeichert, und Themes und Plugins installierst du über GPM, den Paketmanager von Grav.",
+				"Grav hostest du selbst für eine Website, die nur aus Dateien besteht, ohne Datenbankserver, den du betreiben oder aktualisieren musst. Es ist kostenlos unter der MIT-Lizenz. Grav 2 bringt eine REST-API und einen MCP-Server mit, sodass ein KI-Agent Seiten mit den Berechtigungen des Benutzers bearbeiten kann, dessen API-Key er verwendet. Der Haken: Layouts sind Twig-Templates, ein Theme umzubauen braucht also etwas Code."
+			],
+			"faq": [
+				{
+					"q": "Ist Grav CMS kostenlos?",
+					"a": "Ja. Grav ist Open Source unter der MIT-Lizenz. Das Grav-Team verkauft außerdem Premium-Plugins und -Themes, etwa SEO Magic und das Dokumentations-Theme Helios."
+				},
+				{
+					"q": "Braucht Grav eine Datenbank?",
+					"a": "Nein. Seiten liegen als Markdown-Dateien in user/pages und Einstellungen als YAML in user/config, ein Backup ist also ein Zip des Ordners, und die ganze Website lässt sich in Git ablegen."
+				},
+				{
+					"q": "Wie migriere ich von WordPress zu Grav?",
+					"a": "Installiere das Plugin wp2grav_exporter in WordPress und führe mit WP-CLI wp wp2grav-all aus. Es exportiert Beiträge, Seiten, Benutzer, Rollen und Website-Einstellungen in den user-Ordner von Grav, und die Konten bekommen neue zufällige Passwörter."
+				},
+				{
+					"q": "Wie aktualisiere ich Grav 1.7 auf 2.0?",
+					"a": "Nicht mit bin/gpm self-upgrade: 2.0 ist eine Neuinstallation. Ab 1.7.50 richtet das Plugin Migrate to Grav 2.0 sie in einem Unterordner grav-2 mit deinen Seiten, deiner Konfiguration und deinen Konten ein und setzt sie in Betrieb, nachdem du sie getestet hast."
+				},
+				{
+					"q": "Unterstützt Grav mehrere Sprachen?",
+					"a": "Ja. Eine Grav-Website kann mit automatischer Routen-Zuordnung viele Sprachen ausliefern, und auch der Admin-Bereich von Grav 2 ist mehrsprachig, mit Layouts von rechts nach links."
+				}
+			]
 		},
 		"es": {
 			"description": "Un CMS de archivos planos: una web o un blog rápidos con panel de administración y sin base de datos",
-			"notes": "Abre https://{host}/admin y entra como admin con la contraseña de administrador que indicaste: al menos 8 caracteres, con una mayúscula, una minúscula y un dígito. Ahí se gestionan las páginas, los temas y los plugins."
+			"notes": "Abre https://{host}/admin y entra como admin con la contraseña de administrador que indicaste: al menos 8 caracteres, con una mayúscula, una minúscula y un dígito. Ahí se gestionan las páginas, los temas y los plugins.",
+			"sizing": "Grav es muy ligero: menos de 100 MB de memoria, y las páginas e imágenes de un sitio ocupan poco disco.",
+			"summary": "Autoaloja Grav con Docker en un clic: un CMS de archivos planos de código abierto, alternativa a WordPress, que guarda las páginas como archivos Markdown.",
+			"about": [
+				"Grav es un CMS de archivos planos de código abierto, una alternativa a WordPress que guarda cada página como un archivo Markdown en una carpeta, en lugar de filas en una base de datos. Los ajustes son archivos YAML y los temas son plantillas Twig. Escribes y ordenas las páginas en un panel de administración en el navegador, o directamente en los archivos. Las imágenes se redimensionan y se guardan en caché al vuelo, y los temas y plugins se instalan desde GPM, su administrador de paquetes.",
+				"Quienes autoalojan Grav buscan un sitio hecho solo de archivos, sin un servidor de base de datos que ejecutar ni actualizar. Es gratis bajo la licencia MIT. Grav 2 agrega una API REST y un servidor MCP, para que un agente de IA pueda editar páginas con los permisos del usuario cuya clave de API usa. El inconveniente: los diseños son plantillas Twig, así que remodelar un tema requiere algo de código."
+			],
+			"faq": [
+				{
+					"q": "¿Grav CMS es gratis?",
+					"a": "Sí. Grav es de código abierto bajo la licencia MIT. El equipo de Grav también vende plugins y temas premium, como SEO Magic y el tema de documentación Helios."
+				},
+				{
+					"q": "¿Grav necesita una base de datos?",
+					"a": "No. Las páginas viven como archivos Markdown en user/pages y los ajustes como YAML en user/config, así que un backup es un zip de la carpeta y todo el sitio puede mantenerse en Git."
+				},
+				{
+					"q": "¿Cómo migro de WordPress a Grav?",
+					"a": "Instala el plugin wp2grav_exporter en WordPress y ejecuta wp wp2grav-all con WP-CLI. El comando exporta entradas, páginas, usuarios, roles y ajustes del sitio a la carpeta user de Grav, y las cuentas reciben contraseñas aleatorias nuevas."
+				},
+				{
+					"q": "¿Cómo actualizo Grav 1.7 a 2.0?",
+					"a": "No con bin/gpm self-upgrade: la versión 2.0 es una instalación nueva. Desde la 1.7.50, el plugin Migrate to Grav 2.0 la prepara en una subcarpeta grav-2 con tus páginas, tu configuración y tus cuentas, y la pone en producción cuando la hayas probado."
+				},
+				{
+					"q": "¿Grav admite varios idiomas?",
+					"a": "Sí. Un mismo sitio de Grav puede servir muchos idiomas con asignación automática de rutas, y el panel de administración de Grav 2 también es multilingüe, con diseños de derecha a izquierda."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un CMS à fichiers plats : un site ou un blog rapide, avec une administration et sans base de données",
-			"notes": "Ouvrez https://{host}/admin et connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué : au moins 8 caractères, avec une majuscule, une minuscule et un chiffre. Les pages, les thèmes et les plugins se gèrent là."
+			"notes": "Ouvrez https://{host}/admin et connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué : au moins 8 caractères, avec une majuscule, une minuscule et un chiffre. Les pages, les thèmes et les plugins se gèrent là.",
+			"sizing": "Grav est très léger : moins de 100 MB de mémoire, et les pages et images d’un site pèsent peu sur le disque.",
+			"summary": "Auto-hébergez Grav avec Docker en un clic : un CMS à fichiers plats open source, alternative à WordPress, qui garde les pages en fichiers Markdown.",
+			"about": [
+				"Grav est un CMS à fichiers plats open source, une alternative à WordPress qui garde chaque page comme un fichier Markdown dans un dossier, plutôt que comme des lignes dans une base de données. Les paramètres sont des fichiers YAML et les thèmes des templates Twig. Vous écrivez et organisez les pages dans une administration accessible depuis le navigateur, ou directement dans les fichiers. Les images sont redimensionnées et mises en cache à la volée, et les thèmes et plugins s’installent depuis GPM, son gestionnaire de paquets.",
+				"Vous auto-hébergez Grav pour avoir un site fait uniquement de fichiers, sans serveur de base de données à faire tourner ni à mettre à jour. Il est gratuit sous licence MIT. Grav 2 ajoute une API REST et un serveur MCP : un agent IA peut ainsi modifier des pages avec les droits de l’utilisateur dont il utilise la clé d’API. Le revers : les mises en page sont des templates Twig, donc remodeler un thème demande un peu de code."
+			],
+			"faq": [
+				{
+					"q": "Grav CMS est-il gratuit ?",
+					"a": "Oui. Grav est open source sous licence MIT. L’équipe de Grav vend aussi des plugins et des thèmes premium, comme SEO Magic et le thème de documentation Helios."
+				},
+				{
+					"q": "Grav a-t-il besoin d’une base de données ?",
+					"a": "Non. Les pages sont des fichiers Markdown dans user/pages et les paramètres du YAML dans user/config : une sauvegarde est donc un zip du dossier, et tout le site peut être conservé dans Git."
+				},
+				{
+					"q": "Comment migrer de WordPress vers Grav ?",
+					"a": "Installez le plugin wp2grav_exporter dans WordPress et lancez wp wp2grav-all avec WP-CLI. Il exporte les articles, les pages, les utilisateurs, les rôles et les paramètres du site vers le dossier user de Grav, et les comptes reçoivent de nouveaux mots de passe aléatoires."
+				},
+				{
+					"q": "Comment passer de Grav 1.7 à 2.0 ?",
+					"a": "Pas avec bin/gpm self-upgrade : la version 2.0 est une nouvelle installation. À partir de la 1.7.50, le plugin Migrate to Grav 2.0 la prépare dans un sous-dossier grav-2 avec vos pages, votre configuration et vos comptes, puis la met en service une fois que vous l’avez testée."
+				},
+				{
+					"q": "Grav prend-il en charge plusieurs langues ?",
+					"a": "Oui. Un même site Grav peut servir de nombreuses langues avec une correspondance automatique des routes, et l’administration de Grav 2 est elle aussi multilingue, avec des mises en page de droite à gauche."
+				}
+			]
 		},
 		"pl": {
 			"description": "CMS na plikach: szybka strona albo blog z panelem administracyjnym i bez bazy danych",
-			"notes": "Otwórz https://{host}/admin i zaloguj się jako admin hasłem administratora, które podano: co najmniej 8 znaków, w tym wielka litera, mała litera i cyfra. Tam zarządza się stronami, motywami i wtyczkami."
+			"notes": "Otwórz https://{host}/admin i zaloguj się jako admin hasłem administratora, które podano: co najmniej 8 znaków, w tym wielka litera, mała litera i cyfra. Tam zarządza się stronami, motywami i wtyczkami.",
+			"sizing": "Grav ma bardzo małe wymagania: poniżej 100 MB pamięci, a strony i obrazy witryny zajmują mało miejsca na dysku.",
+			"summary": "Hostuj Grav u siebie w Dockerze jednym kliknięciem: CMS open source na plikach, który trzyma strony jako pliki Markdown. Alternatywa dla WordPressa.",
+			"about": [
+				"Grav to CMS open source na plikach i alternatywa dla WordPressa: każdą stronę trzyma jako plik Markdown w katalogu, a nie jako wiersze w bazie danych. Ustawienia to pliki YAML, a motywy to szablony Twig. Strony piszesz i układasz w panelu administracyjnym w przeglądarce albo prosto w plikach. Obrazy są skalowane w locie i trafiają do cache’u, a motywy i wtyczki instalujesz z GPM, menedżera pakietów Grava.",
+				"Grav hostuje się u siebie dla strony, która składa się z samych plików, bez serwera bazy danych do uruchamiania i aktualizowania. Jest darmowy na licencji MIT. Grav 2 dodaje REST API i serwer MCP, więc agent AI może edytować strony z uprawnieniami użytkownika, którego klucza API używa. Haczyk: układy stron to szablony Twig, więc przeróbka motywu wymaga trochę kodu."
+			],
+			"faq": [
+				{
+					"q": "Czy Grav CMS jest darmowy?",
+					"a": "Tak. Grav jest open source na licencji MIT. Zespół Grava sprzedaje też wtyczki i motywy premium, takie jak SEO Magic i motyw do dokumentacji Helios."
+				},
+				{
+					"q": "Czy Grav potrzebuje bazy danych?",
+					"a": "Nie. Strony leżą jako pliki Markdown w user/pages, a ustawienia jako YAML w user/config, więc backup to zip katalogu, a całą witrynę można trzymać w Gicie."
+				},
+				{
+					"q": "Jak zmigrować z WordPressa na Grava?",
+					"a": "Zainstaluj w WordPressie wtyczkę wp2grav_exporter i uruchom wp wp2grav-all przez WP-CLI. Eksportuje ona wpisy, strony, użytkowników, role i ustawienia witryny do katalogu user Grava, a konta dostają nowe losowe hasła."
+				},
+				{
+					"q": "Jak zaktualizować Grava 1.7 do wersji 2.0?",
+					"a": "Nie przez bin/gpm self-upgrade: wersja 2.0 to świeża instalacja. Od wersji 1.7.50 wtyczka Migrate to Grav 2.0 przygotowuje ją w podkatalogu grav-2 z twoimi stronami, konfiguracją i kontami, a po twoich testach wprowadza ją do użytku."
+				},
+				{
+					"q": "Czy Grav obsługuje wiele języków?",
+					"a": "Tak. Jedna witryna Grav może obsługiwać wiele języków z automatycznym mapowaniem tras, a panel administracyjny Grav 2 też jest wielojęzyczny, także z układami od prawej do lewej."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um CMS de arquivos: um site ou blog rápido, com painel de administração e sem banco de dados",
-			"notes": "Abra https://{host}/admin e entre como admin com a senha de administrador que você informou: pelo menos 8 caracteres, com uma letra maiúscula, uma minúscula e um dígito. As páginas, os temas e os plugins são geridos lá."
+			"notes": "Abra https://{host}/admin e entre como admin com a senha de administrador que você informou: pelo menos 8 caracteres, com uma letra maiúscula, uma minúscula e um dígito. As páginas, os temas e os plugins são geridos lá.",
+			"sizing": "Grav é muito leve: menos de 100 MB de memória, e as páginas e imagens de um site ocupam pouco disco.",
+			"summary": "Hospede o Grav por conta própria com Docker em um clique: um CMS de arquivos de código aberto, alternativa ao WordPress, que guarda páginas em Markdown.",
+			"about": [
+				"O Grav é um CMS de arquivos de código aberto, uma alternativa ao WordPress que guarda cada página como um arquivo Markdown em uma pasta, em vez de linhas em um banco de dados. As configurações são arquivos YAML e os temas são templates Twig. Você escreve e organiza as páginas em um painel de administração no navegador, ou direto nos arquivos. As imagens são redimensionadas e guardadas em cache na hora, e os temas e plugins são instalados pelo GPM, o gerenciador de pacotes dele.",
+				"Você hospeda o Grav por conta própria para ter um site que é só arquivos, sem servidor de banco de dados para rodar ou atualizar. Ele é grátis sob a licença MIT. O Grav 2 adiciona uma API REST e um servidor MCP, então um agente de IA pode editar páginas com as permissões do usuário dono da chave de API que ele usa. O porém: os layouts são templates Twig, então remodelar um tema exige um pouco de código."
+			],
+			"faq": [
+				{
+					"q": "O Grav CMS é gratuito?",
+					"a": "Sim. O Grav é de código aberto sob a licença MIT. A equipe do Grav também vende plugins e temas premium, como o SEO Magic e o tema de documentação Helios."
+				},
+				{
+					"q": "O Grav precisa de banco de dados?",
+					"a": "Não. As páginas ficam como arquivos Markdown em user/pages e as configurações como YAML em user/config, então um backup é um zip da pasta e o site inteiro pode ficar no Git."
+				},
+				{
+					"q": "Como migrar do WordPress para o Grav?",
+					"a": "Instale o plugin wp2grav_exporter no WordPress e rode wp wp2grav-all com o WP-CLI. Ele exporta posts, páginas, usuários, funções e configurações do site para a pasta user do Grav, e as contas ganham senhas aleatórias novas."
+				},
+				{
+					"q": "Como atualizar o Grav 1.7 para o 2.0?",
+					"a": "Não com bin/gpm self-upgrade: o 2.0 é uma instalação nova. A partir do 1.7.50, o plugin Migrate to Grav 2.0 a prepara em uma subpasta grav-2 com suas páginas, sua configuração e suas contas, e a coloca no ar depois de você testá-la."
+				},
+				{
+					"q": "O Grav suporta vários idiomas?",
+					"a": "Sim. Um mesmo site Grav pode servir vários idiomas com mapeamento automático de rotas, e o painel de administração do Grav 2 também é multilíngue, com layouts da direita para a esquerda."
+				}
+			]
 		},
 		"ru": {
 			"description": "CMS на файлах: быстрый сайт или блог с админкой и без базы данных",
-			"notes": "Откройте https://{host}/admin и войдите как admin с паролем администратора, который вы указали: не короче 8 символов, с заглавной буквой, строчной буквой и цифрой. Там управляются страницы, темы и плагины."
+			"notes": "Откройте https://{host}/admin и войдите как admin с паролем администратора, который вы указали: не короче 8 символов, с заглавной буквой, строчной буквой и цифрой. Там управляются страницы, темы и плагины.",
+			"sizing": "Grav: совсем небольшие требования — менее 100 MB памяти, а страницы и картинки сайта занимают мало диска.",
+			"summary": "Self-hosted Grav через Docker в один клик: CMS на файлах с открытым кодом, альтернатива WordPress. Хранит страницы как файлы Markdown.",
+			"about": [
+				"Grav — это CMS на файлах с открытым кодом, альтернатива WordPress: каждая страница лежит в папке отдельным файлом Markdown, а не строками в базе данных. Настройки — файлы YAML, темы — шаблоны Twig. Страницы можно писать и упорядочивать в браузерной админке или прямо в файлах. Изображения масштабируются и кэшируются на лету, а темы и плагины ставятся через GPM — менеджер пакетов Grav.",
+				"Grav хостят у себя ради сайта из одних файлов, без сервера базы данных, который нужно запускать и обновлять. Он бесплатный по лицензии MIT. Grav 2 добавляет REST API и MCP-сервер, поэтому ИИ-агент может править страницы с правами пользователя, чей API-ключ он использует. Но есть нюанс: макеты — это шаблоны Twig, так что переделка темы требует немного кода."
+			],
+			"faq": [
+				{
+					"q": "Grav CMS бесплатный?",
+					"a": "Да. Grav — открытое ПО по лицензии MIT. Команда Grav также продает премиум-плагины и темы, например SEO Magic и тему для документации Helios."
+				},
+				{
+					"q": "Нужна ли Grav база данных?",
+					"a": "Нет. Страницы лежат как файлы Markdown в user/pages, а настройки — как YAML в user/config, поэтому бэкап — это zip папки, а весь сайт можно хранить в Git."
+				},
+				{
+					"q": "Как перейти с WordPress на Grav?",
+					"a": "Установите в WordPress плагин wp2grav_exporter и запустите wp wp2grav-all через WP-CLI. Он экспортирует записи, страницы, пользователей, роли и настройки сайта в папку user для Grav, а аккаунты получают новые случайные пароли."
+				},
+				{
+					"q": "Как обновить Grav с 1.7 до 2.0?",
+					"a": "Не через bin/gpm self-upgrade: версия 2.0 — это чистая установка. Начиная с 1.7.50, плагин Migrate to Grav 2.0 готовит ее в подпапке grav-2 с вашими страницами, конфигурацией и аккаунтами, а после вашей проверки вводит в работу."
+				},
+				{
+					"q": "Поддерживает ли Grav несколько языков?",
+					"a": "Да. Один сайт на Grav может работать на многих языках с автоматическим сопоставлением маршрутов, а админка Grav 2 тоже многоязычная, в том числе с версткой справа налево."
+				}
+			]
 		},
 		"uk": {
 			"description": "CMS на файлах: швидкий сайт або блог з адмінкою й без бази даних",
-			"notes": "Відкрийте https://{host}/admin і увійдіть як admin із паролем адміністратора, який ви вказали: щонайменше 8 символів, із великою літерою, малою літерою й цифрою. Там керують сторінками, темами й плагінами."
+			"notes": "Відкрийте https://{host}/admin і увійдіть як admin із паролем адміністратора, який ви вказали: щонайменше 8 символів, із великою літерою, малою літерою й цифрою. Там керують сторінками, темами й плагінами.",
+			"sizing": "Grav має дуже скромні вимоги: менше 100 MB пам’яті, а сторінки й зображення сайту займають мало місця на диску.",
+			"summary": "Self-hosted Grav через Docker в один клік: CMS на файлах із відкритим кодом, альтернатива WordPress. Зберігає сторінки як файли Markdown.",
+			"about": [
+				"Grav — це CMS на файлах із відкритим кодом, альтернатива WordPress: кожна сторінка лежить у папці окремим файлом Markdown, а не рядками в базі даних. Налаштування — файли YAML, теми — шаблони Twig. Сторінки можна писати й упорядковувати в браузерній адмінці або прямо у файлах. Зображення масштабуються й кешуються на льоту, а теми та плагіни встановлюються через GPM — менеджер пакетів Grav.",
+				"Grav хостять у себе заради сайту з самих файлів, без сервера бази даних, який треба запускати й оновлювати. Він безкоштовний за ліцензією MIT. Grav 2 додає REST API і MCP-сервер, тож ШІ-агент може редагувати сторінки з правами користувача, чий API-ключ він використовує. Але є нюанс: макети — це шаблони Twig, тож переробка теми потребує трохи коду."
+			],
+			"faq": [
+				{
+					"q": "Чи безкоштовний Grav CMS?",
+					"a": "Так. Grav має відкритий код за ліцензією MIT. Команда Grav також продає преміум-плагіни й теми, наприклад SEO Magic і тему для документації Helios."
+				},
+				{
+					"q": "Чи потрібна Grav база даних?",
+					"a": "Ні. Сторінки лежать як файли Markdown у user/pages, а налаштування — як YAML у user/config, тож бекап — це zip папки, а весь сайт можна тримати в Git."
+				},
+				{
+					"q": "Як перейти з WordPress на Grav?",
+					"a": "Встановіть у WordPress плагін wp2grav_exporter і запустіть wp wp2grav-all через WP-CLI. Він експортує записи, сторінки, користувачів, ролі та налаштування сайту в папку user для Grav, а акаунти отримують нові випадкові паролі."
+				},
+				{
+					"q": "Як оновити Grav з 1.7 до 2.0?",
+					"a": "Не через bin/gpm self-upgrade: версія 2.0 — це чисте встановлення. Починаючи з 1.7.50, плагін Migrate to Grav 2.0 готує її в підпапці grav-2 з вашими сторінками, конфігурацією й акаунтами, а після вашої перевірки вводить в роботу."
+				},
+				{
+					"q": "Чи підтримує Grav кілька мов?",
+					"a": "Так. Один сайт на Grav може працювати багатьма мовами з автоматичним зіставленням маршрутів, а адмінка Grav 2 теж багатомовна, зокрема з версткою справа наліво."
+				}
+			]
 		}
 	}
 }

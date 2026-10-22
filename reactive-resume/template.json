@@ -1,6 +1,13 @@
 {
 	"name": "Reactive Resume",
 	"emoji": "📝",
+	"category": "productivity",
+	"alternatives": [
+		"Zety",
+		"Novorésumé",
+		"Rezi"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "reactive-resume",
 		"port": 3000
@@ -26,35 +33,259 @@
 	"texts": {
 		"en": {
 			"description": "A resume builder: write, design and share resumes and cover letters, and export them to PDF",
-			"notes": "Press Build your resume and create your account; you are signed in at once. Sign-ups stay open to anyone who finds the address: once your account exists, add FLAG_DISABLE_SIGNUPS=true to the project’s .env and deploy. Without an SMTP server, verification and password reset links are written to the service’s log."
+			"notes": "Press Build your resume and create your account; you are signed in at once. Sign-ups stay open to anyone who finds the address: once your account exists, add FLAG_DISABLE_SIGNUPS=true to the project’s .env and deploy. Without an SMTP server, verification and password reset links are written to the service’s log.",
+			"sizing": "Reactive Resume is light: about 300 MB with Postgres, and resumes with their photos take little disk.",
+			"summary": "Reactive Resume is a free, open-source resume builder and Zety alternative. Self-host it with Docker Compose in one click.",
+			"about": [
+				"Reactive Resume is an open-source resume builder that people run instead of paid builders like Zety. You write in an editor with a live PDF preview, then switch templates or change fonts, colors and spacing without retyping a word. Check mode scores how reliably hiring software can read the result and shows which terms of a job posting your resume already has. Resumes export to PDF, Word, Markdown or JSON, or go out as a public link with an optional password. Cover letters and a job application tracker live beside them.",
+				"The code is MIT-licensed, and people self-host Reactive Resume so their work history and contact details sit in their own database rather than a vendor's. The AI assistant is optional and works through a provider you connect, such as OpenAI, Anthropic or a local Ollama. The catch is email: without an SMTP server nothing is sent, and verification links appear only in the app's log."
+			],
+			"faq": [
+				{
+					"q": "Is Reactive Resume really free?",
+					"a": "Yes. It has no paid tier and no ads, whether you use the hosted rxresu.me or your own server. The only costs are your hosting and any AI provider you choose to connect."
+				},
+				{
+					"q": "Reactive Resume vs Zety: what is the difference?",
+					"a": "Reactive Resume is open source, can run on your own server, and exports PDF and Word at no cost. Zety is a hosted service whose builder adds expert-written phrases for you, which Reactive Resume does not offer."
+				},
+				{
+					"q": "Is Reactive Resume ATS friendly?",
+					"a": "Yes, with a suitable layout. Templates can be filtered for ATS-safe designs, and Check mode shows the text a parser pulls from your PDF, in order, so a sidebar that scrambles it is easy to spot."
+				},
+				{
+					"q": "Can I import my LinkedIn profile into Reactive Resume?",
+					"a": "Yes, from a LinkedIn data export. JSON Resume, Reactive Resume JSON and readable PDFs import without AI too; a Word file needs a connected AI provider."
+				},
+				{
+					"q": "How do I disable sign-ups on self-hosted Reactive Resume?",
+					"a": "Make your own account first, then set FLAG_DISABLE_SIGNUPS to true in the .env file and redeploy. After that nobody can register by email, social sign-in or as a guest, while existing accounts keep working."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Lebenslauf-Editor: Lebensläufe und Anschreiben schreiben, gestalten, teilen und als PDF exportieren",
-			"notes": "Klick auf Build your resume und leg dein Konto an; du bist sofort angemeldet. Registrierungen bleiben für jeden offen, der die Adresse findet: Sobald dein Konto existiert, trag FLAG_DISABLE_SIGNUPS=true in die .env des Projekts ein und deploye. Ohne SMTP-Server stehen Bestätigungs- und Passwort-Links im Log des Dienstes."
+			"notes": "Klick auf Build your resume und leg dein Konto an; du bist sofort angemeldet. Registrierungen bleiben für jeden offen, der die Adresse findet: Sobald dein Konto existiert, trag FLAG_DISABLE_SIGNUPS=true in die .env des Projekts ein und deploye. Ohne SMTP-Server stehen Bestätigungs- und Passwort-Links im Log des Dienstes.",
+			"sizing": "Reactive Resume ist leicht: etwa 300 MB mit Postgres, und Lebensläufe samt Fotos brauchen wenig Disk.",
+			"summary": "Reactive Resume selbst hosten: Open-Source-Lebenslauf-Editor und kostenlose Alternative zu Zety. Mit Docker Compose in einem Klick.",
+			"about": [
+				"Reactive Resume ist ein Open-Source-Editor für Lebensläufe, den Leute statt bezahlter Dienste wie Zety betreiben. Du schreibst in einem Editor mit PDF-Live-Vorschau und wechselst dann die Vorlage oder änderst Schriften, Farben und Abstände, ohne ein Wort neu zu tippen. Check mode bewertet, wie zuverlässig Recruiting-Software das Ergebnis lesen kann, und zeigt, welche Begriffe einer Stellenanzeige dein Lebenslauf schon enthält. Lebensläufe exportierst du als PDF, Word, Markdown oder JSON oder gibst sie als öffentlichen Link frei, wahlweise mit Passwort. Anschreiben und ein Bewerbungs-Tracker gibt es gleich daneben.",
+				"Der Code steht unter der MIT-Lizenz, und Leute hosten Reactive Resume selbst, damit ihr Werdegang und ihre Kontaktdaten in der eigenen Datenbank liegen statt bei einem Anbieter. Der KI-Assistent ist optional und läuft über einen Anbieter, den du verbindest, etwa OpenAI, Anthropic oder ein lokales Ollama. Der Haken ist E-Mail: Ohne SMTP-Server wird nichts verschickt, und Bestätigungslinks stehen nur im Log der App."
+			],
+			"faq": [
+				{
+					"q": "Ist Reactive Resume wirklich kostenlos?",
+					"a": "Ja. Es gibt keinen bezahlten Tarif und keine Werbung, egal ob du das gehostete rxresu.me oder deinen eigenen Server nutzt. Kosten entstehen nur für dein Hosting und für einen KI-Anbieter, den du verbindest."
+				},
+				{
+					"q": "Reactive Resume oder Zety: Was ist der Unterschied?",
+					"a": "Reactive Resume ist Open Source, läuft auf Wunsch auf deinem eigenen Server und exportiert PDF und Word ohne Kosten. Zety ist ein gehosteter Dienst, dessen Editor von Fachleuten geschriebene Formulierungen für dich ergänzt; das bietet Reactive Resume nicht."
+				},
+				{
+					"q": "Ist Reactive Resume ATS-tauglich?",
+					"a": "Ja, mit einem passenden Layout. Vorlagen lassen sich nach ATS-sicheren Designs filtern, und Check mode zeigt den Text, den ein Parser aus deinem PDF zieht, der Reihe nach an, sodass eine Seitenleiste, die ihn durcheinanderbringt, leicht auffällt."
+				},
+				{
+					"q": "Kann ich mein LinkedIn-Profil in Reactive Resume importieren?",
+					"a": "Ja, aus einem LinkedIn-Datenexport. JSON Resume, Reactive-Resume-JSON und lesbare PDFs lassen sich auch ohne KI importieren; eine Word-Datei braucht einen verbundenen KI-Anbieter."
+				},
+				{
+					"q": "Wie schalte ich die Registrierung bei selbst gehostetem Reactive Resume ab?",
+					"a": "Leg zuerst dein eigenes Konto an, setz dann FLAG_DISABLE_SIGNUPS in der .env auf true und deploye erneut. Danach kann sich niemand mehr per E-Mail, Social Login oder als Gast registrieren, während bestehende Konten weiter funktionieren."
+				}
+			]
 		},
 		"es": {
 			"description": "Un editor de currículums: escribe, diseña y comparte currículums y cartas de presentación, y expórtalos a PDF",
-			"notes": "Pulsa Build your resume y crea tu cuenta; entras al momento. El registro sigue abierto a cualquiera que encuentre la dirección: cuando tu cuenta exista, añade FLAG_DISABLE_SIGNUPS=true al .env del proyecto y despliega. Sin servidor SMTP, los enlaces de verificación y de restablecer la contraseña se escriben en el log del servicio."
+			"notes": "Pulsa Build your resume y crea tu cuenta; entras al momento. El registro sigue abierto a cualquiera que encuentre la dirección: cuando tu cuenta exista, añade FLAG_DISABLE_SIGNUPS=true al .env del proyecto y despliega. Sin servidor SMTP, los enlaces de verificación y de restablecer la contraseña se escriben en el log del servicio.",
+			"sizing": "Reactive Resume es ligero: unos 300 MB con Postgres, y los currículums con sus fotos ocupan poco disco.",
+			"summary": "Autoaloja Reactive Resume, el editor de currículums de código abierto y alternativa gratuita a Zety. Con Docker Compose, en un clic.",
+			"about": [
+				"Reactive Resume es un editor de currículums de código abierto que la gente usa en lugar de creadores de pago como Zety. Escribes en un editor con vista previa del PDF en tiempo real y luego cambias de plantilla o ajustas fuentes, colores y espaciado sin volver a escribir una palabra. El Check mode puntúa con qué fiabilidad puede leer el resultado el software de reclutamiento y muestra qué términos de una oferta de empleo ya tiene tu currículum. Los currículums se exportan a PDF, Word, Markdown o JSON, o se comparten como enlace público con contraseña opcional. Las cartas de presentación y un seguimiento de solicitudes de empleo conviven a su lado.",
+				"El código tiene licencia MIT, y la gente autoaloja Reactive Resume para que su experiencia laboral y sus datos de contacto estén en su propia base de datos y no en la de un proveedor. El asistente de IA es opcional y funciona con un proveedor que conectes, como OpenAI, Anthropic o un Ollama local. El inconveniente es el correo: sin un servidor SMTP no se envía nada, y los enlaces de verificación solo aparecen en el log de la app."
+			],
+			"faq": [
+				{
+					"q": "¿Reactive Resume es realmente gratis?",
+					"a": "Sí. No tiene plan de pago ni anuncios, tanto si usas rxresu.me, la versión alojada, como si usas tu propio servidor. Lo único que pagas es tu alojamiento y el proveedor de IA que decidas conectar."
+				},
+				{
+					"q": "Reactive Resume o Zety: ¿cuál es la diferencia?",
+					"a": "Reactive Resume es de código abierto, puede ejecutarse en tu propio servidor y exporta a PDF y Word gratis. Zety es un servicio alojado cuyo editor añade por ti frases escritas por expertos, algo que Reactive Resume no ofrece."
+				},
+				{
+					"q": "¿Reactive Resume es compatible con los ATS?",
+					"a": "Sí, con un diseño adecuado. Las plantillas se pueden filtrar por diseños seguros para ATS, y el Check mode muestra, en orden, el texto que un analizador extrae de tu PDF, así que es fácil detectar una barra lateral que lo desordena."
+				},
+				{
+					"q": "¿Puedo importar mi perfil de LinkedIn a Reactive Resume?",
+					"a": "Sí, desde una exportación de datos de LinkedIn. JSON Resume, el JSON de Reactive Resume y los PDF legibles también se importan sin IA; un archivo de Word necesita un proveedor de IA conectado."
+				},
+				{
+					"q": "¿Cómo desactivo los registros en un Reactive Resume autoalojado?",
+					"a": "Crea primero tu propia cuenta, luego pon FLAG_DISABLE_SIGNUPS en true en el archivo .env y vuelve a desplegar. Después nadie podrá registrarse por correo, con un inicio de sesión social ni como invitado, mientras que las cuentas existentes siguen funcionando."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un éditeur de CV : rédigez, mettez en forme et partagez CV et lettres de motivation, et exportez-les en PDF",
-			"notes": "Cliquez sur Build your resume et créez votre compte ; vous êtes connecté aussitôt. Les inscriptions restent ouvertes à quiconque trouve l’adresse : une fois votre compte créé, ajoutez FLAG_DISABLE_SIGNUPS=true au .env du projet et déployez. Sans serveur SMTP, les liens de vérification et de réinitialisation du mot de passe sont écrits dans le log du service."
+			"notes": "Cliquez sur Build your resume et créez votre compte ; vous êtes connecté aussitôt. Les inscriptions restent ouvertes à quiconque trouve l’adresse : une fois votre compte créé, ajoutez FLAG_DISABLE_SIGNUPS=true au .env du projet et déployez. Sans serveur SMTP, les liens de vérification et de réinitialisation du mot de passe sont écrits dans le log du service.",
+			"sizing": "Reactive Resume est léger : environ 300 MB avec Postgres, et les CV avec leurs photos pèsent peu sur le disque.",
+			"summary": "Auto-hébergez Reactive Resume, l’éditeur de CV open source et alternative gratuite à Zety. Avec Docker Compose, en un clic.",
+			"about": [
+				"Reactive Resume est un éditeur de CV open source que l’on fait tourner à la place de générateurs payants comme Zety. Vous écrivez dans un éditeur avec un aperçu PDF en direct, puis vous changez de modèle ou modifiez polices, couleurs et espacements sans retaper un mot. Le Check mode note la fiabilité avec laquelle un logiciel de recrutement peut lire le résultat et montre quels termes d’une offre d’emploi votre CV contient déjà. Les CV s’exportent en PDF, Word, Markdown ou JSON, ou se partagent par un lien public avec mot de passe facultatif. Lettres de motivation et suivi des candidatures se trouvent juste à côté.",
+				"Le code est sous licence MIT, et vous auto-hébergez Reactive Resume pour que votre parcours professionnel et vos coordonnées restent dans votre propre base de données plutôt que chez un éditeur. L’assistant d’IA est facultatif et passe par un fournisseur que vous connectez, comme OpenAI, Anthropic ou un Ollama local. Le revers, c’est l’e-mail : sans serveur SMTP, rien n’est envoyé, et les liens de vérification n’apparaissent que dans le log de l’application."
+			],
+			"faq": [
+				{
+					"q": "Reactive Resume est-il vraiment gratuit ?",
+					"a": "Oui. Il n’y a ni offre payante ni publicité, que vous utilisiez rxresu.me, la version hébergée, ou votre propre serveur. Les seuls frais sont votre hébergement et le fournisseur d’IA que vous choisissez éventuellement de connecter."
+				},
+				{
+					"q": "Reactive Resume ou Zety : quelle différence ?",
+					"a": "Reactive Resume est open source, peut tourner sur votre propre serveur et exporte en PDF et en Word sans frais. Zety est un service hébergé dont l’éditeur ajoute pour vous des formulations rédigées par des experts, ce que Reactive Resume ne propose pas."
+				},
+				{
+					"q": "Reactive Resume est-il compatible ATS ?",
+					"a": "Oui, avec une mise en page adaptée. On peut filtrer les modèles pour ne garder que ceux sans danger pour les ATS, et le Check mode montre, dans l’ordre, le texte qu’un parseur extrait de votre PDF : une colonne latérale qui le brouille se repère donc facilement."
+				},
+				{
+					"q": "Puis-je importer mon profil LinkedIn dans Reactive Resume ?",
+					"a": "Oui, à partir d’un export de données LinkedIn. JSON Resume, le JSON de Reactive Resume et les PDF lisibles s’importent aussi sans IA ; un fichier Word demande un fournisseur d’IA connecté."
+				},
+				{
+					"q": "Comment désactiver les inscriptions sur un Reactive Resume auto-hébergé ?",
+					"a": "Créez d’abord votre propre compte, puis mettez FLAG_DISABLE_SIGNUPS à true dans le fichier .env et redéployez. Ensuite, personne ne peut s’inscrire par e-mail, par connexion sociale ou en invité, tandis que les comptes existants continuent de fonctionner."
+				}
+			]
 		},
 		"pl": {
 			"description": "Kreator CV: pisz, projektuj i udostępniaj CV oraz listy motywacyjne i eksportuj je do PDF",
-			"notes": "Kliknij Build your resume i załóż konto; od razu jesteś zalogowany. Rejestracja zostaje otwarta dla każdego, kto znajdzie adres: gdy twoje konto już istnieje, dodaj FLAG_DISABLE_SIGNUPS=true do pliku .env projektu i wdróż. Bez serwera SMTP linki weryfikacyjne i do resetu hasła trafiają do logu usługi."
+			"notes": "Kliknij Build your resume i załóż konto; od razu jesteś zalogowany. Rejestracja zostaje otwarta dla każdego, kto znajdzie adres: gdy twoje konto już istnieje, dodaj FLAG_DISABLE_SIGNUPS=true do pliku .env projektu i wdróż. Bez serwera SMTP linki weryfikacyjne i do resetu hasła trafiają do logu usługi.",
+			"sizing": "Reactive Resume ma małe wymagania: około 300 MB z Postgresem, a CV ze zdjęciami zajmują mało miejsca na dysku.",
+			"summary": "Hostuj Reactive Resume u siebie jednym kliknięciem: kreator CV o otwartym kodzie i darmowa alternatywa dla Zety, z Docker Compose.",
+			"about": [
+				"Reactive Resume to kreator CV o otwartym kodzie, który ludzie uruchamiają zamiast płatnych kreatorów, takich jak Zety. Piszesz w edytorze z podglądem PDF na żywo, a potem zmieniasz szablon albo czcionki, kolory i odstępy, nie przepisując ani słowa. Check mode ocenia, jak pewnie oprogramowanie rekrutacyjne odczyta wynik, i pokazuje, których słów z oferty pracy twoje CV już używa. CV eksportujesz do PDF, Word, Markdown lub JSON albo udostępniasz jako publiczny link z opcjonalnym hasłem. Listy motywacyjne i tracker aplikacji o pracę są tuż obok.",
+				"Kod ma licencję MIT, a Reactive Resume hostuje się u siebie, żeby historia zatrudnienia i dane kontaktowe leżały we własnej bazie danych, a nie u dostawcy usługi. Asystent AI jest opcjonalny i działa przez dostawcę, którego podłączysz, na przykład OpenAI, Anthropic albo lokalną Ollamę. Haczyk to e-mail: bez serwera SMTP nic nie jest wysyłane, a linki weryfikacyjne pojawiają się tylko w logu aplikacji."
+			],
+			"faq": [
+				{
+					"q": "Czy Reactive Resume naprawdę jest darmowy?",
+					"a": "Tak. Nie ma płatnego planu ani reklam, niezależnie od tego, czy korzystasz z hostowanego rxresu.me, czy z własnego serwera. Płacisz tylko za swój hosting i za dostawcę AI, którego zdecydujesz się podłączyć."
+				},
+				{
+					"q": "Reactive Resume czy Zety: czym się różnią?",
+					"a": "Reactive Resume ma otwarty kod, może działać na twoim serwerze i za darmo eksportuje do PDF i Word. Zety to hostowana usługa, w której kreator dokłada za ciebie frazy napisane przez ekspertów, a Reactive Resume tego nie oferuje."
+				},
+				{
+					"q": "Czy Reactive Resume jest przyjazny dla ATS?",
+					"a": "Tak, przy odpowiednim układzie. Szablony można filtrować pod kątem projektów bezpiecznych dla ATS, a Check mode pokazuje po kolei tekst, który parser wyciąga z twojego PDF-a, więc pasek boczny, który go miesza, łatwo wychwycić."
+				},
+				{
+					"q": "Czy mogę zaimportować profil LinkedIn do Reactive Resume?",
+					"a": "Tak, z eksportu danych z LinkedIn. JSON Resume, JSON Reactive Resume i czytelne PDF-y też importują się bez AI; plik Word wymaga podłączonego dostawcy AI."
+				},
+				{
+					"q": "Jak wyłączyć rejestrację w Reactive Resume hostowanym u siebie?",
+					"a": "Najpierw załóż własne konto, potem ustaw w pliku .env FLAG_DISABLE_SIGNUPS na true i wdróż ponownie. Od tej pory nikt nie zarejestruje się przez e-mail, logowanie społecznościowe ani jako gość, a istniejące konta nadal działają."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um editor de currículos: escreva, diagrame e compartilhe currículos e cartas de apresentação, e exporte em PDF",
-			"notes": "Clique em Build your resume e crie sua conta; você entra na hora. O cadastro fica aberto para quem encontrar o endereço: quando sua conta existir, adicione FLAG_DISABLE_SIGNUPS=true ao .env do projeto e faça o deploy. Sem um servidor SMTP, os links de verificação e de redefinição de senha são escritos no log do serviço."
+			"notes": "Clique em Build your resume e crie sua conta; você entra na hora. O cadastro fica aberto para quem encontrar o endereço: quando sua conta existir, adicione FLAG_DISABLE_SIGNUPS=true ao .env do projeto e faça o deploy. Sem um servidor SMTP, os links de verificação e de redefinição de senha são escritos no log do serviço.",
+			"sizing": "Reactive Resume é leve: cerca de 300 MB com o Postgres, e currículos com suas fotos ocupam pouco disco.",
+			"summary": "Auto-hospede o Reactive Resume com um clique: editor de currículos open source e alternativa gratuita ao Zety, com Docker Compose.",
+			"about": [
+				"O Reactive Resume é um editor de currículos open source que as pessoas rodam no lugar de criadores pagos como o Zety. Você escreve em um editor com pré-visualização do PDF em tempo real e depois troca de modelo ou muda fontes, cores e espaçamento sem redigitar uma palavra. O Check mode avalia com que confiabilidade um software de recrutamento consegue ler o resultado e mostra quais termos de uma vaga o seu currículo já tem. Os currículos são exportados em PDF, Word, Markdown ou JSON, ou compartilhados como link público com senha opcional. Cartas de apresentação e um controle de candidaturas ficam ao lado.",
+				"O código tem licença MIT, e as pessoas auto-hospedam o Reactive Resume para que o histórico profissional e os dados de contato fiquem no próprio banco de dados, e não no de um fornecedor. O assistente de IA é opcional e funciona por meio de um provedor que você conecta, como OpenAI, Anthropic ou um Ollama local. O porém é o e-mail: sem um servidor SMTP nada é enviado, e os links de verificação aparecem só no log do app."
+			],
+			"faq": [
+				{
+					"q": "O Reactive Resume é mesmo gratuito?",
+					"a": "Sim. Não há plano pago nem anúncios, seja no rxresu.me hospedado ou no seu próprio servidor. Os únicos custos são a sua hospedagem e o provedor de IA que você escolher conectar."
+				},
+				{
+					"q": "Reactive Resume ou Zety: qual é a diferença?",
+					"a": "O Reactive Resume é open source, pode rodar no seu próprio servidor e exporta PDF e Word sem custo. O Zety é um serviço hospedado cujo editor acrescenta, para você, frases escritas por especialistas, o que o Reactive Resume não oferece."
+				},
+				{
+					"q": "O Reactive Resume é compatível com ATS?",
+					"a": "Sim, com um layout adequado. Dá para filtrar os modelos por designs seguros para ATS, e o Check mode mostra, em ordem, o texto que um parser extrai do seu PDF, então uma barra lateral que o embaralha é fácil de notar."
+				},
+				{
+					"q": "Posso importar meu perfil do LinkedIn para o Reactive Resume?",
+					"a": "Sim, a partir de uma exportação de dados do LinkedIn. JSON Resume, o JSON do Reactive Resume e PDFs legíveis também são importados sem IA; um arquivo Word precisa de um provedor de IA conectado."
+				},
+				{
+					"q": "Como desativo os cadastros no Reactive Resume auto-hospedado?",
+					"a": "Crie primeiro a sua conta, depois defina FLAG_DISABLE_SIGNUPS como true no arquivo .env e faça o deploy de novo. A partir daí ninguém consegue se cadastrar por e-mail, por login social nem como convidado, e as contas existentes continuam funcionando."
+				}
+			]
 		},
 		"ru": {
 			"description": "Конструктор резюме: пишите, оформляйте и публикуйте резюме и сопроводительные письма, экспортируйте их в PDF",
-			"notes": "Нажмите Build your resume и создайте учётную запись, вход происходит сразу. Регистрация открыта любому, кто найдёт адрес: когда ваша учётная запись готова, добавьте FLAG_DISABLE_SIGNUPS=true в .env проекта и сделайте деплой. Без SMTP-сервера ссылки для подтверждения и сброса пароля пишутся в лог сервиса."
+			"notes": "Нажмите Build your resume и создайте учётную запись, вход происходит сразу. Регистрация открыта любому, кто найдёт адрес: когда ваша учётная запись готова, добавьте FLAG_DISABLE_SIGNUPS=true в .env проекта и сделайте деплой. Без SMTP-сервера ссылки для подтверждения и сброса пароля пишутся в лог сервиса.",
+			"sizing": "Reactive Resume: небольшие требования — около 300 MB вместе с Postgres, а резюме с фото занимают мало диска.",
+			"summary": "Self-hosted Reactive Resume в один клик: open-source конструктор резюме и бесплатная альтернатива Zety, с Docker Compose.",
+			"about": [
+				"Reactive Resume — open-source конструктор резюме, который запускают вместо платных конструкторов вроде Zety. Вы пишете в редакторе с предпросмотром PDF в реальном времени, а потом меняете шаблон или шрифты, цвета и отступы, не перепечатывая ни слова. Check mode оценивает, насколько надежно рекрутинговое ПО прочитает результат, и показывает, какие термины из вакансии в вашем резюме уже есть. Резюме экспортируются в PDF, Word, Markdown или JSON либо раздаются публичной ссылкой с необязательным паролем. Сопроводительные письма и трекер откликов на вакансии лежат рядом.",
+				"Код под лицензией MIT, и Reactive Resume хостят у себя, чтобы опыт работы и контактные данные лежали в собственной базе, а не у вендора. ИИ-ассистент необязателен и работает через провайдера, которого вы подключаете, например OpenAI, Anthropic или локальную Ollama. Подвох — почта: без SMTP-сервера ничего не отправляется, а ссылки для подтверждения появляются только в логах приложения."
+			],
+			"faq": [
+				{
+					"q": "Reactive Resume правда бесплатный?",
+					"a": "Да. Платного тарифа и рекламы нет — ни в облачной версии rxresu.me, ни на вашем сервере. Платите вы только за хостинг и за любого ИИ-провайдера, которого решите подключить."
+				},
+				{
+					"q": "Reactive Resume или Zety: в чем разница?",
+					"a": "Reactive Resume — open source, может работать на вашем сервере и бесплатно экспортирует в PDF и Word. Zety — облачный сервис, чей конструктор сам добавляет фразы, написанные экспертами; в Reactive Resume этого нет."
+				},
+				{
+					"q": "Reactive Resume подходит для ATS?",
+					"a": "Да, при подходящем макете. Шаблоны можно отфильтровать по дизайнам, безопасным для ATS, а Check mode показывает по порядку текст, который парсер вытаскивает из вашего PDF, так что боковую колонку, которая его перемешивает, легко заметить."
+				},
+				{
+					"q": "Можно ли импортировать профиль LinkedIn в Reactive Resume?",
+					"a": "Да, из экспорта данных LinkedIn. JSON Resume, JSON Reactive Resume и читаемые PDF тоже импортируются без ИИ; для файла Word нужен подключенный ИИ-провайдер."
+				},
+				{
+					"q": "Как отключить регистрацию в self-hosted Reactive Resume?",
+					"a": "Сначала создайте собственную учетную запись, затем поставьте FLAG_DISABLE_SIGNUPS в true в файле .env и сделайте деплой заново. После этого никто не сможет зарегистрироваться по почте, через соцсети или гостем, а существующие учетные записи продолжат работать."
+				}
+			]
 		},
 		"uk": {
 			"description": "Конструктор резюме: пишіть, оформлюйте й публікуйте резюме та супровідні листи, експортуйте їх у PDF",
-			"notes": "Натисніть Build your resume і створіть обліковий запис, вхід відбувається одразу. Реєстрація відкрита будь-кому, хто знайде адресу: коли ваш обліковий запис готовий, додайте FLAG_DISABLE_SIGNUPS=true до .env проєкту й зробіть деплой. Без SMTP-сервера посилання для підтвердження й скидання пароля пишуться в лог сервісу."
+			"notes": "Натисніть Build your resume і створіть обліковий запис, вхід відбувається одразу. Реєстрація відкрита будь-кому, хто знайде адресу: коли ваш обліковий запис готовий, додайте FLAG_DISABLE_SIGNUPS=true до .env проєкту й зробіть деплой. Без SMTP-сервера посилання для підтвердження й скидання пароля пишуться в лог сервісу.",
+			"sizing": "Reactive Resume має скромні вимоги: близько 300 MB з Postgres, а резюме з фото займають мало місця на диску.",
+			"summary": "Self-hosted Reactive Resume в один клік: open-source конструктор резюме й безкоштовна альтернатива Zety, з Docker Compose.",
+			"about": [
+				"Reactive Resume — open-source конструктор резюме, який запускають замість платних конструкторів на кшталт Zety. Ви пишете в редакторі з попереднім переглядом PDF у реальному часі, а потім міняєте шаблон або шрифти, кольори й відступи, не передруковуючи жодного слова. Check mode оцінює, наскільки надійно рекрутингове ПЗ прочитає результат, і показує, які терміни з вакансії у вашому резюме вже є. Резюме експортуються в PDF, Word, Markdown або JSON чи поширюються публічним посиланням з необов’язковим паролем. Супровідні листи й трекер відгуків на вакансії лежать поруч.",
+				"Код під ліцензією MIT, і Reactive Resume хостять у себе, щоб досвід роботи та контактні дані лежали у власній базі, а не у вендора. ШІ-асистент необов’язковий і працює через провайдера, якого ви підключаєте, наприклад OpenAI, Anthropic або локальну Ollama. Підводний камінь — пошта: без SMTP-сервера нічого не надсилається, а посилання для підтвердження з’являються лише в логах застосунку."
+			],
+			"faq": [
+				{
+					"q": "Reactive Resume справді безкоштовний?",
+					"a": "Так. Платного тарифу й реклами немає — ні в хмарній версії rxresu.me, ні на вашому сервері. Ви платите лише за хостинг і за будь-якого ШІ-провайдера, якого вирішите підключити."
+				},
+				{
+					"q": "Reactive Resume чи Zety: яка різниця?",
+					"a": "Reactive Resume — open source, може працювати на вашому сервері й безкоштовно експортує в PDF і Word. Zety — хмарний сервіс, чий конструктор сам додає фрази, написані експертами; у Reactive Resume цього немає."
+				},
+				{
+					"q": "Чи підходить Reactive Resume для ATS?",
+					"a": "Так, за відповідного макета. Шаблони можна відфільтрувати за дизайнами, безпечними для ATS, а Check mode показує по порядку текст, який парсер витягує з вашого PDF, тож бічну колонку, що його перемішує, легко помітити."
+				},
+				{
+					"q": "Чи можна імпортувати профіль LinkedIn у Reactive Resume?",
+					"a": "Так, з експорту даних LinkedIn. JSON Resume, JSON Reactive Resume і читабельні PDF теж імпортуються без ШІ; для файлу Word потрібен підключений ШІ-провайдер."
+				},
+				{
+					"q": "Як вимкнути реєстрацію в self-hosted Reactive Resume?",
+					"a": "Спершу створіть власний обліковий запис, потім поставте FLAG_DISABLE_SIGNUPS у true у файлі .env і зробіть деплой заново. Після цього ніхто не зможе зареєструватися через пошту, соцмережі чи гостем, а наявні облікові записи продовжать працювати."
+				}
+			]
 		}
 	}
 }

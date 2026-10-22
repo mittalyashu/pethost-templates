@@ -1,6 +1,13 @@
 {
 	"name": "Nextcloud",
 	"emoji": "☁️",
+	"category": "files",
+	"alternatives": [
+		"Google Drive",
+		"Dropbox",
+		"OneDrive"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "app",
 		"port": 80
@@ -26,35 +33,259 @@
 	"texts": {
 		"en": {
 			"description": "File sync, calendar and contacts on a server of your own",
-			"notes": "Sign in as admin with the password you gave."
+			"notes": "Sign in as admin with the password you gave.",
+			"sizing": "Nextcloud is moderate: under a gigabyte of memory, and your own files and their previews decide the disk.",
+			"summary": "Nextcloud is an open-source alternative to Google Drive and Dropbox for files, calendars and contacts. Self-host it in one click with Docker Compose.",
+			"about": [
+				"Nextcloud is an open-source file sync and share platform, the one people run instead of Google Drive. Its desktop client keeps folders in sync on Windows, macOS and Linux, and the phone apps upload photos and videos as you take them. Calendars and address books sync with phones and Thunderbird over CalDAV and CardDAV. Hundreds of apps in its app store add more, such as Talk for chat and video calls.",
+				"People self-host Nextcloud to keep their files on a server they control, with no storage plan to outgrow and no fee per user. It fits a family as well as a small team, with groups, storage quotas and two-factor sign-in. The catch is email: Nextcloud has no mail server of its own, so password resets and share notifications need an SMTP service you set in its settings."
+			],
+			"faq": [
+				{
+					"q": "Is Nextcloud free?",
+					"a": "Yes. Nextcloud is open source under the AGPL-3.0 licence and free to run on your own server. Nextcloud GmbH sells Enterprise subscriptions to companies, which add support and longer maintenance of each release."
+				},
+				{
+					"q": "Can I share Nextcloud files with people who have no account?",
+					"a": "Yes. A share link opens in any browser and can carry a password, an expiry date, or upload-only access as a file drop. Federated sharing also reaches people on other Nextcloud servers."
+				},
+				{
+					"q": "Can Nextcloud edit Word and Excel documents?",
+					"a": "Yes, with Nextcloud Office, based on Collabora Online: several people edit DOCX, XLSX and PPTX files together in the browser. Its built-in CODE server app suits personal use and small teams; larger ones run a separate document server."
+				},
+				{
+					"q": "Can I import my Google Drive into Nextcloud?",
+					"a": "Yes. The Google integration app imports files, calendars, contacts and chosen photos from a personal or Workspace account, after setup in the Google API Console. It is a one-time import that does not keep the two in sync."
+				},
+				{
+					"q": "Can I recover deleted files in Nextcloud?",
+					"a": "Yes. Deleted files and folders go to a trash bin first, and the Versions tab keeps each file's history, so you can roll a file back to an earlier version."
+				}
+			]
 		},
 		"de": {
 			"description": "Datei-Sync, Kalender und Kontakte auf deinem eigenen Server",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast.",
+			"sizing": "Nextcloud ist mittelschwer: unter 1 GB RAM, und deine eigenen Dateien samt Vorschauen bestimmen die Disk.",
+			"summary": "Nextcloud selbst hosten: Open-Source-Alternative zu Google Drive und Dropbox für Dateien, Kalender und Kontakte. Mit Docker Compose in einem Klick.",
+			"about": [
+				"Nextcloud ist eine Open-Source-Plattform zum Synchronisieren und Teilen von Dateien, die Leute statt Google Drive betreiben. Der Desktop-Client hält Ordner unter Windows, macOS und Linux synchron, und die Apps fürs Handy laden Fotos und Videos direkt beim Aufnehmen hoch. Kalender und Adressbücher synchronisieren sich über CalDAV und CardDAV mit Smartphones und Thunderbird. Hunderte Apps im App Store bringen weitere Funktionen mit, etwa Talk für Chat und Videoanrufe.",
+				"Wer Nextcloud selbst hostet, behält seine Dateien auf einem Server unter eigener Kontrolle, ohne Speichertarif, aus dem man herauswächst, und ohne Gebühr pro Person. Es passt zu einer Familie genauso wie zu einem kleinen Team, mit Gruppen, Speicherkontingenten und Zwei-Faktor-Anmeldung. Der Haken ist die E-Mail: Nextcloud hat keinen eigenen Mailserver, deshalb brauchen Passwort-Zurücksetzungen und Benachrichtigungen über Freigaben einen SMTP-Server, den du in den Einstellungen einträgst."
+			],
+			"faq": [
+				{
+					"q": "Ist Nextcloud kostenlos?",
+					"a": "Ja. Nextcloud ist Open Source unter der AGPL-3.0-Lizenz und auf dem eigenen Server kostenlos zu betreiben. Die Nextcloud GmbH verkauft Enterprise-Abos an Unternehmen, die Support und eine längere Wartung jedes Releases dazugeben."
+				},
+				{
+					"q": "Kann ich Nextcloud-Dateien mit Leuten teilen, die kein Konto haben?",
+					"a": "Ja. Ein Freigabe-Link öffnet sich in jedem Browser und kann ein Passwort, ein Ablaufdatum oder nur Upload-Zugriff als File Drop haben. Federated Sharing erreicht auch Leute auf anderen Nextcloud-Servern."
+				},
+				{
+					"q": "Kann Nextcloud Word- und Excel-Dokumente bearbeiten?",
+					"a": "Ja, mit Nextcloud Office auf Basis von Collabora Online: Mehrere Personen bearbeiten DOCX-, XLSX- und PPTX-Dateien gemeinsam im Browser. Die integrierte CODE-Server-App passt zu persönlicher Nutzung und kleinen Teams; größere Teams betreiben einen eigenen Dokumentenserver."
+				},
+				{
+					"q": "Kann ich mein Google Drive in Nextcloud importieren?",
+					"a": "Ja. Die App für die Google-Integration importiert Dateien, Kalender, Kontakte und ausgewählte Fotos aus einem privaten oder einem Workspace-Konto, nach der Einrichtung in der Google API Console. Es ist ein einmaliger Import, der beide Seiten nicht synchron hält."
+				},
+				{
+					"q": "Kann ich gelöschte Dateien in Nextcloud wiederherstellen?",
+					"a": "Ja. Gelöschte Dateien und Ordner landen zuerst im Papierkorb, und der Reiter „Versionen“ bewahrt den Verlauf jeder Datei auf, sodass du eine Datei auf eine frühere Version zurücksetzen kannst."
+				}
+			]
 		},
 		"es": {
 			"description": "Sincronización de archivos, calendario y contactos en tu propio servidor",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste.",
+			"sizing": "Nextcloud es moderado: menos de 1 GB de memoria, y el disco depende de tus propios archivos y sus vistas previas.",
+			"summary": "Autoaloja Nextcloud, la alternativa de código abierto a Google Drive y Dropbox para archivos, calendarios y contactos. Con Docker Compose en un clic.",
+			"about": [
+				"Nextcloud es una plataforma de código abierto para sincronizar y compartir archivos, la que la gente ejecuta en lugar de Google Drive. Su cliente de escritorio mantiene las carpetas sincronizadas en Windows, macOS y Linux, y las apps del teléfono suben las fotos y los videos a medida que los capturas. Los calendarios y las libretas de direcciones se sincronizan con teléfonos y Thunderbird mediante CalDAV y CardDAV. Cientos de apps de su tienda de apps agregan más funciones, como Talk para chat y videollamadas.",
+				"La gente autoaloja Nextcloud para tener sus archivos en un servidor que controla, sin un plan de almacenamiento que se quede corto y sin una tarifa por usuario. Encaja tanto con una familia como con un equipo pequeño, con grupos, cuotas de almacenamiento e inicio de sesión con doble factor. El inconveniente es el correo: Nextcloud no tiene un servidor de correo propio, así que los restablecimientos de contraseña y las notificaciones de archivos compartidos necesitan un servicio SMTP que configuras en sus ajustes."
+			],
+			"faq": [
+				{
+					"q": "¿Nextcloud es gratis?",
+					"a": "Sí. Nextcloud es de código abierto, con licencia AGPL-3.0, y se puede ejecutar gratis en tu propio servidor. Nextcloud GmbH vende suscripciones Enterprise a empresas, que agregan soporte y un mantenimiento más largo de cada versión."
+				},
+				{
+					"q": "¿Puedo compartir archivos de Nextcloud con personas que no tienen cuenta?",
+					"a": "Sí. Un enlace para compartir se abre en cualquier navegador y puede llevar contraseña, fecha de caducidad o acceso solo de subida, como un file drop. Federated Sharing también llega a personas de otros servidores de Nextcloud."
+				},
+				{
+					"q": "¿Puede Nextcloud editar documentos de Word y Excel?",
+					"a": "Sí, con Nextcloud Office, basado en Collabora Online: varias personas editan juntas archivos DOCX, XLSX y PPTX en el navegador. Su app CODE Server integrada sirve para uso personal y equipos pequeños; los equipos más grandes ejecutan un servidor de documentos aparte."
+				},
+				{
+					"q": "¿Puedo importar mi Google Drive a Nextcloud?",
+					"a": "Sí. La app de integración con Google importa archivos, calendarios, contactos y las fotos que elijas desde una cuenta personal o de Workspace, tras configurarla en la Google API Console. Es una importación única que no mantiene sincronizados los dos lados."
+				},
+				{
+					"q": "¿Puedo recuperar archivos eliminados en Nextcloud?",
+					"a": "Sí. Los archivos y las carpetas eliminados van primero a la papelera, y la pestaña Versiones guarda el historial de cada archivo, así que puedes restaurar un archivo a una versión anterior."
+				}
+			]
 		},
 		"fr": {
 			"description": "Synchronisation de fichiers, agenda et contacts sur votre propre serveur",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi.",
+			"sizing": "Nextcloud est modéré : moins de 1 GB de mémoire, et ce sont vos propres fichiers et leurs aperçus qui décident du disque.",
+			"summary": "Auto-hébergez Nextcloud, l’alternative open source à Google Drive et Dropbox pour fichiers, agendas et contacts. Avec Docker Compose en un clic.",
+			"about": [
+				"Nextcloud est une plateforme open source de synchronisation et de partage de fichiers, celle que l’on fait tourner à la place de Google Drive. Son client de bureau garde les dossiers synchronisés sous Windows, macOS et Linux, et les applications mobiles envoient photos et vidéos dès que vous les prenez. Les agendas et les carnets d’adresses se synchronisent avec les téléphones et Thunderbird via CalDAV et CardDAV. Des centaines d’applications de sa boutique d’applications ajoutent des fonctions, comme Talk pour le chat et les appels vidéo.",
+				"Vous auto-hébergez Nextcloud pour garder vos fichiers sur un serveur que vous maîtrisez, sans offre de stockage qu’on finit par dépasser et sans frais par utilisateur. Il convient aussi bien à une famille qu’à une petite équipe, avec des groupes, des quotas de stockage et une authentification à deux facteurs. Le revers : l’e-mail. Nextcloud n’a pas de serveur de messagerie propre, si bien que les réinitialisations de mot de passe et les notifications de partage ont besoin d’un service SMTP que vous renseignez dans ses paramètres."
+			],
+			"faq": [
+				{
+					"q": "Nextcloud est-il gratuit ?",
+					"a": "Oui. Nextcloud est open source sous licence AGPL-3.0 et gratuit à faire tourner sur votre propre serveur. Nextcloud GmbH vend des abonnements Enterprise aux entreprises, qui ajoutent du support et une maintenance plus longue de chaque version."
+				},
+				{
+					"q": "Puis-je partager des fichiers Nextcloud avec des personnes qui n’ont pas de compte ?",
+					"a": "Oui. Un lien de partage s’ouvre dans n’importe quel navigateur et peut avoir un mot de passe, une date d’expiration ou un accès en envoi seul, comme un file drop. Le Federated Sharing atteint aussi les personnes sur d’autres serveurs Nextcloud."
+				},
+				{
+					"q": "Nextcloud peut-il modifier des documents Word et Excel ?",
+					"a": "Oui, avec Nextcloud Office, fondé sur Collabora Online : plusieurs personnes modifient ensemble des fichiers DOCX, XLSX et PPTX dans le navigateur. Son application CODE Server intégrée convient à un usage personnel et aux petites équipes ; les plus grandes font tourner un serveur de documents à part."
+				},
+				{
+					"q": "Puis-je importer mon Google Drive dans Nextcloud ?",
+					"a": "Oui. L’application d’intégration Google importe fichiers, agendas, contacts et photos choisies depuis un compte personnel ou Workspace, une fois configurée dans la Google API Console. C’est un import ponctuel, qui ne garde pas les deux côtés synchronisés."
+				},
+				{
+					"q": "Puis-je récupérer des fichiers supprimés dans Nextcloud ?",
+					"a": "Oui. Les fichiers et dossiers supprimés vont d’abord dans la corbeille, et l’onglet Versions conserve l’historique de chaque fichier : vous pouvez ainsi ramener un fichier à une version précédente."
+				}
+			]
 		},
 		"pl": {
 			"description": "Synchronizacja plików, kalendarz i kontakty na własnym serwerze",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu.",
+			"sizing": "Nextcloud ma średnie wymagania: poniżej 1 GB pamięci, a o dysku decydują twoje pliki i ich podglądy.",
+			"summary": "Hostuj Nextcloud u siebie w jeden klik: alternatywa open source dla Google Drive i Dropboxa do plików, kalendarzy i kontaktów, z Docker Compose.",
+			"about": [
+				"Nextcloud to platforma open source do synchronizacji i udostępniania plików, którą ludzie uruchamiają zamiast Google Drive. Klient desktopowy synchronizuje katalogi w systemach Windows, macOS i Linux, a aplikacje mobilne wgrywają zdjęcia i filmy zaraz po ich zrobieniu. Kalendarze i książki adresowe synchronizują się z telefonami i Thunderbirdem przez CalDAV i CardDAV. Setki aplikacji w jego sklepie z aplikacjami dodają kolejne funkcje, na przykład Talk do czatu i rozmów wideo.",
+				"Nextcloud hostuje się u siebie, żeby trzymać pliki na serwerze pod własną kontrolą, bez planu na dane, który w końcu robi się za ciasny, i bez opłaty za użytkownika. Pasuje zarówno do rodziny, jak i do małego zespołu, z grupami, limitami miejsca i logowaniem dwuskładnikowym. Haczyk to e-mail: Nextcloud nie ma własnego serwera poczty, więc resetowanie haseł i powiadomienia o udostępnieniach potrzebują serwera SMTP, który podajesz w jego ustawieniach."
+			],
+			"faq": [
+				{
+					"q": "Czy Nextcloud jest darmowy?",
+					"a": "Tak. Nextcloud jest open source na licencji AGPL-3.0 i można go za darmo uruchomić na własnym serwerze. Nextcloud GmbH sprzedaje firmom subskrypcje Enterprise, które dodają wsparcie i dłuższe utrzymanie każdego wydania."
+				},
+				{
+					"q": "Czy mogę udostępniać pliki z Nextcloud osobom bez konta?",
+					"a": "Tak. Link do udostępnienia otwiera się w każdej przeglądarce i może mieć hasło, datę ważności albo dostęp tylko do wgrywania, jako file drop. Federated Sharing sięga też do osób na innych serwerach Nextcloud."
+				},
+				{
+					"q": "Czy Nextcloud może edytować dokumenty Word i Excel?",
+					"a": "Tak, dzięki Nextcloud Office opartemu na Collabora Online: kilka osób razem edytuje pliki DOCX, XLSX i PPTX w przeglądarce. Wbudowana aplikacja CODE Server pasuje do użytku osobistego i małych zespołów; większe zespoły uruchamiają osobny serwer dokumentów."
+				},
+				{
+					"q": "Czy mogę zaimportować Google Drive do Nextcloud?",
+					"a": "Tak. Aplikacja do integracji z Google importuje pliki, kalendarze, kontakty i wybrane zdjęcia z konta osobistego lub Workspace, po skonfigurowaniu w Google API Console. To jednorazowy import, który nie utrzymuje synchronizacji obu stron."
+				},
+				{
+					"q": "Czy mogę odzyskać usunięte pliki w Nextcloud?",
+					"a": "Tak. Usunięte pliki i katalogi trafiają najpierw do kosza, a zakładka Wersje przechowuje historię każdego pliku, więc możesz cofnąć plik do wcześniejszej wersji."
+				}
+			]
 		},
 		"pt": {
 			"description": "Sincronização de arquivos, calendário e contatos em um servidor só seu",
-			"notes": "Entre como admin com a senha que você definiu."
+			"notes": "Entre como admin com a senha que você definiu.",
+			"sizing": "Nextcloud é moderado: menos de 1 GB de memória, e o disco depende dos seus próprios arquivos e das pré-visualizações deles.",
+			"summary": "Auto-hospede o Nextcloud, alternativa open source ao Google Drive e ao Dropbox para arquivos, calendários e contatos. Com Docker Compose, em um clique.",
+			"about": [
+				"O Nextcloud é uma plataforma open source de sincronização e compartilhamento de arquivos, a que as pessoas rodam no lugar do Google Drive. O cliente desktop mantém as pastas sincronizadas no Windows, no macOS e no Linux, e os apps de celular enviam fotos e vídeos à medida que você os captura. Calendários e agendas de contatos sincronizam com celulares e com o Thunderbird por CalDAV e CardDAV. Centenas de apps da loja de apps dele acrescentam mais recursos, como o Talk para chat e chamadas de vídeo.",
+				"Você auto-hospeda o Nextcloud para manter seus arquivos em um servidor que você controla, sem plano de armazenamento que um dia fica pequeno e sem cobrança por usuário. Ele serve tanto para uma família quanto para uma equipe pequena, com grupos, cotas de armazenamento e autenticação em dois fatores. O porém é o e-mail: o Nextcloud não tem servidor de e-mail próprio, então redefinições de senha e notificações de compartilhamento precisam de um serviço SMTP que você configura nas configurações dele."
+			],
+			"faq": [
+				{
+					"q": "O Nextcloud é gratuito?",
+					"a": "É. O Nextcloud é open source, sob a licença AGPL-3.0, e é gratuito para rodar no seu próprio servidor. A Nextcloud GmbH vende assinaturas Enterprise para empresas, que acrescentam suporte e manutenção mais longa de cada versão."
+				},
+				{
+					"q": "Posso compartilhar arquivos do Nextcloud com quem não tem conta?",
+					"a": "Pode. Um link de compartilhamento abre em qualquer navegador e pode ter senha, data de expiração ou acesso só para envio, como um file drop. O Federated Sharing também alcança pessoas em outros servidores Nextcloud."
+				},
+				{
+					"q": "O Nextcloud consegue editar documentos do Word e do Excel?",
+					"a": "Consegue, com o Nextcloud Office, baseado no Collabora Online: várias pessoas editam juntas arquivos DOCX, XLSX e PPTX no navegador. O app CODE Server integrado serve para uso pessoal e equipes pequenas; equipes maiores rodam um servidor de documentos separado."
+				},
+				{
+					"q": "Posso importar meu Google Drive para o Nextcloud?",
+					"a": "Pode. O app de integração com o Google importa arquivos, calendários, contatos e fotos escolhidas de uma conta pessoal ou do Workspace, depois da configuração no Google API Console. É uma importação única, que não mantém os dois lados sincronizados."
+				},
+				{
+					"q": "Posso recuperar arquivos excluídos no Nextcloud?",
+					"a": "Pode. Arquivos e pastas excluídos vão primeiro para a lixeira, e a aba Versões guarda o histórico de cada arquivo, então você pode voltar um arquivo a uma versão anterior."
+				}
+			]
 		},
 		"ru": {
 			"description": "Синхронизация файлов, календарь и контакты на собственном сервере",
-			"notes": "Войдите как admin с паролем, который вы задали."
+			"notes": "Войдите как admin с паролем, который вы задали.",
+			"sizing": "Nextcloud: умеренные требования — менее 1 GB памяти, а диск определяют ваши файлы и их превью.",
+			"summary": "Self-hosted Nextcloud в один клик: open-source альтернатива Google Drive и Dropbox для файлов, календарей и контактов. Запуск через Docker Compose.",
+			"about": [
+				"Nextcloud — open-source платформа для синхронизации и обмена файлами, которую запускают вместо Google Drive. Десктопный клиент синхронизирует папки в Windows, macOS и Linux, а мобильные приложения загружают фото и видео сразу после съемки. Календари и адресные книги синхронизируются с телефонами и Thunderbird по CalDAV и CardDAV. Сотни приложений из его магазина добавляют новые возможности, например Talk для чата и видеозвонков.",
+				"Nextcloud хостят у себя, чтобы держать файлы на сервере под своим контролем, без тарифа на хранилище, которого со временем перестает хватать, и без платы за каждого пользователя. Он подходит и семье, и небольшой команде: есть группы, квоты хранилища и двухфакторная аутентификация. Подвох в почте: у Nextcloud нет собственного почтового сервера, поэтому для сброса паролей и уведомлений об общем доступе нужен SMTP-сервер, который вы указываете в его настройках."
+			],
+			"faq": [
+				{
+					"q": "Nextcloud бесплатный?",
+					"a": "Да. Nextcloud — open source под лицензией AGPL-3.0, и его можно бесплатно запустить на своем сервере. Nextcloud GmbH продает компаниям подписки Enterprise, которые добавляют поддержку и более долгое сопровождение каждого релиза."
+				},
+				{
+					"q": "Можно ли делиться файлами Nextcloud с теми, у кого нет аккаунта?",
+					"a": "Да. Ссылка для доступа открывается в любом браузере и может быть с паролем, сроком действия или доступом только на загрузку — как file drop. Federated Sharing дотягивается и до людей на других серверах Nextcloud."
+				},
+				{
+					"q": "Умеет ли Nextcloud редактировать документы Word и Excel?",
+					"a": "Да, через Nextcloud Office на основе Collabora Online: несколько человек вместе редактируют файлы DOCX, XLSX и PPTX прямо в браузере. Встроенное приложение CODE Server подходит для личного использования и небольших команд; большие команды запускают отдельный сервер документов."
+				},
+				{
+					"q": "Можно ли импортировать Google Drive в Nextcloud?",
+					"a": "Да. Приложение для интеграции с Google импортирует файлы, календари, контакты и выбранные фотографии из личного аккаунта или аккаунта Workspace — после настройки в Google API Console. Это разовый импорт, он не поддерживает синхронизацию между ними."
+				},
+				{
+					"q": "Можно ли восстановить удаленные файлы в Nextcloud?",
+					"a": "Да. Удаленные файлы и папки сначала попадают в корзину, а на вкладке «Версии» хранится история каждого файла, так что файл можно откатить к более ранней версии."
+				}
+			]
 		},
 		"uk": {
 			"description": "Синхронізація файлів, календар і контакти на власному сервері",
-			"notes": "Увійдіть як admin із паролем, який ви вказали."
+			"notes": "Увійдіть як admin із паролем, який ви вказали.",
+			"sizing": "Nextcloud має помірні вимоги: менше 1 GB пам’яті, а місце на диску визначають ваші файли та їхні прев’ю.",
+			"summary": "Self-hosted Nextcloud в один клік: open-source альтернатива Google Drive і Dropbox для файлів, календарів і контактів. Запуск через Docker Compose.",
+			"about": [
+				"Nextcloud — платформа з відкритим кодом для синхронізації та обміну файлами, яку запускають замість Google Drive. Десктопний клієнт синхронізує папки на Windows, macOS і Linux, а мобільні застосунки завантажують фото й відео одразу після зйомки. Календарі та адресні книги синхронізуються з телефонами й Thunderbird через CalDAV і CardDAV. Сотні застосунків із його магазину додають нові можливості, наприклад Talk для чату й відеодзвінків.",
+				"Nextcloud хостять у себе, щоб тримати файли на сервері під своїм контролем, без тарифу на сховище, якого з часом перестає вистачати, і без плати за кожного користувача. Він підходить і родині, і невеликій команді: є групи, квоти сховища та двофакторна автентифікація. Підводний камінь — пошта: у Nextcloud немає власного поштового сервера, тож для скидання паролів і сповіщень про спільний доступ потрібен SMTP-сервер, який ви вказуєте в його налаштуваннях."
+			],
+			"faq": [
+				{
+					"q": "Чи безкоштовний Nextcloud?",
+					"a": "Так. Nextcloud має відкритий код за ліцензією AGPL-3.0, і його можна безкоштовно запустити на власному сервері. Nextcloud GmbH продає компаніям передплати Enterprise, які додають підтримку й довше супроводження кожного релізу."
+				},
+				{
+					"q": "Чи можна ділитися файлами Nextcloud з людьми без акаунта?",
+					"a": "Так. Посилання для доступу відкривається в будь-якому браузері й може мати пароль, термін дії або доступ лише для завантаження, як file drop. Federated Sharing дотягується й до людей на інших серверах Nextcloud."
+				},
+				{
+					"q": "Чи вміє Nextcloud редагувати документи Word і Excel?",
+					"a": "Так, через Nextcloud Office на основі Collabora Online: кілька людей разом редагують файли DOCX, XLSX і PPTX просто в браузері. Вбудований застосунок CODE Server підходить для особистого використання й невеликих команд; більші команди запускають окремий сервер документів."
+				},
+				{
+					"q": "Чи можна імпортувати Google Drive в Nextcloud?",
+					"a": "Так. Застосунок для інтеграції з Google імпортує файли, календарі, контакти й вибрані фото з особистого акаунта або акаунта Workspace — після налаштування в Google API Console. Це одноразовий імпорт, він не підтримує синхронізацію між ними."
+				},
+				{
+					"q": "Чи можна відновити видалені файли в Nextcloud?",
+					"a": "Так. Видалені файли й папки спершу потрапляють у кошик, а на вкладці «Версії» зберігається історія кожного файлу, тож файл можна відкотити до попередньої версії."
+				}
+			]
 		}
 	}
 }

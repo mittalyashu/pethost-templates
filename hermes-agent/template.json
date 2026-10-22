@@ -1,6 +1,11 @@
 {
 	"name": "Hermes Agent",
 	"emoji": "🪽",
+	"category": "ai",
+	"alternatives": [
+		"OpenClaw"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "hermes",
 		"port": 9119
@@ -32,35 +37,259 @@
 	"texts": {
 		"en": {
 			"description": "An AI agent you talk to in Telegram, Discord or the browser",
-			"notes": "Sign in as admin with the password you gave; the first start takes up to a minute. A model’s key is added under API Keys. For Telegram, message your bot and approve its code on the Pairing page."
+			"notes": "Sign in as admin with the password you gave; the first start takes up to a minute. A model’s key is added under API Keys. For Telegram, message your bot and approve its code on the Pairing page.",
+			"sizing": "Hermes Agent is moderate: about 600 MB of memory, as the model runs at your provider; its chats take little disk.",
+			"summary": "Self-host Hermes Agent, the open-source AI agent from Nous Research that learns skills. An OpenClaw alternative on your own machine in one click.",
+			"about": [
+				"Hermes Agent is an open-source AI agent from Nous Research and an alternative to OpenClaw, whose setup it can import. You talk to it in Telegram, Discord, Slack, WhatsApp, Signal or email, and a conversation carries over between them. It runs shell commands, browses the web, and remembers you across sessions. After a complex task it writes a skill, a saved procedure it reuses and improves. Jobs described in plain words run on a schedule and report to a chat.",
+				"An agent that answers chats and runs jobs at night has to stay on, so people self-host it on a server rather than a laptop. Hermes Agent keeps its conversations, memory and skills in its own folder there. It suits a person who wants one assistant in all their chat apps, with a server of its own to work on. The catch is the model: a hosted one bills every token, and the dashboard's Analytics page shows the cost."
+			],
+			"faq": [
+				{
+					"q": "Is Hermes Agent free and open source?",
+					"a": "Yes. Hermes Agent is open source under the MIT license and free to use. You pay only your model provider for API usage, and a local model costs nothing but the hardware it runs on."
+				},
+				{
+					"q": "How do I migrate from OpenClaw to Hermes Agent?",
+					"a": "Run hermes claw migrate. It previews, then imports OpenClaw's persona, memory, skills, model settings and messaging tokens; API keys come over only with --migrate-secrets."
+				},
+				{
+					"q": "Which models does Hermes Agent work with?",
+					"a": "Any OpenAI-compatible API, including OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi and MiniMax, or a local server such as Ollama, vLLM or llama.cpp. You switch with hermes model or on the dashboard's Config page."
+				},
+				{
+					"q": "Does Hermes Agent collect my data?",
+					"a": "No. Hermes Agent collects no telemetry, usage data or analytics, and its model calls go only to the provider you configure."
+				},
+				{
+					"q": "How do I connect Hermes Agent to Telegram on Pethost?",
+					"a": "Give the template your bot's token from @BotFather when you create the project. Then message the bot and approve the code it replies with on the dashboard's Pairing page: the agent answers only users you approve."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein KI-Agent, mit dem du in Telegram, Discord oder im Browser sprichst",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast; der erste Start dauert bis zu einer Minute. Den Key eines Modells trägst du unter „API Keys“ ein. Für Telegram schreibst du deinem Bot und bestätigst seinen Code auf der Seite „Pairing“."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast; der erste Start dauert bis zu einer Minute. Den Key eines Modells trägst du unter „API Keys“ ein. Für Telegram schreibst du deinem Bot und bestätigst seinen Code auf der Seite „Pairing“.",
+			"sizing": "Hermes Agent ist mittelschwer: etwa 600 MB RAM, da das Modell bei deinem Anbieter läuft; seine Chats brauchen wenig Disk.",
+			"summary": "Hermes Agent selbst hosten: der Open-Source-KI-Agent von Nous Research, der Skills lernt. Eine OpenClaw-Alternative auf deiner Maschine, mit einem Klick.",
+			"about": [
+				"Hermes Agent ist ein Open-Source-KI-Agent von Nous Research und eine Alternative zu OpenClaw, dessen Einrichtung er importieren kann. Du sprichst mit ihm in Telegram, Discord, Slack, WhatsApp, Signal oder per E-Mail, und ein Gespräch setzt sich über all diese Kanäle hinweg fort. Er führt Shell-Befehle aus, surft im Web und erinnert sich über Sitzungen hinweg an dich. Nach einer komplexen Aufgabe schreibt er einen Skill, ein gespeichertes Vorgehen, das er wiederverwendet und verbessert. Jobs, die du in einfachen Worten beschreibst, laufen nach Zeitplan und berichten in einem Chat.",
+				"Ein Agent, der Chats beantwortet und nachts Jobs ausführt, muss immer an bleiben, deshalb hostet man ihn selbst auf einer eigenen Maschine statt auf einem Laptop. Hermes Agent legt seine Gespräche, sein Gedächtnis und seine Skills dort in einem eigenen Ordner ab. Er passt zu Menschen, die einen Assistenten in allen ihren Chat-Apps wollen, mit einer eigenen Maschine zum Arbeiten. Der Haken ist das Modell: Ein gehostetes berechnet jedes Token, und die Seite „Analytics“ im Dashboard zeigt die Kosten."
+			],
+			"faq": [
+				{
+					"q": "Ist Hermes Agent kostenlos und Open Source?",
+					"a": "Ja. Hermes Agent ist Open Source unter der MIT-Lizenz und kostenlos nutzbar. Du bezahlst nur deinen Modellanbieter für die API-Nutzung, und ein lokales Modell kostet nichts außer der Hardware, auf der es läuft."
+				},
+				{
+					"q": "Wie migriere ich von OpenClaw zu Hermes Agent?",
+					"a": "Führe hermes claw migrate aus. Der Befehl zeigt erst eine Vorschau und importiert dann die Persona, das Gedächtnis, die Skills, die Modelleinstellungen und die Messaging-Tokens von OpenClaw; API-Keys kommen nur mit --migrate-secrets mit."
+				},
+				{
+					"q": "Mit welchen Modellen funktioniert Hermes Agent?",
+					"a": "Mit jeder OpenAI-kompatiblen API, darunter OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi und MiniMax, oder mit einem lokalen Server wie Ollama, vLLM oder llama.cpp. Du wechselst mit hermes model oder auf der Seite „Config“ im Dashboard."
+				},
+				{
+					"q": "Sammelt Hermes Agent meine Daten?",
+					"a": "Nein. Hermes Agent sammelt keine Telemetrie, Nutzungsdaten oder Analytics, und seine Modellaufrufe gehen nur an den Anbieter, den du konfigurierst."
+				},
+				{
+					"q": "Wie verbinde ich Hermes Agent auf Pethost mit Telegram?",
+					"a": "Gib der Vorlage beim Erstellen des Projekts das Token deines Bots von @BotFather. Schreib dann dem Bot und bestätige auf der Seite „Pairing“ im Dashboard den Code, mit dem er antwortet: Der Agent antwortet nur Personen, die du bestätigst."
+				}
+			]
 		},
 		"es": {
 			"description": "Un agente de IA con el que hablas en Telegram, Discord o el navegador",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste; el primer inicio tarda hasta un minuto. La clave de un modelo se agrega en API Keys. Para Telegram, escríbele a tu bot y aprueba su código en la página Pairing."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste; el primer inicio tarda hasta un minuto. La clave de un modelo se agrega en API Keys. Para Telegram, escríbele a tu bot y aprueba su código en la página Pairing.",
+			"sizing": "Hermes Agent es moderado: unos 600 MB de memoria, porque el modelo se ejecuta en tu proveedor; sus chats ocupan poco disco.",
+			"summary": "Autoaloja Hermes Agent, el agente de IA de código abierto de Nous Research que aprende skills. Una alternativa a OpenClaw en tu máquina, en un clic.",
+			"about": [
+				"Hermes Agent es un agente de IA de código abierto de Nous Research y una alternativa a OpenClaw, cuya configuración puede importar. Hablas con él en Telegram, Discord, Slack, WhatsApp, Signal o por correo, y una conversación continúa de uno a otro. Ejecuta comandos de shell, navega por la web y te recuerda de una sesión a otra. Tras una tarea compleja escribe una skill, un procedimiento guardado que reutiliza y mejora. Los trabajos descritos con palabras sencillas se ejecutan según un horario y informan en un chat.",
+				"Un agente que responde chats y ejecuta trabajos por la noche tiene que estar siempre activo, así que se autoaloja en una máquina propia y no en un equipo portátil. Allí, Hermes Agent guarda sus conversaciones, su memoria y sus skills en su propia carpeta. Encaja con quien quiere un solo asistente en todas sus apps de chat, con una máquina propia en la que trabajar. El inconveniente es el modelo: uno alojado cobra cada token, y la página Analytics del panel muestra cuánto cuesta."
+			],
+			"faq": [
+				{
+					"q": "¿Hermes Agent es gratis y de código abierto?",
+					"a": "Sí. Hermes Agent es de código abierto con licencia MIT y gratis de usar. Solo pagas a tu proveedor de modelos por el uso de la API, y un modelo local no cuesta más que el hardware en el que se ejecuta."
+				},
+				{
+					"q": "¿Cómo migro de OpenClaw a Hermes Agent?",
+					"a": "Ejecuta hermes claw migrate. Primero muestra una vista previa y luego importa la personalidad, la memoria, las skills, la configuración del modelo y los tokens de mensajería de OpenClaw; las claves de API solo se traen con --migrate-secrets."
+				},
+				{
+					"q": "¿Con qué modelos funciona Hermes Agent?",
+					"a": "Con cualquier API compatible con OpenAI, como OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi y MiniMax, o con un servidor local como Ollama, vLLM o llama.cpp. Cambias de modelo con hermes model o en la página Config del panel."
+				},
+				{
+					"q": "¿Hermes Agent recopila mis datos?",
+					"a": "No. Hermes Agent no recopila telemetría, datos de uso ni analíticas, y sus llamadas a modelos van solo al proveedor que configures."
+				},
+				{
+					"q": "¿Cómo conecto Hermes Agent a Telegram en Pethost?",
+					"a": "Dale a la plantilla el token de tu bot de @BotFather al crear el proyecto. Luego escríbele al bot y aprueba el código con el que responde en la página Pairing del panel: el agente solo responde a quienes apruebes."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un agent IA à qui parler sur Telegram, Discord ou dans le navigateur",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi ; le premier démarrage peut prendre jusqu’à une minute. La clé d’un modèle s’ajoute dans API Keys. Pour Telegram, envoyez un message à votre bot et approuvez son code sur la page Pairing."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi ; le premier démarrage peut prendre jusqu’à une minute. La clé d’un modèle s’ajoute dans API Keys. Pour Telegram, envoyez un message à votre bot et approuvez son code sur la page Pairing.",
+			"sizing": "Hermes Agent est modéré : environ 600 MB de mémoire, car le modèle tourne chez votre fournisseur ; peu de disque pour ses chats.",
+			"summary": "Auto-hébergez Hermes Agent, l’agent IA open source de Nous Research qui apprend des skills. Une alternative à OpenClaw sur votre machine, en un clic.",
+			"about": [
+				"Hermes Agent est un agent IA open source de Nous Research et une alternative à OpenClaw, dont il peut importer la configuration. Vous lui parlez sur Telegram, Discord, Slack, WhatsApp, Signal ou par e-mail, et une conversation se poursuit d’une messagerie à l’autre. Il exécute des commandes shell, navigue sur le web et se souvient de vous d’une session à l’autre. Après une tâche complexe, il écrit une skill, une procédure enregistrée qu’il réutilise et améliore. Des tâches décrites en mots simples s’exécutent selon un planning et rendent compte dans un chat.",
+				"Un agent qui répond aux messages et exécute des tâches la nuit doit rester allumé : on l’auto-héberge donc sur une machine plutôt que sur un ordinateur portable. Hermes Agent y garde ses conversations, sa mémoire et ses skills dans son propre dossier. Il convient à qui veut un seul assistant dans toutes ses applications de chat, avec une machine dédiée où travailler. Le piège, c’est le modèle : un modèle hébergé facture chaque token, et la page Analytics du tableau de bord affiche le coût."
+			],
+			"faq": [
+				{
+					"q": "Hermes Agent est-il gratuit et open source ?",
+					"a": "Oui. Hermes Agent est open source sous licence MIT et gratuit. Vous ne payez que votre fournisseur de modèles pour l’usage de l’API, et un modèle local ne coûte que le matériel sur lequel il tourne."
+				},
+				{
+					"q": "Comment migrer d’OpenClaw vers Hermes Agent ?",
+					"a": "Lancez hermes claw migrate. La commande affiche d’abord un aperçu, puis importe la personnalité, la mémoire, les skills, les paramètres du modèle et les tokens de messagerie d’OpenClaw ; les clés d’API ne viennent qu’avec --migrate-secrets."
+				},
+				{
+					"q": "Avec quels modèles Hermes Agent fonctionne-t-il ?",
+					"a": "Avec toute API compatible OpenAI, dont OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi et MiniMax, ou avec un serveur local comme Ollama, vLLM ou llama.cpp. Vous changez avec hermes model ou sur la page Config du tableau de bord."
+				},
+				{
+					"q": "Hermes Agent collecte-t-il mes données ?",
+					"a": "Non. Hermes Agent ne collecte ni télémétrie, ni données d’usage, ni analytics, et ses appels aux modèles ne vont qu’au fournisseur que vous configurez."
+				},
+				{
+					"q": "Comment connecter Hermes Agent à Telegram sur Pethost ?",
+					"a": "Donnez au template le token de votre bot, obtenu auprès de @BotFather, à la création du projet. Écrivez ensuite au bot et approuvez, sur la page Pairing du tableau de bord, le code qu’il vous renvoie : l’agent ne répond qu’aux personnes que vous approuvez."
+				}
+			]
 		},
 		"pl": {
 			"description": "Agent AI, z którym rozmawiasz przez Telegram, Discord albo przeglądarkę",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu; pierwsze uruchomienie trwa do minuty. Klucz modelu dodasz w API Keys. Telegram: napisz do swojego bota i zatwierdź jego kod na stronie Pairing."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu; pierwsze uruchomienie trwa do minuty. Klucz modelu dodasz w API Keys. Telegram: napisz do swojego bota i zatwierdź jego kod na stronie Pairing.",
+			"sizing": "Hermes Agent ma średnie wymagania: około 600 MB pamięci, bo model działa u twojego dostawcy; czaty zajmują mało miejsca na dysku.",
+			"summary": "Hostuj u siebie Hermes Agent – agenta AI open source od Nous Research, uczącego się skilli. Alternatywa dla OpenClaw na twojej maszynie w jedno kliknięcie.",
+			"about": [
+				"Hermes Agent to agent AI typu open source od Nous Research i alternatywa dla OpenClaw, którego konfigurację potrafi zaimportować. Rozmawiasz z nim przez Telegram, Discord, Slack, WhatsApp, Signal albo e-mail, a rozmowa przechodzi z jednego kanału do drugiego. Wykonuje polecenia powłoki, przegląda strony w sieci i pamięta cię między sesjami. Po złożonym zadaniu tworzy skill, czyli zapisaną procedurę, którą używa ponownie i ulepsza. Zadania opisane zwykłymi słowami uruchamiają się według harmonogramu i raportują na czacie.",
+				"Agent, który odpowiada na czatach i nocą wykonuje zadania, musi być cały czas włączony, dlatego ludzie hostują go u siebie na maszynie, a nie na laptopie. Hermes Agent trzyma tam rozmowy, pamięć i skille we własnym katalogu. Pasuje komuś, kto chce jednego asystenta we wszystkich swoich komunikatorach, z własną maszyną, na której pracuje. Haczyk to model: hostowany liczy każdy token, a strona Analytics w panelu pokazuje koszt."
+			],
+			"faq": [
+				{
+					"q": "Czy Hermes Agent jest darmowy i open source?",
+					"a": "Tak. Hermes Agent jest open source na licencji MIT i można go używać za darmo. Płacisz tylko dostawcy modelu za użycie API, a model lokalny kosztuje tyle, co sprzęt, na którym działa."
+				},
+				{
+					"q": "Jak przejść z OpenClaw na Hermes Agent?",
+					"a": "Uruchom hermes claw migrate. Najpierw pokazuje podgląd, potem importuje z OpenClaw personę, pamięć, skille, ustawienia modelu i tokeny komunikatorów; klucze API przechodzą tylko z --migrate-secrets."
+				},
+				{
+					"q": "Z jakimi modelami działa Hermes Agent?",
+					"a": "Z każdym API zgodnym z OpenAI, w tym z OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi i MiniMax, albo z lokalnym serwerem, takim jak Ollama, vLLM czy llama.cpp. Przełączasz się poleceniem hermes model albo na stronie Config w panelu."
+				},
+				{
+					"q": "Czy Hermes Agent zbiera moje dane?",
+					"a": "Nie. Hermes Agent nie zbiera telemetrii, danych o użyciu ani analityki, a jego wywołania modelu trafiają tylko do skonfigurowanego przez ciebie dostawcy."
+				},
+				{
+					"q": "Jak podłączyć Hermes Agent do Telegrama w Pethost?",
+					"a": "Przy tworzeniu projektu podaj szablonowi token swojego bota z @BotFather. Potem napisz do bota i zatwierdź kod, którym odpowie, na stronie Pairing w panelu: agent odpowiada tylko osobom, które zatwierdzisz."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um agente de IA com quem você conversa no Telegram, no Discord ou no navegador",
-			"notes": "Entre como admin com a senha que você definiu; na primeira vez, o app leva até um minuto para iniciar. A chave de um modelo é adicionada em API Keys. Para usar o Telegram, mande uma mensagem ao seu bot e aprove o código dele na página Pairing."
+			"notes": "Entre como admin com a senha que você definiu; na primeira vez, o app leva até um minuto para iniciar. A chave de um modelo é adicionada em API Keys. Para usar o Telegram, mande uma mensagem ao seu bot e aprove o código dele na página Pairing.",
+			"sizing": "Hermes Agent é moderado: cerca de 600 MB de memória, já que o modelo roda no seu provedor; os chats ocupam pouco disco.",
+			"summary": "Auto-hospede o Hermes Agent, agente de IA de código aberto da Nous Research que aprende skills. Alternativa ao OpenClaw na sua máquina, em um clique.",
+			"about": [
+				"O Hermes Agent é um agente de IA de código aberto da Nous Research e uma alternativa ao OpenClaw, cuja configuração ele consegue importar. Você conversa com ele no Telegram, no Discord, no Slack, no WhatsApp, no Signal ou por e-mail, e a conversa continua de um para outro. Ele roda comandos de shell, navega na web e lembra de você entre sessões. Depois de uma tarefa complexa, escreve uma skill, um procedimento salvo que reutiliza e melhora. Jobs descritos em palavras simples rodam de forma agendada e relatam em um chat.",
+				"Um agente que responde a chats e roda jobs de madrugada precisa ficar sempre ligado, por isso as pessoas o auto-hospedam em uma máquina própria, e não em um notebook. O Hermes Agent guarda ali suas conversas, memória e skills em uma pasta própria. Ele serve para quem quer um único assistente em todos os apps de chat, com uma máquina própria para trabalhar. O porém é o modelo: um modelo hospedado cobra cada token, e a página Analytics do painel mostra o custo."
+			],
+			"faq": [
+				{
+					"q": "O Hermes Agent é gratuito e de código aberto?",
+					"a": "Sim. O Hermes Agent é de código aberto sob a licença MIT e gratuito. Você paga apenas ao seu provedor de modelos pelo uso da API, e um modelo local não custa nada além do hardware em que roda."
+				},
+				{
+					"q": "Como migro do OpenClaw para o Hermes Agent?",
+					"a": "Rode hermes claw migrate. Ele mostra uma prévia e depois importa do OpenClaw a persona, a memória, as skills, as configurações de modelo e os tokens de mensageria; as chaves de API só vêm com --migrate-secrets."
+				},
+				{
+					"q": "Com quais modelos o Hermes Agent funciona?",
+					"a": "Com qualquer API compatível com a OpenAI, incluindo OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi e MiniMax, ou com um servidor local como Ollama, vLLM ou llama.cpp. Você troca com hermes model ou na página Config do painel."
+				},
+				{
+					"q": "O Hermes Agent coleta meus dados?",
+					"a": "Não. O Hermes Agent não coleta telemetria, dados de uso nem analytics, e suas chamadas de modelo vão só para o provedor que você configurar."
+				},
+				{
+					"q": "Como conecto o Hermes Agent ao Telegram no Pethost?",
+					"a": "Ao criar o projeto, informe ao template o token do seu bot, do @BotFather. Depois mande uma mensagem ao bot e aprove o código que ele responde na página Pairing do painel: o agente só responde a quem você aprovar."
+				}
+			]
 		},
 		"ru": {
 			"description": "ИИ-агент, с которым можно общаться в Telegram, Discord или браузере",
-			"notes": "Войдите как admin с паролем, который вы задали; первый запуск занимает до минуты. Ключ модели добавляется в разделе API Keys. Для Telegram напишите своему боту и подтвердите его код на странице Pairing."
+			"notes": "Войдите как admin с паролем, который вы задали; первый запуск занимает до минуты. Ключ модели добавляется в разделе API Keys. Для Telegram напишите своему боту и подтвердите его код на странице Pairing.",
+			"sizing": "Hermes Agent: умеренные требования — около 600 MB памяти, модель работает у вашего провайдера; чаты занимают мало диска.",
+			"summary": "Self-hosted Hermes Agent — open source ИИ-агент от Nous Research, который учится скиллам. Альтернатива OpenClaw на вашей машине в один клик.",
+			"about": [
+				"Hermes Agent — это open source ИИ-агент от Nous Research и альтернатива OpenClaw, настройки которого он умеет импортировать. Общаться с ним можно в Telegram, Discord, Slack, WhatsApp, Signal или по почте, и разговор переходит из одного канала в другой. Он выполняет команды в шелле, просматривает сайты и помнит вас от сессии к сессии. После сложной задачи он пишет скилл — сохраненную процедуру, которую использует снова и улучшает. Задания, описанные простыми словами, запускаются по расписанию и отчитываются в чат.",
+				"Агент, который отвечает в чатах и по ночам выполняет задания, должен работать постоянно, поэтому его хостят у себя на машине, а не на ноутбуке. Hermes Agent хранит там разговоры, память и скиллы в собственной папке. Он подходит тому, кому нужен один помощник во всех чат-приложениях и своя машина, на которой он работает. Подвох в модели: за облачную модель платят за каждый токен, а страница Analytics в панели показывает расходы."
+			],
+			"faq": [
+				{
+					"q": "Hermes Agent бесплатный и с открытым кодом?",
+					"a": "Да. Hermes Agent распространяется с открытым кодом по лицензии MIT и бесплатен. Вы платите только провайдеру модели за использование API, а локальная модель стоит лишь столько, сколько стоит железо, на котором она работает."
+				},
+				{
+					"q": "Как перейти с OpenClaw на Hermes Agent?",
+					"a": "Выполните hermes claw migrate. Сначала команда показывает предпросмотр, затем импортирует из OpenClaw персону, память, скиллы, настройки модели и токены мессенджеров; API-ключи переносятся только с --migrate-secrets."
+				},
+				{
+					"q": "С какими моделями работает Hermes Agent?",
+					"a": "С любым API, совместимым с OpenAI, включая OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi и MiniMax, а также с локальным сервером вроде Ollama, vLLM или llama.cpp. Переключаться можно командой hermes model или на странице Config в панели."
+				},
+				{
+					"q": "Hermes Agent собирает мои данные?",
+					"a": "Нет. Hermes Agent не собирает телеметрию, данные об использовании и аналитику, а его обращения к модели уходят только провайдеру, которого вы настроили."
+				},
+				{
+					"q": "Как подключить Hermes Agent к Telegram на Pethost?",
+					"a": "При создании проекта укажите в шаблоне токен своего бота от @BotFather. Затем напишите боту и подтвердите код, которым он ответит, на странице Pairing в панели: агент отвечает только тем, кого вы подтвердили."
+				}
+			]
 		},
 		"uk": {
 			"description": "ШІ-агент, з яким можна спілкуватися в Telegram, Discord або браузері",
-			"notes": "Увійдіть як admin із паролем, який ви вказали; перший запуск триває до хвилини. Ключ моделі додають у розділі API Keys. Для Telegram напишіть своєму ботові й підтвердьте його код на сторінці Pairing."
+			"notes": "Увійдіть як admin із паролем, який ви вказали; перший запуск триває до хвилини. Ключ моделі додають у розділі API Keys. Для Telegram напишіть своєму ботові й підтвердьте його код на сторінці Pairing.",
+			"sizing": "Hermes Agent має помірні вимоги: близько 600 MB пам’яті, бо модель працює у вашого провайдера; чати займають мало місця на диску.",
+			"summary": "Self-hosted Hermes Agent — ШІ-агент з відкритим кодом від Nous Research, що опановує скіли. Альтернатива OpenClaw на вашій машині в один клік.",
+			"about": [
+				"Hermes Agent — це ШІ-агент з відкритим кодом від Nous Research і альтернатива OpenClaw, налаштування якого він уміє імпортувати. З ним спілкуються в Telegram, Discord, Slack, WhatsApp, Signal або електронною поштою, і розмова переходить з одного каналу в інший. Він виконує команди в оболонці, переглядає сайти й пам’ятає вас між сесіями. Після складного завдання він створює скіл — збережену процедуру, яку використовує повторно й вдосконалює. Завдання, описані звичайними словами, запускаються за розкладом і звітують у чат.",
+				"Агент, який відповідає в чатах і вночі виконує завдання, має працювати постійно, тому його хостять у себе на машині, а не на ноутбуці. Hermes Agent зберігає там розмови, пам’ять і скіли у власному каталозі. Він підходить тому, кому потрібен один помічник у всіх чатах і власна машина, на якій він працює. Підступ у моделі: за хмарну модель платять за кожен токен, а сторінка Analytics у панелі показує витрати."
+			],
+			"faq": [
+				{
+					"q": "Hermes Agent безплатний і з відкритим кодом?",
+					"a": "Так. Hermes Agent має відкритий код за ліцензією MIT і безплатний. Ви платите лише провайдеру моделі за використання API, а локальна модель коштує стільки, скільки коштує залізо, на якому вона працює."
+				},
+				{
+					"q": "Як перейти з OpenClaw на Hermes Agent?",
+					"a": "Виконайте hermes claw migrate. Спочатку команда показує попередній перегляд, потім імпортує з OpenClaw персону, пам’ять, скіли, налаштування моделі й токени месенджерів; API-ключі переносяться лише з --migrate-secrets."
+				},
+				{
+					"q": "З якими моделями працює Hermes Agent?",
+					"a": "З будь-яким API, сумісним з OpenAI, зокрема OpenRouter, Nous Portal, OpenAI, Anthropic, Google Gemini, Kimi і MiniMax, а також з локальним сервером на кшталт Ollama, vLLM або llama.cpp. Перемикатися можна командою hermes model або на сторінці Config у панелі."
+				},
+				{
+					"q": "Чи збирає Hermes Agent мої дані?",
+					"a": "Ні. Hermes Agent не збирає телеметрію, дані про використання й аналітику, а його звернення до моделі йдуть лише до провайдера, якого ви налаштували."
+				},
+				{
+					"q": "Як підключити Hermes Agent до Telegram на Pethost?",
+					"a": "Під час створення проєкту вкажіть у шаблоні токен свого бота від @BotFather. Потім напишіть своєму ботові й підтвердьте код, яким він відповість, на сторінці Pairing у панелі: агент відповідає лише тим, кого ви підтвердили."
+				}
+			]
 		}
 	}
 }

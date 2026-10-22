@@ -1,6 +1,13 @@
 {
 	"name": "Ghost",
 	"emoji": "👻",
+	"category": "websites",
+	"alternatives": [
+		"Substack",
+		"Medium",
+		"Patreon"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "ghost",
 		"port": 2368
@@ -22,35 +29,259 @@
 	"texts": {
 		"en": {
 			"description": "A publishing platform for blogs and newsletters",
-			"notes": "Create the owner account at /ghost; the first start takes about a minute. Do it right away: until then the page is open to whoever has the address. Email works after you add Ghost’s mail__ variables to the project’s .env and deploy again."
+			"notes": "Create the owner account at /ghost; the first start takes about a minute. Do it right away: until then the page is open to whoever has the address. Email works after you add Ghost’s mail__ variables to the project’s .env and deploy again.",
+			"sizing": "Ghost is moderate: about 800 MB with its MySQL, and years of posts and images take a few gigabytes.",
+			"summary": "Ghost is an open-source blog and newsletter platform with paid memberships, a self-hosted Substack alternative. Run it on your machine in one click.",
+			"about": [
+				"Ghost is an open-source blog and newsletter platform, often run as an alternative to Substack. Each post can go on the site, out to members by email, or both, and one site can run several newsletters. Readers sign up as free members or pay for monthly or yearly tiers through your own Stripe account. Ghost takes no cut, so only Stripe's fees apply. The design comes from a theme, and the marketplace has hundreds.",
+				"People self-host Ghost to keep the domain, the design and the member list in their own hands. It suits a personal blog, a paid newsletter or a small publication with a few writers. The catch is email: member sign-in links and staff invitations need an SMTP service, and newsletters need a Mailgun account."
+			],
+			"faq": [
+				{
+					"q": "Is Ghost free and open source?",
+					"a": "Yes. Ghost is MIT-licensed and free to self-host. Ghost(Pro) is its official managed hosting, and that revenue goes to the Ghost Foundation, which maintains the project."
+				},
+				{
+					"q": "How do I move from Substack to Ghost?",
+					"a": "Ghost Admin has a Substack migrator in Settings > Advanced > Import/Export. It brings over posts and free and paid subscribers from Substack's exports; paid ones need the same Stripe account. Guides cover WordPress, Medium and Patreon too."
+				},
+				{
+					"q": "Can several authors write on one Ghost site?",
+					"a": "Yes. Contributors write drafts, Authors publish their own posts, Editors edit and publish anyone's posts and invite Contributors and Authors, and Administrators manage all settings, staff and members."
+				},
+				{
+					"q": "How do I set up email for self-hosted Ghost?",
+					"a": "Put Ghost's mail__ variables for any SMTP service, such as mail__transport and mail__options__host, in the project's .env, then deploy again. Newsletters are separate: Ghost cannot send them over SMTP and uses Mailgun's API instead."
+				},
+				{
+					"q": "Can I export my members and posts from Ghost?",
+					"a": "Yes, at any time. Settings > Advanced > Import/Export in Ghost Admin exports members with their labels and subscription status as a CSV, and posts, pages, tags, tiers and settings as JSON."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Publishing-Plattform für Blogs und Newsletter",
-			"notes": "Erstell das Owner-Konto unter /ghost; der erste Start dauert etwa eine Minute. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Der E-Mail-Versand funktioniert, sobald du die mail__-Variablen von Ghost in die .env des Projekts eingetragen und neu deployt hast."
+			"notes": "Erstell das Owner-Konto unter /ghost; der erste Start dauert etwa eine Minute. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Der E-Mail-Versand funktioniert, sobald du die mail__-Variablen von Ghost in die .env des Projekts eingetragen und neu deployt hast.",
+			"sizing": "Ghost ist mittelschwer: etwa 800 MB mit MySQL, und Beiträge und Bilder aus Jahren brauchen ein paar GB.",
+			"summary": "Ghost selbst hosten: Open-Source-Blog und Newsletter mit bezahlten Mitgliedschaften, eine Substack-Alternative. Mit einem Klick auf deiner Maschine.",
+			"about": [
+				"Ghost ist eine Open-Source-Plattform für Blogs und Newsletter, oft als Alternative zu Substack betrieben. Jeder Beitrag kann auf der Website erscheinen, per E-Mail an die Mitglieder gehen oder beides, und eine Website kann mehrere Newsletter betreiben. Wer liest, meldet sich als kostenloses Mitglied an oder zahlt über dein eigenes Stripe-Konto für eine monatliche oder jährliche Abo-Stufe. Ghost behält keine Provision ein, es fallen also nur die Gebühren von Stripe an. Das Design kommt aus einem Theme, und im Marketplace gibt es Hunderte.",
+				"Du hostest Ghost selbst, damit Domain, Design und Mitgliederliste in deiner Hand bleiben. Es passt zu einem persönlichen Blog, einem kostenpflichtigen Newsletter oder einer kleinen Publikation mit ein paar Schreibenden. Der Haken ist die E-Mail: Anmelde-Links für Mitglieder und Einladungen fürs Team brauchen einen SMTP-Service, und Newsletter brauchen ein Mailgun-Konto."
+			],
+			"faq": [
+				{
+					"q": "Ist Ghost kostenlos und Open Source?",
+					"a": "Ja. Ghost steht unter der MIT-Lizenz und lässt sich kostenlos selbst hosten. Ghost(Pro) ist das offizielle Managed Hosting, und dessen Einnahmen gehen an die Ghost Foundation, die das Projekt pflegt."
+				},
+				{
+					"q": "Wie wechsle ich von Substack zu Ghost?",
+					"a": "Ghost Admin hat unter Settings > Advanced > Import/Export einen Substack-Migrator. Er übernimmt Beiträge und Abos aus den Substack-Exporten, kostenlose wie bezahlte; die bezahlten brauchen dasselbe Stripe-Konto. Anleitungen gibt es auch für WordPress, Medium und Patreon."
+				},
+				{
+					"q": "Können mehrere Personen auf einer Ghost-Website schreiben?",
+					"a": "Ja. Contributors schreiben Entwürfe, Authors veröffentlichen ihre eigenen Beiträge, Editors bearbeiten und veröffentlichen die Beiträge aller und laden Contributors und Authors ein, und Administrators verwalten alle Einstellungen, das Team und die Mitglieder."
+				},
+				{
+					"q": "Wie richte ich E-Mail für selbst gehostetes Ghost ein?",
+					"a": "Trag die mail__-Variablen von Ghost für einen beliebigen SMTP-Service, etwa mail__transport und mail__options__host, in die .env des Projekts ein und deploye danach erneut. Newsletter sind davon getrennt: Ghost kann sie nicht über SMTP versenden und nutzt stattdessen die API von Mailgun."
+				},
+				{
+					"q": "Kann ich meine Mitglieder und Beiträge aus Ghost exportieren?",
+					"a": "Ja, jederzeit. Unter Settings > Advanced > Import/Export in Ghost Admin exportierst du die Mitglieder mit ihren Labels und dem Abo-Status als CSV und die Beiträge, Seiten, Tags, Abo-Stufen und Einstellungen als JSON."
+				}
+			]
 		},
 		"es": {
 			"description": "Una plataforma de publicación para blogs y newsletters",
-			"notes": "Crea la cuenta de propietario en /ghost; el primer inicio tarda alrededor de un minuto. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. El correo funcionará cuando agregues las variables mail__ de Ghost al .env del proyecto y vuelvas a desplegar."
+			"notes": "Crea la cuenta de propietario en /ghost; el primer inicio tarda alrededor de un minuto. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. El correo funcionará cuando agregues las variables mail__ de Ghost al .env del proyecto y vuelvas a desplegar.",
+			"sizing": "Ghost es moderado: unos 800 MB con su MySQL, y años de publicaciones e imágenes ocupan unos pocos GB.",
+			"summary": "Autoaloja Ghost, la plataforma de código abierto para blog y newsletter con membresías de pago, una alternativa a Substack. En tu máquina, en un clic.",
+			"about": [
+				"Ghost es una plataforma de blogs y newsletters de código abierto, que muchas veces se usa como alternativa a Substack. Cada entrada puede publicarse en el sitio, enviarse por correo a los miembros o ambas cosas, y un mismo sitio puede tener varios newsletters. Los lectores se registran como miembros gratuitos o pagan un nivel mensual o anual con tu propia cuenta de Stripe. Ghost no se queda con ninguna comisión, así que solo se aplican las tarifas de Stripe. El diseño sale de un tema, y el marketplace tiene cientos.",
+				"Autoalojas Ghost para tener en tus manos el dominio, el diseño y la lista de miembros. Sirve para un blog personal, un newsletter de pago o una pequeña publicación con algunos redactores. El inconveniente es el correo: los enlaces de inicio de sesión de los miembros y las invitaciones al equipo necesitan un servicio SMTP, y los newsletters necesitan una cuenta de Mailgun."
+			],
+			"faq": [
+				{
+					"q": "¿Ghost es gratis y de código abierto?",
+					"a": "Sí. Ghost tiene licencia MIT y es gratis autoalojarlo. Ghost(Pro) es su hosting administrado oficial, y esos ingresos van a la Ghost Foundation, que mantiene el proyecto."
+				},
+				{
+					"q": "¿Cómo paso de Substack a Ghost?",
+					"a": "Ghost Admin tiene un migrador de Substack en Settings > Advanced > Import/Export. Trae las entradas y los suscriptores gratuitos y de pago a partir de las exportaciones de Substack; los de pago necesitan la misma cuenta de Stripe. Hay guías también para WordPress, Medium y Patreon."
+				},
+				{
+					"q": "¿Pueden escribir varios autores en un mismo sitio de Ghost?",
+					"a": "Sí. Los Contributors escriben borradores, los Authors publican sus propias entradas, los Editors editan y publican las entradas de cualquiera e invitan a Contributors y Authors, y los Administrators administran todos los ajustes, el equipo y los miembros."
+				},
+				{
+					"q": "¿Cómo configuro el correo en un Ghost autoalojado?",
+					"a": "Agrega al .env del proyecto las variables mail__ de Ghost para cualquier servicio SMTP, como mail__transport y mail__options__host, y vuelve a desplegar. Los newsletters son aparte: Ghost no puede enviarlos por SMTP y usa la API de Mailgun."
+				},
+				{
+					"q": "¿Puedo exportar mis miembros y entradas de Ghost?",
+					"a": "Sí, en cualquier momento. En Settings > Advanced > Import/Export de Ghost Admin se exportan los miembros con sus etiquetas y su estado de suscripción como CSV, y las entradas, páginas, tags, niveles y ajustes como JSON."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une plateforme de publication pour blogs et newsletters",
-			"notes": "Créez le compte propriétaire sur /ghost ; le premier démarrage prend environ une minute. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Pour que les e-mails fonctionnent, ajoutez les variables mail__ de Ghost au .env du projet et redéployez."
+			"notes": "Créez le compte propriétaire sur /ghost ; le premier démarrage prend environ une minute. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Pour que les e-mails fonctionnent, ajoutez les variables mail__ de Ghost au .env du projet et redéployez.",
+			"sizing": "Ghost est modéré : environ 800 MB avec son MySQL, et des années d’articles et d’images prennent quelques GB.",
+			"summary": "Auto-hébergez Ghost, la plateforme open source de blog et de newsletter avec abonnements payants, une alternative à Substack. En un clic sur votre machine.",
+			"about": [
+				"Ghost est une plateforme open source de blog et de newsletter, souvent utilisée comme alternative à Substack. Chaque article peut aller sur le site, partir par e-mail aux membres, ou les deux, et un même site peut gérer plusieurs newsletters. Les lecteurs s’inscrivent comme membres gratuits ou souscrivent à un niveau payant, mensuel ou annuel, via votre propre compte Stripe. Ghost ne prélève aucune commission : seuls les frais de Stripe s’appliquent. Le design vient d’un thème, et la marketplace en compte des centaines.",
+				"Vous auto-hébergez Ghost pour garder le domaine, le design et la liste des membres entre vos mains. Il convient à un blog personnel, à une newsletter payante ou à une petite publication avec quelques rédacteurs. Le hic, c’est l’e-mail : les liens de connexion des membres et les invitations de l’équipe demandent un service SMTP, et les newsletters demandent un compte Mailgun."
+			],
+			"faq": [
+				{
+					"q": "Ghost est-il gratuit et open source ?",
+					"a": "Oui. Ghost est sous licence MIT et s’auto-héberge gratuitement. Ghost(Pro) est son hébergement géré officiel, et ces revenus vont à la Ghost Foundation, qui maintient le projet."
+				},
+				{
+					"q": "Comment passer de Substack à Ghost ?",
+					"a": "Ghost Admin propose un outil de migration depuis Substack dans Settings > Advanced > Import/Export. Il reprend les articles ainsi que les abonnés gratuits et payants à partir des exports de Substack ; les payants nécessitent le même compte Stripe. Des guides existent aussi pour WordPress, Medium et Patreon."
+				},
+				{
+					"q": "Plusieurs auteurs peuvent-ils écrire sur un même site Ghost ?",
+					"a": "Oui. Les Contributors rédigent des brouillons, les Authors publient leurs propres articles, les Editors modifient et publient les articles de tous et invitent des Contributors et des Authors, et les Administrators gèrent tous les paramètres, l’équipe et les membres."
+				},
+				{
+					"q": "Comment configurer l’e-mail pour un Ghost auto-hébergé ?",
+					"a": "Ajoutez les variables mail__ de Ghost pour n’importe quel service SMTP, comme mail__transport et mail__options__host, au .env du projet, puis redéployez. Les newsletters sont à part : Ghost ne peut pas les envoyer par SMTP et passe par l’API de Mailgun."
+				},
+				{
+					"q": "Puis-je exporter mes membres et mes articles depuis Ghost ?",
+					"a": "Oui, à tout moment. Settings > Advanced > Import/Export dans Ghost Admin exporte les membres avec leurs étiquettes et leur statut d’abonnement en CSV, et les articles, pages, tags, niveaux et paramètres en JSON."
+				}
+			]
 		},
 		"pl": {
 			"description": "Platforma do publikowania blogów i newsletterów",
-			"notes": "Załóż konto właściciela pod adresem /ghost; pierwsze uruchomienie trwa około minuty. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Wysyłka e-maili zadziała, gdy dodasz do pliku .env projektu zmienne mail__, których używa Ghost, i wdrożysz ponownie."
+			"notes": "Załóż konto właściciela pod adresem /ghost; pierwsze uruchomienie trwa około minuty. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Wysyłka e-maili zadziała, gdy dodasz do pliku .env projektu zmienne mail__, których używa Ghost, i wdrożysz ponownie.",
+			"sizing": "Ghost ma średnie wymagania: około 800 MB z MySQL, a lata wpisów i obrazów zajmują kilka GB.",
+			"summary": "Hostuj Ghosta u siebie: blogi i newslettery open source z płatnym członkostwem, alternatywa dla Substacka. Na twojej maszynie jednym kliknięciem.",
+			"about": [
+				"Ghost to platforma open source do blogów i newsletterów, często używana jako alternatywa dla Substacka. Każdy wpis może trafić na stronę, e-mailem do członków albo w oba miejsca, a jedna strona może prowadzić kilka newsletterów. Czytelnicy zapisują się jako darmowi członkowie albo wykupują płatny poziom, miesięczny lub roczny, przez twoje własne konto Stripe. Ghost nie pobiera prowizji, więc obowiązują tylko opłaty Stripe. Wygląd pochodzi z motywu, a marketplace oferuje ich setki.",
+				"Ghosta hostujesz u siebie, żeby domena, wygląd i lista członków zostały w twoich rękach. Pasuje do osobistego bloga, płatnego newslettera albo małego magazynu internetowego z kilkoma autorami. Haczyk to e-mail: linki do logowania członków i zaproszenia dla zespołu wymagają usługi SMTP, a newslettery konta Mailgun."
+			],
+			"faq": [
+				{
+					"q": "Czy Ghost jest darmowy i open source?",
+					"a": "Tak. Ghost działa na licencji MIT i można go hostować u siebie za darmo. Ghost(Pro) to jego oficjalny hosting zarządzany, a dochód z niego trafia do Ghost Foundation, która utrzymuje projekt."
+				},
+				{
+					"q": "Jak przenieść się z Substacka na Ghosta?",
+					"a": "Ghost Admin ma migrator z Substacka w Settings > Advanced > Import/Export. Przenosi wpisy oraz darmowych i płatnych subskrybentów z eksportów Substacka; płatni wymagają tego samego konta Stripe. Są też poradniki dla WordPressa, Medium i Patreona."
+				},
+				{
+					"q": "Czy kilku autorów może pisać na jednej stronie Ghost?",
+					"a": "Tak. Contributors piszą wersje robocze, Authors publikują własne wpisy, Editors edytują i publikują wpisy wszystkich oraz zapraszają Contributors i Authors, a Administrators zarządzają wszystkimi ustawieniami, zespołem i członkami."
+				},
+				{
+					"q": "Jak skonfigurować e-mail w Ghost hostowanym u siebie?",
+					"a": "Dodaj do pliku .env projektu zmienne mail__ Ghosta dla dowolnej usługi SMTP, takie jak mail__transport i mail__options__host, i wdróż ponownie. Newslettery to osobna sprawa: Ghost nie wyśle ich przez SMTP i korzysta z API Mailgun."
+				},
+				{
+					"q": "Czy mogę wyeksportować członków i wpisy z Ghosta?",
+					"a": "Tak, w każdej chwili. Settings > Advanced > Import/Export w Ghost Admin eksportuje członków z ich etykietami i statusem subskrypcji jako CSV, a wpisy, strony, tagi, poziomy i ustawienia jako JSON."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma plataforma de publicação para blogs e newsletters",
-			"notes": "Crie a conta do dono em /ghost; na primeira vez, o app leva cerca de um minuto para iniciar. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. O e-mail passa a funcionar depois que você adicionar as variáveis mail__ do Ghost ao .env do projeto e fizer o deploy de novo."
+			"notes": "Crie a conta do dono em /ghost; na primeira vez, o app leva cerca de um minuto para iniciar. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. O e-mail passa a funcionar depois que você adicionar as variáveis mail__ do Ghost ao .env do projeto e fizer o deploy de novo.",
+			"sizing": "Ghost é moderado: cerca de 800 MB com o MySQL, e anos de posts e imagens ocupam alguns GB.",
+			"summary": "Hospede o Ghost por conta própria: blog e newsletter de código aberto com assinaturas pagas, alternativa ao Substack. Na sua máquina, em um clique.",
+			"about": [
+				"O Ghost é uma plataforma de blog e newsletter de código aberto, muitas vezes usada como alternativa ao Substack. Cada post pode ir para o site, seguir por e-mail aos membros ou os dois, e um mesmo site pode ter várias newsletters. Os leitores se cadastram como membros gratuitos ou assinam um nível pago, mensal ou anual, pela sua própria conta do Stripe. O Ghost não cobra comissão, então só valem as taxas do Stripe. O design vem de um tema, e o marketplace tem centenas.",
+				"Você hospeda o Ghost por conta própria para manter o domínio, o design e a lista de membros nas suas mãos. Ele serve para um blog pessoal, uma newsletter paga ou uma pequena publicação com alguns autores. O porém é o e-mail: os links de login dos membros e os convites da equipe precisam de um serviço SMTP, e as newsletters precisam de uma conta do Mailgun."
+			],
+			"faq": [
+				{
+					"q": "O Ghost é gratuito e de código aberto?",
+					"a": "Sim. O Ghost tem licença MIT e é de graça para auto-hospedar. O Ghost(Pro) é a hospedagem gerenciada oficial dele, e essa receita vai para a Ghost Foundation, que mantém o projeto."
+				},
+				{
+					"q": "Como migro do Substack para o Ghost?",
+					"a": "O Ghost Admin tem um migrador do Substack em Settings > Advanced > Import/Export. Ele traz os posts e os assinantes gratuitos e pagos a partir das exportações do Substack; os pagos precisam da mesma conta do Stripe. Há guias também para WordPress, Medium e Patreon."
+				},
+				{
+					"q": "Vários autores podem escrever em um mesmo site Ghost?",
+					"a": "Sim. Contributors escrevem rascunhos, Authors publicam os próprios posts, Editors editam e publicam os posts de qualquer pessoa e convidam Contributors e Authors, e Administrators gerenciam todas as configurações, a equipe e os membros."
+				},
+				{
+					"q": "Como configuro o e-mail de um Ghost auto-hospedado?",
+					"a": "Coloque no .env do projeto as variáveis mail__ do Ghost para qualquer serviço SMTP, como mail__transport e mail__options__host, e faça o deploy de novo. As newsletters são à parte: o Ghost não consegue enviá-las por SMTP e usa a API do Mailgun."
+				},
+				{
+					"q": "Posso exportar meus membros e posts do Ghost?",
+					"a": "Sim, a qualquer momento. Em Settings > Advanced > Import/Export no Ghost Admin, os membros saem com seus rótulos e o status da assinatura em CSV, e os posts, páginas, tags, níveis e configurações em JSON."
+				}
+			]
 		},
 		"ru": {
 			"description": "Платформа для блогов и рассылок",
-			"notes": "Создайте аккаунт владельца по адресу /ghost; первый запуск занимает около минуты. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Почта заработает, когда вы добавите в .env проекта переменные Ghost с префиксом mail__ и задеплоите проект заново."
+			"notes": "Создайте аккаунт владельца по адресу /ghost; первый запуск занимает около минуты. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Почта заработает, когда вы добавите в .env проекта переменные Ghost с префиксом mail__ и задеплоите проект заново.",
+			"sizing": "Ghost: умеренные требования — около 800 MB вместе с MySQL, а годы постов и картинок занимают несколько GB.",
+			"summary": "Self-hosted Ghost — open source платформа для блога и рассылок с платными подписками, альтернатива Substack. На вашей машине в один клик.",
+			"about": [
+				"Ghost — это open source платформа для блогов и рассылок, которую часто запускают как альтернативу Substack. Каждый пост может попасть на сайт, уйти участникам по почте или и туда, и туда, а на одном сайте можно вести несколько рассылок. Читатели регистрируются бесплатными участниками или оформляют платную подписку на месячный или годовой уровень через ваш собственный аккаунт Stripe. Ghost не берет свой процент, поэтому действуют только комиссии Stripe. Оформление берется из темы, а в маркетплейсе их сотни.",
+				"Ghost хостят у себя, чтобы домен, оформление и список участников оставались в ваших руках. Он подходит для личного блога, платной рассылки или небольшого издания с несколькими авторами. Подвох в почте: ссылки для входа участников и приглашения в команду требуют SMTP-сервиса, а рассылкам нужен аккаунт Mailgun."
+			],
+			"faq": [
+				{
+					"q": "Ghost бесплатный и с открытым кодом?",
+					"a": "Да. Ghost распространяется под лицензией MIT, и хостить его у себя можно бесплатно. Ghost(Pro) — официальный управляемый хостинг, и эта выручка идет в Ghost Foundation, которая поддерживает проект."
+				},
+				{
+					"q": "Как перейти с Substack на Ghost?",
+					"a": "В Ghost Admin есть мигратор Substack: Settings > Advanced > Import/Export. Он переносит посты, а также бесплатных и платных подписчиков из экспортов Substack; для платных нужен тот же аккаунт Stripe. Есть руководства и для WordPress, Medium и Patreon."
+				},
+				{
+					"q": "Могут ли несколько авторов писать на одном сайте Ghost?",
+					"a": "Да. Contributor пишет черновики, Author публикует свои посты, Editor редактирует и публикует посты любого автора и приглашает Contributor и Author, а Administrator управляет всеми настройками, командой и участниками."
+				},
+				{
+					"q": "Как настроить почту для self-hosted Ghost?",
+					"a": "Добавьте в .env проекта переменные Ghost с префиксом mail__ для любого SMTP-сервиса, например mail__transport и mail__options__host, и задеплойте проект заново. Рассылки устроены отдельно: Ghost не умеет отправлять их по SMTP и использует API Mailgun."
+				},
+				{
+					"q": "Можно ли экспортировать участников и посты из Ghost?",
+					"a": "Да, в любой момент. В Ghost Admin раздел Settings > Advanced > Import/Export экспортирует участников с их метками и статусом подписки в CSV, а посты, страницы, теги, уровни и настройки — в JSON."
+				}
+			]
 		},
 		"uk": {
 			"description": "Видавнича платформа для блогів і розсилок",
-			"notes": "Створіть акаунт власника за адресою /ghost; перший запуск триває близько хвилини. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Пошта запрацює, коли ви додасте змінні mail__ застосунку Ghost у файл .env проєкту й задеплоїте ще раз."
+			"notes": "Створіть акаунт власника за адресою /ghost; перший запуск триває близько хвилини. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Пошта запрацює, коли ви додасте змінні mail__ застосунку Ghost у файл .env проєкту й задеплоїте ще раз.",
+			"sizing": "Ghost має помірні вимоги: близько 800 MB з MySQL, а роки дописів і зображень займають кілька GB.",
+			"summary": "Self-hosted Ghost — платформа з відкритим кодом для блогу й розсилок із платними підписками, альтернатива Substack. На вашій машині в один клік.",
+			"about": [
+				"Ghost — це платформа з відкритим кодом для блогів і розсилок, яку часто запускають як альтернативу Substack. Кожен пост може потрапити на сайт, піти учасникам поштою або і туди, і туди, а на одному сайті можна вести кілька розсилок. Читачі реєструються безплатними учасниками або оформлюють платну підписку на місячний чи річний рівень через ваш власний акаунт Stripe. Ghost не бере свого відсотка, тож діють лише комісії Stripe. Оформлення береться з теми, а в маркетплейсі їх сотні.",
+				"Ghost хостять у себе, щоб домен, оформлення й список учасників лишалися у ваших руках. Він підходить для особистого блогу, платної розсилки або невеликого видання з кількома авторами. Загвоздка — у пошті: посилання для входу учасників і запрошення до команди потребують SMTP-сервісу, а розсилкам потрібен акаунт Mailgun."
+			],
+			"faq": [
+				{
+					"q": "Ghost безплатний і з відкритим кодом?",
+					"a": "Так. Ghost має ліцензію MIT, і хостити його у себе можна безплатно. Ghost(Pro) — офіційний керований хостинг, і ці надходження йдуть до Ghost Foundation, яка підтримує проєкт."
+				},
+				{
+					"q": "Як перейти із Substack на Ghost?",
+					"a": "У Ghost Admin є мігратор Substack: Settings > Advanced > Import/Export. Він переносить пости, а також безплатних і платних підписників з експортів Substack; для платних потрібен той самий акаунт Stripe. Є керівництва і для WordPress, Medium та Patreon."
+				},
+				{
+					"q": "Чи можуть кілька авторів писати на одному сайті Ghost?",
+					"a": "Так. Contributor пише чернетки, Author публікує власні пости, Editor редагує й публікує пости будь-кого та запрошує Contributor і Author, а Administrator керує всіма налаштуваннями, командою й учасниками."
+				},
+				{
+					"q": "Як налаштувати пошту для self-hosted Ghost?",
+					"a": "Додайте в .env проєкту змінні Ghost із префіксом mail__ для будь-якого SMTP-сервісу, наприклад mail__transport і mail__options__host, і задеплойте проєкт ще раз. Розсилки налаштовуються окремо: Ghost не вміє надсилати їх через SMTP і використовує API Mailgun."
+				},
+				{
+					"q": "Чи можна експортувати учасників і пости з Ghost?",
+					"a": "Так, у будь-який момент. У Ghost Admin розділ Settings > Advanced > Import/Export експортує учасників з їхніми мітками та статусом підписки в CSV, а пости, сторінки, теги, рівні й налаштування — у JSON."
+				}
+			]
 		}
 	}
 }

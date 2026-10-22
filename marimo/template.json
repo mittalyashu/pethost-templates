@@ -1,6 +1,13 @@
 {
 	"name": "marimo",
 	"emoji": "🟢",
+	"category": "developer-tools",
+	"alternatives": [
+		"Jupyter",
+		"Google Colab",
+		"Streamlit"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "marimo",
 		"port": 8080
@@ -14,35 +21,259 @@
 	"texts": {
 		"en": {
 			"description": "A reactive Python notebook: cells rerun when what they depend on changes, and a notebook is a plain .py file",
-			"notes": "Open the address and enter the admin password you gave. Notebooks are kept in /app/data, which survives a redeploy."
+			"notes": "Open the address and enter the admin password you gave. Notebooks are kept in /app/data, which survives a redeploy.",
+			"sizing": "marimo is light: under 100 MB at rest, and a notebook adds what its data and libraries take, often hundreds of MB.",
+			"summary": "marimo is an open-source reactive Python notebook and Jupyter alternative. Self-host it with Docker in one click and keep notebooks on your server.",
+			"about": [
+				"marimo is an open-source reactive Python notebook, a Jupyter alternative with no hidden state. Run a cell and marimo reruns every cell that uses its variables, so the outputs always match the code. Each notebook is stored as pure Python, a .py file that diffs cleanly in git, runs as a script and imports as a module. SQL cells query dataframes and databases and return a Python dataframe, and sliders, dropdowns and tables bind to Python with no callbacks.",
+				"Self-hosted, marimo keeps your notebooks and the data they read on your own server, where they run on its CPU and memory and open in any browser. It suits one person or a small team that trusts each other: the editor sits behind one shared password, with no user accounts or roles."
+			],
+			"faq": [
+				{
+					"q": "Is marimo free and open source?",
+					"a": "Yes. marimo is open source under the Apache 2.0 license and free to use, commercial work included."
+				},
+				{
+					"q": "What is the difference between marimo and Jupyter?",
+					"a": "Jupyter runs only the cell you run and saves notebooks as .ipynb JSON; marimo also reruns the cells that depend on it and saves plain Python. The trade-off: in marimo a variable can be defined in only one cell."
+				},
+				{
+					"q": "How do I convert a Jupyter notebook to marimo?",
+					"a": "Run marimo convert your_notebook.ipynb -o your_notebook.py. To go back, marimo export ipynb writes a Jupyter file, and marimo export also writes HTML, WebAssembly HTML, Markdown, PDF or a flat script."
+				},
+				{
+					"q": "Can marimo replace Streamlit?",
+					"a": "For many data apps, yes. marimo run notebook.py serves a notebook as a web app with the code hidden, its outputs stacked, arranged on a grid or shown as slides, and the same file stays an editable notebook."
+				},
+				{
+					"q": "Can I install Python packages like pandas in marimo?",
+					"a": "Yes, from the editor: the sidebar's package panel installs them, and marimo offers to install a missing import. This template runs marimo's base image, without pandas or numpy, and packages install into the container, not the notebooks volume."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein reaktives Python-Notebook: Zellen laufen neu, wenn sich ändert, wovon sie abhängen, und ein Notebook ist eine einfache .py-Datei",
-			"notes": "Öffne die Adresse und gib das angegebene Admin-Passwort ein. Notebooks liegen in /app/data, das ein erneutes Deployment übersteht."
+			"notes": "Öffne die Adresse und gib das angegebene Admin-Passwort ein. Notebooks liegen in /app/data, das ein erneutes Deployment übersteht.",
+			"sizing": "marimo ist leicht: unter 100 MB im Leerlauf, und ein Notebook bringt mit seinen Daten und Bibliotheken oft einige hundert MB dazu.",
+			"summary": "marimo mit Docker in einem Klick selbst hosten: reaktives Python-Notebook, Open-Source-Alternative zu Jupyter. Deine Notebooks bleiben auf deinem Server.",
+			"about": [
+				"marimo ist ein reaktives Open-Source-Notebook für Python, eine Jupyter-Alternative ohne versteckten Zustand. Führst du eine Zelle aus, führt marimo jede Zelle erneut aus, die deren Variablen nutzt, sodass die Ausgaben immer zum Code passen. Jedes Notebook wird als reines Python gespeichert, als .py-Datei, die in git saubere Diffs liefert, als Skript läuft und sich als Modul importieren lässt. SQL-Zellen fragen DataFrames und Datenbanken ab und liefern einen Python-DataFrame, und Slider, Dropdowns und Tabellen sind ohne Callbacks an Python gebunden.",
+				"Wenn du marimo selbst hostest, bleiben deine Notebooks und die Daten, die sie lesen, auf deinem eigenen Server: Sie laufen mit dessen CPU und RAM und öffnen sich in jedem Browser. Das passt für eine Person oder ein kleines Team, dessen Mitglieder einander vertrauen: Der Editor liegt hinter einem gemeinsamen Passwort, es gibt keine Benutzerkonten und keine Rollen."
+			],
+			"faq": [
+				{
+					"q": "Ist marimo kostenlos und Open Source?",
+					"a": "Ja. marimo ist Open Source unter der Apache-2.0-Lizenz und kostenlos nutzbar, auch für kommerzielle Arbeit."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen marimo und Jupyter?",
+					"a": "Jupyter führt nur die Zelle aus, die du startest, und speichert Notebooks als .ipynb-JSON; marimo führt außerdem die Zellen erneut aus, die von ihr abhängen, und speichert reines Python. Die Kehrseite: In marimo darf eine Variable nur in einer Zelle definiert werden."
+				},
+				{
+					"q": "Wie wandle ich ein Jupyter-Notebook in marimo um?",
+					"a": "Führe marimo convert your_notebook.ipynb -o your_notebook.py aus. Zurück geht es mit marimo export ipynb, das eine Jupyter-Datei schreibt; marimo export erzeugt außerdem HTML, WebAssembly-HTML, Markdown, PDF oder ein flaches Skript."
+				},
+				{
+					"q": "Kann marimo Streamlit ersetzen?",
+					"a": "Für viele Daten-Apps ja. marimo run notebook.py stellt ein Notebook als Web-App bereit, mit ausgeblendetem Code und Ausgaben, die gestapelt, auf einem Raster angeordnet oder als Folien gezeigt werden, und dieselbe Datei bleibt ein editierbares Notebook."
+				},
+				{
+					"q": "Kann ich Python-Pakete wie pandas in marimo installieren?",
+					"a": "Ja, direkt im Editor: Das Paket-Panel in der Seitenleiste installiert sie, und marimo bietet an, einen fehlenden Import zu installieren. Diese Vorlage läuft mit dem Basis-Image von marimo, also ohne pandas und numpy, und Pakete werden im Container installiert, nicht im Volume mit den Notebooks."
+				}
+			]
 		},
 		"es": {
 			"description": "Un notebook de Python reactivo: las celdas se vuelven a ejecutar cuando cambia aquello de lo que dependen, y un notebook es un simple archivo .py",
-			"notes": "Abre la dirección e introduce la contraseña de administrador que indicaste. Los notebooks se guardan en /app/data, que sobrevive a un nuevo despliegue."
+			"notes": "Abre la dirección e introduce la contraseña de administrador que indicaste. Los notebooks se guardan en /app/data, que sobrevive a un nuevo despliegue.",
+			"sizing": "marimo es ligero: menos de 100 MB en reposo, y cada notebook suma lo que ocupan sus datos y librerías, a menudo cientos de MB.",
+			"summary": "Autoaloja marimo con Docker en un clic: un notebook reactivo de Python de código abierto, alternativa a Jupyter. Tus notebooks se quedan en tu servidor.",
+			"about": [
+				"marimo es un notebook reactivo de Python de código abierto, una alternativa a Jupyter sin estado oculto. Ejecutas una celda y marimo vuelve a ejecutar todas las celdas que usan sus variables, así que las salidas siempre coinciden con el código. Cada notebook se guarda como Python puro, un archivo .py que da diffs limpios en git, se ejecuta como script y se importa como módulo. Las celdas SQL consultan dataframes y bases de datos y devuelven un dataframe de Python, y los controles deslizantes, los menús desplegables y las tablas se enlazan con Python sin callbacks.",
+				"Autoalojado, marimo mantiene tus notebooks y los datos que leen en tu propio servidor, donde se ejecutan con su CPU y su memoria y se abren en cualquier navegador. Encaja con una sola persona o con un equipo pequeño cuyos miembros confían unos en otros: el editor queda detrás de una sola contraseña compartida, sin cuentas de usuario ni roles."
+			],
+			"faq": [
+				{
+					"q": "¿marimo es gratis y de código abierto?",
+					"a": "Sí. marimo es de código abierto bajo la licencia Apache 2.0 y se puede usar gratis, incluso en trabajo comercial."
+				},
+				{
+					"q": "¿Qué diferencia hay entre marimo y Jupyter?",
+					"a": "Jupyter ejecuta solo la celda que ejecutas y guarda los notebooks como JSON .ipynb; marimo también vuelve a ejecutar las celdas que dependen de ella y guarda Python plano. La contrapartida: en marimo una variable solo se puede definir en una celda."
+				},
+				{
+					"q": "¿Cómo convierto un notebook de Jupyter a marimo?",
+					"a": "Ejecuta marimo convert your_notebook.ipynb -o your_notebook.py. Para volver atrás, marimo export ipynb escribe un archivo de Jupyter, y marimo export también escribe HTML, HTML con WebAssembly, Markdown, PDF o un script plano."
+				},
+				{
+					"q": "¿Puede marimo reemplazar a Streamlit?",
+					"a": "En muchas apps de datos, sí. marimo run notebook.py sirve un notebook como app web con el código oculto y sus salidas apiladas, organizadas en una cuadrícula o mostradas como diapositivas, y el mismo archivo sigue siendo un notebook editable."
+				},
+				{
+					"q": "¿Puedo instalar paquetes de Python como pandas en marimo?",
+					"a": "Sí, desde el editor: el panel de paquetes de la barra lateral los instala, y marimo ofrece instalar una importación que falte. Esta plantilla ejecuta la imagen base de marimo, sin pandas ni numpy, y los paquetes se instalan en el contenedor, no en el volumen de los notebooks."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un notebook Python réactif : les cellules se relancent quand ce dont elles dépendent change, et un notebook est un simple fichier .py",
-			"notes": "Ouvrez l’adresse et saisissez le mot de passe administrateur indiqué. Les notebooks sont gardés dans /app/data, qui survit à un redéploiement."
+			"notes": "Ouvrez l’adresse et saisissez le mot de passe administrateur indiqué. Les notebooks sont gardés dans /app/data, qui survit à un redéploiement.",
+			"sizing": "marimo est léger : moins de 100 MB au repos, et un notebook y ajoute ses données et bibliothèques, souvent des centaines de MB.",
+			"summary": "Auto-hébergez marimo avec Docker en un clic : un notebook Python réactif open source, alternative à Jupyter. Vos notebooks restent sur votre serveur.",
+			"about": [
+				"marimo est un notebook Python réactif open source, une alternative à Jupyter sans état caché. Vous exécutez une cellule et marimo réexécute toutes les cellules qui utilisent ses variables : les sorties correspondent donc toujours au code. Chaque notebook est enregistré en Python pur, un fichier .py dont les diffs restent propres dans git, qui s’exécute comme un script et s’importe comme un module. Les cellules SQL interrogent des dataframes et des bases de données et renvoient un dataframe Python, et les curseurs, les listes déroulantes et les tableaux se lient à Python sans callbacks.",
+				"Auto-hébergé, marimo garde vos notebooks et les données qu’ils lisent sur votre propre serveur, où ils s’exécutent avec son CPU et sa mémoire et s’ouvrent dans n’importe quel navigateur. Il convient à une personne seule ou à une petite équipe dont les membres se font confiance : l’éditeur est protégé par un seul mot de passe partagé, sans comptes utilisateurs ni rôles."
+			],
+			"faq": [
+				{
+					"q": "marimo est-il gratuit et open source ?",
+					"a": "Oui. marimo est open source sous licence Apache 2.0 et gratuit, y compris pour un usage commercial."
+				},
+				{
+					"q": "Quelle est la différence entre marimo et Jupyter ?",
+					"a": "Jupyter n’exécute que la cellule que vous lancez et enregistre les notebooks en JSON .ipynb ; marimo réexécute aussi les cellules qui en dépendent et enregistre du Python simple. La contrepartie : dans marimo, une variable ne peut être définie que dans une seule cellule."
+				},
+				{
+					"q": "Comment convertir un notebook Jupyter en marimo ?",
+					"a": "Lancez marimo convert your_notebook.ipynb -o your_notebook.py. Pour revenir en arrière, marimo export ipynb écrit un fichier Jupyter, et marimo export écrit aussi du HTML, du HTML WebAssembly, du Markdown, du PDF ou un script à plat."
+				},
+				{
+					"q": "marimo peut-il remplacer Streamlit ?",
+					"a": "Pour beaucoup d’applications de données, oui. marimo run notebook.py sert un notebook comme une application web, avec le code masqué et les sorties empilées, disposées sur une grille ou présentées en diapositives, et le même fichier reste un notebook modifiable."
+				},
+				{
+					"q": "Puis-je installer des paquets Python comme pandas dans marimo ?",
+					"a": "Oui, depuis l’éditeur : le panneau des paquets de la barre latérale les installe, et marimo propose d’installer un import manquant. Ce template utilise l’image de base de marimo, sans pandas ni numpy, et les paquets s’installent dans le conteneur, pas dans le volume des notebooks."
+				}
+			]
 		},
 		"pl": {
 			"description": "Reaktywny notatnik Pythona: komórki uruchamiają się ponownie, gdy zmienia się to, od czego zależą, a notatnik to zwykły plik .py",
-			"notes": "Otwórz adres i wpisz hasło administratora, które podano. Notatniki są w /app/data, które przetrwa ponowne wdrożenie."
+			"notes": "Otwórz adres i wpisz hasło administratora, które podano. Notatniki są w /app/data, które przetrwa ponowne wdrożenie.",
+			"sizing": "marimo ma małe wymagania: poniżej 100 MB w spoczynku, a notebook dokłada tyle, ile jego dane i biblioteki, często setki MB.",
+			"summary": "Hostuj marimo u siebie w Dockerze jednym kliknięciem: reaktywny notatnik Pythona open source, alternatywa dla Jupytera. Notatniki zostają na serwerze.",
+			"about": [
+				"marimo to reaktywny notatnik Pythona open source, alternatywa dla Jupytera bez ukrytego stanu. Uruchamiasz komórkę, a marimo ponownie uruchamia każdą komórkę, która używa jej zmiennych, więc wyniki zawsze zgadzają się z kodem. Każdy notatnik jest zapisany jako czysty Python, plik .py, który daje czytelne diffy w git, działa jak skrypt i importuje się jak moduł. Komórki SQL odpytują dataframe’y i bazy danych i zwracają dataframe Pythona, a suwaki, listy rozwijane i tabele wiążą się z Pythonem bez callbacków.",
+				"Gdy hostujesz marimo u siebie, twoje notatniki i dane, które czytają, zostają na twoim własnym serwerze: działają na jego CPU i pamięci i otwierają się w każdej przeglądarce. To rozwiązanie dla jednej osoby albo małego zespołu, który sobie ufa: edytor jest za jednym wspólnym hasłem, bez kont użytkowników i ról."
+			],
+			"faq": [
+				{
+					"q": "Czy marimo jest darmowe i open source?",
+					"a": "Tak. marimo jest open source na licencji Apache 2.0 i darmowe, także do komercyjnych zastosowań."
+				},
+				{
+					"q": "Czym różni się marimo od Jupytera?",
+					"a": "Jupyter uruchamia tylko komórkę, którą uruchomisz, i zapisuje notatniki jako JSON .ipynb; marimo uruchamia też ponownie komórki, które od niej zależą, i zapisuje zwykły Python. Cena za to: w marimo zmienna może być zdefiniowana tylko w jednej komórce."
+				},
+				{
+					"q": "Jak przekonwertować notatnik Jupyter na marimo?",
+					"a": "Uruchom marimo convert your_notebook.ipynb -o your_notebook.py. Żeby wrócić, marimo export ipynb zapisuje plik Jupytera, a marimo export zapisuje też HTML, HTML z WebAssembly, Markdown, PDF albo płaski skrypt."
+				},
+				{
+					"q": "Czy marimo może zastąpić Streamlita?",
+					"a": "W wielu aplikacjach do danych tak. marimo run notebook.py serwuje notatnik jako aplikację webową z ukrytym kodem, a jego wyniki układają się jeden pod drugim, na siatce albo jako slajdy, i ten sam plik nadal jest notatnikiem do edycji."
+				},
+				{
+					"q": "Czy mogę instalować w marimo pakiety Pythona, np. pandas?",
+					"a": "Tak, z poziomu edytora: instaluje je panel pakietów na pasku bocznym, a marimo proponuje doinstalowanie brakującego importu. Ten szablon uruchamia bazowy obraz marimo, bez pandas i numpy, a pakiety instalują się w kontenerze, nie w wolumenie z notatnikami."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um notebook Python reativo: as células rodam de novo quando muda aquilo de que dependem, e um notebook é um simples arquivo .py",
-			"notes": "Abra o endereço e digite a senha de administrador que você informou. Os notebooks ficam em /app/data, que sobrevive a um novo deploy."
+			"notes": "Abra o endereço e digite a senha de administrador que você informou. Os notebooks ficam em /app/data, que sobrevive a um novo deploy.",
+			"sizing": "marimo é leve: menos de 100 MB em repouso, e cada notebook soma seus dados e bibliotecas, muitas vezes centenas de MB.",
+			"summary": "Auto-hospede o marimo com Docker em um clique: notebook Python reativo de código aberto, alternativa ao Jupyter. Seus notebooks ficam no seu servidor.",
+			"about": [
+				"O marimo é um notebook Python reativo de código aberto, uma alternativa ao Jupyter sem estado oculto. Você roda uma célula e o marimo roda de novo todas as células que usam as variáveis dela, então as saídas sempre batem com o código. Cada notebook é guardado como Python puro, um arquivo .py com diffs limpos no git, que roda como script e se importa como módulo. Células SQL consultam dataframes e bancos de dados e devolvem um dataframe Python, e sliders, dropdowns e tabelas se ligam ao Python sem callbacks.",
+				"Auto-hospedado, o marimo mantém seus notebooks e os dados que eles leem no seu próprio servidor, onde rodam com a CPU e a memória dele e abrem em qualquer navegador. Serve para uma pessoa ou uma equipe pequena cujos membros confiam uns nos outros: o editor fica atrás de uma única senha compartilhada, sem contas de usuário nem papéis."
+			],
+			"faq": [
+				{
+					"q": "O marimo é gratuito e de código aberto?",
+					"a": "Sim. O marimo é de código aberto sob a licença Apache 2.0 e gratuito, inclusive para uso comercial."
+				},
+				{
+					"q": "Qual é a diferença entre o marimo e o Jupyter?",
+					"a": "O Jupyter roda só a célula que você manda rodar e salva notebooks como JSON .ipynb; o marimo também roda de novo as células que dependem dela e salva Python puro. O custo: no marimo, uma variável só pode ser definida em uma célula."
+				},
+				{
+					"q": "Como converto um notebook do Jupyter para o marimo?",
+					"a": "Rode marimo convert your_notebook.ipynb -o your_notebook.py. Para voltar, marimo export ipynb gera um arquivo do Jupyter, e marimo export também gera HTML, HTML com WebAssembly, Markdown, PDF ou um script plano."
+				},
+				{
+					"q": "O marimo pode substituir o Streamlit?",
+					"a": "Para muitos apps de dados, sim. marimo run notebook.py serve um notebook como app web, com o código oculto e as saídas empilhadas, dispostas em uma grade ou mostradas como slides, e o mesmo arquivo continua sendo um notebook editável."
+				},
+				{
+					"q": "Posso instalar pacotes Python, como o pandas, no marimo?",
+					"a": "Sim, pelo editor: o painel de pacotes da barra lateral instala os pacotes, e o marimo se oferece para instalar um import que esteja faltando. Este template roda a imagem base do marimo, sem pandas nem numpy, e os pacotes são instalados no container, não no volume dos notebooks."
+				}
+			]
 		},
 		"ru": {
 			"description": "Реактивный Python-блокнот: ячейки перезапускаются, когда меняется то, от чего они зависят, а блокнот — обычный .py-файл",
-			"notes": "Откройте адрес и введите пароль администратора, который вы указали. Блокноты хранятся в /app/data, который переживает повторный деплой."
+			"notes": "Откройте адрес и введите пароль администратора, который вы указали. Блокноты хранятся в /app/data, который переживает повторный деплой.",
+			"sizing": "marimo: небольшие требования — менее 100 MB в простое, а ноутбук добавляет объем его данных и библиотек, часто сотни MB.",
+			"summary": "Self-hosted marimo через Docker в один клик: реактивный Python-блокнот с открытым кодом, альтернатива Jupyter. Блокноты остаются на вашем сервере.",
+			"about": [
+				"marimo — это реактивный Python-блокнот с открытым исходным кодом, альтернатива Jupyter без скрытого состояния. Вы запускаете ячейку, и marimo перезапускает все ячейки, которые используют ее переменные, поэтому результаты всегда соответствуют коду. Каждый блокнот хранится как чистый Python, файл .py, который дает аккуратные диффы в git, запускается как скрипт и импортируется как модуль. SQL-ячейки обращаются к датафреймам и базам данных и возвращают датафрейм Python, а слайдеры, выпадающие списки и таблицы связываются с Python без колбэков.",
+				"Если вы хостите marimo у себя, блокноты и данные, которые они читают, остаются на вашем собственном сервере: они работают на его CPU и памяти и открываются в любом браузере. Это подходит одному человеку или небольшой команде, участники которой доверяют друг другу: редактор закрыт одним общим паролем, без пользовательских аккаунтов и ролей."
+			],
+			"faq": [
+				{
+					"q": "marimo бесплатный и с открытым исходным кодом?",
+					"a": "Да. marimo распространяется с открытым исходным кодом по лицензии Apache 2.0 и бесплатен, в том числе для коммерческой работы."
+				},
+				{
+					"q": "Чем marimo отличается от Jupyter?",
+					"a": "Jupyter запускает только ту ячейку, которую вы запустили, и хранит блокноты как JSON в .ipynb; marimo перезапускает еще и зависящие от нее ячейки и хранит обычный Python. Расплата за это: в marimo переменную можно определить только в одной ячейке."
+				},
+				{
+					"q": "Как преобразовать блокнот Jupyter в marimo?",
+					"a": "Выполните marimo convert your_notebook.ipynb -o your_notebook.py. Чтобы вернуться обратно, marimo export ipynb запишет файл Jupyter, а marimo export умеет также HTML, HTML на WebAssembly, Markdown, PDF и плоский скрипт."
+				},
+				{
+					"q": "Может ли marimo заменить Streamlit?",
+					"a": "Для многих приложений с данными — да. marimo run notebook.py отдает блокнот как веб-приложение со скрытым кодом, а его результаты складываются стопкой, раскладываются на сетке или показываются как слайды; тот же файл по-прежнему остается редактируемым блокнотом."
+				},
+				{
+					"q": "Можно ли установить в marimo Python-пакеты, например pandas?",
+					"a": "Да, прямо из редактора: панель пакетов в сайдбаре ставит их, а при отсутствующем импорте marimo предлагает его установить. Этот шаблон запускает базовый образ marimo, без pandas и numpy, и пакеты ставятся в контейнер, а не в том с блокнотами."
+				}
+			]
 		},
 		"uk": {
 			"description": "Реактивний Python-блокнот: комірки перезапускаються, коли змінюється те, від чого вони залежать, а блокнот — звичайний .py-файл",
-			"notes": "Відкрийте адресу й введіть пароль адміністратора, який ви вказали. Блокноти зберігаються в /app/data, що переживає повторний деплой."
+			"notes": "Відкрийте адресу й введіть пароль адміністратора, який ви вказали. Блокноти зберігаються в /app/data, що переживає повторний деплой.",
+			"sizing": "marimo має скромні вимоги: менше 100 MB без навантаження, а ноутбук додає те, що займають його дані й бібліотеки, часто сотні MB.",
+			"summary": "Self-hosted marimo через Docker в один клік: реактивний Python-блокнот з відкритим кодом, альтернатива Jupyter. Блокноти лишаються на вашому сервері.",
+			"about": [
+				"marimo — це реактивний Python-блокнот з відкритим кодом, альтернатива Jupyter без прихованого стану. Ви запускаєте комірку, і marimo перезапускає всі комірки, що використовують її змінні, тому результати завжди збігаються з кодом. Кожен блокнот зберігається як чистий Python, файл .py, зміни якого чітко видно в git, який запускається як скрипт і імпортується як модуль. SQL-комірки звертаються до датафреймів і баз даних та повертають датафрейм Python, а слайдери, випадні списки й таблиці зв’язуються з Python без колбеків.",
+				"Якщо хостити marimo у себе, ваші блокноти й дані, які вони читають, лишаються на вашому власному сервері: вони працюють на його CPU і пам’яті та відкриваються в будь-якому браузері. Це підходить одній людині або невеликій команді, учасники якої довіряють одне одному: редактор закритий одним спільним паролем, без акаунтів користувачів і ролей."
+			],
+			"faq": [
+				{
+					"q": "Чи marimo безкоштовний і з відкритим кодом?",
+					"a": "Так. marimo має відкритий код за ліцензією Apache 2.0 і безкоштовний, зокрема для комерційної роботи."
+				},
+				{
+					"q": "Чим marimo відрізняється від Jupyter?",
+					"a": "Jupyter запускає лише ту комірку, яку ви запустили, і зберігає блокноти як JSON у .ipynb; marimo перезапускає ще й комірки, що від неї залежать, і зберігає звичайний Python. Ціна за це: у marimo змінну можна визначити лише в одній комірці."
+				},
+				{
+					"q": "Як перетворити блокнот Jupyter на marimo?",
+					"a": "Виконайте marimo convert your_notebook.ipynb -o your_notebook.py. Щоб повернутися назад, marimo export ipynb запише файл Jupyter, а marimo export уміє також HTML, HTML на WebAssembly, Markdown, PDF і плоский скрипт."
+				},
+				{
+					"q": "Чи може marimo замінити Streamlit?",
+					"a": "Для багатьох застосунків з даними — так. marimo run notebook.py віддає блокнот як вебзастосунок зі схованим кодом, а його результати складаються стосом, розкладаються на сітці або показуються як слайди; той самий файл і далі лишається блокнотом, який можна редагувати."
+				},
+				{
+					"q": "Чи можна встановлювати в marimo пакети Python, як-от pandas?",
+					"a": "Так, просто з редактора: панель пакетів у сайдбарі встановлює їх, а коли бракує імпорту, marimo пропонує його встановити. Цей шаблон запускає базовий образ marimo, без pandas і numpy, а пакети встановлюються в контейнер, а не в том із блокнотами."
+				}
+			]
 		}
 	}
 }

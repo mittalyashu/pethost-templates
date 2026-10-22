@@ -1,6 +1,12 @@
 {
 	"name": "Coder",
 	"emoji": "🧑‍💻",
+	"category": "developer-tools",
+	"alternatives": [
+		"GitHub Codespaces",
+		"Gitpod"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "coder",
 		"port": 7080
@@ -26,35 +32,259 @@
 	"texts": {
 		"en": {
 			"description": "Remote development environments from Terraform templates, opened in VS Code, JetBrains, a browser or over SSH",
-			"notes": "Sign in with the email and the admin password you gave: the template makes that owner at the first start. A workspace comes from a template: pick one that provisions it on a cloud you have an account with or on Kubernetes; the Docker one needs a Docker socket the project does not have."
+			"notes": "Sign in with the email and the admin password you gave: the template makes that owner at the first start. A workspace comes from a template: pick one that provisions it on a cloud you have an account with or on Kubernetes; the Docker one needs a Docker socket the project does not have.",
+			"sizing": "Coder is light: about 350 MB with its Postgres, since the workspaces run on the cloud or cluster you connect.",
+			"summary": "Coder is an open-source GitHub Codespaces alternative: cloud dev environments defined in Terraform. Self-host it with Docker in one click.",
+			"about": [
+				"Coder is an open-source platform for cloud development environments, a self-hosted alternative to GitHub Codespaces. An admin writes a template in Terraform, and each developer gets a workspace from it: a Kubernetes pod, a cloud VM or a Docker container. Workspaces can start on a schedule in the morning and shut down when nobody uses them, so idle machines stop costing money. AI coding agents such as Claude Code and Codex can run in workspaces too.",
+				"Teams run Coder to keep source code on infrastructure they operate, with any Git provider. It is free and open source with no cap on users or workspaces, and its makers suggest the free edition for teams of about 50 or fewer. The catch: it is a control plane and runs no workspaces itself. Workspaces need compute of their own, such as a cloud account, a Kubernetes cluster or a Docker host, and anything past the starter templates takes some Terraform."
+			],
+			"faq": [
+				{
+					"q": "Is Coder free and open source?",
+					"a": "Yes. Coder's Community edition is free and open source under the AGPL-3.0. Premium, billed per user each year, adds audit logging, quotas, multi-organization access control and high availability."
+				},
+				{
+					"q": "Coder vs GitHub Codespaces: what is the difference?",
+					"a": "Codespaces runs in GitHub's cloud and works with GitHub-hosted repositories. Coder runs on infrastructure you operate, with any Git provider, and its workspaces come from Terraform templates your team keeps under version control."
+				},
+				{
+					"q": "What is the difference between Coder and code-server?",
+					"a": "code-server is VS Code in the browser, built for one person. Coder, from the same company, is built for teams: it provisions workspaces from Terraform templates, and a workspace can include code-server as one of its apps."
+				},
+				{
+					"q": "Which IDEs work with Coder?",
+					"a": "Desktop VS Code, Cursor and JetBrains IDEs such as IntelliJ IDEA, GoLand and PyCharm connect to a workspace. In the browser there is a web terminal, a template can add code-server or JupyterLab, and SSH works too."
+				},
+				{
+					"q": "Can Coder on Pethost run workspaces as Docker containers?",
+					"a": "No. Coder's Docker starter template needs a Docker socket, and this project's containers have none. Use a template that provisions workspaces on Kubernetes or on a cloud you have an account with, such as AWS."
+				}
+			]
 		},
 		"de": {
 			"description": "Entfernte Entwicklungsumgebungen aus Terraform-Vorlagen, geöffnet in VS Code, JetBrains, im Browser oder per SSH",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Die Vorlage legt diesen Owner beim ersten Start an. Ein Workspace entsteht aus einer Vorlage: Wähle eine, die ihn in einer Cloud mit deinem Konto oder auf Kubernetes bereitstellt; die Docker-Vorlage braucht einen Docker-Socket, den das Projekt nicht hat."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Die Vorlage legt diesen Owner beim ersten Start an. Ein Workspace entsteht aus einer Vorlage: Wähle eine, die ihn in einer Cloud mit deinem Konto oder auf Kubernetes bereitstellt; die Docker-Vorlage braucht einen Docker-Socket, den das Projekt nicht hat.",
+			"sizing": "Coder ist leicht: etwa 350 MB mit Postgres, da die Workspaces in der Cloud oder im Cluster laufen, die du verbindest.",
+			"summary": "Coder selbst hosten: Open-Source-Alternative zu GitHub Codespaces mit in Terraform definierten Cloud-Entwicklungsumgebungen. Mit Docker in einem Klick.",
+			"about": [
+				"Coder ist eine Open-Source-Plattform für Cloud-Entwicklungsumgebungen, eine Alternative zu GitHub Codespaces, die du selbst hosten kannst. Admins schreiben eine Vorlage in Terraform, und alle, die entwickeln, bekommen daraus einen eigenen Workspace: einen Kubernetes-Pod, eine Cloud-VM oder einen Docker-Container. Workspaces können morgens nach Zeitplan starten und sich abschalten, wenn niemand sie nutzt, sodass ungenutzte Maschinen kein Geld mehr kosten. Auch KI-Coding-Agenten wie Claude Code und Codex können in Workspaces laufen.",
+				"Teams setzen Coder ein, um den Quellcode auf eigener Infrastruktur zu halten, mit jedem Git-Anbieter. Coder ist kostenlos und Open Source, ohne Obergrenze für Benutzer oder Workspaces, und der Hersteller empfiehlt die kostenlose Edition für Teams mit etwa 50 oder weniger Personen. Der Haken: Coder ist eine Control Plane und führt selbst keine Workspaces aus. Die Workspaces brauchen eigene Rechenleistung, etwa ein Cloud-Konto, einen Kubernetes-Cluster oder einen Docker-Host, und alles über die Einstiegsvorlagen hinaus erfordert etwas Terraform."
+			],
+			"faq": [
+				{
+					"q": "Ist Coder kostenlos und Open Source?",
+					"a": "Ja. Die Community-Edition von Coder ist kostenlos und Open Source unter der AGPL-3.0. Premium, pro Benutzer und Jahr abgerechnet, ergänzt Audit-Logs, Kontingente, Zugriffskontrolle für mehrere Organisationen und Hochverfügbarkeit."
+				},
+				{
+					"q": "Coder oder GitHub Codespaces: Was ist der Unterschied?",
+					"a": "Codespaces läuft in der Cloud von GitHub und funktioniert mit Repositorys, die auf GitHub liegen. Coder läuft auf Infrastruktur, die du selbst betreibst, mit jedem Git-Anbieter, und seine Workspaces entstehen aus Terraform-Vorlagen, die dein Team in der Versionskontrolle pflegt."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen Coder und code-server?",
+					"a": "code-server ist VS Code im Browser, gebaut für eine einzelne Person. Coder, von derselben Firma, ist für Teams gebaut: Es stellt Workspaces aus Terraform-Vorlagen bereit, und ein Workspace kann code-server als eine seiner Apps enthalten."
+				},
+				{
+					"q": "Welche IDEs funktionieren mit Coder?",
+					"a": "VS Code für den Desktop, Cursor und JetBrains-IDEs wie IntelliJ IDEA, GoLand und PyCharm verbinden sich mit einem Workspace. Im Browser gibt es ein Web-Terminal, eine Vorlage kann code-server oder JupyterLab hinzufügen, und SSH funktioniert auch."
+				},
+				{
+					"q": "Kann Coder auf Pethost Workspaces als Docker-Container ausführen?",
+					"a": "Nein. Die Docker-Einstiegsvorlage von Coder braucht einen Docker-Socket, und die Container dieses Projekts haben keinen. Nimm eine Vorlage, die Workspaces auf Kubernetes oder in einer Cloud bereitstellt, bei der du ein Konto hast, etwa AWS."
+				}
+			]
 		},
 		"es": {
 			"description": "Entornos de desarrollo remotos a partir de plantillas de Terraform, abiertos en VS Code, JetBrains, el navegador o por SSH",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste: la plantilla crea ese owner en el primer arranque. Un workspace sale de una plantilla: elige una que lo cree en una nube donde tengas cuenta o en Kubernetes; la de Docker necesita un socket de Docker que el proyecto no tiene."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste: la plantilla crea ese owner en el primer arranque. Un workspace sale de una plantilla: elige una que lo cree en una nube donde tengas cuenta o en Kubernetes; la de Docker necesita un socket de Docker que el proyecto no tiene.",
+			"sizing": "Coder es ligero: unos 350 MB con su Postgres, porque los workspaces se ejecutan en la nube o el clúster que conectes.",
+			"summary": "Autoaloja Coder con Docker en un clic: alternativa de código abierto a GitHub Codespaces, con entornos de desarrollo en la nube definidos en Terraform.",
+			"about": [
+				"Coder es una plataforma de código abierto para entornos de desarrollo en la nube, una alternativa autoalojada a GitHub Codespaces. Un administrador escribe una plantilla en Terraform y cada desarrollador recibe de ella un workspace: un pod de Kubernetes, una VM en la nube o un contenedor de Docker. Los workspaces pueden iniciarse por la mañana según un horario y apagarse cuando nadie los usa, así que las máquinas inactivas dejan de costar dinero. Los agentes de programación con IA, como Claude Code y Codex, también pueden ejecutarse en los workspaces.",
+				"Los equipos autoalojan Coder para mantener el código fuente en una infraestructura que ellos operan, con cualquier proveedor de Git. Es gratis y de código abierto, sin tope de usuarios ni de workspaces, y sus creadores sugieren la edición gratuita para equipos de unas 50 personas o menos. El inconveniente: es un plano de control y no ejecuta workspaces por sí mismo. Los workspaces necesitan su propia capacidad de cómputo, como una cuenta en una nube, un clúster de Kubernetes o un host de Docker, y todo lo que vaya más allá de las plantillas iniciales requiere algo de Terraform."
+			],
+			"faq": [
+				{
+					"q": "¿Coder es gratis y de código abierto?",
+					"a": "Sí. La edición Community de Coder es gratis y de código abierto bajo la licencia AGPL-3.0. Premium, que se factura por usuario cada año, agrega logs de auditoría, cuotas, control de acceso para varias organizaciones y alta disponibilidad."
+				},
+				{
+					"q": "Coder vs GitHub Codespaces: ¿qué diferencia hay?",
+					"a": "Codespaces funciona en la nube de GitHub y con repositorios alojados en GitHub. Coder funciona en una infraestructura que tú operas, con cualquier proveedor de Git, y sus workspaces salen de plantillas de Terraform que tu equipo mantiene bajo control de versiones."
+				},
+				{
+					"q": "¿Qué diferencia hay entre Coder y code-server?",
+					"a": "code-server es VS Code en el navegador, pensado para una sola persona. Coder, de la misma empresa, está pensado para equipos: crea los workspaces a partir de plantillas de Terraform, y un workspace puede incluir code-server como una de sus apps."
+				},
+				{
+					"q": "¿Con qué IDEs funciona Coder?",
+					"a": "VS Code de escritorio, Cursor y los IDEs de JetBrains, como IntelliJ IDEA, GoLand y PyCharm, se conectan a un workspace. En el navegador tienes terminal web, una plantilla puede agregar code-server o JupyterLab, y SSH también funciona."
+				},
+				{
+					"q": "¿Puede Coder en Pethost ejecutar workspaces como contenedores de Docker?",
+					"a": "No. La plantilla inicial de Docker de Coder necesita un socket de Docker, y los contenedores de este proyecto no tienen ninguno. Usa una plantilla que cree los workspaces en Kubernetes o en una nube donde tengas cuenta, como AWS."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des environnements de développement distants issus de modèles Terraform, ouverts dans VS Code, JetBrains, le navigateur ou en SSH",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : le modèle crée cet owner au premier démarrage. Un workspace vient d’un modèle : choisissez-en un qui le crée sur un cloud où vous avez un compte ou sur Kubernetes ; celui de Docker demande un socket Docker que le projet n’a pas."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : le modèle crée cet owner au premier démarrage. Un workspace vient d’un modèle : choisissez-en un qui le crée sur un cloud où vous avez un compte ou sur Kubernetes ; celui de Docker demande un socket Docker que le projet n’a pas.",
+			"sizing": "Coder est léger : environ 350 MB avec son Postgres, car les workspaces tournent sur le cloud ou le cluster que vous connectez.",
+			"summary": "Auto-hébergez Coder avec Docker en un clic : alternative open source à GitHub Codespaces, avec des environnements de dev cloud définis en Terraform.",
+			"about": [
+				"Coder est une plateforme open source d’environnements de développement dans le cloud, une alternative auto-hébergée à GitHub Codespaces. Un administrateur écrit un modèle en Terraform, et chaque développeur en obtient un workspace : un pod Kubernetes, une VM dans le cloud ou un conteneur Docker. Les workspaces peuvent démarrer le matin selon un horaire et s’éteindre quand personne ne s’en sert, si bien que les machines inactives ne coûtent plus rien. Les agents de code IA comme Claude Code et Codex peuvent aussi tourner dans des workspaces.",
+				"Les équipes auto-hébergent Coder pour garder le code source sur une infrastructure qu’elles exploitent, avec n’importe quel fournisseur Git. Il est gratuit et open source, sans plafond d’utilisateurs ni de workspaces, et ses créateurs conseillent l’édition gratuite pour les équipes d’environ 50 personnes ou moins. Le revers : c’est un plan de contrôle, qui n’exécute lui-même aucun workspace. Les workspaces ont besoin de leurs propres ressources de calcul, comme un compte cloud, un cluster Kubernetes ou un hôte Docker, et tout ce qui dépasse les modèles de démarrage demande un peu de Terraform."
+			],
+			"faq": [
+				{
+					"q": "Coder est-il gratuit et open source ?",
+					"a": "Oui. L’édition Community de Coder est gratuite et open source sous licence AGPL-3.0. L’édition Premium, facturée par utilisateur et par an, ajoute un journal d’audit, des quotas, le contrôle d’accès multi-organisations et la haute disponibilité."
+				},
+				{
+					"q": "Coder ou GitHub Codespaces : quelle différence ?",
+					"a": "Codespaces tourne dans le cloud de GitHub et fonctionne avec des dépôts hébergés sur GitHub. Coder tourne sur une infrastructure que vous exploitez, avec n’importe quel fournisseur Git, et ses workspaces viennent de modèles Terraform que votre équipe versionne."
+				},
+				{
+					"q": "Quelle est la différence entre Coder et code-server ?",
+					"a": "code-server est VS Code dans le navigateur, conçu pour une seule personne. Coder, de la même entreprise, est conçu pour les équipes : il crée les workspaces à partir de modèles Terraform, et un workspace peut inclure code-server parmi ses applications."
+				},
+				{
+					"q": "Quels IDE fonctionnent avec Coder ?",
+					"a": "VS Code sur ordinateur, Cursor et les IDE JetBrains comme IntelliJ IDEA, GoLand et PyCharm se connectent à un workspace. Dans le navigateur, il y a un terminal web, un modèle peut ajouter code-server ou JupyterLab, et SSH fonctionne aussi."
+				},
+				{
+					"q": "Coder sur Pethost peut-il exécuter des workspaces dans des conteneurs Docker ?",
+					"a": "Non. Le modèle de démarrage Docker de Coder a besoin d’un socket Docker, et les conteneurs de ce projet n’en ont pas. Utilisez un modèle qui crée les workspaces sur Kubernetes ou sur un cloud où vous avez un compte, comme AWS."
+				}
+			]
 		},
 		"pl": {
 			"description": "Zdalne środowiska programistyczne z szablonów Terraform, otwierane w VS Code, JetBrains, przeglądarce albo przez SSH",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: szablon tworzy tego ownera przy pierwszym starcie. Workspace powstaje z szablonu: wybierz taki, który tworzy go w chmurze, w której masz konto, albo na Kubernetesie; szablon Dockera potrzebuje gniazda Dockera, którego projekt nie ma."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: szablon tworzy tego ownera przy pierwszym starcie. Workspace powstaje z szablonu: wybierz taki, który tworzy go w chmurze, w której masz konto, albo na Kubernetesie; szablon Dockera potrzebuje gniazda Dockera, którego projekt nie ma.",
+			"sizing": "Coder ma małe wymagania: około 350 MB z Postgresem, bo workspace’y działają w chmurze lub klastrze, który podłączysz.",
+			"summary": "Hostuj Coder u siebie w Dockerze jednym kliknięciem: alternatywa dla GitHub Codespaces z otwartym kodem, środowiska dev w chmurze opisane w Terraform.",
+			"about": [
+				"Coder to platforma open source do tworzenia środowisk programistycznych w chmurze, alternatywa dla GitHub Codespaces, którą hostujesz u siebie. Administrator pisze szablon w Terraformie, a każdy programista dostaje z niego workspace: pod w Kubernetesie, maszynę wirtualną w chmurze albo kontener Dockera. Workspace’y mogą startować rano według harmonogramu i wyłączać się, gdy nikt z nich nie korzysta, więc bezczynne maszyny przestają kosztować. W workspace’ach mogą działać też agenci AI do kodowania, tacy jak Claude Code i Codex.",
+				"Zespoły hostują Coder u siebie, żeby trzymać kod źródłowy na infrastrukturze, którą same prowadzą, z dowolnym dostawcą Git. Jest darmowy i open source, bez limitu użytkowników i workspace’ów, a jego twórcy polecają darmową edycję dla zespołów liczących około 50 osób lub mniej. Haczyk: to control plane i sam nie uruchamia żadnych workspace’ów. Workspace’y potrzebują własnych zasobów obliczeniowych, takich jak konto w chmurze, klaster Kubernetes albo host Dockera, a wszystko poza szablonami startowymi wymaga trochę Terraforma."
+			],
+			"faq": [
+				{
+					"q": "Czy Coder jest darmowy i open source?",
+					"a": "Tak. Edycja Community Codera jest darmowa i open source na licencji AGPL-3.0. Premium, rozliczana rocznie za każdego użytkownika, dodaje logi audytowe, limity, kontrolę dostępu dla wielu organizacji i wysoką dostępność."
+				},
+				{
+					"q": "Coder czy GitHub Codespaces: jaka jest różnica?",
+					"a": "Codespaces działa w chmurze GitHuba i współpracuje z repozytoriami hostowanymi na GitHubie. Coder działa na infrastrukturze, którą sam prowadzisz, z dowolnym dostawcą Git, a jego workspace’y powstają z szablonów Terraform, które twój zespół trzyma pod kontrolą wersji."
+				},
+				{
+					"q": "Czym różni się Coder od code-server?",
+					"a": "code-server to VS Code w przeglądarce, zbudowany dla jednej osoby. Coder, od tej samej firmy, jest zbudowany dla zespołów: tworzy workspace’y z szablonów Terraform, a workspace może mieć code-server jako jedną ze swoich aplikacji."
+				},
+				{
+					"q": "Jakie IDE działają z Coderem?",
+					"a": "Z workspace’em łączą się desktopowy VS Code, Cursor i IDE JetBrains, takie jak IntelliJ IDEA, GoLand i PyCharm. W przeglądarce jest terminal webowy, szablon może dodać code-server albo JupyterLab, a SSH też działa."
+				},
+				{
+					"q": "Czy Coder na Pethost może uruchamiać workspace’y jako kontenery Dockera?",
+					"a": "Nie. Startowy szablon Dockera w Coderze wymaga gniazda Dockera, a kontenery tego projektu go nie mają. Użyj szablonu, który tworzy workspace’y w Kubernetesie albo w chmurze, w której masz konto, na przykład w AWS."
+				}
+			]
 		},
 		"pt": {
 			"description": "Ambientes de desenvolvimento remotos a partir de templates do Terraform, abertos no VS Code, JetBrains, no navegador ou por SSH",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou: o template cria esse owner na primeira inicialização. Um workspace sai de um template: escolha um que o crie numa nuvem onde você tem conta ou no Kubernetes; o do Docker precisa de um socket do Docker que o projeto não tem."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou: o template cria esse owner na primeira inicialização. Um workspace sai de um template: escolha um que o crie numa nuvem onde você tem conta ou no Kubernetes; o do Docker precisa de um socket do Docker que o projeto não tem.",
+			"sizing": "Coder é leve: cerca de 350 MB com o Postgres, já que os workspaces rodam na nuvem ou no cluster que você conectar.",
+			"summary": "Hospede o Coder por conta própria com Docker em um clique: alternativa de código aberto ao GitHub Codespaces, com ambientes de dev na nuvem em Terraform.",
+			"about": [
+				"O Coder é uma plataforma de código aberto para ambientes de desenvolvimento na nuvem, uma alternativa auto-hospedada ao GitHub Codespaces. Um administrador escreve um template em Terraform, e cada desenvolvedor recebe dele um workspace: um pod do Kubernetes, uma VM na nuvem ou um container Docker. Os workspaces podem iniciar de manhã em um horário agendado e desligar quando ninguém os usa, então máquinas ociosas deixam de custar dinheiro. Agentes de código com IA, como o Claude Code e o Codex, também podem rodar nos workspaces.",
+				"Equipes hospedam o Coder por conta própria para manter o código-fonte em uma infraestrutura que elas mesmas operam, com qualquer provedor de Git. Ele é gratuito e de código aberto, sem limite de usuários ou de workspaces, e os criadores sugerem a edição gratuita para equipes de cerca de 50 pessoas ou menos. O porém: ele é um plano de controle e não roda nenhum workspace. Os workspaces precisam de capacidade de computação própria, como uma conta em uma nuvem, um cluster do Kubernetes ou um host Docker, e qualquer coisa além dos templates iniciais exige um pouco de Terraform."
+			],
+			"faq": [
+				{
+					"q": "O Coder é gratuito e de código aberto?",
+					"a": "Sim. A edição Community do Coder é gratuita e de código aberto sob a AGPL-3.0. A Premium, cobrada por usuário a cada ano, acrescenta logs de auditoria, cotas, controle de acesso para várias organizações e alta disponibilidade."
+				},
+				{
+					"q": "Coder ou GitHub Codespaces: qual é a diferença?",
+					"a": "O Codespaces roda na nuvem do GitHub e funciona com repositórios hospedados no GitHub. O Coder roda em uma infraestrutura que você opera, com qualquer provedor de Git, e os workspaces dele vêm de templates do Terraform que sua equipe mantém sob controle de versão."
+				},
+				{
+					"q": "Qual é a diferença entre o Coder e o code-server?",
+					"a": "O code-server é o VS Code no navegador, feito para uma pessoa só. O Coder, da mesma empresa, é feito para equipes: ele cria workspaces a partir de templates do Terraform, e um workspace pode incluir o code-server como um dos seus apps."
+				},
+				{
+					"q": "Quais IDEs funcionam com o Coder?",
+					"a": "O VS Code de desktop, o Cursor e as IDEs da JetBrains, como IntelliJ IDEA, GoLand e PyCharm, se conectam a um workspace. No navegador há um terminal web, um template pode adicionar o code-server ou o JupyterLab, e o SSH também funciona."
+				},
+				{
+					"q": "O Coder no Pethost pode rodar workspaces como containers Docker?",
+					"a": "Não. O template inicial de Docker do Coder precisa de um socket do Docker, e os containers deste projeto não têm nenhum. Use um template que crie os workspaces no Kubernetes ou em uma nuvem onde você tenha conta, como a AWS."
+				}
+			]
 		},
 		"ru": {
 			"description": "Удалённые среды разработки из шаблонов Terraform, которые открываются в VS Code, JetBrains, браузере или по SSH",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали: шаблон создаёт этого owner при первом запуске. Workspace создаётся из шаблона: выберите тот, что разворачивает его в облаке, где у вас есть аккаунт, или в Kubernetes; шаблону Docker нужен сокет Docker, которого у проекта нет."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали: шаблон создаёт этого owner при первом запуске. Workspace создаётся из шаблона: выберите тот, что разворачивает его в облаке, где у вас есть аккаунт, или в Kubernetes; шаблону Docker нужен сокет Docker, которого у проекта нет.",
+			"sizing": "Coder: небольшие требования — около 350 MB вместе с Postgres, ведь воркспейсы работают в вашем облаке или кластере.",
+			"summary": "Self-hosted Coder через Docker в один клик: open source альтернатива GitHub Codespaces с облачными средами разработки, описанными в Terraform.",
+			"about": [
+				"Coder — это open source платформа облачных сред разработки, self-hosted альтернатива GitHub Codespaces. Администратор пишет шаблон на Terraform, и каждый разработчик получает по нему workspace: pod в Kubernetes, виртуальную машину в облаке или контейнер Docker. Workspaces могут запускаться утром по расписанию и выключаться, когда ими никто не пользуется, поэтому простаивающие машины перестают стоить денег. ИИ-агенты для программирования, такие как Claude Code и Codex, тоже могут работать в workspaces.",
+				"Команды хостят Coder у себя, чтобы держать исходный код на инфраструктуре, которой управляют сами, с любым Git-провайдером. Он бесплатный и с открытым исходным кодом, без ограничений на число пользователей и workspaces, а его создатели советуют бесплатную редакцию командам примерно до 50 человек. Но есть нюанс: это control plane, и сам он workspaces не запускает. Для workspaces нужны собственные вычислительные ресурсы, например аккаунт в облаке, кластер Kubernetes или хост Docker, а все, что выходит за рамки стартовых шаблонов, требует немного Terraform."
+			],
+			"faq": [
+				{
+					"q": "Coder бесплатный и с открытым исходным кодом?",
+					"a": "Да. Редакция Community бесплатная и с открытым исходным кодом по лицензии AGPL-3.0. Premium, с оплатой за пользователя в год, добавляет аудит-логи, квоты, управление доступом для нескольких организаций и высокую доступность."
+				},
+				{
+					"q": "Coder или GitHub Codespaces: в чем разница?",
+					"a": "Codespaces работает в облаке GitHub и подходит для репозиториев, размещенных на GitHub. Coder работает на инфраструктуре, которой управляете вы, с любым Git-провайдером, а его workspaces создаются из шаблонов Terraform, которые ваша команда хранит под контролем версий."
+				},
+				{
+					"q": "Чем Coder отличается от code-server?",
+					"a": "code-server — это VS Code в браузере, рассчитанный на одного человека. Coder, от той же компании, рассчитан на команды: он создает workspaces из шаблонов Terraform, а в workspace может входить code-server как одно из приложений."
+				},
+				{
+					"q": "Какие IDE работают с Coder?",
+					"a": "К workspace подключаются десктопный VS Code, Cursor и IDE JetBrains, такие как IntelliJ IDEA, GoLand и PyCharm. В браузере есть веб-терминал, шаблон может добавить code-server или JupyterLab, а еще работает SSH."
+				},
+				{
+					"q": "Может ли Coder на Pethost запускать workspaces как контейнеры Docker?",
+					"a": "Нет. Стартовому шаблону Docker от Coder нужен сокет Docker, а у контейнеров этого проекта его нет. Используйте шаблон, который создает workspaces в Kubernetes или в облаке, где у вас есть аккаунт, например в AWS."
+				}
+			]
 		},
 		"uk": {
 			"description": "Віддалені середовища розробки з шаблонів Terraform, які відкриваються у VS Code, JetBrains, браузері або через SSH",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: шаблон створює цього owner під час першого запуску. Workspace створюється з шаблону: виберіть той, що розгортає його в хмарі, де у вас є акаунт, або в Kubernetes; шаблону Docker потрібен сокет Docker, якого в проєкту немає."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: шаблон створює цього owner під час першого запуску. Workspace створюється з шаблону: виберіть той, що розгортає його в хмарі, де у вас є акаунт, або в Kubernetes; шаблону Docker потрібен сокет Docker, якого в проєкту немає.",
+			"sizing": "Coder має скромні вимоги: близько 350 MB з Postgres, бо робочі простори працюють у хмарі чи кластері, який ви підключите.",
+			"summary": "Self-hosted Coder через Docker в один клік: open source альтернатива GitHub Codespaces з хмарними середовищами розробки, описаними в Terraform.",
+			"about": [
+				"Coder — це open source платформа хмарних середовищ розробки, self-hosted альтернатива GitHub Codespaces. Адміністратор пише шаблон на Terraform, і кожен розробник отримує з нього workspace: pod у Kubernetes, віртуальну машину в хмарі або контейнер Docker. Workspaces можуть запускатися вранці за розкладом і вимикатися, коли ними ніхто не користується, тож машини, що простоюють, перестають коштувати грошей. ШІ-агенти для програмування, як-от Claude Code і Codex, теж можуть працювати у workspaces.",
+				"Команди хостять Coder у себе, щоб тримати вихідний код на інфраструктурі, якою керують самі, з будь-яким Git-провайдером. Він безкоштовний і з відкритим кодом, без обмежень на кількість користувачів і workspaces, а його творці радять безкоштовну редакцію командам приблизно до 50 людей. Але є нюанс: це control plane, і сам він workspaces не запускає. Для workspaces потрібні власні обчислювальні ресурси, наприклад акаунт у хмарі, кластер Kubernetes або хост Docker, а все, що виходить за межі стартових шаблонів, потребує трохи Terraform."
+			],
+			"faq": [
+				{
+					"q": "Чи Coder безкоштовний і з відкритим кодом?",
+					"a": "Так. Редакція Community безкоштовна і з відкритим кодом за ліцензією AGPL-3.0. Premium, з оплатою за користувача на рік, додає логи аудиту, квоти, керування доступом для кількох організацій і високу доступність."
+				},
+				{
+					"q": "Coder чи GitHub Codespaces: у чому різниця?",
+					"a": "Codespaces працює в хмарі GitHub і підходить для репозиторіїв, розміщених на GitHub. Coder працює на інфраструктурі, якою керуєте ви, з будь-яким Git-провайдером, а його workspaces створюються із шаблонів Terraform, які ваша команда зберігає під контролем версій."
+				},
+				{
+					"q": "Чим Coder відрізняється від code-server?",
+					"a": "code-server — це VS Code у браузері, розрахований на одну людину. Coder, від тієї самої компанії, розрахований на команди: він створює workspaces із шаблонів Terraform, а до workspace може входити code-server як один із застосунків."
+				},
+				{
+					"q": "Які IDE працюють із Coder?",
+					"a": "До workspace підключаються десктопний VS Code, Cursor та IDE від JetBrains, як-от IntelliJ IDEA, GoLand і PyCharm. У браузері є вебтермінал, шаблон може додати code-server або JupyterLab, а ще працює SSH."
+				},
+				{
+					"q": "Чи може Coder на Pethost запускати workspaces як контейнери Docker?",
+					"a": "Ні. Стартовому шаблону Docker від Coder потрібен сокет Docker, а в контейнерів цього проєкту його немає. Використайте шаблон, який створює workspaces у Kubernetes або в хмарі, де у вас є акаунт, наприклад в AWS."
+				}
+			]
 		}
 	}
 }

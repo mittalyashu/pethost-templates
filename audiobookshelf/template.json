@@ -1,6 +1,12 @@
 {
 	"name": "Audiobookshelf",
 	"emoji": "🎧",
+	"category": "media",
+	"alternatives": [
+		"Audible",
+		"Plex"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "audiobookshelf",
 		"port": 80
@@ -14,35 +20,259 @@
 	"texts": {
 		"en": {
 			"description": "Your own audiobook and podcast server: listen in the browser or the apps, with progress kept across devices",
-			"notes": "Sign in as root with the admin password you gave: the server is set up with it before it answers, so nobody else gets its setup page. Create a library under Settings → Libraries with the folder /audiobooks or /podcasts, then add books with the upload button at the top."
+			"notes": "Sign in as root with the admin password you gave: the server is set up with it before it answers, so nobody else gets its setup page. Create a library under Settings → Libraries with the folder /audiobooks or /podcasts, then add books with the upload button at the top.",
+			"sizing": "Audiobookshelf is light: about 100 MB of memory; the disk is your library, and about a hundred audiobooks fit.",
+			"summary": "Audiobookshelf is an open-source audiobook and podcast server that keeps your place across devices, an Audible alternative. Self-host it in one click.",
+			"about": [
+				"Audiobookshelf is an open-source audiobook and podcast server, a self-hosted alternative to Audible for the audiobooks you already own. It streams them to the browser and to its Android and iOS apps, and remembers where you stopped, so a book started on the phone picks up on the laptop. It fetches covers and metadata, has a chapter editor, and can merge a book's many files into a single M4B. Podcasts are searched for and added in the app, and new episodes download on their own.",
+				"People run it to keep their library and listening history on a server of their own, with no subscription. Files dropped into a library folder show up without a rescan, and whole folders upload by drag and drop. The catch is that Audiobookshelf comes with no books: it plays the files you bring. Ebooks get only a basic reader, for EPUB, PDF, CBR and CBZ."
+			],
+			"faq": [
+				{
+					"q": "Is Audiobookshelf free and open source?",
+					"a": "Yes. The server and its Android and iOS apps are all open source under the GPL-3.0 license, so Audiobookshelf is free to run, change and share."
+				},
+				{
+					"q": "Is there an Audiobookshelf app for iPhone and Android?",
+					"a": "Yes, both in beta. The Android app is on Google Play. The iOS app is a TestFlight beta that is currently full, since Apple caps testers at 10,000. The web app also installs as a PWA."
+				},
+				{
+					"q": "Can several people share one Audiobookshelf server?",
+					"a": "Yes. An admin creates accounts of type admin, user or guest, each with its own permissions, and every user's listening progress is kept separately and synced across their devices."
+				},
+				{
+					"q": "How should I organize folders for Audiobookshelf?",
+					"a": "Give every book its own folder, laid out as Author/Series/Book or Author/Book. A book that is a single file may sit in the library's root, and the files' ID3 tags fill in its details."
+				},
+				{
+					"q": "What is the default Audiobookshelf username and password?",
+					"a": "There is none: on a new server, the first visitor creates the root user on the Initial Server Setup page. This template creates root with the admin password you choose at deploy, so that page is never left open."
+				}
+			]
 		},
 		"de": {
 			"description": "Dein eigener Server für Hörbücher und Podcasts: im Browser oder in den Apps hören, mit Fortschritt über alle Geräte",
-			"notes": "Melde dich als root mit dem angegebenen Admin-Passwort an: Der Server wird damit eingerichtet, bevor er antwortet, sodass niemand sonst die Einrichtungsseite bekommt. Lege unter Settings → Libraries eine Bibliothek mit dem Ordner /audiobooks oder /podcasts an und füge dann mit dem Upload-Knopf oben Bücher hinzu."
+			"notes": "Melde dich als root mit dem angegebenen Admin-Passwort an: Der Server wird damit eingerichtet, bevor er antwortet, sodass niemand sonst die Einrichtungsseite bekommt. Lege unter Settings → Libraries eine Bibliothek mit dem Ordner /audiobooks oder /podcasts an und füge dann mit dem Upload-Knopf oben Bücher hinzu.",
+			"sizing": "Audiobookshelf ist leicht: etwa 100 MB RAM; die Disk ist deine Bibliothek, etwa hundert Hörbücher passen drauf.",
+			"summary": "Audiobookshelf selbst hosten: Open-Source-Hörbuch- und Podcast-Server, der auf jedem Gerät weiß, wo du aufgehört hast. Audible-Alternative in einem Klick.",
+			"about": [
+				"Audiobookshelf ist ein Open-Source-Server für Hörbücher und Podcasts, eine selbst gehostete Alternative zu Audible für die Hörbücher, die du schon besitzt. Er streamt sie in den Browser und in seine Android- und iOS-Apps und merkt sich, wo du aufgehört hast, sodass ein am Smartphone begonnenes Buch am Laptop weiterläuft. Er holt Cover und Metadaten, hat einen Kapiteleditor und kann die vielen Dateien eines Buchs zu einer einzigen M4B-Datei zusammenführen. Podcasts suchst du in der App und fügst sie dort hinzu, neue Folgen lädt er von selbst herunter.",
+				"Du hostest Audiobookshelf selbst, um deine Bibliothek und deinen Hörverlauf auf einer eigenen Maschine zu halten, ohne Abo. Dateien, die du in einen Bibliotheksordner legst, tauchen ohne erneuten Scan auf, und ganze Ordner lädst du per Drag-and-drop hoch. Der Haken: Audiobookshelf bringt keine Bücher mit, es spielt die Dateien ab, die du mitbringst. Für E-Books gibt es nur einen einfachen Reader, für EPUB, PDF, CBR und CBZ."
+			],
+			"faq": [
+				{
+					"q": "Ist Audiobookshelf kostenlos und Open Source?",
+					"a": "Ja. Der Server und seine Android- und iOS-Apps sind allesamt Open Source unter der GPL-3.0-Lizenz, Audiobookshelf lässt sich also kostenlos betreiben, ändern und weitergeben."
+				},
+				{
+					"q": "Gibt es eine Audiobookshelf-App für iPhone und Android?",
+					"a": "Ja, beide in der Beta. Die Android-App gibt es bei Google Play. Die iOS-App ist eine TestFlight-Beta, die derzeit voll ist, weil Apple die Zahl der Tester auf 10.000 begrenzt. Die Web-App lässt sich außerdem als PWA installieren."
+				},
+				{
+					"q": "Können sich mehrere Leute einen Audiobookshelf-Server teilen?",
+					"a": "Ja. Ein Admin legt Konten vom Typ admin, user oder guest an, jedes mit eigenen Berechtigungen, und der Hörfortschritt jeder Person wird getrennt gespeichert und über ihre Geräte hinweg synchronisiert."
+				},
+				{
+					"q": "Wie organisiere ich die Ordner für Audiobookshelf?",
+					"a": "Gib jedem Buch einen eigenen Ordner, aufgebaut als Autor/Reihe/Buch oder Autor/Buch. Ein Buch, das aus einer einzigen Datei besteht, darf im Wurzelverzeichnis der Bibliothek liegen, und die ID3-Tags der Dateien liefern seine Details."
+				},
+				{
+					"q": "Was sind der Standard-Benutzername und das Standard-Passwort von Audiobookshelf?",
+					"a": "Es gibt keine: Auf einem neuen Server legt, wer ihn als Erstes öffnet, den Root-Benutzer auf der Seite „Initial Server Setup“ an. Diese Vorlage legt root mit dem Admin-Passwort an, das du beim Deploy festlegst, sodass diese Seite nie offen bleibt."
+				}
+			]
 		},
 		"es": {
 			"description": "Tu propio servidor de audiolibros y podcasts: escucha en el navegador o en las apps, con el progreso guardado entre dispositivos",
-			"notes": "Entra como root con la contraseña de administrador que indicaste: el servidor se configura con ella antes de responder, así que nadie más ve su página de instalación. Crea una biblioteca en Settings → Libraries con la carpeta /audiobooks o /podcasts y añade libros con el botón de subida de arriba."
+			"notes": "Entra como root con la contraseña de administrador que indicaste: el servidor se configura con ella antes de responder, así que nadie más ve su página de instalación. Crea una biblioteca en Settings → Libraries con la carpeta /audiobooks o /podcasts y añade libros con el botón de subida de arriba.",
+			"sizing": "Audiobookshelf es ligero: unos 100 MB de memoria; el disco es tu biblioteca, y caben unos cien audiolibros.",
+			"summary": "Autoaloja Audiobookshelf, el servidor de audiolibros y podcasts de código abierto que recuerda dónde te quedaste. Alternativa a Audible, en un clic.",
+			"about": [
+				"Audiobookshelf es un servidor de audiolibros y podcasts de código abierto, una alternativa autoalojada a Audible para los audiolibros que ya tienes. Los transmite al navegador y a sus apps de Android y iOS, y recuerda dónde lo dejaste, así que un libro empezado en el teléfono continúa en tu equipo. Descarga portadas y metadatos, tiene un editor de capítulos y puede unir los muchos archivos de un libro en un solo archivo M4B. Los podcasts se buscan y se agregan desde la app, y los episodios nuevos se descargan solos.",
+				"Autoalojas Audiobookshelf para tener tu biblioteca y tu historial de escucha en una máquina propia, sin suscripción. Los archivos que dejas en una carpeta de la biblioteca aparecen sin volver a escanear, y las carpetas enteras se suben arrastrando y soltando. El inconveniente: Audiobookshelf no incluye libros, reproduce los archivos que tú pones. Los ebooks solo tienen un lector básico, para EPUB, PDF, CBR y CBZ."
+			],
+			"faq": [
+				{
+					"q": "¿Audiobookshelf es gratis y de código abierto?",
+					"a": "Sí. El servidor y sus apps de Android y iOS son todos de código abierto con licencia GPL-3.0, así que Audiobookshelf es gratis para ejecutar, modificar y compartir."
+				},
+				{
+					"q": "¿Hay una app de Audiobookshelf para iPhone y Android?",
+					"a": "Sí, las dos en beta. La app de Android está en Google Play. La de iOS es una beta de TestFlight que ahora mismo está llena, porque Apple limita los probadores a 10.000. La app web también se instala como PWA."
+				},
+				{
+					"q": "¿Pueden varias personas compartir un servidor de Audiobookshelf?",
+					"a": "Sí. Un administrador crea cuentas de tipo admin, user o guest, cada una con sus propios permisos, y el progreso de escucha de cada usuario se guarda por separado y se sincroniza entre sus dispositivos."
+				},
+				{
+					"q": "¿Cómo debo organizar las carpetas para Audiobookshelf?",
+					"a": "Da a cada libro su propia carpeta, con la estructura Autor/Serie/Libro o Autor/Libro. Un libro que es un solo archivo puede estar en la raíz de la biblioteca, y las etiquetas ID3 de los archivos completan sus datos."
+				},
+				{
+					"q": "¿Cuáles son el usuario y la contraseña por defecto de Audiobookshelf?",
+					"a": "No hay ninguno: en un servidor nuevo, la primera persona que lo abre crea el usuario root en la página “Initial Server Setup”. Esta plantilla crea root con la contraseña de administrador que eliges al desplegar, así que esa página nunca queda abierta."
+				}
+			]
 		},
 		"fr": {
 			"description": "Votre propre serveur de livres audio et de podcasts : écoutez dans le navigateur ou les applis, avec la progression gardée d’un appareil à l’autre",
-			"notes": "Connectez-vous en tant que root avec le mot de passe administrateur indiqué : le serveur est configuré avec lui avant de répondre, donc personne d’autre ne voit sa page d’installation. Créez une bibliothèque dans Settings → Libraries avec le dossier /audiobooks ou /podcasts, puis ajoutez des livres avec le bouton d’envoi en haut."
+			"notes": "Connectez-vous en tant que root avec le mot de passe administrateur indiqué : le serveur est configuré avec lui avant de répondre, donc personne d’autre ne voit sa page d’installation. Créez une bibliothèque dans Settings → Libraries avec le dossier /audiobooks ou /podcasts, puis ajoutez des livres avec le bouton d’envoi en haut.",
+			"sizing": "Audiobookshelf est léger : environ 100 MB de mémoire ; le disque, c’est votre bibliothèque, environ cent livres audio y tiennent.",
+			"summary": "Auto-hébergez Audiobookshelf, le serveur de livres audio et de podcasts open source qui retient où vous en êtes. Une alternative à Audible, en un clic.",
+			"about": [
+				"Audiobookshelf est un serveur open source de livres audio et de podcasts, une alternative auto-hébergée à Audible pour les livres audio que vous possédez déjà. Il les diffuse vers le navigateur et vers ses applications Android et iOS, et retient où l’écoute s’est arrêtée, si bien qu’un livre commencé sur le téléphone se poursuit sur l’ordinateur. Il récupère les couvertures et les métadonnées, propose un éditeur de chapitres et peut fusionner les nombreux fichiers d’un livre en un seul fichier M4B. Les podcasts se cherchent et s’ajoutent dans l’application, et les nouveaux épisodes se téléchargent tout seuls.",
+				"Vous auto-hébergez Audiobookshelf pour garder votre bibliothèque et votre historique d’écoute sur une machine à vous, sans abonnement. Les fichiers déposés dans un dossier de la bibliothèque apparaissent sans nouveau scan, et des dossiers entiers s’envoient par glisser-déposer. Le revers : Audiobookshelf ne vient avec aucun livre, il lit les fichiers que vous apportez. Les livres numériques n’ont droit qu’à un lecteur basique, pour EPUB, PDF, CBR et CBZ."
+			],
+			"faq": [
+				{
+					"q": "Audiobookshelf est-il gratuit et open source ?",
+					"a": "Oui. Le serveur et ses applications Android et iOS sont tous open source sous licence GPL-3.0, donc Audiobookshelf est gratuit à faire tourner, à modifier et à partager."
+				},
+				{
+					"q": "Existe-t-il une application Audiobookshelf pour iPhone et Android ?",
+					"a": "Oui, les deux en bêta. L’application Android est sur Google Play. L’application iOS est une bêta TestFlight actuellement complète, car Apple plafonne les testeurs à 10 000. L’application web s’installe aussi comme PWA."
+				},
+				{
+					"q": "Plusieurs personnes peuvent-elles partager un même serveur Audiobookshelf ?",
+					"a": "Oui. Un administrateur crée des comptes de type admin, user ou guest, chacun avec ses propres permissions, et la progression d’écoute de chaque utilisateur est conservée séparément et synchronisée entre ses appareils."
+				},
+				{
+					"q": "Comment organiser les dossiers pour Audiobookshelf ?",
+					"a": "Donnez à chaque livre son propre dossier, organisé en Auteur/Série/Livre ou Auteur/Livre. Un livre qui tient en un seul fichier peut se trouver à la racine de la bibliothèque, et les balises ID3 des fichiers renseignent ses détails."
+				},
+				{
+					"q": "Quels sont l’identifiant et le mot de passe par défaut d’Audiobookshelf ?",
+					"a": "Il n’y en a pas : sur un nouveau serveur, la première personne qui l’ouvre crée l’utilisateur root sur la page « Initial Server Setup ». Ce template crée root avec le mot de passe administrateur que vous choisissez au déploiement, si bien que cette page n’est jamais laissée ouverte."
+				}
+			]
 		},
 		"pl": {
 			"description": "Własny serwer audiobooków i podcastów: słuchaj w przeglądarce lub w aplikacjach, z postępem zapamiętanym na wszystkich urządzeniach",
-			"notes": "Zaloguj się jako root hasłem administratora, które podano: serwer jest nim skonfigurowany, zanim zacznie odpowiadać, więc nikt inny nie dostanie strony instalacji. Utwórz bibliotekę w Settings → Libraries z folderem /audiobooks lub /podcasts, a potem dodaj książki przyciskiem przesyłania u góry."
+			"notes": "Zaloguj się jako root hasłem administratora, które podano: serwer jest nim skonfigurowany, zanim zacznie odpowiadać, więc nikt inny nie dostanie strony instalacji. Utwórz bibliotekę w Settings → Libraries z folderem /audiobooks lub /podcasts, a potem dodaj książki przyciskiem przesyłania u góry.",
+			"sizing": "Audiobookshelf ma małe wymagania: około 100 MB pamięci; dysk to twoja biblioteka, mieści się około stu audiobooków.",
+			"summary": "Hostuj Audiobookshelfa u siebie w jeden klik: serwer audiobooków i podcastów open source, pamiętający postęp na każdym urządzeniu. Alternatywa dla Audible.",
+			"about": [
+				"Audiobookshelf to serwer audiobooków i podcastów open source: alternatywa dla Audible, hostowana u siebie, do audiobooków, które już masz. Streamuje je do przeglądarki i do swoich aplikacji na Androida i iOS oraz pamięta, gdzie skończyło się słuchanie, więc książka zaczęta na telefonie wznawia się na laptopie. Pobiera okładki i metadane, ma edytor rozdziałów i potrafi scalić wiele plików książki w jeden plik M4B. Podcasty wyszukuje się i dodaje w aplikacji, a nowe odcinki pobierają się same.",
+				"Audiobookshelfa hostujesz u siebie, żeby trzymać bibliotekę i historię słuchania na własnej maszynie, bez subskrypcji. Pliki wrzucone do katalogu biblioteki pojawiają się bez ponownego skanowania, a całe katalogi wgrywa się metodą przeciągnij i upuść. Haczyk: Audiobookshelf nie ma żadnych książek, odtwarza pliki, które mu dostarczysz. E-booki mają tylko podstawowy czytnik, do EPUB, PDF, CBR i CBZ."
+			],
+			"faq": [
+				{
+					"q": "Czy Audiobookshelf jest darmowy i open source?",
+					"a": "Tak. Serwer i jego aplikacje na Androida i iOS są w całości open source na licencji GPL-3.0, więc Audiobookshelfa można uruchamiać, zmieniać i udostępniać za darmo."
+				},
+				{
+					"q": "Czy Audiobookshelf ma aplikację na iPhone’a i Androida?",
+					"a": "Tak, obie w wersji beta. Aplikacja na Androida jest w Google Play. Aplikacja na iOS to beta w TestFlight, która jest teraz pełna, bo Apple ogranicza liczbę testerów do 10 000. Aplikację webową można też zainstalować jako PWA."
+				},
+				{
+					"q": "Czy kilka osób może korzystać z jednego serwera Audiobookshelf?",
+					"a": "Tak. Administrator tworzy konta typu admin, user lub guest, każde z własnymi uprawnieniami, a postęp słuchania każdego użytkownika jest zapisywany osobno i synchronizowany między jego urządzeniami."
+				},
+				{
+					"q": "Jak ułożyć katalogi dla Audiobookshelf?",
+					"a": "Daj każdej książce osobny katalog, ułożony jako Autor/Seria/Książka albo Autor/Książka. Książka będąca jednym plikiem może leżeć w katalogu głównym biblioteki, a jej szczegóły uzupełniają tagi ID3 plików."
+				},
+				{
+					"q": "Jaki jest domyślny login i hasło do Audiobookshelf?",
+					"a": "Nie ma żadnego: na nowym serwerze pierwsza osoba, która go otworzy, tworzy użytkownika root na stronie „Initial Server Setup”. Ten szablon tworzy root z hasłem administratora, które podasz przy wdrożeniu, więc ta strona nigdy nie zostaje otwarta."
+				}
+			]
 		},
 		"pt": {
 			"description": "Seu próprio servidor de audiolivros e podcasts: ouça no navegador ou nos apps, com o progresso guardado entre dispositivos",
-			"notes": "Entre como root com a senha de administrador que você informou: o servidor é configurado com ela antes de responder, então ninguém mais vê a página de instalação. Crie uma biblioteca em Settings → Libraries com a pasta /audiobooks ou /podcasts e adicione livros com o botão de envio no topo."
+			"notes": "Entre como root com a senha de administrador que você informou: o servidor é configurado com ela antes de responder, então ninguém mais vê a página de instalação. Crie uma biblioteca em Settings → Libraries com a pasta /audiobooks ou /podcasts e adicione livros com o botão de envio no topo.",
+			"sizing": "Audiobookshelf é leve: cerca de 100 MB de memória; o disco é a sua biblioteca, e cabem uns cem audiolivros.",
+			"summary": "Auto-hospede o Audiobookshelf: servidor de audiolivros e podcasts de código aberto que guarda onde você parou, alternativa ao Audible. Em um clique.",
+			"about": [
+				"O Audiobookshelf é um servidor de audiolivros e podcasts de código aberto, uma alternativa auto-hospedada ao Audible para os audiolivros que você já tem. Ele transmite os livros para o navegador e para os apps de Android e iOS e lembra onde você parou, então um livro começado no celular continua no notebook. Ele busca capas e metadados, tem um editor de capítulos e pode juntar os vários arquivos de um livro em um único arquivo M4B. Os podcasts são pesquisados e adicionados no app, e os episódios novos são baixados sozinhos.",
+				"Você auto-hospeda o Audiobookshelf para manter sua biblioteca e seu histórico de escuta em uma máquina própria, sem assinatura. Arquivos colocados na pasta de uma biblioteca aparecem sem precisar escanear de novo, e pastas inteiras são enviadas arrastando e soltando. O porém: o Audiobookshelf não vem com livros, ele toca os arquivos que você traz. Os e-books ganham só um leitor básico, para EPUB, PDF, CBR e CBZ."
+			],
+			"faq": [
+				{
+					"q": "O Audiobookshelf é gratuito e de código aberto?",
+					"a": "Sim. O servidor e os apps de Android e iOS dele são todos de código aberto sob a licença GPL-3.0, então o Audiobookshelf é gratuito para rodar, modificar e compartilhar."
+				},
+				{
+					"q": "Existe app do Audiobookshelf para iPhone e Android?",
+					"a": "Sim, os dois em beta. O app de Android está no Google Play. O de iOS é um beta do TestFlight que está lotado no momento, porque a Apple limita os testadores a 10.000. O app web também pode ser instalado como PWA."
+				},
+				{
+					"q": "Várias pessoas podem compartilhar um mesmo servidor do Audiobookshelf?",
+					"a": "Sim. Um administrador cria contas do tipo admin, user ou guest, cada uma com suas próprias permissões, e o progresso de escuta de cada usuário é guardado separadamente e sincronizado entre os dispositivos dele."
+				},
+				{
+					"q": "Como devo organizar as pastas para o Audiobookshelf?",
+					"a": "Dê a cada livro uma pasta própria, organizada como Autor/Série/Livro ou Autor/Livro. Um livro que é um único arquivo pode ficar na raiz da biblioteca, e as tags ID3 dos arquivos preenchem os detalhes dele."
+				},
+				{
+					"q": "Quais são o usuário e a senha padrão do Audiobookshelf?",
+					"a": "Não existe nenhum: em um servidor novo, a primeira pessoa que o abre cria o usuário root na página “Initial Server Setup”. Este template cria o root com a senha de administrador que você escolhe no deploy, então essa página nunca fica aberta."
+				}
+			]
 		},
 		"ru": {
 			"description": "Собственный сервер аудиокниг и подкастов: слушайте в браузере или приложениях, прогресс сохраняется на всех устройствах",
-			"notes": "Войдите как root с паролем администратора, который вы указали: сервер настраивается с ним до того, как начнёт отвечать, поэтому страницу установки больше никто не получит. Создайте библиотеку в Settings → Libraries с папкой /audiobooks или /podcasts и добавьте книги кнопкой загрузки вверху."
+			"notes": "Войдите как root с паролем администратора, который вы указали: сервер настраивается с ним до того, как начнёт отвечать, поэтому страницу установки больше никто не получит. Создайте библиотеку в Settings → Libraries с папкой /audiobooks или /podcasts и добавьте книги кнопкой загрузки вверху.",
+			"sizing": "Audiobookshelf: небольшие требования — около 100 MB памяти; диск занимает ваша библиотека, около сотни аудиокниг поместятся.",
+			"summary": "Self-hosted Audiobookshelf — open source сервер аудиокниг и подкастов, который помнит, где вы остановились. Альтернатива Audible, в один клик.",
+			"about": [
+				"Audiobookshelf — это open source сервер аудиокниг и подкастов, self-hosted альтернатива Audible для аудиокниг, которые у вас уже есть. Он стримит их в браузер и в свои приложения для Android и iOS и помнит, где вы остановились, поэтому книга, начатая на телефоне, продолжается на ноутбуке. Он подтягивает обложки и метаданные, имеет редактор глав и может объединить множество файлов книги в один файл M4B. Подкасты ищутся и добавляются прямо в приложении, а новые эпизоды скачиваются сами.",
+				"Audiobookshelf хостят у себя, чтобы держать библиотеку и историю прослушивания на собственной машине, без подписки. Файлы, положенные в папку библиотеки, появляются без повторного сканирования, а целые папки загружаются перетаскиванием. Но есть нюанс: Audiobookshelf идет без книг, он проигрывает файлы, которые вы принесете. Для электронных книг есть только базовый ридер, для EPUB, PDF, CBR и CBZ."
+			],
+			"faq": [
+				{
+					"q": "Audiobookshelf бесплатный и с открытым кодом?",
+					"a": "Да. Сервер и его приложения для Android и iOS целиком с открытым кодом под лицензией GPL-3.0, так что Audiobookshelf можно бесплатно запускать, изменять и распространять."
+				},
+				{
+					"q": "Есть ли приложение Audiobookshelf для iPhone и Android?",
+					"a": "Да, оба в бете. Приложение для Android есть в Google Play. Приложение для iOS — бета в TestFlight, которая сейчас заполнена, потому что Apple ограничивает число тестеров 10 000. Веб-приложение также устанавливается как PWA."
+				},
+				{
+					"q": "Могут ли несколько человек пользоваться одним сервером Audiobookshelf?",
+					"a": "Да. Администратор создает аккаунты типа admin, user или guest, у каждого свои права, а прогресс прослушивания каждого пользователя хранится отдельно и синхронизируется между его устройствами."
+				},
+				{
+					"q": "Как организовать папки для Audiobookshelf?",
+					"a": "Дайте каждой книге отдельную папку со структурой Автор/Серия/Книга или Автор/Книга. Книга из одного файла может лежать в корне библиотеки, а ее данные подтягиваются из ID3-тегов файлов."
+				},
+				{
+					"q": "Какие логин и пароль по умолчанию у Audiobookshelf?",
+					"a": "Их нет: на новом сервере первый, кто его откроет, создает пользователя root на странице «Initial Server Setup». Этот шаблон создает root с паролем администратора, который вы указываете при деплое, поэтому эта страница никогда не остается открытой."
+				}
+			]
 		},
 		"uk": {
 			"description": "Власний сервер аудіокниг і подкастів: слухайте в браузері чи застосунках, прогрес зберігається на всіх пристроях",
-			"notes": "Увійдіть як root із паролем адміністратора, який ви вказали: сервер налаштовується з ним до того, як почне відповідати, тож сторінку встановлення більше ніхто не отримає. Створіть бібліотеку в Settings → Libraries з папкою /audiobooks або /podcasts і додайте книги кнопкою завантаження вгорі."
+			"notes": "Увійдіть як root із паролем адміністратора, який ви вказали: сервер налаштовується з ним до того, як почне відповідати, тож сторінку встановлення більше ніхто не отримає. Створіть бібліотеку в Settings → Libraries з папкою /audiobooks або /podcasts і додайте книги кнопкою завантаження вгорі.",
+			"sizing": "Audiobookshelf має скромні вимоги: близько 100 MB пам’яті; диск — це ваша бібліотека, вміщається близько сотні аудіокниг.",
+			"summary": "Self-hosted Audiobookshelf — сервер аудіокниг і подкастів із відкритим кодом, що пам’ятає, де ви зупинилися. Альтернатива Audible, в один клік.",
+			"about": [
+				"Audiobookshelf — це сервер аудіокниг і подкастів із відкритим кодом, self-hosted альтернатива Audible для аудіокниг, які у вас уже є. Він стримить їх у браузер і у свої застосунки для Android та iOS і пам’ятає, де ви зупинилися, тож книга, розпочата на телефоні, продовжується на ноутбуці. Він підтягує обкладинки й метадані, має редактор розділів і може об’єднати безліч файлів книги в один файл M4B. Подкасти шукають і додають просто в застосунку, а нові епізоди завантажуються самі.",
+				"Audiobookshelf хостять у себе, щоб тримати бібліотеку й історію прослуховування на власній машині, без підписки. Файли, покладені в папку бібліотеки, з’являються без повторного сканування, а цілі папки завантажуються перетягуванням. Але є нюанс: Audiobookshelf іде без книг, він відтворює файли, які ви принесете. Для електронних книг є лише базова читалка, для EPUB, PDF, CBR і CBZ."
+			],
+			"faq": [
+				{
+					"q": "Audiobookshelf безплатний і з відкритим кодом?",
+					"a": "Так. Сервер і його застосунки для Android та iOS повністю з відкритим кодом за ліцензією GPL-3.0, тож Audiobookshelf можна безплатно запускати, змінювати й поширювати."
+				},
+				{
+					"q": "Чи є застосунок Audiobookshelf для iPhone і Android?",
+					"a": "Так, обидва в бета-версії. Застосунок для Android є в Google Play. Застосунок для iOS — бета в TestFlight, яка зараз заповнена, бо Apple обмежує кількість тестувальників до 10 000. Вебзастосунок також можна встановити як PWA."
+				},
+				{
+					"q": "Чи можуть кілька людей користуватися одним сервером Audiobookshelf?",
+					"a": "Так. Адміністратор створює акаунти типу admin, user або guest, у кожного свої права, а прогрес прослуховування кожного користувача зберігається окремо й синхронізується між його пристроями."
+				},
+				{
+					"q": "Як організувати папки для Audiobookshelf?",
+					"a": "Дайте кожній книзі окрему папку зі структурою Автор/Серія/Книга або Автор/Книга. Книга з одного файлу може лежати в корені бібліотеки, а її дані підтягуються з ID3-тегів файлів."
+				},
+				{
+					"q": "Які логін і пароль за замовчуванням в Audiobookshelf?",
+					"a": "Їх немає: на новому сервері перша людина, яка його відкриє, створює користувача root на сторінці «Initial Server Setup». Цей шаблон створює root із паролем адміністратора, який ви вказуєте під час деплою, тож ця сторінка ніколи не лишається відкритою."
+				}
+			]
 		}
 	}
 }

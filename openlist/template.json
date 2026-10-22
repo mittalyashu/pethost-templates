@@ -1,6 +1,11 @@
 {
 	"name": "OpenList",
 	"emoji": "🗂️",
+	"category": "files",
+	"alternatives": [
+		"AList"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "openlist",
 		"port": 5244
@@ -14,35 +19,259 @@
 	"texts": {
 		"en": {
 			"description": "One file list over many storages: cloud drives, S3, WebDAV and more, browsed, previewed and shared in the browser",
-			"notes": "Sign in as admin with the admin password you gave, then add a storage under Storages at https://{host}/@manage. Its files are also served over WebDAV at https://{host}/dav."
+			"notes": "Sign in as admin with the admin password you gave, then add a storage under Storages at https://{host}/@manage. Its files are also served over WebDAV at https://{host}/dav.",
+			"sizing": "OpenList is very light: tens of megabytes of memory, and the files stay in the storages it lists.",
+			"summary": "OpenList is an open-source AList fork that shows Google Drive, OneDrive, S3 and dozens more storages in one file list. Self-host it in one click.",
+			"about": [
+				"OpenList is an open-source file list program, the community-run fork of AList, that puts many storages behind one web page. Add Google Drive, OneDrive, Dropbox, S3, SMB or one of dozens of other drivers, and each becomes a folder in the same tree. Video and audio play in the browser with subtitles, images open in a gallery, and PDF and Office files preview without a download. The whole tree is also a WebDAV server, so rclone or a phone's file manager can mount it.",
+				"People self-host OpenList to see every drive in one place and to share files on their own terms, from a direct link to a password on a folder. One catch: folder passwords do not apply over WebDAV, where each user's own permissions decide what a client can reach."
+			],
+			"faq": [
+				{
+					"q": "Is OpenList free and open source?",
+					"a": "Yes. OpenList is licensed under AGPL-3.0, its code is on GitHub at OpenListTeam/OpenList, and the project says it has no paid plans and its features cost nothing to use."
+				},
+				{
+					"q": "What is the difference between OpenList and AList?",
+					"a": "OpenList is a community-run fork of AList and works the same way. To move over, keep AList's data folder if AList is older than v3.46, or else restore an AList backup through Backup & Restore."
+				},
+				{
+					"q": "Does OpenList have a mobile app?",
+					"a": "Yes, OpenList Mobile for Android, with iOS still experimental, but it runs OpenList on the phone itself. To reach your own server from a phone, use its web page or a WebDAV client such as Solid Explorer."
+				},
+				{
+					"q": "How do users and permissions work in OpenList?",
+					"a": "Each user has a base path, the folder they see as root, and switches such as Mkdir or upload, Rename, Delete and Webdav read. Visitors who do not sign in act as the guest user, which is disabled by default."
+				},
+				{
+					"q": "Does Pethost back up my OpenList files?",
+					"a": "It backs up OpenList's own data: its volume, with the database of storages, users and settings, every night, kept for 14 days. Files in your cloud drives stay with those providers and are not copied."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Dateiliste über viele Speicher: Cloud-Laufwerke, S3, WebDAV und mehr, im Browser durchsucht, angezeigt und geteilt",
-			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an und füge dann unter Storages auf https://{host}/@manage einen Speicher hinzu. Seine Dateien gibt es auch per WebDAV unter https://{host}/dav."
+			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an und füge dann unter Storages auf https://{host}/@manage einen Speicher hinzu. Seine Dateien gibt es auch per WebDAV unter https://{host}/dav.",
+			"sizing": "OpenList ist sehr leicht: Dutzende MB RAM, und die Dateien bleiben in den Storages, die es auflistet.",
+			"summary": "OpenList selbst hosten: Open-Source-Fork von AList mit Google Drive, OneDrive, S3 und Dutzenden weiteren Speichern in einer Dateiliste. Mit einem Klick.",
+			"about": [
+				"OpenList ist ein Open-Source-Programm, das viele Speicher hinter einer Webseite zu einer Dateiliste vereint, der von der Community getragene Fork von AList. Du bindest Google Drive, OneDrive, Dropbox, S3, SMB oder einen von Dutzenden weiteren Treibern ein, und jeder wird zu einem Ordner im selben Baum. Video und Audio laufen im Browser mit Untertiteln, Bilder öffnen sich in einer Galerie, und PDF- und Office-Dateien zeigen eine Vorschau ohne Download. Der ganze Baum ist außerdem ein WebDAV-Server, den rclone oder der Dateimanager eines Handys einbinden kann.",
+				"Du hostest OpenList selbst, um alle Laufwerke an einem Ort zu sehen und Dateien zu deinen Bedingungen zu teilen, vom direkten Link bis zum Passwort auf einem Ordner. Ein Haken: Ordnerpasswörter gelten nicht über WebDAV, dort entscheiden die eigenen Berechtigungen jedes Benutzers, was ein Client erreicht."
+			],
+			"faq": [
+				{
+					"q": "Ist OpenList kostenlos und Open Source?",
+					"a": "Ja. OpenList steht unter der AGPL-3.0, sein Code liegt auf GitHub unter OpenListTeam/OpenList, und das Projekt sagt, dass es keine kostenpflichtigen Tarife hat und seine Funktionen nichts kosten."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen OpenList und AList?",
+					"a": "OpenList ist ein von der Community getragener Fork von AList und funktioniert genauso. Zum Umstieg behältst du den Datenordner von AList, wenn AList älter als v3.46 ist, sonst stellst du ein AList-Backup über Backup & Restore wieder her."
+				},
+				{
+					"q": "Hat OpenList eine mobile App?",
+					"a": "Ja, OpenList Mobile für Android, iOS ist noch experimentell. Die App führt OpenList aber auf dem Handy selbst aus. Um deine eigene Instanz vom Handy aus zu erreichen, nutze ihre Webseite oder einen WebDAV-Client wie Solid Explorer."
+				},
+				{
+					"q": "Wie funktionieren Benutzer und Berechtigungen in OpenList?",
+					"a": "Jeder Benutzer bekommt einen Basispfad, also den Ordner, der für ihn die Wurzel ist, und Schalter wie Mkdir or upload, Rename, Delete und Webdav read. Besucher, die sich nicht anmelden, handeln als Gastbenutzer, der standardmäßig deaktiviert ist."
+				},
+				{
+					"q": "Sichert Pethost meine OpenList-Dateien?",
+					"a": "Pethost sichert die eigenen Daten von OpenList: sein Volume mit der Datenbank der Speicher, Benutzer und Einstellungen, jede Nacht, 14 Tage aufbewahrt. Dateien in deinen Cloud-Laufwerken bleiben bei diesen Anbietern und werden nicht kopiert."
+				}
+			]
 		},
 		"es": {
 			"description": "Una sola lista de archivos sobre muchos almacenamientos: nubes, S3, WebDAV y más, para explorar, previsualizar y compartir en el navegador",
-			"notes": "Entra como admin con la contraseña de administrador que indicaste y añade un almacenamiento en Storages, en https://{host}/@manage. Sus archivos también se sirven por WebDAV en https://{host}/dav."
+			"notes": "Entra como admin con la contraseña de administrador que indicaste y añade un almacenamiento en Storages, en https://{host}/@manage. Sus archivos también se sirven por WebDAV en https://{host}/dav.",
+			"sizing": "OpenList es muy ligero: decenas de MB de memoria, y los archivos se quedan en los almacenamientos que lista.",
+			"summary": "Autoaloja OpenList, el fork de código abierto de AList que muestra Google Drive, OneDrive, S3 y decenas de almacenamientos más en una lista. En un clic.",
+			"about": [
+				"OpenList es un programa de código abierto que reúne muchos almacenamientos en una sola página web como una única lista de archivos, el fork de AList que mantiene la comunidad. Agrega Google Drive, OneDrive, Dropbox, S3, SMB o cualquiera de sus decenas de otros drivers, y cada uno se convierte en una carpeta del mismo árbol. El video y el audio se reproducen en el navegador con subtítulos, las imágenes se abren en una galería y los archivos PDF y de Office se previsualizan sin descargarlos. Todo el árbol es también un servidor WebDAV, así que rclone o el administrador de archivos de un teléfono puede montarlo.",
+				"Autoalojas OpenList para ver todas tus unidades en un solo lugar y compartir archivos en tus propios términos, desde un enlace directo hasta una contraseña en una carpeta. Un inconveniente: las contraseñas de carpeta no se aplican por WebDAV, donde los permisos propios de cada usuario deciden a qué puede acceder un cliente."
+			],
+			"faq": [
+				{
+					"q": "¿OpenList es gratis y de código abierto?",
+					"a": "Sí. OpenList tiene licencia AGPL-3.0, su código está en GitHub, en OpenListTeam/OpenList, y el proyecto dice que no tiene planes de pago y que sus funciones no cuestan nada."
+				},
+				{
+					"q": "¿Qué diferencia hay entre OpenList y AList?",
+					"a": "OpenList es un fork de AList que mantiene la comunidad y funciona igual. Para migrar, conserva la carpeta de datos de AList si AList es anterior a la v3.46; si no, restaura un backup de AList desde Backup & Restore."
+				},
+				{
+					"q": "¿OpenList tiene app móvil?",
+					"a": "Sí, OpenList Mobile para Android, con iOS todavía experimental, pero la app ejecuta OpenList en el propio teléfono. Para llegar a tu propia instancia desde el teléfono, usa su página web o un cliente WebDAV como Solid Explorer."
+				},
+				{
+					"q": "¿Cómo funcionan los usuarios y los permisos en OpenList?",
+					"a": "Cada usuario tiene una ruta base, la carpeta que ve como raíz, e interruptores como Mkdir or upload, Rename, Delete y Webdav read. Los visitantes que no inician sesión actúan como el usuario invitado, que está desactivado por defecto."
+				},
+				{
+					"q": "¿Pethost hace backup de mis archivos de OpenList?",
+					"a": "Hace backup de los datos propios de OpenList cada noche: su volumen, con la base de datos de almacenamientos, usuarios y ajustes. Se conservan 14 días. Los archivos de tus unidades en la nube se quedan con esos proveedores y no se copian."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une seule liste de fichiers sur de nombreux stockages : clouds, S3, WebDAV et plus, à parcourir, prévisualiser et partager dans le navigateur",
-			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué, puis ajoutez un stockage dans Storages, à https://{host}/@manage. Ses fichiers sont aussi servis en WebDAV à https://{host}/dav."
+			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué, puis ajoutez un stockage dans Storages, à https://{host}/@manage. Ses fichiers sont aussi servis en WebDAV à https://{host}/dav.",
+			"sizing": "OpenList est très léger : quelques dizaines de MB de mémoire, et les fichiers restent dans les stockages qu’il liste.",
+			"summary": "Auto-hébergez OpenList, le fork open source d’AList qui réunit Google Drive, OneDrive, S3 et des dizaines d’autres stockages dans une liste. En un clic.",
+			"about": [
+				"OpenList est un programme open source, le fork d’AList mené par la communauté, qui place de nombreux stockages derrière une seule page web, en une liste de fichiers. Ajoutez Google Drive, OneDrive, Dropbox, S3, SMB ou l’un de ses dizaines d’autres drivers, et chacun devient un dossier du même arbre. Vidéo et audio se lisent dans le navigateur avec sous-titres, les images s’ouvrent dans une galerie, et les fichiers PDF et Office se prévisualisent sans téléchargement. Tout l’arbre est aussi un serveur WebDAV, que rclone ou le gestionnaire de fichiers d’un téléphone peut monter.",
+				"Vous auto-hébergez OpenList pour voir tous vos disques au même endroit et partager des fichiers comme vous l’entendez, d’un lien direct à un mot de passe sur un dossier. Le revers : les mots de passe de dossier ne s’appliquent pas en WebDAV, où les droits propres à chaque utilisateur décident de ce qu’un client peut atteindre."
+			],
+			"faq": [
+				{
+					"q": "OpenList est-il gratuit et open source ?",
+					"a": "Oui. OpenList est sous licence AGPL-3.0, son code est sur GitHub, à OpenListTeam/OpenList, et le projet dit qu’il n’a aucune offre payante et que ses fonctionnalités ne coûtent rien à utiliser."
+				},
+				{
+					"q": "Quelle est la différence entre OpenList et AList ?",
+					"a": "OpenList est un fork d’AList mené par la communauté et fonctionne de la même façon. Pour migrer, gardez le dossier de données d’AList si AList est antérieur à la v3.46, sinon restaurez une sauvegarde d’AList via Backup & Restore."
+				},
+				{
+					"q": "OpenList a-t-il une application mobile ?",
+					"a": "Oui, OpenList Mobile pour Android, iOS restant expérimental, mais l’application fait tourner OpenList sur le téléphone lui-même. Pour joindre votre propre instance depuis un téléphone, utilisez sa page web ou un client WebDAV comme Solid Explorer."
+				},
+				{
+					"q": "Comment fonctionnent les utilisateurs et les permissions dans OpenList ?",
+					"a": "Chaque utilisateur a un chemin de base, le dossier qu’il voit comme racine, et des options comme Mkdir or upload, Rename, Delete et Webdav read. Les visiteurs qui ne se connectent pas agissent comme l’utilisateur invité, désactivé par défaut."
+				},
+				{
+					"q": "Pethost sauvegarde-t-il mes fichiers OpenList ?",
+					"a": "Il sauvegarde les données propres d’OpenList : son volume, avec la base de données des stockages, des utilisateurs et des paramètres, chaque nuit, et les conserve 14 jours. Les fichiers de vos disques cloud restent chez ces fournisseurs et ne sont pas copiés."
+				}
+			]
 		},
 		"pl": {
 			"description": "Jedna lista plików z wielu magazynów: dyski w chmurze, S3, WebDAV i inne, przeglądane, podglądane i udostępniane w przeglądarce",
-			"notes": "Zaloguj się jako admin hasłem administratora, które podano, a potem dodaj magazyn w Storages pod https://{host}/@manage. Jego pliki są też dostępne przez WebDAV pod https://{host}/dav."
+			"notes": "Zaloguj się jako admin hasłem administratora, które podano, a potem dodaj magazyn w Storages pod https://{host}/@manage. Jego pliki są też dostępne przez WebDAV pod https://{host}/dav.",
+			"sizing": "OpenList ma bardzo małe wymagania: dziesiątki MB pamięci, a pliki zostają w magazynach, które pokazuje.",
+			"summary": "Hostuj u siebie OpenList: fork AList open source z Google Drive, OneDrive, S3 i dziesiątkami innych magazynów w jednej liście plików. W jeden klik.",
+			"about": [
+				"OpenList to program typu open source: rozwijany przez społeczność fork AList, który zbiera wiele magazynów na jednej stronie jako jedną listę plików. Dodaj Google Drive, OneDrive, Dropbox, S3, SMB albo jeden z dziesiątek innych driverów, a każdy stanie się katalogiem w tym samym drzewie. Wideo i audio odtwarzasz w przeglądarce z napisami, obrazy otwierają się w galerii, a pliki PDF i Office mają podgląd bez pobierania. Całe drzewo jest też serwerem WebDAV, więc rclone albo menedżer plików w telefonie może je zamontować.",
+				"OpenList hostujesz u siebie, żeby widzieć wszystkie dyski w jednym miejscu i udostępniać pliki na własnych zasadach, od bezpośredniego linku po hasło na katalogu. Haczyk: hasła katalogów nie działają przez WebDAV, gdzie o tym, do czego klient ma dostęp, decydują własne uprawnienia każdego użytkownika."
+			],
+			"faq": [
+				{
+					"q": "Czy OpenList jest darmowy i open source?",
+					"a": "Tak. OpenList jest na licencji AGPL-3.0, jego kod jest na GitHubie w OpenListTeam/OpenList, a projekt twierdzi, że nie ma płatnych planów i jego funkcje nic nie kosztują."
+				},
+				{
+					"q": "Czym różni się OpenList od AList?",
+					"a": "OpenList to rozwijany przez społeczność fork AList i działa tak samo. Żeby przejść, zachowaj katalog z danymi AList, jeśli AList jest starszy niż v3.46, a w przeciwnym razie przywróć backup AList przez Backup & Restore."
+				},
+				{
+					"q": "Czy OpenList ma aplikację mobilną?",
+					"a": "Tak, OpenList Mobile na Androida, a iOS jest wciąż eksperymentalny, ale aplikacja uruchamia OpenList na samym telefonie. Żeby dostać się z telefonu do własnej instancji, użyj jej strony albo klienta WebDAV, takiego jak Solid Explorer."
+				},
+				{
+					"q": "Jak działają użytkownicy i uprawnienia w OpenList?",
+					"a": "Każdy użytkownik ma ścieżkę bazową, czyli katalog, który widzi jako główny, oraz przełączniki, takie jak Mkdir or upload, Rename, Delete i Webdav read. Odwiedzający, którzy się nie logują, działają jako użytkownik gość, który domyślnie jest wyłączony."
+				},
+				{
+					"q": "Czy Pethost robi backup moich plików z OpenList?",
+					"a": "Co noc robi backup własnych danych OpenList: jego wolumenu z bazą magazynów, użytkowników i ustawień. Backupy są przechowywane 14 dni. Pliki na twoich dyskach w chmurze zostają u tych dostawców i nie są kopiowane."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma única lista de arquivos sobre vários armazenamentos: nuvens, S3, WebDAV e mais, para navegar, pré-visualizar e compartilhar no navegador",
-			"notes": "Entre como admin com a senha de administrador que você informou e adicione um armazenamento em Storages, em https://{host}/@manage. Os arquivos dele também são servidos por WebDAV em https://{host}/dav."
+			"notes": "Entre como admin com a senha de administrador que você informou e adicione um armazenamento em Storages, em https://{host}/@manage. Os arquivos dele também são servidos por WebDAV em https://{host}/dav.",
+			"sizing": "OpenList é muito leve: dezenas de MB de memória, e os arquivos ficam nos armazenamentos que ele lista.",
+			"summary": "Auto-hospede o OpenList, fork do AList de código aberto que mostra Google Drive, OneDrive, S3 e dezenas de armazenamentos em uma só lista. Em um clique.",
+			"about": [
+				"O OpenList é um programa de código aberto, o fork do AList mantido pela comunidade, que reúne vários armazenamentos em uma só página web, como uma única lista de arquivos. Adicione Google Drive, OneDrive, Dropbox, S3, SMB ou um de dezenas de outros drivers, e cada um vira uma pasta na mesma árvore. Vídeo e áudio tocam no navegador com legendas, as imagens abrem em uma galeria e os arquivos PDF e Office têm pré-visualização sem download. A árvore inteira também é um servidor WebDAV, então o rclone ou o gerenciador de arquivos de um celular consegue montá-la.",
+				"Quem auto-hospeda o OpenList quer ver todos os drives em um só lugar e compartilhar arquivos nas próprias condições, de um link direto a uma senha em uma pasta. O porém: as senhas de pasta não valem no WebDAV, onde as permissões de cada usuário decidem o que um cliente consegue acessar."
+			],
+			"faq": [
+				{
+					"q": "O OpenList é gratuito e de código aberto?",
+					"a": "Sim. O OpenList usa a licença AGPL-3.0, o código fica no GitHub em OpenListTeam/OpenList, e o projeto diz que não tem planos pagos e que seus recursos não custam nada."
+				},
+				{
+					"q": "Qual é a diferença entre o OpenList e o AList?",
+					"a": "O OpenList é um fork do AList mantido pela comunidade e funciona do mesmo jeito. Para migrar, mantenha a pasta de dados do AList se ele for anterior à v3.46; caso contrário, restaure um backup do AList em Backup & Restore."
+				},
+				{
+					"q": "O OpenList tem app para celular?",
+					"a": "Sim, o OpenList Mobile para Android, com o iOS ainda experimental, mas o app roda o OpenList no próprio celular. Para acessar a sua própria instância pelo celular, use a página web dela ou um cliente WebDAV como o Solid Explorer."
+				},
+				{
+					"q": "Como funcionam usuários e permissões no OpenList?",
+					"a": "Cada usuário tem um caminho base, a pasta que ele vê como raiz, e opções como Mkdir or upload, Rename, Delete e Webdav read. Visitantes que não entram atuam como o usuário convidado, que vem desativado por padrão."
+				},
+				{
+					"q": "O Pethost faz backup dos meus arquivos do OpenList?",
+					"a": "Ele faz backup dos dados do próprio OpenList: o volume dele, com o banco de dados de armazenamentos, usuários e configurações, toda noite, guardados por 14 dias. Os arquivos dos seus drives na nuvem ficam com esses provedores e não são copiados."
+				}
+			]
 		},
 		"ru": {
 			"description": "Один список файлов поверх многих хранилищ: облачные диски, S3, WebDAV и другие — просмотр, предпросмотр и общий доступ в браузере",
-			"notes": "Войдите как admin с паролем администратора, который вы указали, и добавьте хранилище в разделе Storages на https://{host}/@manage. Его файлы доступны и по WebDAV по адресу https://{host}/dav."
+			"notes": "Войдите как admin с паролем администратора, который вы указали, и добавьте хранилище в разделе Storages на https://{host}/@manage. Его файлы доступны и по WebDAV по адресу https://{host}/dav.",
+			"sizing": "OpenList: совсем небольшие требования — десятки MB памяти, а файлы остаются в тех хранилищах, что он показывает.",
+			"summary": "Self-hosted OpenList — open source форк AList, который показывает Google Drive, OneDrive, S3 и десятки других хранилищ одним списком файлов. В один клик.",
+			"about": [
+				"OpenList — это open source программа, которая собирает много хранилищ на одной веб-странице в единый список файлов, форк AList, развиваемый сообществом. Подключите Google Drive, OneDrive, Dropbox, S3, SMB или один из десятков других драйверов, и каждый станет папкой в общем дереве. Видео и аудио воспроизводятся в браузере с субтитрами, изображения открываются в галерее, а PDF и файлы Office просматриваются без скачивания. Все дерево также работает как WebDAV-сервер, поэтому его могут смонтировать rclone или файловый менеджер на телефоне.",
+				"OpenList хостят у себя, чтобы видеть все диски в одном месте и делиться файлами на своих условиях: от прямой ссылки до пароля на папку. Но есть нюанс: пароли на папки не действуют по WebDAV, где то, до чего клиент может добраться, решают собственные права каждого пользователя."
+			],
+			"faq": [
+				{
+					"q": "OpenList бесплатный и с открытым кодом?",
+					"a": "Да. OpenList распространяется под лицензией AGPL-3.0, его код лежит на GitHub в OpenListTeam/OpenList, а проект заявляет, что платных тарифов у него нет и пользоваться его функциями можно бесплатно."
+				},
+				{
+					"q": "Чем OpenList отличается от AList?",
+					"a": "OpenList — форк AList, который развивает сообщество, и работает он так же. Чтобы перейти, оставьте папку с данными AList, если AList старше v3.46, а иначе восстановите бэкап AList через Backup & Restore."
+				},
+				{
+					"q": "Есть ли у OpenList мобильное приложение?",
+					"a": "Да, OpenList Mobile для Android (версия для iOS пока экспериментальная), но приложение запускает сам OpenList на телефоне. Чтобы добраться с телефона до своего экземпляра, используйте его веб-страницу или WebDAV-клиент вроде Solid Explorer."
+				},
+				{
+					"q": "Как в OpenList устроены пользователи и права?",
+					"a": "У каждого пользователя есть базовый путь, то есть папка, которую он видит как корневую, и переключатели вроде Mkdir or upload, Rename, Delete и Webdav read. Посетители, которые не входят в систему, работают как гостевой пользователь, который по умолчанию отключен."
+				},
+				{
+					"q": "Делает ли Pethost бэкап моих файлов OpenList?",
+					"a": "Он каждую ночь делает бэкап собственных данных OpenList: тома с базой хранилищ, пользователей и настроек, и хранит бэкапы 14 дней. Файлы на ваших облачных дисках остаются у этих провайдеров и не копируются."
+				}
+			]
 		},
 		"uk": {
 			"description": "Один список файлів поверх багатьох сховищ: хмарні диски, S3, WebDAV та інші — перегляд, попередній перегляд і спільний доступ у браузері",
-			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали, і додайте сховище в розділі Storages на https://{host}/@manage. Його файли доступні й через WebDAV за адресою https://{host}/dav."
+			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали, і додайте сховище в розділі Storages на https://{host}/@manage. Його файли доступні й через WebDAV за адресою https://{host}/dav.",
+			"sizing": "OpenList має дуже скромні вимоги: десятки MB пам’яті, а файли лишаються в сховищах, які він показує.",
+			"summary": "Self-hosted OpenList — форк AList із відкритим кодом, що показує Google Drive, OneDrive, S3 і десятки інших сховищ в одному списку файлів. В один клік.",
+			"about": [
+				"OpenList — це програма з відкритим кодом, що збирає багато сховищ на одній вебсторінці в єдиний список файлів, форк AList, який розвиває спільнота. Підключіть Google Drive, OneDrive, Dropbox, S3, SMB або один із десятків інших драйверів, і кожен стане папкою в спільному дереві. Відео й аудіо відтворюються в браузері із субтитрами, зображення відкриваються в галереї, а PDF і файли Office переглядаються без завантаження. Усе дерево також працює як WebDAV-сервер, тож його можуть змонтувати rclone або файловий менеджер на телефоні.",
+				"OpenList хостять у себе, щоб бачити всі диски в одному місці й ділитися файлами на своїх умовах: від прямого посилання до пароля на папці. Але є нюанс: паролі на папки не діють через WebDAV, де те, до чого клієнт може дістатися, вирішують власні права кожного користувача."
+			],
+			"faq": [
+				{
+					"q": "OpenList безплатний і з відкритим кодом?",
+					"a": "Так. OpenList має ліцензію AGPL-3.0, його код лежить на GitHub у OpenListTeam/OpenList, а проєкт заявляє, що платних тарифів у нього немає і користуватися його функціями можна безплатно."
+				},
+				{
+					"q": "Чим OpenList відрізняється від AList?",
+					"a": "OpenList — форк AList, який розвиває спільнота, і працює він так само. Щоб перейти, залиште папку з даними AList, якщо AList старший за v3.46, а інакше відновіть бекап AList через Backup & Restore."
+				},
+				{
+					"q": "Чи є в OpenList мобільний застосунок?",
+					"a": "Так, OpenList Mobile для Android (версія для iOS поки експериментальна), але застосунок запускає сам OpenList на телефоні. Щоб дістатися з телефона до власного екземпляра, скористайтеся його вебсторінкою або WebDAV-клієнтом на кшталт Solid Explorer."
+				},
+				{
+					"q": "Як в OpenList влаштовані користувачі та права?",
+					"a": "Кожен користувач має базовий шлях, тобто папку, яку він бачить як кореневу, і перемикачі на кшталт Mkdir or upload, Rename, Delete і Webdav read. Відвідувачі, які не входять, працюють як гостьовий користувач, який за замовчуванням вимкнений."
+				},
+				{
+					"q": "Чи робить Pethost бекап моїх файлів OpenList?",
+					"a": "Він щоночі робить бекап власних даних OpenList: тому з базою сховищ, користувачів і налаштувань, і зберігає бекапи 14 днів. Файли на ваших хмарних дисках лишаються в цих провайдерів і не копіюються."
+				}
+			]
 		}
 	}
 }

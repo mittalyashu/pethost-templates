@@ -1,6 +1,12 @@
 {
 	"name": "RSSHub",
 	"emoji": "📡",
+	"category": "reading",
+	"alternatives": [
+		"RSS.app",
+		"FetchRSS"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "rsshub",
 		"port": 1200
@@ -14,35 +20,259 @@
 	"texts": {
 		"en": {
 			"description": "RSS feeds for sites that have none",
-			"notes": "A feed is a route’s path after the address, for example https://{host}/github/repos/DIYgod. Put the address into your feed reader in place of rsshub.app."
+			"notes": "A feed is a route’s path after the address, for example https://{host}/github/repos/DIYgod. Put the address into your feed reader in place of rsshub.app.",
+			"sizing": "RSSHub is moderate: about 1 GB with its headless Chromium, more for each page it renders; it stores only a cache.",
+			"summary": "RSSHub is an open-source RSS feed generator that makes feeds from Telegram, Instagram, GitHub and more. Self-host it in one click instead of RSS.app.",
+			"about": [
+				"RSSHub is an open-source RSS feed generator that people run instead of RSS.app. Its contributors write a route for each site, from YouTube and Telegram to Bilibili and Weibo, and a feed is then an address such as /telegram/channel/awesomeRSSHub. Feeds come as RSS 2.0, Atom or JSON Feed. Parameters on the address filter entries by keyword, cap their number or fetch the full text.",
+				"People self-host RSSHub for reliability. Popular sites limit requests per IP address, which makes the shared rsshub.app instance unreliable at times, so its docs suggest running your own. Your instance can also hold your own keys and cookies for routes that need a login. The catch: sites with strict anti-crawling can still block its requests, and routes that drive a headless browser need more resources."
+			],
+			"faq": [
+				{
+					"q": "Is RSSHub free and open source?",
+					"a": "Yes. RSSHub is free and open source under the AGPL-3.0 licence, with its code on GitHub at DIYgod/RSSHub. The project also runs a public instance, rsshub.app, which is free to use."
+				},
+				{
+					"q": "Can RSSHub turn any website into an RSS feed?",
+					"a": "Only sites that have a route, which the docs list. Other pages work through the Transformation - HTML route, which builds a feed from CSS selectors, once ALLOW_USER_SUPPLY_UNSAFE_DOMAIN is true; the docs warn this can allow SSRF."
+				},
+				{
+					"q": "How do I find the RSSHub feed for a website?",
+					"a": "Search the routes in RSSHub's docs, or install the RSSHub Radar extension for Chrome, Edge, Firefox or Safari. On any page it shows the page's own RSS feed, if there is one, and the RSSHub routes that cover it."
+				},
+				{
+					"q": "Does RSSHub need an API key for YouTube or Instagram?",
+					"a": "Not for most feeds. YouTube channel, user and playlist routes work without YOUTUBE_KEY, which is optional there. Instagram public profiles need no cookie, while stories, highlights, hashtags and private profiles need INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Can I make my RSSHub instance private?",
+					"a": "Yes. Set ACCESS_KEY, and every feed then needs ?key= with that key, or ?code= with the MD5 of the route followed by the key. The health check in compose.yaml needs the key as well."
+				}
+			]
 		},
 		"de": {
 			"description": "RSS-Feeds für Websites, die keine haben",
-			"notes": "Ein Feed ist der Pfad einer Route hinter der Adresse, zum Beispiel https://{host}/github/repos/DIYgod. Trag in deinem Feedreader die Adresse anstelle von rsshub.app ein."
+			"notes": "Ein Feed ist der Pfad einer Route hinter der Adresse, zum Beispiel https://{host}/github/repos/DIYgod. Trag in deinem Feedreader die Adresse anstelle von rsshub.app ein.",
+			"sizing": "RSSHub ist mittelschwer: etwa 1 GB mit Headless-Chromium, mehr für jede gerenderte Seite; es speichert nur einen Cache.",
+			"summary": "RSSHub selbst hosten: Open-Source-Generator für RSS-Feeds aus Telegram, Instagram, GitHub und mehr. In einem Klick statt RSS.app.",
+			"about": [
+				"RSSHub ist ein Open-Source-Generator für RSS-Feeds, den Leute statt RSS.app betreiben. Wer zum Projekt beiträgt, schreibt für jede Seite eine Route, von YouTube und Telegram bis Bilibili und Weibo, und ein Feed ist dann eine Adresse wie /telegram/channel/awesomeRSSHub. Feeds gibt es als RSS 2.0, Atom oder JSON Feed. Parameter an der Adresse filtern Einträge nach Stichwort, begrenzen ihre Anzahl oder holen den vollständigen Text.",
+				"Wer RSSHub selbst hostet, tut das für mehr Zuverlässigkeit. Beliebte Seiten begrenzen die Requests pro IP-Adresse, wodurch die gemeinsame Instanz rsshub.app zeitweise unzuverlässig ist, und die Doku legt deshalb nahe, eine eigene zu betreiben. Auf deiner Instanz kannst du außerdem eigene Keys und Cookies für Routen hinterlegen, die einen Login brauchen. Der Haken: Seiten mit strengem Anti-Crawling können seine Requests trotzdem blockieren, und Routen, die einen Headless-Browser ansteuern, brauchen mehr Ressourcen."
+			],
+			"faq": [
+				{
+					"q": "Ist RSSHub kostenlos und Open Source?",
+					"a": "Ja. RSSHub ist kostenlos und Open Source unter der AGPL-3.0-Lizenz, sein Code liegt auf GitHub im Repository DIYgod/RSSHub. Das Projekt betreibt außerdem eine öffentliche Instanz, rsshub.app, die kostenlos genutzt werden kann."
+				},
+				{
+					"q": "Kann RSSHub aus jeder Website einen RSS-Feed machen?",
+					"a": "Nur aus Seiten, für die es eine Route gibt; die Doku listet sie auf. Andere Seiten funktionieren über die Route „Transformation - HTML“, die aus CSS-Selektoren einen Feed baut, sobald ALLOW_USER_SUPPLY_UNSAFE_DOMAIN auf true steht. Die Doku warnt, dass das SSRF ermöglichen kann."
+				},
+				{
+					"q": "Wie finde ich den RSSHub-Feed für eine Website?",
+					"a": "Such die Routen in der Doku von RSSHub oder installiere die Browsererweiterung RSSHub Radar für Chrome, Edge, Firefox oder Safari. Auf jeder Seite zeigt sie den eigenen RSS-Feed der Seite, falls es einen gibt, und die RSSHub-Routen, die sie abdecken."
+				},
+				{
+					"q": "Braucht RSSHub einen API-Key für YouTube oder Instagram?",
+					"a": "Für die meisten Feeds nicht. Die YouTube-Routen für Kanal, Benutzer und Playlist funktionieren ohne YOUTUBE_KEY, der dort optional ist. Öffentliche Instagram-Profile brauchen kein Cookie, Stories, Highlights, Hashtags und private Profile dagegen INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Kann ich meine RSSHub-Instanz privat machen?",
+					"a": "Ja. Setz ACCESS_KEY, dann braucht jeder Feed ?key= mit diesem Key oder ?code= mit dem MD5 der Route, gefolgt vom Key. Auch der Healthcheck in der compose.yaml braucht den Key."
+				}
+			]
 		},
 		"es": {
 			"description": "Feeds RSS para sitios que no los tienen",
-			"notes": "Un feed es el path de una ruta después de la dirección, por ejemplo https://{host}/github/repos/DIYgod. Pon la dirección en tu lector de feeds en lugar de rsshub.app."
+			"notes": "Un feed es el path de una ruta después de la dirección, por ejemplo https://{host}/github/repos/DIYgod. Pon la dirección en tu lector de feeds en lugar de rsshub.app.",
+			"sizing": "RSSHub es moderado: cerca de 1 GB con su Chromium headless, más por cada página que renderiza; solo guarda una caché.",
+			"summary": "Autoaloja RSSHub, generador de feeds RSS de código abierto: feeds de Telegram, Instagram, GitHub y más. En un clic, en lugar de RSS.app.",
+			"about": [
+				"RSSHub es un generador de feeds RSS de código abierto que la gente ejecuta por su cuenta en lugar de usar RSS.app. Quienes colaboran con el proyecto escriben una ruta para cada sitio, desde YouTube y Telegram hasta Bilibili y Weibo, y un feed es entonces una dirección como /telegram/channel/awesomeRSSHub. Los feeds se ofrecen como RSS 2.0, Atom o JSON Feed. Los parámetros de la dirección filtran las entradas por palabra clave, limitan su número u obtienen el texto completo.",
+				"La gente autoaloja RSSHub para poder confiar en él. Los sitios populares limitan las peticiones por dirección IP, lo que a veces hace poco fiable la instancia compartida rsshub.app, y por eso su documentación sugiere ejecutar una propia. Tu instancia también puede guardar tus propias claves y cookies para las rutas que requieren iniciar sesión. El inconveniente: los sitios con medidas estrictas contra el crawling aún pueden bloquear sus peticiones, y las rutas que controlan un navegador headless necesitan más recursos."
+			],
+			"faq": [
+				{
+					"q": "¿RSSHub es gratis y de código abierto?",
+					"a": "Sí. RSSHub es gratis y de código abierto con licencia AGPL-3.0, y su código está en GitHub, en el repositorio DIYgod/RSSHub. El proyecto también mantiene una instancia pública, rsshub.app, que se puede usar gratis."
+				},
+				{
+					"q": "¿RSSHub puede convertir cualquier sitio web en un feed RSS?",
+					"a": "Solo los sitios que tienen una ruta, que la documentación enumera. Otras páginas funcionan con la ruta “Transformation - HTML”, que crea un feed a partir de selectores CSS cuando ALLOW_USER_SUPPLY_UNSAFE_DOMAIN es true. La documentación advierte que esto puede permitir SSRF."
+				},
+				{
+					"q": "¿Cómo encuentro el feed de RSSHub de un sitio web?",
+					"a": "Busca las rutas en la documentación de RSSHub o instala la extensión de navegador RSSHub Radar para Chrome, Edge, Firefox o Safari. En cualquier página muestra el feed RSS propio de la página, si lo hay, y las rutas de RSSHub que la cubren."
+				},
+				{
+					"q": "¿RSSHub necesita una clave de API para YouTube o Instagram?",
+					"a": "Para la mayoría de los feeds, no. Las rutas de canal, usuario y lista de reproducción de YouTube funcionan sin YOUTUBE_KEY, que allí es opcional. Los perfiles públicos de Instagram no necesitan cookie, mientras que las historias, las historias destacadas, los hashtags y los perfiles privados necesitan INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "¿Puedo hacer privada mi instancia de RSSHub?",
+					"a": "Sí. Define ACCESS_KEY y cada feed necesitará entonces ?key= con esa clave, o ?code= con el MD5 de la ruta seguido de la clave. El healthcheck de compose.yaml también necesita la clave."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des flux RSS pour les sites qui n’en ont pas",
-			"notes": "Un flux est le chemin d’une route à la suite de l’adresse, par exemple https://{host}/github/repos/DIYgod. Dans votre lecteur de flux, mettez l’adresse à la place de rsshub.app."
+			"notes": "Un flux est le chemin d’une route à la suite de l’adresse, par exemple https://{host}/github/repos/DIYgod. Dans votre lecteur de flux, mettez l’adresse à la place de rsshub.app.",
+			"sizing": "RSSHub est modéré : environ 1 GB avec son Chromium headless, plus pour chaque page qu’il rend ; il ne stocke qu’un cache.",
+			"summary": "Auto-hébergez RSSHub, le générateur de flux RSS open source : des flux Telegram, Instagram, GitHub et plus. En un clic, à la place de RSS.app.",
+			"about": [
+				"RSSHub est un générateur de flux RSS open source que l’on fait tourner à la place de RSS.app. Ses contributeurs écrivent une route pour chaque site, de YouTube et Telegram à Bilibili et Weibo, et un flux est alors une adresse comme /telegram/channel/awesomeRSSHub. Les flux sortent en RSS 2.0, Atom ou JSON Feed. Des paramètres dans l’adresse filtrent les entrées par mot-clé, plafonnent leur nombre ou récupèrent le texte intégral.",
+				"On auto-héberge RSSHub pour la fiabilité. Les sites populaires limitent les requêtes par adresse IP, ce qui rend l’instance partagée rsshub.app peu fiable par moments, et sa documentation suggère donc de faire tourner la vôtre. Votre instance peut aussi garder vos propres clés et cookies pour les routes qui demandent une connexion. Le revers : les sites aux protections anti-crawling strictes peuvent quand même bloquer ses requêtes, et les routes qui pilotent un navigateur headless demandent plus de ressources."
+			],
+			"faq": [
+				{
+					"q": "RSSHub est-il gratuit et open source ?",
+					"a": "Oui. RSSHub est gratuit et open source, sous licence AGPL-3.0, et son code est sur GitHub, dans le dépôt DIYgod/RSSHub. Le projet fait aussi tourner une instance publique, rsshub.app, d’utilisation gratuite."
+				},
+				{
+					"q": "RSSHub peut-il transformer n’importe quel site web en flux RSS ?",
+					"a": "Seulement les sites qui ont une route, ce que la documentation recense. Les autres pages passent par la route « Transformation - HTML », qui construit un flux à partir de sélecteurs CSS, lorsque ALLOW_USER_SUPPLY_UNSAFE_DOMAIN vaut true. La documentation prévient que cela peut permettre une SSRF."
+				},
+				{
+					"q": "Comment trouver le flux RSSHub d’un site web ?",
+					"a": "Cherchez les routes dans la documentation de RSSHub, ou installez l’extension de navigateur RSSHub Radar pour Chrome, Edge, Firefox ou Safari. Sur n’importe quelle page, elle affiche le flux RSS propre à la page, s’il y en a un, ainsi que les routes RSSHub qui la couvrent."
+				},
+				{
+					"q": "RSSHub a-t-il besoin d’une clé d’API pour YouTube ou Instagram ?",
+					"a": "Pas pour la plupart des flux. Les routes de chaîne, d’utilisateur et de playlist YouTube fonctionnent sans YOUTUBE_KEY, qui y est facultative. Les profils publics Instagram n’exigent aucun cookie, alors que les stories, les stories à la une, les hashtags et les profils privés exigent INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Puis-je rendre mon instance RSSHub privée ?",
+					"a": "Oui. Définissez ACCESS_KEY : chaque flux exige alors ?key= avec cette clé, ou ?code= avec le MD5 de la route suivi de la clé. Le healthcheck de compose.yaml a lui aussi besoin de la clé."
+				}
+			]
 		},
 		"pl": {
 			"description": "Kanały RSS dla stron, które ich nie mają",
-			"notes": "Kanał to ścieżka trasy po adresie, na przykład https://{host}/github/repos/DIYgod. W swoim czytniku kanałów wpisz adres projektu w miejsce rsshub.app."
+			"notes": "Kanał to ścieżka trasy po adresie, na przykład https://{host}/github/repos/DIYgod. W swoim czytniku kanałów wpisz adres projektu w miejsce rsshub.app.",
+			"sizing": "RSSHub ma średnie wymagania: około 1 GB z headless Chromium, więcej na każdą renderowaną stronę; zapisuje tylko cache.",
+			"summary": "Hostuj RSSHub u siebie: generator kanałów RSS open source. Robi kanały z Telegrama, Instagrama, GitHuba i nie tylko. W jeden klik zamiast RSS.app.",
+			"about": [
+				"RSSHub to generator kanałów RSS open source, który ludzie uruchamiają zamiast RSS.app. Jego współtwórcy piszą trasę dla każdej strony, od YouTube’a i Telegrama po Bilibili i Weibo, a kanał to wtedy adres taki jak /telegram/channel/awesomeRSSHub. Kanały są dostępne jako RSS 2.0, Atom albo JSON Feed. Parametry w adresie filtrują wpisy po słowie kluczowym, ograniczają ich liczbę albo pobierają pełny tekst.",
+				"Ludzie hostują RSSHub u siebie dla niezawodności. Popularne strony ograniczają liczbę żądań z jednego adresu IP, przez co wspólna instancja rsshub.app bywa zawodna, więc dokumentacja sugeruje uruchomienie własnej. Twoja instancja może też przechowywać twoje własne klucze i pliki cookie dla tras, które wymagają logowania. Haczyk: strony z rygorystyczną ochroną przed crawlowaniem nadal mogą blokować jego żądania, a trasy, które sterują przeglądarką headless, potrzebują więcej zasobów."
+			],
+			"faq": [
+				{
+					"q": "Czy RSSHub jest darmowy i open source?",
+					"a": "Tak. RSSHub jest darmowy i open source na licencji AGPL-3.0, a jego kod jest na GitHubie, w repozytorium DIYgod/RSSHub. Projekt prowadzi też publiczną instancję, rsshub.app, z której można korzystać za darmo."
+				},
+				{
+					"q": "Czy RSSHub może zamienić dowolną stronę w kanał RSS?",
+					"a": "Tylko strony, które mają trasę, a listę tras podaje dokumentacja. Inne strony działają przez trasę „Transformation - HTML”, która buduje kanał z selektorów CSS, gdy ALLOW_USER_SUPPLY_UNSAFE_DOMAIN ma wartość true. Dokumentacja ostrzega, że to może umożliwić SSRF."
+				},
+				{
+					"q": "Jak znaleźć kanał RSSHub dla strony?",
+					"a": "Poszukaj tras w dokumentacji RSSHub albo zainstaluj rozszerzenie RSSHub Radar do przeglądarki Chrome, Edge, Firefox lub Safari. Na każdej stronie pokazuje ono jej własny kanał RSS, jeśli taki jest, oraz trasy RSSHub, które ją obejmują."
+				},
+				{
+					"q": "Czy RSSHub potrzebuje klucza API do YouTube’a albo Instagrama?",
+					"a": "Nie przy większości kanałów. Trasy kanału, użytkownika i playlisty YouTube’a działają bez YOUTUBE_KEY, który jest tam opcjonalny. Publiczne profile na Instagramie nie wymagają pliku cookie, a relacje, wyróżnione relacje, hashtagi i prywatne profile wymagają INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Czy mogę zrobić swoją instancję RSSHub prywatną?",
+					"a": "Tak. Ustaw ACCESS_KEY, a każdy kanał będzie wtedy wymagał ?key= z tym kluczem albo ?code= z sumą MD5 z trasy i następującego po niej klucza. Healthcheck w compose.yaml też potrzebuje klucza."
+				}
+			]
 		},
 		"pt": {
 			"description": "Feeds RSS para sites que não têm feed",
-			"notes": "Um feed é o caminho de uma rota depois do endereço, por exemplo https://{host}/github/repos/DIYgod. Coloque o endereço no seu leitor de feeds no lugar de rsshub.app."
+			"notes": "Um feed é o caminho de uma rota depois do endereço, por exemplo https://{host}/github/repos/DIYgod. Coloque o endereço no seu leitor de feeds no lugar de rsshub.app.",
+			"sizing": "RSSHub é moderado: cerca de 1 GB com o Chromium headless, mais a cada página que renderiza; guarda só um cache.",
+			"summary": "Auto-hospede o RSSHub, gerador de feeds RSS de código aberto: feeds do Telegram, Instagram, GitHub e mais. Em um clique, no lugar do RSS.app.",
+			"about": [
+				"O RSSHub é um gerador de feeds RSS de código aberto que as pessoas rodam no lugar do RSS.app. Quem contribui com o projeto escreve uma rota para cada site, do YouTube e do Telegram ao Bilibili e ao Weibo, e um feed passa a ser um endereço como /telegram/channel/awesomeRSSHub. Os feeds saem em RSS 2.0, Atom ou JSON Feed. Parâmetros no endereço filtram os itens por palavra-chave, limitam a quantidade ou buscam o texto completo.",
+				"As pessoas auto-hospedam o RSSHub por confiabilidade. Sites populares limitam as requisições por endereço IP, o que torna a instância compartilhada rsshub.app pouco confiável às vezes, e por isso a documentação sugere rodar a sua. A sua instância também pode guardar suas próprias chaves e cookies para rotas que exigem login. O porém: sites com proteção rígida contra crawling ainda podem bloquear as requisições dele, e rotas que controlam um navegador headless precisam de mais recursos."
+			],
+			"faq": [
+				{
+					"q": "O RSSHub é gratuito e de código aberto?",
+					"a": "Sim. O RSSHub é gratuito e de código aberto, sob a licença AGPL-3.0, com o código no GitHub, no repositório DIYgod/RSSHub. O projeto também mantém uma instância pública, a rsshub.app, de uso gratuito."
+				},
+				{
+					"q": "O RSSHub consegue transformar qualquer site em um feed RSS?",
+					"a": "Só os sites que têm uma rota, que a documentação lista. Outras páginas funcionam pela rota “Transformation - HTML”, que monta um feed a partir de seletores CSS quando ALLOW_USER_SUPPLY_UNSAFE_DOMAIN é true. A documentação avisa que isso pode permitir SSRF."
+				},
+				{
+					"q": "Como encontro o feed do RSSHub de um site?",
+					"a": "Procure as rotas na documentação do RSSHub ou instale a extensão de navegador RSSHub Radar para Chrome, Edge, Firefox ou Safari. Em qualquer página, ela mostra o feed RSS da própria página, se houver, e as rotas do RSSHub que a cobrem."
+				},
+				{
+					"q": "O RSSHub precisa de chave de API para YouTube ou Instagram?",
+					"a": "Não para a maioria dos feeds. As rotas de canal, usuário e playlist do YouTube funcionam sem YOUTUBE_KEY, que ali é opcional. Perfis públicos do Instagram não precisam de cookie, já stories, destaques, hashtags e perfis privados precisam de INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Posso deixar minha instância do RSSHub privada?",
+					"a": "Pode. Defina ACCESS_KEY, e todo feed passa a exigir ?key= com essa chave, ou ?code= com o MD5 da rota seguido da chave. O healthcheck do compose.yaml também precisa da chave."
+				}
+			]
 		},
 		"ru": {
 			"description": "RSS-ленты для сайтов, у которых их нет",
-			"notes": "Лента — это путь маршрута после адреса, например https://{host}/github/repos/DIYgod. В своей читалке лент указывайте адрес проекта вместо rsshub.app."
+			"notes": "Лента — это путь маршрута после адреса, например https://{host}/github/repos/DIYgod. В своей читалке лент указывайте адрес проекта вместо rsshub.app.",
+			"sizing": "RSSHub: умеренные требования — около 1 GB вместе с headless Chromium, больше на каждую отрисованную страницу; на диске только кеш.",
+			"summary": "Self-hosted RSSHub: генератор RSS-лент с открытым кодом. Ленты из Telegram, Instagram, GitHub и не только. В один клик вместо RSS.app.",
+			"about": [
+				"RSSHub — это генератор RSS-лент с открытым кодом, который запускают у себя вместо RSS.app. Участники проекта пишут маршрут для каждого сайта, от YouTube и Telegram до Bilibili и Weibo, а лента — это адрес вроде /telegram/channel/awesomeRSSHub. Ленты отдаются в виде RSS 2.0, Atom или JSON Feed. Параметры в адресе фильтруют записи по ключевому слову, ограничивают их число или забирают полный текст.",
+				"RSSHub хостят у себя ради надежности. Популярные сайты ограничивают число запросов с одного IP-адреса, из-за чего общий инстанс rsshub.app порой ненадежен, поэтому в документации советуют запустить свой. На своем инстансе можно также хранить собственные ключи и cookie для маршрутов, которым нужен вход. Нюанс: сайты со строгой защитой от краулинга все равно могут блокировать его запросы, а маршруты, которые управляют headless-браузером, требуют больше ресурсов."
+			],
+			"faq": [
+				{
+					"q": "RSSHub бесплатный и с открытым исходным кодом?",
+					"a": "Да. RSSHub бесплатный и распространяется с открытым исходным кодом по лицензии AGPL-3.0, код лежит на GitHub в репозитории DIYgod/RSSHub. Проект также держит публичный инстанс, rsshub.app, которым можно пользоваться бесплатно."
+				},
+				{
+					"q": "Может ли RSSHub сделать RSS-ленту из любого сайта?",
+					"a": "Только из сайтов, для которых есть маршрут, а их список приведен в документации. Остальные страницы работают через маршрут «Transformation - HTML», который строит ленту по CSS-селекторам, когда ALLOW_USER_SUPPLY_UNSAFE_DOMAIN равен true. Документация предупреждает, что это может допустить SSRF."
+				},
+				{
+					"q": "Как найти RSSHub-ленту для сайта?",
+					"a": "Поищите маршруты в документации RSSHub или установите расширение для браузера RSSHub Radar для Chrome, Edge, Firefox или Safari. На любой странице оно показывает собственную RSS-ленту страницы, если она есть, и маршруты RSSHub, которые ее покрывают."
+				},
+				{
+					"q": "Нужен ли RSSHub API-ключ для YouTube или Instagram?",
+					"a": "Для большинства лент нет. Маршруты канала, пользователя и плейлиста YouTube работают без YOUTUBE_KEY, он там необязателен. Публичным профилям Instagram cookie не нужен, а вот для сторис, «Актуального», хештегов и закрытых профилей нужен INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Можно ли сделать свой инстанс RSSHub приватным?",
+					"a": "Да. Задайте ACCESS_KEY, и каждой ленте тогда понадобится ?key= с этим ключом либо ?code= с MD5 от маршрута и следующего за ним ключа. Хелсчеку в compose.yaml ключ тоже нужен."
+				}
+			]
 		},
 		"uk": {
 			"description": "RSS-стрічки для сайтів, у яких їх немає",
-			"notes": "Стрічка — це шлях маршруту після адреси, наприклад https://{host}/github/repos/DIYgod. У своїй читалці стрічок вказуйте адресу проєкту замість rsshub.app."
+			"notes": "Стрічка — це шлях маршруту після адреси, наприклад https://{host}/github/repos/DIYgod. У своїй читалці стрічок вказуйте адресу проєкту замість rsshub.app.",
+			"sizing": "RSSHub має помірні вимоги: близько 1 GB з headless Chromium, більше на кожну сторінку, яку він рендерить; зберігає лише кеш.",
+			"summary": "Self-hosted RSSHub: генератор RSS-стрічок із відкритим кодом. Стрічки з Telegram, Instagram, GitHub та не лише. В один клік замість RSS.app.",
+			"about": [
+				"RSSHub — це генератор RSS-стрічок із відкритим кодом, який запускають у себе замість RSS.app. Учасники проєкту пишуть маршрут для кожного сайту, від YouTube і Telegram до Bilibili і Weibo, а стрічка — це адреса на кшталт /telegram/channel/awesomeRSSHub. Стрічки віддаються як RSS 2.0, Atom або JSON Feed. Параметри в адресі фільтрують записи за ключовим словом, обмежують їхню кількість або забирають повний текст.",
+				"RSSHub хостять у себе заради надійності. Популярні сайти обмежують кількість запитів з однієї IP-адреси, через що спільний інстанс rsshub.app іноді ненадійний, тому в документації радять запустити власний. На власному інстансі можна також зберігати свої ключі та cookie для маршрутів, яким потрібен вхід. Нюанс: сайти із суворим захистом від краулінгу все одно можуть блокувати його запити, а маршрути, що керують headless-браузером, потребують більше ресурсів."
+			],
+			"faq": [
+				{
+					"q": "RSSHub безплатний і з відкритим кодом?",
+					"a": "Так. RSSHub безплатний і має відкритий код за ліцензією AGPL-3.0, а сам код лежить на GitHub у репозиторії DIYgod/RSSHub. Проєкт також тримає публічний інстанс, rsshub.app, яким можна користуватися безплатно."
+				},
+				{
+					"q": "Чи може RSSHub зробити RSS-стрічку з будь-якого сайту?",
+					"a": "Лише з сайтів, для яких є маршрут, а їхній список наведено в документації. Інші сторінки працюють через маршрут «Transformation - HTML», який будує стрічку за CSS-селекторами, коли ALLOW_USER_SUPPLY_UNSAFE_DOMAIN дорівнює true. Документація попереджає, що це може допустити SSRF."
+				},
+				{
+					"q": "Як знайти стрічку RSSHub для сайту?",
+					"a": "Пошукайте маршрути в документації RSSHub або встановіть розширення для браузера RSSHub Radar для Chrome, Edge, Firefox чи Safari. На будь-якій сторінці воно показує її власну RSS-стрічку, якщо вона є, і маршрути RSSHub, які її покривають."
+				},
+				{
+					"q": "Чи потрібен RSSHub API-ключ для YouTube або Instagram?",
+					"a": "Для більшості стрічок ні. Маршрути каналу, користувача й плейлиста YouTube працюють без YOUTUBE_KEY, він там необов’язковий. Публічним профілям Instagram cookie не потрібен, а от для сторіс, «Актуального», хештегів і закритих профілів потрібен INSTAGRAM_COOKIE."
+				},
+				{
+					"q": "Чи можна зробити свій інстанс RSSHub приватним?",
+					"a": "Так. Задайте ACCESS_KEY, і кожній стрічці тоді знадобиться ?key= з цим ключем або ?code= з MD5 від маршруту й ключа, що йде за ним. Перевірці справності в compose.yaml ключ теж потрібен."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,13 @@
 {
 	"name": "BentoPDF",
 	"emoji": "📄",
+	"category": "files",
+	"alternatives": [
+		"iLovePDF",
+		"Smallpdf",
+		"Adobe Acrobat"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "bentopdf",
 		"port": 8080
@@ -9,35 +16,259 @@
 	"texts": {
 		"en": {
 			"description": "PDF tools in the browser: merge, split, compress, sign, convert and edit, with the files never leaving it",
-			"notes": "Open the address and pick a tool. The files are processed in the visitor’s browser and never reach the server. BentoPDF has no accounts: anyone with the address can use it."
+			"notes": "Open the address and pick a tool. The files are processed in the visitor’s browser and never reach the server. BentoPDF has no accounts: anyone with the address can use it.",
+			"sizing": "BentoPDF is very light: a few megabytes of memory, since PDFs are handled in the browser and nothing is stored.",
+			"summary": "BentoPDF is an open-source iLovePDF alternative: it merges, converts, signs and edits PDFs in your browser. Self-host it in one click.",
+			"about": [
+				"BentoPDF is an open-source PDF toolkit, an iLovePDF alternative that does all its work in the browser. It merges, splits and compresses files, and turns scans into searchable PDFs with OCR. It converts Word, Excel and PowerPoint files to PDF, and PDFs back to Word, Excel or images. Documents can be signed with a drawn signature or an X.509 certificate.",
+				"People self-host it because the files go nowhere. The server only sends the app, and each tool runs on the visitor's own device, so a contract or a payslip is never uploaded. There are no sign-ups, watermarks or file limits. It suits a team or an office that wants one private address for PDF work. The catches: BentoPDF has no login, so anyone who finds the address can use it, and by default some engines, such as the one behind PDF to Word, load from the jsDelivr CDN."
+			],
+			"faq": [
+				{
+					"q": "Is BentoPDF free and open source?",
+					"a": "Yes. Its code is on GitHub under the AGPL-3.0 license, and every tool is free to use. A paid commercial license is sold for building it into closed-source applications."
+				},
+				{
+					"q": "Is BentoPDF a good alternative to iLovePDF?",
+					"a": "For everyday jobs, yes: merging, splitting, compressing, converting, OCR and signing are all there. Its PDF Workflow Builder goes further, chaining several tools into one pipeline in a visual node editor."
+				},
+				{
+					"q": "Can BentoPDF convert PDF to Word?",
+					"a": "Yes. PDF to Word turns a PDF into an editable Word document, and Word to PDF goes the other way. Excel, PowerPoint and OpenDocument files convert to PDF as well."
+				},
+				{
+					"q": "Can BentoPDF edit and redact PDFs?",
+					"a": "Yes. The PDF Editor annotates, highlights, redacts and comments. Separate tools add page numbers, watermarks, headers and footers, and fill in or create PDF forms."
+				},
+				{
+					"q": "Does BentoPDF work on iPhone and Android?",
+					"a": "Yes, in any modern browser on iOS or Android, with nothing to install. The processing happens on the phone itself, so a very large PDF is limited by the phone's memory."
+				}
+			]
 		},
 		"de": {
 			"description": "PDF-Werkzeuge im Browser: zusammenführen, teilen, komprimieren, signieren, umwandeln und bearbeiten, ohne dass die Dateien ihn verlassen",
-			"notes": "Öffne die Adresse und wähl ein Werkzeug. Die Dateien werden im Browser der Besucher verarbeitet und erreichen den Server nie. BentoPDF hat keine Konten: Jeder mit der Adresse kann es nutzen."
+			"notes": "Öffne die Adresse und wähl ein Werkzeug. Die Dateien werden im Browser der Besucher verarbeitet und erreichen den Server nie. BentoPDF hat keine Konten: Jeder mit der Adresse kann es nutzen.",
+			"sizing": "BentoPDF ist sehr leicht: ein paar MB RAM, da PDFs im Browser verarbeitet werden und nichts gespeichert wird.",
+			"summary": "BentoPDF mit einem Klick selbst hosten: Open-Source-Alternative zu iLovePDF, die PDFs im Browser zusammenführt, umwandelt, signiert und bearbeitet.",
+			"about": [
+				"BentoPDF ist ein Open-Source-PDF-Toolkit, eine Alternative zu iLovePDF, die ihre ganze Arbeit im Browser erledigt. Es führt Dateien zusammen, teilt und komprimiert sie und macht aus Scans per OCR durchsuchbare PDFs. Es wandelt Word-, Excel- und PowerPoint-Dateien in PDF um und PDFs zurück in Word, Excel oder Bilder. Dokumente lassen sich mit einer gezeichneten Signatur oder einem X.509-Zertifikat signieren.",
+				"Du hostest BentoPDF selbst, weil die Dateien nirgendwohin gehen. Der Server liefert nur die App aus, und jedes Tool läuft auf dem Gerät der Person, die es benutzt: Ein Vertrag oder eine Gehaltsabrechnung wird also nie hochgeladen. Es gibt keine Registrierung, keine Wasserzeichen und keine Dateilimits. Es passt zu einem Team oder Büro, das eine private Adresse für die PDF-Arbeit haben will. Die Haken: BentoPDF hat keine Anmeldung, wer die Adresse findet, kann es also nutzen, und standardmäßig laden einige Engines, etwa die hinter PDF to Word, vom jsDelivr-CDN."
+			],
+			"faq": [
+				{
+					"q": "Ist BentoPDF kostenlos und Open Source?",
+					"a": "Ja. Der Code liegt auf GitHub unter der AGPL-3.0-Lizenz, und alle Tools sind kostenlos nutzbar. Für den Einbau in Closed-Source-Anwendungen wird eine kostenpflichtige kommerzielle Lizenz verkauft."
+				},
+				{
+					"q": "Ist BentoPDF eine gute Alternative zu iLovePDF?",
+					"a": "Für alltägliche Aufgaben ja: Zusammenführen, Teilen, Komprimieren, Umwandeln, OCR und Signieren sind alle dabei. Der PDF Workflow Builder geht weiter und verkettet mehrere Tools in einem visuellen Node-Editor zu einer Pipeline."
+				},
+				{
+					"q": "Kann BentoPDF PDF in Word umwandeln?",
+					"a": "Ja. PDF to Word macht aus einem PDF ein bearbeitbares Word-Dokument, und Word to PDF geht den umgekehrten Weg. Auch Excel-, PowerPoint- und OpenDocument-Dateien lassen sich in PDF umwandeln."
+				},
+				{
+					"q": "Kann BentoPDF PDFs bearbeiten und schwärzen?",
+					"a": "Ja. Der PDF Editor kann annotieren, markieren, schwärzen und kommentieren. Eigene Tools ergänzen Seitenzahlen, Wasserzeichen, Kopf- und Fußzeilen und füllen PDF-Formulare aus oder erstellen sie."
+				},
+				{
+					"q": "Funktioniert BentoPDF auf dem iPhone und auf Android?",
+					"a": "Ja, in jedem aktuellen Browser unter iOS oder Android, ohne dass du etwas installieren musst. Die Verarbeitung läuft auf dem Handy selbst, deshalb ist bei sehr großen PDFs der RAM des Handys die Grenze."
+				}
+			]
 		},
 		"es": {
 			"description": "Herramientas PDF en el navegador: unir, dividir, comprimir, firmar, convertir y editar, sin que los archivos salgan de él",
-			"notes": "Abre la dirección y elige una herramienta. Los archivos se procesan en el navegador del visitante y nunca llegan al servidor. BentoPDF no tiene cuentas: cualquiera con la dirección puede usarlo."
+			"notes": "Abre la dirección y elige una herramienta. Los archivos se procesan en el navegador del visitante y nunca llegan al servidor. BentoPDF no tiene cuentas: cualquiera con la dirección puede usarlo.",
+			"sizing": "BentoPDF es muy ligero: unos pocos MB de memoria, porque los PDF se procesan en el navegador y no se guarda nada.",
+			"summary": "Autoaloja BentoPDF en un clic: una alternativa de código abierto a iLovePDF que une, convierte, firma y edita PDF en tu navegador.",
+			"about": [
+				"BentoPDF es un conjunto de herramientas PDF de código abierto, una alternativa a iLovePDF que hace todo su trabajo en el navegador. Une, divide y comprime archivos, y convierte escaneos en PDF con texto buscable mediante OCR. Convierte archivos de Word, Excel y PowerPoint a PDF, y los PDF de vuelta a Word, Excel o imágenes. Los documentos se pueden firmar con una firma dibujada o con un certificado X.509.",
+				"Quienes autoalojan BentoPDF lo hacen porque los archivos no van a ningún lado. El servidor solo entrega la app, y cada herramienta se ejecuta en el propio dispositivo de quien la usa, así que un contrato o un recibo de nómina nunca se sube. No hay que registrarse, ni hay marcas de agua ni límites de archivos. Va bien para un equipo o una oficina que quiere una dirección privada para trabajar con PDF. Los inconvenientes: BentoPDF no tiene inicio de sesión, así que cualquiera que encuentre la dirección puede usarlo, y por defecto algunos motores, como el que está detrás de PDF to Word, se cargan desde el CDN de jsDelivr."
+			],
+			"faq": [
+				{
+					"q": "¿BentoPDF es gratis y de código abierto?",
+					"a": "Sí. Su código está en GitHub bajo la licencia AGPL-3.0, y todas las herramientas son gratis. Se vende una licencia comercial de pago para integrarlo en aplicaciones de código cerrado."
+				},
+				{
+					"q": "¿BentoPDF es una buena alternativa a iLovePDF?",
+					"a": "Para las tareas de cada día, sí: unir, dividir, comprimir, convertir, OCR y firmar están todos. Su PDF Workflow Builder va más allá y encadena varias herramientas en una sola secuencia dentro de un editor visual de nodos."
+				},
+				{
+					"q": "¿BentoPDF puede convertir PDF a Word?",
+					"a": "Sí. PDF to Word convierte un PDF en un documento de Word editable, y Word to PDF hace lo contrario. También se convierten a PDF los archivos de Excel, PowerPoint y OpenDocument."
+				},
+				{
+					"q": "¿BentoPDF puede editar y censurar PDF?",
+					"a": "Sí. El PDF Editor permite anotar, resaltar, censurar y comentar. Otras herramientas agregan números de página, marcas de agua, encabezados y pies de página, y rellenan o crean formularios PDF."
+				},
+				{
+					"q": "¿BentoPDF funciona en iPhone y Android?",
+					"a": "Sí, en cualquier navegador moderno en iOS o Android, sin instalar nada. El procesamiento ocurre en el propio teléfono, así que un PDF muy grande está limitado por la memoria del teléfono."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des outils PDF dans le navigateur : fusionner, découper, compresser, signer, convertir et modifier, sans que les fichiers en sortent",
-			"notes": "Ouvrez l’adresse et choisissez un outil. Les fichiers sont traités dans le navigateur du visiteur et n’atteignent jamais le serveur. BentoPDF n’a pas de comptes : toute personne qui a l’adresse peut s’en servir."
+			"notes": "Ouvrez l’adresse et choisissez un outil. Les fichiers sont traités dans le navigateur du visiteur et n’atteignent jamais le serveur. BentoPDF n’a pas de comptes : toute personne qui a l’adresse peut s’en servir.",
+			"sizing": "BentoPDF est très léger : quelques MB de mémoire, car les PDF sont traités dans le navigateur et rien n’est stocké.",
+			"summary": "Auto-hébergez BentoPDF en un clic : une alternative open source à iLovePDF qui fusionne, convertit, signe et modifie vos PDF dans le navigateur.",
+			"about": [
+				"BentoPDF est une boîte à outils PDF open source, une alternative à iLovePDF qui fait tout son travail dans le navigateur. Elle fusionne, découpe et compresse les fichiers, et transforme les scans en PDF recherchables grâce à l’OCR. Elle convertit les fichiers Word, Excel et PowerPoint en PDF, et les PDF en Word, Excel ou en images. Les documents peuvent être signés avec une signature dessinée ou un certificat X.509.",
+				"Vous auto-hébergez BentoPDF parce que les fichiers ne vont nulle part. Le serveur se contente d’envoyer l’application, et chaque outil s’exécute sur l’appareil de la personne qui l’utilise : un contrat ou une fiche de paie n’est donc jamais envoyé. Pas d’inscription, pas de filigrane, pas de limite de fichiers. Il convient à une équipe ou à un bureau qui veut une adresse privée pour ses PDF. Les revers : BentoPDF n’a pas de système de connexion, donc toute personne qui trouve l’adresse peut s’en servir, et par défaut certains moteurs, comme celui qui se trouve derrière PDF to Word, se chargent depuis le CDN jsDelivr."
+			],
+			"faq": [
+				{
+					"q": "BentoPDF est-il gratuit et open source ?",
+					"a": "Oui. Son code est sur GitHub sous licence AGPL-3.0, et tous les outils sont gratuits. Une licence commerciale payante est vendue pour l’intégrer à des applications propriétaires."
+				},
+				{
+					"q": "BentoPDF est-il une bonne alternative à iLovePDF ?",
+					"a": "Pour les tâches courantes, oui : fusion, découpage, compression, conversion, OCR et signature sont tous là. Son PDF Workflow Builder va plus loin et enchaîne plusieurs outils en une seule chaîne de traitement dans un éditeur visuel de nœuds."
+				},
+				{
+					"q": "BentoPDF peut-il convertir un PDF en Word ?",
+					"a": "Oui. PDF to Word transforme un PDF en document Word modifiable, et Word to PDF fait l’inverse. Les fichiers Excel, PowerPoint et OpenDocument se convertissent aussi en PDF."
+				},
+				{
+					"q": "BentoPDF peut-il modifier et caviarder des PDF ?",
+					"a": "Oui. Le PDF Editor permet d’annoter, de surligner, de caviarder et de commenter. D’autres outils ajoutent des numéros de page, des filigranes, des en-têtes et des pieds de page, et remplissent ou créent des formulaires PDF."
+				},
+				{
+					"q": "BentoPDF fonctionne-t-il sur iPhone et Android ?",
+					"a": "Oui, dans n’importe quel navigateur récent sous iOS ou Android, sans rien installer. Le traitement se fait sur le téléphone lui-même, donc un très gros PDF est limité par la mémoire du téléphone."
+				}
+			]
 		},
 		"pl": {
 			"description": "Narzędzia PDF w przeglądarce: łączenie, dzielenie, kompresja, podpisywanie, konwersja i edycja, a pliki jej nie opuszczają",
-			"notes": "Otwórz adres projektu i wybierz narzędzie. Pliki są przetwarzane w przeglądarce odwiedzającego i nigdy nie trafiają na serwer. BentoPDF nie ma kont: każdy, kto zna adres, może z niego korzystać."
+			"notes": "Otwórz adres projektu i wybierz narzędzie. Pliki są przetwarzane w przeglądarce odwiedzającego i nigdy nie trafiają na serwer. BentoPDF nie ma kont: każdy, kto zna adres, może z niego korzystać.",
+			"sizing": "BentoPDF ma bardzo małe wymagania: kilka MB pamięci, bo PDF-y obsługuje przeglądarka i nic nie jest zapisywane.",
+			"summary": "Hostuj BentoPDF u siebie jednym kliknięciem: alternatywa dla iLovePDF z otwartym kodem, która łączy, konwertuje, podpisuje i edytuje PDF-y w przeglądarce.",
+			"about": [
+				"BentoPDF to zestaw narzędzi do plików PDF typu open source, alternatywa dla iLovePDF, która całą pracę wykonuje w przeglądarce. Łączy, dzieli i kompresuje pliki, a skany zamienia w przeszukiwalne pliki PDF dzięki OCR. Konwertuje pliki Worda, Excela i PowerPointa na PDF, a PDF z powrotem na Word, Excel lub obrazy. Dokumenty można podpisywać odręcznym podpisem albo certyfikatem X.509.",
+				"BentoPDF hostuje się u siebie, bo pliki nigdzie nie trafiają. Serwer tylko wysyła aplikację, a każde narzędzie działa na urządzeniu osoby, która z niego korzysta, więc umowa czy pasek wypłaty nigdy nie są wgrywane. Nie ma rejestracji, znaków wodnych ani limitów plików. Pasuje do zespołu lub biura, które chce mieć jeden prywatny adres do pracy z PDF. Haczyki: BentoPDF nie ma logowania, więc każdy, kto znajdzie adres, może z niego korzystać, a domyślnie część silników, na przykład silnik narzędzia PDF to Word, ładuje się z CDN jsDelivr."
+			],
+			"faq": [
+				{
+					"q": "Czy BentoPDF jest darmowy i open source?",
+					"a": "Tak. Jego kod jest na GitHubie na licencji AGPL-3.0, a wszystkie narzędzia są darmowe. Płatną licencję komercyjną sprzedaje się do wbudowywania go w aplikacje o zamkniętym kodzie."
+				},
+				{
+					"q": "Czy BentoPDF to dobra alternatywa dla iLovePDF?",
+					"a": "Do codziennych zadań tak: łączenie, dzielenie, kompresja, konwersja, OCR i podpisywanie są na miejscu. PDF Workflow Builder idzie dalej i spina kilka narzędzi w jeden pipeline w wizualnym edytorze węzłów."
+				},
+				{
+					"q": "Czy BentoPDF potrafi zamienić PDF na Word?",
+					"a": "Tak. Narzędzie PDF to Word zamienia PDF w edytowalny dokument Worda, a Word to PDF działa w drugą stronę. Pliki Excela, PowerPointa i OpenDocument też da się skonwertować na PDF."
+				},
+				{
+					"q": "Czy BentoPDF potrafi edytować i zaczerniać pliki PDF?",
+					"a": "Tak. PDF Editor pozwala dodawać adnotacje, zaznaczać, zaczerniać i komentować. Osobne narzędzia dodają numery stron, znaki wodne, nagłówki i stopki oraz wypełniają lub tworzą formularze PDF."
+				},
+				{
+					"q": "Czy BentoPDF działa na iPhonie i Androidzie?",
+					"a": "Tak, w każdej nowoczesnej przeglądarce na iOS lub Androidzie, bez instalowania czegokolwiek. Przetwarzanie odbywa się na samym telefonie, więc bardzo duży plik PDF ogranicza pamięć telefonu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Ferramentas de PDF no navegador: juntar, dividir, comprimir, assinar, converter e editar, sem que os arquivos saiam dele",
-			"notes": "Abra o endereço e escolha uma ferramenta. Os arquivos são processados no navegador de quem visita e nunca chegam ao servidor. O BentoPDF não tem contas: qualquer pessoa com o endereço pode usá-lo."
+			"notes": "Abra o endereço e escolha uma ferramenta. Os arquivos são processados no navegador de quem visita e nunca chegam ao servidor. O BentoPDF não tem contas: qualquer pessoa com o endereço pode usá-lo.",
+			"sizing": "BentoPDF é muito leve: poucos MB de memória, já que os PDFs são tratados no navegador e nada é guardado.",
+			"summary": "Hospede o BentoPDF por conta própria em um clique: alternativa de código aberto ao iLovePDF que une, converte, assina e edita PDFs no navegador.",
+			"about": [
+				"O BentoPDF é um conjunto de ferramentas de PDF de código aberto, uma alternativa ao iLovePDF que faz todo o trabalho no navegador. Ele une, divide e comprime arquivos, e transforma documentos escaneados em PDFs pesquisáveis com OCR. Converte arquivos do Word, Excel e PowerPoint em PDF, e PDFs de volta em Word, Excel ou imagens. Os documentos podem ser assinados com uma assinatura desenhada ou com um certificado X.509.",
+				"Você hospeda o BentoPDF por conta própria porque os arquivos não vão a lugar nenhum. O servidor só entrega o app, e cada ferramenta roda no próprio dispositivo de quem a usa, então um contrato ou um holerite nunca é enviado. Não há cadastro, marca d’água nem limite de arquivos. Serve para uma equipe ou um escritório que quer um endereço privado para o trabalho com PDF. Os poréns: o BentoPDF não tem login, então qualquer pessoa que encontrar o endereço pode usá-lo, e por padrão alguns motores, como o que fica por trás do PDF to Word, são carregados do CDN jsDelivr."
+			],
+			"faq": [
+				{
+					"q": "O BentoPDF é gratuito e de código aberto?",
+					"a": "Sim. O código dele está no GitHub sob a licença AGPL-3.0, e todas as ferramentas são gratuitas. Uma licença comercial paga é vendida para embuti-lo em apps de código fechado."
+				},
+				{
+					"q": "O BentoPDF é uma boa alternativa ao iLovePDF?",
+					"a": "Para o dia a dia, sim: unir, dividir, comprimir, converter, OCR e assinar estão todos lá. O PDF Workflow Builder vai além e encadeia várias ferramentas em um só pipeline, em um editor visual de nós."
+				},
+				{
+					"q": "O BentoPDF converte PDF em Word?",
+					"a": "Sim. O PDF to Word transforma um PDF em um documento do Word editável, e o Word to PDF faz o caminho inverso. Arquivos do Excel, PowerPoint e OpenDocument também são convertidos em PDF."
+				},
+				{
+					"q": "O BentoPDF consegue editar e tarjar PDFs?",
+					"a": "Sim. O PDF Editor faz anotações, destaques, tarjas e comentários. Ferramentas separadas adicionam números de página, marcas d’água, cabeçalhos e rodapés, e preenchem ou criam formulários em PDF."
+				},
+				{
+					"q": "O BentoPDF funciona no iPhone e no Android?",
+					"a": "Sim, em qualquer navegador moderno no iOS ou no Android, sem nada para instalar. O processamento acontece no próprio celular, então um PDF muito grande fica limitado pela memória do aparelho."
+				}
+			]
 		},
 		"ru": {
 			"description": "Инструменты для PDF в браузере: объединить, разделить, сжать, подписать, конвертировать и отредактировать, а файлы не покидают браузер",
-			"notes": "Откройте адрес и выберите инструмент. Файлы обрабатываются в браузере посетителя и никогда не попадают на сервер. В BentoPDF нет учётных записей: им может пользоваться любой, у кого есть адрес."
+			"notes": "Откройте адрес и выберите инструмент. Файлы обрабатываются в браузере посетителя и никогда не попадают на сервер. В BentoPDF нет учётных записей: им может пользоваться любой, у кого есть адрес.",
+			"sizing": "BentoPDF: совсем небольшие требования — несколько MB памяти, ведь PDF обрабатываются в браузере и ничего не хранится.",
+			"summary": "Self-hosted BentoPDF в один клик: альтернатива iLovePDF с открытым кодом, которая объединяет, конвертирует, подписывает и редактирует PDF в браузере.",
+			"about": [
+				"BentoPDF — это open source набор инструментов для PDF, альтернатива iLovePDF, которая делает всю работу в браузере. Он объединяет, разделяет и сжимает файлы, а сканы превращает в PDF с поиском по тексту с помощью OCR. Он конвертирует файлы Word, Excel и PowerPoint в PDF, а PDF обратно в Word, Excel или изображения. Документы можно подписывать нарисованной подписью или сертификатом X.509.",
+				"BentoPDF хостят у себя, потому что файлы никуда не уходят. Сервер только отдает приложение, а каждый инструмент работает на устройстве того, кто им пользуется, поэтому договор или расчетный листок никогда не загружается. Нет регистрации, водяных знаков и ограничений на файлы. Подходит команде или офису, которым нужен один приватный адрес для работы с PDF. Но есть нюансы: в BentoPDF нет страницы входа, поэтому им может пользоваться любой, кто найдет адрес, а некоторые движки, например тот, что стоит за PDF to Word, по умолчанию загружаются с CDN jsDelivr."
+			],
+			"faq": [
+				{
+					"q": "BentoPDF бесплатный и с открытым исходным кодом?",
+					"a": "Да. Код лежит на GitHub под лицензией AGPL-3.0, а все инструменты бесплатны. Платная коммерческая лицензия продается для встраивания в приложения с закрытым кодом."
+				},
+				{
+					"q": "BentoPDF — хорошая альтернатива iLovePDF?",
+					"a": "Для повседневных задач да: объединение, разделение, сжатие, конвертация, OCR и подпись — все это есть. PDF Workflow Builder идет дальше и собирает несколько инструментов в одну цепочку в визуальном редакторе узлов."
+				},
+				{
+					"q": "Умеет ли BentoPDF конвертировать PDF в Word?",
+					"a": "Да. Инструмент PDF to Word превращает PDF в редактируемый документ Word, а Word to PDF работает в обратную сторону. Файлы Excel, PowerPoint и OpenDocument тоже конвертируются в PDF."
+				},
+				{
+					"q": "Умеет ли BentoPDF редактировать PDF и скрывать в них данные?",
+					"a": "Да. PDF Editor умеет добавлять аннотации, выделять текст, скрывать фрагменты и оставлять комментарии. Отдельные инструменты добавляют номера страниц, водяные знаки, колонтитулы и заполняют или создают PDF-формы."
+				},
+				{
+					"q": "Работает ли BentoPDF на iPhone и Android?",
+					"a": "Да, в любом современном браузере на iOS или Android, ничего устанавливать не нужно. Обработка идет на самом телефоне, поэтому для очень большого PDF предел задает память телефона."
+				}
+			]
 		},
 		"uk": {
 			"description": "Інструменти для PDF у браузері: об’єднати, розділити, стиснути, підписати, конвертувати й відредагувати, а файли не залишають браузер",
-			"notes": "Відкрийте адресу й виберіть інструмент. Файли обробляються в браузері відвідувача й ніколи не потрапляють на сервер. У BentoPDF немає облікових записів: ним може користуватися будь-хто, у кого є адреса."
+			"notes": "Відкрийте адресу й виберіть інструмент. Файли обробляються в браузері відвідувача й ніколи не потрапляють на сервер. У BentoPDF немає облікових записів: ним може користуватися будь-хто, у кого є адреса.",
+			"sizing": "BentoPDF має дуже скромні вимоги: кілька MB пам’яті, бо PDF обробляються в браузері й нічого не зберігається.",
+			"summary": "Self-hosted BentoPDF в один клік: альтернатива iLovePDF з відкритим кодом, яка об’єднує, конвертує, підписує й редагує PDF у браузері.",
+			"about": [
+				"BentoPDF — це набір інструментів для PDF з відкритим кодом, альтернатива iLovePDF, яка виконує всю роботу в браузері. Він об’єднує, розділяє й стискає файли, а скани перетворює на PDF із пошуком за текстом за допомогою OCR. Він конвертує файли Word, Excel і PowerPoint у PDF, а PDF назад у Word, Excel або зображення. Документи можна підписувати намальованим підписом або сертифікатом X.509.",
+				"BentoPDF хостять у себе, бо файли нікуди не йдуть. Сервер лише віддає застосунок, а кожен інструмент працює на пристрої того, хто ним користується, тож договір чи розрахунковий листок ніколи не завантажується. Немає реєстрації, водяних знаків і обмежень на файли. Підходить команді чи офісу, яким потрібна одна приватна адреса для роботи з PDF. Але є нюанси: у BentoPDF немає сторінки входу, тож ним може користуватися будь-хто, хто знайде адресу, а деякі рушії, наприклад той, що стоїть за PDF to Word, типово завантажуються з CDN jsDelivr."
+			],
+			"faq": [
+				{
+					"q": "Чи BentoPDF безкоштовний і з відкритим кодом?",
+					"a": "Так. Його код лежить на GitHub за ліцензією AGPL-3.0, а всі інструменти безкоштовні. Платна комерційна ліцензія продається для вбудовування в застосунки із закритим кодом."
+				},
+				{
+					"q": "Чи BentoPDF — хороша альтернатива iLovePDF?",
+					"a": "Для щоденних завдань так: об’єднання, розділення, стиснення, конвертація, OCR і підпис — усе це є. PDF Workflow Builder іде далі й збирає кілька інструментів в один ланцюжок у візуальному редакторі вузлів."
+				},
+				{
+					"q": "Чи вміє BentoPDF конвертувати PDF у Word?",
+					"a": "Так. Інструмент PDF to Word перетворює PDF на редагований документ Word, а Word to PDF працює у зворотний бік. Файли Excel, PowerPoint і OpenDocument також конвертуються в PDF."
+				},
+				{
+					"q": "Чи вміє BentoPDF редагувати PDF і приховувати в них дані?",
+					"a": "Так. PDF Editor вміє додавати анотації, виділяти, приховувати фрагменти й коментувати. Окремі інструменти додають номери сторінок, водяні знаки, колонтитули та заповнюють або створюють PDF-форми."
+				},
+				{
+					"q": "Чи працює BentoPDF на iPhone і Android?",
+					"a": "Так, у будь-якому сучасному браузері на iOS або Android, нічого встановлювати не треба. Обробка відбувається на самому телефоні, тому для дуже великого PDF межу ставить пам’ять телефона."
+				}
+			]
 		}
 	}
 }

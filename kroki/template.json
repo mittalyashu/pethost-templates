@@ -1,6 +1,9 @@
 {
 	"name": "Kroki",
 	"emoji": "📐",
+	"category": "developer-tools",
+	"alternatives": [],
+	"plan": "starter",
 	"route": {
 		"service": "kroki",
 		"port": 8000
@@ -9,35 +12,259 @@
 	"texts": {
 		"en": {
 			"description": "Diagrams from text: PlantUML, Mermaid, Graphviz and more",
-			"notes": "Send a diagram’s source to https://{host}/<type>/svg, as /plantuml/svg or /mermaid/svg, and get the picture back; editors and docs tools take https://{host} as their Kroki server. Kroki has no accounts: anyone with the address can use it. BPMN and Excalidraw are left out, to save memory."
+			"notes": "Send a diagram’s source to https://{host}/<type>/svg, as /plantuml/svg or /mermaid/svg, and get the picture back; editors and docs tools take https://{host} as their Kroki server. Kroki has no accounts: anyone with the address can use it. BPMN and Excalidraw are left out, to save memory.",
+			"sizing": "Kroki is moderate: about 800 MB of memory, most of it the browser that draws Mermaid, and it keeps nothing on disk.",
+			"summary": "Self-host Kroki, the open-source server that turns diagram text into images: PlantUML, Mermaid, Graphviz, D2 and more over one HTTP API.",
+			"about": [
+				"Kroki is an open-source diagrams-as-code server: you send it the text of a diagram and it returns the image. One HTTP API covers PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom and many more. Every type comes out as SVG, and many as PNG or PDF too. MkDocs, Sphinx, MediaWiki and plugins for VS Code and IntelliJ take the server's address and draw diagrams through it.",
+				"People self-host Kroki so diagrams of their internal systems stay on their own server instead of going to the free public kroki.io. One server also means no laptop or CI runner has to install the libraries themselves, which are written in several languages. It suits teams that keep their docs as code. The catch: there is no editor, only the API, so diagrams are written in an editor or docs tool of your own."
+			],
+			"faq": [
+				{
+					"q": "Is Kroki free and open source?",
+					"a": "Yes. Kroki is released under the MIT license, with its code on GitHub at yuzutech/kroki. Its server and companion images are on Docker Hub, free to run on a machine of your own."
+				},
+				{
+					"q": "How do I send a diagram to the Kroki API?",
+					"a": "POST the source as plain text to /<type>/<format>, such as /graphviz/svg, or POST JSON with diagram_source, diagram_type and output_format to /. For a GET link, deflate the source, encode it as URL-safe base64 and append it."
+				},
+				{
+					"q": "How do I connect GitLab to a self-hosted Kroki server?",
+					"a": "On GitLab Self-Managed, an administrator selects Admin, then Settings > General, expands Kroki, selects Enable Kroki and enters the server's address as the Kroki URL. GitLab then draws diagram blocks in Markdown, AsciiDoc, reStructuredText and Textile."
+				},
+				{
+					"q": "Does Kroki have authentication?",
+					"a": "No. Kroki has no login, users or API keys, so whoever knows its address can render diagrams on it. Its default SECURE mode does stop a diagram from reading files from the server's disk or the network."
+				},
+				{
+					"q": "Does Kroki render Mermaid, BPMN and Excalidraw?",
+					"a": "Yes, through companion servers: Mermaid, BPMN, Excalidraw and the experimental diagrams.net each run in a container of their own beside the main kroki one. This template starts only the Mermaid companion, so BPMN and Excalidraw diagrams are not available."
+				}
+			]
 		},
 		"de": {
 			"description": "Diagramme aus Text: PlantUML, Mermaid, Graphviz und mehr",
-			"notes": "Schick den Quelltext eines Diagramms an https://{host}/<type>/svg, etwa /plantuml/svg oder /mermaid/svg, und du bekommst das Bild zurück; Editoren und Doku-Tools nehmen https://{host} als ihren Kroki-Server. Kroki hat keine Konten: Alle, die die Adresse haben, können es nutzen. BPMN und Excalidraw sind weggelassen, um Speicher zu sparen."
+			"notes": "Schick den Quelltext eines Diagramms an https://{host}/<type>/svg, etwa /plantuml/svg oder /mermaid/svg, und du bekommst das Bild zurück; Editoren und Doku-Tools nehmen https://{host} als ihren Kroki-Server. Kroki hat keine Konten: Alle, die die Adresse haben, können es nutzen. BPMN und Excalidraw sind weggelassen, um Speicher zu sparen.",
+			"sizing": "Kroki ist mittelschwer: etwa 800 MB RAM, meist für den Browser, der Mermaid zeichnet; auf der Disk speichert es nichts.",
+			"summary": "Kroki selbst hosten, den Open-Source-Server, der aus Diagrammtext Bilder macht: PlantUML, Mermaid, Graphviz, D2 und mehr über eine HTTP-API.",
+			"about": [
+				"Kroki ist ein Open-Source-Server für Diagramme als Code: Du schickst ihm den Text eines Diagramms und bekommst das Bild zurück. Eine HTTP-API deckt PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom und viele weitere ab. Jeder Typ kommt als SVG heraus, viele auch als PNG oder PDF. MkDocs, Sphinx, MediaWiki und Plugins für VS Code und IntelliJ bekommen die Adresse des Servers und zeichnen Diagramme über ihn.",
+				"Du hostest Kroki selbst, damit die Diagramme deiner internen Systeme auf deinem eigenen Server bleiben, statt zum kostenlosen öffentlichen kroki.io zu wandern. Mit einem Server muss außerdem kein Laptop und kein CI-Runner die Bibliotheken selbst installieren, die in mehreren Sprachen geschrieben sind. Das passt zu Teams, die ihre Doku als Code pflegen. Der Haken: Es gibt keinen Editor, nur die API, die Diagramme schreibst du also in einem Editor oder Doku-Tool deiner Wahl."
+			],
+			"faq": [
+				{
+					"q": "Ist Kroki kostenlos und Open Source?",
+					"a": "Ja. Kroki steht unter der MIT-Lizenz, der Code liegt auf GitHub unter yuzutech/kroki. Das Image des Servers und die Images der Companion-Server liegen auf Docker Hub und lassen sich kostenlos auf deinem eigenen Server betreiben."
+				},
+				{
+					"q": "Wie schicke ich ein Diagramm an die Kroki-API?",
+					"a": "Schick den Quelltext als reinen Text per POST an /<type>/<format>, etwa /graphviz/svg, oder schick per POST ein JSON mit diagram_source, diagram_type und output_format an /. Für einen GET-Link komprimierst du den Quelltext mit Deflate, kodierst ihn als URL-sicheres Base64 und hängst ihn an."
+				},
+				{
+					"q": "Wie verbinde ich GitLab mit einem selbst gehosteten Kroki-Server?",
+					"a": "In GitLab Self-Managed wählst du mit Administratorrechten „Admin“, dann „Settings > General“, klappst „Kroki“ auf, wählst „Enable Kroki“ und trägst die Adresse des Servers als „Kroki URL“ ein. GitLab zeichnet danach Diagrammblöcke in Markdown, AsciiDoc, reStructuredText und Textile."
+				},
+				{
+					"q": "Hat Kroki eine Authentifizierung?",
+					"a": "Nein. Kroki hat keinen Login, keine Benutzerkonten und keine API-Keys, wer die Adresse kennt, kann also Diagramme darauf rendern. Der Standardmodus SECURE verhindert allerdings, dass ein Diagramm Dateien von der Disk des Servers oder aus dem Netzwerk liest."
+				},
+				{
+					"q": "Rendert Kroki Mermaid, BPMN und Excalidraw?",
+					"a": "Ja, über Companion-Server: Mermaid, BPMN, Excalidraw und das experimentelle diagrams.net laufen jeweils in einem eigenen Container neben dem Haupt-Container kroki. Diese Vorlage startet nur den Mermaid-Companion, BPMN- und Excalidraw-Diagramme sind also nicht verfügbar."
+				}
+			]
 		},
 		"es": {
 			"description": "Diagramas a partir de texto: PlantUML, Mermaid, Graphviz y más",
-			"notes": "Envía el código de un diagrama a https://{host}/<type>/svg, como /plantuml/svg o /mermaid/svg, y recibes la imagen; los editores y las herramientas de documentación usan https://{host} como su servidor Kroki. Kroki no tiene cuentas: cualquiera que tenga la dirección puede usarlo. BPMN y Excalidraw quedan fuera para ahorrar memoria."
+			"notes": "Envía el código de un diagrama a https://{host}/<type>/svg, como /plantuml/svg o /mermaid/svg, y recibes la imagen; los editores y las herramientas de documentación usan https://{host} como su servidor Kroki. Kroki no tiene cuentas: cualquiera que tenga la dirección puede usarlo. BPMN y Excalidraw quedan fuera para ahorrar memoria.",
+			"sizing": "Kroki es moderado: unos 800 MB de memoria, la mayoría del navegador que dibuja Mermaid; no guarda nada en disco.",
+			"summary": "Autoaloja Kroki, el servidor de código abierto que convierte el texto de un diagrama en imagen: PlantUML, Mermaid, Graphviz, D2 y más con una API HTTP.",
+			"about": [
+				"Kroki es un servidor de código abierto de diagramas como código: le envías el texto de un diagrama y te devuelve la imagen. Una sola API HTTP cubre PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom y muchos más. Cada tipo sale como SVG, y muchos también como PNG o PDF. MkDocs, Sphinx, MediaWiki y los plugins para VS Code e IntelliJ toman la dirección del servidor y dibujan los diagramas a través de él.",
+				"Quienes autoalojan Kroki lo hacen para que los diagramas de sus sistemas internos se queden en su propio servidor, en lugar de ir al kroki.io público y gratuito. Un solo servidor también significa que ningún equipo portátil ni runner de CI tiene que instalar las bibliotecas, que están escritas en varios lenguajes. Encaja con los equipos que mantienen su documentación como código. El inconveniente: no hay editor, solo la API, así que los diagramas se escriben en un editor o una herramienta de documentación propios."
+			],
+			"faq": [
+				{
+					"q": "¿Kroki es gratis y de código abierto?",
+					"a": "Sí. Kroki se publica bajo la licencia MIT, y su código está en GitHub, en yuzutech/kroki. La imagen del servidor y las de los servidores complementarios están en Docker Hub, y se pueden ejecutar gratis en tu propio servidor."
+				},
+				{
+					"q": "¿Cómo envío un diagrama a la API de Kroki?",
+					"a": "Envía el código como texto plano con POST a /<type>/<format>, por ejemplo /graphviz/svg, o envía con POST un JSON con diagram_source, diagram_type y output_format a /. Para un enlace GET, comprime el código con deflate, codifícalo en base64 seguro para URL y agrégalo al final."
+				},
+				{
+					"q": "¿Cómo conecto GitLab a un servidor Kroki autoalojado?",
+					"a": "En GitLab Self-Managed, un administrador elige “Admin”, luego “Settings > General”, despliega “Kroki”, selecciona “Enable Kroki” y escribe la dirección del servidor como “Kroki URL”. GitLab entonces dibuja los bloques de diagramas en Markdown, AsciiDoc, reStructuredText y Textile."
+				},
+				{
+					"q": "¿Kroki tiene autenticación?",
+					"a": "No. Kroki no tiene inicio de sesión, usuarios ni claves de API, así que cualquiera que conozca su dirección puede generar diagramas en él. Eso sí, su modo SECURE por defecto impide que un diagrama lea archivos del disco del servidor o de la red."
+				},
+				{
+					"q": "¿Kroki admite Mermaid, BPMN y Excalidraw?",
+					"a": "Sí, mediante servidores complementarios: Mermaid, BPMN, Excalidraw y el experimental diagrams.net se ejecutan cada uno en un contenedor propio junto al contenedor principal de kroki. Esta plantilla inicia solo el complemento de Mermaid, así que los diagramas de BPMN y Excalidraw no están disponibles."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des diagrammes à partir de texte : PlantUML, Mermaid, Graphviz et plus",
-			"notes": "Envoyez la source d’un diagramme à https://{host}/<type>/svg, par exemple /plantuml/svg ou /mermaid/svg, et vous recevez l’image ; les éditeurs et les outils de documentation prennent https://{host} comme serveur Kroki. Kroki n’a pas de comptes : quiconque connaît l’adresse peut l’utiliser. BPMN et Excalidraw sont laissés de côté pour économiser la mémoire."
+			"notes": "Envoyez la source d’un diagramme à https://{host}/<type>/svg, par exemple /plantuml/svg ou /mermaid/svg, et vous recevez l’image ; les éditeurs et les outils de documentation prennent https://{host} comme serveur Kroki. Kroki n’a pas de comptes : quiconque connaît l’adresse peut l’utiliser. BPMN et Excalidraw sont laissés de côté pour économiser la mémoire.",
+			"sizing": "Kroki est modéré : environ 800 MB de mémoire, surtout pour le navigateur qui dessine Mermaid, et il ne garde rien sur le disque.",
+			"summary": "Auto-hébergez Kroki, le serveur open source qui transforme du texte de diagramme en image : PlantUML, Mermaid, Graphviz, D2 et plus via une API HTTP.",
+			"about": [
+				"Kroki est un serveur open source de diagrammes en tant que code : vous lui envoyez le texte d’un diagramme et il renvoie l’image. Une seule API HTTP couvre PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom et bien d’autres. Chaque type sort en SVG, et beaucoup aussi en PNG ou en PDF. MkDocs, Sphinx, MediaWiki et les plugins pour VS Code et IntelliJ prennent l’adresse du serveur et dessinent les diagrammes par son intermédiaire.",
+				"Vous auto-hébergez Kroki pour que les diagrammes de vos systèmes internes restent sur votre propre serveur, au lieu de partir vers le kroki.io public et gratuit. Un seul serveur évite aussi à chaque ordinateur portable et à chaque runner de CI d’installer lui-même les bibliothèques, écrites dans plusieurs langages. Cela convient aux équipes qui gardent leur documentation sous forme de code. Le revers : il n’y a pas d’éditeur, seulement l’API, donc vous écrivez les diagrammes dans un éditeur ou un outil de documentation de votre choix."
+			],
+			"faq": [
+				{
+					"q": "Kroki est-il gratuit et open source ?",
+					"a": "Oui. Kroki est publié sous licence MIT, et son code est sur GitHub, dans yuzutech/kroki. L’image du serveur et celles des serveurs compagnons sont sur Docker Hub, et vous pouvez les faire tourner gratuitement sur votre propre serveur."
+				},
+				{
+					"q": "Comment envoyer un diagramme à l’API de Kroki ?",
+					"a": "Envoyez la source en texte brut par POST à /<type>/<format>, par exemple /graphviz/svg, ou envoyez par POST un JSON avec diagram_source, diagram_type et output_format à /. Pour un lien GET, compressez la source avec deflate, encodez-la en base64 URL-safe et ajoutez-la à la fin."
+				},
+				{
+					"q": "Comment connecter GitLab à un serveur Kroki auto-hébergé ?",
+					"a": "Sur GitLab Self-Managed, un administrateur choisit « Admin », puis « Settings > General », déplie « Kroki », sélectionne « Enable Kroki » et saisit l’adresse du serveur comme « Kroki URL ». GitLab dessine ensuite les blocs de diagrammes dans Markdown, AsciiDoc, reStructuredText et Textile."
+				},
+				{
+					"q": "Kroki a-t-il une authentification ?",
+					"a": "Non. Kroki n’a ni connexion, ni utilisateurs, ni clés d’API : quiconque connaît son adresse peut y générer des diagrammes. En revanche, son mode SECURE par défaut empêche un diagramme de lire des fichiers sur le disque du serveur ou sur le réseau."
+				},
+				{
+					"q": "Kroki prend-il en charge Mermaid, BPMN et Excalidraw ?",
+					"a": "Oui, grâce à des serveurs compagnons : Mermaid, BPMN, Excalidraw et diagrams.net, encore expérimental, tournent chacun dans un conteneur à part, à côté du conteneur principal kroki. Ce template ne démarre que le compagnon Mermaid : les diagrammes BPMN et Excalidraw ne sont donc pas disponibles."
+				}
+			]
 		},
 		"pl": {
 			"description": "Diagramy z tekstu: PlantUML, Mermaid, Graphviz i inne",
-			"notes": "Wyślij kod diagramu na https://{host}/<type>/svg, na przykład /plantuml/svg albo /mermaid/svg, a dostaniesz obrazek; edytory i narzędzia do dokumentacji przyjmą https://{host} jako swój serwer Kroki. Kroki nie ma kont: może z niego korzystać każdy, kto zna adres. BPMN i Excalidraw pominięto, żeby oszczędzić pamięć."
+			"notes": "Wyślij kod diagramu na https://{host}/<type>/svg, na przykład /plantuml/svg albo /mermaid/svg, a dostaniesz obrazek; edytory i narzędzia do dokumentacji przyjmą https://{host} jako swój serwer Kroki. Kroki nie ma kont: może z niego korzystać każdy, kto zna adres. BPMN i Excalidraw pominięto, żeby oszczędzić pamięć.",
+			"sizing": "Kroki ma średnie wymagania: około 800 MB pamięci, głównie przez przeglądarkę, która rysuje Mermaid, a na dysku nic nie trzyma.",
+			"summary": "Hostuj Kroki u siebie, serwer open source, który zamienia tekst diagramu w obraz: PlantUML, Mermaid, Graphviz, D2 i więcej przez jedno API HTTP.",
+			"about": [
+				"Kroki to serwer open source do diagramów jako kodu: wysyłasz mu tekst diagramu, a on zwraca obraz. Jedno API HTTP obsługuje PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom i wiele innych. Każdy typ wychodzi jako SVG, a wiele także jako PNG lub PDF. MkDocs, Sphinx, MediaWiki oraz pluginy do VS Code i IntelliJ przyjmują adres serwera i rysują diagramy za jego pośrednictwem.",
+				"Kroki hostuje się u siebie, żeby diagramy wewnętrznych systemów zostawały na własnym serwerze, a nie trafiały do darmowego publicznego kroki.io. Jeden serwer oznacza też, że żaden laptop ani runner CI nie musi sam instalować bibliotek, które są napisane w kilku językach. Pasuje do zespołów, które trzymają dokumentację jako kod. Haczyk: nie ma edytora, tylko API, więc diagramy piszesz we własnym edytorze albo narzędziu do dokumentacji."
+			],
+			"faq": [
+				{
+					"q": "Czy Kroki jest darmowy i open source?",
+					"a": "Tak. Kroki jest wydany na licencji MIT, a jego kod jest na GitHubie w yuzutech/kroki. Obraz serwera i obrazy serwerów pomocniczych są na Docker Hubie i można je uruchomić za darmo na własnym serwerze."
+				},
+				{
+					"q": "Jak wysłać diagram do API serwera Kroki?",
+					"a": "Wyślij źródło jako zwykły tekst metodą POST na /<type>/<format>, na przykład /graphviz/svg, albo wyślij POST-em JSON z diagram_source, diagram_type i output_format na /. Do linku GET skompresuj źródło deflate’em, zakoduj je jako base64 w wersji URL-safe i dopisz na końcu."
+				},
+				{
+					"q": "Jak podłączyć GitLaba do własnego serwera Kroki?",
+					"a": "W GitLab Self-Managed administrator wybiera „Admin”, potem „Settings > General”, rozwija „Kroki”, wybiera „Enable Kroki” i wpisuje adres serwera jako „Kroki URL”. GitLab rysuje wtedy bloki diagramów w Markdownie, AsciiDoc, reStructuredText i Textile."
+				},
+				{
+					"q": "Czy Kroki ma uwierzytelnianie?",
+					"a": "Nie. Kroki nie ma logowania, użytkowników ani kluczy API, więc każdy, kto zna jego adres, może na nim renderować diagramy. Za to jego domyślny tryb SECURE nie pozwala diagramowi czytać plików z dysku serwera ani z sieci."
+				},
+				{
+					"q": "Czy Kroki renderuje Mermaid, BPMN i Excalidraw?",
+					"a": "Tak, przez serwery pomocnicze: Mermaid, BPMN, Excalidraw i eksperymentalne diagrams.net działają w osobnych kontenerach obok głównego kontenera kroki. Ten szablon uruchamia tylko pomocniczy serwer Mermaid, więc diagramy BPMN i Excalidraw nie są dostępne."
+				}
+			]
 		},
 		"pt": {
 			"description": "Diagramas a partir de texto: PlantUML, Mermaid, Graphviz e mais",
-			"notes": "Envie o código de um diagrama para https://{host}/<type>/svg, como /plantuml/svg ou /mermaid/svg, e receba a imagem; editores e ferramentas de documentação usam https://{host} como servidor Kroki. O Kroki não tem contas: qualquer pessoa com o endereço pode usá-lo. BPMN e Excalidraw ficaram de fora para economizar memória."
+			"notes": "Envie o código de um diagrama para https://{host}/<type>/svg, como /plantuml/svg ou /mermaid/svg, e receba a imagem; editores e ferramentas de documentação usam https://{host} como servidor Kroki. O Kroki não tem contas: qualquer pessoa com o endereço pode usá-lo. BPMN e Excalidraw ficaram de fora para economizar memória.",
+			"sizing": "Kroki é moderado: cerca de 800 MB de memória, quase tudo do navegador que desenha o Mermaid; não guarda nada no disco.",
+			"summary": "Auto-hospede o Kroki, servidor de código aberto que transforma texto de diagrama em imagem: PlantUML, Mermaid, Graphviz, D2 e mais em uma API HTTP.",
+			"about": [
+				"O Kroki é um servidor de código aberto de diagramas como código: você envia o texto de um diagrama e ele devolve a imagem. Uma única API HTTP cobre PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom e muitos outros. Todo tipo sai como SVG, e muitos também como PNG ou PDF. MkDocs, Sphinx, MediaWiki e plugins para o VS Code e o IntelliJ recebem o endereço do servidor e desenham os diagramas por ele.",
+				"Você hospeda o Kroki por conta própria para que os diagramas dos seus sistemas internos fiquem no seu próprio servidor, em vez de ir para o kroki.io público e gratuito. Com um servidor só, nenhum notebook nem runner de CI precisa instalar as bibliotecas, que são escritas em várias linguagens. Serve para equipes que mantêm a documentação como código. O porém: não há editor, só a API, então os diagramas são escritos em um editor ou em uma ferramenta de documentação de sua escolha."
+			],
+			"faq": [
+				{
+					"q": "O Kroki é gratuito e de código aberto?",
+					"a": "Sim. O Kroki é distribuído sob a licença MIT, e o código dele está no GitHub, em yuzutech/kroki. A imagem do servidor e as dos servidores auxiliares estão no Docker Hub e podem rodar de graça no seu próprio servidor."
+				},
+				{
+					"q": "Como envio um diagrama para a API do Kroki?",
+					"a": "Faça um POST do código como texto simples para /<type>/<format>, como /graphviz/svg, ou um POST de JSON com diagram_source, diagram_type e output_format para /. Para um link GET, comprima o código com deflate, codifique em base64 URL-safe e anexe ao final."
+				},
+				{
+					"q": "Como conecto o GitLab a um servidor Kroki auto-hospedado?",
+					"a": "No GitLab Self-Managed, um administrador seleciona “Admin”, depois “Settings > General”, expande “Kroki”, seleciona “Enable Kroki” e informa o endereço do servidor como “Kroki URL”. O GitLab passa então a desenhar blocos de diagrama em Markdown, AsciiDoc, reStructuredText e Textile."
+				},
+				{
+					"q": "O Kroki tem autenticação?",
+					"a": "Não. O Kroki não tem login, usuários nem chaves de API, então quem souber o endereço pode renderizar diagramas nele. Em compensação, o modo padrão SECURE impede que um diagrama leia arquivos do disco do servidor ou da rede."
+				},
+				{
+					"q": "O Kroki renderiza Mermaid, BPMN e Excalidraw?",
+					"a": "Sim, por meio de servidores auxiliares: Mermaid, BPMN, Excalidraw e o experimental diagrams.net rodam, cada um, em um container próprio ao lado do container principal do kroki. Este template inicia só o auxiliar do Mermaid, então os diagramas de BPMN e Excalidraw não estão disponíveis."
+				}
+			]
 		},
 		"ru": {
 			"description": "Диаграммы из текста: PlantUML, Mermaid, Graphviz и другие",
-			"notes": "Отправьте исходник диаграммы на https://{host}/<type>/svg, например /plantuml/svg или /mermaid/svg, и получите картинку; редакторы и инструменты документации принимают https://{host} как свой сервер Kroki. В Kroki нет аккаунтов: им может пользоваться любой, кто знает адрес. BPMN и Excalidraw не включены, чтобы сэкономить память."
+			"notes": "Отправьте исходник диаграммы на https://{host}/<type>/svg, например /plantuml/svg или /mermaid/svg, и получите картинку; редакторы и инструменты документации принимают https://{host} как свой сервер Kroki. В Kroki нет аккаунтов: им может пользоваться любой, кто знает адрес. BPMN и Excalidraw не включены, чтобы сэкономить память.",
+			"sizing": "Kroki: умеренные требования — около 800 MB памяти, в основном на браузер, который рисует Mermaid; на диске ничего не хранится.",
+			"summary": "Self-hosted Kroki: open source сервер, который превращает текст диаграммы в картинку. PlantUML, Mermaid, Graphviz, D2 и другие через один HTTP API.",
+			"about": [
+				"Kroki — это open source сервер для диаграмм как кода: вы отправляете ему текст диаграммы, а он возвращает картинку. Один HTTP API охватывает PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom и многие другие. Каждый тип выдается в SVG, а многие еще и в PNG или PDF. MkDocs, Sphinx, MediaWiki и плагины для VS Code и IntelliJ берут адрес сервера и рисуют диаграммы через него.",
+				"Kroki хостят у себя, чтобы диаграммы внутренних систем оставались на собственном сервере, а не уходили на бесплатный публичный kroki.io. Один сервер к тому же избавляет ноутбуки и CI-раннеры от необходимости самим ставить библиотеки, написанные на разных языках. Подходит командам, которые ведут документацию как код. Но есть нюанс: редактора нет, только API, поэтому диаграммы пишутся в вашем собственном редакторе или инструменте документации."
+			],
+			"faq": [
+				{
+					"q": "Kroki бесплатный и с открытым исходным кодом?",
+					"a": "Да. Kroki выпускается по лицензии MIT, а его код лежит на GitHub в yuzutech/kroki. Образы сервера и вспомогательных серверов лежат на Docker Hub, и запускать их на собственном сервере можно бесплатно."
+				},
+				{
+					"q": "Как отправить диаграмму в API Kroki?",
+					"a": "Отправьте исходник обычным текстом методом POST на /<type>/<format>, например /graphviz/svg, или отправьте POST-запросом JSON с diagram_source, diagram_type и output_format на /. Для GET-ссылки сожмите исходник через deflate, закодируйте в URL-safe base64 и добавьте в конец."
+				},
+				{
+					"q": "Как подключить GitLab к self-hosted серверу Kroki?",
+					"a": "В GitLab Self-Managed администратор выбирает «Admin», затем «Settings > General», раскрывает «Kroki», выбирает «Enable Kroki» и вводит адрес сервера как «Kroki URL». После этого GitLab рисует блоки диаграмм в Markdown, AsciiDoc, reStructuredText и Textile."
+				},
+				{
+					"q": "Есть ли в Kroki аутентификация?",
+					"a": "Нет. В Kroki нет ни входа, ни пользователей, ни API-ключей, поэтому строить на нем диаграммы может любой, кто знает адрес. Зато режим SECURE, который включен по умолчанию, не дает диаграмме читать файлы с диска сервера или из сети."
+				},
+				{
+					"q": "Kroki поддерживает Mermaid, BPMN и Excalidraw?",
+					"a": "Да, через вспомогательные серверы: Mermaid, BPMN, Excalidraw и экспериментальный diagrams.net работают в отдельных контейнерах рядом с основным контейнером kroki. Этот шаблон запускает только вспомогательный сервер Mermaid, поэтому диаграммы BPMN и Excalidraw недоступны."
+				}
+			]
 		},
 		"uk": {
 			"description": "Діаграми з тексту: PlantUML, Mermaid, Graphviz та інші",
-			"notes": "Надішліть вихідний код діаграми на https://{host}/<type>/svg, наприклад /plantuml/svg або /mermaid/svg, і отримайте зображення; редактори й інструменти документації приймають https://{host} як свій сервер Kroki. У Kroki немає акаунтів: ним може користуватися кожен, хто знає адресу. BPMN і Excalidraw не ввімкнено, щоб заощадити пам’ять."
+			"notes": "Надішліть вихідний код діаграми на https://{host}/<type>/svg, наприклад /plantuml/svg або /mermaid/svg, і отримайте зображення; редактори й інструменти документації приймають https://{host} як свій сервер Kroki. У Kroki немає акаунтів: ним може користуватися кожен, хто знає адресу. BPMN і Excalidraw не ввімкнено, щоб заощадити пам’ять.",
+			"sizing": "Kroki має помірні вимоги: близько 800 MB пам’яті, здебільшого через браузер, що малює Mermaid, а на диску нічого не зберігає.",
+			"summary": "Self-hosted Kroki: сервер з відкритим кодом, що перетворює текст діаграми на зображення. PlantUML, Mermaid, Graphviz, D2 та інші через один HTTP API.",
+			"about": [
+				"Kroki — це сервер з відкритим кодом для діаграм як коду: ви надсилаєте йому текст діаграми, а він повертає зображення. Один HTTP API охоплює PlantUML, Mermaid, Graphviz, D2, C4, Structurizr, Vega-Lite, WaveDrom та багато інших. Кожен тип виходить як SVG, а багато ще й як PNG або PDF. MkDocs, Sphinx, MediaWiki і плагіни для VS Code та IntelliJ беруть адресу сервера й малюють діаграми через нього.",
+				"Kroki хостять у себе, щоб діаграми внутрішніх систем залишалися на власному сервері, а не йшли на безкоштовний публічний kroki.io. Один сервер до того ж позбавляє ноутбуки й CI-раннери потреби самим ставити бібліотеки, написані кількома мовами. Підходить командам, які ведуть документацію як код. Але є нюанс: редактора немає, лише API, тож діаграми пишуть у власному редакторі чи інструменті документації."
+			],
+			"faq": [
+				{
+					"q": "Чи Kroki безкоштовний і з відкритим кодом?",
+					"a": "Так. Kroki виходить за ліцензією MIT, а його код лежить на GitHub у yuzutech/kroki. Образи сервера та допоміжних серверів лежать на Docker Hub, і запускати їх на власному сервері можна безкоштовно."
+				},
+				{
+					"q": "Як надіслати діаграму до API Kroki?",
+					"a": "Надішліть вихідний код звичайним текстом методом POST на /<type>/<format>, наприклад /graphviz/svg, або надішліть POST-запитом JSON із diagram_source, diagram_type і output_format на /. Для GET-посилання стисніть вихідний код через deflate, закодуйте в URL-safe base64 і додайте в кінець."
+				},
+				{
+					"q": "Як підключити GitLab до self-hosted сервера Kroki?",
+					"a": "У GitLab Self-Managed адміністратор обирає «Admin», потім «Settings > General», розгортає «Kroki», обирає «Enable Kroki» і вводить адресу сервера як «Kroki URL». Після цього GitLab малює блоки діаграм у Markdown, AsciiDoc, reStructuredText і Textile."
+				},
+				{
+					"q": "Чи є в Kroki автентифікація?",
+					"a": "Ні. У Kroki немає ні входу, ні користувачів, ні API-ключів, тож будувати на ньому діаграми може будь-хто, хто знає адресу. Зате режим SECURE, який увімкнений за замовчуванням, не дає діаграмі читати файли з диска сервера чи з мережі."
+				},
+				{
+					"q": "Чи підтримує Kroki Mermaid, BPMN та Excalidraw?",
+					"a": "Так, через допоміжні сервери: Mermaid, BPMN, Excalidraw та експериментальний diagrams.net працюють в окремих контейнерах поряд з основним контейнером kroki. Цей шаблон запускає лише допоміжний сервер Mermaid, тож діаграми BPMN та Excalidraw недоступні."
+				}
+			]
 		}
 	}
 }

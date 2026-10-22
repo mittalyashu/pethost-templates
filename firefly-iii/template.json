@@ -1,6 +1,11 @@
 {
 	"name": "Firefly III",
 	"emoji": "🐷",
+	"category": "finance",
+	"alternatives": [
+		"YNAB"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "app",
 		"port": 8080
@@ -26,35 +31,259 @@
 	"texts": {
 		"en": {
 			"description": "A personal finance manager with double-entry bookkeeping",
-			"notes": "Open the address and register: the first account is the only one, and registration closes after it. Do it right away: until then the page is open to whoever has the address. Firefly III runs in UTC: for another time zone add TZ, for example Europe/Berlin, to the project’s .env and deploy again."
+			"notes": "Open the address and register: the first account is the only one, and registration closes after it. Do it right away: until then the page is open to whoever has the address. Firefly III runs in UTC: for another time zone add TZ, for example Europe/Berlin, to the project’s .env and deploy again.",
+			"sizing": "Firefly III is light: about 100 MB with Postgres, and years of transactions take well under a gigabyte.",
+			"summary": "Firefly III is an open-source personal finance manager and YNAB alternative with no AI and no cloud. Self-host it on your own machine in one click.",
+			"about": [
+				"Firefly III is an open-source personal finance manager that people run instead of YNAB. It keeps a double-entry record of withdrawals, deposits and transfers across bank, savings, credit card and loan accounts, in any currency. Rules spot a bank's messy descriptions and set the budget, category, tags or a cleaner description for you. Recurring transactions enter rent or salary on schedule, piggy banks save toward goals, and reports break down spending by budget, category or tag over any period.",
+				"People self-host it to keep years of bank records off someone else's cloud: Firefly III contacts no outside server until you tell it to, and it has no AI. It suits someone a little tech-savvy who wants to see where every euro goes. A REST API covers almost all of it, and third-party phone apps use it. The catch is getting bank data in: CSV and CAMT files and bank connections go through the Data Importer, a separate tool."
+			],
+			"faq": [
+				{
+					"q": "Is Firefly III free and open source?",
+					"a": "Yes. Firefly III is free, licensed under the GNU Affero General Public License v3, with its code public on GitHub. Its developer works on it in his spare time, supported by donations and sponsors."
+				},
+				{
+					"q": "How is Firefly III different from YNAB?",
+					"a": "Firefly III does not use zero-based budgeting. Instead of giving every incoming euro a job, you decide at the start of the month what you will spend, split it over a few budgets and keep the rest in savings."
+				},
+				{
+					"q": "Is there a Firefly III mobile app?",
+					"a": "There is no official app: Firefly III is a web app. Community apps connect to it through its API, such as Waterfly III and Photuris III on Android, FireFlow on iPhone, and Abacus on both."
+				},
+				{
+					"q": "Can Firefly III import bank transactions?",
+					"a": "Yes, through the Firefly III Data Importer, a separate app with its own installation that this template does not include. It reads CSV and CAMT.05x files and can download transactions through providers such as Enable Banking and SimpleFIN."
+				},
+				{
+					"q": "Can several people use Firefly III?",
+					"a": "Yes, each user gets a separate administration. Registration is blocked after the first user, who can reopen it in /settings under Configuration options for Firefly III. Two users cannot share one administration yet."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Verwaltung für private Finanzen mit doppelter Buchführung",
-			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das einzige, danach ist die Registrierung geschlossen. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Firefly III läuft in UTC: Für eine andere Zeitzone trägst du TZ, zum Beispiel Europe/Berlin, in die .env des Projekts ein und deployst neu."
+			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das einzige, danach ist die Registrierung geschlossen. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Firefly III läuft in UTC: Für eine andere Zeitzone trägst du TZ, zum Beispiel Europe/Berlin, in die .env des Projekts ein und deployst neu.",
+			"sizing": "Firefly III ist leicht: etwa 100 MB mit Postgres, und Transaktionen aus Jahren brauchen weit unter 1 GB.",
+			"summary": "Firefly III selbst hosten: Open-Source-Finanzmanager und YNAB-Alternative ohne KI und ohne Cloud. Auf deiner eigenen Maschine, mit einem Klick.",
+			"about": [
+				"Firefly III ist ein Open-Source-Finanzmanager für private Finanzen, den Leute statt YNAB betreiben. Er führt eine doppelte Buchführung über Abbuchungen, Einzahlungen und Umbuchungen auf Bank-, Spar-, Kreditkarten- und Darlehenskonten, in jeder Währung. Regeln erkennen die wirren Beschreibungen einer Bank und setzen für dich Budget, Kategorie, Tags oder eine sauberere Beschreibung. Wiederkehrende Buchungen tragen Miete oder Gehalt planmäßig ein, Sparschweine sparen auf Ziele hin, und Berichte schlüsseln die Ausgaben für jeden Zeitraum nach Budget, Kategorie oder Tag auf.",
+				"Leute hosten Firefly III selbst, damit jahrelange Bankdaten nicht in der Cloud von jemand anderem liegen: Firefly III nimmt zu keinem fremden Server Kontakt auf, solange du es nicht dazu anweist, und hat keine KI. Es passt zu allen mit etwas technischem Know-how, die sehen wollen, wohin jeder Euro fließt. Eine REST-API deckt fast alles ab, und Handy-Apps von Drittanbietern nutzen sie. Der Haken ist der Import der Bankdaten: CSV- und CAMT-Dateien sowie Bankverbindungen laufen über den Data Importer, ein separates Tool."
+			],
+			"faq": [
+				{
+					"q": "Ist Firefly III kostenlos und Open Source?",
+					"a": "Ja. Firefly III ist kostenlos und steht unter der GNU Affero General Public License v3, sein Code ist öffentlich auf GitHub. Sein Entwickler arbeitet in seiner Freizeit daran, unterstützt von Spenden und Sponsoren."
+				},
+				{
+					"q": "Was unterscheidet Firefly III von YNAB?",
+					"a": "Firefly III arbeitet nicht mit Zero-Based-Budgeting. Statt jedem eingehenden Euro eine Aufgabe zu geben, legst du zu Monatsbeginn fest, was du ausgeben wirst, verteilst das auf ein paar Budgets und behältst den Rest als Erspartes."
+				},
+				{
+					"q": "Gibt es eine mobile App für Firefly III?",
+					"a": "Es gibt keine offizielle App: Firefly III ist eine Web-App. Apps aus der Community verbinden sich über die API damit, etwa Waterfly III und Photuris III auf Android, FireFlow auf dem iPhone und Abacus auf beiden."
+				},
+				{
+					"q": "Kann Firefly III Banktransaktionen importieren?",
+					"a": "Ja, über den Firefly III Data Importer, eine eigene App mit eigener Installation, die diese Vorlage nicht enthält. Der Data Importer liest CSV- und CAMT.05x-Dateien und kann Transaktionen über Anbieter wie Enable Banking und SimpleFIN herunterladen."
+				},
+				{
+					"q": "Können mehrere Personen Firefly III nutzen?",
+					"a": "Ja, jede Person bekommt eine eigene Verwaltung. Nach dem ersten Konto ist die Registrierung gesperrt; wer es angelegt hat, kann sie in /settings unter „Configuration options for Firefly III“ wieder öffnen. Zwei Personen können sich noch keine Verwaltung teilen."
+				}
+			]
 		},
 		"es": {
 			"description": "Un administrador de finanzas personales con contabilidad por partida doble",
-			"notes": "Abre la dirección y regístrate: la primera cuenta es la única, y después se cierra el registro. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Firefly III se ejecuta en UTC: para otra zona horaria, agrega TZ, por ejemplo Europe/Berlin, al .env del proyecto y vuelve a desplegar."
+			"notes": "Abre la dirección y regístrate: la primera cuenta es la única, y después se cierra el registro. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Firefly III se ejecuta en UTC: para otra zona horaria, agrega TZ, por ejemplo Europe/Berlin, al .env del proyecto y vuelve a desplegar.",
+			"sizing": "Firefly III es ligero: unos 100 MB con Postgres, y años de transacciones ocupan bastante menos de 1 GB.",
+			"summary": "Autoaloja Firefly III, el administrador de finanzas personales de código abierto y alternativa a YNAB, sin IA ni nube. En tu propia máquina, en un clic.",
+			"about": [
+				"Firefly III es un administrador de finanzas personales de código abierto que la gente usa en lugar de YNAB. Lleva un registro por partida doble de retiros, depósitos y transferencias entre cuentas bancarias, de ahorro, tarjetas de crédito y préstamos, en cualquier moneda. Las reglas detectan las descripciones confusas de un banco y te asignan el presupuesto, la categoría, las etiquetas o una descripción más clara. Las transacciones recurrentes registran el alquiler o el salario en su fecha, las huchas ahorran para alcanzar metas, y los informes desglosan los gastos por presupuesto, categoría o etiqueta en cualquier periodo.",
+				"La gente autoaloja Firefly III para mantener años de registros bancarios fuera de la nube de otros: Firefly III no se conecta a ningún servidor externo hasta que se lo indiques, y no tiene IA. Le va bien a quien tiene algo de conocimientos técnicos y quiere ver adónde va cada euro. Una API REST cubre casi todo, y las apps móviles de terceros la usan. El inconveniente es meter los datos del banco: los archivos CSV y CAMT y las conexiones bancarias pasan por el Data Importer, una herramienta aparte."
+			],
+			"faq": [
+				{
+					"q": "¿Firefly III es gratis y de código abierto?",
+					"a": "Sí. Firefly III es gratis, con licencia GNU Affero General Public License v3, y su código es público en GitHub. Su desarrollador trabaja en él en su tiempo libre, con el apoyo de donaciones y patrocinadores."
+				},
+				{
+					"q": "¿En qué se diferencia Firefly III de YNAB?",
+					"a": "Firefly III no usa el presupuesto base cero. En lugar de asignarle una tarea a cada euro que entra, decides al comienzo del mes cuánto vas a gastar, lo repartes entre unos pocos presupuestos y dejas el resto en ahorros."
+				},
+				{
+					"q": "¿Hay una app móvil de Firefly III?",
+					"a": "No hay una app oficial: Firefly III es una app web. Las apps de la comunidad se conectan a él a través de su API, como Waterfly III y Photuris III en Android, FireFlow en iPhone y Abacus en ambos."
+				},
+				{
+					"q": "¿Firefly III puede importar transacciones bancarias?",
+					"a": "Sí, con el Firefly III Data Importer, una app aparte con su propia instalación que esta plantilla no incluye. Lee archivos CSV y CAMT.05x y puede descargar transacciones a través de proveedores como Enable Banking y SimpleFIN."
+				},
+				{
+					"q": "¿Pueden usar Firefly III varias personas?",
+					"a": "Sí, cada usuario tiene una administración separada. El registro se bloquea después del primer usuario, que puede volver a abrirlo en /settings, en “Configuration options for Firefly III”. Dos usuarios todavía no pueden compartir una misma administración."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un gestionnaire de finances personnelles en comptabilité à partie double",
-			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est le seul, et les inscriptions se ferment ensuite. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Firefly III fonctionne en UTC : pour un autre fuseau horaire, ajoutez TZ, par exemple Europe/Berlin, au .env du projet et redéployez."
+			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est le seul, et les inscriptions se ferment ensuite. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Firefly III fonctionne en UTC : pour un autre fuseau horaire, ajoutez TZ, par exemple Europe/Berlin, au .env du projet et redéployez.",
+			"sizing": "Firefly III est léger : environ 100 MB avec Postgres, et des années de transactions pèsent bien moins de 1 GB.",
+			"summary": "Auto-hébergez Firefly III, le gestionnaire de finances personnelles open source et alternative à YNAB, sans IA ni cloud. Sur votre machine, en un clic.",
+			"about": [
+				"Firefly III est un gestionnaire de finances personnelles open source que l’on installe à la place de YNAB. Il tient une comptabilité à partie double des retraits, des dépôts et des transferts entre comptes bancaires, comptes d’épargne, cartes de crédit et prêts, dans n’importe quelle devise. Des règles repèrent les libellés brouillons d’une banque et définissent à votre place le budget, la catégorie, les tags ou un libellé plus propre. Les transactions récurrentes saisissent le loyer ou le salaire à échéance, les tirelires épargnent pour des objectifs, et les rapports ventilent les dépenses par budget, catégorie ou tag sur n’importe quelle période.",
+				"On auto-héberge Firefly III pour garder des années de données bancaires hors du cloud d’un tiers : Firefly III ne contacte aucun serveur extérieur tant que vous ne le lui demandez pas, et il n’a pas d’IA. Il convient à quelqu’un qui s’y connaît un peu en technique et veut voir où va chaque euro. Une API REST couvre presque tout, et des applications mobiles tierces s’en servent. Le hic, c’est de faire entrer les données bancaires : les fichiers CSV et CAMT et les connexions bancaires passent par le Data Importer, un outil à part."
+			],
+			"faq": [
+				{
+					"q": "Firefly III est-il gratuit et open source ?",
+					"a": "Oui. Firefly III est gratuit, sous licence GNU Affero General Public License v3, et son code est public sur GitHub. Son développeur y travaille sur son temps libre, soutenu par des dons et des sponsors."
+				},
+				{
+					"q": "En quoi Firefly III diffère-t-il de YNAB ?",
+					"a": "Firefly III n’utilise pas le budget base zéro. Au lieu de donner un rôle à chaque euro qui rentre, vous décidez en début de mois ce que vous allez dépenser, vous le répartissez sur quelques budgets et vous gardez le reste en épargne."
+				},
+				{
+					"q": "Existe-t-il une application mobile Firefly III ?",
+					"a": "Il n’existe pas d’application officielle : Firefly III est une application web. Des applications de la communauté s’y connectent par son API, comme Waterfly III et Photuris III sur Android, FireFlow sur iPhone et Abacus sur les deux."
+				},
+				{
+					"q": "Firefly III peut-il importer des transactions bancaires ?",
+					"a": "Oui, avec le Firefly III Data Importer, une application distincte, avec sa propre installation, que ce template n’inclut pas. Il lit les fichiers CSV et CAMT.05x et peut télécharger des transactions via des fournisseurs comme Enable Banking et SimpleFIN."
+				},
+				{
+					"q": "Plusieurs personnes peuvent-elles utiliser Firefly III ?",
+					"a": "Oui, chaque utilisateur dispose d’une administration distincte. Les inscriptions se ferment après le premier utilisateur, qui peut les rouvrir dans /settings, sous « Configuration options for Firefly III ». Deux utilisateurs ne peuvent pas encore partager une même administration."
+				}
+			]
 		},
 		"pl": {
 			"description": "Menedżer finansów osobistych z księgowością podwójnego zapisu",
-			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto będzie jedynym, a po nim rejestracja się zamyka. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Firefly III działa w UTC: dla innej strefy dodaj TZ, na przykład Europe/Berlin, do pliku .env projektu i wdróż ponownie."
+			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto będzie jedynym, a po nim rejestracja się zamyka. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Firefly III działa w UTC: dla innej strefy dodaj TZ, na przykład Europe/Berlin, do pliku .env projektu i wdróż ponownie.",
+			"sizing": "Firefly III ma małe wymagania: około 100 MB z Postgresem, a lata transakcji zajmują znacznie poniżej 1 GB.",
+			"summary": "Hostuj Firefly III u siebie: menedżer finansów osobistych open source i alternatywa dla YNAB, bez AI i chmury. Na własnej maszynie, w jeden klik.",
+			"about": [
+				"Firefly III to menedżer finansów osobistych open source, którego ludzie używają zamiast YNAB. Prowadzi księgowość podwójnego zapisu dla wypłat, wpłat i przelewów między kontami bankowymi, oszczędnościowymi, kartami kredytowymi i kredytami, w dowolnej walucie. Reguły rozpoznają chaotyczne opisy transakcji z banku i ustawiają za ciebie budżet, kategorię, tagi albo czytelniejszy opis. Transakcje cykliczne wpisują czynsz lub pensję zgodnie z harmonogramem, skarbonki odkładają na cele, a raporty rozbijają wydatki według budżetu, kategorii lub tagu za dowolny okres.",
+				"Ludzie hostują Firefly III u siebie, żeby lata danych z banku nie trafiały do cudzej chmury: Firefly III nie łączy się z żadnym zewnętrznym serwerem, dopóki mu tego nie polecisz, i nie ma AI. Pasuje do kogoś, kto trochę zna się na technice i chce widzieć, dokąd idzie każde euro. Prawie wszystko obsługuje REST API, z którego korzystają aplikacje mobilne firm trzecich. Haczyk to wprowadzenie danych z banku: pliki CSV i CAMT oraz połączenia z bankami idą przez Data Importer, osobne narzędzie."
+			],
+			"faq": [
+				{
+					"q": "Czy Firefly III jest darmowy i open source?",
+					"a": "Tak. Firefly III jest darmowy, na licencji GNU Affero General Public License v3, a jego kod jest publiczny na GitHubie. Jego twórca rozwija go w wolnym czasie, wspierany darowiznami i sponsorami."
+				},
+				{
+					"q": "Czym Firefly III różni się od YNAB?",
+					"a": "Firefly III nie opiera się na budżetowaniu od zera. Zamiast dawać zadanie każdemu wpływającemu euro, na początku miesiąca decydujesz, ile wydasz, dzielisz to na kilka budżetów, a resztę zostawiasz w oszczędnościach."
+				},
+				{
+					"q": "Czy jest aplikacja mobilna Firefly III?",
+					"a": "Nie ma oficjalnej aplikacji: Firefly III to aplikacja webowa. Aplikacje społeczności łączą się z nim przez API, na przykład Waterfly III i Photuris III na Androidzie, FireFlow na iPhonie i Abacus na obu."
+				},
+				{
+					"q": "Czy Firefly III potrafi importować transakcje z banku?",
+					"a": "Tak, przez Firefly III Data Importer, osobną aplikację z własną instalacją, której ten szablon nie zawiera. Czyta pliki CSV i CAMT.05x i może pobierać transakcje przez dostawców takich jak Enable Banking i SimpleFIN."
+				},
+				{
+					"q": "Czy z Firefly III może korzystać kilka osób?",
+					"a": "Tak, każdy użytkownik dostaje osobną administrację. Rejestracja jest blokowana po pierwszym użytkowniku, który może ją ponownie otworzyć w /settings w sekcji „Configuration options for Firefly III”. Dwóch użytkowników nie może jeszcze dzielić jednej administracji."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um gerenciador de finanças pessoais com contabilidade de partidas dobradas",
-			"notes": "Abra o endereço e cadastre-se: a primeira conta é a única, e o cadastro fecha depois dela. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. O Firefly III roda em UTC: para outro fuso, adicione TZ, por exemplo Europe/Berlin, ao .env do projeto e faça o deploy de novo."
+			"notes": "Abra o endereço e cadastre-se: a primeira conta é a única, e o cadastro fecha depois dela. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. O Firefly III roda em UTC: para outro fuso, adicione TZ, por exemplo Europe/Berlin, ao .env do projeto e faça o deploy de novo.",
+			"sizing": "Firefly III é leve: cerca de 100 MB com o Postgres, e anos de transações ocupam bem menos de 1 GB.",
+			"summary": "Auto-hospede o Firefly III: gerenciador de finanças pessoais de código aberto e alternativa ao YNAB, sem IA e sem nuvem. Na sua máquina, em um clique.",
+			"about": [
+				"O Firefly III é um gerenciador de finanças pessoais de código aberto que as pessoas usam no lugar do YNAB. Ele mantém um registro de partidas dobradas de retiradas, depósitos e transferências entre contas bancárias, contas poupança, cartões de crédito e empréstimos, em qualquer moeda. Regras identificam as descrições confusas de um banco e definem por você o orçamento, a categoria, as tags ou uma descrição mais limpa. Transações recorrentes lançam aluguel ou salário no prazo, cofrinhos poupam para metas, e relatórios detalham os gastos por orçamento, categoria ou tag em qualquer período.",
+				"As pessoas auto-hospedam o Firefly III para manter anos de registros bancários fora da nuvem de terceiros: o Firefly III não contata nenhum servidor externo até você mandar, e não tem IA. Ele serve para quem tem um pouco de traquejo técnico e quer ver para onde vai cada euro. Uma API REST cobre quase tudo, e apps de celular de terceiros a usam. O porém é trazer os dados do banco: arquivos CSV e CAMT e conexões com bancos passam pelo Data Importer, uma ferramenta separada."
+			],
+			"faq": [
+				{
+					"q": "O Firefly III é gratuito e de código aberto?",
+					"a": "Sim. O Firefly III é gratuito, licenciado sob a GNU Affero General Public License v3, e o código dele é público no GitHub. O desenvolvedor trabalha nele nas horas vagas, com o apoio de doações e patrocinadores."
+				},
+				{
+					"q": "Qual é a diferença entre o Firefly III e o YNAB?",
+					"a": "O Firefly III não usa orçamento de base zero. Em vez de dar uma função a cada euro que entra, você decide no começo do mês quanto vai gastar, divide isso em alguns orçamentos e deixa o resto na poupança."
+				},
+				{
+					"q": "Existe um app do Firefly III para celular?",
+					"a": "Não existe app oficial: o Firefly III é um app web. Apps da comunidade se conectam a ele pela API, como Waterfly III e Photuris III no Android, FireFlow no iPhone e Abacus nos dois."
+				},
+				{
+					"q": "O Firefly III consegue importar transações bancárias?",
+					"a": "Sim, pelo Firefly III Data Importer, um app separado, com instalação própria, que este template não inclui. Ele lê arquivos CSV e CAMT.05x e pode baixar transações por provedores como Enable Banking e SimpleFIN."
+				},
+				{
+					"q": "Várias pessoas podem usar o Firefly III?",
+					"a": "Sim, cada usuário recebe uma administração separada. O cadastro é bloqueado depois do primeiro usuário, que pode reabri-lo em /settings, em “Configuration options for Firefly III”. Dois usuários ainda não podem compartilhar uma mesma administração."
+				}
+			]
 		},
 		"ru": {
 			"description": "Менеджер личных финансов с двойной записью",
-			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт будет единственным, и после него регистрация закрывается. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Firefly III работает по UTC: для другого часового пояса добавьте в .env проекта TZ, например Europe/Berlin, и задеплойте проект заново."
+			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт будет единственным, и после него регистрация закрывается. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Firefly III работает по UTC: для другого часового пояса добавьте в .env проекта TZ, например Europe/Berlin, и задеплойте проект заново.",
+			"sizing": "Firefly III: небольшие требования — около 100 MB вместе с Postgres, а годы транзакций занимают намного меньше 1 GB.",
+			"summary": "Self-hosted Firefly III — open source менеджер личных финансов, альтернатива YNAB, без ИИ и облака. На вашей машине, в один клик.",
+			"about": [
+				"Firefly III — это open source менеджер личных финансов, который ставят вместо YNAB. Он ведет учет с двойной записью: списания, пополнения и переводы по банковским и накопительным счетам, кредитным картам и займам, в любой валюте. Правила распознают корявые описания операций от банка и сами проставляют бюджет, категорию, теги или более аккуратное описание. Повторяющиеся транзакции вносят аренду или зарплату по расписанию, копилки откладывают на цели, а отчеты разбивают расходы по бюджету, категории или тегу за любой период.",
+				"Firefly III хостят у себя, чтобы годы банковских записей не лежали в чужом облаке: он не обращается ни к одному внешнему серверу, пока вы сами этого не включите, и в нем нет ИИ. Подойдет тем, кто немного разбирается в технике и хочет видеть, куда уходит каждый евро. Почти все доступно через REST API, им пользуются сторонние мобильные приложения. Но есть нюанс: данные из банка нужно как-то загрузить, а файлы CSV и CAMT и подключения к банкам идут через Data Importer — отдельный инструмент."
+			],
+			"faq": [
+				{
+					"q": "Firefly III бесплатный и с открытым кодом?",
+					"a": "Да. Firefly III бесплатный, под лицензией GNU Affero General Public License v3, а его код открыт на GitHub. Разработчик занимается им в свободное время, а проект поддерживают пожертвования и спонсоры."
+				},
+				{
+					"q": "Чем Firefly III отличается от YNAB?",
+					"a": "Firefly III не использует бюджетирование с нуля (zero-based budgeting). Вместо того чтобы давать задачу каждому поступившему евро, вы в начале месяца решаете, сколько потратите, распределяете это на несколько бюджетов, а остаток оставляете в накоплениях."
+				},
+				{
+					"q": "Есть ли мобильное приложение Firefly III?",
+					"a": "Официального приложения нет: Firefly III — веб-приложение. Приложения от сообщества подключаются к нему через API, например Waterfly III и Photuris III на Android, FireFlow на iPhone и Abacus на обеих платформах."
+				},
+				{
+					"q": "Умеет ли Firefly III импортировать банковские транзакции?",
+					"a": "Да, через Firefly III Data Importer — отдельное приложение с собственной установкой, которое в этот шаблон не входит. Data Importer читает файлы CSV и CAMT.05x и может скачивать транзакции через провайдеров вроде Enable Banking и SimpleFIN."
+				},
+				{
+					"q": "Могут ли пользоваться Firefly III несколько человек?",
+					"a": "Да, у каждого пользователя свой отдельный учет. После первого пользователя регистрация блокируется; он может снова открыть ее в /settings в разделе «Configuration options for Firefly III». Двое пользователей пока не могут вести один общий учет."
+				}
+			]
 		},
 		"uk": {
 			"description": "Менеджер особистих фінансів із подвійним записом",
-			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт буде єдиним, і після нього реєстрація закривається. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Firefly III працює за UTC: для іншого часового поясу додайте TZ, наприклад Europe/Berlin, у файл .env проєкту й задеплойте ще раз."
+			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт буде єдиним, і після нього реєстрація закривається. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Firefly III працює за UTC: для іншого часового поясу додайте TZ, наприклад Europe/Berlin, у файл .env проєкту й задеплойте ще раз.",
+			"sizing": "Firefly III має скромні вимоги: близько 100 MB з Postgres, а роки транзакцій займають значно менше 1 GB.",
+			"summary": "Self-hosted Firefly III — менеджер особистих фінансів із відкритим кодом, альтернатива YNAB, без ШІ та хмари. На вашій машині, в один клік.",
+			"about": [
+				"Firefly III — це менеджер особистих фінансів із відкритим кодом, який ставлять замість YNAB. Він веде облік із подвійним записом: списання, надходження та перекази між банківськими й накопичувальними рахунками, кредитними картками та позиками, у будь-якій валюті. Правила розпізнають плутані описи операцій від банку й самі проставляють бюджет, категорію, теги чи охайніший опис. Повторювані транзакції вносять оренду або зарплату за розкладом, скарбнички відкладають на цілі, а звіти розбивають витрати за бюджетом, категорією чи тегом за будь-який період.",
+				"Firefly III хостять у себе, щоб роки банківських записів не лежали в чужій хмарі: він не звертається до жодного зовнішнього сервера, доки ви самі цього не ввімкнете, і в ньому немає ШІ. Підійде тим, хто трохи розбирається в техніці й хоче бачити, куди йде кожне євро. Майже все доступне через REST API, ним користуються сторонні мобільні застосунки. Але є нюанс: дані з банку треба якось завантажити, а файли CSV і CAMT та підключення до банків ідуть через Data Importer — окремий інструмент."
+			],
+			"faq": [
+				{
+					"q": "Firefly III безплатний і з відкритим кодом?",
+					"a": "Так. Firefly III безплатний, за ліцензією GNU Affero General Public License v3, а його код відкритий на GitHub. Розробник працює над ним у вільний час, а проєкт підтримують пожертви та спонсори."
+				},
+				{
+					"q": "Чим Firefly III відрізняється від YNAB?",
+					"a": "Firefly III не використовує бюджетування з нуля (zero-based budgeting). Замість того щоб давати завдання кожному євро, що надходить, ви на початку місяця вирішуєте, скільки витратите, розподіляєте це на кілька бюджетів, а решту залишаєте в заощадженнях."
+				},
+				{
+					"q": "Чи є мобільний застосунок Firefly III?",
+					"a": "Офіційного застосунку немає: Firefly III — вебзастосунок. Застосунки від спільноти підключаються до нього через API, наприклад Waterfly III і Photuris III на Android, FireFlow на iPhone та Abacus на обох платформах."
+				},
+				{
+					"q": "Чи вміє Firefly III імпортувати банківські транзакції?",
+					"a": "Так, через Firefly III Data Importer — окремий застосунок із власним встановленням, якого в цьому шаблоні немає. Data Importer читає файли CSV і CAMT.05x та може отримувати транзакції через провайдерів на кшталт Enable Banking і SimpleFIN."
+				},
+				{
+					"q": "Чи можуть користуватися Firefly III кілька людей?",
+					"a": "Так, у кожного користувача окремий облік. Після першого користувача реєстрацію заблоковано; він може знову відкрити її в /settings у розділі «Configuration options for Firefly III». Двоє користувачів поки не можуть вести один спільний облік."
+				}
+			]
 		}
 	}
 }

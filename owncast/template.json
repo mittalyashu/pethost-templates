@@ -1,6 +1,12 @@
 {
 	"name": "Owncast",
 	"emoji": "📺",
+	"category": "media",
+	"alternatives": [
+		"Twitch",
+		"YouTube Live"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "owncast",
 		"port": 8080
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "Live video and chat on a page of your own",
-			"notes": "The admin is at /admin: sign in as admin with the password you gave. Stream from OBS to rtmp://{host}:1935/live with the key in STREAM_KEY of the project’s .env. Both are changed in .env: every start sets them again."
+			"notes": "The admin is at /admin: sign in as admin with the password you gave. Stream from OBS to rtmp://{host}:1935/live with the key in STREAM_KEY of the project’s .env. Both are changed in .env: every start sets them again.",
+			"sizing": "Owncast is heavy on CPU while live: each video quality is transcoded as you stream; memory stays small.",
+			"summary": "Owncast is an open-source live streaming server with built-in chat, a self-hosted Twitch alternative. Deploy it with Docker Compose in one click.",
+			"about": [
+				"Owncast is an open-source live streaming server with its own chat, a self-hosted Twitch alternative for a single channel. You go live from OBS, Streamlabs or any software that sends RTMP, and viewers watch in a browser without an account. The chat has moderators, bans and custom emoji. People on Mastodon and other Fediverse servers can follow the stream and get notified when it goes live.",
+				"People run Owncast to own the stream, the chat and the audience: no subscriptions, viewer limits or forced ads, and no tracking. It suits a streamer who wants the channel under their own name rather than a platform's. The catch is bandwidth. Every viewer pulls the video from your server, so 25 viewers of a 5000 kbps stream need about 125 Mbps, and each quality Owncast transcodes needs about a CPU core. An S3-compatible bucket can serve the video instead."
+			],
+			"faq": [
+				{
+					"q": "Is Owncast free and open source?",
+					"a": "Yes. Owncast is free and open source under the MIT License, so anyone may run, change and share it. You download it without registering, and the code is on GitHub."
+				},
+				{
+					"q": "How does Owncast compare with Twitch?",
+					"a": "Owncast gives you one channel on your own server and domain, where you set the rules for the stream and the chat. It has no built-in audience like Twitch's: viewers arrive through your links and the opt-in Owncast Directory."
+				},
+				{
+					"q": "Can I stream to Owncast and Twitch at the same time?",
+					"a": "Yes, through Restream, which Owncast's docs describe as a commercial service that streams to several places at once. You add your Owncast server there as a Custom RTMP channel, which needs a paid Restream account."
+				},
+				{
+					"q": "Is there an Owncast app for iPhone and Android?",
+					"a": "Yes. The Owncasts app for iPhone, iPad and Android browses the Owncast Directory or opens your own server. Viewers can also use any browser or VLC, and the docs cover Apple TV, Roku, Chromecast and smart TVs."
+				},
+				{
+					"q": "What is the Owncast default admin password and stream key?",
+					"a": "A stock Owncast install uses abc123 for both. This template asks for the admin password when you deploy and generates a random stream key, stored as STREAM_KEY in the project's .env. You sign in at /admin as admin."
+				}
+			]
 		},
 		"de": {
 			"description": "Live-Video und Chat auf deiner eigenen Seite",
-			"notes": "Der Admin-Bereich liegt unter /admin: Melde dich als admin mit dem Passwort an, das du festgelegt hast. Streame aus OBS an rtmp://{host}:1935/live, mit dem Key aus STREAM_KEY in der .env des Projekts. Beides änderst du in der .env: Jeder Start setzt es neu."
+			"notes": "Der Admin-Bereich liegt unter /admin: Melde dich als admin mit dem Passwort an, das du festgelegt hast. Streame aus OBS an rtmp://{host}:1935/live, mit dem Key aus STREAM_KEY in der .env des Projekts. Beides änderst du in der .env: Jeder Start setzt es neu.",
+			"sizing": "Owncast ist CPU-lastig, solange es live ist: Jede Videoqualität wird beim Streamen transcodiert; der RAM bleibt klein.",
+			"summary": "Owncast selbst hosten: Open-Source-Livestreaming-Server mit eigenem Chat, eine Twitch-Alternative. Mit Docker Compose in einem Klick deployen.",
+			"about": [
+				"Owncast ist ein Open-Source-Livestreaming-Server mit eigenem Chat, eine selbst gehostete Twitch-Alternative für einen einzelnen Kanal. Du gehst aus OBS, Streamlabs oder jeder Software live, die RTMP sendet, und zuschauen kann man im Browser, ohne Konto. Der Chat hat Moderatoren, Sperren und eigene Emoji. Wer auf Mastodon und anderen Fediverse-Servern ist, kann dem Stream folgen und wird benachrichtigt, sobald er live geht.",
+				"Owncast betreibt man, damit Stream, Chat und Publikum einem selbst gehören: keine Abos, keine Obergrenze für die Zuschauerzahl, keine aufgezwungene Werbung und kein Tracking. Es passt zu allen, die streamen und den Kanal unter eigenem Namen führen wollen statt unter dem einer Plattform. Der Haken ist die Bandbreite. Jede Person, die zuschaut, holt das Video von deinem Server: 25 Personen, die einen Stream mit 5000 kbps sehen, brauchen etwa 125 Mbps, und jede Qualitätsstufe, die Owncast transcodiert, braucht etwa einen CPU-Kern. Stattdessen kann ein S3-kompatibler Bucket das Video ausliefern."
+			],
+			"faq": [
+				{
+					"q": "Ist Owncast kostenlos und Open Source?",
+					"a": "Ja. Owncast ist kostenlos und Open Source unter der MIT-Lizenz, also darf es jeder betreiben, ändern und weitergeben. Du lädst es ohne Registrierung herunter, und der Code liegt auf GitHub."
+				},
+				{
+					"q": "Wie unterscheidet sich Owncast von Twitch?",
+					"a": "Owncast gibt dir einen Kanal auf deinem eigenen Server und unter deiner eigenen Domain, auf dem du die Regeln für Stream und Chat selbst festlegst. Ein eingebautes Publikum wie bei Twitch hat es nicht: Wer zuschaut, kommt über deine Links und das Owncast Directory, bei dem man freiwillig mitmacht."
+				},
+				{
+					"q": "Kann ich gleichzeitig zu Owncast und Twitch streamen?",
+					"a": "Ja, über Restream, das in der Owncast-Dokumentation als kommerzieller Service beschrieben wird, der an mehrere Ziele gleichzeitig streamt. Du fügst dort deinen Owncast-Server als Kanal vom Typ Custom RTMP hinzu, wofür ein kostenpflichtiges Restream-Konto nötig ist."
+				},
+				{
+					"q": "Gibt es eine Owncast-App für iPhone und Android?",
+					"a": "Ja. Die App Owncasts für iPhone, iPad und Android stöbert im Owncast Directory oder öffnet deinen eigenen Server. Zuschauen geht auch in jedem Browser oder mit VLC, und die Dokumentation behandelt Apple TV, Roku, Chromecast und Smart-TVs."
+				},
+				{
+					"q": "Was sind das Standard-Admin-Passwort und der Standard-Stream-Key von Owncast?",
+					"a": "Eine Standardinstallation von Owncast nutzt für beides abc123. Diese Vorlage fragt beim Deploy nach dem Admin-Passwort und erzeugt einen zufälligen Stream-Key, der als STREAM_KEY in der .env des Projekts liegt. Du meldest dich unter /admin als admin an."
+				}
+			]
 		},
 		"es": {
 			"description": "Video en tiempo real y chat en tu propia página",
-			"notes": "La administración está en /admin: inicia sesión como admin con la contraseña que indicaste. Transmite desde OBS a rtmp://{host}:1935/live con la clave de STREAM_KEY, en el .env del proyecto. Las dos se cambian en .env: cada inicio las vuelve a establecer."
+			"notes": "La administración está en /admin: inicia sesión como admin con la contraseña que indicaste. Transmite desde OBS a rtmp://{host}:1935/live con la clave de STREAM_KEY, en el .env del proyecto. Las dos se cambian en .env: cada inicio las vuelve a establecer.",
+			"sizing": "Owncast es pesado en CPU mientras transmites: cada calidad de video se transcodifica sobre la marcha; la memoria se mantiene baja.",
+			"summary": "Autoaloja Owncast, un servidor de streaming en tiempo real con chat propio y alternativa de código abierto a Twitch. Con Docker Compose, en un clic.",
+			"about": [
+				"Owncast es un servidor de streaming en tiempo real de código abierto, con chat propio: una alternativa autoalojada a Twitch para un solo canal. Transmites desde OBS, Streamlabs o cualquier software que envíe RTMP, y quienes te ven lo hacen desde el navegador, sin cuenta. El chat tiene moderadores, bloqueos y emoji personalizados. Quienes usan Mastodon y otros servidores del Fediverso pueden seguir la transmisión y recibir un aviso cuando empieza.",
+				"La gente autoaloja Owncast para ser dueña de la transmisión, del chat y de la audiencia: sin suscripciones, sin límite de espectadores, sin anuncios obligatorios y sin rastreo. Encaja con quien quiere tener el canal bajo su propio nombre y no bajo el de una plataforma. El inconveniente es el ancho de banda. Cada espectador descarga el video de tu servidor, así que 25 espectadores de una transmisión de 5000 kbps necesitan unos 125 Mbps, y cada calidad que Owncast transcodifica necesita aproximadamente un núcleo de CPU. En su lugar, un bucket compatible con S3 puede servir el video."
+			],
+			"faq": [
+				{
+					"q": "¿Owncast es gratis y de código abierto?",
+					"a": "Sí. Owncast es gratis y de código abierto con licencia MIT, así que cualquiera puede ejecutarlo, modificarlo y compartirlo. Se descarga sin registrarse y el código está en GitHub."
+				},
+				{
+					"q": "¿En qué se diferencia Owncast de Twitch?",
+					"a": "Owncast te da un canal en tu propio servidor y dominio, donde tú pones las reglas de la transmisión y del chat. No trae una audiencia incorporada como la de Twitch: los espectadores llegan por tus enlaces y por el Owncast Directory, al que te sumas si quieres."
+				},
+				{
+					"q": "¿Puedo transmitir a Owncast y a Twitch a la vez?",
+					"a": "Sí, con Restream, que la documentación de Owncast describe como un servicio comercial que transmite a varios lugares a la vez. Agregas allí tu servidor de Owncast como un canal Custom RTMP, para lo cual hace falta una cuenta de pago de Restream."
+				},
+				{
+					"q": "¿Hay una app de Owncast para iPhone y Android?",
+					"a": "Sí. La app Owncasts para iPhone, iPad y Android explora el Owncast Directory o abre tu propio servidor. Los espectadores también pueden usar cualquier navegador o VLC, y la documentación cubre Apple TV, Roku, Chromecast y smart TV."
+				},
+				{
+					"q": "¿Cuáles son la contraseña de administrador y la clave de transmisión predeterminadas de Owncast?",
+					"a": "Una instalación estándar de Owncast usa abc123 para las dos. Esta plantilla pide la contraseña de administrador al desplegar y genera una clave de transmisión aleatoria, guardada como STREAM_KEY en el .env del proyecto. Inicias sesión en /admin como admin."
+				}
+			]
 		},
 		"fr": {
 			"description": "Vidéo en direct et chat sur votre propre page",
-			"notes": "L’interface d’administration est sur /admin : connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Diffusez depuis OBS vers rtmp://{host}:1935/live avec la clé qui figure dans STREAM_KEY, dans le .env du projet. Les deux se modifient dans le .env : chaque démarrage les applique de nouveau."
+			"notes": "L’interface d’administration est sur /admin : connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Diffusez depuis OBS vers rtmp://{host}:1935/live avec la clé qui figure dans STREAM_KEY, dans le .env du projet. Les deux se modifient dans le .env : chaque démarrage les applique de nouveau.",
+			"sizing": "Owncast est lourd pour le CPU en direct : chaque qualité vidéo est transcodée pendant que vous diffusez ; la mémoire reste petite.",
+			"summary": "Auto-hébergez Owncast, serveur de streaming en direct avec chat intégré et alternative open source à Twitch. Déployez-le en un clic avec Docker Compose.",
+			"about": [
+				"Owncast est un serveur de streaming en direct open source avec son propre chat, une alternative auto-hébergée à Twitch pour une seule chaîne. Vous passez en direct depuis OBS, Streamlabs ou n’importe quel logiciel qui envoie du RTMP, et les spectateurs regardent dans un navigateur, sans compte. Le chat a des modérateurs, des bannissements et des émojis personnalisés. Les personnes qui sont sur Mastodon et sur d’autres serveurs du Fediverse peuvent suivre la diffusion et être averties quand elle démarre.",
+				"On fait tourner Owncast pour rester maître de la diffusion, du chat et de l’audience : pas d’abonnements, pas de limite de spectateurs, pas de publicité imposée, et pas de pistage. Il convient à qui veut sa chaîne sous son propre nom plutôt que sous celui d’une plateforme. Le revers, c’est la bande passante. Chaque spectateur récupère la vidéo depuis votre serveur : 25 spectateurs d’un flux de 5000 kbps demandent environ 125 Mbps, et chaque qualité que transcode Owncast demande environ un cœur de processeur. Un bucket compatible S3 peut servir la vidéo à la place."
+			],
+			"faq": [
+				{
+					"q": "Owncast est-il gratuit et open source ?",
+					"a": "Oui. Owncast est gratuit et open source sous licence MIT : chacun peut l’exécuter, le modifier et le partager. On le télécharge sans s’inscrire, et le code est sur GitHub."
+				},
+				{
+					"q": "En quoi Owncast diffère-t-il de Twitch ?",
+					"a": "Owncast vous donne une chaîne sur votre propre serveur et sous votre propre domaine, où vous fixez les règles de la diffusion et du chat. Il n’a pas d’audience intégrée comme celle de Twitch : les spectateurs arrivent par vos liens et par l’Owncast Directory, auquel on choisit de s’inscrire."
+				},
+				{
+					"q": "Puis-je diffuser sur Owncast et sur Twitch en même temps ?",
+					"a": "Oui, via Restream, que la documentation d’Owncast décrit comme un service commercial qui diffuse vers plusieurs destinations à la fois. Vous y ajoutez votre serveur Owncast comme chaîne Custom RTMP, ce qui demande un compte Restream payant."
+				},
+				{
+					"q": "Existe-t-il une application Owncast pour iPhone et Android ?",
+					"a": "Oui. L’application Owncasts pour iPhone, iPad et Android parcourt l’Owncast Directory ou ouvre votre propre serveur. Les spectateurs peuvent aussi utiliser n’importe quel navigateur ou VLC, et la documentation couvre Apple TV, Roku, Chromecast et les téléviseurs connectés."
+				},
+				{
+					"q": "Quels sont le mot de passe administrateur et la clé de stream par défaut d’Owncast ?",
+					"a": "Une installation standard d’Owncast utilise abc123 pour les deux. Ce template demande le mot de passe administrateur au déploiement et génère une clé de stream aléatoire, enregistrée sous STREAM_KEY dans le .env du projet. Vous vous connectez sur /admin en tant qu’admin."
+				}
+			]
 		},
 		"pl": {
 			"description": "Wideo na żywo i czat na twojej własnej stronie",
-			"notes": "Panel administracyjny jest pod adresem /admin: zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Nadawaj z OBS na rtmp://{host}:1935/live z kluczem ze zmiennej STREAM_KEY w pliku .env projektu. Jedno i drugie zmienisz w .env: każde uruchomienie ustawia je od nowa."
+			"notes": "Panel administracyjny jest pod adresem /admin: zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Nadawaj z OBS na rtmp://{host}:1935/live z kluczem ze zmiennej STREAM_KEY w pliku .env projektu. Jedno i drugie zmienisz w .env: każde uruchomienie ustawia je od nowa.",
+			"sizing": "Owncast mocno obciąża CPU, gdy nadaje na żywo: każda jakość wideo jest transkodowana podczas transmisji; pamięci zużywa mało.",
+			"summary": "Hostuj Owncast u siebie: serwer transmisji na żywo z czatem, alternatywa dla Twitcha o otwartym kodzie. Wdróż go z Docker Compose jednym kliknięciem.",
+			"about": [
+				"Owncast to serwer transmisji na żywo o otwartym kodzie, z własnym czatem, czyli hostowana u siebie alternatywa dla Twitcha obsługująca jeden kanał. Zaczynasz nadawać z OBS, Streamlabs albo dowolnego programu wysyłającego RTMP, a widzowie oglądają w przeglądarce, bez konta. Czat ma moderatorów, bany i własne emoji. Osoby z Mastodona i innych serwerów Fediwersum mogą obserwować transmisję i dostać powiadomienie, gdy się zacznie.",
+				"Owncast hostuje się u siebie, żeby być właścicielem transmisji, czatu i widowni: bez subskrypcji, limitów liczby widzów, wymuszanych reklam i śledzenia. Pasuje streamerowi, który chce mieć kanał pod własną nazwą, a nie pod nazwą platformy. Haczyk to przepustowość. Każdy widz pobiera wideo z twojego serwera, więc 25 widzów transmisji 5000 kbps potrzebuje około 125 Mbps, a każda jakość, którą Owncast transkoduje, wymaga mniej więcej jednego rdzenia CPU. Wideo może za to serwować bucket zgodny z S3."
+			],
+			"faq": [
+				{
+					"q": "Czy Owncast jest darmowy i open source?",
+					"a": "Tak. Owncast jest darmowy i open source na licencji MIT, więc każdy może go uruchamiać, zmieniać i udostępniać. Pobierasz go bez rejestracji, a kod jest na GitHubie."
+				},
+				{
+					"q": "Czym Owncast różni się od Twitcha?",
+					"a": "Owncast daje ci jeden kanał na twoim własnym serwerze i w twojej domenie, gdzie to ty ustalasz zasady transmisji i czatu. Nie ma wbudowanej widowni jak Twitch: widzowie przychodzą z twoich linków i z Owncast Directory, do którego dołączasz dobrowolnie."
+				},
+				{
+					"q": "Czy mogę nadawać na Owncast i Twitcha jednocześnie?",
+					"a": "Tak, przez Restream, który dokumentacja Owncast opisuje jako komercyjną usługę nadającą w kilka miejsc naraz. Dodajesz tam swój serwer Owncast jako kanał Custom RTMP, do czego potrzebne jest płatne konto Restream."
+				},
+				{
+					"q": "Czy istnieje aplikacja Owncast na iPhone’a i Androida?",
+					"a": "Tak. Aplikacja Owncasts na iPhone’a, iPada i Androida przegląda Owncast Directory albo otwiera twój własny serwer. Widzowie mogą też użyć dowolnej przeglądarki albo VLC, a dokumentacja opisuje Apple TV, Roku, Chromecast i smart TV."
+				},
+				{
+					"q": "Jakie jest domyślne hasło administratora i klucz transmisji w Owncast?",
+					"a": "Standardowa instalacja Owncast używa abc123 w obu miejscach. Ten szablon pyta o hasło administratora przy wdrożeniu i generuje losowy klucz transmisji, zapisany jako STREAM_KEY w pliku .env projektu. Logujesz się pod /admin jako admin."
+				}
+			]
 		},
 		"pt": {
 			"description": "Vídeo ao vivo e chat em uma página só sua",
-			"notes": "O admin fica em /admin: entre como admin com a senha que você definiu. Transmita do OBS para rtmp://{host}:1935/live com a chave que está em STREAM_KEY, no .env do projeto. As duas são alteradas no .env: toda vez que o app inicia, elas são definidas de novo."
+			"notes": "O admin fica em /admin: entre como admin com a senha que você definiu. Transmita do OBS para rtmp://{host}:1935/live com a chave que está em STREAM_KEY, no .env do projeto. As duas são alteradas no .env: toda vez que o app inicia, elas são definidas de novo.",
+			"sizing": "Owncast é pesado em CPU durante a transmissão: cada qualidade de vídeo é transcodificada na hora; a memória continua pequena.",
+			"summary": "Auto-hospede o Owncast: servidor de transmissão ao vivo com chat embutido, alternativa open source ao Twitch. Deploy com Docker Compose em um clique.",
+			"about": [
+				"O Owncast é um servidor de transmissão ao vivo open source com chat próprio, uma alternativa auto-hospedada ao Twitch para um único canal. Você entra ao vivo pelo OBS, pelo Streamlabs ou por qualquer software que envie RTMP, e os espectadores assistem pelo navegador, sem conta. O chat tem moderadores, banimentos e emojis personalizados. Quem usa o Mastodon e outros servidores do Fediverso pode seguir a transmissão e ser avisado quando ela começa.",
+				"As pessoas rodam o Owncast para ser donas da transmissão, do chat e da audiência: sem assinaturas, sem limite de espectadores, sem anúncios forçados e sem rastreamento. Ele serve a quem quer o canal com o próprio nome, e não com o de uma plataforma. O porém é a largura de banda. Cada espectador puxa o vídeo do seu servidor, então 25 espectadores de uma transmissão de 5000 kbps precisam de cerca de 125 Mbps, e cada qualidade que o Owncast transcodifica precisa de cerca de um núcleo de CPU. Um bucket compatível com S3 pode servir o vídeo no lugar."
+			],
+			"faq": [
+				{
+					"q": "O Owncast é gratuito e open source?",
+					"a": "É. O Owncast é gratuito e open source, sob a licença MIT, então qualquer pessoa pode rodar, alterar e compartilhar. Você baixa sem se cadastrar, e o código está no GitHub."
+				},
+				{
+					"q": "Como o Owncast se compara ao Twitch?",
+					"a": "O Owncast dá a você um canal no seu próprio servidor e domínio, onde você define as regras da transmissão e do chat. Ele não tem uma audiência embutida como a do Twitch: os espectadores chegam pelos seus links e pelo Owncast Directory, em que você entra se quiser."
+				},
+				{
+					"q": "Posso transmitir para o Owncast e para o Twitch ao mesmo tempo?",
+					"a": "Pode, pelo Restream, que a documentação do Owncast descreve como um serviço comercial que transmite para vários lugares ao mesmo tempo. Você adiciona o seu servidor Owncast lá como um canal Custom RTMP, o que exige uma conta paga do Restream."
+				},
+				{
+					"q": "Existe um app do Owncast para iPhone e Android?",
+					"a": "Existe. O app Owncasts para iPhone, iPad e Android navega pelo Owncast Directory ou abre o seu próprio servidor. Os espectadores também podem usar qualquer navegador ou o VLC, e a documentação cobre Apple TV, Roku, Chromecast e smart TVs."
+				},
+				{
+					"q": "Qual é a senha de admin e a chave de transmissão padrão do Owncast?",
+					"a": "Uma instalação padrão do Owncast usa abc123 para as duas. Este template pede a senha de admin no deploy e gera uma chave de transmissão aleatória, guardada como STREAM_KEY no .env do projeto. Você entra em /admin como admin."
+				}
+			]
 		},
 		"ru": {
 			"description": "Прямые трансляции и чат на собственной странице",
-			"notes": "Админка открывается по адресу /admin: войдите как admin с паролем, который вы задали. Транслируйте из OBS на rtmp://{host}:1935/live с ключом из STREAM_KEY в .env проекта. И пароль, и ключ меняются в .env: при каждом запуске они задаются заново."
+			"notes": "Админка открывается по адресу /admin: войдите как admin с паролем, который вы задали. Транслируйте из OBS на rtmp://{host}:1935/live с ключом из STREAM_KEY в .env проекта. И пароль, и ключ меняются в .env: при каждом запуске они задаются заново.",
+			"sizing": "Owncast: высокие требования к CPU в эфире — каждое качество видео перекодируется на лету; память остается небольшой.",
+			"summary": "Self-hosted Owncast в один клик: open-source сервер прямых трансляций со встроенным чатом, альтернатива Twitch. Деплой через Docker Compose.",
+			"about": [
+				"Owncast — open-source сервер для прямых трансляций со своим чатом, self-hosted альтернатива Twitch для одного канала. Вы выходите в эфир из OBS, Streamlabs или любой программы, которая отправляет RTMP, а зрители смотрят в браузере, без аккаунта. В чате есть модераторы, баны и собственные эмодзи. Люди из Mastodon и с других серверов Fediverse могут подписаться на трансляцию и получить уведомление, когда она начнется.",
+				"Owncast ставят у себя, чтобы владеть и трансляцией, и чатом, и аудиторией: без подписок, ограничений по числу зрителей, навязанной рекламы и слежки. Он подойдет стримеру, который хочет вести канал под своим именем, а не под именем платформы. Подвох в пропускной способности. Каждый зритель забирает видео с вашего сервера, поэтому 25 зрителям трансляции на 5000 kbps нужно около 125 Mbps, а на каждое качество, которое Owncast транскодирует, уходит примерно одно ядро CPU. Вместо этого видео может раздавать S3-совместимый бакет."
+			],
+			"faq": [
+				{
+					"q": "Owncast бесплатный и open source?",
+					"a": "Да. Owncast бесплатный и распространяется с открытым кодом под лицензией MIT, поэтому запускать, менять и распространять его может кто угодно. Скачать его можно без регистрации, а код лежит на GitHub."
+				},
+				{
+					"q": "Чем Owncast отличается от Twitch?",
+					"a": "Owncast дает один канал на вашем сервере и вашем домене, где правила трансляции и чата устанавливаете вы. Встроенной аудитории, как у Twitch, у него нет: зрители приходят по вашим ссылкам и через Owncast Directory, в который попадают только по желанию."
+				},
+				{
+					"q": "Можно ли вести трансляцию на Owncast и Twitch одновременно?",
+					"a": "Да, через Restream — в документации Owncast его описывают как коммерческий сервис, который транслирует сразу в несколько мест. Вы добавляете там свой сервер Owncast как канал Custom RTMP, для чего нужен платный аккаунт Restream."
+				},
+				{
+					"q": "Есть ли приложение Owncast для iPhone и Android?",
+					"a": "Да. Приложение Owncasts для iPhone, iPad и Android просматривает Owncast Directory или открывает ваш собственный сервер. Зрители могут также использовать любой браузер или VLC, а документация описывает Apple TV, Roku, Chromecast и умные телевизоры."
+				},
+				{
+					"q": "Какие пароль администратора и ключ трансляции в Owncast по умолчанию?",
+					"a": "В стандартной установке Owncast для обоих используется abc123. Этот шаблон спрашивает пароль администратора при деплое и генерирует случайный ключ трансляции, который хранится как STREAM_KEY в .env проекта. Вы входите на /admin как admin."
+				}
+			]
 		},
 		"uk": {
 			"description": "Відео наживо й чат на власній сторінці",
-			"notes": "Адмінпанель — за адресою /admin: увійдіть як admin із паролем, який ви вказали. Транслюйте з OBS на rtmp://{host}:1935/live з ключем зі змінної STREAM_KEY у файлі .env проєкту. І пароль, і ключ змінюють у .env: кожен запуск задає їх заново."
+			"notes": "Адмінпанель — за адресою /admin: увійдіть як admin із паролем, який ви вказали. Транслюйте з OBS на rtmp://{host}:1935/live з ключем зі змінної STREAM_KEY у файлі .env проєкту. І пароль, і ключ змінюють у .env: кожен запуск задає їх заново.",
+			"sizing": "Owncast сильно навантажує CPU в ефірі: кожну якість відео перекодовують під час трансляції; пам’ять лишається невеликою.",
+			"summary": "Self-hosted Owncast в один клік: open-source сервер прямих трансляцій із вбудованим чатом, альтернатива Twitch. Деплой через Docker Compose.",
+			"about": [
+				"Owncast — open-source сервер для прямих трансляцій зі своїм чатом, self-hosted альтернатива Twitch для одного каналу. Ви виходите в ефір з OBS, Streamlabs або будь-якої програми, що надсилає RTMP, а глядачі дивляться в браузері, без акаунта. У чаті є модератори, бани та власні емодзі. Люди з Mastodon та інших серверів Fediverse можуть підписатися на трансляцію й отримати сповіщення, коли вона почнеться.",
+				"Owncast ставлять у себе, щоб володіти і трансляцією, і чатом, і аудиторією: без підписок, обмежень на кількість глядачів, нав’язаної реклами та стеження. Він підійде стримеру, який хоче вести канал під власним іменем, а не під іменем платформи. Підводний камінь у пропускній здатності. Кожен глядач забирає відео з вашого сервера, тож 25 глядачам трансляції на 5000 kbps потрібно близько 125 Mbps, а на кожну якість, яку Owncast транскодує, йде приблизно одне ядро CPU. Натомість відео може роздавати S3-сумісний бакет."
+			],
+			"faq": [
+				{
+					"q": "Owncast безкоштовний і open source?",
+					"a": "Так. Owncast безкоштовний і має відкритий код за ліцензією MIT, тож запускати, змінювати й поширювати його може будь-хто. Завантажити його можна без реєстрації, а код лежить на GitHub."
+				},
+				{
+					"q": "Чим Owncast відрізняється від Twitch?",
+					"a": "Owncast дає один канал на вашому сервері та вашому домені, де правила трансляції й чату встановлюєте ви. Вбудованої аудиторії, як у Twitch, у нього немає: глядачі приходять за вашими посиланнями та через Owncast Directory, до якого долучаються за бажанням."
+				},
+				{
+					"q": "Чи можна вести трансляцію на Owncast і Twitch одночасно?",
+					"a": "Так, через Restream — у документації Owncast його описано як комерційний сервіс, що транслює одразу в кілька місць. Ви додаєте там свій сервер Owncast як канал Custom RTMP, для чого потрібен платний акаунт Restream."
+				},
+				{
+					"q": "Чи є застосунок Owncast для iPhone і Android?",
+					"a": "Так. Застосунок Owncasts для iPhone, iPad і Android переглядає Owncast Directory або відкриває ваш власний сервер. Глядачі також можуть користуватися будь-яким браузером чи VLC, а документація описує Apple TV, Roku, Chromecast і смарт-телевізори."
+				},
+				{
+					"q": "Які пароль адміністратора та ключ трансляції в Owncast за замовчуванням?",
+					"a": "У стандартній установці Owncast для обох використовується abc123. Цей шаблон питає пароль адміністратора під час деплою й генерує випадковий ключ трансляції, який зберігається як STREAM_KEY у .env проєкту. Ви входите на /admin як admin."
+				}
+			]
 		}
 	}
 }

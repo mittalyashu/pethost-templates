@@ -1,6 +1,13 @@
 {
 	"name": "Vikunja",
 	"emoji": "✅",
+	"category": "productivity",
+	"alternatives": [
+		"Todoist",
+		"Trello",
+		"Microsoft To Do"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "vikunja",
 		"port": 3456
@@ -18,35 +25,259 @@
 	"texts": {
 		"en": {
 			"description": "To-do lists and projects, with kanban and Gantt views",
-			"notes": "Open the address and register your account. Then add ENABLE_REGISTRATION=false to the project’s .env and deploy again, so that nobody else can sign up."
+			"notes": "Open the address and register your account. Then add ENABLE_REGISTRATION=false to the project’s .env and deploy again, so that nobody else can sign up.",
+			"sizing": "Vikunja is very light: under 100 MB of memory, and years of tasks with their attachments take little disk.",
+			"summary": "Vikunja is an open-source to-do app with list, Kanban and Gantt views. Self-host it on your own machine in one click, in place of Todoist.",
+			"about": [
+				"Vikunja is an open-source to-do app and task manager, a free alternative to Todoist that you run on your own server. A project shows as a list, a Kanban board, a Gantt chart or a table. Tasks carry due dates, reminders, priorities and labels, and can repeat at an interval. Quick Add Magic turns a date or a keyword typed into a task's title into its due date, label or assignee. A project can be shared with other users, a team, or by a link that needs no account.",
+				"People self-host Vikunja to keep their tasks in their own hands, with no caps on projects or tasks and no price per user. It suits one person, a household or a small team. CalDAV lets the calendar and task apps you already use sync with it. The catch: without an SMTP server, Vikunja sends no email, so password resets and reminder emails do not work."
+			],
+			"faq": [
+				{
+					"q": "Is Vikunja free and open source?",
+					"a": "Yes. Vikunja is licensed under the AGPL-3.0-or-later, and the self-hosted version costs nothing. Its makers also run Vikunja Cloud, a paid hosted version, for people who would rather not run it themselves."
+				},
+				{
+					"q": "Does Vikunja have a mobile app?",
+					"a": "Not a native one yet: the project says native apps are on its roadmap. On a phone you use Vikunja in the browser as a progressive web app. There are desktop apps for Windows and Linux."
+				},
+				{
+					"q": "Can Vikunja import from Todoist or Trello?",
+					"a": "Yes, and from Microsoft To Do, TickTick, WeKan and CSV files. On a self-hosted Vikunja the Todoist, Trello and Microsoft To Do importers stay off until you register an app with that service and add its keys."
+				},
+				{
+					"q": "How do I disable registration in Vikunja?",
+					"a": "Set VIKUNJA_SERVICE_ENABLEREGISTRATION to false, or service.enableregistration in the config file. This template reads it from ENABLE_REGISTRATION in the project's .env: create your own account first, then set it to false and redeploy."
+				},
+				{
+					"q": "Which databases does Vikunja support?",
+					"a": "SQLite, MySQL 8.0 or later, MariaDB 10.2 or later and PostgreSQL 12 or later. This template uses SQLite, which keeps the whole database in one file and needs no separate database container."
+				}
+			]
 		},
 		"de": {
 			"description": "To-do-Listen und Projekte, mit Kanban- und Gantt-Ansicht",
-			"notes": "Öffne die Adresse und registrier dein Konto. Trag dann ENABLE_REGISTRATION=false in die .env des Projekts ein und deploy neu, damit sich sonst niemand registrieren kann."
+			"notes": "Öffne die Adresse und registrier dein Konto. Trag dann ENABLE_REGISTRATION=false in die .env des Projekts ein und deploy neu, damit sich sonst niemand registrieren kann.",
+			"sizing": "Vikunja ist sehr leicht: unter 100 MB RAM, und Aufgaben aus Jahren samt Anhängen brauchen wenig Disk.",
+			"summary": "Vikunja in einem Klick selbst hosten: Open-Source-To-do-App mit Listen-, Kanban- und Gantt-Ansicht, auf deiner eigenen Maschine, als Ersatz für Todoist.",
+			"about": [
+				"Vikunja ist eine Open-Source-To-do-App und Aufgabenverwaltung, eine kostenlose Alternative zu Todoist, die du auf deinem eigenen Server betreibst. Ein Projekt zeigt sich als Liste, Kanban-Board, Gantt-Diagramm oder Tabelle. Aufgaben haben Fälligkeitsdaten, Erinnerungen, Prioritäten und Labels und lassen sich in festen Abständen wiederholen. Quick Add Magic macht aus einem Datum oder Stichwort im Titel einer Aufgabe ihr Fälligkeitsdatum, ihr Label oder die zugewiesene Person. Ein Projekt lässt sich mit anderen Personen, mit einem Team oder über einen Link teilen, für den kein Konto nötig ist.",
+				"Du hostest Vikunja selbst, damit deine Aufgaben in deiner eigenen Hand bleiben, ohne Obergrenzen für Projekte oder Aufgaben und ohne Preis pro Person. Es passt zu einer einzelnen Person, einem Haushalt oder einem kleinen Team. Über CalDAV synchronisieren sich die Kalender- und Aufgaben-Apps, die du schon nutzt, mit Vikunja. Der Haken: Ohne SMTP-Server verschickt Vikunja keine E-Mails, deshalb funktionieren das Zurücksetzen von Passwörtern und Erinnerungs-E-Mails nicht."
+			],
+			"faq": [
+				{
+					"q": "Ist Vikunja kostenlos und Open Source?",
+					"a": "Ja. Vikunja steht unter der AGPL-3.0-or-later, und die selbst gehostete Version kostet nichts. Das Team hinter Vikunja betreibt außerdem Vikunja Cloud, eine kostenpflichtige gehostete Version für alle, die es lieber nicht selbst betreiben."
+				},
+				{
+					"q": "Hat Vikunja eine mobile App?",
+					"a": "Noch keine native: Laut dem Projekt stehen native Apps auf der Roadmap. Auf dem Handy nutzt du Vikunja im Browser als Progressive Web App. Für Windows und Linux gibt es Desktop-Apps."
+				},
+				{
+					"q": "Kann Vikunja Daten aus Todoist oder Trello importieren?",
+					"a": "Ja, und auch aus Microsoft To Do, TickTick, WeKan und CSV-Dateien. Bei einem selbst gehosteten Vikunja bleiben die Importer für Todoist, Trello und Microsoft To Do aus, bis du bei dem jeweiligen Anbieter eine App registrierst und ihre Keys einträgst."
+				},
+				{
+					"q": "Wie deaktiviere ich die Registrierung in Vikunja?",
+					"a": "Setze VIKUNJA_SERVICE_ENABLEREGISTRATION oder service.enableregistration in der Konfigurationsdatei auf false. Diese Vorlage liest den Wert aus ENABLE_REGISTRATION in der .env des Projekts: Leg zuerst dein eigenes Konto an, setz den Wert dann auf false und deploy neu."
+				},
+				{
+					"q": "Welche Datenbanken unterstützt Vikunja?",
+					"a": "SQLite, MySQL ab 8.0, MariaDB ab 10.2 und PostgreSQL ab 12. Diese Vorlage nutzt SQLite, das die ganze Datenbank in einer einzigen Datei hält und keinen eigenen Datenbank-Container braucht."
+				}
+			]
 		},
 		"es": {
 			"description": "Listas de tareas y proyectos, con vistas kanban y Gantt",
-			"notes": "Abre la dirección y registra tu cuenta. Luego agrega ENABLE_REGISTRATION=false al .env del proyecto y vuelve a desplegar, para que nadie más pueda registrarse."
+			"notes": "Abre la dirección y registra tu cuenta. Luego agrega ENABLE_REGISTRATION=false al .env del proyecto y vuelve a desplegar, para que nadie más pueda registrarse.",
+			"sizing": "Vikunja es muy ligero: menos de 100 MB de memoria, y años de tareas con sus adjuntos ocupan poco disco.",
+			"summary": "Autoaloja Vikunja en tu propia máquina en un clic: la app de tareas de código abierto con vistas de lista, Kanban y Gantt, en lugar de Todoist.",
+			"about": [
+				"Vikunja es una app de tareas de código abierto para administrar pendientes, una alternativa gratuita a Todoist que ejecutas en tu propio servidor. Un proyecto se muestra como lista, tablero Kanban, diagrama de Gantt o tabla. Las tareas llevan fecha de vencimiento, recordatorios, prioridades y etiquetas, y pueden repetirse a intervalos. Quick Add Magic convierte una fecha o una palabra clave escrita en el título de una tarea en su fecha de vencimiento, su etiqueta o la persona asignada. Un proyecto se puede compartir con otros usuarios, con un equipo o mediante un enlace que no requiere cuenta.",
+				"Autoalojas Vikunja para tener tus tareas en tus propias manos, sin límites de proyectos ni de tareas y sin precio por usuario. Sirve para una persona, un hogar o un equipo pequeño. CalDAV permite que los calendarios y las apps de tareas que ya usas se sincronicen con él. El inconveniente: sin un servidor SMTP, Vikunja no envía correos, así que no funcionan el restablecimiento de contraseña ni los correos de recordatorio."
+			],
+			"faq": [
+				{
+					"q": "¿Vikunja es gratis y de código abierto?",
+					"a": "Sí. Vikunja tiene licencia AGPL-3.0-or-later, y la versión autoalojada no cuesta nada. Sus creadores también ofrecen Vikunja Cloud, una versión alojada de pago, para quienes prefieren no administrarla ellos mismos."
+				},
+				{
+					"q": "¿Vikunja tiene app móvil?",
+					"a": "Todavía no una nativa: el proyecto dice que las apps nativas están en su roadmap. En el teléfono usas Vikunja en el navegador, como Progressive Web App. Hay apps de escritorio para Windows y Linux."
+				},
+				{
+					"q": "¿Vikunja puede importar desde Todoist o Trello?",
+					"a": "Sí, y también desde Microsoft To Do, TickTick, WeKan y archivos CSV. En un Vikunja autoalojado, los importadores de Todoist, Trello y Microsoft To Do siguen desactivados hasta que registras una app en ese servicio y agregas sus claves."
+				},
+				{
+					"q": "¿Cómo desactivo el registro en Vikunja?",
+					"a": "Establece VIKUNJA_SERVICE_ENABLEREGISTRATION, o service.enableregistration en el archivo de configuración, en false. Esta plantilla lo lee de ENABLE_REGISTRATION en el .env del proyecto: primero crea tu propia cuenta, luego ponlo en false y vuelve a desplegar."
+				},
+				{
+					"q": "¿Qué bases de datos admite Vikunja?",
+					"a": "SQLite, MySQL 8.0 o posterior, MariaDB 10.2 o posterior y PostgreSQL 12 o posterior. Esta plantilla usa SQLite, que guarda toda la base de datos en un solo archivo y no necesita un contenedor de base de datos aparte."
+				}
+			]
 		},
 		"fr": {
 			"description": "Listes de tâches et projets, avec vues kanban et Gantt",
-			"notes": "Ouvrez l’adresse et créez votre compte. Ajoutez ensuite ENABLE_REGISTRATION=false au .env du projet et redéployez, pour que personne d’autre ne puisse s’inscrire."
+			"notes": "Ouvrez l’adresse et créez votre compte. Ajoutez ensuite ENABLE_REGISTRATION=false au .env du projet et redéployez, pour que personne d’autre ne puisse s’inscrire.",
+			"sizing": "Vikunja est très léger : moins de 100 MB de mémoire, et des années de tâches avec leurs pièces jointes pèsent peu sur le disque.",
+			"summary": "Auto-hébergez Vikunja en un clic : l’application de tâches open source avec vues liste, Kanban et Gantt, sur votre propre machine, à la place de Todoist.",
+			"about": [
+				"Vikunja est une application de tâches et un gestionnaire de tâches open source, une alternative gratuite à Todoist que vous faites tourner sur votre propre serveur. Un projet s’affiche sous forme de liste, de tableau Kanban, de diagramme de Gantt ou de table. Les tâches ont des échéances, des rappels, des priorités et des étiquettes, et peuvent se répéter à intervalle régulier. Quick Add Magic transforme une date ou un mot-clé saisi dans le titre d’une tâche en son échéance, son étiquette ou la personne assignée. Un projet peut être partagé avec d’autres utilisateurs, avec une équipe ou par un lien qui n’exige aucun compte.",
+				"Vous auto-hébergez Vikunja pour garder vos tâches entre vos mains, sans plafond de projets ni de tâches et sans prix par utilisateur. Il convient à une personne, à un foyer ou à une petite équipe. CalDAV permet aux applications de calendrier et de tâches que vous utilisez déjà de se synchroniser avec lui. Le revers : sans serveur SMTP, Vikunja n’envoie aucun e-mail, si bien que la réinitialisation de mot de passe et les e-mails de rappel ne fonctionnent pas."
+			],
+			"faq": [
+				{
+					"q": "Vikunja est-il gratuit et open source ?",
+					"a": "Oui. Vikunja est publié sous licence AGPL-3.0-or-later, et la version auto-hébergée ne coûte rien. Ses créateurs proposent aussi Vikunja Cloud, une version hébergée payante, pour qui préfère ne pas l’héberger soi-même."
+				},
+				{
+					"q": "Vikunja a-t-il une application mobile ?",
+					"a": "Pas encore d’application native : le projet indique que des applications natives figurent sur sa feuille de route. Sur un téléphone, vous utilisez Vikunja dans le navigateur, comme Progressive Web App. Des applications de bureau existent pour Windows et Linux."
+				},
+				{
+					"q": "Vikunja peut-il importer depuis Todoist ou Trello ?",
+					"a": "Oui, ainsi que depuis Microsoft To Do, TickTick, WeKan et des fichiers CSV. Sur un Vikunja auto-hébergé, les importeurs Todoist, Trello et Microsoft To Do restent désactivés tant que vous n’avez pas enregistré une application auprès du service concerné et ajouté ses clés."
+				},
+				{
+					"q": "Comment désactiver l’inscription dans Vikunja ?",
+					"a": "Définissez VIKUNJA_SERVICE_ENABLEREGISTRATION, ou service.enableregistration dans le fichier de configuration, sur false. Ce template lit la valeur depuis ENABLE_REGISTRATION dans le .env du projet : créez d’abord votre propre compte, puis passez-la à false et redéployez."
+				},
+				{
+					"q": "Quelles bases de données Vikunja prend-il en charge ?",
+					"a": "SQLite, MySQL 8.0 ou plus récent, MariaDB 10.2 ou plus récent et PostgreSQL 12 ou plus récent. Ce template utilise SQLite, qui garde toute la base dans un seul fichier et ne demande aucun conteneur de base de données distinct."
+				}
+			]
 		},
 		"pl": {
 			"description": "Listy zadań i projekty, z widokiem kanban i Gantta",
-			"notes": "Otwórz adres projektu i zarejestruj swoje konto. Potem dodaj ENABLE_REGISTRATION=false do pliku .env projektu i wdróż ponownie, żeby nikt inny nie mógł założyć konta."
+			"notes": "Otwórz adres projektu i zarejestruj swoje konto. Potem dodaj ENABLE_REGISTRATION=false do pliku .env projektu i wdróż ponownie, żeby nikt inny nie mógł założyć konta.",
+			"sizing": "Vikunja ma bardzo małe wymagania: poniżej 100 MB pamięci, a lata zadań z załącznikami zajmują mało miejsca na dysku.",
+			"summary": "Vikunja to aplikacja do zadań open source z widokami listy, Kanban i Gantta. Hostuj ją u siebie, na własnej maszynie, w jeden klik, zamiast Todoista.",
+			"about": [
+				"Vikunja to aplikacja open source do list zadań i zarządzania nimi, darmowa alternatywa dla Todoista, którą uruchamiasz na własnym serwerze. Projekt wyświetla się jako lista, tablica Kanban, wykres Gantta albo tabela. Zadania mają terminy, przypomnienia, priorytety i etykiety oraz mogą się powtarzać w stałych odstępach. Quick Add Magic zamienia datę albo słowo kluczowe wpisane w tytule zadania w jego termin, etykietę lub przypisaną osobę. Projekt można udostępnić innym użytkownikom, zespołowi albo przez link, który nie wymaga konta.",
+				"Vikunję hostujesz u siebie, żeby zadania zostały w twoich rękach, bez limitów projektów i zadań oraz bez ceny za użytkownika. Nadaje się dla jednej osoby, domowników albo małego zespołu. Dzięki CalDAV aplikacje kalendarza i zadań, z których już korzystasz, mogą się synchronizować z Vikunją. Haczyk: bez serwera SMTP Vikunja nie wysyła e-maili, więc nie działają resety haseł ani e-maile z przypomnieniami."
+			],
+			"faq": [
+				{
+					"q": "Czy Vikunja jest darmowa i open source?",
+					"a": "Tak. Vikunja jest wydana na licencji AGPL-3.0-or-later, a wersja hostowana u siebie nic nie kosztuje. Jej twórcy prowadzą też Vikunja Cloud, płatną wersję hostowaną, dla osób, które wolą nie uruchamiać jej samodzielnie."
+				},
+				{
+					"q": "Czy Vikunja ma aplikację mobilną?",
+					"a": "Na razie nie natywną: projekt pisze, że natywne aplikacje są w planach. Na telefonie korzystasz z Vikunji w przeglądarce jako Progressive Web App. Są też aplikacje desktopowe na Windows i Linuksa."
+				},
+				{
+					"q": "Czy Vikunja importuje dane z Todoista albo Trello?",
+					"a": "Tak, a także z Microsoft To Do, TickTick, WeKan i plików CSV. Przy hostowaniu u siebie importery Todoista, Trello i Microsoft To Do pozostają wyłączone, dopóki nie zarejestrujesz aplikacji w danej usłudze i nie dodasz jej kluczy."
+				},
+				{
+					"q": "Jak wyłączyć rejestrację w Vikunji?",
+					"a": "Ustaw na false zmienną VIKUNJA_SERVICE_ENABLEREGISTRATION albo opcję service.enableregistration w pliku konfiguracyjnym. Ten szablon czyta tę wartość z ENABLE_REGISTRATION w pliku .env projektu: najpierw załóż własne konto, potem ustaw ją na false i wdróż ponownie."
+				},
+				{
+					"q": "Jakie bazy danych obsługuje Vikunja?",
+					"a": "SQLite, MySQL 8.0 lub nowszy, MariaDB 10.2 lub nowszy oraz PostgreSQL 12 lub nowszy. Ten szablon używa SQLite, który trzyma całą bazę w jednym pliku i nie potrzebuje osobnego kontenera z bazą danych."
+				}
+			]
 		},
 		"pt": {
 			"description": "Listas de tarefas e projetos, com visões kanban e Gantt",
-			"notes": "Abra o endereço e cadastre sua conta. Depois adicione ENABLE_REGISTRATION=false ao .env do projeto e faça o deploy de novo, para que mais ninguém possa se cadastrar."
+			"notes": "Abra o endereço e cadastre sua conta. Depois adicione ENABLE_REGISTRATION=false ao .env do projeto e faça o deploy de novo, para que mais ninguém possa se cadastrar.",
+			"sizing": "Vikunja é muito leve: menos de 100 MB de memória, e anos de tarefas com seus anexos ocupam pouco disco.",
+			"summary": "Auto-hospede o Vikunja em um clique: app de tarefas de código aberto com visões de lista, Kanban e Gantt, na sua própria máquina, no lugar do Todoist.",
+			"about": [
+				"O Vikunja é um app de tarefas e gerenciador de tarefas de código aberto, uma alternativa gratuita ao Todoist que você roda no seu próprio servidor. Um projeto aparece como lista, quadro Kanban, gráfico de Gantt ou tabela. As tarefas têm datas de vencimento, lembretes, prioridades e etiquetas, e podem se repetir em um intervalo. O Quick Add Magic transforma uma data ou uma palavra-chave digitada no título de uma tarefa em data de vencimento, etiqueta ou responsável. Um projeto pode ser compartilhado com outros usuários, com uma equipe ou por um link que não exige conta.",
+				"Quem auto-hospeda o Vikunja quer manter as tarefas nas próprias mãos, sem limite de projetos ou de tarefas e sem preço por usuário. Ele serve para uma pessoa, uma família ou uma equipe pequena. O CalDAV permite que os apps de calendário e de tarefas que você já usa se sincronizem com ele. O porém: sem um servidor SMTP, o Vikunja não envia e-mails, então a redefinição de senha e os e-mails de lembrete não funcionam."
+			],
+			"faq": [
+				{
+					"q": "O Vikunja é gratuito e de código aberto?",
+					"a": "Sim. O Vikunja é distribuído sob a licença AGPL-3.0-or-later, e a versão auto-hospedada não custa nada. Os criadores dele também mantêm o Vikunja Cloud, uma versão hospedada paga, para quem prefere não rodar por conta própria."
+				},
+				{
+					"q": "O Vikunja tem app para celular?",
+					"a": "Ainda não um nativo: o projeto diz que apps nativos estão no roadmap. No celular, você usa o Vikunja no navegador, como Progressive Web App. Existem apps de desktop para Windows e Linux."
+				},
+				{
+					"q": "O Vikunja importa dados do Todoist ou do Trello?",
+					"a": "Sim, e também do Microsoft To Do, do TickTick, do WeKan e de arquivos CSV. Em um Vikunja auto-hospedado, os importadores do Todoist, do Trello e do Microsoft To Do ficam desativados até você registrar um app nesse serviço e adicionar as chaves dele."
+				},
+				{
+					"q": "Como desativo o cadastro no Vikunja?",
+					"a": "Defina VIKUNJA_SERVICE_ENABLEREGISTRATION, ou service.enableregistration no arquivo de configuração, como false. Este template lê o valor de ENABLE_REGISTRATION no .env do projeto: crie primeiro sua própria conta, depois defina como false e faça o deploy de novo."
+				},
+				{
+					"q": "Quais bancos de dados o Vikunja suporta?",
+					"a": "SQLite, MySQL 8.0 ou superior, MariaDB 10.2 ou superior e PostgreSQL 12 ou superior. Este template usa SQLite, que guarda o banco inteiro em um único arquivo e não precisa de um container de banco de dados separado."
+				}
+			]
 		},
 		"ru": {
 			"description": "Списки задач и проекты, с канбаном и диаграммой Ганта",
-			"notes": "Откройте адрес и зарегистрируйте свой аккаунт. Затем добавьте ENABLE_REGISTRATION=false в .env проекта и задеплойте проект заново, чтобы больше никто не мог зарегистрироваться."
+			"notes": "Откройте адрес и зарегистрируйте свой аккаунт. Затем добавьте ENABLE_REGISTRATION=false в .env проекта и задеплойте проект заново, чтобы больше никто не мог зарегистрироваться.",
+			"sizing": "Vikunja: совсем небольшие требования — менее 100 MB памяти, а годы задач с вложениями занимают мало диска.",
+			"summary": "Self-hosted Vikunja — open source менеджер задач со списком, канбаном и диаграммой Ганта. Запускается на вашей машине в один клик, вместо Todoist.",
+			"about": [
+				"Vikunja — это open source приложение для списков дел и менеджер задач, бесплатная альтернатива Todoist, которую вы запускаете на своем сервере. Проект показывается как список, канбан-доска, диаграмма Ганта или таблица. У задач есть сроки, напоминания, приоритеты и метки, а еще они могут повторяться через заданный интервал. Quick Add Magic превращает дату или ключевое слово, набранные в названии задачи, в ее срок, метку или исполнителя. Проектом можно делиться с другими пользователями, с командой или по ссылке, для которой не нужен аккаунт.",
+				"Vikunja хостят у себя, чтобы держать задачи в своих руках: без лимитов на проекты и задачи и без цены за пользователя. Он подходит одному человеку, семье или небольшой команде. CalDAV позволяет календарям и приложениям для задач, которыми вы уже пользуетесь, синхронизироваться с ним. Но есть нюанс: без SMTP-сервера Vikunja не отправляет письма, поэтому сброс пароля и письма с напоминаниями не работают."
+			],
+			"faq": [
+				{
+					"q": "Vikunja бесплатный и с открытым кодом?",
+					"a": "Да. Vikunja распространяется под лицензией AGPL-3.0-or-later, а self-hosted версия ничего не стоит. Его авторы также держат Vikunja Cloud — платную облачную версию для тех, кто не хочет запускать его сам."
+				},
+				{
+					"q": "Есть ли у Vikunja мобильное приложение?",
+					"a": "Нативного пока нет: проект пишет, что нативные приложения есть в его планах. На телефоне Vikunja используют в браузере как Progressive Web App. Есть десктопные приложения для Windows и Linux."
+				},
+				{
+					"q": "Умеет ли Vikunja импортировать из Todoist или Trello?",
+					"a": "Да, а также из Microsoft To Do, TickTick, WeKan и из CSV-файлов. В self-hosted Vikunja импорт из Todoist, Trello и Microsoft To Do остается выключенным, пока вы не зарегистрируете приложение у этого сервиса и не добавите его ключи."
+				},
+				{
+					"q": "Как отключить регистрацию в Vikunja?",
+					"a": "Установите значение false для VIKUNJA_SERVICE_ENABLEREGISTRATION или для service.enableregistration в файле конфигурации. Этот шаблон берет значение из ENABLE_REGISTRATION в .env проекта: сначала создайте свой аккаунт, затем поставьте false и задеплойте проект заново."
+				},
+				{
+					"q": "Какие базы данных поддерживает Vikunja?",
+					"a": "SQLite, MySQL 8.0 и новее, MariaDB 10.2 и новее и PostgreSQL 12 и новее. Этот шаблон использует SQLite: вся база лежит в одном файле, а отдельный контейнер с базой данных не нужен."
+				}
+			]
 		},
 		"uk": {
 			"description": "Списки завдань і проєкти, з канбаном і діаграмою Ганта",
-			"notes": "Відкрийте адресу й зареєструйте свій акаунт. Потім додайте ENABLE_REGISTRATION=false у файл .env проєкту й задеплойте ще раз, щоб більше ніхто не міг зареєструватися."
+			"notes": "Відкрийте адресу й зареєструйте свій акаунт. Потім додайте ENABLE_REGISTRATION=false у файл .env проєкту й задеплойте ще раз, щоб більше ніхто не міг зареєструватися.",
+			"sizing": "Vikunja має дуже скромні вимоги: менше 100 MB пам’яті, а роки завдань із вкладеннями займають мало місця на диску.",
+			"summary": "Self-hosted Vikunja — менеджер завдань із відкритим кодом: список, канбан і діаграма Ганта. Запускається на вашій машині в один клік, замість Todoist.",
+			"about": [
+				"Vikunja — це застосунок для списків справ і менеджер завдань із відкритим кодом, безплатна альтернатива Todoist, яку ви запускаєте на власному сервері. Проєкт показується як список, канбан-дошка, діаграма Ганта або таблиця. У завдань є терміни, нагадування, пріоритети й мітки, а ще вони можуть повторюватися через заданий інтервал. Quick Add Magic перетворює дату або ключове слово, набране в назві завдання, на його термін, мітку чи виконавця. Проєктом можна ділитися з іншими користувачами, з командою або за посиланням, для якого не потрібен акаунт.",
+				"Vikunja хостять у себе, щоб тримати завдання у власних руках: без лімітів на проєкти й завдання та без ціни за користувача. Він підходить одній людині, родині чи невеликій команді. CalDAV дає змогу календарям і застосункам для завдань, якими ви вже користуєтеся, синхронізуватися з ним. Але є нюанс: без SMTP-сервера Vikunja не надсилає листи, тому скидання пароля й листи з нагадуваннями не працюють."
+			],
+			"faq": [
+				{
+					"q": "Vikunja безплатний і з відкритим кодом?",
+					"a": "Так. Vikunja випущено за ліцензією AGPL-3.0-or-later, а self-hosted версія нічого не коштує. Його автори також ведуть Vikunja Cloud — платну хмарну версію для тих, хто не хоче запускати його сам."
+				},
+				{
+					"q": "Чи є в Vikunja мобільний застосунок?",
+					"a": "Нативного поки немає: проєкт пише, що нативні застосунки є в його планах. На телефоні Vikunja використовують у браузері як Progressive Web App. Є десктопні застосунки для Windows і Linux."
+				},
+				{
+					"q": "Чи вміє Vikunja імпортувати з Todoist або Trello?",
+					"a": "Так, а також із Microsoft To Do, TickTick, WeKan і з CSV-файлів. У self-hosted Vikunja імпорт із Todoist, Trello і Microsoft To Do лишається вимкненим, доки ви не зареєструєте застосунок у цьому сервісі й не додасте його ключі."
+				},
+				{
+					"q": "Як вимкнути реєстрацію у Vikunja?",
+					"a": "Установіть для VIKUNJA_SERVICE_ENABLEREGISTRATION або для service.enableregistration у файлі конфігурації значення false. Цей шаблон бере значення з ENABLE_REGISTRATION у .env проєкту: спершу створіть свій акаунт, потім поставте false і задеплойте проєкт ще раз."
+				},
+				{
+					"q": "Які бази даних підтримує Vikunja?",
+					"a": "SQLite, MySQL 8.0 і новіші, MariaDB 10.2 і новіші та PostgreSQL 12 і новіші. Цей шаблон використовує SQLite: уся база лежить в одному файлі, а окремий контейнер із базою даних не потрібен."
+				}
+			]
 		}
 	}
 }

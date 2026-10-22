@@ -1,6 +1,11 @@
 {
 	"name": "Obsidian LiveSync",
 	"emoji": "🔄",
+	"category": "notes",
+	"alternatives": [
+		"Obsidian Sync"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "couchdb",
 		"port": 5984
@@ -18,35 +23,259 @@
 	"texts": {
 		"en": {
 			"description": "A CouchDB server that syncs your Obsidian vaults with Self-hosted LiveSync",
-			"notes": "In Obsidian, install the Self-hosted LiveSync plugin and give it https://{host} as the server, admin as the username and the password you gave. The plugin makes its database by itself."
+			"notes": "In Obsidian, install the Self-hosted LiveSync plugin and give it https://{host} as the server, admin as the username and the password you gave. The plugin makes its database by itself.",
+			"sizing": "Obsidian LiveSync is light: CouchDB takes about 150 MB, and the disk holds your vaults with their edit history.",
+			"summary": "Obsidian LiveSync syncs Obsidian vaults in real time through a CouchDB server of your own. Self-host it as an alternative to Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync is an open-source sync plugin for Obsidian, listed there as Self-hosted LiveSync, that people run instead of Obsidian Sync. It keeps a vault the same on every device through a CouchDB server of your own. In LiveSync mode, edits travel both ways in real time; Periodic Sync and On Events sync on a timer, or when you save, open a file or start Obsidian. Simple conflicts merge on their own, and Customisation Sync (Beta) can carry settings, themes, snippets and plugins.",
+				"People run it themselves for the reason its README calls most important: the notes sit on a server they trust. The project names researchers, engineers and developers who must keep notes on their own servers for security, and anyone who wants them private. The catch: a vault synced by LiveSync must not be synced by anything else as well, iCloud included, and the project asks you to back up the vault before installing or upgrading."
+			],
+			"faq": [
+				{
+					"q": "Is Obsidian LiveSync free?",
+					"a": "Yes. Self-hosted LiveSync is open source under the MIT licence and costs nothing. You provide what it syncs through: a CouchDB server, S3-compatible object storage, or peer-to-peer sync between your devices over WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync vs Obsidian Sync: what is the difference?",
+					"a": "LiveSync is a community plugin that syncs through a server you run, while Obsidian Sync is Obsidian's official service. The two are not compatible and cannot sync with each other."
+				},
+				{
+					"q": "Is Obsidian LiveSync end-to-end encrypted?",
+					"a": "Yes, once you turn on End-to-End Encryption and set a passphrase, which the docs recommend. Notes are then encrypted with AES-256-GCM before they leave the device, and Path Obfuscation can hide file paths from the server too."
+				},
+				{
+					"q": "Does Obsidian LiveSync work on iPhone and Android?",
+					"a": "Yes, it runs wherever Obsidian runs, the iOS and Android apps included. On a phone the server must use HTTPS with a certificate the system trusts: plain HTTP and self-signed certificates do not work."
+				},
+				{
+					"q": "How do I set up Obsidian LiveSync?",
+					"a": "Install Self-hosted LiveSync from Obsidian's community plugins, choose CouchDB in its onboarding and enter the server's URL, username, password and a database name. Then generate a Setup URI on that device for each other one."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein CouchDB-Server, der deine Obsidian-Vaults mit Self-hosted LiveSync synchronisiert",
-			"notes": "Installier in Obsidian das Plugin Self-hosted LiveSync und gib ihm https://{host} als Server, admin als Benutzernamen und das Passwort, das du festgelegt hast. Seine Datenbank legt das Plugin selbst an."
+			"notes": "Installier in Obsidian das Plugin Self-hosted LiveSync und gib ihm https://{host} als Server, admin als Benutzernamen und das Passwort, das du festgelegt hast. Seine Datenbank legt das Plugin selbst an.",
+			"sizing": "Obsidian LiveSync ist leicht: CouchDB braucht etwa 150 MB, und auf der Disk liegen deine Vaults samt Bearbeitungsverlauf.",
+			"summary": "Obsidian LiveSync synchronisiert deine Vaults in Echtzeit über einen eigenen CouchDB-Server. Selbst hosten als Alternative zu Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync ist ein Open-Source-Sync-Plugin für Obsidian, dort als Self-hosted LiveSync gelistet, das man statt Obsidian Sync einsetzt. Es hält einen Vault auf jedem Gerät auf demselben Stand, und zwar über einen eigenen CouchDB-Server. Im Modus LiveSync laufen Änderungen in Echtzeit in beide Richtungen; Periodic Sync synchronisiert in festen Abständen, On Events beim Speichern, beim Öffnen einer Datei oder beim Start von Obsidian. Einfache Konflikte führt es von selbst zusammen, und Customisation Sync (Beta) kann Einstellungen, Themes, Snippets und Plugins mitnehmen.",
+				"Man hostet es selbst aus dem Grund, den die README als wichtigsten nennt: Die Notizen liegen auf einem Server, dem man vertraut. Das Projekt nennt Menschen aus Forschung, Ingenieurwesen und Entwicklung, die ihre Notizen aus Sicherheitsgründen auf eigenen Servern halten müssen, sowie alle, die sie privat halten wollen. Der Haken: Ein Vault, den LiveSync synchronisiert, darf nicht zusätzlich von etwas anderem synchronisiert werden, auch nicht von iCloud, und das Projekt bittet dich, den Vault vor dem Installieren oder Aktualisieren zu sichern."
+			],
+			"faq": [
+				{
+					"q": "Ist Obsidian LiveSync kostenlos?",
+					"a": "Ja. Self-hosted LiveSync ist Open Source unter der MIT-Lizenz und kostet nichts. Du stellst bereit, worüber synchronisiert wird: einen CouchDB-Server, S3-kompatiblen Object Storage oder eine Peer-to-Peer-Synchronisierung zwischen deinen Geräten über WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync oder Obsidian Sync: Was ist der Unterschied?",
+					"a": "LiveSync ist ein Community-Plugin, das über einen Server synchronisiert, den du selbst betreibst, während Obsidian Sync das offizielle Angebot von Obsidian ist. Die beiden sind nicht kompatibel und können nicht miteinander synchronisieren."
+				},
+				{
+					"q": "Ist Obsidian LiveSync Ende-zu-Ende-verschlüsselt?",
+					"a": "Ja, sobald du End-to-End Encryption einschaltest und eine Passphrase festlegst, was die Doku empfiehlt. Die Notizen werden dann mit AES-256-GCM verschlüsselt, bevor sie das Gerät verlassen, und mit Path Obfuscation lassen sich auch Dateipfade vor dem Server verbergen."
+				},
+				{
+					"q": "Funktioniert Obsidian LiveSync auf dem iPhone und auf Android?",
+					"a": "Ja, es läuft überall, wo Obsidian läuft, auch in den Apps für iOS und Android. Auf dem Handy muss der Server HTTPS mit einem Zertifikat nutzen, dem das System vertraut: Reines HTTP und selbst signierte Zertifikate funktionieren nicht."
+				},
+				{
+					"q": "Wie richte ich Obsidian LiveSync ein?",
+					"a": "Installier Self-hosted LiveSync über die Community-Plugins von Obsidian, wähl im Onboarding CouchDB und gib die URL, den Benutzernamen und das Passwort des Servers sowie einen Datenbanknamen ein. Erstell dann auf diesem Gerät für jedes andere Gerät eine Setup URI."
+				}
+			]
 		},
 		"es": {
 			"description": "Un servidor CouchDB que sincroniza tus bóvedas de Obsidian con Self-hosted LiveSync",
-			"notes": "En Obsidian, instala el plugin Self-hosted LiveSync e indícale https://{host} como servidor, admin como usuario y la contraseña que indicaste. El plugin crea su base de datos por sí mismo."
+			"notes": "En Obsidian, instala el plugin Self-hosted LiveSync e indícale https://{host} como servidor, admin como usuario y la contraseña que indicaste. El plugin crea su base de datos por sí mismo.",
+			"sizing": "Obsidian LiveSync es ligero: CouchDB usa unos 150 MB, y el disco guarda tus vaults con su historial de ediciones.",
+			"summary": "Obsidian LiveSync sincroniza tus bóvedas de Obsidian en tiempo real con un servidor CouchDB propio. Autoalójalo como alternativa a Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync es un plugin de sincronización de código abierto para Obsidian, donde aparece como Self-hosted LiveSync, que se usa en lugar de Obsidian Sync. Mantiene una bóveda igual en todos los dispositivos a través de un servidor CouchDB propio. En el modo LiveSync, los cambios viajan en ambos sentidos en tiempo real; Periodic Sync sincroniza cada cierto tiempo y On Events al guardar, abrir un archivo o iniciar Obsidian. Los conflictos simples se fusionan solos, y Customisation Sync (Beta) puede llevar ajustes, temas, snippets y plugins.",
+				"Quienes lo autoalojan lo hacen por la razón que su README llama la más importante: las notas están en un servidor de confianza. El proyecto menciona a investigadores, ingenieros y desarrolladores que deben guardar sus notas en servidores propios por seguridad, y a cualquiera que quiera mantenerlas privadas. El inconveniente: una bóveda sincronizada con LiveSync no debe sincronizarse además con nada más, ni siquiera con iCloud, y el proyecto pide que hagas un backup de la bóveda antes de instalar o actualizar."
+			],
+			"faq": [
+				{
+					"q": "¿Obsidian LiveSync es gratis?",
+					"a": "Sí. Self-hosted LiveSync es de código abierto con licencia MIT y no cuesta nada. Tú pones aquello con lo que sincroniza: un servidor CouchDB, almacenamiento de objetos compatible con S3 o sincronización peer-to-peer entre tus dispositivos mediante WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync u Obsidian Sync: ¿cuál es la diferencia?",
+					"a": "LiveSync es un plugin de la comunidad que sincroniza mediante un servidor que administras tú, mientras que Obsidian Sync es el servicio oficial de Obsidian. Los dos no son compatibles y no pueden sincronizarse entre sí."
+				},
+				{
+					"q": "¿Obsidian LiveSync tiene cifrado de extremo a extremo?",
+					"a": "Sí, en cuanto activas End-to-End Encryption y defines una frase de contraseña, algo que recomienda la documentación. Entonces las notas se cifran con AES-256-GCM antes de salir del dispositivo, y Path Obfuscation también puede ocultar al servidor los paths de los archivos."
+				},
+				{
+					"q": "¿Obsidian LiveSync funciona en iPhone y Android?",
+					"a": "Sí, funciona donde funcione Obsidian, incluidas las apps de iOS y Android. En un teléfono el servidor debe usar HTTPS con un certificado en el que confíe el sistema: el HTTP sin cifrar y los certificados autofirmados no funcionan."
+				},
+				{
+					"q": "¿Cómo configuro Obsidian LiveSync?",
+					"a": "Instala Self-hosted LiveSync desde los plugins de la comunidad de Obsidian, elige CouchDB en su onboarding y escribe la URL del servidor, el usuario, la contraseña y un nombre de base de datos. Luego genera una Setup URI en ese dispositivo para cada uno de los demás."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un serveur CouchDB qui synchronise vos coffres Obsidian avec Self-hosted LiveSync",
-			"notes": "Dans Obsidian, installez le plugin Self-hosted LiveSync et donnez-lui https://{host} comme serveur, admin comme nom d’utilisateur et le mot de passe que vous avez choisi. Le plugin crée sa base de données lui-même."
+			"notes": "Dans Obsidian, installez le plugin Self-hosted LiveSync et donnez-lui https://{host} comme serveur, admin comme nom d’utilisateur et le mot de passe que vous avez choisi. Le plugin crée sa base de données lui-même.",
+			"sizing": "Obsidian LiveSync est léger : CouchDB prend environ 150 MB, et le disque contient vos vaults et leur historique de modifications.",
+			"summary": "Obsidian LiveSync synchronise vos coffres Obsidian en temps réel via votre propre serveur CouchDB. Auto-hébergez-le comme alternative à Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync est un plugin de synchronisation open source pour Obsidian, où il apparaît sous le nom Self-hosted LiveSync, que l’on utilise à la place d’Obsidian Sync. Il garde un coffre identique sur chaque appareil grâce à votre propre serveur CouchDB. Dans le mode LiveSync, les modifications circulent dans les deux sens en temps réel ; Periodic Sync synchronise à intervalle régulier, On Events à l’enregistrement, à l’ouverture d’un fichier ou au démarrage d’Obsidian. Les conflits simples se fusionnent d’eux-mêmes, et Customisation Sync (Beta) peut transporter les réglages, les thèmes, les snippets et les plugins.",
+				"On l’auto-héberge pour la raison que son README présente comme la plus importante : les notes restent sur un serveur de confiance. Le projet cite les chercheurs, les ingénieurs et les développeurs qui doivent garder leurs notes sur leurs propres serveurs pour des raisons de sécurité, et toute personne qui veut les garder privées. Le revers : un coffre synchronisé par LiveSync ne doit pas l’être aussi par autre chose, iCloud compris, et le projet vous demande de sauvegarder le coffre avant d’installer ou de mettre à jour."
+			],
+			"faq": [
+				{
+					"q": "Obsidian LiveSync est-il gratuit ?",
+					"a": "Oui. Self-hosted LiveSync est open source sous licence MIT et ne coûte rien. Vous fournissez ce par quoi il synchronise : un serveur CouchDB, un stockage objet compatible S3 ou une synchronisation pair à pair entre vos appareils via WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync ou Obsidian Sync : quelle différence ?",
+					"a": "LiveSync est un plugin communautaire qui synchronise via un serveur que vous hébergez vous-même, alors qu’Obsidian Sync est le service officiel d’Obsidian. Les deux ne sont pas compatibles et ne peuvent pas se synchroniser entre eux."
+				},
+				{
+					"q": "Obsidian LiveSync est-il chiffré de bout en bout ?",
+					"a": "Oui, dès que vous activez End-to-End Encryption et définissez une phrase secrète, ce que recommande la documentation. Les notes sont alors chiffrées avec AES-256-GCM avant de quitter l’appareil, et Path Obfuscation peut aussi cacher les chemins des fichiers au serveur."
+				},
+				{
+					"q": "Obsidian LiveSync fonctionne-t-il sur iPhone et Android ?",
+					"a": "Oui, partout où Obsidian fonctionne, applications iOS et Android comprises. Sur un téléphone, le serveur doit utiliser HTTPS avec un certificat auquel le système fait confiance : le HTTP simple et les certificats auto-signés ne fonctionnent pas."
+				},
+				{
+					"q": "Comment configurer Obsidian LiveSync ?",
+					"a": "Installez Self-hosted LiveSync depuis les plugins communautaires d’Obsidian, choisissez CouchDB dans son onboarding et saisissez l’URL du serveur, le nom d’utilisateur, le mot de passe et un nom de base de données. Générez ensuite une Setup URI sur cet appareil pour chacun des autres."
+				}
+			]
 		},
 		"pl": {
 			"description": "Serwer CouchDB, który synchronizuje twoje sejfy Obsidiana przez Self-hosted LiveSync",
-			"notes": "W Obsidianie zainstaluj wtyczkę Self-hosted LiveSync i podaj jej https://{host} jako serwer, admin jako nazwę użytkownika i hasło podane przy tworzeniu projektu. Bazę danych wtyczka założy sama."
+			"notes": "W Obsidianie zainstaluj wtyczkę Self-hosted LiveSync i podaj jej https://{host} jako serwer, admin jako nazwę użytkownika i hasło podane przy tworzeniu projektu. Bazę danych wtyczka założy sama.",
+			"sizing": "Obsidian LiveSync ma małe wymagania: CouchDB zajmuje około 150 MB, a dysk zajmują twoje vaulty z historią edycji.",
+			"summary": "Obsidian LiveSync synchronizuje sejfy Obsidiana w czasie rzeczywistym przez własny serwer CouchDB. Hostuj go u siebie jako alternatywę dla Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync to wtyczka open source do synchronizacji dla Obsidiana, widoczna tam jako Self-hosted LiveSync, z której korzysta się zamiast Obsidian Sync. Dzięki własnemu serwerowi CouchDB utrzymuje identyczny sejf na każdym urządzeniu. W trybie LiveSync zmiany płyną w obie strony w czasie rzeczywistym; Periodic Sync synchronizuje co jakiś czas, a On Events przy zapisie, otwarciu pliku lub starcie Obsidiana. Proste konflikty łączą się same, a Customisation Sync (Beta) potrafi przenosić ustawienia, motywy, snippety i wtyczki.",
+				"Ludzie hostują ją u siebie z powodu, który jej README nazywa najważniejszym: notatki leżą na serwerze, któremu ufają. Projekt wymienia badaczy, inżynierów i programistów, którzy ze względów bezpieczeństwa muszą trzymać notatki na własnych serwerach, oraz każdego, kto chce, by pozostały prywatne. Haczyk: sejf synchronizowany przez LiveSync nie może być dodatkowo synchronizowany przez nic innego, także przez iCloud, a projekt prosi, by przed instalacją lub aktualizacją zrobić backup sejfu."
+			],
+			"faq": [
+				{
+					"q": "Czy Obsidian LiveSync jest darmowy?",
+					"a": "Tak. Self-hosted LiveSync ma otwarty kod na licencji MIT i nic nie kosztuje. Sam zapewniasz to, przez co synchronizuje: serwer CouchDB, magazyn obiektowy zgodny z S3 albo synchronizację peer-to-peer między twoimi urządzeniami przez WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync czy Obsidian Sync: jaka jest różnica?",
+					"a": "LiveSync to wtyczka społeczności, która synchronizuje przez serwer, który sam utrzymujesz, a Obsidian Sync to oficjalna usługa Obsidiana. Oba rozwiązania nie są ze sobą zgodne i nie potrafią synchronizować się nawzajem."
+				},
+				{
+					"q": "Czy Obsidian LiveSync ma szyfrowanie end-to-end?",
+					"a": "Tak, gdy włączysz End-to-End Encryption i ustawisz hasło szyfrujące (passphrase), co zaleca dokumentacja. Notatki są wtedy szyfrowane algorytmem AES-256-GCM, zanim opuszczą urządzenie, a Path Obfuscation może ukryć przed serwerem także ścieżki plików."
+				},
+				{
+					"q": "Czy Obsidian LiveSync działa na iPhonie i Androidzie?",
+					"a": "Tak, działa wszędzie tam, gdzie działa Obsidian, także w aplikacjach na iOS i na Androida. Na telefonie serwer musi używać HTTPS z certyfikatem, któremu ufa system: zwykły HTTP i samopodpisane certyfikaty nie działają."
+				},
+				{
+					"q": "Jak skonfigurować Obsidian LiveSync?",
+					"a": "Zainstaluj Self-hosted LiveSync z wtyczek społeczności Obsidiana, wybierz CouchDB w jego onboardingu i podaj adres URL serwera, nazwę użytkownika, hasło oraz nazwę bazy danych. Potem na tym urządzeniu wygeneruj Setup URI dla każdego z pozostałych."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um servidor CouchDB que sincroniza seus cofres do Obsidian com o Self-hosted LiveSync",
-			"notes": "No Obsidian, instale o plugin Self-hosted LiveSync e informe https://{host} como servidor, admin como usuário e a senha que você definiu. O plugin cria o banco de dados sozinho."
+			"notes": "No Obsidian, instale o plugin Self-hosted LiveSync e informe https://{host} como servidor, admin como usuário e a senha que você definiu. O plugin cria o banco de dados sozinho.",
+			"sizing": "Obsidian LiveSync é leve: o CouchDB usa cerca de 150 MB, e o disco guarda seus vaults com o histórico de edições.",
+			"summary": "O Obsidian LiveSync sincroniza seus cofres do Obsidian em tempo real por um servidor CouchDB próprio. Hospede por conta própria no lugar do Obsidian Sync.",
+			"about": [
+				"O Obsidian LiveSync é um plugin de sincronização de código aberto para o Obsidian, listado lá como Self-hosted LiveSync, que as pessoas usam no lugar do Obsidian Sync. Ele mantém um cofre igual em todos os dispositivos por meio de um servidor CouchDB próprio. No modo LiveSync, as edições viajam nos dois sentidos em tempo real; o Periodic Sync sincroniza por temporizador e o On Events quando você salva, abre um arquivo ou inicia o Obsidian. Conflitos simples são mesclados sozinhos, e o Customisation Sync (Beta) pode levar configurações, temas, snippets e plugins.",
+				"Quem hospeda por conta própria faz isso pelo motivo que o README dele chama de o mais importante: as notas ficam em um servidor de confiança. O projeto cita pesquisadores, engenheiros e desenvolvedores que precisam manter as notas em servidores próprios por segurança, e qualquer pessoa que queira mantê-las privadas. O porém: um cofre sincronizado pelo LiveSync não pode ser sincronizado por mais nada ao mesmo tempo, iCloud incluído, e o projeto pede que você faça backup do cofre antes de instalar ou atualizar."
+			],
+			"faq": [
+				{
+					"q": "O Obsidian LiveSync é gratuito?",
+					"a": "Sim. O Self-hosted LiveSync é de código aberto sob a licença MIT e não custa nada. Você fornece aquilo por onde ele sincroniza: um servidor CouchDB, um armazenamento de objetos compatível com S3 ou a sincronização peer-to-peer entre seus dispositivos via WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync ou Obsidian Sync: qual é a diferença?",
+					"a": "O LiveSync é um plugin da comunidade que sincroniza por um servidor que você mesmo mantém, enquanto o Obsidian Sync é o serviço oficial do Obsidian. Os dois não são compatíveis e não conseguem sincronizar um com o outro."
+				},
+				{
+					"q": "O Obsidian LiveSync tem criptografia de ponta a ponta?",
+					"a": "Sim, depois que você ativa o End-to-End Encryption e define uma passphrase, o que a documentação recomenda. As notas são então criptografadas com AES-256-GCM antes de sair do dispositivo, e o Path Obfuscation também pode esconder do servidor os caminhos dos arquivos."
+				},
+				{
+					"q": "O Obsidian LiveSync funciona no iPhone e no Android?",
+					"a": "Sim, ele roda onde o Obsidian roda, inclusive nos apps de iOS e Android. No celular, o servidor precisa usar HTTPS com um certificado em que o sistema confie: HTTP puro e certificados autoassinados não funcionam."
+				},
+				{
+					"q": "Como configuro o Obsidian LiveSync?",
+					"a": "Instale o Self-hosted LiveSync pelos plugins da comunidade do Obsidian, escolha CouchDB no onboarding dele e informe a URL do servidor, o usuário, a senha e um nome de banco de dados. Depois gere uma Setup URI nesse dispositivo para cada um dos outros."
+				}
+			]
 		},
 		"ru": {
 			"description": "Сервер CouchDB, который синхронизирует ваши хранилища Obsidian через Self-hosted LiveSync",
-			"notes": "В Obsidian установите плагин Self-hosted LiveSync и укажите в нем https://{host} как сервер, admin как имя пользователя и пароль, который вы задали. Базу данных плагин создаст сам."
+			"notes": "В Obsidian установите плагин Self-hosted LiveSync и укажите в нем https://{host} как сервер, admin как имя пользователя и пароль, который вы задали. Базу данных плагин создаст сам.",
+			"sizing": "Obsidian LiveSync: небольшие требования — CouchDB занимает около 150 MB, а на диске ваши хранилища с историей правок.",
+			"summary": "Obsidian LiveSync синхронизирует хранилища Obsidian в реальном времени через ваш сервер CouchDB. Self-hosted альтернатива Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync — это open source плагин синхронизации для Obsidian, который там называется Self-hosted LiveSync и который ставят вместо Obsidian Sync. Он держит хранилище одинаковым на всех устройствах через ваш собственный сервер CouchDB. В режиме LiveSync правки идут в обе стороны в реальном времени; Periodic Sync синхронизирует по таймеру, а On Events при сохранении, открытии файла и запуске Obsidian. Простые конфликты сливаются сами, а Customisation Sync (Beta) может переносить настройки, темы, сниппеты и плагины.",
+				"Его хостят у себя по причине, которую README называет самой важной: заметки лежат на доверенном сервере. Проект называет исследователей, инженеров и разработчиков, которым по соображениям безопасности нужно хранить заметки на своих серверах, и всех, кто хочет, чтобы они оставались приватными. Нюанс: хранилище, синхронизируемое через LiveSync, не должно при этом синхронизироваться ничем другим, включая iCloud, а проект просит сделать бэкап хранилища перед установкой или обновлением."
+			],
+			"faq": [
+				{
+					"q": "Obsidian LiveSync бесплатный?",
+					"a": "Да. Self-hosted LiveSync имеет открытый код под лицензией MIT и ничего не стоит. Вы сами обеспечиваете то, через что он синхронизирует: сервер CouchDB, S3-совместимое объектное хранилище или peer-to-peer синхронизацию между вашими устройствами по WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync или Obsidian Sync: в чем разница?",
+					"a": "LiveSync — это плагин сообщества, который синхронизирует через сервер, который вы запускаете сами, а Obsidian Sync — официальный сервис Obsidian. Они несовместимы и не могут синхронизироваться друг с другом."
+				},
+				{
+					"q": "Есть ли в Obsidian LiveSync сквозное шифрование?",
+					"a": "Да, как только вы включите End-to-End Encryption и зададите парольную фразу, что рекомендует документация. Тогда заметки шифруются алгоритмом AES-256-GCM до того, как покинут устройство, а Path Obfuscation может скрыть от сервера и пути к файлам."
+				},
+				{
+					"q": "Работает ли Obsidian LiveSync на iPhone и Android?",
+					"a": "Да, везде, где работает Obsidian, включая приложения для iOS и Android. На телефоне сервер должен использовать HTTPS с сертификатом, которому доверяет система: обычный HTTP и самоподписанные сертификаты не работают."
+				},
+				{
+					"q": "Как настроить Obsidian LiveSync?",
+					"a": "Установите Self-hosted LiveSync из плагинов сообщества Obsidian, выберите CouchDB в его онбординге и введите URL сервера, имя пользователя, пароль и название базы данных. Затем на этом устройстве создайте Setup URI для каждого из остальных."
+				}
+			]
 		},
 		"uk": {
 			"description": "Сервер CouchDB, що синхронізує ваші сховища Obsidian через Self-hosted LiveSync",
-			"notes": "В Obsidian установіть плагін Self-hosted LiveSync і вкажіть у ньому https://{host} як сервер, admin як ім’я користувача та пароль, який ви вказали. Базу даних плагін створить сам."
+			"notes": "В Obsidian установіть плагін Self-hosted LiveSync і вкажіть у ньому https://{host} як сервер, admin як ім’я користувача та пароль, який ви вказали. Базу даних плагін створить сам.",
+			"sizing": "Obsidian LiveSync має скромні вимоги: CouchDB займає близько 150 MB, а на диску лежать ваші сховища з історією редагування.",
+			"summary": "Obsidian LiveSync синхронізує сховища Obsidian у реальному часі через ваш сервер CouchDB. Self-hosted альтернатива Obsidian Sync.",
+			"about": [
+				"Obsidian LiveSync — це плагін синхронізації для Obsidian з відкритим кодом, який там називається Self-hosted LiveSync і який ставлять замість Obsidian Sync. Він підтримує однакове сховище на всіх пристроях через ваш власний сервер CouchDB. У режимі LiveSync правки йдуть в обидва боки в реальному часі; Periodic Sync синхронізує за таймером, а On Events під час збереження, відкриття файлу й запуску Obsidian. Прості конфлікти зливаються самі, а Customisation Sync (Beta) може переносити налаштування, теми, сніпети й плагіни.",
+				"Його хостять у себе з причини, яку README називає найважливішою: нотатки лежать на довіреному сервері. Проєкт згадує дослідників, інженерів і розробників, яким із міркувань безпеки треба зберігати нотатки на власних серверах, і всіх, хто хоче, щоб вони лишалися приватними. Нюанс: сховище, яке синхронізує LiveSync, не можна водночас синхронізувати чимось іншим, зокрема iCloud, а проєкт просить зробити бекап сховища перед встановленням чи оновленням."
+			],
+			"faq": [
+				{
+					"q": "Чи безкоштовний Obsidian LiveSync?",
+					"a": "Так. Self-hosted LiveSync має відкритий код за ліцензією MIT і нічого не коштує. Ви самі забезпечуєте те, через що він синхронізує: сервер CouchDB, S3-сумісне об’єктне сховище або peer-to-peer синхронізацію між вашими пристроями через WebRTC."
+				},
+				{
+					"q": "Obsidian LiveSync чи Obsidian Sync: у чому різниця?",
+					"a": "LiveSync — це плагін спільноти, який синхронізує через сервер, який ви запускаєте самі, а Obsidian Sync — офіційний сервіс Obsidian. Вони несумісні й не можуть синхронізуватися між собою."
+				},
+				{
+					"q": "Чи має Obsidian LiveSync наскрізне шифрування?",
+					"a": "Так, щойно ви ввімкнете End-to-End Encryption і задасте парольну фразу, що радить документація. Тоді нотатки шифруються за AES-256-GCM ще до того, як залишать пристрій, а Path Obfuscation може приховати від сервера й шляхи до файлів."
+				},
+				{
+					"q": "Чи працює Obsidian LiveSync на iPhone і Android?",
+					"a": "Так, скрізь, де працює Obsidian, зокрема в застосунках для iOS і Android. На телефоні сервер має використовувати HTTPS із сертифікатом, якому довіряє система: звичайний HTTP і самопідписані сертифікати не працюють."
+				},
+				{
+					"q": "Як налаштувати Obsidian LiveSync?",
+					"a": "Встановіть Self-hosted LiveSync із плагінів спільноти Obsidian, виберіть CouchDB в його онбордингу й введіть URL сервера, ім’я користувача, пароль і назву бази даних. Потім на цьому пристрої створіть Setup URI для кожного з решти."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,13 @@
 {
 	"name": "Flowise",
 	"emoji": "🌊",
+	"category": "ai",
+	"alternatives": [
+		"OpenAI Agent Builder",
+		"Microsoft Copilot Studio",
+		"Voiceflow"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "flowise",
 		"port": 3000
@@ -38,35 +45,259 @@
 	"texts": {
 		"en": {
 			"description": "Build AI agents and LLM workflows visually, then call them over an API or embed them as a chat widget",
-			"notes": "Sign in with the email and the admin password you gave: the template registers that owner at the first start. Add a credential for your model's provider, then build a chatflow or an agentflow."
+			"notes": "Sign in with the email and the admin password you gave: the template registers that owner at the first start. Add a credential for your model's provider, then build a chatflow or an agentflow.",
+			"sizing": "Flowise is moderate: about 700 MB of memory, and flows, chats and uploaded documents take little disk.",
+			"summary": "Flowise is an open-source visual builder for AI agents and chatbots, an OpenAI Agent Builder alternative. Self-host it in one click.",
+			"about": [
+				"Flowise is an open-source visual builder for AI agents and LLM apps, an alternative to OpenAI Agent Builder. You connect nodes on a canvas: a chat model, tools, memory, and a vector store that lets the agent answer from your documents. Flowise has three builders: Assistant for a simple chat assistant, Chatflow for a chatbot or a single agent, and Agentflow for multi-agent workflows with branching, loops and human-in-the-loop steps. Agents can call tools over MCP, and execution logs show each step of a run.",
+				"People self-host it to keep their prompts, documents and model API keys on their own server. It suits developers and small teams who want an agent behind an API without writing the orchestration code. The catch: its makers wound Flowise down in 2026, so no new releases or security fixes will come from them."
+			],
+			"faq": [
+				{
+					"q": "Is Flowise free and open source?",
+					"a": "Yes, mostly. Its code is under the Apache 2.0 license, except the server's enterprise directory, which is under a commercial license. Running it yourself costs nothing; your model provider bills its own API calls."
+				},
+				{
+					"q": "Is Flowise still maintained?",
+					"a": "No longer by FlowiseAI. The team froze the code on July 29, 2026, archived the GitHub repository in August and left GitHub and Discord on August 31. The Apache 2.0 code stays public, and the team encourages forks."
+				},
+				{
+					"q": "How do I embed a Flowise chatbot on my website?",
+					"a": "Paste the script Flowise gives for a chatflow anywhere inside your page's body. It loads the flowise-embed package and calls Chatbot.init with the chatflow's id and your Flowise address; a theme option restyles the button and window."
+				},
+				{
+					"q": "Can Flowise use local models with Ollama?",
+					"a": "Yes. The ChatOllama node talks to an Ollama server at the Base URL you give it. With an Ollama API credential and the Base URL https://ollama.com, it reaches Ollama Cloud instead."
+				},
+				{
+					"q": "Does Flowise support multiple users and SSO?",
+					"a": "Not in the open-source edition, which has a single owner account. Inviting users needs workspaces, a feature of Flowise's Cloud and Enterprise plans, and SSO is Enterprise only."
+				}
+			]
 		},
 		"de": {
 			"description": "KI-Agenten und LLM-Workflows visuell bauen, dann per API aufrufen oder als Chat-Widget einbetten",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Die Vorlage registriert diesen Owner beim ersten Start. Lege ein Credential für den Anbieter deines Modells an, dann einen Chatflow oder einen Agentflow."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Die Vorlage registriert diesen Owner beim ersten Start. Lege ein Credential für den Anbieter deines Modells an, dann einen Chatflow oder einen Agentflow.",
+			"sizing": "Flowise ist mittelschwer: etwa 700 MB RAM, und Flows, Chats und hochgeladene Dokumente brauchen wenig Disk.",
+			"summary": "Flowise selbst hosten: der visuelle Open-Source-Builder für KI-Agenten und Chatbots, eine Alternative zum OpenAI Agent Builder. Mit einem Klick.",
+			"about": [
+				"Flowise ist ein visueller Open-Source-Builder für KI-Agenten und LLM-Apps, eine Alternative zum OpenAI Agent Builder. Du verbindest auf einer Arbeitsfläche Knoten miteinander: ein Chatmodell, Tools, Memory und einen Vector Store, mit dem der Agent aus deinen Dokumenten antwortet. Flowise hat drei Builder: Assistant für einen einfachen Chat-Assistenten, Chatflow für einen Chatbot oder einen einzelnen Agenten und Agentflow für Multi-Agent-Workflows mit Verzweigungen, Schleifen und Human-in-the-Loop-Schritten. Agenten können Tools über MCP aufrufen, und die Ausführungs-Logs zeigen jeden Schritt eines Laufs.",
+				"Du hostest Flowise selbst, damit deine Prompts, Dokumente und API-Keys für Modelle auf einer Maschine bleiben, die du kontrollierst. Es passt zu allen, die entwickeln, und zu kleinen Teams, die einen Agenten hinter einer API wollen, ohne den Orchestrierungscode zu schreiben. Der Haken: Das Team hinter Flowise hat das Projekt 2026 eingestellt, von dort kommen also keine neuen Releases und keine Sicherheitsfixes mehr."
+			],
+			"faq": [
+				{
+					"q": "Ist Flowise kostenlos und Open Source?",
+					"a": "Ja, größtenteils. Der Code steht unter der Apache-2.0-Lizenz, außer dem Enterprise-Verzeichnis des Servers, das unter einer kommerziellen Lizenz steht. Selbst betrieben kostet Flowise nichts; dein Modellanbieter berechnet seine API-Aufrufe separat."
+				},
+				{
+					"q": "Wird Flowise noch gepflegt?",
+					"a": "Nicht mehr von FlowiseAI. Das Team hat den Code am 29. Juli 2026 eingefroren, das GitHub-Repository im August archiviert und GitHub und Discord am 31. August verlassen. Der Apache-2.0-Code bleibt öffentlich, und das Team ermutigt zu Forks."
+				},
+				{
+					"q": "Wie binde ich einen Flowise-Chatbot in meine Website ein?",
+					"a": "Füge das Script, das Flowise für einen Chatflow liefert, an beliebiger Stelle im Body deiner Seite ein. Es lädt das Paket flowise-embed und ruft Chatbot.init mit der ID des Chatflows und deiner Flowise-Adresse auf; mit der Option theme gestaltest du Button und Fenster um."
+				},
+				{
+					"q": "Kann Flowise lokale Modelle mit Ollama nutzen?",
+					"a": "Ja. Der Knoten ChatOllama spricht mit einem Ollama-Server unter der Base URL, die du angibst. Mit einem Ollama-API-Credential und der Base URL https://ollama.com erreicht er stattdessen Ollama Cloud."
+				},
+				{
+					"q": "Unterstützt Flowise mehrere Benutzer und SSO?",
+					"a": "Nicht in der Open-Source-Edition, die nur ein einziges Owner-Konto hat. Um Benutzer einzuladen, braucht es Workspaces, eine Funktion der Cloud- und Enterprise-Tarife von Flowise, und SSO gibt es nur in Enterprise."
+				}
+			]
 		},
 		"es": {
 			"description": "Crea agentes de IA y flujos con LLM de forma visual y luego llámalos por API o incrústalos como widget de chat",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste: la plantilla registra ese owner en el primer arranque. Añade una credencial del proveedor de tu modelo y luego crea un chatflow o un agentflow."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste: la plantilla registra ese owner en el primer arranque. Añade una credencial del proveedor de tu modelo y luego crea un chatflow o un agentflow.",
+			"sizing": "Flowise es moderado: unos 700 MB de memoria, y los flujos, los chats y los documentos subidos ocupan poco disco.",
+			"summary": "Flowise es un constructor visual de código abierto para agentes de IA y chatbots, una alternativa a OpenAI Agent Builder. Autoalójalo en un clic.",
+			"about": [
+				"Flowise es un constructor visual de código abierto para agentes de IA y apps con LLM, una alternativa a OpenAI Agent Builder. Conectas nodos en un lienzo: un modelo de chat, herramientas, memoria y una base de datos vectorial que permite al agente responder a partir de tus documentos. Flowise tiene tres constructores: Assistant para un asistente de chat sencillo, Chatflow para un chatbot o un solo agente y Agentflow para flujos de trabajo con varios agentes, con ramificaciones, bucles y pasos con intervención humana. Los agentes pueden llamar a herramientas mediante MCP, y el log de cada ejecución muestra todos sus pasos.",
+				"Autoalojas Flowise para que tus prompts, documentos y claves de API de modelos se queden en una máquina que controlas. Encaja con desarrolladores y equipos pequeños que quieren un agente detrás de una API sin escribir el código de orquestación. El inconveniente: sus creadores cerraron el proyecto Flowise en 2026, así que ya no saldrán versiones nuevas ni correcciones de seguridad."
+			],
+			"faq": [
+				{
+					"q": "¿Flowise es gratis y de código abierto?",
+					"a": "Sí, en su mayor parte. Su código tiene licencia Apache 2.0, salvo el directorio enterprise del servidor, que tiene una licencia comercial. Ejecutarlo tú mismo no cuesta nada; tu proveedor de modelos cobra aparte las llamadas a su API."
+				},
+				{
+					"q": "¿Flowise sigue recibiendo mantenimiento?",
+					"a": "Ya no por parte de FlowiseAI. El equipo congeló el código el 29 de julio de 2026, archivó el repositorio de GitHub en agosto y dejó GitHub y Discord el 31 de agosto. El código Apache 2.0 sigue siendo público, y el equipo anima a hacer forks."
+				},
+				{
+					"q": "¿Cómo inserto un chatbot de Flowise en mi sitio web?",
+					"a": "Pega el script que Flowise da para un chatflow en cualquier parte del body de tu página. Carga el paquete flowise-embed y llama a Chatbot.init con el id del chatflow y la dirección de tu Flowise; una opción theme cambia el estilo del botón y de la ventana."
+				},
+				{
+					"q": "¿Flowise puede usar modelos locales con Ollama?",
+					"a": "Sí. El nodo ChatOllama habla con un servidor de Ollama en la Base URL que le indiques. Con una credencial de Ollama API y la Base URL https://ollama.com, llega a Ollama Cloud en su lugar."
+				},
+				{
+					"q": "¿Flowise admite varios usuarios y SSO?",
+					"a": "No en la edición de código abierto, que tiene una sola cuenta de owner. Invitar a usuarios requiere workspaces, una función de los planes Cloud y Enterprise de Flowise, y el SSO es solo de Enterprise."
+				}
+			]
 		},
 		"fr": {
 			"description": "Construisez des agents IA et des workflows LLM visuellement, puis appelez-les par API ou intégrez-les en widget de chat",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : le modèle enregistre cet owner au premier démarrage. Ajoutez un credential pour le fournisseur de votre modèle, puis créez un chatflow ou un agentflow."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : le modèle enregistre cet owner au premier démarrage. Ajoutez un credential pour le fournisseur de votre modèle, puis créez un chatflow ou un agentflow.",
+			"sizing": "Flowise est modéré : environ 700 MB de mémoire, et les flux, conversations et documents envoyés pèsent peu sur le disque.",
+			"summary": "Flowise est un outil visuel open source pour créer des agents IA et des chatbots, une alternative à OpenAI Agent Builder. Auto-hébergez-le en un clic.",
+			"about": [
+				"Flowise est un outil visuel open source pour créer des agents IA et des applications LLM, une alternative à OpenAI Agent Builder. Vous reliez des nœuds sur un canevas : un modèle de chat, des outils, de la mémoire et une base vectorielle qui permet à l’agent de répondre à partir de vos documents. Flowise propose trois builders : Assistant pour un simple assistant de chat, Chatflow pour un chatbot ou un agent seul, et Agentflow pour des workflows multi-agents avec branches, boucles et étapes avec intervention humaine. Les agents peuvent appeler des outils via MCP, et les logs d’exécution montrent chaque étape d’un run.",
+				"Vous auto-hébergez Flowise pour garder vos prompts, vos documents et vos clés d’API de modèles sur une machine que vous contrôlez. Il convient aux développeurs et aux petites équipes qui veulent un agent derrière une API sans écrire le code d’orchestration. Le revers : ses créateurs ont mis fin à Flowise en 2026, aucune nouvelle version ni aucun correctif de sécurité n’en viendra donc."
+			],
+			"faq": [
+				{
+					"q": "Flowise est-il gratuit et open source ?",
+					"a": "Oui, en grande partie. Son code est sous licence Apache 2.0, sauf le dossier enterprise du serveur, qui est sous licence commerciale. Le faire tourner vous-même ne coûte rien ; votre fournisseur de modèles facture ses propres appels d’API."
+				},
+				{
+					"q": "Flowise est-il encore maintenu ?",
+					"a": "Plus par FlowiseAI. L’équipe a figé le code le 29 juillet 2026, archivé le dépôt GitHub en août et quitté GitHub et Discord le 31 août. Le code Apache 2.0 reste public, et l’équipe encourage les forks."
+				},
+				{
+					"q": "Comment intégrer un chatbot Flowise sur mon site web ?",
+					"a": "Collez le script que Flowise fournit pour un chatflow n’importe où dans le body de votre page. Il charge le package flowise-embed et appelle Chatbot.init avec l’id du chatflow et l’adresse de votre Flowise ; une option theme change le style du bouton et de la fenêtre."
+				},
+				{
+					"q": "Flowise peut-il utiliser des modèles locaux avec Ollama ?",
+					"a": "Oui. Le nœud ChatOllama dialogue avec un serveur Ollama à la Base URL que vous lui donnez. Avec un credential Ollama API et la Base URL https://ollama.com, il atteint Ollama Cloud à la place."
+				},
+				{
+					"q": "Flowise gère-t-il plusieurs utilisateurs et le SSO ?",
+					"a": "Pas dans l’édition open source, qui n’a qu’un seul compte owner. Inviter des utilisateurs demande des workspaces, une fonctionnalité des offres Cloud et Enterprise de Flowise, et le SSO est réservé à Enterprise."
+				}
+			]
 		},
 		"pl": {
 			"description": "Buduj agentów AI i przepływy LLM wizualnie, a potem wywołuj je przez API albo osadzaj jako widżet czatu",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: szablon rejestruje tego ownera przy pierwszym starcie. Dodaj credential dostawcy swojego modelu, a potem zbuduj chatflow albo agentflow."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: szablon rejestruje tego ownera przy pierwszym starcie. Dodaj credential dostawcy swojego modelu, a potem zbuduj chatflow albo agentflow.",
+			"sizing": "Flowise ma średnie wymagania: około 700 MB pamięci, a przepływy, czaty i wgrane dokumenty zajmują mało miejsca na dysku.",
+			"summary": "Flowise to wizualny builder agentów AI i chatbotów open source, alternatywa dla OpenAI Agent Builder. Hostuj go u siebie jednym kliknięciem.",
+			"about": [
+				"Flowise to wizualny builder agentów AI i aplikacji LLM typu open source, alternatywa dla OpenAI Agent Builder. Na canvasie łączysz węzły: model czatu, narzędzia, pamięć i bazę wektorową, dzięki której agent odpowiada na podstawie twoich dokumentów. Flowise ma trzy buildery: Assistant do prostego asystenta czatu, Chatflow do chatbota albo pojedynczego agenta i Agentflow do przepływów wieloagentowych z rozgałęzieniami, pętlami i krokami z udziałem człowieka. Agenci mogą wywoływać narzędzia przez MCP, a logi wykonania pokazują każdy krok uruchomienia.",
+				"Flowise hostujesz u siebie, żeby twoje prompty, dokumenty i klucze API modeli zostały na maszynie, którą kontrolujesz. Pasuje do programistów i małych zespołów, które chcą mieć agenta za API bez pisania kodu orkiestracji. Haczyk: twórcy zakończyli rozwój Flowise w 2026 roku, więc nie będzie już od nich nowych wydań ani poprawek bezpieczeństwa."
+			],
+			"faq": [
+				{
+					"q": "Czy Flowise jest darmowy i open source?",
+					"a": "W większości tak. Jego kod jest na licencji Apache 2.0, poza katalogiem enterprise serwera, który ma licencję komercyjną. Uruchomienie go u siebie nic nie kosztuje; dostawca modelu rozlicza swoje wywołania API osobno."
+				},
+				{
+					"q": "Czy Flowise jest nadal utrzymywany?",
+					"a": "Już nie przez FlowiseAI. Zespół zamroził kod 29 lipca 2026, zarchiwizował repozytorium na GitHubie w sierpniu, a 31 sierpnia opuścił GitHub i Discord. Kod na licencji Apache 2.0 pozostaje publiczny, a zespół zachęca do tworzenia forków."
+				},
+				{
+					"q": "Jak osadzić chatbota Flowise na mojej stronie?",
+					"a": "Wklej skrypt, który Flowise podaje dla chatflowa, w dowolnym miejscu w body strony. Skrypt ładuje pakiet flowise-embed i wywołuje Chatbot.init z id chatflowa i adresem twojego Flowise; opcja theme zmienia wygląd przycisku i okna."
+				},
+				{
+					"q": "Czy Flowise może używać lokalnych modeli z Ollamą?",
+					"a": "Tak. Węzeł ChatOllama łączy się z serwerem Ollama pod adresem Base URL, który podasz. Z credentialem Ollama API i Base URL https://ollama.com sięga zamiast tego do Ollama Cloud."
+				},
+				{
+					"q": "Czy Flowise obsługuje wielu użytkowników i SSO?",
+					"a": "Nie w wersji open source, która ma jedno konto ownera. Zapraszanie użytkowników wymaga workspace’ów, funkcji planów Cloud i Enterprise Flowise, a SSO jest tylko w Enterprise."
+				}
+			]
 		},
 		"pt": {
 			"description": "Crie agentes de IA e fluxos com LLM visualmente e depois chame-os por API ou incorpore-os como widget de chat",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou: o template registra esse owner na primeira inicialização. Adicione uma credencial do provedor do seu modelo e depois crie um chatflow ou um agentflow."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou: o template registra esse owner na primeira inicialização. Adicione uma credencial do provedor do seu modelo e depois crie um chatflow ou um agentflow.",
+			"sizing": "Flowise é moderado: cerca de 700 MB de memória, e fluxos, chats e documentos enviados ocupam pouco disco.",
+			"summary": "O Flowise é um construtor visual de agentes de IA e chatbots de código aberto, alternativa ao OpenAI Agent Builder. Auto-hospede em um clique.",
+			"about": [
+				"O Flowise é um construtor visual de código aberto para agentes de IA e apps com LLM, uma alternativa ao OpenAI Agent Builder. Você conecta nós em um canvas: um modelo de chat, ferramentas, memória e um banco de dados vetorial que permite ao agente responder com base nos seus documentos. O Flowise tem três construtores: Assistant para um assistente de chat simples, Chatflow para um chatbot ou um único agente e Agentflow para fluxos de trabalho com vários agentes, com ramificações, loops e etapas com intervenção humana. Os agentes podem chamar ferramentas por MCP, e o log de cada execução mostra todas as etapas.",
+				"Auto-hospedar o Flowise mantém seus prompts, documentos e chaves de API de modelos em uma máquina que você controla. Ele serve para desenvolvedores e pequenas equipes que querem um agente por trás de uma API sem escrever o código de orquestração. O porém: os criadores encerraram o Flowise em 2026, então não virão mais versões novas nem correções de segurança da parte deles."
+			],
+			"faq": [
+				{
+					"q": "O Flowise é gratuito e de código aberto?",
+					"a": "Sim, em grande parte. O código usa a licença Apache 2.0, exceto o diretório enterprise do servidor, que tem licença comercial. Rodar por conta própria não custa nada; o seu provedor de modelos cobra à parte as próprias chamadas de API."
+				},
+				{
+					"q": "O Flowise ainda recebe manutenção?",
+					"a": "Não mais pela FlowiseAI. A equipe congelou o código em 29 de julho de 2026, arquivou o repositório do GitHub em agosto e saiu do GitHub e do Discord em 31 de agosto. O código Apache 2.0 continua público, e a equipe incentiva forks."
+				},
+				{
+					"q": "Como incorporo um chatbot do Flowise no meu site?",
+					"a": "Cole o script que o Flowise fornece para um chatflow em qualquer lugar dentro do body da sua página. Ele carrega o pacote flowise-embed e chama Chatbot.init com o id do chatflow e o endereço do seu Flowise; uma opção theme muda o estilo do botão e da janela."
+				},
+				{
+					"q": "O Flowise consegue usar modelos locais com o Ollama?",
+					"a": "Sim. O nó ChatOllama conversa com um servidor Ollama na Base URL que você informar. Com uma credencial Ollama API e a Base URL https://ollama.com, ele alcança o Ollama Cloud."
+				},
+				{
+					"q": "O Flowise tem suporte a vários usuários e SSO?",
+					"a": "Não na edição de código aberto, que tem uma única conta de owner. Convidar usuários exige workspaces, um recurso dos planos Cloud e Enterprise do Flowise, e o SSO é só do Enterprise."
+				}
+			]
 		},
 		"ru": {
 			"description": "Визуальная сборка ИИ-агентов и LLM-воркфлоу, которые затем вызываются по API или встраиваются как чат-виджет",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали: шаблон регистрирует этого owner при первом запуске. Добавьте credential провайдера вашей модели, затем соберите chatflow или agentflow."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали: шаблон регистрирует этого owner при первом запуске. Добавьте credential провайдера вашей модели, затем соберите chatflow или agentflow.",
+			"sizing": "Flowise: умеренные требования — около 700 MB памяти, а флоу, чаты и загруженные документы занимают мало диска.",
+			"summary": "Self-hosted Flowise — визуальный open source конструктор ИИ-агентов и чат-ботов, альтернатива OpenAI Agent Builder. Запуск у себя в один клик.",
+			"about": [
+				"Flowise — это визуальный open source конструктор ИИ-агентов и LLM-приложений, альтернатива OpenAI Agent Builder. Вы соединяете на холсте узлы: модель чата, инструменты, память и векторное хранилище, благодаря которому агент отвечает по вашим документам. В Flowise три конструктора: Assistant для простого чат-ассистента, Chatflow для чат-бота или одного агента и Agentflow для мультиагентных воркфлоу с ветвлением, циклами и шагами с участием человека. Агенты могут вызывать инструменты через MCP, а логи выполнения показывают каждый шаг запуска.",
+				"Flowise хостят у себя, чтобы промпты, документы и API-ключи моделей оставались на машине, которую вы контролируете. Он подходит разработчикам и небольшим командам, которым нужен агент за API без написания кода оркестрации. Но есть нюанс: создатели свернули проект Flowise в 2026 году, поэтому новых релизов и исправлений безопасности от них не будет."
+			],
+			"faq": [
+				{
+					"q": "Flowise бесплатный и с открытым кодом?",
+					"a": "Да, в основном. Код под лицензией Apache 2.0, кроме папки enterprise в серверной части, которая лицензирована на коммерческих условиях. Запускать Flowise у себя бесплатно; провайдер модели берет плату за свои вызовы API отдельно."
+				},
+				{
+					"q": "Flowise еще поддерживается?",
+					"a": "Со стороны FlowiseAI — уже нет. Команда заморозила код 29 июля 2026 года, в августе архивировала репозиторий на GitHub, а 31 августа ушла с GitHub и из Discord. Код под Apache 2.0 остается публичным, и команда поощряет форки."
+				},
+				{
+					"q": "Как встроить чат-бота Flowise на свой сайт?",
+					"a": "Вставьте скрипт, который Flowise выдает для chatflow, в любое место внутри body страницы. Он загружает пакет flowise-embed и вызывает Chatbot.init с id chatflow и адресом вашего Flowise; опция theme меняет оформление кнопки и окна."
+				},
+				{
+					"q": "Может ли Flowise работать с локальными моделями через Ollama?",
+					"a": "Да. Узел ChatOllama обращается к серверу Ollama по Base URL, который вы укажете. С credential Ollama API и Base URL https://ollama.com он вместо этого подключается к Ollama Cloud."
+				},
+				{
+					"q": "Поддерживает ли Flowise нескольких пользователей и SSO?",
+					"a": "В версии с открытым кодом — нет: в ней один аккаунт owner. Чтобы приглашать пользователей, нужны workspaces — функция тарифов Cloud и Enterprise у Flowise, а SSO есть только в Enterprise."
+				}
+			]
 		},
 		"uk": {
 			"description": "Візуальне складання ШІ-агентів і LLM-воркфлоу, які потім викликаються через API або вбудовуються як чат-віджет",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: шаблон реєструє цього owner під час першого запуску. Додайте credential провайдера вашої моделі, потім зберіть chatflow або agentflow."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: шаблон реєструє цього owner під час першого запуску. Додайте credential провайдера вашої моделі, потім зберіть chatflow або agentflow.",
+			"sizing": "Flowise має помірні вимоги: близько 700 MB пам’яті, а потоки, чати й завантажені документи займають мало місця на диску.",
+			"summary": "Self-hosted Flowise — візуальний конструктор ШІ-агентів і чат-ботів із відкритим кодом, альтернатива OpenAI Agent Builder. Запуск у себе в один клік.",
+			"about": [
+				"Flowise — це візуальний конструктор ШІ-агентів і LLM-застосунків із відкритим кодом, альтернатива OpenAI Agent Builder. Ви з’єднуєте вузли на полотні: модель чату, інструменти, пам’ять і векторне сховище, завдяки якому агент відповідає на основі ваших документів. У Flowise три конструктори: Assistant для простого чат-асистента, Chatflow для чат-бота або одного агента й Agentflow для мультиагентних воркфлоу з розгалуженнями, циклами та кроками за участі людини. Агенти можуть викликати інструменти через MCP, а логи виконання показують кожен крок запуску.",
+				"Flowise хостять у себе, щоб промпти, документи й API-ключі моделей лишалися на машині, яку ви контролюєте. Він підходить розробникам і невеликим командам, яким потрібен агент за API без написання коду оркестрації. Але є нюанс: творці згорнули проєкт Flowise у 2026 році, тож нових релізів і виправлень безпеки від них не буде."
+			],
+			"faq": [
+				{
+					"q": "Flowise безплатний і з відкритим кодом?",
+					"a": "Так, здебільшого. Код — під ліцензією Apache 2.0, окрім каталогу enterprise в серверній частині, який має комерційну ліцензію. Запускати Flowise в себе безплатно; провайдер моделі бере плату за свої виклики API окремо."
+				},
+				{
+					"q": "Flowise ще підтримується?",
+					"a": "З боку FlowiseAI — уже ні. Команда заморозила код 29 липня 2026 року, у серпні заархівувала репозиторій на GitHub, а 31 серпня залишила GitHub і Discord. Код під Apache 2.0 лишається публічним, і команда заохочує форки."
+				},
+				{
+					"q": "Як вбудувати чат-бота Flowise на свій сайт?",
+					"a": "Вставте скрипт, який Flowise видає для chatflow, у будь-яке місце всередині body сторінки. Він завантажує пакет flowise-embed і викликає Chatbot.init з id chatflow та адресою вашого Flowise; опція theme змінює оформлення кнопки й вікна."
+				},
+				{
+					"q": "Чи може Flowise працювати з локальними моделями через Ollama?",
+					"a": "Так. Вузол ChatOllama звертається до сервера Ollama за Base URL, який ви вкажете. З credential Ollama API і Base URL https://ollama.com він натомість підключається до Ollama Cloud."
+				},
+				{
+					"q": "Чи підтримує Flowise кількох користувачів і SSO?",
+					"a": "У версії з відкритим кодом — ні: у ній один акаунт owner. Щоб запрошувати користувачів, потрібні workspaces — функція тарифів Cloud і Enterprise у Flowise, а SSO є лише в Enterprise."
+				}
+			]
 		}
 	}
 }

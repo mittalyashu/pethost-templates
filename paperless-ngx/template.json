@@ -1,6 +1,11 @@
 {
 	"name": "Paperless-ngx",
 	"emoji": "📄",
+	"category": "files",
+	"alternatives": [
+		"Evernote"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "webserver",
 		"port": 8000
@@ -26,35 +31,259 @@
 	"texts": {
 		"en": {
 			"description": "A document archive with OCR and full-text search",
-			"notes": "Sign in as admin with the password you gave. Documents are read as English until you change the OCR language under Configuration."
+			"notes": "Sign in as admin with the password you gave. Documents are read as English until you change the OCR language under Configuration.",
+			"sizing": "Paperless-ngx is moderate: about 1 GB at rest, more while it reads a scan; years of paperwork take a few gigabytes.",
+			"summary": "Self-host Paperless-ngx, the open-source document manager that turns scans into a searchable archive with OCR, on your own machine in one click.",
+			"about": [
+				"Paperless-ngx is an open-source document management system, a self-hosted alternative to Evernote for bills, letters and receipts. Scan a page or drop in a PDF, and Tesseract OCR adds text you can search and select, even to an image-only scan. Each document gets tags, a correspondent and a document type, and a local machine-learning model learns to fill them in from what you have already sorted. Mail rules pull attachments from your email accounts.",
+				"People run it themselves because the archive holds tax records, invoices and insurance papers they would rather not hand to a cloud service. Originals stay as plain files that it never modifies, so leaving later means copying them out. Several people can share one archive: each document has an owner who decides who else may see or edit it. The catch: Paperless-ngx stores everything unencrypted, and its makers say never to run it on a host you do not trust."
+			],
+			"faq": [
+				{
+					"q": "Is Paperless-ngx free and open source?",
+					"a": "Yes. Paperless-ngx is free software under the GPL-3.0 license, maintained by a community team as the official successor to Paperless and Paperless-ng."
+				},
+				{
+					"q": "Is there a Paperless-ngx mobile app?",
+					"a": "Not an official one, but the web app works on phones. The project's wiki lists community apps that connect to your server, such as Paperless Mobile for Android and Swift Paperless for iOS."
+				},
+				{
+					"q": "Can Paperless-ngx read Word and Excel files?",
+					"a": "Only through its optional Tika integration, which needs Apache Tika and Gotenberg servers. This template runs without them, so it takes PDFs, PNG, JPEG, TIFF, GIF and WebP images, and plain text."
+				},
+				{
+					"q": "Does Paperless-ngx use AI?",
+					"a": "Only if you turn it on. AI suggestions, document chat and similar-document search are off by default; once enabled, they send document content to the backend you configure, a local one such as Ollama or a remote provider."
+				},
+				{
+					"q": "How do I change the OCR language in Paperless-ngx?",
+					"a": "Enter the Tesseract code, such as deu or deu+eng, under Configuration in the sidebar. English, German, Italian, Spanish and French come installed; the PAPERLESS_OCR_LANGUAGES variable adds others."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Dokumentenarchiv mit OCR und Volltextsuche",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast. Dokumente werden als englischer Text gelesen, bis du unter „Configuration“ die OCR-Sprache änderst."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast. Dokumente werden als englischer Text gelesen, bis du unter „Configuration“ die OCR-Sprache änderst.",
+			"sizing": "Paperless-ngx ist mittelschwer: etwa 1 GB im Leerlauf, mehr beim Lesen eines Scans; Papierkram aus Jahren braucht ein paar GB.",
+			"summary": "Paperless-ngx selbst hosten: Open-Source-Dokumentenverwaltung, die Scans per OCR zum durchsuchbaren Archiv macht. Mit einem Klick auf deiner Maschine.",
+			"about": [
+				"Paperless-ngx ist ein Open-Source-Dokumentenmanagementsystem, eine selbst gehostete Alternative zu Evernote für Rechnungen, Briefe und Belege. Scanne eine Seite oder zieh ein PDF hinein, und Tesseract OCR fügt Text hinzu, den du durchsuchen und markieren kannst, sogar bei einem Scan, der nur aus einem Bild besteht. Jedes Dokument bekommt Tags, einen Korrespondenten und einen Dokumenttyp, und ein lokales Machine-Learning-Modell lernt aus dem, was du schon einsortiert hast, sie selbst zu vergeben. Mail-Regeln holen Anhänge aus deinen E-Mail-Konten.",
+				"Man hostet Paperless-ngx selbst, weil das Archiv Steuerunterlagen, Rechnungen und Versicherungspapiere enthält, die man lieber keinem Cloud-Dienst anvertraut. Die Originale bleiben als einfache Dateien erhalten, die Paperless-ngx nie verändert; wer später wechseln will, kopiert sie einfach heraus. Mehrere Personen können sich ein Archiv teilen: Jedes Dokument gehört jemandem, und wer es besitzt, entscheidet, wer es sonst sehen oder bearbeiten darf. Der Haken: Paperless-ngx speichert alles unverschlüsselt, und die Entwickler sagen, man solle es nie auf einem Host betreiben, dem man nicht vertraut."
+			],
+			"faq": [
+				{
+					"q": "Ist Paperless-ngx kostenlos und Open Source?",
+					"a": "Ja. Paperless-ngx ist freie Software unter der GPL-3.0-Lizenz und wird von einem Community-Team als offizieller Nachfolger von Paperless und Paperless-ng gepflegt."
+				},
+				{
+					"q": "Gibt es eine mobile App für Paperless-ngx?",
+					"a": "Keine offizielle, aber die Web-App funktioniert auf Smartphones. Im Wiki des Projekts stehen Community-Apps, die sich mit deiner Instanz verbinden, etwa Paperless Mobile für Android und Swift Paperless für iOS."
+				},
+				{
+					"q": "Kann Paperless-ngx Word- und Excel-Dateien lesen?",
+					"a": "Nur über die optionale Tika-Integration, die Apache-Tika- und Gotenberg-Server braucht. Diese Vorlage läuft ohne sie und nimmt deshalb PDFs, Bilder in PNG, JPEG, TIFF, GIF und WebP sowie reinen Text an."
+				},
+				{
+					"q": "Nutzt Paperless-ngx KI?",
+					"a": "Nur, wenn du sie einschaltest. KI-Vorschläge, der Chat mit Dokumenten und die Suche nach ähnlichen Dokumenten sind standardmäßig aus; sind sie an, senden sie den Inhalt der Dokumente an das Backend, das du einrichtest, ein lokales wie Ollama oder einen externen Anbieter."
+				},
+				{
+					"q": "Wie ändere ich die OCR-Sprache in Paperless-ngx?",
+					"a": "Gib den Tesseract-Code, etwa deu oder deu+eng, unter „Configuration“ in der Seitenleiste ein. Englisch, Deutsch, Italienisch, Spanisch und Französisch sind vorinstalliert; die Variable PAPERLESS_OCR_LANGUAGES ergänzt weitere."
+				}
+			]
 		},
 		"es": {
 			"description": "Un archivo digital de documentos con OCR y búsqueda de texto completo",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste. Los documentos se leen como si estuvieran en inglés hasta que cambies el idioma del OCR en Configuration."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste. Los documentos se leen como si estuvieran en inglés hasta que cambies el idioma del OCR en Configuration.",
+			"sizing": "Paperless-ngx es moderado: cerca de 1 GB en reposo, más mientras lee un escaneo; años de papeleo ocupan unos pocos GB.",
+			"summary": "Autoaloja Paperless-ngx, el gestor de documentos de código abierto que convierte escaneos en un archivo con búsqueda por OCR. En tu máquina, en un clic.",
+			"about": [
+				"Paperless-ngx es un sistema de gestión de documentos de código abierto, una alternativa autoalojada a Evernote para facturas, cartas y recibos. Escanea una página o suelta un PDF, y Tesseract OCR agrega texto que puedes buscar y seleccionar, incluso en un escaneo que es solo una imagen. Cada documento recibe etiquetas, un corresponsal y un tipo de documento, y un modelo local de machine learning aprende a completarlos a partir de lo que ya clasificaste. Las reglas de correo traen los adjuntos de tus cuentas de correo.",
+				"Mucha gente autoaloja Paperless-ngx porque el archivo digital guarda documentos fiscales, facturas y papeles del seguro que prefiere no entregar a un servicio en la nube. Los originales se quedan como archivos normales que nunca modifica, así que irse más adelante es cuestión de copiarlos. Varias personas pueden compartir un mismo archivo digital: cada documento tiene un propietario que decide quién más puede verlo o editarlo. El inconveniente: Paperless-ngx guarda todo sin cifrar, y sus creadores piden no ejecutarlo nunca en un host en el que no confíes."
+			],
+			"faq": [
+				{
+					"q": "¿Paperless-ngx es gratis y de código abierto?",
+					"a": "Sí. Paperless-ngx es software libre con licencia GPL-3.0, mantenido por un equipo de la comunidad como sucesor oficial de Paperless y Paperless-ng."
+				},
+				{
+					"q": "¿Hay una app móvil de Paperless-ngx?",
+					"a": "Una oficial no, pero la app web funciona en teléfonos. La wiki del proyecto lista apps de la comunidad que se conectan a tu instancia, como Paperless Mobile para Android y Swift Paperless para iOS."
+				},
+				{
+					"q": "¿Paperless-ngx puede leer archivos de Word y Excel?",
+					"a": "Solo mediante su integración opcional con Tika, que necesita servidores de Apache Tika y Gotenberg. Esta plantilla funciona sin ellos, así que acepta PDF, imágenes PNG, JPEG, TIFF, GIF y WebP, y texto sin formato."
+				},
+				{
+					"q": "¿Paperless-ngx usa IA?",
+					"a": "Solo si la activas. Las sugerencias de IA, el chat con documentos y la búsqueda de documentos similares vienen desactivados; una vez activados, envían el contenido de los documentos al backend que configures, uno local como Ollama o un proveedor remoto."
+				},
+				{
+					"q": "¿Cómo cambio el idioma del OCR en Paperless-ngx?",
+					"a": "Escribe el código de Tesseract, como deu o deu+eng, en Configuration, en la barra lateral. Vienen instalados inglés, alemán, italiano, español y francés; la variable PAPERLESS_OCR_LANGUAGES agrega otros."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une archive de documents avec OCR et recherche plein texte",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Les documents sont lus comme de l’anglais tant que vous n’avez pas changé la langue de l’OCR dans Configuration."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Les documents sont lus comme de l’anglais tant que vous n’avez pas changé la langue de l’OCR dans Configuration.",
+			"sizing": "Paperless-ngx est modéré : environ 1 GB au repos, plus pendant la lecture d’un scan ; des années de papiers prennent quelques GB.",
+			"summary": "Auto-hébergez Paperless-ngx, le gestionnaire de documents open source qui transforme vos scans en archive avec recherche. En un clic sur votre machine.",
+			"about": [
+				"Paperless-ngx est un système de gestion de documents open source, une alternative auto-hébergée à Evernote pour les factures, les courriers et les reçus. Scannez une page ou déposez un PDF, et Tesseract OCR ajoute un texte dans lequel vous pouvez chercher et que vous pouvez sélectionner, même sur un scan qui n’est qu’une image. Chaque document reçoit des étiquettes, un correspondant et un type de document, et un modèle local d’apprentissage automatique apprend à les attribuer d’après ce que vous avez déjà classé. Des règles de messagerie récupèrent les pièces jointes de vos comptes e-mail.",
+				"On auto-héberge Paperless-ngx parce que l’archive contient des documents fiscaux, des factures et des papiers d’assurance qu’on préfère ne pas confier à un service cloud. Les originaux restent des fichiers ordinaires que l’application ne modifie jamais ; partir plus tard revient donc à les copier. Plusieurs personnes peuvent partager une même archive : chaque document a un propriétaire qui décide qui d’autre peut le voir ou le modifier. Le revers : Paperless-ngx stocke tout sans chiffrement, et ses développeurs demandent de ne jamais le faire tourner sur un hôte auquel vous ne faites pas confiance."
+			],
+			"faq": [
+				{
+					"q": "Paperless-ngx est-il gratuit et open source ?",
+					"a": "Oui. Paperless-ngx est un logiciel libre sous licence GPL-3.0, maintenu par une équipe communautaire comme le successeur officiel de Paperless et de Paperless-ng."
+				},
+				{
+					"q": "Existe-t-il une application mobile Paperless-ngx ?",
+					"a": "Pas d’application officielle, mais l’application web fonctionne sur téléphone. Le wiki du projet recense des applications communautaires qui se connectent à votre instance, comme Paperless Mobile pour Android et Swift Paperless pour iOS."
+				},
+				{
+					"q": "Paperless-ngx peut-il lire les fichiers Word et Excel ?",
+					"a": "Seulement via son intégration facultative avec Tika, qui exige des serveurs Apache Tika et Gotenberg. Ce template fonctionne sans eux : il accepte donc les PDF, les images PNG, JPEG, TIFF, GIF et WebP, et le texte brut."
+				},
+				{
+					"q": "Paperless-ngx utilise-t-il l’IA ?",
+					"a": "Seulement si vous l’activez. Les suggestions par IA, le chat avec les documents et la recherche de documents similaires sont désactivés par défaut ; une fois activés, ils envoient le contenu des documents au backend que vous configurez, local comme Ollama ou fournisseur distant."
+				},
+				{
+					"q": "Comment changer la langue de l’OCR dans Paperless-ngx ?",
+					"a": "Saisissez le code Tesseract, par exemple deu ou deu+eng, dans la barre latérale, sous Configuration. L’anglais, l’allemand, l’italien, l’espagnol et le français sont installés ; la variable PAPERLESS_OCR_LANGUAGES en ajoute d’autres."
+				}
+			]
 		},
 		"pl": {
 			"description": "Archiwum dokumentów z OCR i wyszukiwaniem pełnotekstowym",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Dokumenty są odczytywane jako angielskie, dopóki nie zmienisz języka OCR w Configuration."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Dokumenty są odczytywane jako angielskie, dopóki nie zmienisz języka OCR w Configuration.",
+			"sizing": "Paperless-ngx ma średnie wymagania: około 1 GB w spoczynku, więcej gdy czyta skan; lata dokumentów zajmują kilka GB.",
+			"summary": "Hostuj u siebie Paperless-ngx, menedżer dokumentów open source z OCR, który robi ze skanów przeszukiwalne archiwum. Na twojej maszynie, w jeden klik.",
+			"about": [
+				"Paperless-ngx to system do zarządzania dokumentami typu open source, alternatywa dla Evernote hostowana u siebie, do rachunków, listów i paragonów. Zeskanuj stronę albo wrzuć PDF, a Tesseract OCR doda tekst, który można przeszukiwać i zaznaczać, nawet w skanie będącym samym obrazem. Każdy dokument dostaje tagi, korespondenta i typ dokumentu, a lokalny model uczenia maszynowego uczy się je uzupełniać na podstawie tego, co już posortowano. Reguły poczty pobierają załączniki z twoich kont e-mail.",
+				"Ludzie hostują Paperless-ngx u siebie, bo archiwum zawiera dokumenty podatkowe, faktury i papiery ubezpieczeniowe, których wolą nie powierzać usłudze w chmurze. Oryginały zostają zwykłymi plikami, których Paperless-ngx nigdy nie modyfikuje, więc żeby odejść, wystarczy je skopiować. Kilka osób może dzielić jedno archiwum: każdy dokument ma właściciela, który decyduje, kto jeszcze może go widzieć lub edytować. Haczyk: Paperless-ngx przechowuje wszystko bez szyfrowania, a jego twórcy mówią, żeby nigdy nie uruchamiać go na hoście, któremu nie ufasz."
+			],
+			"faq": [
+				{
+					"q": "Czy Paperless-ngx jest darmowy i open source?",
+					"a": "Tak. Paperless-ngx to wolne oprogramowanie na licencji GPL-3.0, utrzymywane przez zespół społeczności jako oficjalny następca Paperless i Paperless-ng."
+				},
+				{
+					"q": "Czy jest aplikacja mobilna Paperless-ngx?",
+					"a": "Oficjalnej nie ma, ale aplikacja webowa działa na telefonach. Wiki projektu wymienia aplikacje społeczności, które łączą się z twoją instancją, na przykład Paperless Mobile na Androida i Swift Paperless na iOS."
+				},
+				{
+					"q": "Czy Paperless-ngx czyta pliki Worda i Excela?",
+					"a": "Tylko przez opcjonalną integrację z Tika, która wymaga serwerów Apache Tika i Gotenberg. Ten szablon działa bez nich, więc przyjmuje pliki PDF, obrazy PNG, JPEG, TIFF, GIF i WebP oraz zwykły tekst."
+				},
+				{
+					"q": "Czy Paperless-ngx używa AI?",
+					"a": "Tylko jeśli to włączysz. Podpowiedzi AI, czat z dokumentami i wyszukiwanie podobnych dokumentów są domyślnie wyłączone; po włączeniu wysyłają treść dokumentów do backendu, który skonfigurujesz: lokalnego, jak Ollama, albo zdalnego dostawcy."
+				},
+				{
+					"q": "Jak zmienić język OCR w Paperless-ngx?",
+					"a": "Wpisz kod Tesseract, na przykład deu albo deu+eng, w sekcji Configuration na pasku bocznym. Angielski, niemiecki, włoski, hiszpański i francuski są zainstalowane; zmienna PAPERLESS_OCR_LANGUAGES dodaje kolejne."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um acervo de documentos com OCR e busca em texto completo",
-			"notes": "Entre como admin com a senha que você definiu. Os documentos são lidos como se estivessem em inglês até você alterar o idioma do OCR em Configuration."
+			"notes": "Entre como admin com a senha que você definiu. Os documentos são lidos como se estivessem em inglês até você alterar o idioma do OCR em Configuration.",
+			"sizing": "Paperless-ngx é moderado: cerca de 1 GB em repouso, mais enquanto lê um scan; anos de papelada ocupam alguns GB.",
+			"summary": "Auto-hospede o Paperless-ngx: gerenciador de documentos de código aberto que transforma scans em acervo pesquisável com OCR. Na sua máquina, em um clique.",
+			"about": [
+				"O Paperless-ngx é um sistema de gerenciamento de documentos de código aberto, uma alternativa auto-hospedada ao Evernote para contas, cartas e recibos. Escaneie uma página ou solte um PDF, e o Tesseract OCR adiciona um texto que você pode pesquisar e selecionar, mesmo em um scan que é só imagem. Cada documento recebe tags, um correspondente e um tipo de documento, e um modelo local de aprendizado de máquina aprende a preenchê-los com base no que você já organizou. Regras de e-mail buscam anexos nas suas contas de e-mail.",
+				"Muita gente auto-hospeda o Paperless-ngx porque o acervo guarda documentos fiscais, faturas e papéis do seguro que prefere não entregar a um serviço de nuvem. Os originais continuam como arquivos comuns que ele nunca modifica, então sair depois é só copiá-los. Várias pessoas podem compartilhar um acervo: cada documento tem um dono que decide quem mais pode vê-lo ou editá-lo. O porém: o Paperless-ngx guarda tudo sem criptografia, e os criadores dele dizem para nunca rodá-lo em um host em que você não confia."
+			],
+			"faq": [
+				{
+					"q": "O Paperless-ngx é gratuito e de código aberto?",
+					"a": "Sim. O Paperless-ngx é software livre sob a licença GPL-3.0, mantido por uma equipe da comunidade como sucessor oficial do Paperless e do Paperless-ng."
+				},
+				{
+					"q": "Existe um app do Paperless-ngx para celular?",
+					"a": "Oficial não, mas o app web funciona em celulares. A wiki do projeto lista apps da comunidade que se conectam à sua instância, como o Paperless Mobile para Android e o Swift Paperless para iOS."
+				},
+				{
+					"q": "O Paperless-ngx lê arquivos do Word e do Excel?",
+					"a": "Só pela integração opcional com o Tika, que exige servidores Apache Tika e Gotenberg. Este template funciona sem eles, então aceita PDFs, imagens PNG, JPEG, TIFF, GIF e WebP, e texto simples."
+				},
+				{
+					"q": "O Paperless-ngx usa IA?",
+					"a": "Só se você ativar. As sugestões de IA, o chat com documentos e a busca por documentos parecidos vêm desativados; depois de ativados, enviam o conteúdo dos documentos ao backend que você configurar, um local como o Ollama ou um provedor remoto."
+				},
+				{
+					"q": "Como altero o idioma do OCR no Paperless-ngx?",
+					"a": "Digite o código do Tesseract, como deu ou deu+eng, em Configuration, na barra lateral. Inglês, alemão, italiano, espanhol e francês já vêm instalados; a variável PAPERLESS_OCR_LANGUAGES adiciona outros."
+				}
+			]
 		},
 		"ru": {
 			"description": "Архив документов с OCR и полнотекстовым поиском",
-			"notes": "Войдите как admin с паролем, который вы задали. Документы распознаются как английские, пока вы не смените язык OCR в разделе Configuration."
+			"notes": "Войдите как admin с паролем, который вы задали. Документы распознаются как английские, пока вы не смените язык OCR в разделе Configuration.",
+			"sizing": "Paperless-ngx: умеренные требования — около 1 GB в простое, больше при чтении скана; годы документов занимают несколько GB.",
+			"summary": "Self-hosted Paperless-ngx — open source менеджер документов, который превращает сканы в архив с поиском через OCR. На вашей машине в один клик.",
+			"about": [
+				"Paperless-ngx — это open source система управления документами, self-hosted альтернатива Evernote для счетов, писем и чеков. Отсканируйте страницу или закиньте PDF, и Tesseract OCR добавит текст, по которому можно искать и который можно выделять, даже в скане, где есть только картинка. У каждого документа есть теги, корреспондент и тип документа, а локальная модель машинного обучения учится заполнять их по тому, что вы уже разобрали. Правила для почты забирают вложения из ваших почтовых аккаунтов.",
+				"Paperless-ngx хостят у себя, потому что в архиве лежат налоговые документы, счета и страховые бумаги, которые люди предпочитают не отдавать облачному сервису. Оригиналы остаются обычными файлами, которые Paperless-ngx никогда не изменяет, так что переехать потом — значит просто скопировать их. Одним архивом могут пользоваться несколько человек: у каждого документа есть владелец, который решает, кто еще может его видеть или редактировать. Но есть нюанс: Paperless-ngx хранит все без шифрования, а его авторы советуют никогда не запускать его на хосте, которому вы не доверяете."
+			],
+			"faq": [
+				{
+					"q": "Paperless-ngx бесплатный и с открытым кодом?",
+					"a": "Да. Paperless-ngx — свободное ПО под лицензией GPL-3.0, официальный преемник Paperless и Paperless-ng, который ведет команда сообщества."
+				},
+				{
+					"q": "Есть ли у Paperless-ngx мобильное приложение?",
+					"a": "Официального нет, но веб-приложение работает на телефонах. В вики проекта перечислены приложения сообщества, которые подключаются к вашему экземпляру, например Paperless Mobile для Android и Swift Paperless для iOS."
+				},
+				{
+					"q": "Читает ли Paperless-ngx файлы Word и Excel?",
+					"a": "Только через необязательную интеграцию с Tika, для которой нужны серверы Apache Tika и Gotenberg. Этот шаблон работает без них, поэтому принимает PDF, изображения PNG, JPEG, TIFF, GIF и WebP и обычный текст."
+				},
+				{
+					"q": "Использует ли Paperless-ngx ИИ?",
+					"a": "Только если вы его включите. Подсказки ИИ, чат с документами и поиск похожих документов по умолчанию выключены; после включения они отправляют содержимое документов на бэкенд, который вы настроите: локальный, вроде Ollama, или удаленного провайдера."
+				},
+				{
+					"q": "Как сменить язык OCR в Paperless-ngx?",
+					"a": "Введите код Tesseract, например deu или deu+eng, в разделе Configuration на боковой панели. Английский, немецкий, итальянский, испанский и французский установлены; другие добавляет переменная PAPERLESS_OCR_LANGUAGES."
+				}
+			]
 		},
 		"uk": {
 			"description": "Архів документів з OCR і повнотекстовим пошуком",
-			"notes": "Увійдіть як admin із паролем, який ви вказали. Документи розпізнаються як англомовні, доки ви не зміните мову OCR у розділі Configuration."
+			"notes": "Увійдіть як admin із паролем, який ви вказали. Документи розпізнаються як англомовні, доки ви не зміните мову OCR у розділі Configuration.",
+			"sizing": "Paperless-ngx має помірні вимоги: близько 1 GB без навантаження, більше — коли читає скан; роки документів займають кілька GB.",
+			"summary": "Self-hosted Paperless-ngx — менеджер документів із відкритим кодом, що перетворює скани на архів із пошуком через OCR. На вашій машині в один клік.",
+			"about": [
+				"Paperless-ngx — це система керування документами з відкритим кодом, self-hosted альтернатива Evernote для рахунків, листів і чеків. Відскануйте сторінку або киньте PDF, і Tesseract OCR додасть текст, у якому можна шукати й який можна виділяти, навіть у скані, що є лише зображенням. Кожен документ отримує теги, кореспондента й тип документа, а локальна модель машинного навчання вчиться заповнювати їх за тим, що ви вже розсортували. Правила для пошти забирають вкладення з ваших поштових акаунтів.",
+				"Paperless-ngx хостять у себе, бо в архіві лежать податкові документи, рахунки й страхові папери, які люди воліють не віддавати хмарному сервісу. Оригінали лишаються звичайними файлами, яких Paperless-ngx ніколи не змінює, тож переїхати пізніше — це просто скопіювати їх. Одним архівом можуть користуватися кілька людей: у кожного документа є власник, який вирішує, хто ще може його бачити чи редагувати. Але є нюанс: Paperless-ngx зберігає все без шифрування, а його автори радять ніколи не запускати його на хості, якому ви не довіряєте."
+			],
+			"faq": [
+				{
+					"q": "Paperless-ngx безплатний і з відкритим кодом?",
+					"a": "Так. Paperless-ngx — вільне програмне забезпечення за ліцензією GPL-3.0, офіційний наступник Paperless і Paperless-ng, який підтримує команда спільноти."
+				},
+				{
+					"q": "Чи є в Paperless-ngx мобільний застосунок?",
+					"a": "Офіційного немає, але вебзастосунок працює на телефонах. У вікі проєкту перелічено застосунки спільноти, які підключаються до вашого екземпляра, наприклад Paperless Mobile для Android і Swift Paperless для iOS."
+				},
+				{
+					"q": "Чи читає Paperless-ngx файли Word і Excel?",
+					"a": "Лише через необов’язкову інтеграцію з Tika, якій потрібні сервери Apache Tika і Gotenberg. Цей шаблон працює без них, тож приймає PDF, зображення PNG, JPEG, TIFF, GIF і WebP та звичайний текст."
+				},
+				{
+					"q": "Чи використовує Paperless-ngx ШІ?",
+					"a": "Лише якщо ви його ввімкнете. Підказки ШІ, чат із документами та пошук схожих документів типово вимкнені; після ввімкнення вони надсилають вміст документів на бекенд, який ви налаштуєте: локальний, як-от Ollama, або віддаленого провайдера."
+				},
+				{
+					"q": "Як змінити мову OCR у Paperless-ngx?",
+					"a": "Введіть код Tesseract, наприклад deu або deu+eng, у розділі Configuration на бічній панелі. Англійську, німецьку, італійську, іспанську та французьку встановлено; інші додає змінна PAPERLESS_OCR_LANGUAGES."
+				}
+			]
 		}
 	}
 }

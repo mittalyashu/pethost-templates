@@ -7,7 +7,8 @@
 // A template is a directory named by its id: compose.yaml, logo.svg or logo.png, and
 // template.json (README.md says what each holds). Beside them: languages.json, the languages
 // every text is written in; fields.json, the fields a template may ask the person to fill in;
-// order.json, the templates listed first, in that order, before the rest by id.
+// categories.json, the kinds of apps a template is listed under; order.json, the templates listed
+// first, in that order, before the rest by id.
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -22,16 +23,24 @@ const variableRule = /^[A-Z][A-Z0-9_]*$/;
 /** Random bytes a secret may be made of, written in hex: twice as many characters. */
 const secretBytes = { min: 8, max: 64 };
 
-const templateKeys = ['name', 'emoji', 'route', 'variables', 'texts'];
+/** What a search result shows under a page's title, at most: a longer one is cut. */
+const summaryLength = 155;
+
+/** Pethost's plans, smallest first: a template's page says which one the app fits. */
+const plans = ['starter', 'grow', 'scale'];
+
+const templateKeys = ['name', 'emoji', 'category', 'alternatives', 'plan', 'route', 'variables', 'texts'];
 
 /** The templates in their order, each with its compose.yaml's text and its logo's file name, and
- *  what they share: the languages and the fields. Throws with every problem found. */
+ *  what they share: the languages, the fields and the categories. Throws with every problem
+ *  found. */
 export function readCatalog(dir) {
 	const problems = [];
 	const read = (file) => readJson(join(dir, file), file, problems);
 
 	const languages = read('languages.json') ?? [];
 	const fields = read('fields.json') ?? {};
+	const categories = read('categories.json') ?? {};
 	const order = read('order.json') ?? [];
 	checkFields(fields, languages, problems);
 
@@ -40,12 +49,13 @@ export function readCatalog(dir) {
 		.map((entry) => entry.name)
 		.sort();
 	checkOrder(order, ids, problems);
+	checkCategories(categories, languages, ids, problems);
 
 	const listed = [...order.filter((id) => ids.includes(id)), ...ids.filter((id) => !order.includes(id))];
-	const templates = listed.map((id) => readTemplate(dir, id, { languages, fields }, problems));
+	const templates = listed.map((id) => readTemplate(dir, id, { languages, fields, categories }, problems));
 
 	if (problems.length > 0) throw new Error(`The templates have ${problems.length} problems:\n${problems.join('\n')}`);
-	return { languages, fields, templates };
+	return { languages, fields, categories, templates };
 }
 
 function readTemplate(dir, id, shared, problems) {
@@ -67,12 +77,16 @@ function readTemplate(dir, id, shared, problems) {
 	return { id, ...template, compose, logo: logos[0] };
 }
 
-function checkTemplate(template, compose, { languages, fields }, own) {
+function checkTemplate(template, compose, { languages, fields, categories }, own) {
 	for (const key of Object.keys(template)) {
 		if (!templateKeys.includes(key)) own(`template.json has no ${key}: it has ${templateKeys.join(', ')}`);
 	}
 	if (!text(template.name)) own('name is the app’s own name');
 	if (!text(template.emoji)) own('emoji is the project’s emoji');
+	if (!(template.category in categories)) own(`category is one of categories.json: ${Object.keys(categories).join(', ')}`);
+	if (!Array.isArray(template.alternatives) || !template.alternatives.every(text))
+		own('alternatives is a list of the products the app stands in for, empty when it stands in for none');
+	if (!plans.includes(template.plan)) own(`plan is the smallest plan the app runs well on: ${plans.join(', ')}`);
 	if (template.route !== undefined) checkRoute(template.route, compose, own);
 
 	if (!Array.isArray(template.variables)) own('variables is a list, empty when the app needs none');
@@ -120,18 +134,45 @@ function checkSource(source, fields, own) {
 }
 
 function checkTexts(texts, languages, own) {
-	if (typeof texts !== 'object' || texts === null) return own('texts has the description and the notes in every language');
+	if (typeof texts !== 'object' || texts === null) return own('texts has the app’s texts in every language');
 
 	for (const code of languages) {
-		const { description, notes, ...extra } = texts[code] ?? {};
-		if (!text(description)) own(`texts.${code}.description is missing`);
-		if (!text(notes)) own(`texts.${code}.notes is missing`);
-		if (Object.keys(extra).length > 0) own(`texts.${code} has only description and notes`);
-		if (/\{(?!host\})[^}]*\}/.test(notes ?? '')) own(`texts.${code}.notes holds no {…} but {host}`);
+		const { description, notes, sizing, summary, about, faq, ...extra } = texts[code] ?? {};
+		const where = `texts.${code}`;
+		if (!text(description)) own(`${where}.description is missing`);
+		if (!text(notes)) own(`${where}.notes is missing`);
+		if (/\{(?!host\})[^}]*\}/.test(notes ?? '')) own(`${where}.notes holds no {…} but {host}`);
+		if (!text(sizing)) own(`${where}.sizing is missing`);
+		checkSummary(summary, `${where}.summary`, own);
+		if (!Array.isArray(about) || about.length < 2 || !about.every(text)) own(`${where}.about is a list of paragraphs, two at least`);
+		if (!Array.isArray(faq) || faq.length < 3 || !faq.every((item) => text(item?.q) && text(item?.a) && Object.keys(item).length === 2))
+			own(`${where}.faq is a list of questions and answers, three at least: [{"q": "…", "a": "…"}]`);
+		if (Object.keys(extra).length > 0) own(`${where} has only description, notes, sizing, summary, about and faq`);
 	}
 	for (const code of Object.keys(texts)) {
 		if (!languages.includes(code)) own(`texts.${code}: ${code} is not in languages.json`);
 	}
+}
+
+/** The kinds of apps: a page each, beside the templates' own pages, so a slug is no template's
+ *  id. */
+function checkCategories(categories, languages, ids, problems) {
+	for (const [slug, category] of Object.entries(categories)) {
+		const own = (problem) => problems.push(`categories.json: ${slug}: ${problem}`);
+		if (!idRule.test(slug) || ids.includes(slug)) own('a slug is lower-case words with hyphens between them, and no template’s id');
+		for (const code of languages) {
+			if (!text(category.name?.[code])) own(`name.${code} is missing`);
+			if (!text(category.title?.[code])) own(`title.${code} is missing`);
+			checkSummary(category.summary?.[code], `summary.${code}`, own);
+			const intro = category.intro?.[code];
+			if (!Array.isArray(intro) || intro.length === 0 || !intro.every(text)) own(`intro.${code} is a list of paragraphs`);
+		}
+	}
+}
+
+function checkSummary(summary, where, own) {
+	if (!text(summary)) own(`${where} is missing`);
+	else if (summary.length > summaryLength) own(`${where} is ${summary.length} characters: a search result shows ${summaryLength}`);
 }
 
 function checkFields(fields, languages, problems) {

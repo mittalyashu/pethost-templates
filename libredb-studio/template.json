@@ -1,6 +1,12 @@
 {
 	"name": "LibreDB Studio",
 	"emoji": "🗄️",
+	"category": "developer-tools",
+	"alternatives": [
+		"DataGrip",
+		"CloudBeaver"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "libredb-studio",
 		"port": 3000
@@ -22,35 +28,259 @@
 	"texts": {
 		"en": {
 			"description": "A SQL IDE in the browser for PostgreSQL, MySQL, SQLite, MongoDB, Redis and more",
-			"notes": "Sign in with the email and the admin password you gave. Saved connections and queries are kept in the project’s volume; the databases it connects to must be reachable from the machine."
+			"notes": "Sign in with the email and the admin password you gave. Saved connections and queries are kept in the project’s volume; the databases it connects to must be reachable from the machine.",
+			"sizing": "LibreDB Studio is light: under 200 MB of memory, and it keeps only connections and saved queries.",
+			"summary": "LibreDB Studio is an open-source SQL IDE in the browser, an alternative to DataGrip. Self-host it on your own machine in one click.",
+			"about": [
+				"LibreDB Studio is an open-source SQL IDE that runs in the browser, an alternative to desktop clients like DataGrip. One interface opens PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse and many more engines. The editor is Monaco, the core of VS Code, and it autocompletes your own tables and columns. Visual EXPLAIN draws a query's plan, ER diagrams follow the real foreign keys, and results land in a grid you can edit inline, chart, or export to CSV and JSON.",
+				"People self-host LibreDB Studio so the editor sits next to their databases and no database port has to face the internet. A team shares it, with admin and user roles, OIDC single sign-on and an audit trail of executed queries. The catch: there is no LDAP, and every database must be reachable from the server it runs on, directly or through an SSH tunnel."
+			],
+			"faq": [
+				{
+					"q": "Is LibreDB Studio free and open source?",
+					"a": "Yes. It is MIT-licensed and has no paid edition: single sign-on, ER diagrams, the AI features and the NoSQL engines all ship in the same build."
+				},
+				{
+					"q": "Is LibreDB Studio a good DataGrip alternative?",
+					"a": "For a team, it can be: one editor in the browser instead of a client on every laptop. Beyond the editor, it compares schemas and writes the migration SQL, profiles tables and generates code such as Prisma models."
+				},
+				{
+					"q": "Does LibreDB Studio have an AI assistant?",
+					"a": "Yes, once you give it a model through its LLM_PROVIDER setting: Gemini, OpenAI, Ollama or any OpenAI-compatible endpoint. It then drafts SQL, explains query plans in plain language and checks destructive queries before they run."
+				},
+				{
+					"q": "How do I add users to LibreDB Studio?",
+					"a": "An admin creates them under Admin → Accounts, as admin or user; only admins open the DBA maintenance tools. The other way in is OIDC single sign-on through Keycloak, Okta, Azure AD or another provider, with roles from its claims."
+				},
+				{
+					"q": "Does LibreDB Studio work on mobile?",
+					"a": "Yes, in a phone's browser, with nothing to install. It has its own mobile navigation and shows query results as cards or as a table."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine SQL-IDE im Browser für PostgreSQL, MySQL, SQLite, MongoDB, Redis und mehr",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an. Gespeicherte Verbindungen und Abfragen liegen im Volume des Projekts; die Datenbanken, mit denen es sich verbindet, müssen von der Maschine aus erreichbar sein."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an. Gespeicherte Verbindungen und Abfragen liegen im Volume des Projekts; die Datenbanken, mit denen es sich verbindet, müssen von der Maschine aus erreichbar sein.",
+			"sizing": "LibreDB Studio ist leicht: unter 200 MB RAM, und es behält nur Verbindungen und gespeicherte Abfragen.",
+			"summary": "LibreDB Studio selbst hosten: eine Open-Source-SQL-IDE im Browser als Alternative zu DataGrip. Mit einem Klick auf deiner eigenen Maschine.",
+			"about": [
+				"LibreDB Studio ist eine Open-Source-SQL-IDE, die im Browser läuft, eine Alternative zu Desktop-Clients wie DataGrip. Eine Oberfläche öffnet PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse und viele weitere Datenbank-Engines. Der Editor ist Monaco, der Kern von VS Code, und er vervollständigt deine eigenen Tabellen und Spalten automatisch. Visual EXPLAIN zeichnet den Plan einer Abfrage, ER-Diagramme folgen den echten Fremdschlüsseln, und die Ergebnisse landen in einer Tabelle, die du direkt bearbeiten, als Diagramm darstellen oder als CSV und JSON exportieren kannst.",
+				"Wer LibreDB Studio selbst hostet, hat den Editor direkt neben den eigenen Datenbanken, und kein Datenbank-Port muss ins Internet zeigen. Ein Team teilt es sich, mit den Rollen Admin und User, OIDC-Single-Sign-on und einem Audit-Trail der ausgeführten Abfragen. Der Haken: LDAP gibt es nicht, und jede Datenbank muss von dem Server aus erreichbar sein, auf dem LibreDB Studio läuft, direkt oder über einen SSH-Tunnel."
+			],
+			"faq": [
+				{
+					"q": "Ist LibreDB Studio kostenlos und Open Source?",
+					"a": "Ja. Es steht unter der MIT-Lizenz und hat keine kostenpflichtige Edition: Single Sign-on, ER-Diagramme, die KI-Funktionen und die NoSQL-Engines sind alle im selben Build enthalten."
+				},
+				{
+					"q": "Ist LibreDB Studio eine gute Alternative zu DataGrip?",
+					"a": "Für ein Team kann es das sein: ein Editor im Browser statt eines Clients auf jedem Laptop. Über den Editor hinaus vergleicht es Schemas und schreibt das Migrations-SQL, profiliert Tabellen und erzeugt Code wie Prisma-Modelle."
+				},
+				{
+					"q": "Hat LibreDB Studio einen KI-Assistenten?",
+					"a": "Ja, sobald du ihm über die Einstellung LLM_PROVIDER ein Modell gibst: Gemini, OpenAI, Ollama oder jeden OpenAI-kompatiblen Endpoint. Dann entwirft es SQL, erklärt Abfragepläne in einfacher Sprache und prüft destruktive Abfragen, bevor sie ausgeführt werden."
+				},
+				{
+					"q": "Wie füge ich Benutzer zu LibreDB Studio hinzu?",
+					"a": "Ein Admin legt sie unter Admin → Accounts an, als Admin oder User; nur Admins öffnen die DBA-Wartungstools. Der andere Weg hinein ist OIDC-Single-Sign-on über Keycloak, Okta, Azure AD oder einen anderen Anbieter, mit Rollen aus dessen Claims."
+				},
+				{
+					"q": "Läuft LibreDB Studio auch auf dem Handy?",
+					"a": "Ja, im Browser eines Smartphones, ohne dass du etwas installierst. Es hat eine eigene mobile Navigation und zeigt Abfrageergebnisse als Karten oder als Tabelle."
+				}
+			]
 		},
 		"es": {
 			"description": "Un IDE de SQL en el navegador para PostgreSQL, MySQL, SQLite, MongoDB, Redis y más",
-			"notes": "Inicia sesión con el correo y la contraseña de administrador que diste. Las conexiones y consultas guardadas quedan en el volumen del proyecto; las bases de datos a las que se conecta tienen que ser accesibles desde la máquina."
+			"notes": "Inicia sesión con el correo y la contraseña de administrador que diste. Las conexiones y consultas guardadas quedan en el volumen del proyecto; las bases de datos a las que se conecta tienen que ser accesibles desde la máquina.",
+			"sizing": "LibreDB Studio es ligero: menos de 200 MB de memoria, y solo conserva conexiones y consultas guardadas.",
+			"summary": "Autoaloja LibreDB Studio: un IDE de SQL de código abierto en el navegador, alternativa a DataGrip. En tu propia máquina, con un clic.",
+			"about": [
+				"LibreDB Studio es un IDE de SQL de código abierto que funciona en el navegador, una alternativa a clientes de escritorio como DataGrip. Una sola interfaz abre PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse y muchos otros motores. El editor es Monaco, el núcleo de VS Code, y autocompleta tus propias tablas y columnas. Visual EXPLAIN dibuja el plan de una consulta, los diagramas ER siguen las claves foráneas reales, y los resultados llegan a una tabla que puedes editar directamente, convertir en gráfico o exportar a CSV y JSON.",
+				"LibreDB Studio se autoaloja para que el editor quede junto a las bases de datos y no haya que exponer ningún puerto de base de datos a internet. Un equipo lo comparte, con roles de admin y user, inicio de sesión único (SSO) con OIDC y un registro de auditoría de las consultas ejecutadas. El inconveniente: no hay LDAP, y cada base de datos debe ser accesible desde el servidor donde se ejecuta, directamente o mediante un túnel SSH."
+			],
+			"faq": [
+				{
+					"q": "¿LibreDB Studio es gratis y de código abierto?",
+					"a": "Sí. Tiene licencia MIT y no existe una edición de pago: el inicio de sesión único, los diagramas ER, las funciones de IA y los motores NoSQL vienen en la misma versión."
+				},
+				{
+					"q": "¿LibreDB Studio es una buena alternativa a DataGrip?",
+					"a": "Para un equipo, puede serlo: un solo editor en el navegador en lugar de un cliente instalado en cada equipo. Más allá del editor, compara esquemas y escribe el SQL de migración, perfila tablas y genera código, como modelos de Prisma."
+				},
+				{
+					"q": "¿LibreDB Studio tiene un asistente de IA?",
+					"a": "Sí, una vez que le das un modelo con el ajuste LLM_PROVIDER: Gemini, OpenAI, Ollama o cualquier endpoint compatible con OpenAI. Entonces redacta SQL, explica planes de consulta en lenguaje sencillo y revisa las consultas destructivas antes de que se ejecuten."
+				},
+				{
+					"q": "¿Cómo agrego usuarios a LibreDB Studio?",
+					"a": "Un admin los crea en Admin → Accounts, como admin o user; solo los admins abren las herramientas de mantenimiento de DBA. La otra vía de entrada es el inicio de sesión único con OIDC mediante Keycloak, Okta, Azure AD u otro proveedor, con los roles tomados de sus claims."
+				},
+				{
+					"q": "¿LibreDB Studio funciona en el teléfono?",
+					"a": "Sí, en el navegador del teléfono, sin instalar nada. Tiene su propia navegación móvil y muestra los resultados de las consultas como tarjetas o como tabla."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un IDE SQL dans le navigateur pour PostgreSQL, MySQL, SQLite, MongoDB, Redis et plus",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Les connexions et requêtes enregistrées restent dans le volume du projet ; les bases auxquelles il se connecte doivent être accessibles depuis la machine."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Les connexions et requêtes enregistrées restent dans le volume du projet ; les bases auxquelles il se connecte doivent être accessibles depuis la machine.",
+			"sizing": "LibreDB Studio est léger : moins de 200 MB de mémoire, et il ne garde que les connexions et les requêtes enregistrées.",
+			"summary": "Auto-hébergez LibreDB Studio : un IDE SQL open source dans le navigateur, alternative à DataGrip. Sur votre propre machine, en un clic.",
+			"about": [
+				"LibreDB Studio est un IDE SQL open source qui s’exécute dans le navigateur, une alternative aux clients de bureau comme DataGrip. Une seule interface ouvre PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse et bien d’autres moteurs. L’éditeur est Monaco, le cœur de VS Code, et il complète automatiquement vos propres tables et colonnes. Visual EXPLAIN dessine le plan d’une requête, les diagrammes ER suivent les vraies clés étrangères, et les résultats arrivent dans une grille que vous pouvez modifier sur place, mettre en graphique ou exporter en CSV et JSON.",
+				"On auto-héberge LibreDB Studio pour que l’éditeur soit à côté des bases de données et qu’aucun port de base de données n’ait à être exposé à internet. Une équipe le partage, avec des rôles admin et user, l’authentification unique (SSO) par OIDC et un journal d’audit des requêtes exécutées. Le revers : il n’y a pas de LDAP, et chaque base doit être accessible depuis le serveur où il tourne, directement ou par un tunnel SSH."
+			],
+			"faq": [
+				{
+					"q": "LibreDB Studio est-il gratuit et open source ?",
+					"a": "Oui. Il est sous licence MIT et n’a pas d’édition payante : l’authentification unique, les diagrammes ER, les fonctions d’IA et les moteurs NoSQL sont tous dans la même version."
+				},
+				{
+					"q": "LibreDB Studio est-il une bonne alternative à DataGrip ?",
+					"a": "Pour une équipe, il peut l’être : un seul éditeur dans le navigateur au lieu d’un client sur chaque ordinateur portable. Au-delà de l’éditeur, il compare des schémas et écrit le SQL de migration, profile des tables et génère du code, comme des modèles Prisma."
+				},
+				{
+					"q": "LibreDB Studio a-t-il un assistant IA ?",
+					"a": "Oui, dès que vous lui donnez un modèle avec son réglage LLM_PROVIDER : Gemini, OpenAI, Ollama ou n’importe quel endpoint compatible OpenAI. Il rédige alors du SQL, explique les plans de requête en langage clair et vérifie les requêtes destructrices avant leur exécution."
+				},
+				{
+					"q": "Comment ajouter des utilisateurs à LibreDB Studio ?",
+					"a": "Un admin les crée dans Admin → Accounts, avec le rôle admin ou user ; seuls les admins ouvrent les outils de maintenance DBA. L’autre voie d’entrée est l’authentification unique OIDC via Keycloak, Okta, Azure AD ou un autre fournisseur, avec des rôles tirés de ses claims."
+				},
+				{
+					"q": "LibreDB Studio fonctionne-t-il sur mobile ?",
+					"a": "Oui, dans le navigateur d’un téléphone, sans rien installer. Il a sa propre navigation mobile et affiche les résultats des requêtes sous forme de cartes ou de tableau."
+				}
+			]
 		},
 		"pl": {
 			"description": "IDE SQL w przeglądarce dla PostgreSQL, MySQL, SQLite, MongoDB, Redisa i innych",
-			"notes": "Zaloguj się podanym e-mailem i hasłem administratora. Zapisane połączenia i zapytania są w wolumenie projektu; bazy, z którymi się łączy, muszą być osiągalne z maszyny."
+			"notes": "Zaloguj się podanym e-mailem i hasłem administratora. Zapisane połączenia i zapytania są w wolumenie projektu; bazy, z którymi się łączy, muszą być osiągalne z maszyny.",
+			"sizing": "LibreDB Studio ma małe wymagania: poniżej 200 MB pamięci, a trzyma tylko połączenia i zapisane zapytania.",
+			"summary": "Hostuj u siebie LibreDB Studio: IDE SQL w przeglądarce z otwartym kodem, alternatywa dla DataGripa. Na własnej maszynie, jednym kliknięciem.",
+			"about": [
+				"LibreDB Studio to IDE SQL z otwartym kodem, które działa w przeglądarce, alternatywa dla klientów desktopowych takich jak DataGrip. Jeden interfejs otwiera PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse i wiele innych silników baz danych. Edytorem jest Monaco, rdzeń VS Code, który podpowiada twoje własne tabele i kolumny. Visual EXPLAIN rysuje plan zapytania, diagramy ER podążają za prawdziwymi kluczami obcymi, a wyniki trafiają do tabeli, którą możesz edytować na miejscu, przedstawić na wykresie albo wyeksportować do CSV i JSON.",
+				"Hostując LibreDB Studio u siebie (self-hosted), trzymasz edytor obok baz danych i żaden port bazy nie musi być wystawiony do internetu. Zespół może go dzielić, z rolami admin i user, logowaniem jednokrotnym (SSO) przez OIDC i dziennikiem audytu wykonanych zapytań. Haczyk: nie ma LDAP, a każda baza musi być osiągalna z serwera, na którym działa LibreDB Studio, bezpośrednio albo przez tunel SSH."
+			],
+			"faq": [
+				{
+					"q": "Czy LibreDB Studio jest darmowy i open source?",
+					"a": "Tak. Ma licencję MIT i nie ma płatnej edycji: logowanie jednokrotne, diagramy ER, funkcje AI i silniki NoSQL są w tej samej wersji."
+				},
+				{
+					"q": "Czy LibreDB Studio to dobra alternatywa dla DataGripa?",
+					"a": "Dla zespołu może być: jeden edytor w przeglądarce zamiast klienta na każdym laptopie. Poza edytorem porównuje schematy i pisze SQL migracji, profiluje tabele i generuje kod, na przykład modele Prisma."
+				},
+				{
+					"q": "Czy LibreDB Studio ma asystenta AI?",
+					"a": "Tak, gdy dasz mu model przez ustawienie LLM_PROVIDER: Gemini, OpenAI, Ollama albo dowolny endpoint zgodny z OpenAI. Wtedy przygotowuje SQL, tłumaczy plany zapytań zwykłym językiem i sprawdza destrukcyjne zapytania, zanim się wykonają."
+				},
+				{
+					"q": "Jak dodać użytkowników do LibreDB Studio?",
+					"a": "Tworzy ich administrator w Admin → Accounts, jako admin lub user; tylko administratorzy otwierają narzędzia konserwacji DBA. Drugą drogą jest logowanie jednokrotne OIDC przez Keycloak, Okta, Azure AD lub innego dostawcę, z rolami z jego claimów."
+				},
+				{
+					"q": "Czy LibreDB Studio działa na telefonie?",
+					"a": "Tak, w przeglądarce telefonu, bez niczego do zainstalowania. Ma własną nawigację mobilną i pokazuje wyniki zapytań jako karty albo jako tabelę."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma IDE de SQL no navegador para PostgreSQL, MySQL, SQLite, MongoDB, Redis e mais",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou. As conexões e consultas salvas ficam no volume do projeto; os bancos aos quais ele se conecta precisam ser acessíveis a partir da máquina."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou. As conexões e consultas salvas ficam no volume do projeto; os bancos aos quais ele se conecta precisam ser acessíveis a partir da máquina.",
+			"sizing": "LibreDB Studio é leve: menos de 200 MB de memória, e só guarda conexões e consultas salvas.",
+			"summary": "Auto-hospede o LibreDB Studio: uma IDE de SQL de código aberto no navegador, alternativa ao DataGrip. Na sua própria máquina, com um clique.",
+			"about": [
+				"O LibreDB Studio é uma IDE de SQL de código aberto que roda no navegador, uma alternativa a clientes desktop como o DataGrip. Uma só interface abre PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse e muitos outros bancos. O editor é o Monaco, o núcleo do VS Code, e ele completa automaticamente suas próprias tabelas e colunas. O Visual EXPLAIN desenha o plano de uma consulta, os diagramas ER seguem as chaves estrangeiras reais, e os resultados caem em uma tabela que você pode editar diretamente, transformar em gráfico ou exportar para CSV e JSON.",
+				"Quem auto-hospeda o LibreDB Studio deixa o editor ao lado dos bancos de dados, e nenhuma porta de banco precisa ficar aberta para a internet. Uma equipe compartilha o app, com os papéis de admin e user, login único (SSO) por OIDC e uma trilha de auditoria das consultas executadas. O porém: não há LDAP, e todo banco de dados precisa ser acessível a partir do servidor em que ele roda, diretamente ou por um túnel SSH."
+			],
+			"faq": [
+				{
+					"q": "O LibreDB Studio é gratuito e de código aberto?",
+					"a": "Sim. Ele tem licença MIT e não tem edição paga: login único, diagramas ER, os recursos de IA e os bancos NoSQL vêm todos na mesma versão."
+				},
+				{
+					"q": "O LibreDB Studio é uma boa alternativa ao DataGrip?",
+					"a": "Para uma equipe, pode ser: um só editor no navegador em vez de um cliente em cada notebook. Além do editor, ele compara esquemas e escreve o SQL de migração, faz o profiling de tabelas e gera código, como modelos do Prisma."
+				},
+				{
+					"q": "O LibreDB Studio tem um assistente de IA?",
+					"a": "Sim, depois que você dá um modelo a ele pela configuração LLM_PROVIDER: Gemini, OpenAI, Ollama ou qualquer endpoint compatível com a OpenAI. Aí ele rascunha SQL, explica planos de consulta em linguagem simples e confere consultas destrutivas antes de elas rodarem."
+				},
+				{
+					"q": "Como adiciono usuários ao LibreDB Studio?",
+					"a": "Um admin os cria em Admin → Accounts, como admin ou user; só admins abrem as ferramentas de manutenção de DBA. O outro caminho é o login único por OIDC, com Keycloak, Okta, Azure AD ou outro provedor, com papéis vindos dos claims dele."
+				},
+				{
+					"q": "O LibreDB Studio funciona no celular?",
+					"a": "Sim, no navegador do celular, sem nada para instalar. Ele tem navegação própria para o celular e mostra os resultados das consultas como cards ou como tabela."
+				}
+			]
 		},
 		"ru": {
 			"description": "SQL-IDE в браузере для PostgreSQL, MySQL, SQLite, MongoDB, Redis и других",
-			"notes": "Войдите с указанной почтой и паролем администратора. Сохранённые подключения и запросы хранятся в томе проекта; базы, к которым он подключается, должны быть доступны с машины."
+			"notes": "Войдите с указанной почтой и паролем администратора. Сохранённые подключения и запросы хранятся в томе проекта; базы, к которым он подключается, должны быть доступны с машины.",
+			"sizing": "LibreDB Studio: небольшие требования — менее 200 MB памяти, а на диске только подключения и сохраненные запросы.",
+			"summary": "Self-hosted LibreDB Studio: open-source SQL-IDE в браузере, альтернатива DataGrip. Ставится на вашу машину в один клик.",
+			"about": [
+				"LibreDB Studio — это open-source SQL-IDE, которая работает в браузере, альтернатива десктопным клиентам вроде DataGrip. Один интерфейс открывает PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse и многие другие СУБД. Редактор — Monaco, ядро VS Code, и он автодополняет ваши собственные таблицы и столбцы. Visual EXPLAIN рисует план запроса, ER-диаграммы строятся по настоящим внешним ключам, а результаты попадают в таблицу, которую можно править прямо на месте, превратить в график или выгрузить в CSV и JSON.",
+				"LibreDB Studio хостят у себя, чтобы редактор стоял рядом с базами и не нужно было открывать порты баз в интернет. Одним экземпляром пользуется вся команда: есть роли admin и user, единый вход (SSO) через OIDC и журнал аудита выполненных запросов. Но есть нюанс: LDAP нет, а каждая база должна быть доступна с сервера, на котором работает LibreDB Studio, напрямую или через SSH-туннель."
+			],
+			"faq": [
+				{
+					"q": "LibreDB Studio бесплатный и open source?",
+					"a": "Да. Лицензия MIT, платной редакции нет: единый вход (SSO), ER-диаграммы, ИИ-функции и NoSQL-базы идут в одной и той же сборке."
+				},
+				{
+					"q": "LibreDB Studio — хорошая альтернатива DataGrip?",
+					"a": "Для команды может быть: один редактор в браузере вместо клиента на каждом ноутбуке. Кроме редактора, он сравнивает схемы и пишет SQL миграции, профилирует таблицы и генерирует код, например модели Prisma."
+				},
+				{
+					"q": "Есть ли в LibreDB Studio ИИ-ассистент?",
+					"a": "Да, когда вы дадите ему модель через настройку LLM_PROVIDER: Gemini, OpenAI, Ollama или любой OpenAI-совместимый эндпоинт. Тогда он набрасывает SQL, объясняет планы запросов простым языком и проверяет деструктивные запросы до их выполнения."
+				},
+				{
+					"q": "Как добавить пользователей в LibreDB Studio?",
+					"a": "Их создает админ в Admin → Accounts, с ролью admin или user; инструменты обслуживания DBA открывают только админы. Другой путь — единый вход через OIDC с Keycloak, Okta, Azure AD или другим провайдером, а роли берутся из его claims."
+				},
+				{
+					"q": "Работает ли LibreDB Studio на телефоне?",
+					"a": "Да, в браузере телефона, ничего устанавливать не нужно. У него своя мобильная навигация, а результаты запросов он показывает карточками или таблицей."
+				}
+			]
 		},
 		"uk": {
 			"description": "SQL-IDE у браузері для PostgreSQL, MySQL, SQLite, MongoDB, Redis та інших",
-			"notes": "Увійдіть із вказаною поштою та паролем адміністратора. Збережені підключення й запити зберігаються в томі проєкту; бази, до яких він підключається, мають бути доступні з машини."
+			"notes": "Увійдіть із вказаною поштою та паролем адміністратора. Збережені підключення й запити зберігаються в томі проєкту; бази, до яких він підключається, мають бути доступні з машини.",
+			"sizing": "LibreDB Studio має скромні вимоги: менше 200 MB пам’яті, а тримає лише підключення та збережені запити.",
+			"summary": "Self-hosted LibreDB Studio: open-source SQL-IDE у браузері, альтернатива DataGrip. Ставиться на вашу машину в один клік.",
+			"about": [
+				"LibreDB Studio — це open-source SQL-IDE, що працює в браузері, альтернатива десктопним клієнтам на кшталт DataGrip. Один інтерфейс відкриває PostgreSQL, MySQL, SQL Server, Oracle, MongoDB, Redis, ClickHouse і багато інших баз даних. Редактор — Monaco, ядро VS Code, і він автодоповнює ваші власні таблиці та стовпці. Visual EXPLAIN малює план запиту, ER-діаграми будуються за справжніми зовнішніми ключами, а результати потрапляють у таблицю, яку можна правити просто на місці, перетворити на графік або вивантажити в CSV і JSON.",
+				"LibreDB Studio хостять у себе, щоб редактор стояв поруч із базами й не треба було відкривати порти баз в інтернет. Одним екземпляром користується вся команда: є ролі admin і user, єдиний вхід (SSO) через OIDC та журнал аудиту виконаних запитів. Але є нюанс: LDAP немає, а кожна база має бути доступна із сервера, на якому працює LibreDB Studio, напряму або через SSH-тунель."
+			],
+			"faq": [
+				{
+					"q": "Чи LibreDB Studio безкоштовний і з відкритим кодом?",
+					"a": "Так. Ліцензія MIT, платної редакції немає: єдиний вхід (SSO), ER-діаграми, функції ШІ та NoSQL-бази йдуть в одній збірці."
+				},
+				{
+					"q": "Чи LibreDB Studio — хороша альтернатива DataGrip?",
+					"a": "Для команди може бути: один редактор у браузері замість клієнта на кожному ноутбуці. Окрім редактора, він порівнює схеми та пише SQL міграції, профілює таблиці й генерує код, наприклад моделі Prisma."
+				},
+				{
+					"q": "Чи є в LibreDB Studio ШІ-асистент?",
+					"a": "Так, коли ви дасте йому модель через налаштування LLM_PROVIDER: Gemini, OpenAI, Ollama або будь-який OpenAI-сумісний ендпойнт. Тоді він складає чернетки SQL, пояснює плани запитів простою мовою та перевіряє деструктивні запити, перш ніж вони виконаються."
+				},
+				{
+					"q": "Як додати користувачів у LibreDB Studio?",
+					"a": "Їх створює адмін у Admin → Accounts, з роллю admin або user; інструменти обслуговування DBA відкривають лише адміни. Інший шлях — єдиний вхід через OIDC із Keycloak, Okta, Azure AD або іншим провайдером, а ролі беруться з його claims."
+				},
+				{
+					"q": "Чи працює LibreDB Studio на телефоні?",
+					"a": "Так, у браузері телефона, нічого встановлювати не треба. Він має власну мобільну навігацію й показує результати запитів картками або таблицею."
+				}
+			]
 		}
 	}
 }

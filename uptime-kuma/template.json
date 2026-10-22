@@ -1,6 +1,13 @@
 {
 	"name": "Uptime Kuma",
 	"emoji": "🐻",
+	"category": "monitoring",
+	"alternatives": [
+		"UptimeRobot",
+		"Pingdom",
+		"StatusCake"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "uptime-kuma",
 		"port": 3001
@@ -9,35 +16,259 @@
 	"texts": {
 		"en": {
 			"description": "Uptime monitoring with alerts and status pages",
-			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address. Then add your first monitor."
+			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address. Then add your first monitor.",
+			"sizing": "Uptime Kuma is light: under 200 MB of memory, and months of checks for dozens of monitors take a few gigabytes.",
+			"summary": "Uptime Kuma is an open-source UptimeRobot alternative that checks your sites and services and alerts you when one is down. Self-host it in one click.",
+			"about": [
+				"Uptime Kuma is an open-source uptime monitor that people run instead of UptimeRobot. It checks websites and services as often as every 20 seconds: HTTP(s), with an optional keyword or JSON query, TCP ports, ping and DNS records. For a cron job or a backup script, a Push monitor gives a URL to call and goes down when the calls stop. Alerts reach you through more than 90 services, Telegram, Discord, Slack and email among them, and HTTPS monitors warn before a TLS certificate expires. Status pages show visitors what is up, each on its own domain if you like.",
+				"People self-host it to keep every monitor, status page and its history on their own server, with no plan deciding how many they get. Uptime Kuma is MIT-licensed, and sign-in can ask for a two-factor code. The catch is a single user account: a team shares one login, and user management is still an open feature request."
+			],
+			"faq": [
+				{
+					"q": "Is Uptime Kuma free?",
+					"a": "Yes. Uptime Kuma is open source under the MIT license, so you can use, change and run it for free. Its code is on GitHub at louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma vs UptimeRobot: what is the difference?",
+					"a": "Uptime Kuma is software you run yourself rather than a service you sign up for, so its checks go out from your own server. Its author wrote it because he wanted a self-hosted tool like UptimeRobot."
+				},
+				{
+					"q": "Is there an Uptime Kuma mobile app?",
+					"a": "Not an official one. Its wiki lists third-party apps for iPhone, iPad, Android and Apple Watch, and alerts can reach your phone as push notifications through Pushover, Gotify or a chat app."
+				},
+				{
+					"q": "Does Uptime Kuma have an API?",
+					"a": "Not an official one. Its wiki documents an internal Socket.io API that may change between versions without notice, and REST endpoints for push monitors, status badges, public status pages and Prometheus metrics at /metrics."
+				},
+				{
+					"q": "How do I back up Uptime Kuma?",
+					"a": "Copy its data directory: since version 2 that is the only supported backup, as the JSON backup and restore was removed. On Pethost the volume holding that directory is backed up every night and kept for 14 days."
+				}
+			]
 		},
 		"de": {
 			"description": "Uptime-Monitoring mit Benachrichtigungen und Statusseiten",
-			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Füg dann deinen ersten Monitor hinzu."
+			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Füg dann deinen ersten Monitor hinzu.",
+			"sizing": "Uptime Kuma ist leicht: unter 200 MB RAM, und Monate an Checks für Dutzende Monitore brauchen ein paar GB.",
+			"summary": "Uptime Kuma in einem Klick selbst hosten: Open-Source-Alternative zu UptimeRobot, die deine Seiten und Services prüft und bei Ausfällen benachrichtigt.",
+			"about": [
+				"Uptime Kuma ist ein Open-Source-Uptime-Monitor, den viele statt UptimeRobot betreiben. Er prüft Websites und Services so oft wie alle 20 Sekunden: HTTP(s), auf Wunsch mit Schlüsselwort oder JSON-Abfrage, TCP-Ports, Ping und DNS-Einträge. Für einen Cronjob oder ein Backup-Skript gibt ein Push-Monitor eine URL vor, die aufgerufen werden muss, und schlägt an, sobald die Aufrufe ausbleiben. Alerts erreichen dich über mehr als 90 Benachrichtigungsdienste, darunter Telegram, Discord, Slack und E-Mail, und HTTPS-Monitore warnen, bevor ein TLS-Zertifikat abläuft. Statusseiten zeigen allen, die sie öffnen, was läuft, auf Wunsch jede auf einer eigenen Domain.",
+				"Wer Uptime Kuma selbst hostet, behält jeden Monitor, jede Statusseite und den ganzen Verlauf auf dem eigenen Server, und kein Tarif legt fest, wie viele es sein dürfen. Uptime Kuma steht unter der MIT-Lizenz, und die Anmeldung kann einen Zwei-Faktor-Code verlangen. Der Haken: Es gibt nur ein einziges Konto. Ein Team teilt sich einen Login, und eine Benutzerverwaltung ist bisher ein offener Feature-Request."
+			],
+			"faq": [
+				{
+					"q": "Ist Uptime Kuma kostenlos?",
+					"a": "Ja. Uptime Kuma ist Open Source unter der MIT-Lizenz, du kannst es also kostenlos nutzen, ändern und betreiben. Der Code liegt auf GitHub unter louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma oder UptimeRobot: Was ist der Unterschied?",
+					"a": "Uptime Kuma ist Software, die du selbst betreibst, und kein Service, bei dem du dich anmeldest; seine Checks gehen also von deinem eigenen Server aus. Der Autor hat es geschrieben, weil er ein Tool wie UptimeRobot haben wollte, nur selbst gehostet."
+				},
+				{
+					"q": "Gibt es eine mobile App für Uptime Kuma?",
+					"a": "Keine offizielle. Im Wiki stehen Apps von Drittanbietern für iPhone, iPad, Android und Apple Watch, und Alerts können als Push-Benachrichtigungen über Pushover, Gotify oder eine Chat-App auf dein Handy kommen."
+				},
+				{
+					"q": "Hat Uptime Kuma eine API?",
+					"a": "Keine offizielle. Im Wiki ist eine interne Socket.io-API dokumentiert, die sich zwischen Versionen ohne Vorwarnung ändern kann, dazu REST-Endpoints für Push-Monitore, Status-Badges, öffentliche Statusseiten und Prometheus-Metriken unter /metrics."
+				},
+				{
+					"q": "Wie mache ich ein Backup von Uptime Kuma?",
+					"a": "Kopiere sein Datenverzeichnis. Seit Version 2 ist das Kopieren des Datenverzeichnisses das einzige unterstützte Backup, denn Backup und Restore als JSON wurden entfernt. Auf Pethost wird das Volume mit diesem Verzeichnis jede Nacht gesichert und 14 Tage aufbewahrt."
+				}
+			]
 		},
 		"es": {
 			"description": "Monitores de disponibilidad con alertas y páginas de estado",
-			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego agrega tu primer monitor."
+			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego agrega tu primer monitor.",
+			"sizing": "Uptime Kuma es ligero: menos de 200 MB de memoria, y meses de comprobaciones de decenas de monitores ocupan unos pocos GB.",
+			"summary": "Autoaloja Uptime Kuma en un clic: una alternativa de código abierto a UptimeRobot que revisa tus sitios y servicios y te avisa cuando alguno está caído.",
+			"about": [
+				"Uptime Kuma es un monitor de uptime de código abierto que mucha gente usa en lugar de UptimeRobot. Revisa sitios web y servicios con una frecuencia de hasta cada 20 segundos: HTTP(s), con una palabra clave o una consulta JSON opcional, puertos TCP, ping y registros DNS. Para una tarea cron o un script de backup, un monitor Push da una URL a la que llamar y se marca como caído cuando las llamadas se detienen. Las alertas te llegan por más de 90 servicios de notificación, entre ellos Telegram, Discord, Slack y correo electrónico, y los monitores HTTPS avisan antes de que venza un certificado TLS. Las páginas de estado muestran a los visitantes qué está en línea, cada una en su propio dominio si quieres.",
+				"Quienes autoalojan Uptime Kuma lo hacen para tener cada monitor, cada página de estado y todo su historial en su propio servidor, sin un plan que decida cuántos puedes tener. Uptime Kuma tiene licencia MIT, y el inicio de sesión puede pedir un código de dos factores. El inconveniente: hay una sola cuenta de usuario. Un grupo de trabajo comparte un único acceso, y la administración de usuarios sigue siendo una solicitud de función abierta."
+			],
+			"faq": [
+				{
+					"q": "¿Uptime Kuma es gratis?",
+					"a": "Sí. Uptime Kuma es de código abierto bajo la licencia MIT, así que puedes usarlo, modificarlo y ejecutarlo gratis. Su código está en GitHub, en louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma frente a UptimeRobot: ¿qué diferencia hay?",
+					"a": "Uptime Kuma es software que ejecutas tú mismo, no un servicio al que te registras, así que sus comprobaciones salen desde tu propio servidor. Su autor lo escribió porque quería una herramienta como UptimeRobot, pero autoalojada."
+				},
+				{
+					"q": "¿Hay una app móvil de Uptime Kuma?",
+					"a": "No hay una oficial. Su wiki enumera apps de terceros para iPhone, iPad, Android y Apple Watch, y las alertas pueden llegar a tu teléfono como notificaciones push mediante Pushover, Gotify o una app de chat."
+				},
+				{
+					"q": "¿Uptime Kuma tiene una API?",
+					"a": "No una oficial. Su wiki documenta una API interna de Socket.io que puede cambiar entre versiones sin aviso, y endpoints REST para monitores Push, insignias de estado, páginas de estado públicas y métricas de Prometheus en /metrics."
+				},
+				{
+					"q": "¿Cómo hago un backup de Uptime Kuma?",
+					"a": "Copia su directorio de datos. Desde la versión 2 es el único backup compatible, porque se eliminaron el backup y la restauración en JSON. En Pethost se hace un backup cada noche del volumen que contiene ese directorio, y los backups se conservan 14 días."
+				}
+			]
 		},
 		"fr": {
 			"description": "Surveillance de disponibilité avec alertes et pages de statut",
-			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Ajoutez ensuite votre première sonde."
+			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Ajoutez ensuite votre première sonde.",
+			"sizing": "Uptime Kuma est léger : moins de 200 MB de mémoire, et des mois de vérifications de dizaines de moniteurs prennent quelques GB.",
+			"summary": "Auto-hébergez Uptime Kuma en un clic : une alternative open source à UptimeRobot qui surveille vos sites et services et vous alerte en cas de panne.",
+			"about": [
+				"Uptime Kuma est un outil de surveillance de disponibilité open source que beaucoup utilisent à la place d’UptimeRobot. Il vérifie des sites et des services aussi souvent que toutes les 20 secondes : HTTP(s), avec un mot-clé ou une requête JSON en option, ports TCP, ping et enregistrements DNS. Pour une tâche cron ou un script de sauvegarde, une sonde Push fournit une URL à appeler et tombe en panne quand les appels s’arrêtent. Les alertes vous parviennent par plus de 90 services, dont Telegram, Discord, Slack et l’e-mail, et les sondes HTTPS vous préviennent avant l’expiration d’un certificat TLS. Les pages de statut montrent aux visiteurs ce qui fonctionne, chacune sur son propre domaine si vous le souhaitez.",
+				"Vous auto-hébergez Uptime Kuma pour garder toutes vos sondes, vos pages de statut et leur historique sur votre propre serveur, sans qu’une offre décide combien vous en avez. Uptime Kuma est sous licence MIT, et la connexion peut demander un code d’authentification à deux facteurs. Le revers : un seul compte utilisateur. Une équipe partage un même identifiant, et la gestion des utilisateurs reste une demande de fonctionnalité ouverte."
+			],
+			"faq": [
+				{
+					"q": "Uptime Kuma est-il gratuit ?",
+					"a": "Oui. Uptime Kuma est open source sous licence MIT : vous pouvez l’utiliser, le modifier et l’exécuter gratuitement. Son code est sur GitHub, dans louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma ou UptimeRobot : quelle différence ?",
+					"a": "Uptime Kuma est un logiciel que vous exécutez vous-même, et non un service auquel on s’inscrit : ses vérifications partent donc de votre propre serveur. Son auteur l’a écrit parce qu’il voulait un outil comme UptimeRobot, mais auto-hébergé."
+				},
+				{
+					"q": "Existe-t-il une application mobile pour Uptime Kuma ?",
+					"a": "Pas d’application officielle. Son wiki liste des applications tierces pour iPhone, iPad, Android et Apple Watch, et les alertes peuvent arriver sur votre téléphone en notifications push via Pushover, Gotify ou une application de messagerie."
+				},
+				{
+					"q": "Uptime Kuma a-t-il une API ?",
+					"a": "Pas d’API officielle. Son wiki documente une API interne Socket.io, susceptible de changer d’une version à l’autre sans préavis, et des endpoints REST pour les sondes Push, les badges de statut, les pages de statut publiques et les métriques Prometheus sur /metrics."
+				},
+				{
+					"q": "Comment sauvegarder Uptime Kuma ?",
+					"a": "Copiez son répertoire de données : depuis la version 2, c’est la seule sauvegarde prise en charge, car la sauvegarde et la restauration au format JSON ont été supprimées. Sur Pethost, le volume qui contient ce répertoire est sauvegardé chaque nuit et conservé 14 jours."
+				}
+			]
 		},
 		"pl": {
 			"description": "Monitoring dostępności z alertami i stronami statusu",
-			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem dodaj swój pierwszy monitor."
+			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem dodaj swój pierwszy monitor.",
+			"sizing": "Uptime Kuma ma małe wymagania: poniżej 200 MB pamięci, a miesiące sprawdzeń dla dziesiątek monitorów zajmują kilka GB.",
+			"summary": "Hostuj Uptime Kuma u siebie jednym kliknięciem: alternatywa dla UptimeRobot z otwartym kodem, która sprawdza twoje strony i usługi i powiadamia o awarii.",
+			"about": [
+				"Uptime Kuma to monitor dostępności z otwartym kodem, który ludzie uruchamiają zamiast UptimeRobot. Sprawdza strony i usługi nawet co 20 sekund: HTTP(s), opcjonalnie ze słowem kluczowym lub zapytaniem JSON, porty TCP, ping i rekordy DNS. Dla zadania cron albo skryptu do backupów monitor Push podaje adres URL do wywołania i przechodzi w stan niedostępności, gdy wywołania ustają. Alerty docierają do ciebie przez ponad 90 usług, m.in. Telegram, Discord, Slack i e-mail, a monitory HTTPS ostrzegają, zanim wygaśnie certyfikat TLS. Strony statusu pokazują odwiedzającym, co działa, a każdą możesz postawić na własnej domenie.",
+				"Uptime Kuma hostuje się u siebie, żeby wszystkie monitory, strony statusu i ich historia zostały na własnym serwerze, a żaden plan nie decydował, ile ich dostaniesz. Uptime Kuma jest na licencji MIT, a logowanie może wymagać kodu dwuskładnikowego. Haczyk: jest tylko jedno konto użytkownika. Zespół dzieli jedno logowanie, a zarządzanie użytkownikami to wciąż otwarta prośba o funkcję."
+			],
+			"faq": [
+				{
+					"q": "Czy Uptime Kuma jest darmowy?",
+					"a": "Tak. Uptime Kuma jest open source na licencji MIT, więc możesz go używać, zmieniać i uruchamiać za darmo. Jego kod jest na GitHubie w louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma czy UptimeRobot: jaka jest różnica?",
+					"a": "Uptime Kuma to oprogramowanie, które uruchamiasz sam, a nie usługa, w której zakładasz konto, więc jego sprawdzenia wychodzą z twojego własnego serwera. Autor napisał go, bo chciał narzędzia takiego jak UptimeRobot, tylko hostowanego u siebie."
+				},
+				{
+					"q": "Czy istnieje aplikacja mobilna Uptime Kuma?",
+					"a": "Oficjalnej nie ma. Jego wiki wymienia aplikacje innych firm na iPhone’a, iPada, Androida i Apple Watch, a alerty mogą trafiać na telefon jako powiadomienia push przez Pushover, Gotify albo komunikator."
+				},
+				{
+					"q": "Czy Uptime Kuma ma API?",
+					"a": "Oficjalnego nie ma. Jego wiki opisuje wewnętrzne API Socket.io, które może się zmienić między wersjami bez uprzedzenia, oraz endpointy REST dla monitorów Push, odznak statusu, publicznych stron statusu i metryk Prometheus pod /metrics."
+				},
+				{
+					"q": "Jak zrobić backup Uptime Kuma?",
+					"a": "Skopiuj jego katalog z danymi. Od wersji 2 to jedyny obsługiwany backup, bo backup i przywracanie w formacie JSON usunięto. W Pethost wolumen z tym katalogiem jest objęty backupem co noc i przechowywany przez 14 dni."
+				}
+			]
 		},
 		"pt": {
 			"description": "Monitoramento de uptime com alertas e páginas de status",
-			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois adicione seu primeiro monitor."
+			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois adicione seu primeiro monitor.",
+			"sizing": "Uptime Kuma é leve: menos de 200 MB de memória, e meses de verificações de dezenas de monitores ocupam alguns GB.",
+			"summary": "Hospede o Uptime Kuma por conta própria em um clique: alternativa open source ao UptimeRobot que verifica seus sites e serviços e avisa quando algum cai.",
+			"about": [
+				"O Uptime Kuma é um monitor de uptime de código aberto que as pessoas rodam no lugar do UptimeRobot. Ele verifica sites e serviços em intervalos a partir de 20 segundos: HTTP(s), com palavra-chave ou consulta JSON opcional, portas TCP, ping e registros DNS. Para um cron job ou um script de backup, um monitor Push dá uma URL para chamar e fica fora do ar quando as chamadas param. Os alertas chegam por mais de 90 serviços, entre eles Telegram, Discord, Slack e e-mail, e os monitores HTTPS avisam antes de um certificado TLS expirar. As páginas de status mostram aos visitantes o que está no ar, cada uma no próprio domínio, se você quiser.",
+				"Quem hospeda o Uptime Kuma por conta própria quer manter cada monitor, cada página de status e todo o histórico no próprio servidor, sem um plano decidindo quantos dá para ter. O Uptime Kuma tem licença MIT, e o login pode pedir um código de dois fatores. O porém: há uma única conta de usuário. Uma equipe compartilha um só login, e o gerenciamento de usuários ainda é um pedido de recurso em aberto."
+			],
+			"faq": [
+				{
+					"q": "O Uptime Kuma é gratuito?",
+					"a": "Sim. O Uptime Kuma é de código aberto sob a licença MIT, então você pode usar, alterar e rodar de graça. O código dele está no GitHub, em louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma ou UptimeRobot: qual é a diferença?",
+					"a": "O Uptime Kuma é um software que você mesmo roda, e não um serviço em que você se cadastra, então as verificações saem do seu próprio servidor. O autor o escreveu porque queria uma ferramenta como o UptimeRobot, mas hospedada por conta própria."
+				},
+				{
+					"q": "Existe um app do Uptime Kuma para celular?",
+					"a": "Não um oficial. A wiki do projeto lista apps de terceiros para iPhone, iPad, Android e Apple Watch, e os alertas podem chegar ao seu celular como notificações push pelo Pushover, pelo Gotify ou por um app de chat."
+				},
+				{
+					"q": "O Uptime Kuma tem API?",
+					"a": "Não uma oficial. A wiki do projeto documenta uma API interna via Socket.io, que pode mudar entre versões sem aviso, e endpoints REST para monitores Push, badges de status, páginas de status públicas e métricas do Prometheus em /metrics."
+				},
+				{
+					"q": "Como faço backup do Uptime Kuma?",
+					"a": "Copie o diretório de dados. Desde a versão 2, esse é o único backup com suporte, porque o backup e a restauração em JSON foram removidos. No Pethost, o volume com esse diretório tem backup toda noite, e os backups ficam guardados por 14 dias."
+				}
+			]
 		},
 		"ru": {
 			"description": "Мониторинг аптайма с уведомлениями и страницами статуса",
-			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем добавьте первый монитор."
+			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем добавьте первый монитор.",
+			"sizing": "Uptime Kuma: небольшие требования — менее 200 MB памяти, а месяцы проверок десятков мониторов занимают несколько GB.",
+			"summary": "Self-hosted Uptime Kuma в один клик: open source альтернатива UptimeRobot, которая проверяет ваши сайты и сервисы и оповещает, когда что-то недоступно.",
+			"about": [
+				"Uptime Kuma — это open source монитор аптайма, который запускают вместо UptimeRobot. Он проверяет сайты и сервисы с интервалом от 20 секунд: HTTP(s), при желании с ключевым словом или JSON-запросом, TCP-порты, пинг и DNS-записи. Для cron-задачи или скрипта бэкапа монитор Push выдает URL, который нужно вызывать, и становится недоступным, когда вызовы прекращаются. Оповещения можно получать через 90 с лишним сервисов, среди них Telegram, Discord, Slack и почта, а HTTPS-мониторы предупреждают до истечения TLS-сертификата. Страницы статуса показывают посетителям, что работает, каждую при желании на собственном домене.",
+				"Uptime Kuma хостят у себя, чтобы все мониторы, страницы статуса и их история хранились на собственном сервере, а тариф не решал, сколько их можно создать. Uptime Kuma распространяется по лицензии MIT, а вход может требовать код двухфакторной аутентификации. Но есть нюанс: аккаунт пользователя только один. Команда делит один логин, а управление пользователями пока остается открытым запросом на новую функцию."
+			],
+			"faq": [
+				{
+					"q": "Uptime Kuma бесплатный?",
+					"a": "Да. Uptime Kuma — open source проект под лицензией MIT, поэтому его можно использовать, менять и запускать бесплатно. Код лежит на GitHub в louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma или UptimeRobot: в чем разница?",
+					"a": "Uptime Kuma — это программа, которую вы запускаете сами, а не сервис, где нужно регистрироваться, поэтому проверки идут с вашего собственного сервера. Автор написал его, потому что хотел инструмент вроде UptimeRobot, но self-hosted."
+				},
+				{
+					"q": "Есть ли мобильное приложение Uptime Kuma?",
+					"a": "Официального нет. В вики перечислены сторонние приложения для iPhone, iPad, Android и Apple Watch, а оповещения могут приходить на телефон пуш-уведомлениями через Pushover, Gotify или мессенджер."
+				},
+				{
+					"q": "Есть ли у Uptime Kuma API?",
+					"a": "Официального нет. В вики описан внутренний Socket.io API, который может меняться между версиями без предупреждения, а также REST-эндпоинты для Push-мониторов, бейджей статуса, публичных страниц статуса и метрик Prometheus по адресу /metrics."
+				},
+				{
+					"q": "Как сделать бэкап Uptime Kuma?",
+					"a": "Скопируйте его каталог с данными. Начиная с версии 2 это единственный поддерживаемый бэкап, потому что бэкап и восстановление в JSON убрали. В Pethost бэкап тома с этим каталогом делается каждую ночь и хранится 14 дней."
+				}
+			]
 		},
 		"uk": {
 			"description": "Моніторинг доступності зі сповіщеннями та сторінками статусу",
-			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім додайте свій перший монітор."
+			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім додайте свій перший монітор.",
+			"sizing": "Uptime Kuma має скромні вимоги: менше 200 MB пам’яті, а місяці перевірок для десятків моніторів займають кілька GB.",
+			"summary": "Self-hosted Uptime Kuma в один клік: альтернатива UptimeRobot з відкритим кодом, яка перевіряє ваші сайти й сервіси та сповіщає, коли щось недоступне.",
+			"about": [
+				"Uptime Kuma — це монітор аптайму з відкритим кодом, який запускають замість UptimeRobot. Він перевіряє сайти й сервіси з інтервалом від 20 секунд: HTTP(s), за бажання із ключовим словом або JSON-запитом, TCP-порти, пінг і DNS-записи. Для cron-завдання чи скрипта бекапу монітор Push видає URL, який треба викликати, і стає недоступним, коли виклики припиняються. Сповіщення можна отримувати через понад 90 сервісів, серед них Telegram, Discord, Slack і пошта, а HTTPS-монітори попереджають до завершення терміну дії TLS-сертифіката. Сторінки статусу показують відвідувачам, що працює, кожну за бажання на власному домені.",
+				"Uptime Kuma хостять у себе, щоб усі монітори, сторінки статусу та їхня історія зберігалися на власному сервері, а тариф не вирішував, скільки їх можна мати. Uptime Kuma має ліцензію MIT, а вхід може вимагати код двофакторної автентифікації. Але є нюанс: акаунт користувача лише один. Команда ділить один логін, а керування користувачами досі лишається відкритим запитом на нову функцію."
+			],
+			"faq": [
+				{
+					"q": "Чи безкоштовний Uptime Kuma?",
+					"a": "Так. Uptime Kuma — проєкт з відкритим кодом за ліцензією MIT, тож його можна використовувати, змінювати й запускати безкоштовно. Код лежить на GitHub у louislam/uptime-kuma."
+				},
+				{
+					"q": "Uptime Kuma чи UptimeRobot: яка різниця?",
+					"a": "Uptime Kuma — це програма, яку ви запускаєте самі, а не сервіс, де треба реєструватися, тож перевірки йдуть з вашого власного сервера. Автор написав його, бо хотів інструмент на кшталт UptimeRobot, але self-hosted."
+				},
+				{
+					"q": "Чи є мобільний застосунок Uptime Kuma?",
+					"a": "Офіційного немає. У вікі перелічено сторонні застосунки для iPhone, iPad, Android і Apple Watch, а сповіщення можуть надходити на телефон пуш-сповіщеннями через Pushover, Gotify або месенджер."
+				},
+				{
+					"q": "Чи має Uptime Kuma API?",
+					"a": "Офіційного немає. У вікі описано внутрішній Socket.io API, який може змінюватися між версіями без попередження, а також REST-ендпоїнти для Push-моніторів, бейджів статусу, публічних сторінок статусу та метрик Prometheus за адресою /metrics."
+				},
+				{
+					"q": "Як зробити бекап Uptime Kuma?",
+					"a": "Скопіюйте його каталог з даними. Починаючи з версії 2 це єдиний підтримуваний бекап, бо бекап і відновлення в JSON прибрали. У Pethost бекап тому з цим каталогом робиться щоночі й зберігається 14 днів."
+				}
+			]
 		}
 	}
 }

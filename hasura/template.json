@@ -1,6 +1,12 @@
 {
 	"name": "Hasura",
 	"emoji": "🔺",
+	"category": "developer-tools",
+	"alternatives": [
+		"Firebase",
+		"AWS AppSync"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "graphql-engine",
 		"port": 8080
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "Instant GraphQL and REST APIs over a Postgres database, with permissions, events and a web console",
-			"notes": "Open https://{host}/console and enter the admin password you gave as the admin secret; API calls send it in the x-hasura-admin-secret header. The project’s own Postgres is connected as the data source default: create tables in the console’s Data tab."
+			"notes": "Open https://{host}/console and enter the admin password you gave as the admin secret; API calls send it in the x-hasura-admin-secret header. The project’s own Postgres is connected as the data source default: create tables in the console’s Data tab.",
+			"sizing": "Hasura is light: about 100 MB of memory with its Postgres, and the disk holds your database's rows.",
+			"summary": "Hasura is an open-source GraphQL engine for Postgres. Self-host it with Docker Compose in one click, an alternative to Firebase and AWS AppSync.",
+			"about": [
+				"Hasura is an open-source GraphQL engine that puts an instant API on a Postgres database, often run in place of Firebase. Track a table in its console and Hasura generates queries, mutations and realtime subscriptions for it. Permissions are set per role, table and operation, down to single rows and columns. Event triggers call a webhook when a row is inserted, updated or deleted.",
+				"People self-host it to keep their data in their own Postgres, as ordinary tables that any SQL client can still read. It suits frontend and mobile developers who want a backend API without writing one, and the core engine is under the Apache 2.0 license. The catch: it has no sign-up or login of its own, so users have to come from a separate auth service."
+			],
+			"faq": [
+				{
+					"q": "Is Hasura free and open source?",
+					"a": "Yes, the core engine is open source and free to run. Caching, read replicas, Prometheus metrics, API limits and connectors such as MySQL, Oracle and Snowflake are Enterprise Edition features, unlocked by a license key from Hasura."
+				},
+				{
+					"q": "How does authentication work with Hasura?",
+					"a": "Through your own auth service: it issues a JWT that Hasura verifies, or Hasura calls its webhook on each request. The session variables it passes, such as X-Hasura-Role and X-Hasura-User-Id, decide what the request can reach."
+				},
+				{
+					"q": "Which databases does Hasura support?",
+					"a": "The open-source engine connects to Postgres and compatible databases, MS SQL Server and BigQuery. MySQL, MariaDB, Oracle, MongoDB, Snowflake and Amazon Athena need the Enterprise Edition."
+				},
+				{
+					"q": "Can Hasura generate a REST API?",
+					"a": "Yes. RESTified endpoints turn any GraphQL query or mutation into a REST endpoint with its permissions, default CRUD endpoints can be enabled on a data source in a few clicks, and Hasura exports OpenAPI documentation for them."
+				},
+				{
+					"q": "How do I export Hasura metadata?",
+					"a": "In the console, click the settings icon at the top right, then Export Metadata, which downloads a JSON file; Import Metadata applies one. The CLI does the same with hasura metadata export and hasura metadata apply."
+				}
+			]
 		},
 		"de": {
 			"description": "Sofortige GraphQL- und REST-APIs über einer Postgres-Datenbank, mit Berechtigungen, Events und einer Web-Konsole",
-			"notes": "Öffne https://{host}/console und gib das angegebene Admin-Passwort als Admin Secret ein; API-Aufrufe senden es im Header x-hasura-admin-secret. Das Postgres des Projekts ist als Datenquelle default verbunden: Lege Tabellen im Tab Data der Konsole an."
+			"notes": "Öffne https://{host}/console und gib das angegebene Admin-Passwort als Admin Secret ein; API-Aufrufe senden es im Header x-hasura-admin-secret. Das Postgres des Projekts ist als Datenquelle default verbunden: Lege Tabellen im Tab Data der Konsole an.",
+			"sizing": "Hasura ist leicht: etwa 100 MB RAM mit Postgres, und auf der Disk liegen die Zeilen deiner Datenbank.",
+			"summary": "Hasura selbst hosten: Open-Source-GraphQL-Engine für Postgres. Mit Docker Compose in einem Klick, eine Alternative zu Firebase und AWS AppSync.",
+			"about": [
+				"Hasura ist eine Open-Source-GraphQL-Engine, die einer Postgres-Datenbank sofort eine API verpasst und oft anstelle von Firebase läuft. Sobald du eine Tabelle in der Konsole trackst, erzeugt Hasura dafür Queries, Mutations und Realtime-Subscriptions. Berechtigungen legst du pro Rolle, Tabelle und Operation fest, bis hinunter zu einzelnen Zeilen und Spalten. Event Triggers rufen einen Webhook auf, wenn eine Zeile eingefügt, aktualisiert oder gelöscht wird.",
+				"Du hostest Hasura selbst, damit deine Daten in deinem eigenen Postgres bleiben, als gewöhnliche Tabellen, die jeder SQL-Client weiterhin lesen kann. Es passt zu allen im Frontend- und Mobile-Bereich, die eine Backend-API wollen, ohne sie zu schreiben, und die Kern-Engine steht unter der Apache-2.0-Lizenz. Der Haken: Hasura hat keine eigene Registrierung und keinen eigenen Login, die Nutzer müssen also von einem separaten Auth-Service kommen."
+			],
+			"faq": [
+				{
+					"q": "Ist Hasura kostenlos und Open Source?",
+					"a": "Ja, die Kern-Engine ist Open Source und kostenlos im Betrieb. Caching, Read Replicas, Prometheus-Metriken, API-Limits und Connectors wie MySQL, Oracle und Snowflake sind Funktionen der Enterprise Edition, freigeschaltet durch einen Lizenzschlüssel von Hasura."
+				},
+				{
+					"q": "Wie funktioniert die Authentifizierung mit Hasura?",
+					"a": "Über deinen eigenen Auth-Service: Er stellt ein JWT aus, das Hasura prüft, oder Hasura ruft bei jedem Request seinen Webhook auf. Die Session-Variablen, die er übergibt, etwa X-Hasura-Role und X-Hasura-User-Id, bestimmen, worauf der Request zugreifen darf."
+				},
+				{
+					"q": "Welche Datenbanken unterstützt Hasura?",
+					"a": "Die Open-Source-Engine verbindet sich mit Postgres und kompatiblen Datenbanken, MS SQL Server und BigQuery. MySQL, MariaDB, Oracle, MongoDB, Snowflake und Amazon Athena brauchen die Enterprise Edition."
+				},
+				{
+					"q": "Kann Hasura eine REST-API erzeugen?",
+					"a": "Ja. RESTified Endpoints machen aus jeder GraphQL-Query oder -Mutation einen REST-Endpoint samt ihren Berechtigungen, Standard-CRUD-Endpoints lassen sich für eine Datenquelle mit wenigen Klicks aktivieren, und Hasura exportiert dafür eine OpenAPI-Dokumentation."
+				},
+				{
+					"q": "Wie exportiere ich die Hasura-Metadaten?",
+					"a": "Klicke in der Konsole oben rechts auf das Einstellungssymbol und dann auf Export Metadata, das eine JSON-Datei herunterlädt; Import Metadata wendet eine an. Die CLI macht dasselbe mit hasura metadata export und hasura metadata apply."
+				}
+			]
 		},
 		"es": {
 			"description": "APIs GraphQL y REST al instante sobre una base de datos Postgres, con permisos, eventos y una consola web",
-			"notes": "Abre https://{host}/console y escribe como admin secret la contraseña de administrador que indicaste; las llamadas a la API la envían en la cabecera x-hasura-admin-secret. El Postgres del propio proyecto está conectado como la fuente de datos default: crea tablas en la pestaña Data de la consola."
+			"notes": "Abre https://{host}/console y escribe como admin secret la contraseña de administrador que indicaste; las llamadas a la API la envían en la cabecera x-hasura-admin-secret. El Postgres del propio proyecto está conectado como la fuente de datos default: crea tablas en la pestaña Data de la consola.",
+			"sizing": "Hasura es ligero: unos 100 MB de memoria con su Postgres, y el disco guarda las filas de tu base de datos.",
+			"summary": "Autoaloja Hasura, el motor GraphQL de código abierto para Postgres. Con Docker Compose en un clic, una alternativa a Firebase y AWS AppSync.",
+			"about": [
+				"Hasura es un motor GraphQL de código abierto que pone una API instantánea sobre una base de datos Postgres y se usa a menudo en lugar de Firebase. Al hacer Track de una tabla en la consola, Hasura genera para ella queries, mutations y subscriptions en tiempo real. Los permisos se definen por rol, tabla y operación, hasta filas y columnas individuales. Los Event Triggers llaman a un webhook cuando se inserta, actualiza o elimina una fila.",
+				"Autoalojas Hasura para mantener tus datos en tu propio Postgres, como tablas normales que cualquier cliente SQL puede seguir leyendo. Encaja con quienes desarrollan frontend y apps móviles y quieren una API de backend sin escribirla, y el motor central tiene licencia Apache 2.0. El inconveniente: no tiene registro de usuarios ni inicio de sesión propios, así que los usuarios deben venir de un servicio de autenticación aparte."
+			],
+			"faq": [
+				{
+					"q": "¿Hasura es gratis y de código abierto?",
+					"a": "Sí, el motor central es de código abierto y gratis de ejecutar. El caché, las réplicas de lectura, las métricas de Prometheus, los límites de API y conectores como MySQL, Oracle y Snowflake son funciones de la Enterprise Edition, que se desbloquean con una clave de licencia de Hasura."
+				},
+				{
+					"q": "¿Cómo funciona la autenticación con Hasura?",
+					"a": "A través de tu propio servicio de autenticación: este emite un JWT que Hasura verifica, o Hasura llama a su webhook en cada petición. Las variables de sesión que pasa, como X-Hasura-Role y X-Hasura-User-Id, deciden a qué puede acceder la petición."
+				},
+				{
+					"q": "¿Qué bases de datos admite Hasura?",
+					"a": "El motor de código abierto se conecta a Postgres y bases de datos compatibles, MS SQL Server y BigQuery. MySQL, MariaDB, Oracle, MongoDB, Snowflake y Amazon Athena requieren la Enterprise Edition."
+				},
+				{
+					"q": "¿Hasura puede generar una API REST?",
+					"a": "Sí. Los RESTified endpoints convierten cualquier query o mutation de GraphQL en un endpoint REST con sus permisos, los endpoints CRUD predeterminados se pueden activar en una fuente de datos con unos pocos clics, y Hasura exporta documentación OpenAPI para ellos."
+				},
+				{
+					"q": "¿Cómo exporto los metadatos de Hasura?",
+					"a": "En la consola, haz clic en el icono de ajustes de arriba a la derecha y luego en Export Metadata, que descarga un archivo JSON; Import Metadata aplica uno. La CLI hace lo mismo con hasura metadata export y hasura metadata apply."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des API GraphQL et REST instantanées sur une base Postgres, avec des permissions, des événements et une console web",
-			"notes": "Ouvrez https://{host}/console et saisissez comme admin secret le mot de passe administrateur indiqué ; les appels à l’API l’envoient dans l’en-tête x-hasura-admin-secret. Le Postgres du projet est relié comme la source de données default : créez des tables dans l’onglet Data de la console."
+			"notes": "Ouvrez https://{host}/console et saisissez comme admin secret le mot de passe administrateur indiqué ; les appels à l’API l’envoient dans l’en-tête x-hasura-admin-secret. Le Postgres du projet est relié comme la source de données default : créez des tables dans l’onglet Data de la console.",
+			"sizing": "Hasura est léger : environ 100 MB de mémoire avec son Postgres, et le disque contient les lignes de votre base de données.",
+			"summary": "Auto-hébergez Hasura, le moteur GraphQL open source pour Postgres. Avec Docker Compose en un clic, une alternative à Firebase et AWS AppSync.",
+			"about": [
+				"Hasura est un moteur GraphQL open source qui met en place une API instantanée au-dessus d’une base Postgres, souvent utilisé à la place de Firebase. Dès qu’une table est suivie (Track) dans la console, Hasura génère pour elle des requêtes, des mutations et des subscriptions en temps réel. Les permissions se définissent par rôle, table et opération, jusqu’aux lignes et aux colonnes individuelles. Les Event Triggers appellent un webhook quand une ligne est insérée, modifiée ou supprimée.",
+				"Vous auto-hébergez Hasura pour garder vos données dans votre propre Postgres, sous forme de tables ordinaires que n’importe quel client SQL peut toujours lire. Il convient aux développeurs front-end et mobile qui veulent une API backend sans l’écrire, et le moteur de base est sous licence Apache 2.0. Le revers : il n’a ni inscription ni connexion propres, les utilisateurs doivent donc venir d’un service d’authentification séparé."
+			],
+			"faq": [
+				{
+					"q": "Hasura est-il gratuit et open source ?",
+					"a": "Oui, le moteur de base est open source et gratuit à faire tourner. Le cache, les réplicas en lecture, les métriques Prometheus, les limites d’API et des connecteurs comme MySQL, Oracle et Snowflake sont des fonctions de l’Enterprise Edition, déverrouillées par une clé de licence fournie par Hasura."
+				},
+				{
+					"q": "Comment fonctionne l’authentification avec Hasura ?",
+					"a": "Via votre propre service d’authentification : il émet un JWT que Hasura vérifie, ou Hasura appelle son webhook à chaque requête. Les variables de session qu’il transmet, comme X-Hasura-Role et X-Hasura-User-Id, déterminent ce que la requête peut atteindre."
+				},
+				{
+					"q": "Quelles bases de données Hasura prend-il en charge ?",
+					"a": "Le moteur open source se connecte à Postgres et aux bases compatibles, à MS SQL Server et à BigQuery. MySQL, MariaDB, Oracle, MongoDB, Snowflake et Amazon Athena demandent l’Enterprise Edition."
+				},
+				{
+					"q": "Hasura peut-il générer une API REST ?",
+					"a": "Oui. Les RESTified endpoints transforment n’importe quelle requête ou mutation GraphQL en endpoint REST avec ses permissions, les endpoints CRUD par défaut s’activent sur une source de données en quelques clics, et Hasura exporte la documentation OpenAPI correspondante."
+				},
+				{
+					"q": "Comment exporter les métadonnées de Hasura ?",
+					"a": "Dans la console, cliquez sur l’icône des paramètres en haut à droite, puis sur Export Metadata, qui télécharge un fichier JSON ; Import Metadata en applique un. La CLI fait la même chose avec hasura metadata export et hasura metadata apply."
+				}
+			]
 		},
 		"pl": {
 			"description": "Natychmiastowe API GraphQL i REST nad bazą Postgres, z uprawnieniami, zdarzeniami i konsolą w przeglądarce",
-			"notes": "Otwórz https://{host}/console i wpisz jako admin secret hasło administratora, które podano; wywołania API wysyłają je w nagłówku x-hasura-admin-secret. Postgres projektu jest podłączony jako źródło danych default: tabele utworzysz w zakładce Data konsoli."
+			"notes": "Otwórz https://{host}/console i wpisz jako admin secret hasło administratora, które podano; wywołania API wysyłają je w nagłówku x-hasura-admin-secret. Postgres projektu jest podłączony jako źródło danych default: tabele utworzysz w zakładce Data konsoli.",
+			"sizing": "Hasura ma małe wymagania: około 100 MB pamięci z Postgresem, a dysk zajmują wiersze twojej bazy danych.",
+			"summary": "Hostuj u siebie Hasurę, silnik GraphQL open source dla Postgresa. Z Docker Compose w jeden klik, alternatywa dla Firebase i AWS AppSync.",
+			"about": [
+				"Hasura to silnik GraphQL typu open source, który nakłada natychmiastowe API na bazę Postgres i często działa zamiast Firebase. Gdy dodasz tabelę do śledzenia (Track) w konsoli, Hasura generuje dla niej zapytania, mutacje i subskrypcje działające w czasie rzeczywistym. Uprawnienia ustawia się osobno dla roli, tabeli i operacji, aż do pojedynczych wierszy i kolumn. Event Triggers wywołują webhook, gdy wiersz zostanie dodany, zmieniony lub usunięty.",
+				"Hasurę hostujesz u siebie, żeby dane zostały w twoim własnym Postgresie, jako zwykłe tabele, które nadal przeczyta każdy klient SQL. Pasuje do osób, które piszą frontend lub aplikacje mobilne i chcą mieć API backendu bez pisania go, a rdzeń silnika jest na licencji Apache 2.0. Haczyk: Hasura nie ma własnej rejestracji ani logowania, więc użytkownicy muszą pochodzić z osobnej usługi uwierzytelniania."
+			],
+			"faq": [
+				{
+					"q": "Czy Hasura jest darmowa i open source?",
+					"a": "Tak, rdzeń silnika jest open source i darmowy w uruchomieniu. Cache, repliki do odczytu, metryki Prometheusa, limity API i konektory, takie jak MySQL, Oracle i Snowflake, to funkcje Enterprise Edition, odblokowywane kluczem licencyjnym od Hasury."
+				},
+				{
+					"q": "Jak działa uwierzytelnianie w Hasurze?",
+					"a": "Przez twoją własną usługę uwierzytelniania: wystawia ona JWT, który Hasura weryfikuje, albo Hasura wywołuje jej webhook przy każdym żądaniu. Zmienne sesji, które przekazuje, takie jak X-Hasura-Role i X-Hasura-User-Id, decydują, do czego żądanie ma dostęp."
+				},
+				{
+					"q": "Jakie bazy danych obsługuje Hasura?",
+					"a": "Silnik open source łączy się z Postgresem i zgodnymi bazami, MS SQL Server i BigQuery. MySQL, MariaDB, Oracle, MongoDB, Snowflake i Amazon Athena wymagają Enterprise Edition."
+				},
+				{
+					"q": "Czy Hasura może wygenerować REST API?",
+					"a": "Tak. RESTified endpoints zamieniają dowolne zapytanie lub mutację GraphQL w endpoint REST wraz z jego uprawnieniami, domyślne endpointy CRUD można włączyć dla źródła danych kilkoma kliknięciami, a Hasura eksportuje dla nich dokumentację OpenAPI."
+				},
+				{
+					"q": "Jak wyeksportować metadane Hasury?",
+					"a": "W konsoli kliknij ikonę ustawień w prawym górnym rogu, potem Export Metadata, co pobierze plik JSON; Import Metadata stosuje taki plik. CLI robi to samo poleceniami hasura metadata export i hasura metadata apply."
+				}
+			]
 		},
 		"pt": {
 			"description": "APIs GraphQL e REST instantâneas sobre um banco Postgres, com permissões, eventos e um console web",
-			"notes": "Abra https://{host}/console e digite como admin secret a senha de administrador que você informou; as chamadas à API a enviam no cabeçalho x-hasura-admin-secret. O Postgres do próprio projeto está conectado como a fonte de dados default: crie tabelas na aba Data do console."
+			"notes": "Abra https://{host}/console e digite como admin secret a senha de administrador que você informou; as chamadas à API a enviam no cabeçalho x-hasura-admin-secret. O Postgres do próprio projeto está conectado como a fonte de dados default: crie tabelas na aba Data do console.",
+			"sizing": "Hasura é leve: cerca de 100 MB de memória com o Postgres, e o disco guarda as linhas do seu banco de dados.",
+			"summary": "Auto-hospede o Hasura, o motor GraphQL de código aberto para Postgres. Com Docker Compose em um clique, alternativa ao Firebase e ao AWS AppSync.",
+			"about": [
+				"O Hasura é um motor GraphQL de código aberto que coloca uma API instantânea sobre um banco de dados Postgres e costuma rodar no lugar do Firebase. Ao fazer Track de uma tabela no console, o Hasura gera para ela queries, mutations e subscriptions em tempo real. As permissões são definidas por role, tabela e operação, até linhas e colunas individuais. Os Event Triggers chamam um webhook quando uma linha é inserida, atualizada ou excluída.",
+				"Auto-hospedar o Hasura mantém seus dados no seu próprio Postgres, como tabelas comuns que qualquer cliente SQL continua conseguindo ler. Ele serve para quem desenvolve frontend e apps mobile e quer uma API de backend sem escrevê-la, e o motor central usa a licença Apache 2.0. O porém: ele não tem cadastro nem login próprios, então os usuários precisam vir de um serviço de autenticação separado."
+			],
+			"faq": [
+				{
+					"q": "O Hasura é gratuito e de código aberto?",
+					"a": "Sim, o motor central é de código aberto e gratuito para rodar. Cache, réplicas de leitura, métricas do Prometheus, limites de API e conectores como MySQL, Oracle e Snowflake são recursos da Enterprise Edition, liberados por uma chave de licença da Hasura."
+				},
+				{
+					"q": "Como funciona a autenticação com o Hasura?",
+					"a": "Pelo seu próprio serviço de autenticação: ele emite um JWT que o Hasura verifica, ou o Hasura chama o webhook dele a cada requisição. As variáveis de sessão que ele repassa, como X-Hasura-Role e X-Hasura-User-Id, decidem o que a requisição pode acessar."
+				},
+				{
+					"q": "Quais bancos de dados o Hasura suporta?",
+					"a": "O motor de código aberto se conecta ao Postgres e a bancos compatíveis, ao MS SQL Server e ao BigQuery. MySQL, MariaDB, Oracle, MongoDB, Snowflake e Amazon Athena exigem a Enterprise Edition."
+				},
+				{
+					"q": "O Hasura consegue gerar uma API REST?",
+					"a": "Sim. Os RESTified endpoints transformam qualquer query ou mutation GraphQL em um endpoint REST com as respectivas permissões, os endpoints CRUD padrão podem ser ativados em uma fonte de dados com alguns cliques, e o Hasura exporta a documentação OpenAPI deles."
+				},
+				{
+					"q": "Como exporto os metadados do Hasura?",
+					"a": "No console, clique no ícone de configurações no canto superior direito e depois em Export Metadata, que baixa um arquivo JSON; Import Metadata aplica um. A CLI faz o mesmo com hasura metadata export e hasura metadata apply."
+				}
+			]
 		},
 		"ru": {
 			"description": "Готовые GraphQL- и REST-API поверх базы Postgres, с правами доступа, событиями и веб-консолью",
-			"notes": "Откройте https://{host}/console и введите как admin secret пароль администратора, который вы указали; запросы к API передают его в заголовке x-hasura-admin-secret. Postgres самого проекта подключён как источник данных default: таблицы создаются во вкладке Data консоли."
+			"notes": "Откройте https://{host}/console и введите как admin secret пароль администратора, который вы указали; запросы к API передают его в заголовке x-hasura-admin-secret. Postgres самого проекта подключён как источник данных default: таблицы создаются во вкладке Data консоли.",
+			"sizing": "Hasura: небольшие требования — около 100 MB памяти вместе с Postgres, а на диске строки вашей базы.",
+			"summary": "Self-hosted Hasura — open source GraphQL-движок для Postgres. Запуск через Docker Compose в один клик, альтернатива Firebase и AWS AppSync.",
+			"about": [
+				"Hasura — это open source GraphQL-движок, который сразу дает базе данных Postgres готовый API и нередко работает вместо Firebase. Достаточно добавить таблицу в отслеживание (Track) в консоли, и Hasura сгенерирует для нее запросы, мутации и подписки в реальном времени. Права настраиваются для каждой роли, таблицы и операции, вплоть до отдельных строк и столбцов. Event Triggers вызывают вебхук, когда строку вставляют, обновляют или удаляют.",
+				"Hasura хостят у себя, чтобы данные лежали в собственном Postgres обычными таблицами, которые по-прежнему читает любой SQL-клиент. Он подходит фронтенд- и мобильным разработчикам, которым нужен API для бэкенда, но не хочется писать его самим, а ядро движка распространяется под лицензией Apache 2.0. Но есть нюанс: в нем нет собственной регистрации и входа, поэтому пользователей нужно брать из отдельного сервиса аутентификации."
+			],
+			"faq": [
+				{
+					"q": "Hasura — бесплатный движок с открытым кодом?",
+					"a": "Да, ядро движка имеет открытый код и бесплатно для запуска. Кеширование, реплики для чтения, метрики Prometheus, лимиты API и коннекторы вроде MySQL, Oracle и Snowflake — функции Enterprise Edition, которые открываются лицензионным ключом от Hasura."
+				},
+				{
+					"q": "Как работает аутентификация в Hasura?",
+					"a": "Через ваш собственный сервис аутентификации: он выдает JWT, который проверяет Hasura, либо Hasura вызывает его вебхук при каждом запросе. Переменные сессии, которые он передает, например X-Hasura-Role и X-Hasura-User-Id, определяют, до чего запрос может добраться."
+				},
+				{
+					"q": "Какие базы данных поддерживает Hasura?",
+					"a": "Движок с открытым кодом подключается к Postgres и совместимым базам, MS SQL Server и BigQuery. Для MySQL, MariaDB, Oracle, MongoDB, Snowflake и Amazon Athena нужна Enterprise Edition."
+				},
+				{
+					"q": "Умеет ли Hasura создавать REST API?",
+					"a": "Да. RESTified endpoints превращают любой GraphQL-запрос или мутацию в REST-эндпоинт с его правами доступа, стандартные CRUD-эндпоинты включаются для источника данных в несколько кликов, а для них Hasura экспортирует документацию OpenAPI."
+				},
+				{
+					"q": "Как экспортировать метаданные Hasura?",
+					"a": "В консоли нажмите значок настроек в правом верхнем углу, затем Export Metadata, и скачается JSON-файл; Import Metadata применяет такой файл. CLI делает то же самое командами hasura metadata export и hasura metadata apply."
+				}
+			]
 		},
 		"uk": {
 			"description": "Готові GraphQL- і REST-API поверх бази Postgres, із правами доступу, подіями й вебконсоллю",
-			"notes": "Відкрийте https://{host}/console і введіть як admin secret пароль адміністратора, який ви вказали; запити до API передають його в заголовку x-hasura-admin-secret. Postgres самого проєкту підключено як джерело даних default: таблиці створюються у вкладці Data консолі."
+			"notes": "Відкрийте https://{host}/console і введіть як admin secret пароль адміністратора, який ви вказали; запити до API передають його в заголовку x-hasura-admin-secret. Postgres самого проєкту підключено як джерело даних default: таблиці створюються у вкладці Data консолі.",
+			"sizing": "Hasura має скромні вимоги: близько 100 MB пам’яті з Postgres, а диск займають рядки вашої бази даних.",
+			"summary": "Self-hosted Hasura — GraphQL-рушій із відкритим кодом для Postgres. Запуск через Docker Compose в один клік, альтернатива Firebase і AWS AppSync.",
+			"about": [
+				"Hasura — це GraphQL-рушій із відкритим кодом, який одразу дає базі даних Postgres готовий API і часто працює замість Firebase. Щойно ви додасте таблицю до відстеження (Track) у консолі, Hasura згенерує для неї запити, мутації та підписки в реальному часі. Права доступу налаштовуються для кожної ролі, таблиці й операції, аж до окремих рядків і стовпців. Event Triggers викликають вебхук, коли рядок вставляють, оновлюють або видаляють.",
+				"Hasura хостять у себе, щоб дані лежали у власному Postgres звичайними таблицями, які досі читає будь-який SQL-клієнт. Він підходить фронтенд- і мобільним розробникам, яким потрібен API для бекенду, але не хочеться писати його самим, а ядро рушія поширюється за ліцензією Apache 2.0. Але є нюанс: у ньому немає власної реєстрації та входу, тож користувачів потрібно брати з окремого сервісу автентифікації."
+			],
+			"faq": [
+				{
+					"q": "Hasura — безплатний рушій із відкритим кодом?",
+					"a": "Так, ядро рушія має відкритий код і безплатне в запуску. Кешування, репліки для читання, метрики Prometheus, ліміти API та конектори, як-от MySQL, Oracle і Snowflake, — функції Enterprise Edition, які відкриваються ліцензійним ключем від Hasura."
+				},
+				{
+					"q": "Як працює автентифікація в Hasura?",
+					"a": "Через ваш власний сервіс автентифікації: він видає JWT, який перевіряє Hasura, або Hasura викликає його вебхук під час кожного запиту. Змінні сесії, які він передає, наприклад X-Hasura-Role і X-Hasura-User-Id, визначають, до чого запит може дістатися."
+				},
+				{
+					"q": "Які бази даних підтримує Hasura?",
+					"a": "Рушій із відкритим кодом підключається до Postgres і сумісних баз, MS SQL Server та BigQuery. Для MySQL, MariaDB, Oracle, MongoDB, Snowflake і Amazon Athena потрібна Enterprise Edition."
+				},
+				{
+					"q": "Чи вміє Hasura створювати REST API?",
+					"a": "Так. RESTified endpoints перетворюють будь-який GraphQL-запит або мутацію на REST-ендпоінт з його правами доступу, типові CRUD-ендпоінти вмикаються для джерела даних кількома кліками, а для них Hasura експортує документацію OpenAPI."
+				},
+				{
+					"q": "Як експортувати метадані Hasura?",
+					"a": "У консолі натисніть значок налаштувань угорі праворуч, потім Export Metadata — буде звантажено JSON-файл; Import Metadata застосовує такий файл. CLI робить те саме командами hasura metadata export і hasura metadata apply."
+				}
+			]
 		}
 	}
 }

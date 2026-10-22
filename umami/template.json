@@ -1,6 +1,12 @@
 {
 	"name": "Umami",
 	"emoji": "📊",
+	"category": "monitoring",
+	"alternatives": [
+		"Google Analytics",
+		"Plausible Analytics"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "umami",
 		"port": 3000
@@ -22,35 +28,259 @@
 	"texts": {
 		"en": {
 			"description": "Web analytics for your sites, without cookies",
-			"notes": "Sign in as admin with the password umami and change it at once in your profile. Then add your website and put its tracking script on your pages."
+			"notes": "Sign in as admin with the password umami and change it at once in your profile. Then add your website and put its tracking script on your pages.",
+			"sizing": "Umami is light: about 250 MB of memory, and tens of gigabytes of disk hold millions of events.",
+			"summary": "Self-host Umami, an open-source Google Analytics alternative without cookies, with PostgreSQL and HTTPS on your own machine in one click.",
+			"about": [
+				"Umami is an open-source web analytics tool, a privacy-focused alternative to Google Analytics. One script tag on your site counts visitors with no cookies, no cross-site tracking and no personal data. The dashboard shows views, visitors, bounce rate, referrers, UTM campaigns, countries and devices, and Realtime shows visits as they happen. Custom events record signups and checkouts, and the Funnel, Journey, Retention and Revenue reports build on them. Single-page apps need no extra setup.",
+				"People self-host Umami so the numbers about their visitors stay on a server they control: every event sits in its PostgreSQL database until they delete it. It is MIT-licensed, and one instance serves several people and websites, with team roles and a share link that makes chosen views public. Since version 3.4, an optional read-only MCP endpoint lets assistants such as Claude, ChatGPT and Cursor query your stats."
+			],
+			"faq": [
+				{
+					"q": "Is Umami free and open source?",
+					"a": "Yes. Umami is on GitHub under the MIT license, so you can run, change and self-host it at no cost. Umami Cloud is the vendor's hosted service, for people who would rather not run it."
+				},
+				{
+					"q": "How does Umami count visitors without cookies?",
+					"a": "It hashes the website ID, the visitor's IP address, the User-Agent and a salt that rotates every month into a session. The IP address goes into the hash but is never saved with the session."
+				},
+				{
+					"q": "Is Umami GDPR compliant?",
+					"a": "It is built for privacy: no cookies, no cross-site tracking, no personal data collected automatically. Its docs add that GDPR compliance still depends on how you configure and use it."
+				},
+				{
+					"q": "Does Umami get blocked by ad blockers?",
+					"a": "Sometimes, because some blocklists block anything named analytics. A self-hosted Umami can rename its script with TRACKER_SCRIPT_NAME and its endpoint with COLLECT_API_ENDPOINT, or you can proxy both through your own domain."
+				},
+				{
+					"q": "How do I export data from a self-hosted Umami?",
+					"a": "With pg_dump or plain SQL: it keeps everything in PostgreSQL, and its CSV export is for Umami Cloud only. Here the database runs in the db container, reachable from the panel's web terminal or over SSH."
+				}
+			]
 		},
 		"de": {
 			"description": "Webanalyse für deine Websites, ohne Cookies",
-			"notes": "Melde dich als admin mit dem Passwort umami an und ändere es sofort in deinem Profil. Füg dann deine Website hinzu und bau ihr Tracking-Skript in deine Seiten ein."
+			"notes": "Melde dich als admin mit dem Passwort umami an und ändere es sofort in deinem Profil. Füg dann deine Website hinzu und bau ihr Tracking-Skript in deine Seiten ein.",
+			"sizing": "Umami ist leicht: etwa 250 MB RAM, und Dutzende GB Disk fassen Millionen Events.",
+			"summary": "Umami selbst hosten: die Open-Source-Alternative zu Google Analytics ohne Cookies, mit PostgreSQL und HTTPS auf deiner Maschine, mit einem Klick.",
+			"about": [
+				"Umami ist ein Open-Source-Tool für Web-Analytics, eine datenschutzfreundliche Alternative zu Google Analytics. Ein Script-Tag auf deiner Website zählt Besucher ohne Cookies, ohne websiteübergreifendes Tracking und ohne personenbezogene Daten. Das Dashboard zeigt Aufrufe, Besucher, Absprungrate, Referrer, UTM-Kampagnen, Länder und Geräte, Realtime zeigt Besuche, während sie passieren. Custom Events erfassen Anmeldungen und Checkouts, und die Reports Funnel, Journey, Retention und Revenue bauen darauf auf. Single-Page-Apps brauchen keine zusätzliche Einrichtung.",
+				"Du hostest Umami selbst, damit die Zahlen über die Menschen auf deiner Website auf einer Maschine bleiben, die du kontrollierst: Jedes Event liegt in der PostgreSQL-Datenbank, bis du es löschst. Umami steht unter der MIT-Lizenz, und eine Instanz bedient mehrere Personen und Websites, mit Teamrollen und einem Share-Link, der ausgewählte Ansichten öffentlich macht. Seit Version 3.4 lässt ein optionaler, schreibgeschützter MCP-Endpoint Assistenten wie Claude, ChatGPT und Cursor deine Statistiken abfragen."
+			],
+			"faq": [
+				{
+					"q": "Ist Umami kostenlos und Open Source?",
+					"a": "Ja. Umami steht auf GitHub unter der MIT-Lizenz, du kannst es also kostenlos betreiben, ändern und selbst hosten. Umami Cloud ist das gehostete Angebot des Herstellers, für alle, die es lieber nicht selbst betreiben."
+				},
+				{
+					"q": "Wie zählt Umami Besucher ohne Cookies?",
+					"a": "Aus der Website-ID, der IP-Adresse des Besuchers, dem User-Agent und einem Salt-Wert, der sich jeden Monat ändert, bildet Umami einen Hash, und der ergibt die Sitzung. Die IP-Adresse fließt in den Hash ein, wird aber nie mit der Sitzung gespeichert."
+				},
+				{
+					"q": "Ist Umami DSGVO-konform?",
+					"a": "Umami ist auf Datenschutz ausgelegt: keine Cookies, kein websiteübergreifendes Tracking, keine personenbezogenen Daten, die automatisch erfasst werden. Laut den Docs hängt die DSGVO-Konformität trotzdem davon ab, wie du es konfigurierst und nutzt."
+				},
+				{
+					"q": "Wird Umami von Adblockern blockiert?",
+					"a": "Manchmal, weil manche Blocklisten alles blockieren, was analytics heißt. Ein selbst gehostetes Umami kann sein Script mit TRACKER_SCRIPT_NAME und seinen Endpoint mit COLLECT_API_ENDPOINT umbenennen, oder du leitest beides über deine eigene Domain per Proxy."
+				},
+				{
+					"q": "Wie exportiere ich Daten aus einem selbst gehosteten Umami?",
+					"a": "Mit pg_dump oder per SQL: Umami hält alles in PostgreSQL, und einen CSV-Export gibt es nur für Umami Cloud. In dieser Vorlage läuft die Datenbank im Container db, erreichbar über das Web-Terminal des Panels oder per SSH."
+				}
+			]
 		},
 		"es": {
 			"description": "Analítica web para tus sitios, sin cookies",
-			"notes": "Inicia sesión como admin con la contraseña umami y cámbiala de inmediato en tu perfil. Luego agrega tu sitio web y pon su script de seguimiento en tus páginas."
+			"notes": "Inicia sesión como admin con la contraseña umami y cámbiala de inmediato en tu perfil. Luego agrega tu sitio web y pon su script de seguimiento en tus páginas.",
+			"sizing": "Umami es ligero: unos 250 MB de memoria, y decenas de GB de disco guardan millones de eventos.",
+			"summary": "Autoaloja Umami, la alternativa de código abierto a Google Analytics sin cookies, con PostgreSQL y HTTPS en tu propia máquina en un clic.",
+			"about": [
+				"Umami es una herramienta de analítica web de código abierto, una alternativa a Google Analytics centrada en la privacidad. Una sola etiqueta script en tu sitio cuenta visitantes sin cookies, sin seguimiento entre sitios y sin datos personales. El panel muestra vistas, visitantes, tasa de rebote, referrers, campañas UTM, países y dispositivos, y Realtime muestra las visitas según ocurren. Los eventos personalizados guardan acciones como registros y checkouts, y los informes Funnel, Journey, Retention y Revenue se apoyan en ellos. Las single-page apps no necesitan configuración adicional.",
+				"Autoalojas Umami para que las cifras de tus visitantes se queden en una máquina que controlas: cada evento está en su base de datos PostgreSQL hasta que lo eliminas. Tiene licencia MIT y una sola instancia sirve a varias personas y sitios, con roles de equipo y un enlace para compartir que hace públicas las vistas que elijas. Desde la versión 3.4, un endpoint MCP opcional de solo lectura permite que asistentes como Claude, ChatGPT y Cursor consulten tus estadísticas."
+			],
+			"faq": [
+				{
+					"q": "¿Umami es gratis y de código abierto?",
+					"a": "Sí. Umami está en GitHub con licencia MIT, así que puedes ejecutarlo, modificarlo y autoalojarlo gratis. Umami Cloud es el servicio alojado del fabricante, para quienes prefieren no ejecutarlo por su cuenta."
+				},
+				{
+					"q": "¿Cómo cuenta Umami a los visitantes sin cookies?",
+					"a": "Con el ID del sitio, la dirección IP del visitante, el User-Agent y un salt que rota cada mes calcula un hash, y de ese hash sale la sesión. La IP entra en el hash, pero nunca se guarda con la sesión."
+				},
+				{
+					"q": "¿Umami cumple con el RGPD?",
+					"a": "Está pensado para la privacidad: sin cookies, sin seguimiento entre sitios y sin datos personales recopilados de forma automática. Su documentación añade que cumplir el RGPD sigue dependiendo de cómo lo configures y lo uses."
+				},
+				{
+					"q": "¿Los bloqueadores de anuncios bloquean Umami?",
+					"a": "A veces, porque algunas listas de bloqueo bloquean todo lo que se llame analytics. Un Umami autoalojado puede cambiar el nombre de su script con TRACKER_SCRIPT_NAME y el de su endpoint con COLLECT_API_ENDPOINT, o puedes pasar ambos por un proxy desde tu propio dominio."
+				},
+				{
+					"q": "¿Cómo exporto los datos de un Umami autoalojado?",
+					"a": "Con pg_dump o con SQL: lo guarda todo en PostgreSQL, y su exportación a CSV es solo para Umami Cloud. En esta plantilla la base de datos se ejecuta en el contenedor db, al que llegas desde el panel, con su Terminal web, o por SSH."
+				}
+			]
 		},
 		"fr": {
 			"description": "Mesure d’audience pour vos sites, sans cookies",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe umami, puis changez aussitôt ce mot de passe dans votre profil. Ajoutez ensuite votre site et placez son script de suivi sur vos pages."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe umami, puis changez aussitôt ce mot de passe dans votre profil. Ajoutez ensuite votre site et placez son script de suivi sur vos pages.",
+			"sizing": "Umami est léger : environ 250 MB de mémoire, et des dizaines de GB de disque contiennent des millions d’événements.",
+			"summary": "Auto-hébergez Umami, l’alternative open source à Google Analytics sans cookies, avec PostgreSQL et HTTPS sur votre machine, en un clic.",
+			"about": [
+				"Umami est un outil d’analytics web open source, une alternative à Google Analytics axée sur la vie privée. Une seule balise script sur votre site compte les visiteurs sans cookies, sans suivi inter-sites et sans données personnelles. Le tableau de bord affiche les vues, les visiteurs, le taux de rebond, les sites référents, les campagnes UTM, les pays et les appareils, et Realtime montre les visites au moment où elles ont lieu. Les événements personnalisés enregistrent inscriptions et paiements, et les rapports Funnel, Journey, Retention et Revenue s’appuient dessus. Les applications monopages ne demandent aucune configuration supplémentaire.",
+				"Vous auto-hébergez Umami pour que les chiffres sur vos visiteurs restent sur une machine que vous contrôlez : chaque événement est conservé dans sa base PostgreSQL jusqu’à ce que vous le supprimiez. Il est sous licence MIT, et une même instance sert plusieurs personnes et plusieurs sites, avec des rôles d’équipe et un lien de partage qui rend publiques les vues de votre choix. Depuis la version 3.4, un endpoint MCP facultatif en lecture seule permet à des assistants comme Claude, ChatGPT et Cursor d’interroger vos statistiques."
+			],
+			"faq": [
+				{
+					"q": "Umami est-il gratuit et open source ?",
+					"a": "Oui. Umami est sur GitHub sous licence MIT : vous pouvez l’exécuter, le modifier et l’auto-héberger gratuitement. Umami Cloud est le service hébergé de l’éditeur, pour qui préfère ne pas le faire tourner soi-même."
+				},
+				{
+					"q": "Comment Umami compte-t-il les visiteurs sans cookies ?",
+					"a": "Il calcule un hash de l’ID du site, de l’adresse IP du visiteur, du User-Agent et d’un salt qui change chaque mois, et en tire une session. L’adresse IP entre dans le hash mais n’est jamais enregistrée avec la session."
+				},
+				{
+					"q": "Umami est-il conforme au RGPD ?",
+					"a": "Il est conçu pour la vie privée : pas de cookies, pas de suivi inter-sites, aucune donnée personnelle collectée automatiquement. Sa documentation précise que la conformité au RGPD dépend quand même de la façon dont vous le configurez et l’utilisez."
+				},
+				{
+					"q": "Umami est-il bloqué par les bloqueurs de publicité ?",
+					"a": "Parfois, car certaines listes de blocage bloquent tout ce qui s’appelle analytics. Un Umami auto-hébergé peut renommer son script avec TRACKER_SCRIPT_NAME et son point de collecte avec COLLECT_API_ENDPOINT, ou vous pouvez faire passer les deux par un proxy sur votre propre domaine."
+				},
+				{
+					"q": "Comment exporter les données d’un Umami auto-hébergé ?",
+					"a": "Avec pg_dump ou en SQL : Umami garde tout dans PostgreSQL, et son export CSV n’existe que pour Umami Cloud. Dans ce template, la base de données tourne dans le conteneur db, accessible depuis le terminal web de la console ou en SSH."
+				}
+			]
 		},
 		"pl": {
 			"description": "Analityka webowa twoich stron, bez plików cookie",
-			"notes": "Zaloguj się jako admin z hasłem umami i od razu zmień je w swoim profilu. Potem dodaj swoją witrynę i umieść jej skrypt śledzący na swoich stronach."
+			"notes": "Zaloguj się jako admin z hasłem umami i od razu zmień je w swoim profilu. Potem dodaj swoją witrynę i umieść jej skrypt śledzący na swoich stronach.",
+			"sizing": "Umami ma małe wymagania: około 250 MB pamięci, a dziesiątki GB dysku mieszczą miliony zdarzeń.",
+			"summary": "Hostuj u siebie Umami, alternatywę dla Google Analytics typu open source, bez plików cookie, z PostgreSQL i HTTPS na własnej maszynie jednym kliknięciem.",
+			"about": [
+				"Umami to narzędzie do analityki webowej typu open source, alternatywa dla Google Analytics nastawiona na prywatność. Jeden tag script na twojej stronie liczy odwiedzających bez plików cookie, bez śledzenia między witrynami i bez danych osobowych. Panel pokazuje wyświetlenia, odwiedzających, współczynnik odrzuceń, źródła odesłań, kampanie UTM, kraje i urządzenia, a Realtime pokazuje wizyty na bieżąco. Zdarzenia niestandardowe zapisują rejestracje i finalizacje zamówień, a raporty Funnel, Journey, Retention i Revenue się na nich opierają. Aplikacje jednostronicowe nie wymagają dodatkowej konfiguracji.",
+				"Umami hostujesz u siebie, żeby liczby o odwiedzających zostały na maszynie, którą kontrolujesz: każde zdarzenie leży w bazie PostgreSQL, dopóki go nie usuniesz. Działa na licencji MIT, jedna instancja obsługuje kilka osób i witryn, z rolami w zespole i linkiem do udostępniania, który upublicznia wybrane widoki. Od wersji 3.4 opcjonalny endpoint MCP tylko do odczytu pozwala asystentom takim jak Claude, ChatGPT i Cursor pytać o twoje statystyki."
+			],
+			"faq": [
+				{
+					"q": "Czy Umami jest darmowe i open source?",
+					"a": "Tak. Umami jest na GitHubie na licencji MIT, więc możesz je uruchamiać, zmieniać i hostować u siebie bez opłat. Umami Cloud to hostowana usługa producenta, dla osób, które wolą nie uruchamiać go samodzielnie."
+				},
+				{
+					"q": "Jak Umami liczy odwiedzających bez plików cookie?",
+					"a": "Z ID witryny, adresu IP odwiedzającego, nagłówka User-Agent i salta zmienianego co miesiąc robi hash, a z hasha sesję. Adres IP trafia do hasha, ale nigdy nie jest zapisywany razem z sesją."
+				},
+				{
+					"q": "Czy Umami jest zgodne z RODO?",
+					"a": "Zbudowano je z myślą o prywatności: bez plików cookie, bez śledzenia między witrynami, bez automatycznego zbierania danych osobowych. Dokumentacja dodaje, że zgodność z RODO nadal zależy od tego, jak je skonfigurujesz i używasz."
+				},
+				{
+					"q": "Czy Umami jest blokowane przez adblocki?",
+					"a": "Czasami, bo niektóre listy blokujące blokują wszystko, co nazywa się analytics. Umami hostowane u siebie może zmienić nazwę skryptu zmienną TRACKER_SCRIPT_NAME, a endpointu zmienną COLLECT_API_ENDPOINT, albo możesz przepuścić oba przez proxy na własnej domenie."
+				},
+				{
+					"q": "Jak wyeksportować dane z Umami hostowanego u siebie?",
+					"a": "Przez pg_dump albo zwykłym SQL-em: wszystko trzyma w PostgreSQL, a eksport do CSV jest tylko w Umami Cloud. W tym szablonie baza działa w kontenerze db, do którego dojdziesz z terminala webowego w panelu albo przez SSH."
+				}
+			]
 		},
 		"pt": {
 			"description": "Web analytics para os seus sites, sem cookies",
-			"notes": "Entre como admin com a senha umami e altere-a na hora, no seu perfil. Depois adicione seu site e coloque o script de rastreamento dele nas suas páginas."
+			"notes": "Entre como admin com a senha umami e altere-a na hora, no seu perfil. Depois adicione seu site e coloque o script de rastreamento dele nas suas páginas.",
+			"sizing": "Umami é leve: cerca de 250 MB de memória, e dezenas de GB de disco guardam milhões de eventos.",
+			"summary": "Hospede o Umami por conta própria, uma alternativa de código aberto ao Google Analytics sem cookies, com PostgreSQL e HTTPS na sua máquina em um clique.",
+			"about": [
+				"O Umami é uma ferramenta de analytics web de código aberto, uma alternativa ao Google Analytics focada em privacidade. Uma única tag script no seu site conta visitantes sem cookies, sem rastreamento entre sites e sem dados pessoais. O painel mostra visualizações, visitantes, taxa de rejeição, referrers, campanhas UTM, países e dispositivos, e o Realtime mostra as visitas enquanto acontecem. Eventos personalizados registram cadastros e checkouts, e os relatórios Funnel, Journey, Retention e Revenue se baseiam neles. Apps de página única não precisam de configuração extra.",
+				"Auto-hospedar o Umami mantém os números sobre seus visitantes em uma máquina que você controla: cada evento fica no banco de dados PostgreSQL até você excluí-lo. Ele tem licença MIT, e uma instância atende várias pessoas e sites, com papéis de equipe e um link de compartilhamento que torna públicas as visualizações que você escolher. Desde a versão 3.4, um endpoint MCP opcional somente leitura permite que assistentes como Claude, ChatGPT e Cursor consultem suas estatísticas."
+			],
+			"faq": [
+				{
+					"q": "O Umami é gratuito e de código aberto?",
+					"a": "Sim. O Umami está no GitHub sob a licença MIT, então você pode rodá-lo, alterá-lo e auto-hospedá-lo de graça. O Umami Cloud é o serviço hospedado do fabricante, para quem prefere não cuidar disso sozinho."
+				},
+				{
+					"q": "Como o Umami conta visitantes sem cookies?",
+					"a": "Ele junta o ID do site, o endereço IP do visitante, o User-Agent e um salt que muda todo mês em um hash, e desse hash sai a sessão. O IP entra no hash, mas nunca é guardado com a sessão."
+				},
+				{
+					"q": "O Umami está em conformidade com o GDPR?",
+					"a": "Ele foi feito para privacidade: sem cookies, sem rastreamento entre sites, sem dados pessoais coletados automaticamente. A documentação acrescenta que a conformidade com o GDPR ainda depende de como você o configura e usa."
+				},
+				{
+					"q": "O Umami é bloqueado por bloqueadores de anúncios?",
+					"a": "Às vezes, porque algumas listas de bloqueio bloqueiam tudo que se chama analytics. Um Umami auto-hospedado pode renomear o script com TRACKER_SCRIPT_NAME e o endpoint com COLLECT_API_ENDPOINT, ou você pode passar os dois por um proxy no seu próprio domínio."
+				},
+				{
+					"q": "Como exporto os dados de um Umami auto-hospedado?",
+					"a": "Com pg_dump ou com SQL: ele guarda tudo no PostgreSQL, e a exportação em CSV existe só no Umami Cloud. Neste template, o banco de dados roda no container db, que você alcança pelo terminal web do painel ou por SSH."
+				}
+			]
 		},
 		"ru": {
 			"description": "Веб-аналитика для ваших сайтов, без cookie",
-			"notes": "Войдите как admin с паролем umami и сразу смените его в профиле. Затем добавьте свой сайт и поставьте его скрипт отслеживания на свои страницы."
+			"notes": "Войдите как admin с паролем umami и сразу смените его в профиле. Затем добавьте свой сайт и поставьте его скрипт отслеживания на свои страницы.",
+			"sizing": "Umami: небольшие требования — около 250 MB памяти, а десятков GB диска хватит на миллионы событий.",
+			"summary": "Self-hosted Umami — open source альтернатива Google Analytics без cookie. С PostgreSQL и HTTPS на вашей машине в один клик.",
+			"about": [
+				"Umami — это open source инструмент веб-аналитики, альтернатива Google Analytics, ориентированная на приватность. Один тег script на вашем сайте считает посетителей без cookie, без межсайтового отслеживания и без персональных данных. Панель показывает просмотры, посетителей, показатель отказов, источники переходов, UTM-кампании, страны и устройства, а Realtime показывает визиты по мере того, как они происходят. Пользовательские события записывают регистрации и оформление заказов, и на них строятся отчеты Funnel, Journey, Retention и Revenue. Одностраничным приложениям не нужна дополнительная настройка.",
+				"Umami хостят у себя, чтобы цифры о посетителях оставались на машине, которую вы контролируете: каждое событие лежит в базе PostgreSQL, пока вы его не удалите. Лицензия MIT, один экземпляр обслуживает нескольких людей и сайтов, есть роли в командах и общая ссылка, которая делает выбранные разделы публичными. Начиная с версии 3.4 необязательный MCP-эндпоинт только для чтения позволяет ассистентам вроде Claude, ChatGPT и Cursor запрашивать вашу статистику."
+			],
+			"faq": [
+				{
+					"q": "Umami бесплатный и с открытым кодом?",
+					"a": "Да. Umami лежит на GitHub под лицензией MIT, так что запускать, менять и хостить его у себя можно бесплатно. Umami Cloud — хостинг от самих разработчиков, для тех, кто не хочет запускать Umami сам."
+				},
+				{
+					"q": "Как Umami считает посетителей без cookie?",
+					"a": "Он хеширует ID сайта, IP-адрес посетителя, User-Agent и соль, которая меняется каждый месяц, и получает сессию. IP-адрес участвует в хешировании, но вместе с сессией не сохраняется."
+				},
+				{
+					"q": "Umami соответствует GDPR?",
+					"a": "Он создан с расчетом на приватность: без cookie, без межсайтового отслеживания, без автоматического сбора персональных данных. В документации Umami добавлено, что соответствие GDPR все равно зависит от того, как вы его настроите и используете."
+				},
+				{
+					"q": "Блокируют ли Umami блокировщики рекламы?",
+					"a": "Иногда, потому что некоторые списки блокировки режут все, что называется analytics. Self-hosted Umami может переименовать скрипт переменной TRACKER_SCRIPT_NAME, а эндпоинт — переменной COLLECT_API_ENDPOINT, либо вы можете проксировать оба через свой домен."
+				},
+				{
+					"q": "Как экспортировать данные из self-hosted Umami?",
+					"a": "Через pg_dump или обычным SQL: все лежит в PostgreSQL, а экспорт в CSV есть только в Umami Cloud. В этом шаблоне база работает в контейнере db, к которому можно попасть из веб-терминала панели или по SSH."
+				}
+			]
 		},
 		"uk": {
 			"description": "Вебаналітика для ваших сайтів, без cookie",
-			"notes": "Увійдіть як admin із паролем umami й одразу змініть його у своєму профілі. Потім додайте свій сайт і розмістіть його скрипт відстеження на своїх сторінках."
+			"notes": "Увійдіть як admin із паролем umami й одразу змініть його у своєму профілі. Потім додайте свій сайт і розмістіть його скрипт відстеження на своїх сторінках.",
+			"sizing": "Umami має скромні вимоги: близько 250 MB пам’яті, а десятки GB диска вміщують мільйони подій.",
+			"summary": "Self-hosted Umami — альтернатива Google Analytics з відкритим кодом без cookie. З PostgreSQL і HTTPS на вашій машині в один клік.",
+			"about": [
+				"Umami — це інструмент вебаналітики з відкритим кодом, альтернатива Google Analytics, зосереджена на приватності. Один тег script на вашому сайті рахує відвідувачів без cookie, без міжсайтового стеження і без персональних даних. Панель показує перегляди, відвідувачів, показник відмов, джерела переходів, UTM-кампанії, країни та пристрої, а Realtime показує візити в міру того, як вони відбуваються. Користувацькі події записують реєстрації та оформлення замовлень, і на них будуються звіти Funnel, Journey, Retention та Revenue. Односторінковим застосункам не потрібне додаткове налаштування.",
+				"Umami хостять у себе, щоб цифри про відвідувачів лишалися на машині, яку ви контролюєте: кожна подія лежить у базі PostgreSQL, доки ви її не видалите. Ліцензія MIT, один екземпляр обслуговує кількох людей і кілька сайтів, є ролі в командах і спільне посилання, яке робить обрані розділи публічними. Починаючи з версії 3.4, необов’язковий MCP-ендпоінт лише для читання дає змогу ШІ-асистентам на кшталт Claude, ChatGPT і Cursor запитувати вашу статистику."
+			],
+			"faq": [
+				{
+					"q": "Umami безплатний і з відкритим кодом?",
+					"a": "Так. Umami лежить на GitHub за ліцензією MIT, тож його можна безкоштовно запускати, змінювати й хостити у себе. Umami Cloud — хостинг від самих розробників, для тих, хто не хоче запускати Umami сам."
+				},
+				{
+					"q": "Як Umami рахує відвідувачів без cookie?",
+					"a": "Він хешує ID сайту, IP-адресу відвідувача, User-Agent і сіль, яка змінюється щомісяця, і отримує сесію. IP-адреса потрапляє в хеш, але разом із сесією не зберігається."
+				},
+				{
+					"q": "Чи відповідає Umami вимогам GDPR?",
+					"a": "Він створений з розрахунком на приватність: без cookie, без міжсайтового стеження, без автоматичного збору персональних даних. У документації Umami додано, що відповідність GDPR усе одно залежить від того, як ви його налаштуєте і використовуєте."
+				},
+				{
+					"q": "Чи блокують Umami блокувальники реклами?",
+					"a": "Іноді, бо деякі списки блокування блокують усе, що зветься analytics. Self-hosted Umami може перейменувати скрипт змінною TRACKER_SCRIPT_NAME, а ендпоінт — змінною COLLECT_API_ENDPOINT, або ви можете пропустити обидва через проксі на власному домені."
+				},
+				{
+					"q": "Як експортувати дані зі self-hosted Umami?",
+					"a": "Через pg_dump або звичайним SQL: усе лежить у PostgreSQL, а експорт у CSV є лише в Umami Cloud. У цьому шаблоні база працює в контейнері db, до якого можна дістатися з вебтерміналу панелі або через SSH."
+				}
+			]
 		}
 	}
 }

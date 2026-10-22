@@ -1,6 +1,13 @@
 {
 	"name": "Kener",
 	"emoji": "🟢",
+	"category": "monitoring",
+	"alternatives": [
+		"Atlassian Statuspage",
+		"Better Stack",
+		"Instatus"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "kener",
 		"port": 3000
@@ -18,35 +25,259 @@
 	"texts": {
 		"en": {
 			"description": "A status page with uptime monitors and incidents",
-			"notes": "Open the address, choose Login and create the admin account. Do it right away: until then the page is open to whoever has the address. Then put https://{host} in Site URL under Site Configurations: the links in emails and in the RSS feed are made from it."
+			"notes": "Open the address, choose Login and create the admin account. Do it right away: until then the page is open to whoever has the address. Then put https://{host} in Site URL under Site Configurations: the links in emails and in the RSS feed are made from it.",
+			"sizing": "Kener is light: about 350 MB of memory with Redis, and its monitor history stays small.",
+			"summary": "Kener is an open-source status page that checks your services and posts incidents. Self-host it in one click instead of Atlassian Statuspage.",
+			"about": [
+				"Kener is an open-source status page system, an alternative to Atlassian Statuspage that also watches the services it reports on. It checks your sites, APIs and servers on cron schedules you set, and alerts you by email, webhook, Slack or Discord. When something breaks, you post an incident and add timeline updates as you work, or have an alert open it. Maintenance windows can repeat, and badges and embeds put a monitor's status on other sites.",
+				"People self-host Kener to own the page and its subscriber list, with no plan that caps monitors or subscribers. One instance serves several pages, each with its own monitors and logo. Teammates sign in as admin, editor or member. The catch is email: invites and subscriber notifications need an SMTP server or a Resend key."
+			],
+			"faq": [
+				{
+					"q": "Is Kener free and open source?",
+					"a": "Yes. Kener is free and open source under the MIT License, which lets you use, change and share it, commercially too. The code is on GitHub at rajnandan1/kener."
+				},
+				{
+					"q": "Kener vs Uptime Kuma: what is the difference?",
+					"a": "Kener puts the public status page first, with an incident lifecycle, recurring maintenance, email subscribers and team roles. Kener's own comparison calls Uptime Kuma a monitoring dashboard first, with far more alert channels."
+				},
+				{
+					"q": "What can Kener monitor?",
+					"a": "Websites and HTTP APIs with custom checks, ping, TCP ports, DNS records, SSL certificate expiry, SQL queries, push heartbeats, game servers, gRPC health checks and Prometheus queries. A Group monitor combines several into one weighted status."
+				},
+				{
+					"q": "Can visitors subscribe to Kener status updates?",
+					"a": "Yes, by email. A visitor clicks Subscribe, confirms the address with a 6-digit code and picks incident updates, maintenance updates or both. An admin turns on Enable Subscriptions under Manage, Subscriptions, once email sending is set up."
+				},
+				{
+					"q": "How do I set up email for Kener on Pethost?",
+					"a": "Add SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL and SMTP_SECURE, or RESEND_API_KEY and RESEND_SENDER_EMAIL, to the kener service's environment in compose.yaml. The template sets no mail server, so until then invites and subscriber emails are off."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Statusseite mit Uptime-Monitoren und Störungsmeldungen",
-			"notes": "Öffne die Adresse, wähl „Login“ und erstell das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Trag dann unter „Site Configurations“ https://{host} als „Site URL“ ein: Daraus entstehen die Links in E-Mails und im RSS-Feed."
+			"notes": "Öffne die Adresse, wähl „Login“ und erstell das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Trag dann unter „Site Configurations“ https://{host} als „Site URL“ ein: Daraus entstehen die Links in E-Mails und im RSS-Feed.",
+			"sizing": "Kener ist leicht: etwa 350 MB RAM mit Redis, und der Verlauf seiner Monitore bleibt klein.",
+			"summary": "Kener selbst hosten: Open-Source-Statusseite, die deine Services prüft und Vorfälle meldet. In einem Klick statt Atlassian Statuspage.",
+			"about": [
+				"Kener ist ein Open-Source-System für Statusseiten, eine Alternative zu Atlassian Statuspage, die auch selbst überwacht, worüber sie berichtet. Es prüft deine Websites, APIs und Server nach Cron-Zeitplänen, die du festlegst, und alarmiert dich per E-Mail, Webhook, Slack oder Discord. Wenn etwas ausfällt, meldest du einen Vorfall und ergänzt Updates im Verlauf, während du daran arbeitest, oder lässt ihn von einem Alert öffnen. Wartungsfenster lassen sich wiederholen, und Badges und Embeds zeigen den Status eines Monitors auf anderen Seiten.",
+				"Wer Kener selbst hostet, will die Seite und ihre Abonnentenliste besitzen, ohne Tarif, der Monitore oder Abonnenten begrenzt. Eine Instanz bedient mehrere Seiten, jede mit eigenen Monitoren und eigenem Logo. Teammitglieder melden sich als Admin, Editor oder Member an. Der Haken ist die E-Mail: Einladungen und Benachrichtigungen an Abonnenten brauchen einen SMTP-Server oder einen Resend-Key."
+			],
+			"faq": [
+				{
+					"q": "Ist Kener kostenlos und Open Source?",
+					"a": "Ja. Kener ist kostenlos und Open Source unter der MIT-Lizenz, die erlaubt, es zu nutzen, zu ändern und weiterzugeben, auch kommerziell. Der Code liegt auf GitHub unter rajnandan1/kener."
+				},
+				{
+					"q": "Kener oder Uptime Kuma: Was ist der Unterschied?",
+					"a": "Kener stellt die öffentliche Statusseite an die erste Stelle, mit Vorfall-Lebenszyklus, wiederkehrenden Wartungen, E-Mail-Abonnenten und Team-Rollen. In seinem eigenen Vergleich beschreibt Kener Uptime Kuma in erster Linie als Monitoring-Dashboard, mit deutlich mehr Alert-Kanälen."
+				},
+				{
+					"q": "Was kann Kener überwachen?",
+					"a": "Websites und HTTP-APIs mit eigenen Checks, Ping, TCP-Ports, DNS-Einträge, Ablauf von SSL-Zertifikaten, SQL-Abfragen, Push-Heartbeats, Spieleserver, gRPC-Healthchecks und Prometheus-Abfragen. Ein Group-Monitor fasst mehrere zu einem gewichteten Status zusammen."
+				},
+				{
+					"q": "Kann man Statusupdates von Kener abonnieren?",
+					"a": "Ja, per E-Mail. Wer die Seite öffnet, klickt auf „Subscribe“, bestätigt die Adresse mit einem 6-stelligen Code und wählt Updates zu Vorfällen, zu Wartungen oder beides. Sobald der E-Mail-Versand eingerichtet ist, schaltet ein Admin unter „Manage“, „Subscriptions“ die Option „Enable Subscriptions“ ein."
+				},
+				{
+					"q": "Wie richte ich E-Mail für Kener auf Pethost ein?",
+					"a": "Füg SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL und SMTP_SECURE oder RESEND_API_KEY und RESEND_SENDER_EMAIL in der compose.yaml zur Umgebung des Service kener hinzu. Die Vorlage legt keinen Mailserver fest, bis dahin bleiben Einladungen und E-Mails an Abonnenten aus."
+				}
+			]
 		},
 		"es": {
 			"description": "Una página de estado con monitores de disponibilidad e incidentes",
-			"notes": "Abre la dirección, elige Login y crea la cuenta de administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego pon https://{host} en Site URL, en Site Configurations: con ella se forman los enlaces de los correos y del feed RSS."
+			"notes": "Abre la dirección, elige Login y crea la cuenta de administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego pon https://{host} en Site URL, en Site Configurations: con ella se forman los enlaces de los correos y del feed RSS.",
+			"sizing": "Kener es ligero: unos 350 MB de memoria con Redis, y el historial de sus monitores se mantiene pequeño.",
+			"summary": "Kener es una página de estado de código abierto que comprueba tus servicios y publica incidentes. Autoalójala en un clic, en lugar de Atlassian Statuspage.",
+			"about": [
+				"Kener es un sistema de páginas de estado de código abierto, una alternativa a Atlassian Statuspage que además vigila los servicios sobre los que informa. Comprueba tus sitios, APIs y servidores con las programaciones cron que defines y te avisa por correo, webhook, Slack o Discord. Cuando algo falla, publicas un incidente y agregas actualizaciones en la línea de tiempo mientras trabajas, o dejas que una alerta lo abra. Las ventanas de mantenimiento pueden repetirse, y los badges y embeds muestran el estado de un monitor en otros sitios.",
+				"Quienes autoalojan Kener lo hacen para ser dueños de la página y de su lista de suscriptores, sin ningún plan que limite monitores ni suscriptores. Una instancia sirve varias páginas, cada una con sus propios monitores y su logo. Los miembros del equipo inician sesión como admin, editor o member. El inconveniente es el correo: las invitaciones y las notificaciones a suscriptores necesitan un servidor SMTP o una clave de Resend."
+			],
+			"faq": [
+				{
+					"q": "¿Kener es gratuito y de código abierto?",
+					"a": "Sí. Kener es gratuito y de código abierto bajo la licencia MIT, que permite usarlo, modificarlo y compartirlo, también con fines comerciales. El código está en GitHub, en rajnandan1/kener."
+				},
+				{
+					"q": "Kener frente a Uptime Kuma: ¿cuál es la diferencia?",
+					"a": "Kener pone en primer lugar la página de estado pública, con ciclo de vida de incidentes, mantenimiento recurrente, suscriptores por correo y roles de equipo. En su propia comparación, Kener describe a Uptime Kuma ante todo como un panel de monitoreo, con muchos más canales de alerta."
+				},
+				{
+					"q": "¿Qué puede monitorear Kener?",
+					"a": "Sitios web y APIs HTTP con comprobaciones personalizadas, ping, puertos TCP, registros DNS, vencimiento de certificados SSL, consultas SQL, heartbeats por push, servidores de juegos, healthchecks de gRPC y consultas de Prometheus. Un monitor Group combina varios en un solo estado ponderado."
+				},
+				{
+					"q": "¿Se pueden suscribir los visitantes a las actualizaciones de estado de Kener?",
+					"a": "Sí, por correo. El visitante hace clic en “Subscribe”, confirma la dirección con un código de 6 dígitos y elige actualizaciones de incidentes, de mantenimiento o ambas. Cuando el envío de correo está configurado, un admin activa “Enable Subscriptions” en “Manage”, “Subscriptions”."
+				},
+				{
+					"q": "¿Cómo configuro el correo de Kener en Pethost?",
+					"a": "Agrega SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL y SMTP_SECURE, o RESEND_API_KEY y RESEND_SENDER_EMAIL, al entorno del servicio kener en compose.yaml. La plantilla no define ningún servidor de correo, así que hasta entonces las invitaciones y los correos a suscriptores están desactivados."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une page de statut avec sondes de disponibilité et incidents",
-			"notes": "Ouvrez l’adresse, choisissez Login et créez le compte administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Mettez ensuite https://{host} dans Site URL, sous Site Configurations : les liens des e-mails et du flux RSS en sont tirés."
+			"notes": "Ouvrez l’adresse, choisissez Login et créez le compte administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Mettez ensuite https://{host} dans Site URL, sous Site Configurations : les liens des e-mails et du flux RSS en sont tirés.",
+			"sizing": "Kener est léger : environ 350 MB de mémoire avec Redis, et l’historique de ses moniteurs reste petit.",
+			"summary": "Kener est une page de statut open source qui surveille vos services et publie les incidents. Auto-hébergez-la en un clic au lieu d’Atlassian Statuspage.",
+			"about": [
+				"Kener est un système de pages de statut open source, une alternative à Atlassian Statuspage qui surveille aussi les services dont il rend compte. Il vérifie vos sites, vos API et vos serveurs selon des horaires cron que vous définissez, et vous alerte par e-mail, webhook, Slack ou Discord. Quand quelque chose tombe en panne, vous publiez un incident et ajoutez des mises à jour à la chronologie au fil du travail, ou vous laissez une alerte l’ouvrir. Les fenêtres de maintenance peuvent se répéter, et des badges et des embeds affichent l’état d’une sonde sur d’autres sites.",
+				"On auto-héberge Kener pour que la page et sa liste d’abonnés vous appartiennent, sans offre qui plafonne les sondes ou les abonnés. Une instance sert plusieurs pages, chacune avec ses propres sondes et son logo. Les membres de l’équipe se connectent en tant qu’admin, editor ou member. Le revers, c’est l’e-mail : les invitations et les notifications aux abonnés demandent un serveur SMTP ou une clé Resend."
+			],
+			"faq": [
+				{
+					"q": "Kener est-il gratuit et open source ?",
+					"a": "Oui. Kener est gratuit et open source sous licence MIT, qui permet de l’utiliser, de le modifier et de le partager, y compris à des fins commerciales. Le code est sur GitHub : rajnandan1/kener."
+				},
+				{
+					"q": "Kener ou Uptime Kuma : quelle différence ?",
+					"a": "Kener place la page de statut publique en premier, avec un cycle de vie des incidents, des maintenances récurrentes, des abonnés par e-mail et des rôles d’équipe. Dans sa propre comparaison, Kener décrit Uptime Kuma comme avant tout un tableau de bord de monitoring, avec bien plus de canaux d’alerte."
+				},
+				{
+					"q": "Que peut surveiller Kener ?",
+					"a": "Des sites web et des API HTTP avec des vérifications personnalisées, le ping, les ports TCP, les enregistrements DNS, l’expiration des certificats SSL, des requêtes SQL, des heartbeats en push, des serveurs de jeu, des healthchecks gRPC et des requêtes Prometheus. Une sonde Group en combine plusieurs en un seul état pondéré."
+				},
+				{
+					"q": "Les visiteurs peuvent-ils s’abonner aux mises à jour de statut de Kener ?",
+					"a": "Oui, par e-mail. Le visiteur clique sur « Subscribe », confirme l’adresse avec un code à 6 chiffres et choisit les mises à jour d’incidents, de maintenance, ou les deux. Un admin active « Enable Subscriptions » sous « Manage », « Subscriptions », une fois l’envoi d’e-mails configuré."
+				},
+				{
+					"q": "Comment configurer l’e-mail de Kener sur Pethost ?",
+					"a": "Ajoutez SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL et SMTP_SECURE, ou RESEND_API_KEY et RESEND_SENDER_EMAIL, à l’environnement du service kener dans compose.yaml. Le template ne définit aucun serveur de mail : tant que ce n’est pas fait, les invitations et les e-mails aux abonnés sont désactivés."
+				}
+			]
 		},
 		"pl": {
 			"description": "Strona statusu z monitorami dostępności i incydentami",
-			"notes": "Otwórz adres projektu, wybierz Login i załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem w Site Configurations wpisz https://{host} w polu Site URL: z niego powstają linki w e-mailach i w kanale RSS."
+			"notes": "Otwórz adres projektu, wybierz Login i załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem w Site Configurations wpisz https://{host} w polu Site URL: z niego powstają linki w e-mailach i w kanale RSS.",
+			"sizing": "Kener ma małe wymagania: około 350 MB pamięci z Redisem, a historia monitorów zostaje niewielka.",
+			"summary": "Kener to strona statusu open source, która sprawdza twoje usługi i publikuje incydenty. Hostuj ją u siebie jednym kliknięciem zamiast Atlassian Statuspage.",
+			"about": [
+				"Kener to system stron statusu open source, alternatywa dla Atlassian Statuspage, który sam też pilnuje usług, o których informuje. Sprawdza twoje strony, API i serwery według harmonogramów cron, które ustawiasz, i powiadamia cię przez e-mail, webhook, Slack lub Discord. Gdy coś przestaje działać, publikujesz incydent i dopisujesz aktualizacje na osi czasu, w miarę jak nad tym pracujesz, albo pozwalasz, żeby otworzył go alert. Okna serwisowe mogą się powtarzać, a badge’e i embedy pokazują status monitora na innych stronach.",
+				"Kener hostują u siebie ci, którzy chcą mieć na własność stronę i listę subskrybentów, bez planu ograniczającego liczbę monitorów czy subskrybentów. Jedna instancja obsługuje kilka stron, każdą z własnymi monitorami i logo. Członkowie zespołu logują się jako admin, editor lub member. Haczyk to e-mail: zaproszenia i powiadomienia dla subskrybentów wymagają serwera SMTP albo klucza Resend."
+			],
+			"faq": [
+				{
+					"q": "Czy Kener jest darmowy i open source?",
+					"a": "Tak. Kener jest darmowy i open source na licencji MIT, która pozwala go używać, zmieniać i udostępniać, także komercyjnie. Kod jest na GitHubie w repozytorium rajnandan1/kener."
+				},
+				{
+					"q": "Kener czy Uptime Kuma: jaka jest różnica?",
+					"a": "Kener stawia na pierwszym miejscu publiczną stronę statusu, z cyklem życia incydentów, cyklicznymi oknami serwisowymi, subskrybentami e-mail i rolami w zespole. W swoim porównaniu Kener opisuje Uptime Kuma przede wszystkim jako panel monitoringu, z o wiele większą liczbą kanałów alertów."
+				},
+				{
+					"q": "Co potrafi monitorować Kener?",
+					"a": "Strony internetowe i API HTTP z własnymi sprawdzeniami, ping, porty TCP, rekordy DNS, wygasanie certyfikatów SSL, zapytania SQL, heartbeaty push, serwery gier, healthchecki gRPC i zapytania Prometheus. Monitor Group łączy kilka w jeden ważony status."
+				},
+				{
+					"q": "Czy można subskrybować aktualizacje statusu z Kenera?",
+					"a": "Tak, przez e-mail. Odwiedzający klika „Subscribe”, potwierdza adres 6-cyfrowym kodem i wybiera aktualizacje incydentów, aktualizacje prac serwisowych albo jedno i drugie. Gdy wysyłka e-maili jest skonfigurowana, admin włącza „Enable Subscriptions” w „Manage”, „Subscriptions”."
+				},
+				{
+					"q": "Jak skonfigurować e-mail dla Kenera na Pethost?",
+					"a": "Dodaj SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL i SMTP_SECURE albo RESEND_API_KEY i RESEND_SENDER_EMAIL do środowiska usługi kener w compose.yaml. Szablon nie ustawia serwera pocztowego, więc do tego czasu zaproszenia i e-maile dla subskrybentów są wyłączone."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma página de status com monitores de disponibilidade e incidentes",
-			"notes": "Abra o endereço, escolha Login e crie a conta de administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois coloque https://{host} em Site URL, em Site Configurations: os links dos e-mails e do feed RSS são montados a partir dele."
+			"notes": "Abra o endereço, escolha Login e crie a conta de administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois coloque https://{host} em Site URL, em Site Configurations: os links dos e-mails e do feed RSS são montados a partir dele.",
+			"sizing": "Kener é leve: cerca de 350 MB de memória com o Redis, e o histórico dos monitores continua pequeno.",
+			"summary": "Kener é uma página de status open source que checa seus serviços e publica incidentes. Auto-hospede em um clique, em vez do Atlassian Statuspage.",
+			"about": [
+				"O Kener é um sistema de páginas de status open source, uma alternativa ao Atlassian Statuspage que também monitora os serviços sobre os quais informa. Ele verifica seus sites, APIs e servidores em agendas cron que você define e alerta você por e-mail, webhook, Slack ou Discord. Quando algo quebra, você publica um incidente e vai adicionando atualizações na linha do tempo enquanto trabalha, ou deixa um alerta abri-lo. As janelas de manutenção podem se repetir, e badges e embeds mostram o status de um monitor em outros sites.",
+				"Quem hospeda o Kener por conta própria quer ser dono da página e da lista de assinantes, sem um plano que limite monitores ou assinantes. Uma instância atende várias páginas, cada uma com seus próprios monitores e seu logo. Os colegas de equipe entram como admin, editor ou member. O porém é o e-mail: convites e notificações para assinantes exigem um servidor SMTP ou uma chave do Resend."
+			],
+			"faq": [
+				{
+					"q": "O Kener é gratuito e open source?",
+					"a": "Sim. O Kener é gratuito e open source sob a licença MIT, que permite usar, modificar e compartilhar, inclusive para fins comerciais. O código está no GitHub, em rajnandan1/kener."
+				},
+				{
+					"q": "Kener ou Uptime Kuma: qual é a diferença?",
+					"a": "O Kener põe a página de status pública em primeiro lugar, com ciclo de vida de incidentes, manutenção recorrente, assinantes por e-mail e papéis de equipe. Na comparação do próprio Kener, o Uptime Kuma é, antes de tudo, um painel de monitoramento, com muito mais canais de alerta."
+				},
+				{
+					"q": "O que o Kener consegue monitorar?",
+					"a": "Sites e APIs HTTP com verificações personalizadas, ping, portas TCP, registros DNS, vencimento de certificados SSL, consultas SQL, heartbeats por push, servidores de jogos, healthchecks gRPC e consultas do Prometheus. Um monitor Group combina vários em um único status ponderado."
+				},
+				{
+					"q": "Os visitantes podem assinar as atualizações de status do Kener?",
+					"a": "Sim, por e-mail. O visitante clica em “Subscribe”, confirma o endereço com um código de 6 dígitos e escolhe atualizações de incidentes, de manutenção ou ambas. Um admin ativa “Enable Subscriptions” em “Manage”, “Subscriptions” depois que o envio de e-mail estiver configurado."
+				},
+				{
+					"q": "Como configuro o e-mail do Kener no Pethost?",
+					"a": "Adicione SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL e SMTP_SECURE, ou RESEND_API_KEY e RESEND_SENDER_EMAIL, ao ambiente do serviço kener no compose.yaml. O template não define nenhum servidor de e-mail, então até lá convites e e-mails para assinantes ficam desativados."
+				}
+			]
 		},
 		"ru": {
 			"description": "Страница статуса с мониторами доступности и инцидентами",
-			"notes": "Откройте адрес, выберите Login и создайте аккаунт администратора. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем в Site Configurations укажите https://{host} в поле Site URL: из него собираются ссылки в письмах и в RSS-ленте."
+			"notes": "Откройте адрес, выберите Login и создайте аккаунт администратора. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем в Site Configurations укажите https://{host} в поле Site URL: из него собираются ссылки в письмах и в RSS-ленте.",
+			"sizing": "Kener: небольшие требования — около 350 MB памяти вместе с Redis, а история мониторов остается небольшой.",
+			"summary": "Kener — open source страница статуса: проверяет ваши сервисы и публикует инциденты. Self-hosted в один клик вместо Atlassian Statuspage.",
+			"about": [
+				"Kener — это open source система страниц статуса, альтернатива Atlassian Statuspage, которая еще и сама следит за сервисами, о которых сообщает. Она проверяет ваши сайты, API и серверы по расписанию cron, которое вы задаете, и оповещает вас по почте, через вебхук, Slack или Discord. Когда что-то ломается, вы публикуете инцидент и дополняете хронологию обновлениями по ходу работы или поручаете открыть его оповещению. Окна обслуживания могут повторяться, а бейджи и встраиваемые виджеты показывают статус монитора на других сайтах.",
+				"Kener ставят на своем сервере, чтобы страница и список подписчиков принадлежали вам, без тарифа, который ограничивает число мониторов или подписчиков. Один экземпляр обслуживает несколько страниц, у каждой свои мониторы и свой логотип. Коллеги по команде входят как admin, editor или member. Есть нюанс с почтой: приглашениям и уведомлениям подписчикам нужен SMTP-сервер или ключ Resend."
+			],
+			"faq": [
+				{
+					"q": "Kener бесплатный и с открытым исходным кодом?",
+					"a": "Да. Kener бесплатный и распространяется с открытым исходным кодом по лицензии MIT, которая позволяет использовать, изменять и распространять его, в том числе в коммерческих целях. Код лежит на GitHub: rajnandan1/kener."
+				},
+				{
+					"q": "Kener или Uptime Kuma: в чем разница?",
+					"a": "Kener ставит на первое место публичную страницу статуса: в нем есть жизненный цикл инцидентов, повторяющееся обслуживание, подписчики по почте и роли в команде. В собственном сравнении Kener называет Uptime Kuma в первую очередь панелью мониторинга, с гораздо большим числом каналов оповещений."
+				},
+				{
+					"q": "Что умеет мониторить Kener?",
+					"a": "Сайты и HTTP API с собственными проверками, ping, TCP-порты, DNS-записи, срок действия SSL-сертификатов, SQL-запросы, heartbeat по push, игровые серверы, хелсчеки gRPC и запросы Prometheus. Монитор Group объединяет несколько в один взвешенный статус."
+				},
+				{
+					"q": "Могут ли посетители подписаться на обновления статуса Kener?",
+					"a": "Да, по почте. Посетитель нажимает «Subscribe», подтверждает адрес 6-значным кодом и выбирает обновления об инцидентах, об обслуживании или оба вида. Когда отправка почты настроена, админ включает «Enable Subscriptions» в разделе «Manage», «Subscriptions»."
+				},
+				{
+					"q": "Как настроить почту для Kener на Pethost?",
+					"a": "Добавьте SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL и SMTP_SECURE или RESEND_API_KEY и RESEND_SENDER_EMAIL в окружение сервиса kener в compose.yaml. Шаблон не задает почтовый сервер, поэтому до тех пор приглашения и письма подписчикам отключены."
+				}
+			]
 		},
 		"uk": {
 			"description": "Сторінка статусу з моніторами доступності та інцидентами",
-			"notes": "Відкрийте адресу, оберіть Login і створіть акаунт адміністратора. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім у Site Configurations вкажіть https://{host} у полі Site URL: з нього складаються посилання в листах і в RSS-стрічці."
+			"notes": "Відкрийте адресу, оберіть Login і створіть акаунт адміністратора. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім у Site Configurations вкажіть https://{host} у полі Site URL: з нього складаються посилання в листах і в RSS-стрічці.",
+			"sizing": "Kener має скромні вимоги: близько 350 MB пам’яті з Redis, а історія моніторів лишається невеликою.",
+			"summary": "Kener — open source сторінка статусу: перевіряє ваші сервіси й публікує інциденти. Self-hosted в один клік замість Atlassian Statuspage.",
+			"about": [
+				"Kener — це open source система сторінок статусу, альтернатива Atlassian Statuspage, яка ще й сама стежить за сервісами, про які повідомляє. Вона перевіряє ваші сайти, API й сервери за розкладом cron, який ви задаєте, і сповіщає вас поштою, через вебхук, Slack або Discord. Коли щось ламається, ви публікуєте інцидент і доповнюєте хронологію оновленнями по ходу роботи або дозволяєте сповіщенню відкрити його. Вікна обслуговування можуть повторюватися, а бейджі й вбудовувані віджети показують статус монітора на інших сайтах.",
+				"Kener хостять на власному сервері, щоб сторінка та список підписників належали вам, без тарифу, який обмежує кількість моніторів чи підписників. Один екземпляр обслуговує кілька сторінок, у кожної свої монітори й логотип. Колеги по команді входять як admin, editor або member. Є нюанс із поштою: запрошенням і сповіщенням підписникам потрібен SMTP-сервер або ключ Resend."
+			],
+			"faq": [
+				{
+					"q": "Kener безплатний і з відкритим кодом?",
+					"a": "Так. Kener безплатний і поширюється з відкритим кодом за ліцензією MIT, яка дозволяє використовувати, змінювати й поширювати його, зокрема в комерційних цілях. Код лежить на GitHub: rajnandan1/kener."
+				},
+				{
+					"q": "Kener чи Uptime Kuma: яка різниця?",
+					"a": "Kener ставить на перше місце публічну сторінку статусу: у ньому є життєвий цикл інцидентів, повторюване обслуговування, підписники поштою та ролі в команді. У власному порівнянні Kener називає Uptime Kuma передусім панеллю моніторингу, з набагато більшою кількістю каналів сповіщень."
+				},
+				{
+					"q": "Що вміє моніторити Kener?",
+					"a": "Сайти й HTTP API з власними перевірками, ping, TCP-порти, DNS-записи, термін дії SSL-сертифікатів, SQL-запити, heartbeat через push, ігрові сервери, перевірки справності gRPC і запити Prometheus. Монітор Group об’єднує кілька в один зважений статус."
+				},
+				{
+					"q": "Чи можуть відвідувачі підписатися на оновлення статусу Kener?",
+					"a": "Так, поштою. Відвідувач натискає «Subscribe», підтверджує адресу 6-значним кодом і вибирає оновлення про інциденти, про обслуговування або обидва види. Коли надсилання пошти налаштовано, адмін вмикає «Enable Subscriptions» у «Manage», «Subscriptions»."
+				},
+				{
+					"q": "Як налаштувати пошту для Kener на Pethost?",
+					"a": "Додайте SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM_EMAIL і SMTP_SECURE або RESEND_API_KEY і RESEND_SENDER_EMAIL до середовища сервісу kener у compose.yaml. Шаблон не задає поштовий сервер, тому до того часу запрошення й листи підписникам вимкнено."
+				}
+			]
 		}
 	}
 }

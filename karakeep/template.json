@@ -1,6 +1,13 @@
 {
 	"name": "Karakeep",
 	"emoji": "🗂️",
+	"category": "reading",
+	"alternatives": [
+		"Pocket",
+		"mymind",
+		"Raindrop.io"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "web",
 		"port": 3000
@@ -22,35 +29,259 @@
 	"texts": {
 		"en": {
 			"description": "A bookmark app for links, notes and images, with full-text search",
-			"notes": "Open the address and sign up: the first account is the admin. Do it right away: until then the page is open to whoever has the address. Then add DISABLE_SIGNUPS=true to the project’s .env and deploy again. AI tagging works once OPENAI_API_KEY is in .env too."
+			"notes": "Open the address and sign up: the first account is the admin. Do it right away: until then the page is open to whoever has the address. Then add DISABLE_SIGNUPS=true to the project’s .env and deploy again. AI tagging works once OPENAI_API_KEY is in .env too.",
+			"sizing": "Karakeep is moderate: about 1.5 GB with its headless Chrome and Meilisearch, and saved pages grow the disk.",
+			"summary": "Karakeep is an open-source bookmark manager and Pocket alternative with AI tagging. Self-host it with Docker in one click.",
+			"about": [
+				"Karakeep is an open-source bookmark manager and read-it-later app that people run in place of Pocket, which Mozilla shut down. It saves links, notes, images and PDFs, and fills in each link's title, description and preview image. Search reaches everything you saved, including the text in images, read by OCR. Tags and summaries can come from OpenAI or from a local model through Ollama. There are apps for iOS and Android with offline reading, and extensions for Chrome, Firefox and Safari.",
+				"People self-host Karakeep so that years of saved links, and the text behind them, stay on a server of their own, not with a service that can close. It suits anyone who saves more than they read, alone or with others: a list can be shared with viewers or editors. The catch is the AI. Automatic tagging needs an API key from OpenAI or a compatible provider, paid per use, or an Ollama server you run."
+			],
+			"faq": [
+				{
+					"q": "Is Karakeep free and open source?",
+					"a": "Yes. Karakeep is open source under the AGPL-3.0 licence and free to run on your own server. Its owner, Localhost Labs Ltd, also sells subscriptions to a managed Karakeep Cloud."
+				},
+				{
+					"q": "Is Karakeep the same as Hoarder?",
+					"a": "Yes. Hoarder was renamed Karakeep, and it is the same project. An existing Hoarder install moves over by changing its Docker image from ghcr.io/hoarder-app/hoarder to ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "Does Karakeep work without OpenAI?",
+					"a": "Yes. Without OPENAI_API_KEY or OLLAMA_BASE_URL it still saves, fetches and searches bookmarks, and skips automatic tagging. For a local model, set OLLAMA_BASE_URL to your Ollama server and INFERENCE_TEXT_MODEL to a model pulled there."
+				},
+				{
+					"q": "Can I import Pocket bookmarks into Karakeep?",
+					"a": "Yes. Under Import / Export in the settings, Karakeep reads Pocket's CSV export, browser HTML bookmark files and exports from Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden and mymind, keeping titles, tags and the dates you saved them."
+				},
+				{
+					"q": "How do I disable signups in Karakeep?",
+					"a": "Set DISABLE_SIGNUPS=true in Karakeep's environment and restart it: the sign-up button is then disabled. Create your own account first, since the first person to sign up becomes the admin. Admins add people under Admin Settings, Users List, Create User."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Lesezeichen-App für Links, Notizen und Bilder, mit Volltextsuche",
-			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Trag dann DISABLE_SIGNUPS=true in die .env des Projekts ein und deploy neu. Das KI-Tagging funktioniert, sobald auch OPENAI_API_KEY in der .env steht."
+			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Trag dann DISABLE_SIGNUPS=true in die .env des Projekts ein und deploy neu. Das KI-Tagging funktioniert, sobald auch OPENAI_API_KEY in der .env steht.",
+			"sizing": "Karakeep ist mittelschwer: etwa 1,5 GB mit Headless-Chrome und Meilisearch, und gespeicherte Seiten lassen die Disk wachsen.",
+			"summary": "Karakeep selbst hosten: Open-Source-Lesezeichen-Manager und Pocket-Alternative mit KI-Tagging. Mit Docker in einem Klick.",
+			"about": [
+				"Karakeep ist ein Open-Source-Lesezeichen-Manager und eine Read-it-later-App, die man statt Pocket nutzt, das Mozilla eingestellt hat. Es speichert Links, Notizen, Bilder und PDFs und ergänzt zu jedem Link Titel, Beschreibung und Vorschaubild. Die Suche findet alles, was du gespeichert hast, auch den Text in Bildern, den die OCR ausliest. Tags und Zusammenfassungen können von OpenAI kommen oder von einem lokalen Modell über Ollama. Es gibt Apps für iOS und Android mit Offline-Lesen sowie Erweiterungen für Chrome, Firefox und Safari.",
+				"Man hostet Karakeep selbst, damit Jahre gespeicherter Links und der Text dahinter auf einem eigenen Server bleiben und nicht bei einem Anbieter, der dichtmachen kann. Es passt zu allen, die mehr speichern, als sie lesen, allein oder zu mehreren: Eine Liste lässt sich nur zum Ansehen oder auch zum Bearbeiten teilen. Der Haken ist die KI. Das automatische Tagging braucht einen API-Key von OpenAI oder einem kompatiblen Anbieter, bezahlt pro Nutzung, oder einen Ollama-Server, den du selbst betreibst."
+			],
+			"faq": [
+				{
+					"q": "Ist Karakeep kostenlos und Open Source?",
+					"a": "Ja. Karakeep ist Open Source unter der AGPL-3.0-Lizenz und kostenlos auf dem eigenen Server zu betreiben. Der Inhaber, Localhost Labs Ltd, verkauft außerdem Abos für eine verwaltete Karakeep Cloud."
+				},
+				{
+					"q": "Ist Karakeep dasselbe wie Hoarder?",
+					"a": "Ja. Hoarder wurde in Karakeep umbenannt, es ist dasselbe Projekt. Eine bestehende Hoarder-Installation ziehst du um, indem du ihr Docker-Image von ghcr.io/hoarder-app/hoarder auf ghcr.io/karakeep-app/karakeep änderst."
+				},
+				{
+					"q": "Funktioniert Karakeep ohne OpenAI?",
+					"a": "Ja. Ohne OPENAI_API_KEY oder OLLAMA_BASE_URL speichert, lädt und durchsucht es weiterhin Lesezeichen und lässt nur das automatische Tagging aus. Für ein lokales Modell setzt du OLLAMA_BASE_URL auf deinen Ollama-Server und INFERENCE_TEXT_MODEL auf ein dort gepulltes Modell."
+				},
+				{
+					"q": "Kann ich Pocket-Lesezeichen in Karakeep importieren?",
+					"a": "Ja. Unter „Import / Export“ in den Einstellungen liest Karakeep Pockets CSV-Export, HTML-Lesezeichendateien von Browsern und Exporte von Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden und mymind. Titel, Tags und das jeweilige Datum, an dem du sie gespeichert hast, bleiben erhalten."
+				},
+				{
+					"q": "Wie schalte ich die Registrierung in Karakeep ab?",
+					"a": "Setze DISABLE_SIGNUPS=true als Umgebungsvariable von Karakeep und starte es neu: Der Button zum Registrieren ist dann deaktiviert. Leg zuerst dein eigenes Konto an, denn wer sich zuerst registriert, wird Admin. Admins fügen Leute unter „Admin Settings“ → „Users List“ → „Create User“ hinzu."
+				}
+			]
 		},
 		"es": {
 			"description": "Una app de marcadores para enlaces, notas e imágenes, con búsqueda de texto completo",
-			"notes": "Abre la dirección y regístrate: la primera cuenta es la del administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego agrega DISABLE_SIGNUPS=true al .env del proyecto y vuelve a desplegar. El etiquetado con IA funciona cuando OPENAI_API_KEY también está en .env."
+			"notes": "Abre la dirección y regístrate: la primera cuenta es la del administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego agrega DISABLE_SIGNUPS=true al .env del proyecto y vuelve a desplegar. El etiquetado con IA funciona cuando OPENAI_API_KEY también está en .env.",
+			"sizing": "Karakeep es moderado: unos 1,5 GB con su Chrome headless y Meilisearch, y las páginas guardadas hacen crecer el disco.",
+			"summary": "Autoaloja Karakeep, administrador de marcadores de código abierto y alternativa a Pocket con etiquetado por IA. Con Docker, en un clic.",
+			"about": [
+				"Karakeep es un administrador de marcadores de código abierto y una app para leer después que la gente usa en lugar de Pocket, que Mozilla cerró. Guarda enlaces, notas, imágenes y PDF, y completa el título, la descripción y la imagen de vista previa de cada enlace. La búsqueda llega a todo lo que guardaste, incluido el texto de las imágenes, que se lee con OCR. Las etiquetas y los resúmenes pueden venir de OpenAI o de un modelo local a través de Ollama. Hay apps para iOS y Android con lectura sin conexión, y extensiones para Chrome, Firefox y Safari.",
+				"Karakeep se autoaloja para que años de enlaces guardados, y el texto que hay detrás, queden en un servidor propio y no en un servicio que puede cerrar. Sirve a quien guarda más de lo que lee, solo o con otras personas: una lista se puede compartir para ver o para editar. El inconveniente es la IA. El etiquetado automático necesita una clave de API de OpenAI o de un proveedor compatible, que se paga por uso, o un servidor Ollama que ejecutes tú."
+			],
+			"faq": [
+				{
+					"q": "¿Karakeep es gratis y de código abierto?",
+					"a": "Sí. Karakeep es de código abierto con licencia AGPL-3.0 y gratis para ejecutar en tu propio servidor. Su propietario, Localhost Labs Ltd, también vende suscripciones a una Karakeep Cloud administrada."
+				},
+				{
+					"q": "¿Karakeep es lo mismo que Hoarder?",
+					"a": "Sí. Hoarder cambió de nombre a Karakeep y es el mismo proyecto. Una instalación de Hoarder existente pasa a Karakeep cambiando su imagen de Docker de ghcr.io/hoarder-app/hoarder a ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "¿Karakeep funciona sin OpenAI?",
+					"a": "Sí. Sin OPENAI_API_KEY ni OLLAMA_BASE_URL sigue guardando, descargando y buscando marcadores, y omite el etiquetado automático. Para un modelo local, apunta OLLAMA_BASE_URL a tu servidor Ollama y define INFERENCE_TEXT_MODEL con un modelo que hayas descargado en él."
+				},
+				{
+					"q": "¿Puedo importar los marcadores de Pocket a Karakeep?",
+					"a": "Sí. En “Import / Export”, dentro de los ajustes, Karakeep lee la exportación CSV de Pocket, los archivos HTML de marcadores de los navegadores y las exportaciones de Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden y mymind, y conserva los títulos, las etiquetas y las fechas en que los guardaste."
+				},
+				{
+					"q": "¿Cómo desactivo los registros en Karakeep?",
+					"a": "Define DISABLE_SIGNUPS=true como variable de entorno de Karakeep y reinícialo: el botón de registro queda desactivado. Crea primero tu propia cuenta, porque quien se registra primero se convierte en administrador. Los administradores agregan personas en “Admin Settings” → “Users List” → “Create User”."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une application de favoris pour les liens, les notes et les images, avec recherche plein texte",
-			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est l’administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Ajoutez ensuite DISABLE_SIGNUPS=true au .env du projet et redéployez. Le tagging par IA fonctionne dès que OPENAI_API_KEY est aussi dans le .env."
+			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est l’administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Ajoutez ensuite DISABLE_SIGNUPS=true au .env du projet et redéployez. Le tagging par IA fonctionne dès que OPENAI_API_KEY est aussi dans le .env.",
+			"sizing": "Karakeep est modéré : environ 1,5 GB avec son Chrome headless et Meilisearch, et les pages enregistrées font grossir le disque.",
+			"summary": "Auto-hébergez Karakeep, gestionnaire de favoris open source et alternative à Pocket avec tagging par IA. Avec Docker, en un clic.",
+			"about": [
+				"Karakeep est un gestionnaire de favoris open source et une application pour lire plus tard que l’on utilise à la place de Pocket, que Mozilla a fermé. Il enregistre des liens, des notes, des images et des PDF, et renseigne le titre, la description et l’image d’aperçu de chaque lien. La recherche couvre tout ce que vous avez enregistré, y compris le texte des images, lu par OCR. Les tags et les résumés peuvent venir d’OpenAI ou d’un modèle local via Ollama. Des applications existent pour iOS et Android, avec lecture hors ligne, ainsi que des extensions pour Chrome, Firefox et Safari.",
+				"Vous auto-hébergez Karakeep pour que des années de liens enregistrés, et le texte qui va avec, restent sur votre propre serveur et non chez un service qui peut fermer. Il convient à qui enregistre plus qu’il ne lit, seul ou à plusieurs : une liste peut être partagée en lecture seule ou en édition. Le revers, c’est l’IA. Le tagging automatique demande une clé d’API d’OpenAI ou d’un fournisseur compatible, payée à l’usage, ou un serveur Ollama que vous faites tourner."
+			],
+			"faq": [
+				{
+					"q": "Karakeep est-il gratuit et open source ?",
+					"a": "Oui. Karakeep est open source sous licence AGPL-3.0 et gratuit à faire tourner sur votre propre serveur. Son propriétaire, Localhost Labs Ltd, vend aussi des abonnements à un Karakeep Cloud géré."
+				},
+				{
+					"q": "Karakeep est-il la même chose que Hoarder ?",
+					"a": "Oui. Hoarder a été renommé Karakeep, et c’est le même projet. Une installation Hoarder existante passe à Karakeep en changeant son image Docker de ghcr.io/hoarder-app/hoarder en ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "Karakeep fonctionne-t-il sans OpenAI ?",
+					"a": "Oui. Sans OPENAI_API_KEY ni OLLAMA_BASE_URL, il enregistre, récupère et recherche toujours les favoris, sans le tagging automatique. Pour un modèle local, définissez OLLAMA_BASE_URL sur votre serveur Ollama et INFERENCE_TEXT_MODEL sur un modèle récupéré avec pull sur ce serveur."
+				},
+				{
+					"q": "Peut-on importer des favoris Pocket dans Karakeep ?",
+					"a": "Oui. Dans les Paramètres, sous « Import / Export », Karakeep lit l’export CSV de Pocket, les fichiers HTML de favoris des navigateurs et les exports d’Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden et mymind, en gardant les titres, les tags et les dates auxquelles vous les avez enregistrés."
+				},
+				{
+					"q": "Comment désactiver les inscriptions dans Karakeep ?",
+					"a": "Définissez DISABLE_SIGNUPS=true dans les variables d’environnement de Karakeep et redémarrez-le : le bouton d’inscription est alors désactivé. Créez d’abord votre propre compte, car la première personne qui s’inscrit devient l’admin. Les admins ajoutent des personnes dans « Admin Settings » → « Users List » → « Create User »."
+				}
+			]
 		},
 		"pl": {
 			"description": "Aplikacja do zakładek na linki, notatki i obrazy, z wyszukiwaniem pełnotekstowym",
-			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto jest administratorem. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem dodaj DISABLE_SIGNUPS=true do pliku .env projektu i wdróż ponownie. Tagowanie z AI działa, gdy w .env jest też OPENAI_API_KEY."
+			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto jest administratorem. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem dodaj DISABLE_SIGNUPS=true do pliku .env projektu i wdróż ponownie. Tagowanie z AI działa, gdy w .env jest też OPENAI_API_KEY.",
+			"sizing": "Karakeep ma średnie wymagania: około 1,5 GB z headless Chrome i Meilisearch, a zapisane strony zajmują coraz więcej dysku.",
+			"summary": "Karakeep to menedżer zakładek open source i alternatywa dla Pocketa z tagowaniem przez AI. Hostuj u siebie w Dockerze, w jeden klik.",
+			"about": [
+				"Karakeep to menedżer zakładek open source i aplikacja do czytania na później, której ludzie używają zamiast Pocketa, zamkniętego przez Mozillę. Zapisuje linki, notatki, obrazy i pliki PDF oraz uzupełnia tytuł, opis i obraz podglądu każdego linku. Wyszukiwanie obejmuje wszystko, co zapisano, także tekst na obrazach, który odczytuje OCR. Tagi i streszczenia mogą pochodzić z OpenAI albo z lokalnego modelu przez Ollamę. Są aplikacje na iOS i Android z czytaniem offline oraz rozszerzenia do przeglądarek Chrome, Firefox i Safari.",
+				"Ludzie hostują Karakeepa u siebie, żeby lata zapisanych linków i tekst, który za nimi stoi, zostały na własnym serwerze, a nie w usłudze, która może zostać zamknięta. Pasuje każdemu, kto zapisuje więcej, niż czyta, samemu lub z innymi: listę można udostępnić do odczytu albo do edycji. Haczyk to AI. Automatyczne tagowanie wymaga klucza API od OpenAI albo zgodnego dostawcy, płatnego według zużycia, albo serwera Ollama, który sam uruchamiasz."
+			],
+			"faq": [
+				{
+					"q": "Czy Karakeep jest darmowy i open source?",
+					"a": "Tak. Karakeep jest open source na licencji AGPL-3.0 i można go uruchomić za darmo na własnym serwerze. Jego właściciel, Localhost Labs Ltd, sprzedaje też subskrypcje zarządzanego Karakeep Cloud."
+				},
+				{
+					"q": "Czy Karakeep to to samo co Hoarder?",
+					"a": "Tak. Hoarder zmienił nazwę na Karakeep i to ten sam projekt. Istniejącą instalację Hoardera przenosisz, zmieniając jej obraz Dockera z ghcr.io/hoarder-app/hoarder na ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "Czy Karakeep działa bez OpenAI?",
+					"a": "Tak. Bez OPENAI_API_KEY i OLLAMA_BASE_URL nadal zapisuje, pobiera i przeszukuje zakładki, tylko pomija automatyczne tagowanie. Dla lokalnego modelu ustaw OLLAMA_BASE_URL na swój serwer Ollama, a INFERENCE_TEXT_MODEL na model pobrany tam przez pull."
+				},
+				{
+					"q": "Czy mogę zaimportować zakładki z Pocket do Karakeep?",
+					"a": "Tak. W „Import / Export” w ustawieniach Karakeep czyta eksport CSV z Pocket, pliki HTML z zakładkami z przeglądarek oraz eksporty z Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden i mymind, zachowując tytuły, tagi i daty zapisania."
+				},
+				{
+					"q": "Jak wyłączyć rejestrację w Karakeep?",
+					"a": "Ustaw DISABLE_SIGNUPS=true w zmiennych środowiskowych Karakeep i zrestartuj go: przycisk rejestracji będzie wtedy nieaktywny. Najpierw załóż własne konto, bo pierwsza osoba, która się zarejestruje, zostaje administratorem. Administratorzy dodają ludzi w „Admin Settings” → „Users List” → „Create User”."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um app de favoritos para links, notas e imagens, com busca em texto completo",
-			"notes": "Abra o endereço e cadastre-se: a primeira conta é a do administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois adicione DISABLE_SIGNUPS=true ao .env do projeto e faça o deploy de novo. A criação de tags por IA funciona quando OPENAI_API_KEY também está no .env."
+			"notes": "Abra o endereço e cadastre-se: a primeira conta é a do administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois adicione DISABLE_SIGNUPS=true ao .env do projeto e faça o deploy de novo. A criação de tags por IA funciona quando OPENAI_API_KEY também está no .env.",
+			"sizing": "Karakeep é moderado: cerca de 1,5 GB com o Chrome headless e o Meilisearch, e as páginas salvas fazem o disco crescer.",
+			"summary": "Auto-hospede o Karakeep: gerenciador de favoritos de código aberto e alternativa ao Pocket com tags por IA. Com Docker, em um clique.",
+			"about": [
+				"O Karakeep é um gerenciador de favoritos de código aberto e um app para ler depois que as pessoas usam no lugar do Pocket, que a Mozilla encerrou. Ele salva links, notas, imagens e PDFs e preenche o título, a descrição e a imagem de prévia de cada link. A busca alcança tudo o que você salvou, inclusive o texto dentro de imagens, lido por OCR. As tags e os resumos podem vir da OpenAI ou de um modelo local via Ollama. Há apps para iOS e Android com leitura offline e extensões para Chrome, Firefox e Safari.",
+				"As pessoas auto-hospedam o Karakeep para que anos de links salvos, e o texto por trás deles, fiquem em um servidor próprio, e não em um serviço que pode fechar. Serve para quem salva mais do que lê, sozinho ou com outras pessoas: uma lista pode ser compartilhada com permissão de leitura ou de edição. O porém é a IA. A criação automática de tags exige uma chave de API da OpenAI ou de um provedor compatível, paga por uso, ou um servidor Ollama que você mesmo roda."
+			],
+			"faq": [
+				{
+					"q": "O Karakeep é gratuito e de código aberto?",
+					"a": "Sim. O Karakeep é de código aberto sob a licença AGPL-3.0 e gratuito para rodar no seu próprio servidor. A dona dele, a Localhost Labs Ltd, também vende assinaturas de um Karakeep Cloud gerenciado."
+				},
+				{
+					"q": "O Karakeep é o mesmo que o Hoarder?",
+					"a": "Sim. O Hoarder foi renomeado para Karakeep e é o mesmo projeto. Uma instalação existente do Hoarder passa para o Karakeep trocando a imagem do Docker de ghcr.io/hoarder-app/hoarder para ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "O Karakeep funciona sem a OpenAI?",
+					"a": "Sim. Sem OPENAI_API_KEY nem OLLAMA_BASE_URL, ele ainda salva, baixa e busca favoritos, e só deixa de criar tags automaticamente. Para um modelo local, aponte OLLAMA_BASE_URL para o seu servidor Ollama e defina INFERENCE_TEXT_MODEL com um modelo baixado com pull nele."
+				},
+				{
+					"q": "Dá para importar os favoritos do Pocket no Karakeep?",
+					"a": "Sim. Em “Import / Export”, nas configurações, o Karakeep lê a exportação CSV do Pocket, arquivos HTML de favoritos de navegadores e exportações do Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden e mymind, mantendo títulos, tags e as datas em que você os salvou."
+				},
+				{
+					"q": "Como desativo os cadastros no Karakeep?",
+					"a": "Defina DISABLE_SIGNUPS=true nas variáveis de ambiente do Karakeep e reinicie: o botão de cadastro fica desativado. Crie primeiro a sua própria conta, porque quem se cadastra primeiro vira admin. Os admins adicionam pessoas em “Admin Settings” → “Users List” → “Create User”."
+				}
+			]
 		},
 		"ru": {
 			"description": "Приложение для закладок со ссылками, заметками и изображениями, с полнотекстовым поиском",
-			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт становится администратором. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем добавьте DISABLE_SIGNUPS=true в .env проекта и задеплойте проект заново. Расстановка тегов с помощью ИИ заработает, когда в .env будет и OPENAI_API_KEY."
+			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт становится администратором. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем добавьте DISABLE_SIGNUPS=true в .env проекта и задеплойте проект заново. Расстановка тегов с помощью ИИ заработает, когда в .env будет и OPENAI_API_KEY.",
+			"sizing": "Karakeep: умеренные требования — около 1,5 GB вместе с headless Chrome и Meilisearch, а сохраненные страницы растят диск.",
+			"summary": "Self-hosted Karakeep — open source менеджер закладок, альтернатива Pocket с тегами от ИИ. Через Docker в один клик.",
+			"about": [
+				"Karakeep — это open source менеджер закладок и приложение для отложенного чтения. Им пользуются вместо Pocket, который закрыла Mozilla. Он сохраняет ссылки, заметки, изображения и PDF и заполняет название, описание и картинку предпросмотра каждой ссылки. Поиск находит все сохраненное, включая текст на изображениях, который распознает OCR. Теги и сводки могут приходить от OpenAI или от локальной модели через Ollama. Есть приложения для iOS и Android с чтением офлайн и расширения для Chrome, Firefox и Safari.",
+				"Karakeep разворачивают у себя, чтобы годы сохраненных ссылок и текст за ними оставались на собственном сервере, а не у сервиса, который может закрыться. Подходит всем, кто сохраняет больше, чем читает, в одиночку или вместе с другими: списком можно поделиться с правом просмотра или редактирования. Подвох — в ИИ. Для автоматических тегов нужен API-ключ OpenAI или совместимого провайдера, который оплачивается по использованию, либо Ollama-сервер, который вы запускаете сами."
+			],
+			"faq": [
+				{
+					"q": "Karakeep бесплатный и с открытым кодом?",
+					"a": "Да. Karakeep выпущен с открытым кодом под лицензией AGPL-3.0, и запускать его на своем сервере можно бесплатно. Его владелец, Localhost Labs Ltd, также продает подписки на управляемый Karakeep Cloud."
+				},
+				{
+					"q": "Karakeep — это то же самое, что Hoarder?",
+					"a": "Да. Hoarder переименовали в Karakeep, это тот же проект. Существующую установку Hoarder можно перевести на Karakeep, заменив ее Docker-образ с ghcr.io/hoarder-app/hoarder на ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "Karakeep работает без OpenAI?",
+					"a": "Да. Без OPENAI_API_KEY и OLLAMA_BASE_URL он по-прежнему сохраняет и загружает закладки и ищет по ним, а автоматическую расстановку тегов пропускает. Для локальной модели укажите в OLLAMA_BASE_URL свой сервер Ollama, а в INFERENCE_TEXT_MODEL — модель, загруженную на него через pull."
+				},
+				{
+					"q": "Можно ли импортировать закладки из Pocket в Karakeep?",
+					"a": "Да. В разделе «Import / Export» в настройках Karakeep читает CSV-экспорт Pocket, HTML-файлы закладок из браузеров и экспорты из Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden и mymind, сохраняя названия, теги и даты сохранения."
+				},
+				{
+					"q": "Как отключить регистрацию в Karakeep?",
+					"a": "Задайте DISABLE_SIGNUPS=true в переменных окружения Karakeep и перезапустите его: кнопка регистрации станет неактивной. Сначала создайте собственный аккаунт, потому что тот, кто зарегистрируется первым, становится администратором. Администраторы добавляют людей в «Admin Settings» → «Users List» → «Create User»."
+				}
+			]
 		},
 		"uk": {
 			"description": "Застосунок для закладок на посилання, нотатки й зображення, із повнотекстовим пошуком",
-			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт стає адміністратором. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім додайте DISABLE_SIGNUPS=true у файл .env проєкту й задеплойте ще раз. Теги від ШІ запрацюють, коли в .env буде також OPENAI_API_KEY."
+			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт стає адміністратором. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім додайте DISABLE_SIGNUPS=true у файл .env проєкту й задеплойте ще раз. Теги від ШІ запрацюють, коли в .env буде також OPENAI_API_KEY.",
+			"sizing": "Karakeep має помірні вимоги: близько 1,5 GB з headless Chrome і Meilisearch, а збережені сторінки дедалі більше заповнюють диск.",
+			"summary": "Self-hosted Karakeep — менеджер закладок із відкритим кодом, альтернатива Pocket із тегами від ШІ. Запускається в Docker в один клік.",
+			"about": [
+				"Karakeep — це менеджер закладок із відкритим кодом і застосунок для відкладеного читання. Ним користуються замість Pocket, який закрила Mozilla. Він зберігає посилання, нотатки, зображення та PDF і заповнює назву, опис і зображення попереднього перегляду кожного посилання. Пошук охоплює все збережене, зокрема текст на зображеннях, який розпізнає OCR. Теги й підсумки можуть надходити від OpenAI або від локальної моделі через Ollama. Є застосунки для iOS та Android із читанням офлайн і розширення для Chrome, Firefox та Safari.",
+				"Karakeep розгортають у себе, щоб роки збережених посилань і текст за ними лишалися на власному сервері, а не в сервісі, який може закритися. Підійде всім, хто зберігає більше, ніж читає, наодинці чи з іншими: списком можна поділитися з правом перегляду або редагування. Нюанс — у ШІ. Для автоматичних тегів потрібен API-ключ від OpenAI чи сумісного провайдера, з оплатою за використання, або сервер Ollama, який ви запускаєте самі."
+			],
+			"faq": [
+				{
+					"q": "Karakeep безплатний і з відкритим кодом?",
+					"a": "Так. Karakeep випущено з відкритим кодом за ліцензією AGPL-3.0, і запускати його на власному сервері можна безплатно. Його власник, Localhost Labs Ltd, також продає підписки на керований Karakeep Cloud."
+				},
+				{
+					"q": "Karakeep — це те саме, що Hoarder?",
+					"a": "Так. Hoarder перейменували на Karakeep, це той самий проєкт. Наявну інсталяцію Hoarder можна перевести на Karakeep, змінивши її Docker-образ із ghcr.io/hoarder-app/hoarder на ghcr.io/karakeep-app/karakeep."
+				},
+				{
+					"q": "Чи працює Karakeep без OpenAI?",
+					"a": "Так. Без OPENAI_API_KEY і OLLAMA_BASE_URL він і далі зберігає, завантажує та шукає закладки, а автоматичне тегування пропускає. Для локальної моделі вкажіть в OLLAMA_BASE_URL свій сервер Ollama, а в INFERENCE_TEXT_MODEL — модель, завантажену на ньому через pull."
+				},
+				{
+					"q": "Чи можна імпортувати закладки з Pocket у Karakeep?",
+					"a": "Так. У розділі «Import / Export» у налаштуваннях Karakeep читає CSV-експорт Pocket, HTML-файли закладок із браузерів та експорти з Omnivore, Instapaper, Matter, Readwise Reader, Linkwarden і mymind, зберігаючи назви, теги й дати збереження."
+				},
+				{
+					"q": "Як вимкнути реєстрацію в Karakeep?",
+					"a": "Задайте DISABLE_SIGNUPS=true у змінних середовища Karakeep і перезапустіть його: кнопка реєстрації стане неактивною. Спершу створіть власний акаунт, бо той, хто зареєструється першим, стає адміністратором. Адміністратори додають людей у «Admin Settings» → «Users List» → «Create User»."
+				}
+			]
 		}
 	}
 }

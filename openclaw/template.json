@@ -1,6 +1,9 @@
 {
 	"name": "OpenClaw",
 	"emoji": "🦞",
+	"category": "ai",
+	"alternatives": [],
+	"plan": "grow",
 	"route": {
 		"service": "openclaw",
 		"port": 18789
@@ -28,35 +31,259 @@
 	"texts": {
 		"en": {
 			"description": "An AI assistant that lives in your chat apps",
-			"notes": "Open the address and paste the gateway token into Gateway secret: it is OPENCLAW_GATEWAY_TOKEN in the project’s .env. Then approve the browser once in the openclaw service’s terminal: openclaw devices list, then openclaw devices approve <requestId>. A model’s key is added under Settings, Models."
+			"notes": "Open the address and paste the gateway token into Gateway secret: it is OPENCLAW_GATEWAY_TOKEN in the project’s .env. Then approve the browser once in the openclaw service’s terminal: openclaw devices list, then openclaw devices approve <requestId>. A model’s key is added under Settings, Models.",
+			"sizing": "OpenClaw is moderate: about 1.5 GB of memory at rest and more as its tools run; chats and memory take little disk.",
+			"summary": "OpenClaw is the open-source personal AI assistant you message on WhatsApp, Telegram or Slack. Self-host it with Docker Compose in one click.",
+			"about": [
+				"OpenClaw is an open-source personal AI assistant that you message in the chat apps you already use: WhatsApp, Telegram, Slack, Discord, Signal and over twenty more. It reads and writes files and runs shell commands, with full or sandboxed access. It remembers your preferences, projects and people in plain Markdown files. Cron jobs let it do recurring work and post the result to a chat. Skills from ClawHub add abilities, and it can write its own.",
+				"People self-host OpenClaw so its state, memory and credentials stay on a machine they control. A server suits it better than a laptop, since cron jobs fire only while the Gateway is running. The catch is its reach. Anything it reads, a web page or an email, can carry instructions that try to hijack the model, so the docs advise keeping tools narrow for any agent that reads untrusted content."
+			],
+			"faq": [
+				{
+					"q": "Is OpenClaw free and open source?",
+					"a": "Yes. OpenClaw is MIT licensed and stewarded by the OpenClaw Foundation, a nonprofit funded by donations, with no paid tier, hosted service or token. What you pay for is the model provider you connect."
+				},
+				{
+					"q": "Is OpenClaw owned by OpenAI?",
+					"a": "No. The OpenClaw Foundation, an independent 501(c)(3), stewards it. OpenAI is one of several donors and its creator works there, but donors do not own or direct the project, and no lab's model is privileged in the code."
+				},
+				{
+					"q": "Which AI models does OpenClaw work with?",
+					"a": "Hosted providers such as Anthropic, OpenAI, Google Gemini, DeepSeek and OpenRouter, and local models through Ollama or LM Studio. This template takes an OpenAI or Anthropic key when you deploy it; others go under Settings, Models."
+				},
+				{
+					"q": "Is OpenClaw safe?",
+					"a": "By default, a stranger who messages your bot gets a pairing code and never reaches the model until you approve them. Treat third-party skills and plugins as code you choose to trust, since scans are not a complete security boundary."
+				},
+				{
+					"q": "Is there an OpenClaw app for iPhone or Android?",
+					"a": "Yes. The official iPhone app is on the App Store and the Android app is on Google Play. Each pairs with your Gateway through a setup code from the Control UI and adds chat, voice and camera."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein KI-Assistent, der in deinen Chat-Apps zu Hause ist",
-			"notes": "Öffne die Adresse und füg das Gateway-Token bei „Gateway secret“ ein: Es steht als OPENCLAW_GATEWAY_TOKEN in der .env des Projekts. Bestätige dann den Browser einmal im Terminal des Service openclaw: openclaw devices list, dann openclaw devices approve <requestId>. Den Key eines Modells trägst du unter „Settings“, „Models“ ein."
+			"notes": "Öffne die Adresse und füg das Gateway-Token bei „Gateway secret“ ein: Es steht als OPENCLAW_GATEWAY_TOKEN in der .env des Projekts. Bestätige dann den Browser einmal im Terminal des Service openclaw: openclaw devices list, dann openclaw devices approve <requestId>. Den Key eines Modells trägst du unter „Settings“, „Models“ ein.",
+			"sizing": "OpenClaw ist mittelschwer: etwa 1,5 GB RAM im Leerlauf, mehr, wenn seine Tools laufen; Chats und Gedächtnis brauchen wenig Disk.",
+			"summary": "OpenClaw selbst hosten: der persönliche Open-Source-KI-Assistent, dem du auf WhatsApp, Telegram oder Slack schreibst. Mit Docker Compose in einem Klick.",
+			"about": [
+				"OpenClaw ist ein persönlicher Open-Source-KI-Assistent, dem du in den Chat-Apps schreibst, die du ohnehin nutzt: WhatsApp, Telegram, Slack, Discord, Signal und über zwanzig weitere. Er liest und schreibt Dateien und führt Shell-Befehle aus, wahlweise mit vollem oder per Sandbox eingeschränktem Zugriff. Deine Vorlieben, Projekte und Personen merkt er sich in schlichten Markdown-Dateien. Mit Cron-Jobs erledigt er wiederkehrende Aufgaben und postet das Ergebnis in einen Chat. Skills aus ClawHub erweitern seine Fähigkeiten, und er kann sich eigene schreiben.",
+				"Du hostest OpenClaw selbst, damit sein Zustand, sein Gedächtnis und seine Zugangsdaten auf einer Maschine bleiben, die du kontrollierst. Eine Maschine passt besser zu ihm als ein Laptop, denn Cron-Jobs werden nur ausgelöst, solange das Gateway läuft. Der Haken ist seine Reichweite. Alles, was er liest, eine Webseite oder eine E-Mail, kann Anweisungen enthalten, die das Modell zu kapern versuchen. Deshalb rät die Doku, die Tools für jeden Agenten, der nicht vertrauenswürdige Inhalte liest, eng zu halten."
+			],
+			"faq": [
+				{
+					"q": "Ist OpenClaw kostenlos und Open Source?",
+					"a": "Ja. OpenClaw steht unter der MIT-Lizenz und wird von der OpenClaw Foundation betreut, einer gemeinnützigen Organisation, die sich aus Spenden finanziert. Es gibt keinen kostenpflichtigen Tarif, kein Hosting-Angebot und kein Krypto-Token. Bezahlen musst du den Modellanbieter, den du anbindest."
+				},
+				{
+					"q": "Gehört OpenClaw OpenAI?",
+					"a": "Nein. Die OpenClaw Foundation, eine unabhängige 501(c)(3)-Organisation, betreut das Projekt. OpenAI ist eine von mehreren Organisationen, die spenden, und wer OpenClaw erschaffen hat, arbeitet dort. Wer spendet, besitzt oder lenkt das Projekt aber nicht, und im Code ist kein Modell eines Labors bevorzugt."
+				},
+				{
+					"q": "Mit welchen KI-Modellen funktioniert OpenClaw?",
+					"a": "Mit gehosteten Anbietern wie Anthropic, OpenAI, Google Gemini, DeepSeek und OpenRouter sowie mit lokalen Modellen über Ollama oder LM Studio. Diese Vorlage nimmt beim Deploy einen OpenAI- oder Anthropic-Key entgegen, weitere trägst du unter „Settings“, „Models“ ein."
+				},
+				{
+					"q": "Ist OpenClaw sicher?",
+					"a": "Standardmäßig bekommt eine fremde Person, die deinem Bot schreibt, einen Pairing-Code und erreicht das Modell erst, wenn du sie bestätigst. Behandle Skills und Plugins von Drittanbietern als Code, dem du bewusst vertraust, denn Scans sind keine vollständige Sicherheitsgrenze."
+				},
+				{
+					"q": "Gibt es eine OpenClaw-App für iPhone oder Android?",
+					"a": "Ja. Die offizielle iPhone-App gibt es im App Store, die Android-App bei Google Play. Jede koppelt sich über einen Setup-Code aus der Control UI mit deinem Gateway und ergänzt Chat, Sprache und Kamera."
+				}
+			]
 		},
 		"es": {
 			"description": "Un asistente de IA que vive en tus apps de chat",
-			"notes": "Abre la dirección y pega el token del gateway en Gateway secret: es OPENCLAW_GATEWAY_TOKEN en el .env del proyecto. Luego aprueba el navegador una sola vez en el shell del servicio openclaw: openclaw devices list y después openclaw devices approve <requestId>. La clave de un modelo se agrega en Settings, Models."
+			"notes": "Abre la dirección y pega el token del gateway en Gateway secret: es OPENCLAW_GATEWAY_TOKEN en el .env del proyecto. Luego aprueba el navegador una sola vez en el shell del servicio openclaw: openclaw devices list y después openclaw devices approve <requestId>. La clave de un modelo se agrega en Settings, Models.",
+			"sizing": "OpenClaw es moderado: unos 1,5 GB de memoria en reposo y más al ejecutar herramientas; los chats y la memoria ocupan poco disco.",
+			"summary": "Autoaloja OpenClaw, el asistente personal de IA de código abierto al que escribes por WhatsApp, Telegram o Slack. Con Docker Compose, en un clic.",
+			"about": [
+				"OpenClaw es un asistente personal de IA de código abierto al que escribes en las apps de chat que ya usas: WhatsApp, Telegram, Slack, Discord, Signal y más de veinte otras. Puede leer y escribir archivos y ejecutar comandos de shell, con acceso completo o limitado por un sandbox. Tiene memoria de tus preferencias, proyectos y personas, y la guarda en archivos Markdown sencillos. Las tareas cron le permiten hacer trabajo recurrente y publicar el resultado en un chat. Las skills de ClawHub le agregan capacidades, y también puede escribir las suyas.",
+				"Autoalojas OpenClaw para que su estado, su memoria y sus credenciales se queden en una máquina que controlas. Le va mejor en una máquina que en un equipo portátil, porque las tareas cron solo se disparan mientras el Gateway está en ejecución. El inconveniente es su alcance. Todo lo que lee, una página web o un correo, puede traer instrucciones que intenten secuestrar el modelo, así que la documentación aconseja mantener acotadas las herramientas de cualquier agente que lea contenido no confiable."
+			],
+			"faq": [
+				{
+					"q": "¿OpenClaw es gratis y de código abierto?",
+					"a": "Sí. OpenClaw tiene licencia MIT y lo administra la OpenClaw Foundation, una organización sin fines de lucro financiada con donaciones, sin plan de pago, servicio alojado ni token cripto. Lo que pagas es el proveedor de modelos que conectes."
+				},
+				{
+					"q": "¿OpenClaw es propiedad de OpenAI?",
+					"a": "No. La OpenClaw Foundation, una organización independiente 501(c)(3), está a cargo del proyecto. OpenAI es uno de varios donantes y el creador del proyecto trabaja allí, pero los donantes no son dueños del proyecto ni lo dirigen, y el código no da trato preferente al modelo de ningún laboratorio."
+				},
+				{
+					"q": "¿Con qué modelos de IA funciona OpenClaw?",
+					"a": "Con proveedores alojados como Anthropic, OpenAI, Google Gemini, DeepSeek y OpenRouter, y con modelos locales a través de Ollama o LM Studio. Esta plantilla pide una clave de OpenAI o de Anthropic al desplegar; las demás se agregan en Settings, Models."
+				},
+				{
+					"q": "¿OpenClaw es seguro?",
+					"a": "Por defecto, una persona desconocida que escribe a tu bot recibe un código de emparejamiento y no llega al modelo hasta que la apruebas. Trata las skills y los plugins de terceros como código en el que decides confiar, porque los escaneos no son una barrera de seguridad completa."
+				},
+				{
+					"q": "¿Hay una app de OpenClaw para iPhone o Android?",
+					"a": "Sí. La app oficial para iPhone está en el App Store y la de Android, en Google Play. Cada una se empareja con tu Gateway mediante un código de configuración de la Control UI y suma chat, voz y cámara."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un assistant IA qui vit dans vos messageries",
-			"notes": "Ouvrez l’adresse et collez le token de la gateway dans Gateway secret : c’est OPENCLAW_GATEWAY_TOKEN dans le .env du projet. Approuvez ensuite le navigateur, une seule fois, dans le terminal du service openclaw : openclaw devices list, puis openclaw devices approve <requestId>. La clé d’un modèle s’ajoute dans Settings, Models."
+			"notes": "Ouvrez l’adresse et collez le token de la gateway dans Gateway secret : c’est OPENCLAW_GATEWAY_TOKEN dans le .env du projet. Approuvez ensuite le navigateur, une seule fois, dans le terminal du service openclaw : openclaw devices list, puis openclaw devices approve <requestId>. La clé d’un modèle s’ajoute dans Settings, Models.",
+			"sizing": "OpenClaw est modéré : environ 1,5 GB de mémoire au repos, plus quand ses outils tournent ; peu de disque pour chats et souvenirs.",
+			"summary": "Auto-hébergez OpenClaw, l’assistant IA personnel open source à qui vous écrivez sur WhatsApp, Telegram ou Slack. Avec Docker Compose, en un clic.",
+			"about": [
+				"OpenClaw est un assistant IA personnel open source à qui vous écrivez dans les messageries que vous utilisez déjà : WhatsApp, Telegram, Slack, Discord, Signal et plus de vingt autres. Il lit et écrit des fichiers et exécute des commandes shell, avec un accès complet ou en sandbox. Il retient vos préférences, vos projets et les personnes dans de simples fichiers Markdown. Des tâches cron lui permettent de faire un travail récurrent et de publier le résultat dans une conversation. Les skills de ClawHub ajoutent des capacités, et il peut écrire les siennes.",
+				"Vous auto-hébergez OpenClaw pour que son état, sa mémoire et ses identifiants restent sur une machine que vous contrôlez. Une machine lui convient mieux qu’un ordinateur portable, car les tâches cron ne se déclenchent que tant que la Gateway tourne. Le revers : sa portée. Tout ce qu’il lit, une page web ou un e-mail, peut contenir des instructions qui tentent de détourner le modèle ; la documentation conseille donc de garder les outils restreints pour tout agent qui lit du contenu non fiable."
+			],
+			"faq": [
+				{
+					"q": "OpenClaw est-il gratuit et open source ?",
+					"a": "Oui. OpenClaw est sous licence MIT et géré par l’OpenClaw Foundation, une organisation à but non lucratif financée par des dons, sans offre payante, sans service hébergé ni token crypto. Ce que vous payez, c’est le fournisseur de modèle que vous connectez."
+				},
+				{
+					"q": "OpenClaw appartient-il à OpenAI ?",
+					"a": "Non. L’OpenClaw Foundation, une organisation indépendante 501(c)(3), pilote le projet. OpenAI est l’un des donateurs, parmi plusieurs, et le créateur d’OpenClaw y travaille, mais les donateurs ne possèdent ni ne dirigent le projet, et aucun modèle de laboratoire n’est privilégié dans le code."
+				},
+				{
+					"q": "Avec quels modèles d’IA OpenClaw fonctionne-t-il ?",
+					"a": "Avec des fournisseurs hébergés comme Anthropic, OpenAI, Google Gemini, DeepSeek et OpenRouter, et avec des modèles locaux via Ollama ou LM Studio. Ce template demande une clé OpenAI ou Anthropic au déploiement ; les autres s’ajoutent dans Settings, Models."
+				},
+				{
+					"q": "OpenClaw est-il sûr ?",
+					"a": "Par défaut, une personne inconnue qui écrit à votre bot reçoit un code d’appairage et n’atteint jamais le modèle tant que vous ne l’avez pas approuvée. Traitez les skills et plugins tiers comme du code auquel vous choisissez de faire confiance, car les scans ne forment pas une frontière de sécurité complète."
+				},
+				{
+					"q": "Existe-t-il une application OpenClaw pour iPhone ou Android ?",
+					"a": "Oui. L’application officielle pour iPhone est sur l’App Store et celle d’Android sur Google Play. Chacune s’appaire avec votre Gateway grâce à un code de configuration de la Control UI et ajoute chat, voix et caméra."
+				}
+			]
 		},
 		"pl": {
 			"description": "Asystent AI, który mieszka w twoich komunikatorach",
-			"notes": "Otwórz adres projektu i wklej token gatewaya do pola Gateway secret: to OPENCLAW_GATEWAY_TOKEN w pliku .env projektu. Potem raz zatwierdź przeglądarkę w terminalu usługi openclaw: openclaw devices list, a następnie openclaw devices approve <requestId>. Klucz modelu dodasz w Settings, Models."
+			"notes": "Otwórz adres projektu i wklej token gatewaya do pola Gateway secret: to OPENCLAW_GATEWAY_TOKEN w pliku .env projektu. Potem raz zatwierdź przeglądarkę w terminalu usługi openclaw: openclaw devices list, a następnie openclaw devices approve <requestId>. Klucz modelu dodasz w Settings, Models.",
+			"sizing": "OpenClaw ma średnie wymagania: około 1,5 GB pamięci w spoczynku, więcej gdy pracują narzędzia; czaty i pamięć zajmują mało dysku.",
+			"summary": "OpenClaw to osobisty asystent AI open source, do którego piszesz na WhatsAppie, Telegramie lub Slacku. Hostuj go u siebie z Docker Compose w jeden klik.",
+			"about": [
+				"OpenClaw to osobisty asystent AI open source, do którego piszesz w komunikatorach, z których już korzystasz: WhatsApp, Telegram, Slack, Discord, Signal i ponad dwadzieścia innych. Czyta i zapisuje pliki oraz uruchamia polecenia powłoki, z pełnym dostępem albo ograniczonym do piaskownicy. Twoje preferencje, projekty i osoby zapamiętuje w zwykłych plikach Markdown. Zadania cron pozwalają mu wykonywać cykliczną pracę i wysyłać wynik na czat. Skille z ClawHub dodają mu możliwości, a nowe potrafi też napisać sam.",
+				"OpenClaw hostujesz u siebie, żeby jego stan, pamięć i poświadczenia zostały na maszynie, którą kontrolujesz. Lepiej sprawdza się na maszynie niż na laptopie, bo zadania cron uruchamiają się tylko wtedy, gdy działa Gateway. Haczyk to jego zasięg. Wszystko, co czyta, strona internetowa czy e-mail, może zawierać instrukcje, które próbują przejąć kontrolę nad modelem, więc dokumentacja radzi ograniczać narzędzia każdemu agentowi, który czyta niezaufane treści."
+			],
+			"faq": [
+				{
+					"q": "Czy OpenClaw jest darmowy i open source?",
+					"a": "Tak. OpenClaw jest na licencji MIT, a zarządza nim OpenClaw Foundation, organizacja non-profit utrzymywana z darowizn. Nie ma płatnego planu, usługi hostowanej ani tokena kryptowalutowego. Płacisz za dostawcę modelu, którego podłączysz."
+				},
+				{
+					"q": "Czy OpenClaw należy do OpenAI?",
+					"a": "Nie. Opiekuje się nim OpenClaw Foundation, niezależna organizacja 501(c)(3). OpenAI jest jednym z kilku darczyńców, a twórca projektu tam pracuje, ale darczyńcy nie są właścicielami projektu i nim nie kierują, a w kodzie żaden model żadnego laboratorium nie ma pierwszeństwa."
+				},
+				{
+					"q": "Z jakimi modelami AI działa OpenClaw?",
+					"a": "Z hostowanymi dostawcami, takimi jak Anthropic, OpenAI, Google Gemini, DeepSeek i OpenRouter, oraz z modelami lokalnymi przez Ollamę albo LM Studio. Ten szablon przy wdrożeniu przyjmuje klucz OpenAI albo Anthropic; pozostałe dodasz w Settings, Models."
+				},
+				{
+					"q": "Czy OpenClaw jest bezpieczny?",
+					"a": "Domyślnie obca osoba, która napisze do twojego bota, dostaje kod parowania i nie dociera do modelu, dopóki jej nie zatwierdzisz. Zewnętrzne skille i pluginy traktuj jak kod, któremu sam postanawiasz zaufać, bo skany nie są pełną granicą bezpieczeństwa."
+				},
+				{
+					"q": "Czy jest aplikacja OpenClaw na iPhone’a albo Androida?",
+					"a": "Tak. Oficjalna aplikacja na iPhone’a jest w App Store, a aplikacja na Androida w Google Play. Każda łączy się z twoim Gateway przez kod konfiguracyjny z Control UI i dodaje czat, głos i aparat."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um assistente de IA que vive nos seus apps de mensagens",
-			"notes": "Abra o endereço e cole o token do gateway em Gateway secret: ele está em OPENCLAW_GATEWAY_TOKEN, no .env do projeto. Depois aprove o navegador uma vez no terminal do serviço openclaw: openclaw devices list e depois openclaw devices approve <requestId>. A chave de um modelo é adicionada em Settings, Models."
+			"notes": "Abra o endereço e cole o token do gateway em Gateway secret: ele está em OPENCLAW_GATEWAY_TOKEN, no .env do projeto. Depois aprove o navegador uma vez no terminal do serviço openclaw: openclaw devices list e depois openclaw devices approve <requestId>. A chave de um modelo é adicionada em Settings, Models.",
+			"sizing": "OpenClaw é moderado: cerca de 1,5 GB de memória em repouso e mais quando as ferramentas rodam; chats e memória ocupam pouco disco.",
+			"summary": "Auto-hospede o OpenClaw, assistente pessoal de IA de código aberto a quem você escreve no WhatsApp, Telegram ou Slack. Docker Compose, em um clique.",
+			"about": [
+				"O OpenClaw é um assistente pessoal de IA de código aberto para quem você manda mensagem nos apps de mensagens que já usa: WhatsApp, Telegram, Slack, Discord, Signal e mais de vinte outros. Ele lê e escreve arquivos e executa comandos de shell, com acesso total ou em sandbox. Guarda suas preferências, projetos e pessoas em arquivos Markdown simples. Tarefas cron deixam que ele faça trabalho recorrente e envie o resultado para um chat. As skills do ClawHub acrescentam habilidades, e ele também pode escrever as próprias.",
+				"Auto-hospedar o OpenClaw mantém o estado, a memória e as credenciais dele em uma máquina que você controla. Uma máquina serve melhor que um notebook, já que as tarefas cron só disparam enquanto o Gateway está rodando. O porém é o alcance dele. Tudo o que ele lê, uma página web ou um e-mail, pode trazer instruções que tentam sequestrar o modelo, então a documentação recomenda manter as ferramentas restritas em qualquer agente que leia conteúdo não confiável."
+			],
+			"faq": [
+				{
+					"q": "O OpenClaw é gratuito e de código aberto?",
+					"a": "Sim. O OpenClaw usa a licença MIT e é mantido pela OpenClaw Foundation, uma organização sem fins lucrativos financiada por doações, sem plano pago, serviço hospedado nem token cripto. O que você paga é o provedor de modelos que conecta."
+				},
+				{
+					"q": "O OpenClaw pertence à OpenAI?",
+					"a": "Não. A OpenClaw Foundation, uma organização independente 501(c)(3), cuida do projeto. A OpenAI é uma entre vários doadores e o criador do projeto trabalha lá, mas os doadores não são donos do projeto nem o dirigem, e nenhum modelo de laboratório tem privilégio no código."
+				},
+				{
+					"q": "Com quais modelos de IA o OpenClaw funciona?",
+					"a": "Com provedores hospedados, como Anthropic, OpenAI, Google Gemini, DeepSeek e OpenRouter, e com modelos locais via Ollama ou LM Studio. Este template pede uma chave da OpenAI ou da Anthropic no deploy; as outras entram em Settings, Models."
+				},
+				{
+					"q": "O OpenClaw é seguro?",
+					"a": "Por padrão, um desconhecido que manda mensagem para o seu bot recebe um código de pareamento e não chega ao modelo até você aprová-lo. Trate skills e plugins de terceiros como código em que você escolhe confiar, porque os scans não são uma barreira de segurança completa."
+				},
+				{
+					"q": "Existe um app do OpenClaw para iPhone ou Android?",
+					"a": "Sim. O app oficial para iPhone está na App Store e o de Android, no Google Play. Cada um se pareia com o seu Gateway por meio de um código de configuração da Control UI e acrescenta chat, voz e câmera."
+				}
+			]
 		},
 		"ru": {
 			"description": "ИИ-ассистент, который живет в ваших мессенджерах",
-			"notes": "Откройте адрес и вставьте токен шлюза в поле Gateway secret: это OPENCLAW_GATEWAY_TOKEN в .env проекта. Затем один раз одобрите браузер в терминале сервиса openclaw: сначала openclaw devices list, потом openclaw devices approve <requestId>. Ключ модели добавляется в разделе Settings, Models."
+			"notes": "Откройте адрес и вставьте токен шлюза в поле Gateway secret: это OPENCLAW_GATEWAY_TOKEN в .env проекта. Затем один раз одобрите браузер в терминале сервиса openclaw: сначала openclaw devices list, потом openclaw devices approve <requestId>. Ключ модели добавляется в разделе Settings, Models.",
+			"sizing": "OpenClaw: умеренные требования — около 1,5 GB памяти в простое, больше при работе инструментов; чаты и память занимают мало диска.",
+			"summary": "Self-hosted OpenClaw — личный open source ИИ-ассистент, которому вы пишете в WhatsApp, Telegram или Slack. Docker Compose, в один клик.",
+			"about": [
+				"OpenClaw — это личный open source ИИ-ассистент, которому вы пишете в привычных мессенджерах: WhatsApp, Telegram, Slack, Discord, Signal и еще свыше двадцати. Он читает и пишет файлы и выполняет команды в шелле, с полным доступом или в песочнице. Ваши предпочтения, проекты и людей он помнит в простых файлах Markdown. Cron-задачи позволяют ему выполнять регулярную работу и отправлять результат в чат. Скиллы из ClawHub добавляют ему умений, а новые он умеет писать сам.",
+				"OpenClaw хостят у себя, чтобы его состояние, память и учетные данные оставались на машине, которую вы контролируете. На машине ему лучше, чем на ноутбуке, потому что cron-задачи срабатывают, только пока работает Gateway. Нюанс в том, как далеко он дотягивается. Все, что он читает, будь то веб-страница или письмо, может содержать инструкции, которые пытаются перехватить управление моделью, поэтому в документации советуют ограничивать инструменты любого агента, читающего недоверенный контент."
+			],
+			"faq": [
+				{
+					"q": "OpenClaw бесплатный и с открытым кодом?",
+					"a": "Да. OpenClaw выпущен под лицензией MIT, за проект отвечает OpenClaw Foundation — некоммерческая организация, которая живет на пожертвования. Платного тарифа, облачного сервиса и криптотокена нет. Платить нужно провайдеру модели, которого вы подключите."
+				},
+				{
+					"q": "OpenClaw принадлежит OpenAI?",
+					"a": "Нет. Проект курирует OpenClaw Foundation — независимая организация 501(c)(3). OpenAI — один из нескольких доноров, и создатель проекта работает там, но доноры не владеют проектом и не управляют им, а в коде ни одна модель ни одной лаборатории не имеет преимущества."
+				},
+				{
+					"q": "С какими ИИ-моделями работает OpenClaw?",
+					"a": "С облачными провайдерами вроде Anthropic, OpenAI, Google Gemini, DeepSeek и OpenRouter, а также с локальными моделями через Ollama или LM Studio. Этот шаблон при деплое принимает ключ OpenAI или Anthropic, остальные добавляются в разделе Settings, Models."
+				},
+				{
+					"q": "OpenClaw безопасен?",
+					"a": "По умолчанию незнакомец, который пишет вашему боту, получает код сопряжения и не доходит до модели, пока вы его не одобрите. Относитесь к сторонним скиллам и плагинам как к коду, которому вы сами решили доверять: сканирование — не полноценная граница безопасности."
+				},
+				{
+					"q": "Есть ли у OpenClaw приложение для iPhone или Android?",
+					"a": "Да. Официальное приложение для iPhone есть в App Store, а для Android — в Google Play. Каждое сопрягается с вашим Gateway через код настройки из Control UI и добавляет чат, голос и камеру."
+				}
+			]
 		},
 		"uk": {
 			"description": "ШІ-асистент, що живе у ваших месенджерах",
-			"notes": "Відкрийте адресу і вставте токен шлюзу в поле Gateway secret: це OPENCLAW_GATEWAY_TOKEN у файлі .env проєкту. Потім один раз підтвердьте браузер у терміналі сервісу openclaw: спершу openclaw devices list, далі openclaw devices approve <requestId>. Ключ моделі додають у Settings, Models."
+			"notes": "Відкрийте адресу і вставте токен шлюзу в поле Gateway secret: це OPENCLAW_GATEWAY_TOKEN у файлі .env проєкту. Потім один раз підтвердьте браузер у терміналі сервісу openclaw: спершу openclaw devices list, далі openclaw devices approve <requestId>. Ключ моделі додають у Settings, Models.",
+			"sizing": "OpenClaw має помірні вимоги: близько 1,5 GB пам’яті у спокої, більше при роботі інструментів; чати й пам’ять займають мало диска.",
+			"summary": "Self-hosted OpenClaw — особистий ШІ-асистент із відкритим кодом, якому ви пишете у WhatsApp, Telegram або Slack. Docker Compose, в один клік.",
+			"about": [
+				"OpenClaw — це особистий ШІ-асистент із відкритим кодом, якому ви пишете в звичних месенджерах: WhatsApp, Telegram, Slack, Discord, Signal і ще понад двадцять. Він читає й пише файли та виконує команди в оболонці, з повним доступом або в пісочниці. Ваші вподобання, проєкти й людей він запам’ятовує в простих файлах Markdown. Cron-завдання дозволяють йому виконувати регулярну роботу й надсилати результат у чат. Скіли з ClawHub додають можливостей, а нові він може створювати й сам.",
+				"OpenClaw хостять у себе, щоб його стан, пам’ять і облікові дані лишалися на машині, яку ви контролюєте. На машині йому краще, ніж на ноутбуці, бо cron-завдання спрацьовують, лише поки працює Gateway. Але є нюанс: як далеко він сягає. Усе, що він читає, будь то вебсторінка чи лист, може містити інструкції, які намагаються перехопити керування моделлю, тож документація радить обмежувати інструменти будь-якого агента, що читає недовірений вміст."
+			],
+			"faq": [
+				{
+					"q": "OpenClaw безплатний і з відкритим кодом?",
+					"a": "Так. OpenClaw має ліцензію MIT, за проєкт відповідає OpenClaw Foundation — неприбуткова організація, що живе на пожертви. Платного тарифу, хмарного сервісу й криптотокена немає. Платити треба провайдерові моделі, якого ви підключите."
+				},
+				{
+					"q": "OpenClaw належить OpenAI?",
+					"a": "Ні. Проєкт курує OpenClaw Foundation — незалежна організація 501(c)(3). OpenAI — один із кількох донорів, і творець проєкту працює там, але донори не володіють проєктом і не керують ним, а в коді жодна модель жодної лабораторії не має переваги."
+				},
+				{
+					"q": "З якими ШІ-моделями працює OpenClaw?",
+					"a": "З хмарними провайдерами, як-от Anthropic, OpenAI, Google Gemini, DeepSeek і OpenRouter, а також з локальними моделями через Ollama або LM Studio. Цей шаблон під час деплою приймає ключ OpenAI або Anthropic, інші додають у Settings, Models."
+				},
+				{
+					"q": "OpenClaw безпечний?",
+					"a": "За замовчуванням незнайомець, який пише вашому боту, отримує код сполучення й не доходить до моделі, доки ви його не підтвердите. Ставтеся до сторонніх скілів і плагінів як до коду, якому ви самі вирішили довіряти: сканування — не повноцінна межа безпеки."
+				},
+				{
+					"q": "Чи є в OpenClaw застосунок для iPhone або Android?",
+					"a": "Так. Офіційний застосунок для iPhone є в App Store, а для Android — у Google Play. Кожен сполучається з вашим Gateway через код налаштування з Control UI й додає чат, голос і камеру."
+				}
+			]
 		}
 	}
 }

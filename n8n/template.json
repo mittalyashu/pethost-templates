@@ -1,6 +1,12 @@
 {
 	"name": "n8n",
 	"emoji": "🔀",
+	"category": "automation",
+	"alternatives": [
+		"Zapier",
+		"Make"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "n8n",
 		"port": 5678
@@ -22,35 +28,259 @@
 	"texts": {
 		"en": {
 			"description": "Workflow automation with a visual editor",
-			"notes": "Open the address and create the owner account on the first page. Do it right away: until then the page is open to whoever has the address. Schedules run in UTC: for another zone add GENERIC_TIMEZONE, for example Europe/Berlin, to the project’s .env and deploy again."
+			"notes": "Open the address and create the owner account on the first page. Do it right away: until then the page is open to whoever has the address. Schedules run in UTC: for another zone add GENERIC_TIMEZONE, for example Europe/Berlin, to the project’s .env and deploy again.",
+			"sizing": "n8n is moderate: about 800 MB of memory, more for big workflows; old executions are pruned, so disk stays small.",
+			"summary": "n8n is a fair-code workflow automation tool and Zapier alternative. Self-host it on your own machine in one click.",
+			"about": [
+				"n8n is a fair-code workflow automation tool, the Zapier alternative you can run on your own server. A workflow starts from a trigger, such as a schedule, a webhook or an event in another app, and passes data through nodes for the apps it connects. Where no node fits, the HTTP Request node calls any API and the Code node runs your own JavaScript. A workflow can also hold an AI agent with the model and tools you pick, and when a run fails you can re-run just the step that broke.",
+				"People self-host n8n so that the credentials and data their workflows handle stay in their own environment. The catch is that features for teams are paid: SSO, sharing workflows and credentials, Git version control and environments are not in the free Community Edition."
+			],
+			"faq": [
+				{
+					"q": "Is n8n open source?",
+					"a": "No, n8n calls itself fair-code. Its Sustainable Use License lets you use it free inside your own business or for personal use, but offering n8n to others as a paid service needs a commercial agreement with n8n."
+				},
+				{
+					"q": "n8n vs Zapier: what is the difference?",
+					"a": "Zapier runs only in its own cloud and counts every action a Zap performs as a task. n8n also runs on your own server, and its cloud counts a whole workflow run, however many steps, as one execution."
+				},
+				{
+					"q": "Can n8n run Python code?",
+					"a": "Yes, but since n8n 2.0 the Python Code node needs task runners in external mode, a separate n8nio/runners container. This template runs n8n alone, so its Code node runs JavaScript."
+				},
+				{
+					"q": "How do I export and import n8n workflows?",
+					"a": "Workflows are JSON. The Workflow menu in the editor has Download, Import from URL and Import from File, and copied nodes paste into another workflow. Exports include credential names and IDs, so check one before sharing it."
+				},
+				{
+					"q": "How do I change the timezone in n8n?",
+					"a": "Set GENERIC_TIMEZONE, such as America/New_York, in the project's .env and redeploy: this template starts n8n in UTC. A single workflow can also take its own zone under Settings in its Workflow menu."
+				}
+			]
 		},
 		"de": {
 			"description": "Workflow-Automatisierung mit visuellem Editor",
-			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Owner-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Zeitpläne laufen in UTC: Für eine andere Zeitzone trägst du GENERIC_TIMEZONE, zum Beispiel Europe/Berlin, in die .env des Projekts ein und deployst neu."
+			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Owner-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Zeitpläne laufen in UTC: Für eine andere Zeitzone trägst du GENERIC_TIMEZONE, zum Beispiel Europe/Berlin, in die .env des Projekts ein und deployst neu.",
+			"sizing": "n8n ist mittelschwer: etwa 800 MB RAM, mehr für große Workflows; alte Ausführungen werden bereinigt, die Disk bleibt klein.",
+			"summary": "n8n selbst hosten: Fair-Code-Tool zur Workflow-Automatisierung und Alternative zu Zapier, mit einem Klick auf deiner eigenen Maschine.",
+			"about": [
+				"n8n ist ein Fair-Code-Tool zur Workflow-Automatisierung, die Alternative zu Zapier, die du auf deinem eigenen Server betreiben kannst. Ein Workflow startet mit einem Trigger, etwa einem Zeitplan, einem Webhook oder einem Ereignis in einer anderen App, und reicht Daten durch Nodes für die verbundenen Apps weiter. Wo kein Node passt, ruft der HTTP-Request-Node jede API auf und der Code-Node führt dein eigenes JavaScript aus. Ein Workflow kann auch einen KI-Agenten enthalten, mit dem Modell und den Tools deiner Wahl, und wenn eine Ausführung fehlschlägt, kannst du genau den Schritt wiederholen, der gescheitert ist.",
+				"Wer n8n selbst hostet, behält die Zugangsdaten und Daten, die die Workflows verarbeiten, in der eigenen Umgebung. Der Haken: Funktionen für Teams sind kostenpflichtig. SSO, das Teilen von Workflows und Zugangsdaten, Git-Versionskontrolle und Umgebungen gehören nicht zur kostenlosen Community Edition."
+			],
+			"faq": [
+				{
+					"q": "Ist n8n Open Source?",
+					"a": "Nein, n8n bezeichnet sich als fair-code. Die Sustainable Use License erlaubt dir, es kostenlos im eigenen Unternehmen oder privat zu nutzen, aber n8n anderen als bezahlten Dienst anzubieten, braucht eine kommerzielle Vereinbarung mit n8n."
+				},
+				{
+					"q": "n8n vs Zapier: Was ist der Unterschied?",
+					"a": "Zapier läuft nur in der eigenen Cloud und zählt jede Aktion, die ein Zap ausführt, als Task. n8n läuft auch auf deinem eigenen Server, und in seiner Cloud zählt ein ganzer Workflow-Lauf, egal wie viele Schritte er hat, als eine Ausführung."
+				},
+				{
+					"q": "Kann n8n Python-Code ausführen?",
+					"a": "Ja, aber seit n8n 2.0 braucht der Python-Code-Node Task Runner im External Mode, also einen separaten Container n8nio/runners. Diese Vorlage betreibt n8n allein, deshalb führt ihr Code-Node JavaScript aus."
+				},
+				{
+					"q": "Wie exportiere und importiere ich n8n-Workflows?",
+					"a": "Workflows sind JSON. Das Menü Workflow im Editor bietet Download, Import from URL und Import from File, und kopierte Nodes lassen sich in einen anderen Workflow einfügen. Exporte enthalten die Namen und IDs der Zugangsdaten, du solltest einen Export also prüfen, bevor du ihn teilst."
+				},
+				{
+					"q": "Wie ändere ich die Zeitzone in n8n?",
+					"a": "Trag GENERIC_TIMEZONE, zum Beispiel America/New_York, in die .env des Projekts ein und deploye neu: Diese Vorlage startet n8n in UTC. Ein einzelner Workflow kann auch eine eigene Zeitzone haben, unter Settings in seinem Menü Workflow."
+				}
+			]
 		},
 		"es": {
 			"description": "Automatización de flujos de trabajo con un editor visual",
-			"notes": "Abre la dirección y crea la cuenta de propietario en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Las tareas programadas se ejecutan en UTC: para otra zona horaria, agrega GENERIC_TIMEZONE, por ejemplo Europe/Berlin, al .env del proyecto y vuelve a desplegar."
+			"notes": "Abre la dirección y crea la cuenta de propietario en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Las tareas programadas se ejecutan en UTC: para otra zona horaria, agrega GENERIC_TIMEZONE, por ejemplo Europe/Berlin, al .env del proyecto y vuelve a desplegar.",
+			"sizing": "n8n es moderado: unos 800 MB de memoria, más con flujos grandes; las ejecuciones viejas se eliminan, así que el disco es pequeño.",
+			"summary": "Autoaloja n8n, la herramienta de automatización de workflows fair-code y alternativa a Zapier, con un clic en tu propia máquina.",
+			"about": [
+				"n8n es una herramienta de automatización de workflows fair-code, la alternativa a Zapier que puedes ejecutar en tu propio servidor. Un workflow empieza con un disparador, como una programación, un webhook o un evento de otra app, y pasa los datos por nodos de las apps que conecta. Cuando ningún nodo encaja, el nodo HTTP Request llama a cualquier API y el nodo Code ejecuta tu propio JavaScript. Un workflow también puede incluir un agente de IA con el modelo y las herramientas que elijas y, cuando una ejecución falla, puedes volver a ejecutar solo el paso que falló.",
+				"Autoalojas n8n para que las credenciales y los datos que manejan tus workflows se queden en tu propio entorno. El inconveniente: las funciones para equipos son de pago. SSO, compartir workflows y credenciales, el control de versiones con Git y los entornos no están en la Community Edition gratuita."
+			],
+			"faq": [
+				{
+					"q": "¿n8n es de código abierto?",
+					"a": "No, n8n se define como fair-code. Su Sustainable Use License te permite usarlo gratis dentro de tu propio negocio o para uso personal, pero ofrecer n8n a otros como servicio de pago requiere un acuerdo comercial con n8n."
+				},
+				{
+					"q": "n8n vs Zapier: ¿cuál es la diferencia?",
+					"a": "Zapier funciona solo en su propia nube y cuenta cada acción de un Zap como una tarea. n8n también funciona en tu propio servidor, y su nube cuenta un workflow completo, tenga los pasos que tenga, como una sola ejecución."
+				},
+				{
+					"q": "¿n8n puede ejecutar código Python?",
+					"a": "Sí, pero desde n8n 2.0 el nodo Code en Python necesita task runners en modo external, un contenedor aparte n8nio/runners. Esta plantilla ejecuta solo n8n, así que su nodo Code ejecuta JavaScript."
+				},
+				{
+					"q": "¿Cómo exporto e importo workflows de n8n?",
+					"a": "Los workflows son JSON. El menú Workflow del editor tiene Download, Import from URL e Import from File, y los nodos copiados se pegan en otro workflow. Las exportaciones incluyen los nombres y los ID de las credenciales, así que revisa una antes de compartirla."
+				},
+				{
+					"q": "¿Cómo cambio la zona horaria en n8n?",
+					"a": "Define GENERIC_TIMEZONE, por ejemplo America/New_York, en el .env del proyecto y vuelve a desplegar: esta plantilla inicia n8n en UTC. Un workflow también puede tener su propia zona en Settings, dentro de su menú Workflow."
+				}
+			]
 		},
 		"fr": {
 			"description": "Automatisation de workflows avec un éditeur visuel",
-			"notes": "Ouvrez l’adresse et créez le compte propriétaire sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les planifications s’exécutent en UTC : pour un autre fuseau horaire, ajoutez GENERIC_TIMEZONE, par exemple Europe/Berlin, au .env du projet et redéployez."
+			"notes": "Ouvrez l’adresse et créez le compte propriétaire sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les planifications s’exécutent en UTC : pour un autre fuseau horaire, ajoutez GENERIC_TIMEZONE, par exemple Europe/Berlin, au .env du projet et redéployez.",
+			"sizing": "n8n est modéré : environ 800 MB de mémoire, plus pour les gros workflows ; l’historique est purgé, le disque reste petit.",
+			"summary": "Auto-hébergez n8n, l’outil d’automatisation de workflows fair-code et alternative à Zapier, en un clic sur votre propre machine.",
+			"about": [
+				"n8n est un outil d’automatisation de workflows fair-code, l’alternative à Zapier que vous pouvez faire tourner sur votre propre serveur. Un workflow démarre à partir d’un déclencheur, comme une planification, un webhook ou un événement dans une autre application, et fait passer les données par des nœuds pour les applications qu’il connecte. Quand aucun nœud ne convient, le nœud HTTP Request appelle n’importe quelle API et le nœud Code exécute votre propre JavaScript. Un workflow peut aussi contenir un agent IA, avec le modèle et les outils que vous choisissez, et quand une exécution échoue, vous pouvez relancer uniquement l’étape qui a échoué.",
+				"Vous auto-hébergez n8n pour que les identifiants et les données que traitent vos workflows restent dans votre propre environnement. Le revers : les fonctions pour les équipes sont payantes. Le SSO, le partage de workflows et d’identifiants, la gestion de versions avec Git et les environnements ne font pas partie de la Community Edition gratuite."
+			],
+			"faq": [
+				{
+					"q": "n8n est-il open source ?",
+					"a": "Non, n8n se présente comme fair-code. Sa Sustainable Use License permet de l’utiliser gratuitement dans votre propre entreprise ou à titre personnel, mais proposer n8n à d’autres comme service payant demande un accord commercial avec n8n."
+				},
+				{
+					"q": "n8n vs Zapier : quelle est la différence ?",
+					"a": "Zapier ne tourne que dans son propre cloud et compte chaque action d’un Zap comme une tâche. n8n tourne aussi sur votre propre serveur, et son cloud compte un workflow entier, quel que soit le nombre d’étapes, comme une seule exécution."
+				},
+				{
+					"q": "n8n peut-il exécuter du code Python ?",
+					"a": "Oui, mais depuis n8n 2.0, le nœud Code en Python demande des task runners en mode external, un conteneur n8nio/runners distinct. Ce template fait tourner n8n seul, donc son nœud Code exécute du JavaScript."
+				},
+				{
+					"q": "Comment exporter et importer des workflows n8n ?",
+					"a": "Les workflows sont du JSON. Le menu Workflow de l’éditeur propose Download, Import from URL et Import from File, et les nœuds copiés se collent dans un autre workflow. Les exports contiennent les noms et les ID des identifiants : vérifiez-en un avant de le partager."
+				},
+				{
+					"q": "Comment changer le fuseau horaire dans n8n ?",
+					"a": "Définissez GENERIC_TIMEZONE, par exemple America/New_York, dans le .env du projet et redéployez : ce template démarre n8n en UTC. Un workflow peut aussi avoir son propre fuseau, dans Settings, depuis son menu Workflow."
+				}
+			]
 		},
 		"pl": {
 			"description": "Automatyzacja workflowów z wizualnym edytorem",
-			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto właściciela. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Harmonogramy działają w UTC: dla innej strefy dodaj GENERIC_TIMEZONE, na przykład Europe/Berlin, do pliku .env projektu i wdróż ponownie."
+			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto właściciela. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Harmonogramy działają w UTC: dla innej strefy dodaj GENERIC_TIMEZONE, na przykład Europe/Berlin, do pliku .env projektu i wdróż ponownie.",
+			"sizing": "n8n ma średnie wymagania: około 800 MB pamięci, więcej dla dużych workflowów; stare uruchomienia są usuwane, więc dysk jest mały.",
+			"summary": "Hostuj n8n u siebie jednym kliknięciem: narzędzie fair-code do automatyzacji workflowów i alternatywa dla Zapiera, na twojej własnej maszynie.",
+			"about": [
+				"n8n to narzędzie fair-code do automatyzacji workflowów, alternatywa dla Zapiera, którą możesz uruchomić na własnym serwerze. Workflow startuje od wyzwalacza, na przykład harmonogramu, webhooka albo zdarzenia w innej aplikacji, i przekazuje dane przez węzły dla połączonych aplikacji. Gdy żaden węzeł nie pasuje, węzeł HTTP Request wywołuje dowolne API, a węzeł Code uruchamia twój własny JavaScript. Workflow może też zawierać agenta AI z modelem i narzędziami, które wybierzesz, a gdy wykonanie zakończy się błędem, możesz ponowić tylko ten krok, który zawiódł.",
+				"n8n hostuje się u siebie, żeby poświadczenia i dane, które przetwarzają workflowy, zostały w twoim własnym środowisku. Haczyk w tym, że funkcje dla zespołów są płatne: SSO, udostępnianie workflowów i poświadczeń, kontrola wersji Git oraz środowiska nie wchodzą w skład darmowej Community Edition."
+			],
+			"faq": [
+				{
+					"q": "Czy n8n jest open source?",
+					"a": "Nie, n8n nazywa siebie fair-code. Licencja Sustainable Use License pozwala używać go za darmo we własnej firmie albo do celów osobistych, ale oferowanie n8n innym jako płatnej usługi wymaga komercyjnej umowy z n8n."
+				},
+				{
+					"q": "n8n vs Zapier: jaka jest różnica?",
+					"a": "Zapier działa tylko we własnej chmurze i liczy każdą akcję, którą wykonuje Zap, jako zadanie. n8n działa też na twoim własnym serwerze, a jego chmura liczy całe uruchomienie workflowu, bez względu na liczbę kroków, jako jedno wykonanie."
+				},
+				{
+					"q": "Czy n8n może uruchamiać kod w Pythonie?",
+					"a": "Tak, ale od n8n 2.0 węzeł Code w Pythonie wymaga task runnerów w trybie external, czyli osobnego kontenera n8nio/runners. Ten szablon uruchamia samego n8n, więc jego węzeł Code uruchamia JavaScript."
+				},
+				{
+					"q": "Jak eksportować i importować workflowy w n8n?",
+					"a": "Workflowy to JSON. Menu Workflow w edytorze ma opcje Download, Import from URL i Import from File, a skopiowane węzły można wkleić do innego workflowu. Eksporty zawierają nazwy i ID poświadczeń, więc sprawdź eksport, zanim go komuś udostępnisz."
+				},
+				{
+					"q": "Jak zmienić strefę czasową w n8n?",
+					"a": "Ustaw GENERIC_TIMEZONE, na przykład America/New_York, w pliku .env projektu i wdróż ponownie: ten szablon uruchamia n8n w UTC. Pojedynczy workflow może też mieć własną strefę w Settings, w swoim menu Workflow."
+				}
+			]
 		},
 		"pt": {
 			"description": "Automação de fluxos de trabalho com editor visual",
-			"notes": "Abra o endereço e crie a conta do dono na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os agendamentos rodam em UTC: para outro fuso, adicione GENERIC_TIMEZONE, por exemplo Europe/Berlin, ao .env do projeto e faça o deploy de novo."
+			"notes": "Abra o endereço e crie a conta do dono na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os agendamentos rodam em UTC: para outro fuso, adicione GENERIC_TIMEZONE, por exemplo Europe/Berlin, ao .env do projeto e faça o deploy de novo.",
+			"sizing": "n8n é moderado: cerca de 800 MB de memória, mais com fluxos grandes; execuções antigas são removidas, então o disco fica pequeno.",
+			"summary": "Hospede o n8n por conta própria com um clique: automação de workflows fair-code e alternativa ao Zapier, na sua própria máquina.",
+			"about": [
+				"O n8n é uma ferramenta de automação de workflows fair-code, a alternativa ao Zapier que você pode rodar no seu próprio servidor. Um workflow começa com um gatilho, como um agendamento, um webhook ou um evento em outro app, e passa os dados por nós, um para cada app que ele conecta. Quando nenhum nó atende, o nó HTTP Request chama qualquer API e o nó Code roda o seu próprio JavaScript. Um workflow também pode ter um agente de IA, com o modelo e as ferramentas que você escolher, e, quando uma execução falha, você pode rodar de novo só a etapa que falhou.",
+				"Você auto-hospeda o n8n para que as credenciais e os dados que seus workflows manipulam fiquem no seu próprio ambiente. O porém: os recursos para equipes são pagos. SSO, compartilhamento de workflows e credenciais, controle de versão com Git e ambientes não fazem parte da Community Edition gratuita."
+			],
+			"faq": [
+				{
+					"q": "O n8n é open source?",
+					"a": "Não, o n8n se descreve como fair-code. A Sustainable Use License permite usá-lo de graça dentro da sua própria empresa ou para uso pessoal, mas oferecer o n8n a terceiros como serviço pago exige um acordo comercial com o n8n."
+				},
+				{
+					"q": "n8n vs Zapier: qual é a diferença?",
+					"a": "O Zapier roda só na própria nuvem e conta como tarefa cada ação que um Zap executa. O n8n também roda no seu próprio servidor, e a nuvem dele conta um workflow inteiro, não importa quantas etapas tenha, como uma única execução."
+				},
+				{
+					"q": "O n8n consegue rodar código Python?",
+					"a": "Consegue, mas desde o n8n 2.0 o nó Code em Python precisa de task runners em modo external, um container separado n8nio/runners. Este template roda só o n8n, então o nó Code dele roda JavaScript."
+				},
+				{
+					"q": "Como exporto e importo workflows do n8n?",
+					"a": "Workflows são JSON. O menu Workflow do editor tem Download, Import from URL e Import from File, e nós copiados podem ser colados em outro workflow. As exportações incluem os nomes e os IDs das credenciais, então confira uma antes de compartilhar."
+				},
+				{
+					"q": "Como mudo o fuso horário no n8n?",
+					"a": "Defina GENERIC_TIMEZONE, por exemplo America/New_York, no .env do projeto e faça o deploy de novo: este template inicia o n8n em UTC. Um workflow também pode ter o próprio fuso, em Settings, no menu Workflow dele."
+				}
+			]
 		},
 		"ru": {
 			"description": "Автоматизация рабочих процессов с визуальным редактором",
-			"notes": "Откройте адрес и создайте аккаунт владельца на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Расписания работают по UTC: для другого часового пояса добавьте в .env проекта GENERIC_TIMEZONE, например Europe/Berlin, и задеплойте проект заново."
+			"notes": "Откройте адрес и создайте аккаунт владельца на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Расписания работают по UTC: для другого часового пояса добавьте в .env проекта GENERIC_TIMEZONE, например Europe/Berlin, и задеплойте проект заново.",
+			"sizing": "n8n: умеренные требования — около 800 MB памяти, больше для больших воркфлоу; старые запуски чистятся, и диск остается небольшим.",
+			"summary": "Self-hosted n8n в один клик на вашей машине: инструмент автоматизации воркфлоу по модели fair-code, альтернатива Zapier.",
+			"about": [
+				"n8n — инструмент автоматизации воркфлоу по модели fair-code, альтернатива Zapier, которую можно запустить на своем сервере. Воркфлоу стартует с триггера, например расписания, вебхука или события в другом приложении, и передает данные через ноды для подключенных приложений. Если подходящей ноды нет, нода HTTP Request вызывает любой API, а нода Code выполняет ваш собственный JavaScript. В воркфлоу можно добавить и ИИ-агента с выбранной вами моделью и инструментами, а если выполнение завершилось ошибкой, можно перезапустить только тот шаг, который упал.",
+				"n8n хостят у себя, чтобы учетные данные и данные, которые обрабатывают воркфлоу, оставались в вашей среде. Подвох в том, что функции для команд платные: SSO, общий доступ к воркфлоу и учетным данным, контроль версий через Git и окружения не входят в бесплатную Community Edition."
+			],
+			"faq": [
+				{
+					"q": "n8n — это open source?",
+					"a": "Нет, n8n называет себя fair-code. Лицензия Sustainable Use License позволяет бесплатно использовать его внутри своего бизнеса или для личных целей, но предлагать n8n другим как платный сервис можно только по коммерческому соглашению с n8n."
+				},
+				{
+					"q": "n8n vs Zapier: в чем разница?",
+					"a": "Zapier работает только в своем облаке и считает задачей каждое действие, которое выполняет Zap. n8n работает и на вашем собственном сервере, а его облако считает один воркфлоу целиком, сколько бы в нем ни было шагов, за одно выполнение."
+				},
+				{
+					"q": "Может ли n8n запускать код на Python?",
+					"a": "Да, но начиная с n8n 2.0 ноде Code на Python нужны task runners в режиме external, то есть отдельный контейнер n8nio/runners. Этот шаблон запускает один n8n, поэтому его нода Code выполняет JavaScript."
+				},
+				{
+					"q": "Как экспортировать и импортировать воркфлоу n8n?",
+					"a": "Воркфлоу — это JSON. В меню Workflow редактора есть Download, Import from URL и Import from File, а скопированные ноды можно вставить в другой воркфлоу. Экспорт включает названия и ID учетных данных, поэтому проверьте его, прежде чем делиться."
+				},
+				{
+					"q": "Как изменить часовой пояс в n8n?",
+					"a": "Задайте GENERIC_TIMEZONE, например America/New_York, в .env проекта и задеплойте заново: этот шаблон запускает n8n в UTC. У отдельного воркфлоу тоже может быть свой часовой пояс: в Settings, в его меню Workflow."
+				}
+			]
 		},
 		"uk": {
 			"description": "Автоматизація робочих процесів із візуальним редактором",
-			"notes": "Відкрийте адресу і створіть акаунт власника на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Розклади працюють за UTC: для іншого часового поясу додайте GENERIC_TIMEZONE, наприклад Europe/Berlin, у файл .env проєкту й задеплойте ще раз."
+			"notes": "Відкрийте адресу і створіть акаунт власника на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Розклади працюють за UTC: для іншого часового поясу додайте GENERIC_TIMEZONE, наприклад Europe/Berlin, у файл .env проєкту й задеплойте ще раз.",
+			"sizing": "n8n має помірні вимоги: близько 800 MB пам’яті, більше для великих робочих процесів; старі запуски очищаються, тож диск малий.",
+			"summary": "Self-hosted n8n в один клік на вашій машині: інструмент автоматизації воркфлоу за моделлю fair-code, альтернатива Zapier.",
+			"about": [
+				"n8n — інструмент автоматизації воркфлоу за моделлю fair-code, альтернатива Zapier, яку можна запустити на власному сервері. Воркфлоу стартує з тригера, наприклад розкладу, вебхука або події в іншому застосунку, і передає дані через ноди для підключених застосунків. Коли жодна нода не підходить, нода HTTP Request викликає будь-який API, а нода Code виконує ваш власний JavaScript. Воркфлоу може містити й ШІ-агента з обраною вами моделлю та інструментами, а коли виконання завершилося помилкою, можна перезапустити лише той крок, що впав.",
+				"n8n хостять у себе, щоб облікові дані й дані, які обробляють воркфлоу, лишалися у вашому середовищі. Підводний камінь у тому, що функції для команд платні: SSO, спільний доступ до воркфлоу й облікових даних, контроль версій через Git та середовища не входять у безкоштовну Community Edition."
+			],
+			"faq": [
+				{
+					"q": "n8n — це open source?",
+					"a": "Ні, n8n називає себе fair-code. Ліцензія Sustainable Use License дозволяє безкоштовно використовувати його всередині власного бізнесу або для особистих цілей, але пропонувати n8n іншим як платний сервіс можна лише за комерційною угодою з n8n."
+				},
+				{
+					"q": "n8n vs Zapier: у чому різниця?",
+					"a": "Zapier працює лише у власній хмарі й рахує завданням кожну дію, яку виконує Zap. n8n працює й на вашому власному сервері, а його хмара рахує один воркфлоу цілком, скільки б у ньому не було кроків, за одне виконання."
+				},
+				{
+					"q": "Чи може n8n запускати код на Python?",
+					"a": "Так, але починаючи з n8n 2.0 ноді Code на Python потрібні task runners у режимі external, тобто окремий контейнер n8nio/runners. Цей шаблон запускає лише n8n, тож його нода Code виконує JavaScript."
+				},
+				{
+					"q": "Як експортувати й імпортувати воркфлоу n8n?",
+					"a": "Воркфлоу — це JSON. У меню Workflow редактора є Download, Import from URL та Import from File, а скопійовані ноди можна вставити в інший воркфлоу. Експорт містить назви й ID облікових даних, тому перевірте його, перш ніж ділитися."
+				},
+				{
+					"q": "Як змінити часовий пояс в n8n?",
+					"a": "Задайте GENERIC_TIMEZONE, наприклад America/New_York, у .env проєкту й задеплойте ще раз: цей шаблон запускає n8n в UTC. В окремого воркфлоу теж може бути свій часовий пояс: у Settings, у його меню Workflow."
+				}
+			]
 		}
 	}
 }

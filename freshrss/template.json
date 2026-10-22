@@ -1,6 +1,12 @@
 {
 	"name": "FreshRSS",
 	"emoji": "📰",
+	"category": "reading",
+	"alternatives": [
+		"Feedly",
+		"Inoreader"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "freshrss",
 		"port": 80
@@ -9,35 +15,259 @@
 	"texts": {
 		"en": {
 			"description": "An RSS and Atom feed reader",
-			"notes": "Open the address and go through the install page: leave SQLite as the database, then create your user. Do it right away: until then the page is open to whoever has the address."
+			"notes": "Open the address and go through the install page: leave SQLite as the database, then create your user. Do it right away: until then the page is open to whoever has the address.",
+			"sizing": "FreshRSS is very light: under 100 MB of memory, and years of articles from hundreds of feeds take a few gigabytes.",
+			"summary": "FreshRSS is an open-source feed aggregator for RSS and Atom, a self-hosted Feedly alternative. Run it on your own machine in one click.",
+			"about": [
+				"FreshRSS is an open-source RSS reader and feed aggregator that people self-host in place of Feedly. You follow websites, podcasts and video channels, sort them into categories and read what is new in one list. Saved searches bring back what you look for often, and filters can mark matching articles as read automatically. A site with no feed can still be followed: FreshRSS scrapes it with XPath.",
+				"People run it to keep their subscriptions and reading history on a server of their own, with no account at a reading service. It is light: the project reports response times under a second on a Raspberry Pi 1 with 150 feeds. Phone and desktop apps sync with it through its Google Reader API. The catch is small: before an app can connect, an admin allows API access and each user sets a separate API password."
+			],
+			"faq": [
+				{
+					"q": "Is FreshRSS free and open source?",
+					"a": "Yes. FreshRSS is free software under the GNU AGPL 3 licence, and its source code is public on GitHub."
+				},
+				{
+					"q": "Is there a FreshRSS app for Android or iPhone?",
+					"a": "There is no official app, and the web interface fits small screens. Third-party apps sync with it, among them Read You and Capy Reader on Android and Reeder Classic and Unread on iOS."
+				},
+				{
+					"q": "How do I import my feeds into FreshRSS?",
+					"a": "Export an OPML file from your current reader, then import it in FreshRSS under Subscription management, Import / export. The same page exports your list of feeds, your labelled articles and your favourites."
+				},
+				{
+					"q": "Does FreshRSS support multiple users?",
+					"a": "Yes. An admin adds accounts under Administration, Manage users, or turns on the registration form so people sign up themselves. Each user has their own feeds."
+				},
+				{
+					"q": "How often does FreshRSS refresh feeds?",
+					"a": "The template checks feeds at 3 and 33 minutes past each hour, and by default FreshRSS fetches each feed at most once an hour. Lowering the setting Do not automatically refresh more often than makes that every half hour."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Feedreader für RSS und Atom",
-			"notes": "Öffne die Adresse und geh die Installationsseite durch: Lass SQLite als Datenbank stehen und erstell dann dein Benutzerkonto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben."
+			"notes": "Öffne die Adresse und geh die Installationsseite durch: Lass SQLite als Datenbank stehen und erstell dann dein Benutzerkonto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben.",
+			"sizing": "FreshRSS ist sehr leicht: unter 100 MB RAM, und Artikel aus Jahren von Hunderten Feeds brauchen ein paar GB.",
+			"summary": "FreshRSS selbst hosten: Open-Source-Feedreader für RSS und Atom, eine Alternative zu Feedly. Auf deiner eigenen Maschine, mit einem Klick.",
+			"about": [
+				"FreshRSS ist ein Open-Source-Feedreader und -Aggregator für RSS und Atom, den Leute statt Feedly selbst hosten. Du folgst Websites, Podcasts und Videokanälen, sortierst sie in Kategorien und liest alles Neue in einer Liste. Gespeicherte Suchen holen zurück, wonach du oft suchst, und Filter können passende Artikel automatisch als gelesen markieren. Auch einer Website ohne Feed lässt sich folgen: FreshRSS scrapt sie per XPath.",
+				"Leute betreiben FreshRSS, um ihre Abonnements und ihren Leseverlauf auf einem eigenen Server zu behalten, ohne Konto bei einem Lesedienst. Es ist schlank: Laut Projekt liegen die Antwortzeiten auf einem Raspberry Pi 1 mit 150 Feeds unter einer Sekunde. Apps für Handy und Desktop synchronisieren sich über die Google Reader API damit. Der Haken ist klein: Bevor sich eine App verbinden kann, erlaubt ein Admin den API-Zugriff, und jede Person legt ein eigenes API-Passwort fest."
+			],
+			"faq": [
+				{
+					"q": "Ist FreshRSS kostenlos und Open Source?",
+					"a": "Ja. FreshRSS ist freie Software unter der Lizenz GNU AGPL 3, und der Quellcode ist öffentlich auf GitHub."
+				},
+				{
+					"q": "Gibt es eine FreshRSS-App für Android oder iPhone?",
+					"a": "Eine offizielle App gibt es nicht, dafür passt sich die Weboberfläche kleinen Bildschirmen an. Apps von Drittanbietern synchronisieren sich damit, darunter Read You und Capy Reader auf Android sowie Reeder Classic und Unread auf iOS."
+				},
+				{
+					"q": "Wie importiere ich meine Feeds in FreshRSS?",
+					"a": "Exportiere eine OPML-Datei aus deinem bisherigen Reader und importiere sie dann in FreshRSS unter „Subscription management“, „Import / export“. Dieselbe Seite exportiert auch deine Feed-Liste, deine Artikel mit Label und deine Favoriten."
+				},
+				{
+					"q": "Unterstützt FreshRSS mehrere Benutzer?",
+					"a": "Ja. Ein Admin legt Konten unter „Administration“, „Manage users“ an oder schaltet das Registrierungsformular ein, damit sich Leute selbst registrieren. Jedes Konto hat eigene Feeds."
+				},
+				{
+					"q": "Wie oft aktualisiert FreshRSS die Feeds?",
+					"a": "Die Vorlage prüft die Feeds jeweils 3 und 33 Minuten nach der vollen Stunde, und standardmäßig ruft FreshRSS jeden Feed höchstens einmal pro Stunde ab. Senkst du die Einstellung „Do not automatically refresh more often than“, ruft FreshRSS jeden Feed höchstens alle 30 Minuten ab."
+				}
+			]
 		},
 		"es": {
 			"description": "Un lector de feeds RSS y Atom",
-			"notes": "Abre la dirección y sigue los pasos de la página de instalación: deja SQLite como base de datos y luego crea tu usuario. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección."
+			"notes": "Abre la dirección y sigue los pasos de la página de instalación: deja SQLite como base de datos y luego crea tu usuario. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección.",
+			"sizing": "FreshRSS es muy ligero: menos de 100 MB de memoria, y años de artículos de cientos de feeds ocupan unos pocos GB.",
+			"summary": "Autoaloja FreshRSS, el agregador de feeds RSS y Atom de código abierto y alternativa a Feedly. Ejecútalo en tu propia máquina con un clic.",
+			"about": [
+				"FreshRSS es un lector y agregador de feeds RSS y Atom de código abierto que la gente autoaloja en lugar de Feedly. Sigues sitios web, podcasts y canales de video, los ordenas en categorías y lees lo nuevo en una sola lista. Las búsquedas guardadas traen de vuelta lo que buscas a menudo, y los filtros pueden marcar como leídos, de forma automática, los artículos que coincidan. Incluso un sitio sin feed se puede seguir: FreshRSS lo extrae con XPath.",
+				"La gente lo ejecuta para conservar sus suscripciones y su historial de lectura en un servidor propio, sin una cuenta en un servicio de lectura. Es ligero: el proyecto informa de tiempos de respuesta de menos de un segundo en una Raspberry Pi 1 con 150 feeds. Las apps de teléfono y de escritorio se sincronizan con él mediante su Google Reader API. El inconveniente es pequeño: antes de que una app pueda conectarse, un administrador permite el acceso a la API y cada usuario define una contraseña de API aparte."
+			],
+			"faq": [
+				{
+					"q": "¿FreshRSS es gratis y de código abierto?",
+					"a": "Sí. FreshRSS es software libre con licencia GNU AGPL 3, y su código fuente es público en GitHub."
+				},
+				{
+					"q": "¿Hay una app de FreshRSS para Android o iPhone?",
+					"a": "No hay una app oficial, y la interfaz web se adapta a pantallas pequeñas. Hay apps de terceros que se sincronizan con él, entre ellas Read You y Capy Reader en Android, y Reeder Classic y Unread en iOS."
+				},
+				{
+					"q": "¿Cómo importo mis feeds en FreshRSS?",
+					"a": "Exporta un archivo OPML desde tu lector actual y luego impórtalo en FreshRSS en «Subscription management», «Import / export». Esa misma página exporta tu lista de feeds, tus artículos con etiquetas y tus favoritos."
+				},
+				{
+					"q": "¿FreshRSS admite varios usuarios?",
+					"a": "Sí. Un administrador agrega cuentas en «Administration», «Manage users», o activa el formulario de registro para que la gente se registre sola. Cada usuario tiene sus propios feeds."
+				},
+				{
+					"q": "¿Cada cuánto actualiza FreshRSS los feeds?",
+					"a": "La plantilla comprueba los feeds a los 3 y a los 33 minutos de cada hora, y de forma predeterminada FreshRSS consulta cada feed como máximo una vez por hora. Si bajas el ajuste «Do not automatically refresh more often than», pasa a ser como máximo cada media hora."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un lecteur de flux RSS et Atom",
-			"notes": "Ouvrez l’adresse et suivez la page d’installation : gardez SQLite comme base de données, puis créez votre utilisateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse."
+			"notes": "Ouvrez l’adresse et suivez la page d’installation : gardez SQLite comme base de données, puis créez votre utilisateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse.",
+			"sizing": "FreshRSS est très léger : moins de 100 MB de mémoire, et des années d’articles de centaines de flux prennent quelques GB.",
+			"summary": "Auto-hébergez FreshRSS, l’agrégateur de flux RSS et Atom open source, alternative à Feedly. Sur votre propre machine, en un clic.",
+			"about": [
+				"FreshRSS est un lecteur et agrégateur de flux RSS et Atom open source que l’on auto-héberge à la place de Feedly. Vous suivez des sites web, des podcasts et des chaînes vidéo, vous les classez par catégories et vous lisez les nouveautés dans une seule liste. Les recherches enregistrées font revenir ce que vous cherchez souvent, et des filtres peuvent marquer automatiquement comme lus les articles correspondants. Même un site sans flux peut être suivi : FreshRSS en extrait le contenu avec XPath.",
+				"On le fait tourner pour garder ses abonnements et son historique de lecture sur un serveur à soi, sans compte auprès d’un service de lecture. Il est léger : le projet annonce des temps de réponse inférieurs à une seconde sur un Raspberry Pi 1 avec 150 flux. Les applications mobiles et de bureau se synchronisent avec lui grâce à l’API Google Reader. L’inconvénient est mineur : avant qu’une application puisse se connecter, un admin autorise l’accès à l’API et chaque utilisateur définit un mot de passe d’API distinct."
+			],
+			"faq": [
+				{
+					"q": "FreshRSS est-il gratuit et open source ?",
+					"a": "Oui. FreshRSS est un logiciel libre sous licence GNU AGPL 3, et son code source est public sur GitHub."
+				},
+				{
+					"q": "Existe-t-il une application FreshRSS pour Android ou iPhone ?",
+					"a": "Il n’y a pas d’application officielle, et l’interface web s’adapte aux petits écrans. Des applications tierces se synchronisent avec lui, dont Read You et Capy Reader sous Android, ainsi que Reeder Classic et Unread sous iOS."
+				},
+				{
+					"q": "Comment importer mes flux dans FreshRSS ?",
+					"a": "Exportez un fichier OPML depuis votre lecteur actuel, puis importez-le dans FreshRSS sous « Subscription management », « Import / export ». La même page exporte votre liste de flux, vos articles étiquetés et vos favoris."
+				},
+				{
+					"q": "FreshRSS gère-t-il plusieurs utilisateurs ?",
+					"a": "Oui. Un admin ajoute des comptes sous « Administration », « Manage users », ou active le formulaire d’inscription pour que les gens s’inscrivent eux-mêmes. Chaque utilisateur a ses propres flux."
+				},
+				{
+					"q": "À quelle fréquence FreshRSS actualise-t-il les flux ?",
+					"a": "Le template vérifie les flux à la minute 3 et à la minute 33 de chaque heure, et par défaut FreshRSS récupère chaque flux au plus une fois par heure. Baisser le réglage « Do not automatically refresh more often than » ramène cet intervalle à une demi-heure."
+				}
+			]
 		},
 		"pl": {
 			"description": "Czytnik kanałów RSS i Atom",
-			"notes": "Otwórz adres projektu i przejdź przez stronę instalacji: zostaw SQLite jako bazę danych, a potem utwórz swojego użytkownika. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres."
+			"notes": "Otwórz adres projektu i przejdź przez stronę instalacji: zostaw SQLite jako bazę danych, a potem utwórz swojego użytkownika. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres.",
+			"sizing": "FreshRSS ma bardzo małe wymagania: poniżej 100 MB pamięci, a lata artykułów z setek kanałów zajmują kilka GB.",
+			"summary": "Hostuj FreshRSS u siebie: czytnik kanałów RSS i Atom o otwartym kodzie, alternatywa dla Feedly. Na własnej maszynie, jednym kliknięciem.",
+			"about": [
+				"FreshRSS to czytnik i agregator kanałów RSS i Atom o otwartym kodzie, który ludzie hostują u siebie zamiast Feedly. Obserwujesz strony, podcasty i kanały wideo, porządkujesz je w kategoriach i czytasz wszystko, co nowe, na jednej liście. Zapisane wyszukiwania przywracają to, czego szukasz często, a filtry potrafią automatycznie oznaczać pasujące artykuły jako przeczytane. Nawet stronę bez kanału da się obserwować: FreshRSS wyciąga jej treść za pomocą XPath.",
+				"Ludzie go uruchamiają, żeby subskrypcje i historię czytania trzymać na własnym serwerze, bez konta w serwisie do czytania. Jest lekki: projekt podaje czasy odpowiedzi poniżej sekundy na Raspberry Pi 1 przy 150 kanałach. Aplikacje na telefon i komputer synchronizują się z nim przez Google Reader API. Haczyk jest niewielki: zanim aplikacja się połączy, admin musi zezwolić na dostęp do API, a każdy użytkownik ustawia osobne hasło do API."
+			],
+			"faq": [
+				{
+					"q": "Czy FreshRSS jest darmowy i open source?",
+					"a": "Tak. FreshRSS to wolne oprogramowanie na licencji GNU AGPL 3, a jego kod źródłowy jest publiczny na GitHubie."
+				},
+				{
+					"q": "Czy jest aplikacja FreshRSS na Androida albo iPhone’a?",
+					"a": "Oficjalnej aplikacji nie ma, a interfejs webowy dostosowuje się do małych ekranów. Z FreshRSS synchronizują się aplikacje innych autorów, między innymi Read You i Capy Reader na Androidzie oraz Reeder Classic i Unread na iOS."
+				},
+				{
+					"q": "Jak zaimportować kanały do FreshRSS?",
+					"a": "Wyeksportuj plik OPML z obecnego czytnika, a potem zaimportuj go w FreshRSS w sekcji „Subscription management”, „Import / export”. Ta sama strona eksportuje też listę twoich kanałów, artykuły z etykietami i ulubione."
+				},
+				{
+					"q": "Czy FreshRSS obsługuje wielu użytkowników?",
+					"a": "Tak. Admin dodaje konta w „Administration”, „Manage users” albo włącza formularz rejestracji, żeby ludzie zakładali konta sami. Każdy użytkownik ma własne kanały."
+				},
+				{
+					"q": "Jak często FreshRSS odświeża kanały?",
+					"a": "Szablon sprawdza kanały w 3. i 33. minucie każdej godziny, a domyślnie FreshRSS pobiera każdy kanał najwyżej raz na godzinę. Obniżenie ustawienia „Do not automatically refresh more often than” skraca to do najwyżej raz na pół godziny."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um leitor de feeds RSS e Atom",
-			"notes": "Abra o endereço e passe pela página de instalação: deixe o SQLite como banco de dados e depois crie seu usuário. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço."
+			"notes": "Abra o endereço e passe pela página de instalação: deixe o SQLite como banco de dados e depois crie seu usuário. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço.",
+			"sizing": "FreshRSS é muito leve: menos de 100 MB de memória, e anos de artigos de centenas de feeds ocupam alguns GB.",
+			"summary": "Auto-hospede o FreshRSS, agregador open source de feeds RSS e Atom e alternativa ao Feedly. Rode na sua própria máquina com um clique.",
+			"about": [
+				"O FreshRSS é um leitor e agregador de feeds RSS e Atom open source que as pessoas auto-hospedam no lugar do Feedly. Você segue sites, podcasts e canais de vídeo, organiza tudo em categorias e lê as novidades numa única lista. As buscas salvas trazem de volta o que você procura com frequência, e filtros podem marcar automaticamente como lidos os artigos que combinam. Até um site sem feed pode ser seguido: o FreshRSS extrai o conteúdo dele com XPath.",
+				"As pessoas rodam o FreshRSS para manter suas assinaturas e seu histórico de leitura num servidor próprio, sem conta em um serviço de leitura. Ele é leve: o projeto relata tempos de resposta abaixo de um segundo num Raspberry Pi 1 com 150 feeds. Os apps de celular e de desktop sincronizam com ele pela Google Reader API. O porém é pequeno: antes de um app se conectar, um admin libera o acesso à API e cada usuário define uma senha de API separada."
+			],
+			"faq": [
+				{
+					"q": "O FreshRSS é gratuito e open source?",
+					"a": "É. O FreshRSS é software livre sob a licença GNU AGPL 3, e o código-fonte dele é público no GitHub."
+				},
+				{
+					"q": "Existe um app do FreshRSS para Android ou iPhone?",
+					"a": "Não há app oficial, e a interface web se adapta a telas pequenas. Apps de terceiros sincronizam com ele, entre eles Read You e Capy Reader no Android e Reeder Classic e Unread no iOS."
+				},
+				{
+					"q": "Como importo meus feeds para o FreshRSS?",
+					"a": "Exporte um arquivo OPML do seu leitor atual e depois importe no FreshRSS em “Subscription management”, “Import / export”. A mesma página exporta sua lista de feeds, seus artigos com rótulo e seus favoritos."
+				},
+				{
+					"q": "O FreshRSS tem suporte a vários usuários?",
+					"a": "Tem. Um admin adiciona contas em “Administration”, “Manage users” ou ativa o formulário de cadastro para que as pessoas se cadastrem sozinhas. Cada usuário tem seus próprios feeds."
+				},
+				{
+					"q": "Com que frequência o FreshRSS atualiza os feeds?",
+					"a": "O template verifica os feeds aos 3 e aos 33 minutos de cada hora, e por padrão o FreshRSS busca cada feed no máximo uma vez por hora. Diminuir a configuração “Do not automatically refresh more often than” faz isso passar a no máximo uma vez a cada meia hora."
+				}
+			]
 		},
 		"ru": {
 			"description": "Читалка лент RSS и Atom",
-			"notes": "Откройте адрес и пройдите страницу установки: базой данных оставьте SQLite, затем создайте своего пользователя. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес."
+			"notes": "Откройте адрес и пройдите страницу установки: базой данных оставьте SQLite, затем создайте своего пользователя. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес.",
+			"sizing": "FreshRSS: совсем небольшие требования — менее 100 MB памяти, а годы статей из сотен лент занимают несколько GB.",
+			"summary": "Self-hosted FreshRSS в один клик: open-source агрегатор лент RSS и Atom, альтернатива Feedly. Запустите его на своей машине.",
+			"about": [
+				"FreshRSS — open-source читалка и агрегатор лент RSS и Atom, которую хостят у себя вместо Feedly. Вы подписываетесь на сайты, подкасты и видеоканалы, раскладываете их по категориям и читаете все новое в одном списке. Сохраненные поиски возвращают то, что вы ищете часто, а фильтры могут сами помечать подходящие статьи прочитанными. Даже сайт без ленты можно читать: FreshRSS вытягивает его содержимое через XPath.",
+				"FreshRSS запускают, чтобы подписки и история чтения лежали на собственном сервере, а не в аккаунте сервиса для чтения. Он легкий: по данным проекта, время отклика на Raspberry Pi 1 со 150 лентами меньше секунды. Мобильные и десктопные приложения синхронизируются с ним через Google Reader API. Подвох небольшой: чтобы приложение смогло подключиться, админ разрешает доступ к API, а каждый пользователь задает отдельный пароль для API."
+			],
+			"faq": [
+				{
+					"q": "FreshRSS бесплатный и open source?",
+					"a": "Да. FreshRSS — свободное ПО под лицензией GNU AGPL 3, а его исходный код открыт на GitHub."
+				},
+				{
+					"q": "Есть ли приложение FreshRSS для Android или iPhone?",
+					"a": "Официального приложения нет, а веб-интерфейс подходит для маленьких экранов. С ним синхронизируются сторонние приложения, среди них Read You и Capy Reader на Android, Reeder Classic и Unread на iOS."
+				},
+				{
+					"q": "Как импортировать ленты в FreshRSS?",
+					"a": "Экспортируйте файл OPML из текущей читалки, затем импортируйте его в FreshRSS в разделе «Subscription management», «Import / export». Та же страница экспортирует ваш список лент, статьи с метками и избранное."
+				},
+				{
+					"q": "Поддерживает ли FreshRSS нескольких пользователей?",
+					"a": "Да. Админ добавляет аккаунты в «Administration», «Manage users» или включает форму регистрации, чтобы люди регистрировались сами. У каждого пользователя свои ленты."
+				},
+				{
+					"q": "Как часто FreshRSS обновляет ленты?",
+					"a": "Шаблон проверяет ленты на 3-й и 33-й минуте каждого часа, а по умолчанию FreshRSS загружает каждую ленту не чаще раза в час. Если уменьшить настройку «Do not automatically refresh more often than», это станет не чаще раза в полчаса."
+				}
+			]
 		},
 		"uk": {
 			"description": "Читалка стрічок RSS і Atom",
-			"notes": "Відкрийте адресу і пройдіть сторінку встановлення: залиште SQLite як базу даних, потім створіть свого користувача. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу."
+			"notes": "Відкрийте адресу і пройдіть сторінку встановлення: залиште SQLite як базу даних, потім створіть свого користувача. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу.",
+			"sizing": "FreshRSS має дуже скромні вимоги: менше 100 MB пам’яті, а роки статей із сотень стрічок займають кілька GB.",
+			"summary": "Self-hosted FreshRSS в один клік: open-source агрегатор стрічок RSS і Atom, альтернатива Feedly. Запустіть його на власній машині.",
+			"about": [
+				"FreshRSS — open-source читалка й агрегатор стрічок RSS і Atom, яку хостять у себе замість Feedly. Ви підписуєтеся на сайти, подкасти та відеоканали, розкладаєте їх по категоріях і читаєте все нове в одному списку. Збережені пошуки повертають те, що ви шукаєте часто, а фільтри можуть самі позначати відповідні статті прочитаними. Навіть сайт без стрічки можна читати: FreshRSS дістає його вміст через XPath.",
+				"FreshRSS запускають, щоб підписки та історія читання лежали на власному сервері, а не в акаунті сервісу для читання. Він легкий: за даними проєкту, час відповіді на Raspberry Pi 1 зі 150 стрічками менше секунди. Мобільні та десктопні застосунки синхронізуються з ним через Google Reader API. Підводний камінь невеликий: щоб застосунок міг підключитися, адмін дозволяє доступ до API, а кожен користувач задає окремий пароль для API."
+			],
+			"faq": [
+				{
+					"q": "FreshRSS безкоштовний і open source?",
+					"a": "Так. FreshRSS — вільне програмне забезпечення за ліцензією GNU AGPL 3, а його вихідний код відкритий на GitHub."
+				},
+				{
+					"q": "Чи є застосунок FreshRSS для Android або iPhone?",
+					"a": "Офіційного застосунку немає, а веб-інтерфейс підходить для маленьких екранів. З ним синхронізуються сторонні застосунки, серед них Read You і Capy Reader на Android, Reeder Classic і Unread на iOS."
+				},
+				{
+					"q": "Як імпортувати стрічки у FreshRSS?",
+					"a": "Експортуйте файл OPML зі своєї поточної читалки, а потім імпортуйте його у FreshRSS у розділі «Subscription management», «Import / export». Та сама сторінка експортує ваш список стрічок, статті з мітками й обране."
+				},
+				{
+					"q": "Чи підтримує FreshRSS кількох користувачів?",
+					"a": "Так. Адмін додає акаунти в «Administration», «Manage users» або вмикає форму реєстрації, щоб люди реєструвалися самі. У кожного користувача свої стрічки."
+				},
+				{
+					"q": "Як часто FreshRSS оновлює стрічки?",
+					"a": "Шаблон перевіряє стрічки на 3-й і 33-й хвилині кожної години, а за замовчуванням FreshRSS завантажує кожну стрічку не частіше ніж раз на годину. Якщо зменшити налаштування «Do not automatically refresh more often than», це стане не частіше ніж раз на півгодини."
+				}
+			]
 		}
 	}
 }

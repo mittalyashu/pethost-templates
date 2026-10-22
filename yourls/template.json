@@ -1,6 +1,12 @@
 {
 	"name": "YOURLS",
 	"emoji": "🔗",
+	"category": "productivity",
+	"alternatives": [
+		"Bitly",
+		"TinyURL"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "yourls",
 		"port": 8080
@@ -34,35 +40,259 @@
 	"texts": {
 		"en": {
 			"description": "Your own URL shortener with click stats",
-			"notes": "Sign in at https://{host}/admin/ with the username and password you gave; short links answer at https://{host}/<keyword>. The password is read from the project’s .env at every start: to change it, edit .env and deploy again."
+			"notes": "Sign in at https://{host}/admin/ with the username and password you gave; short links answer at https://{host}/<keyword>. The password is read from the project’s .env at every start: to change it, edit .env and deploy again.",
+			"sizing": "YOURLS is light: about 100 MB with MariaDB, and millions of logged clicks take a few gigabytes.",
+			"summary": "YOURLS is an open-source URL shortener for your own domain, a Bitly alternative. Self-host it with Docker Compose in one click.",
+			"about": [
+				"YOURLS is an open-source URL shortener that people run on their own domain instead of Bitly. Paste a long link, type a custom keyword or leave it blank for the next one in sequence, and you get a short URL that redirects to it. Every click is counted. A link's stats page charts its clicks over time, its top countries and its referrers, and adding a + to any short URL opens it, behind your login by default.",
+				"People self-host it to keep their links and click data in their own database, under a name they control. YOURLS is MIT-licensed and small on purpose: its makers leave out what most people would not use, and dozens of plugins add the rest. It suits anyone who shortens links often: bookmarklets shorten the page you are reading, and an API creates, expands and reports on links for your scripts."
+			],
+			"faq": [
+				{
+					"q": "Is YOURLS free and open source?",
+					"a": "Yes. YOURLS is free software under the MIT license, so you can run, change and share it at no cost, and its documentation is under CC BY 4.0."
+				},
+				{
+					"q": "Can YOURLS make random short URLs?",
+					"a": "Yes. By default it hands out keywords in sequence: 1, 2, 3 and on. The Random ShortURLs plugin, which comes with YOURLS, gives random five-character keywords once you activate it under Manage Plugins."
+				},
+				{
+					"q": "Can YOURLS make QR codes?",
+					"a": "Not by itself. The QRCode plugin in the YOURLS docs shows a link's code when you add .qr to the short URL, made by api.qrserver.com; QRCode Local, from the Awesome YOURLS list, draws it in the browser instead."
+				},
+				{
+					"q": "Can YOURLS have multiple users?",
+					"a": "Yes, but they share one list of links: config.php can hold several logins, and each sees every link. The Auth Manager Plus plugin gives each user their own links and role-based permissions."
+				},
+				{
+					"q": "How do I change the YOURLS admin password?",
+					"a": "With this template it is ADMIN_PASSWORD in the project's .env, read at every start: change it and deploy again. On a usual install it sits in $yourls_user_passwords in config.php, and YOURLS swaps it for a hash."
+				}
+			]
 		},
 		"de": {
 			"description": "Dein eigener URL-Kürzer mit Klickstatistik",
-			"notes": "Melde dich unter https://{host}/admin/ mit dem Benutzernamen und dem Passwort an, die du festgelegt hast; Kurzlinks antworten unter https://{host}/<Kürzel>. Das Passwort wird bei jedem Start aus der .env des Projekts gelesen: Um es zu ändern, bearbeite die .env und deploy neu."
+			"notes": "Melde dich unter https://{host}/admin/ mit dem Benutzernamen und dem Passwort an, die du festgelegt hast; Kurzlinks antworten unter https://{host}/<Kürzel>. Das Passwort wird bei jedem Start aus der .env des Projekts gelesen: Um es zu ändern, bearbeite die .env und deploy neu.",
+			"sizing": "YOURLS ist leicht: etwa 100 MB mit MariaDB, und Millionen protokollierter Klicks brauchen ein paar GB.",
+			"summary": "YOURLS ist ein Open-Source-URL-Shortener für deine eigene Domain, eine Bitly-Alternative. Selbst hosten mit Docker Compose in einem Klick.",
+			"about": [
+				"YOURLS ist ein Open-Source-URL-Shortener, den man statt Bitly auf der eigenen Domain betreibt. Du fügst einen langen Link ein, tippst ein eigenes Kürzel oder lässt das Feld leer, damit das nächste in der Reihenfolge vergeben wird, und bekommst einen Kurzlink, der dorthin weiterleitet. Jeder Klick wird gezählt. Die Statistikseite eines Links zeigt seine Klicks im Zeitverlauf, die häufigsten Länder und die Referrer. Hängst du ein + an einen beliebigen Kurzlink, öffnet sich diese Seite, standardmäßig hinter deinem Login.",
+				"Du hostest YOURLS selbst, damit deine Links und Klickdaten in deiner eigenen Datenbank bleiben, unter einem Namen, den du kontrollierst. YOURLS steht unter der MIT-Lizenz und ist mit Absicht klein: Die Macher lassen weg, was die meisten nicht nutzen würden, und Dutzende Plugins ergänzen den Rest. Es passt zu allen, die oft Links kürzen: Bookmarklets kürzen die Seite, die du gerade liest, und eine API legt für deine Skripte Links an, löst sie wieder auf und liefert Statistiken dazu."
+			],
+			"faq": [
+				{
+					"q": "Ist YOURLS kostenlos und Open Source?",
+					"a": "Ja. YOURLS ist freie Software unter der MIT-Lizenz, du kannst es also kostenlos betreiben, ändern und weitergeben, und die Dokumentation steht unter CC BY 4.0."
+				},
+				{
+					"q": "Kann YOURLS zufällige Kurzlinks erstellen?",
+					"a": "Ja. Standardmäßig vergibt es Kürzel der Reihe nach: 1, 2, 3 und so weiter. Das Plugin Random ShortURLs, das zu YOURLS gehört, vergibt zufällige Kürzel aus fünf Zeichen, sobald du es unter „Manage Plugins“ aktivierst."
+				},
+				{
+					"q": "Kann YOURLS QR-Codes erstellen?",
+					"a": "Nicht von selbst. Das Plugin QRCode aus der YOURLS-Dokumentation zeigt den Code eines Links, wenn du .qr an den Kurzlink hängst; erzeugt wird er von api.qrserver.com. QRCode Local aus der Liste Awesome YOURLS zeichnet ihn stattdessen im Browser."
+				},
+				{
+					"q": "Kann ich YOURLS mit mehreren Personen nutzen?",
+					"a": "Ja, aber alle teilen sich eine Liste von Links: In der config.php können mehrere Logins stehen, und jeder Login sieht alle Links. Das Plugin Auth Manager Plus gibt jeder Person eigene Links und rollenbasierte Berechtigungen."
+				},
+				{
+					"q": "Wie ändere ich das YOURLS-Admin-Passwort?",
+					"a": "Mit dieser Vorlage steht es als ADMIN_PASSWORD in der .env des Projekts, die bei jedem Start gelesen wird: Ändere den Wert und deploy neu. Bei einer üblichen Installation steht es in $yourls_user_passwords in der config.php, und YOURLS ersetzt es durch einen Hash."
+				}
+			]
 		},
 		"es": {
 			"description": "Tu propio acortador de URL con estadísticas de clics",
-			"notes": "Inicia sesión en https://{host}/admin/ con el nombre de usuario y la contraseña que indicaste; los enlaces cortos responden en https://{host}/<palabra>. La contraseña se lee del .env del proyecto en cada arranque: para cambiarla, edita el .env y vuelve a desplegar."
+			"notes": "Inicia sesión en https://{host}/admin/ con el nombre de usuario y la contraseña que indicaste; los enlaces cortos responden en https://{host}/<palabra>. La contraseña se lee del .env del proyecto en cada arranque: para cambiarla, edita el .env y vuelve a desplegar.",
+			"sizing": "YOURLS es ligero: unos 100 MB con MariaDB, y millones de clics registrados ocupan unos pocos GB.",
+			"summary": "YOURLS es un acortador de URL de código abierto para tu propio dominio, una alternativa a Bitly. Autoalójalo con Docker Compose en un clic.",
+			"about": [
+				"YOURLS es un acortador de URL de código abierto que se ejecuta en tu propio dominio en lugar de usar Bitly. Pegas un enlace largo, escribes una palabra clave propia o la dejas en blanco para usar la siguiente de la secuencia, y obtienes una URL corta que redirige a ese enlace. Cada clic se cuenta. La página de estadísticas de un enlace muestra en gráficos sus clics a lo largo del tiempo, sus países principales y sus referrers. Al agregar un + a cualquier URL corta se abre esa página, de forma predeterminada detrás de tu login.",
+				"Autoalojas YOURLS para que tus enlaces y los datos de clics se queden en tu propia base de datos, bajo un nombre que controlas. Tiene licencia MIT y es pequeño a propósito: sus creadores dejan fuera lo que la mayoría no usaría, y decenas de plugins agregan el resto. Le sienta bien a quien acorta enlaces a menudo: los bookmarklets acortan la página que estás leyendo, y una API crea enlaces, los expande y devuelve sus estadísticas para tus scripts."
+			],
+			"faq": [
+				{
+					"q": "¿YOURLS es gratis y de código abierto?",
+					"a": "Sí. YOURLS es software libre con licencia MIT, así que puedes ejecutarlo, modificarlo y compartirlo gratis, y su documentación está bajo CC BY 4.0."
+				},
+				{
+					"q": "¿YOURLS puede crear URL cortas aleatorias?",
+					"a": "Sí. De forma predeterminada reparte las palabras clave en secuencia: 1, 2, 3 y así sucesivamente. El plugin Random ShortURLs, que viene con YOURLS, da palabras clave aleatorias de cinco caracteres cuando lo activas en “Manage Plugins”."
+				},
+				{
+					"q": "¿YOURLS puede crear códigos QR?",
+					"a": "Por sí solo, no. El plugin QRCode de la documentación de YOURLS muestra el código de un enlace cuando agregas .qr a la URL corta, y lo genera api.qrserver.com; QRCode Local, de la lista Awesome YOURLS, lo dibuja en el navegador."
+				},
+				{
+					"q": "¿YOURLS admite varios usuarios?",
+					"a": "Sí, pero comparten una sola lista de enlaces: config.php puede tener varios logins y cada uno ve todos los enlaces. El plugin Auth Manager Plus da a cada usuario sus propios enlaces y permisos basados en roles."
+				},
+				{
+					"q": "¿Cómo cambio la contraseña de administrador de YOURLS?",
+					"a": "Con esta plantilla es ADMIN_PASSWORD en el .env del proyecto, que se lee en cada arranque: cambia el valor y vuelve a desplegar. En una instalación normal está en $yourls_user_passwords, en config.php, y YOURLS la sustituye por un hash."
+				}
+			]
 		},
 		"fr": {
 			"description": "Votre propre raccourcisseur d’URL avec statistiques de clics",
-			"notes": "Connectez-vous sur https://{host}/admin/ avec le nom d’utilisateur et le mot de passe que vous avez choisis ; les liens courts répondent sur https://{host}/<mot-clé>. Le mot de passe est lu dans le .env du projet à chaque démarrage : pour le changer, modifiez le .env et redéployez."
+			"notes": "Connectez-vous sur https://{host}/admin/ avec le nom d’utilisateur et le mot de passe que vous avez choisis ; les liens courts répondent sur https://{host}/<mot-clé>. Le mot de passe est lu dans le .env du projet à chaque démarrage : pour le changer, modifiez le .env et redéployez.",
+			"sizing": "YOURLS est léger : environ 100 MB avec MariaDB, et des millions de clics enregistrés prennent quelques GB.",
+			"summary": "YOURLS est un raccourcisseur d’URL open source pour votre propre domaine, une alternative à Bitly. Auto-hébergez-le avec Docker Compose en un clic.",
+			"about": [
+				"YOURLS est un raccourcisseur d’URL open source que l’on fait tourner sur son propre domaine plutôt que d’utiliser Bitly. Vous collez un lien long, tapez un mot-clé de votre choix ou laissez le champ vide pour prendre le suivant de la série, et vous obtenez une URL courte qui redirige vers ce lien. Chaque clic est compté. La page de statistiques d’un lien trace ses clics dans le temps, ses principaux pays et ses sites référents. Il suffit d’ajouter un + à n’importe quelle URL courte pour ouvrir cette page, par défaut derrière votre connexion.",
+				"Vous auto-hébergez YOURLS pour garder vos liens et vos données de clics dans votre propre base de données, sous un nom que vous contrôlez. YOURLS est sous licence MIT et petit exprès : ses auteurs laissent de côté ce que la plupart n’utiliseraient pas, et des dizaines de plugins ajoutent le reste. Il convient à quiconque raccourcit souvent des liens : des bookmarklets raccourcissent la page que vous lisez, et une API crée des liens, retrouve leur adresse d’origine et en donne les statistiques, pour vos scripts."
+			],
+			"faq": [
+				{
+					"q": "YOURLS est-il gratuit et open source ?",
+					"a": "Oui. YOURLS est un logiciel libre sous licence MIT : vous pouvez l’exécuter, le modifier et le partager gratuitement, et sa documentation est sous CC BY 4.0."
+				},
+				{
+					"q": "YOURLS peut-il créer des URL courtes aléatoires ?",
+					"a": "Oui. Par défaut, il attribue les mots-clés en série : 1, 2, 3 et ainsi de suite. Le plugin Random ShortURLs, fourni avec YOURLS, donne des mots-clés aléatoires de cinq caractères une fois activé dans « Manage Plugins »."
+				},
+				{
+					"q": "YOURLS peut-il générer des QR codes ?",
+					"a": "Pas tout seul. Le plugin QRCode de la documentation de YOURLS affiche le code d’un lien quand on ajoute .qr à l’URL courte, et c’est api.qrserver.com qui le génère ; QRCode Local, issu de la liste Awesome YOURLS, le dessine plutôt dans le navigateur."
+				},
+				{
+					"q": "YOURLS peut-il avoir plusieurs utilisateurs ?",
+					"a": "Oui, mais ils partagent une seule liste de liens : le fichier config.php peut contenir plusieurs identifiants, et chacun voit tous les liens. Le plugin Auth Manager Plus donne à chaque utilisateur ses propres liens et des droits par rôle."
+				},
+				{
+					"q": "Comment changer le mot de passe administrateur de YOURLS ?",
+					"a": "Avec ce template, c’est ADMIN_PASSWORD dans le .env du projet, lu à chaque démarrage : changez sa valeur et redéployez. Sur une installation classique, il se trouve dans $yourls_user_passwords, dans config.php, et YOURLS le remplace par un hash."
+				}
+			]
 		},
 		"pl": {
 			"description": "Własny skracacz linków ze statystykami kliknięć",
-			"notes": "Zaloguj się na https://{host}/admin/ nazwą użytkownika i hasłem podanymi przy tworzeniu projektu; krótkie linki działają pod https://{host}/<słowo>. Hasło jest odczytywane z pliku .env projektu przy każdym starcie: żeby je zmienić, popraw .env i wdróż ponownie."
+			"notes": "Zaloguj się na https://{host}/admin/ nazwą użytkownika i hasłem podanymi przy tworzeniu projektu; krótkie linki działają pod https://{host}/<słowo>. Hasło jest odczytywane z pliku .env projektu przy każdym starcie: żeby je zmienić, popraw .env i wdróż ponownie.",
+			"sizing": "YOURLS ma małe wymagania: około 100 MB z MariaDB, a miliony zapisanych kliknięć zajmują kilka GB.",
+			"summary": "YOURLS to skracacz linków open source na własnej domenie, alternatywa dla Bitly. Hostuj go u siebie przez Docker Compose jednym kliknięciem.",
+			"about": [
+				"YOURLS to skracacz linków open source, który uruchamia się na własnej domenie zamiast korzystać z Bitly. Wklejasz długi link, wpisujesz własne słowo kluczowe albo zostawiasz pole puste, żeby dostać następne z kolei, i dostajesz krótki link, który przekierowuje na ten długi. Każde kliknięcie jest liczone. Strona statystyk linku pokazuje na wykresach jego kliknięcia w czasie, najczęstsze kraje i źródła odesłań. Dopisanie + do dowolnego krótkiego linku otwiera tę stronę, domyślnie za twoim logowaniem.",
+				"YOURLS hostujesz u siebie, żeby twoje linki i dane o kliknięciach zostały we własnej bazie danych, pod nazwą, którą kontrolujesz. Działa na licencji MIT i jest celowo mały: jego twórcy pomijają to, czego większość osób by nie użyła, a resztę dodają dziesiątki pluginów. Nadaje się dla każdego, kto często skraca linki: bookmarklety skracają stronę, którą właśnie czytasz, a API tworzy linki, rozwija je i podaje ich statystyki dla twoich skryptów."
+			],
+			"faq": [
+				{
+					"q": "Czy YOURLS jest darmowy i open source?",
+					"a": "Tak. YOURLS to wolne oprogramowanie na licencji MIT, więc możesz go uruchamiać, zmieniać i udostępniać bez opłat, a jego dokumentacja jest na licencji CC BY 4.0."
+				},
+				{
+					"q": "Czy YOURLS potrafi robić losowe krótkie linki?",
+					"a": "Tak. Domyślnie nadaje słowa kluczowe po kolei: 1, 2, 3 i dalej. Plugin Random ShortURLs, który jest w zestawie z YOURLS, nadaje losowe pięcioznakowe słowa kluczowe po włączeniu go w „Manage Plugins”."
+				},
+				{
+					"q": "Czy YOURLS potrafi robić kody QR?",
+					"a": "Sam z siebie nie. Plugin QRCode z dokumentacji YOURLS pokazuje kod linku, gdy dopiszesz .qr do krótkiego linku, a kod tworzy api.qrserver.com; QRCode Local z listy Awesome YOURLS rysuje go zamiast tego w przeglądarce."
+				},
+				{
+					"q": "Czy YOURLS obsługuje wielu użytkowników?",
+					"a": "Tak, ale wszyscy dzielą jedną listę linków: plik config.php może zawierać kilka loginów i każdy widzi wszystkie linki. Plugin Auth Manager Plus daje każdemu użytkownikowi własne linki i uprawnienia oparte na rolach."
+				},
+				{
+					"q": "Jak zmienić hasło administratora w YOURLS?",
+					"a": "W tym szablonie to ADMIN_PASSWORD w pliku .env projektu, odczytywane przy każdym starcie: zmień wartość i wdróż ponownie. W zwykłej instalacji hasło stoi w $yourls_user_passwords w pliku config.php, a YOURLS zamienia je na hash."
+				}
+			]
 		},
 		"pt": {
 			"description": "Seu próprio encurtador de URL com estatísticas de cliques",
-			"notes": "Entre em https://{host}/admin/ com o usuário e a senha que você definiu; os links curtos respondem em https://{host}/<palavra>. A senha é lida do .env do projeto a cada início: para trocá-la, edite o .env e faça o deploy de novo."
+			"notes": "Entre em https://{host}/admin/ com o usuário e a senha que você definiu; os links curtos respondem em https://{host}/<palavra>. A senha é lida do .env do projeto a cada início: para trocá-la, edite o .env e faça o deploy de novo.",
+			"sizing": "YOURLS é leve: cerca de 100 MB com o MariaDB, e milhões de cliques registrados ocupam alguns GB.",
+			"summary": "YOURLS é um encurtador de URL de código aberto para o seu domínio, uma alternativa ao Bitly. Hospede por conta própria com Docker Compose em um clique.",
+			"about": [
+				"O YOURLS é um encurtador de URL de código aberto que as pessoas rodam no próprio domínio em vez de usar o Bitly. Você cola um link longo, digita uma palavra-chave própria ou deixa em branco para usar a próxima da sequência, e recebe um link curto que redireciona para o link longo. Cada clique é contado. A página de estatísticas de um link mostra em gráficos seus cliques ao longo do tempo, seus países principais e seus referrers. Adicionar um + a qualquer link curto abre essa página, por padrão atrás do seu login.",
+				"Você hospeda o YOURLS por conta própria para manter seus links e os dados de cliques no seu próprio banco de dados, sob um nome que você controla. Ele tem licença MIT e é pequeno de propósito: seus criadores deixam de fora o que a maioria não usaria, e dezenas de plugins acrescentam o resto. Serve para quem encurta links com frequência: bookmarklets encurtam a página que você está lendo, e uma API cria links, os expande e informa as estatísticas deles para os seus scripts."
+			],
+			"faq": [
+				{
+					"q": "O YOURLS é gratuito e de código aberto?",
+					"a": "Sim. O YOURLS é software livre sob a licença MIT, então você pode rodá-lo, alterá-lo e compartilhá-lo de graça, e a documentação dele está sob a CC BY 4.0."
+				},
+				{
+					"q": "O YOURLS gera links curtos aleatórios?",
+					"a": "Sim. Por padrão ele distribui as palavras-chave em sequência: 1, 2, 3 e assim por diante. O plugin Random ShortURLs, que vem com o YOURLS, gera palavras-chave aleatórias de cinco caracteres depois que você o ativa em “Manage Plugins”."
+				},
+				{
+					"q": "O YOURLS gera QR codes?",
+					"a": "Sozinho, não. O plugin QRCode, da documentação do YOURLS, mostra o código de um link quando você adiciona .qr ao link curto, e quem o gera é o api.qrserver.com; o QRCode Local, da lista Awesome YOURLS, desenha o código no navegador."
+				},
+				{
+					"q": "O YOURLS aceita vários usuários?",
+					"a": "Sim, mas todos compartilham uma única lista de links: o config.php pode ter vários logins, e cada um vê todos os links. O plugin Auth Manager Plus dá a cada usuário os próprios links e permissões baseadas em papéis."
+				},
+				{
+					"q": "Como troco a senha de administrador do YOURLS?",
+					"a": "Com este template, ela é a ADMIN_PASSWORD no .env do projeto, lida a cada início: edite o valor e faça o deploy de novo. Em uma instalação comum, ela fica em $yourls_user_passwords no config.php, e o YOURLS a substitui por um hash."
+				}
+			]
 		},
 		"ru": {
 			"description": "Свой сокращатель ссылок со статистикой переходов",
-			"notes": "Войдите на https://{host}/admin/ с именем пользователя и паролем, которые вы задали; короткие ссылки открываются по адресу https://{host}/<слово>. Пароль читается из .env проекта при каждом запуске: чтобы сменить его, поправьте .env и задеплойте проект заново."
+			"notes": "Войдите на https://{host}/admin/ с именем пользователя и паролем, которые вы задали; короткие ссылки открываются по адресу https://{host}/<слово>. Пароль читается из .env проекта при каждом запуске: чтобы сменить его, поправьте .env и задеплойте проект заново.",
+			"sizing": "YOURLS: небольшие требования — около 100 MB вместе с MariaDB, а миллионы записанных кликов занимают несколько GB.",
+			"summary": "YOURLS — open source сокращатель ссылок для вашего домена, альтернатива Bitly. Self-hosted через Docker Compose в один клик.",
+			"about": [
+				"YOURLS — это open source сокращатель ссылок, который запускают на своем домене вместо Bitly. Вы вставляете длинную ссылку, вводите свое ключевое слово или оставляете поле пустым, чтобы взять следующее по порядку, и получаете короткую ссылку, которая ведет на длинную. Каждый переход считается. На странице статистики ссылки показаны графики переходов по времени, главные страны и рефереры, а если добавить + к любой короткой ссылке, эта страница откроется, по умолчанию за вашим логином.",
+				"YOURLS хостят у себя, чтобы ссылки и данные о переходах оставались в собственной базе данных, под доменом, который вы контролируете. Лицензия MIT, а сам он намеренно небольшой: его авторы не включают то, чем не пользовалось бы большинство, а остальное добавляют десятки плагинов. Он подходит всем, кто часто сокращает ссылки: букмарклеты сокращают страницу, которую вы читаете, а API создает ссылки, разворачивает их и отдает по ним статистику вашим скриптам."
+			],
+			"faq": [
+				{
+					"q": "YOURLS бесплатный и с открытым кодом?",
+					"a": "Да. YOURLS — свободное ПО под лицензией MIT, так что запускать, менять и распространять его можно бесплатно, а документация лежит под CC BY 4.0."
+				},
+				{
+					"q": "Может ли YOURLS делать случайные короткие ссылки?",
+					"a": "Да. По умолчанию он выдает ключевые слова по порядку: 1, 2, 3 и так далее. Плагин Random ShortURLs, который идет в комплекте с YOURLS, выдает случайные ключевые слова из пяти символов, когда вы включаете его на странице «Manage Plugins»."
+				},
+				{
+					"q": "Умеет ли YOURLS делать QR-коды?",
+					"a": "Сам по себе нет. Плагин QRCode из документации YOURLS показывает код ссылки, если добавить .qr к короткой ссылке, а делает его api.qrserver.com; QRCode Local из списка Awesome YOURLS рисует код прямо в браузере."
+				},
+				{
+					"q": "Можно ли в YOURLS завести несколько пользователей?",
+					"a": "Да, но у них один общий список ссылок: в config.php можно задать несколько логинов, и каждый видит все ссылки. Плагин Auth Manager Plus дает каждому пользователю его собственные ссылки и права по ролям."
+				},
+				{
+					"q": "Как сменить пароль администратора YOURLS?",
+					"a": "В этом шаблоне это ADMIN_PASSWORD в .env проекта, который читается при каждом запуске: измените значение и задеплойте проект заново. В обычной установке пароль лежит в $yourls_user_passwords в config.php, и YOURLS заменяет его хешем."
+				}
+			]
 		},
 		"uk": {
 			"description": "Власний скорочувач посилань зі статистикою переходів",
-			"notes": "Увійдіть на https://{host}/admin/ з іменем користувача й паролем, які ви вказали; короткі посилання відкриваються за адресою https://{host}/<слово>. Пароль читається з .env проєкту під час кожного запуску: щоб змінити його, виправте .env і задеплойте ще раз."
+			"notes": "Увійдіть на https://{host}/admin/ з іменем користувача й паролем, які ви вказали; короткі посилання відкриваються за адресою https://{host}/<слово>. Пароль читається з .env проєкту під час кожного запуску: щоб змінити його, виправте .env і задеплойте ще раз.",
+			"sizing": "YOURLS має скромні вимоги: близько 100 MB з MariaDB, а мільйони записаних кліків займають кілька GB.",
+			"summary": "YOURLS — скорочувач посилань з відкритим кодом для вашого домену, альтернатива Bitly. Self-hosted через Docker Compose в один клік.",
+			"about": [
+				"YOURLS — це скорочувач посилань з відкритим кодом, який запускають на власному домені замість Bitly. Ви вставляєте довге посилання, вводите власне ключове слово або лишаєте поле порожнім, щоб узяти наступне за порядком, і отримуєте коротке посилання, яке веде на довге. Кожен перехід рахується. На сторінці статистики посилання показано графіки переходів у часі, головні країни та реферери, а якщо додати + до будь-якого короткого посилання, ця сторінка відкриється, за замовчуванням за вашим логіном.",
+				"YOURLS хостять у себе, щоб посилання й дані про переходи лишалися у власній базі даних, під доменом, який ви контролюєте. Ліцензія MIT, а сам він навмисно невеликий: його автори не включають те, чим не користувалася б більшість, а решту додають десятки плагінів. Він підходить усім, хто часто скорочує посилання: букмарклети скорочують сторінку, яку ви читаєте, а API створює посилання, розгортає їх і віддає статистику по них вашим скриптам."
+			],
+			"faq": [
+				{
+					"q": "YOURLS безплатний і з відкритим кодом?",
+					"a": "Так. YOURLS — вільне програмне забезпечення за ліцензією MIT, тож його можна безкоштовно запускати, змінювати й поширювати, а документація має ліцензію CC BY 4.0."
+				},
+				{
+					"q": "Чи вміє YOURLS робити випадкові короткі посилання?",
+					"a": "Так. За замовчуванням він видає ключові слова по порядку: 1, 2, 3 і так далі. Плагін Random ShortURLs, який іде в комплекті з YOURLS, видає випадкові ключові слова з п’яти символів, коли ви вмикаєте його в розділі «Manage Plugins»."
+				},
+				{
+					"q": "Чи вміє YOURLS робити QR-коди?",
+					"a": "Сам по собі ні. Плагін QRCode з документації YOURLS показує код посилання, якщо додати .qr до короткого посилання, а створює його api.qrserver.com; QRCode Local зі списку Awesome YOURLS малює код у браузері."
+				},
+				{
+					"q": "Чи можна в YOURLS завести кількох користувачів?",
+					"a": "Так, але в них один спільний список посилань: у config.php можна задати кілька логінів, і кожен бачить усі посилання. Плагін Auth Manager Plus дає кожному користувачеві власні посилання та права за ролями."
+				},
+				{
+					"q": "Як змінити пароль адміністратора YOURLS?",
+					"a": "У цьому шаблоні це ADMIN_PASSWORD у .env проєкту, який читається під час кожного запуску: змініть значення й задеплойте ще раз. У звичайній установці пароль лежить у $yourls_user_passwords у config.php, а YOURLS замінює його хешем."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,12 @@
 {
 	"name": "Password Pusher",
 	"emoji": "🤫",
+	"category": "security",
+	"alternatives": [
+		"Onetime Secret",
+		"Bitwarden Send"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "pwpush",
 		"port": 5100
@@ -22,35 +28,259 @@
 	"texts": {
 		"en": {
 			"description": "Share passwords and secrets by links that expire",
-			"notes": "Open the address and create the admin account with the boot code from the pwpush service’s log, on the Logs tab. Only signed-in accounts make links; whoever gets one opens it without an account. To let anyone make links or sign up, add ALLOW_ANONYMOUS=true or DISABLE_SIGNUPS=false to the project’s .env and deploy again."
+			"notes": "Open the address and create the admin account with the boot code from the pwpush service’s log, on the Logs tab. Only signed-in accounts make links; whoever gets one opens it without an account. To let anyone make links or sign up, add ALLOW_ANONYMOUS=true or DISABLE_SIGNUPS=false to the project’s .env and deploy again.",
+			"sizing": "Password Pusher is light: about 300 MB of memory, and pushes expire, so the disk stays nearly empty.",
+			"summary": "Password Pusher is an open-source Onetime Secret alternative for sharing passwords by self-destructing links. Self-host it with Docker in one click.",
+			"about": [
+				"Password Pusher is an open-source app for sharing passwords and other secrets through self-destructing links, an alternative to Onetime Secret. You push a password, a note, a URL or files, and the link works for a set number of views or days, whichever runs out first. Then the secret is deleted for good. A push can ask for a passphrase, and signed-in users get an audit log of who opened it and when.",
+				"People self-host Password Pusher so that secrets, and the key that encrypts them, stay on a server they control. It suits teams that hand out credentials: the page a recipient sees has no logos or unrelated links, and a JSON API and an official CLI let scripts push secrets too. The catch: pushes are encrypted on the server, not end to end, so anyone with both the database and the master key could read them."
+			],
+			"faq": [
+				{
+					"q": "Is Password Pusher free and open source?",
+					"a": "Yes. The open-source edition is free under the Apache 2.0 license. Its makers also sell hosted Premium and Pro plans on pwpush.com, and Self-Hosted Pro, a commercial edition with extras such as single sign-on."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send",
+					"a": "Bitwarden Send is part of the Bitwarden password manager: you send from a Bitwarden account, and contents are end-to-end encrypted. Password Pusher is a standalone app, for teams that want expiring secret links without adopting a password manager."
+				},
+				{
+					"q": "Why did my Password Pusher link expire before it was opened?",
+					"a": "Most often a link scanner opened it first: email, chat and firewall systems follow links and use up views. Check \"Use a 1-click retrieval step\" when you push, so the secret shows only after the recipient clicks through."
+				},
+				{
+					"q": "Can Password Pusher share files?",
+					"a": "Yes. Signed-in users can push files, up to 10 per push by default, and they expire by views or days like a password. The open-source edition includes this; on the hosted pwpush.com, file sharing is a paid feature."
+				},
+				{
+					"q": "Can people use Password Pusher without an account?",
+					"a": "To open a link, yes: recipients never need one. This template turns off anonymous pushing and new sign-ups; put ALLOW_ANONYMOUS=true or DISABLE_SIGNUPS=false in the project's .env and redeploy to allow either."
+				}
+			]
 		},
 		"de": {
 			"description": "Passwörter und Geheimnisse per Link teilen, der abläuft",
-			"notes": "Öffne die Adresse und erstell das Admin-Konto mit dem Boot-Code aus dem Log des Service pwpush, im Tab „Logs“. Links erstellen können nur angemeldete Konten; wer einen bekommt, öffnet ihn ohne Konto. Damit alle Links erstellen oder sich registrieren können, trag ALLOW_ANONYMOUS=true oder DISABLE_SIGNUPS=false in die .env des Projekts ein und deploy neu."
+			"notes": "Öffne die Adresse und erstell das Admin-Konto mit dem Boot-Code aus dem Log des Service pwpush, im Tab „Logs“. Links erstellen können nur angemeldete Konten; wer einen bekommt, öffnet ihn ohne Konto. Damit alle Links erstellen oder sich registrieren können, trag ALLOW_ANONYMOUS=true oder DISABLE_SIGNUPS=false in die .env des Projekts ein und deploy neu.",
+			"sizing": "Password Pusher ist leicht: etwa 300 MB RAM, und Pushes laufen ab, daher bleibt die Disk fast leer.",
+			"summary": "Password Pusher selbst hosten: Open-Source-Alternative zu Onetime Secret, um Passwörter per selbstzerstörendem Link zu teilen. Mit Docker, in einem Klick.",
+			"about": [
+				"Password Pusher ist eine Open-Source-App, mit der du Passwörter und andere Secrets über Links teilst, die sich selbst zerstören, eine Alternative zu Onetime Secret. Du pushst ein Passwort, eine Notiz, eine URL oder Dateien, und der Link gilt für eine festgelegte Zahl von Aufrufen oder Tagen, je nachdem, was zuerst abläuft. Danach wird das Secret endgültig gelöscht. Ein Push kann eine Passphrase verlangen, und wer angemeldet ist, bekommt ein Audit-Log darüber, wer ihn wann geöffnet hat.",
+				"Du hostest Password Pusher selbst, damit die Secrets und der Key, der sie verschlüsselt, auf einer Maschine bleiben, die du kontrollierst. Es passt zu Teams, die Zugangsdaten weitergeben: Die Seite, die man beim Öffnen des Links sieht, hat keine Logos und keine themenfremden Links, und über eine JSON-API und ein offizielles CLI-Tool können auch Skripte Secrets pushen. Der Haken: Pushes werden auf dem Server verschlüsselt, nicht Ende-zu-Ende. Wer sowohl die Datenbank als auch den Master-Key hat, könnte sie also lesen."
+			],
+			"faq": [
+				{
+					"q": "Ist Password Pusher kostenlos und Open Source?",
+					"a": "Ja. Die Open-Source-Edition ist kostenlos unter der Apache-2.0-Lizenz. Die Entwickler verkaufen außerdem gehostete Premium- und Pro-Tarife auf pwpush.com sowie Self-Hosted Pro, eine kommerzielle Edition mit Extras wie SSO."
+				},
+				{
+					"q": "Password Pusher vs. Bitwarden Send: Was ist der Unterschied?",
+					"a": "Bitwarden Send gehört zum Passwortmanager Bitwarden: Du sendest aus einem Bitwarden-Konto, und die Inhalte sind Ende-zu-Ende-verschlüsselt. Password Pusher ist eine eigenständige App für Teams, die ablaufende Secret-Links wollen, ohne einen Passwortmanager einzuführen."
+				},
+				{
+					"q": "Warum ist mein Password-Pusher-Link abgelaufen, bevor ihn jemand geöffnet hat?",
+					"a": "Meistens hat ihn vorher ein Link-Scanner geöffnet: E-Mail-, Chat- und Firewall-Systeme folgen Links und verbrauchen Aufrufe. Setz beim Pushen den Haken bei „Use a 1-click retrieval step“, dann zeigt sich das Secret erst, nachdem die empfangende Person durchgeklickt hat."
+				},
+				{
+					"q": "Kann Password Pusher Dateien teilen?",
+					"a": "Ja. Wer angemeldet ist, kann Dateien pushen, standardmäßig bis zu 10 pro Push, und sie laufen wie ein Passwort nach Aufrufen oder Tagen ab. Die Open-Source-Edition enthält das; auf dem gehosteten pwpush.com ist das Teilen von Dateien eine kostenpflichtige Funktion."
+				},
+				{
+					"q": "Kann man Password Pusher ohne Konto nutzen?",
+					"a": "Zum Öffnen eines Links ja: Wer ihn bekommt, braucht nie ein Konto. Diese Vorlage schaltet anonymes Pushen und neue Registrierungen ab. Trag ALLOW_ANONYMOUS=true oder DISABLE_SIGNUPS=false in die .env des Projekts ein und deploy neu, um das eine oder das andere zu erlauben."
+				}
+			]
 		},
 		"es": {
 			"description": "Comparte contraseñas y secretos con enlaces que caducan",
-			"notes": "Abre la dirección y crea la cuenta de administrador con el código de arranque (boot code) del log del servicio pwpush, en la pestaña Logs. Solo las cuentas con sesión iniciada crean enlaces; quien recibe uno lo abre sin cuenta. Para que cualquiera pueda crear enlaces o registrarse, agrega ALLOW_ANONYMOUS=true o DISABLE_SIGNUPS=false al .env del proyecto y vuelve a desplegar."
+			"notes": "Abre la dirección y crea la cuenta de administrador con el código de arranque (boot code) del log del servicio pwpush, en la pestaña Logs. Solo las cuentas con sesión iniciada crean enlaces; quien recibe uno lo abre sin cuenta. Para que cualquiera pueda crear enlaces o registrarse, agrega ALLOW_ANONYMOUS=true o DISABLE_SIGNUPS=false al .env del proyecto y vuelve a desplegar.",
+			"sizing": "Password Pusher es ligero: unos 300 MB de memoria, y los envíos caducan, así que el disco queda casi vacío.",
+			"summary": "Autoaloja Password Pusher, alternativa de código abierto a Onetime Secret para compartir contraseñas con enlaces autodestructivos. Con Docker, en un clic.",
+			"about": [
+				"Password Pusher es una app de código abierto para compartir contraseñas y otros secretos mediante enlaces que se autodestruyen, una alternativa a Onetime Secret. Creas un push con una contraseña, una nota, una URL o archivos, y el enlace funciona durante un número fijo de visualizaciones o de días, lo que se agote primero. Después, el secreto se elimina para siempre. Un push puede pedir una frase de contraseña, y quienes han iniciado sesión obtienen un log de auditoría de quién lo abrió y cuándo.",
+				"Autoalojas Password Pusher para que los secretos y la clave que los cifra se queden en una máquina que controlas. Encaja con equipos que reparten credenciales: la página que ve quien recibe el enlace no tiene logotipos ni enlaces ajenos, y una API JSON y una CLI oficial permiten que los scripts también envíen secretos. El inconveniente: los pushes se cifran en el servidor, no de extremo a extremo, así que cualquiera que tenga la base de datos y la clave maestra podría leerlos."
+			],
+			"faq": [
+				{
+					"q": "¿Password Pusher es gratis y de código abierto?",
+					"a": "Sí. La edición de código abierto es gratuita, con licencia Apache 2.0. Sus creadores también venden planes alojados Premium y Pro en pwpush.com, y Self-Hosted Pro, una edición comercial con extras como SSO."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send: ¿en qué se diferencian?",
+					"a": "Bitwarden Send forma parte del gestor de contraseñas Bitwarden: envías desde una cuenta de Bitwarden y el contenido va cifrado de extremo a extremo. Password Pusher es una app independiente, para equipos que quieren enlaces secretos que caducan sin adoptar un gestor de contraseñas."
+				},
+				{
+					"q": "¿Por qué caducó mi enlace de Password Pusher antes de que alguien lo abriera?",
+					"a": "Casi siempre porque un escáner de enlaces lo abrió antes: los sistemas de correo, chat y firewall siguen los enlaces y gastan visualizaciones. Marca “Use a 1-click retrieval step” al crear el push, para que el secreto solo aparezca cuando quien lo recibe haga clic."
+				},
+				{
+					"q": "¿Password Pusher puede compartir archivos?",
+					"a": "Sí. Quienes han iniciado sesión pueden enviar archivos, hasta 10 por push de forma predeterminada, y caducan por visualizaciones o días como una contraseña. La edición de código abierto lo incluye; en pwpush.com, el servicio alojado, compartir archivos es una función de pago."
+				},
+				{
+					"q": "¿Se puede usar Password Pusher sin una cuenta?",
+					"a": "Para abrir un enlace, sí: quien lo recibe nunca necesita una. Esta plantilla desactiva los pushes anónimos y los registros nuevos; agrega ALLOW_ANONYMOUS=true o DISABLE_SIGNUPS=false al .env del proyecto y vuelve a desplegar para permitir uno u otro."
+				}
+			]
 		},
 		"fr": {
 			"description": "Partagez mots de passe et secrets par des liens qui expirent",
-			"notes": "Ouvrez l’adresse et créez le compte administrateur avec le code de démarrage (boot code) tiré du log du service pwpush, dans l’onglet Logs. Seuls les comptes connectés créent des liens ; qui en reçoit un l’ouvre sans compte. Pour que tout le monde puisse en créer ou s’inscrire, ajoutez ALLOW_ANONYMOUS=true ou DISABLE_SIGNUPS=false au .env du projet et redéployez."
+			"notes": "Ouvrez l’adresse et créez le compte administrateur avec le code de démarrage (boot code) tiré du log du service pwpush, dans l’onglet Logs. Seuls les comptes connectés créent des liens ; qui en reçoit un l’ouvre sans compte. Pour que tout le monde puisse en créer ou s’inscrire, ajoutez ALLOW_ANONYMOUS=true ou DISABLE_SIGNUPS=false au .env du projet et redéployez.",
+			"sizing": "Password Pusher est léger : environ 300 MB de mémoire, et les push expirent, donc le disque reste presque vide.",
+			"summary": "Auto-hébergez Password Pusher : alternative open source à Onetime Secret pour partager des mots de passe par lien autodestructeur. Avec Docker, en un clic.",
+			"about": [
+				"Password Pusher est une application open source pour partager des mots de passe et d’autres secrets par des liens autodestructeurs, une alternative à Onetime Secret. Vous poussez un mot de passe, une note, une URL ou des fichiers, et le lien fonctionne pour un nombre fixé de consultations ou de jours, selon ce qui s’épuise en premier. Ensuite, le secret est supprimé pour de bon. Un push peut exiger une phrase secrète, et les utilisateurs connectés ont accès à un log d’audit qui dit qui l’a ouvert et quand.",
+				"Vous auto-hébergez Password Pusher pour que les secrets, et la clé qui les chiffre, restent sur une machine que vous contrôlez. Il convient aux équipes qui transmettent des identifiants : la page que voit le destinataire n’a ni logos ni liens sans rapport, et une API JSON et une CLI officielle permettent aussi aux scripts de pousser des secrets. Le revers : les push sont chiffrés sur le serveur, pas de bout en bout, donc quiconque détient à la fois la base de données et la clé maître pourrait les lire."
+			],
+			"faq": [
+				{
+					"q": "Password Pusher est-il gratuit et open source ?",
+					"a": "Oui. L’édition open source est gratuite, sous licence Apache 2.0. Ses auteurs vendent aussi des offres hébergées Premium et Pro sur pwpush.com, ainsi que Self-Hosted Pro, une édition commerciale avec des extras comme le SSO."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send : quelle différence ?",
+					"a": "Bitwarden Send fait partie du gestionnaire de mots de passe Bitwarden : vous envoyez depuis un compte Bitwarden, et le contenu est chiffré de bout en bout. Password Pusher est une application autonome, pour les équipes qui veulent des liens secrets à durée limitée sans adopter de gestionnaire de mots de passe."
+				},
+				{
+					"q": "Pourquoi mon lien Password Pusher a-t-il expiré avant d’être ouvert ?",
+					"a": "Le plus souvent, un scanner de liens l’a ouvert en premier : les systèmes de messagerie, de chat et de pare-feu suivent les liens et consomment des consultations. Cochez « Use a 1-click retrieval step » en créant le push, pour que le secret ne s’affiche qu’après un clic du destinataire."
+				},
+				{
+					"q": "Password Pusher peut-il partager des fichiers ?",
+					"a": "Oui. Les utilisateurs connectés peuvent pousser des fichiers, jusqu’à 10 par push par défaut, et ils expirent par consultations ou par jours comme un mot de passe. L’édition open source l’inclut ; sur le pwpush.com hébergé, le partage de fichiers est une fonctionnalité payante."
+				},
+				{
+					"q": "Peut-on utiliser Password Pusher sans compte ?",
+					"a": "Pour ouvrir un lien, oui : le destinataire n’a jamais besoin d’un compte. Ce template désactive les push anonymes et les nouvelles inscriptions ; mettez ALLOW_ANONYMOUS=true ou DISABLE_SIGNUPS=false dans le .env du projet et redéployez pour autoriser l’un ou l’autre."
+				}
+			]
 		},
 		"pl": {
 			"description": "Udostępniaj hasła i sekrety przez linki, które wygasają",
-			"notes": "Otwórz adres projektu i załóż konto administratora kodem startowym (boot code) z logu usługi pwpush, w zakładce Logi. Linki tworzą tylko zalogowane konta; kto dostanie link, otworzy go bez konta. Żeby każdy mógł tworzyć linki albo zakładać konta, dodaj ALLOW_ANONYMOUS=true lub DISABLE_SIGNUPS=false do pliku .env projektu i wdróż ponownie."
+			"notes": "Otwórz adres projektu i załóż konto administratora kodem startowym (boot code) z logu usługi pwpush, w zakładce Logi. Linki tworzą tylko zalogowane konta; kto dostanie link, otworzy go bez konta. Żeby każdy mógł tworzyć linki albo zakładać konta, dodaj ALLOW_ANONYMOUS=true lub DISABLE_SIGNUPS=false do pliku .env projektu i wdróż ponownie.",
+			"sizing": "Password Pusher ma małe wymagania: około 300 MB pamięci, a pushe wygasają, więc dysk zostaje prawie pusty.",
+			"summary": "Hostuj u siebie Password Pusher: alternatywa open source dla Onetime Secret do udostępniania haseł samoniszczącymi się linkami. Z Dockerem, w jeden klik.",
+			"about": [
+				"Password Pusher to aplikacja open source do udostępniania haseł i innych sekretów przez samoniszczące się linki, alternatywa dla Onetime Secret. Tworzysz push z hasłem, notatką, adresem URL lub plikami, a link działa przez ustaloną liczbę wyświetleń albo dni, zależnie od tego, co skończy się pierwsze. Potem sekret zostaje usunięty na zawsze. Push może wymagać frazy hasłowej, a zalogowani użytkownicy dostają log audytu: kto go otworzył i kiedy.",
+				"Aplikację Password Pusher hostujesz u siebie, żeby sekrety i klucz, który je szyfruje, zostały na maszynie, którą kontrolujesz. Pasuje do zespołów, które przekazują dane logowania: strona, którą widzi odbiorca, nie ma logo ani niepowiązanych linków, a API JSON i oficjalne CLI pozwalają też skryptom wysyłać sekrety. Haczyk: pushe są szyfrowane na serwerze, a nie end-to-end, więc każdy, kto ma i bazę danych, i master key, mógłby je odczytać."
+			],
+			"faq": [
+				{
+					"q": "Czy Password Pusher jest darmowy i open source?",
+					"a": "Tak. Edycja open source jest darmowa, na licencji Apache 2.0. Twórcy sprzedają też hostowane plany Premium i Pro na pwpush.com oraz Self-Hosted Pro, komercyjną edycję z dodatkami, takimi jak SSO."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send: czym się różnią?",
+					"a": "Bitwarden Send jest częścią menedżera haseł Bitwarden: wysyłasz z konta Bitwarden, a zawartość jest szyfrowana end-to-end. Password Pusher to samodzielna aplikacja, dla zespołów, które chcą wygasających linków do sekretów bez wprowadzania menedżera haseł."
+				},
+				{
+					"q": "Dlaczego mój link z Password Pusher wygasł, zanim ktokolwiek go otworzył?",
+					"a": "Najczęściej otworzył go wcześniej skaner linków: systemy pocztowe, komunikatory i firewalle otwierają linki i zużywają wyświetlenia. Zaznacz „Use a 1-click retrieval step” przy tworzeniu pusha, żeby sekret pokazał się dopiero po kliknięciu odbiorcy."
+				},
+				{
+					"q": "Czy Password Pusher potrafi udostępniać pliki?",
+					"a": "Tak. Zalogowani użytkownicy mogą wysyłać pliki, domyślnie do 10 w jednym pushu, a pliki wygasają po wyświetleniach lub dniach, tak jak hasło. Edycja open source to zawiera; na hostowanym pwpush.com udostępnianie plików jest funkcją płatną."
+				},
+				{
+					"q": "Czy z Password Pusher można korzystać bez konta?",
+					"a": "Żeby otworzyć link – tak: odbiorca nigdy nie potrzebuje konta. Ten szablon wyłącza anonimowe pushe i nowe rejestracje; dodaj ALLOW_ANONYMOUS=true albo DISABLE_SIGNUPS=false do pliku .env projektu i wdróż ponownie, żeby zezwolić na jedno lub drugie."
+				}
+			]
 		},
 		"pt": {
 			"description": "Compartilhe senhas e segredos por links que expiram",
-			"notes": "Abra o endereço e crie a conta de administrador com o código de inicialização (boot code) do log do serviço pwpush, na aba Logs. Só contas conectadas criam links; quem recebe um abre sem conta. Para que qualquer pessoa crie links ou se cadastre, adicione ALLOW_ANONYMOUS=true ou DISABLE_SIGNUPS=false ao .env do projeto e faça o deploy de novo."
+			"notes": "Abra o endereço e crie a conta de administrador com o código de inicialização (boot code) do log do serviço pwpush, na aba Logs. Só contas conectadas criam links; quem recebe um abre sem conta. Para que qualquer pessoa crie links ou se cadastre, adicione ALLOW_ANONYMOUS=true ou DISABLE_SIGNUPS=false ao .env do projeto e faça o deploy de novo.",
+			"sizing": "Password Pusher é leve: cerca de 300 MB de memória, e os envios expiram, então o disco fica quase vazio.",
+			"summary": "Auto-hospede o Password Pusher: alternativa de código aberto ao Onetime Secret para compartilhar senhas por link autodestrutivo. Com Docker, em um clique.",
+			"about": [
+				"O Password Pusher é um app de código aberto para compartilhar senhas e outros segredos por links que se autodestroem, uma alternativa ao Onetime Secret. Você faz o push de uma senha, uma nota, uma URL ou arquivos, e o link vale por um número definido de visualizações ou de dias, o que acabar primeiro. Depois, o segredo é excluído para sempre. Um push pode pedir uma frase secreta, e quem está conectado recebe um log de auditoria de quem o abriu e quando.",
+				"Você auto-hospeda o Password Pusher para que os segredos e a chave que os criptografa fiquem em uma máquina que você controla. Combina com equipes que repassam credenciais: a página que o destinatário vê não tem logos nem links alheios, e uma API JSON e uma CLI oficial permitem que scripts também enviem segredos. O porém: os pushes são criptografados no servidor, não de ponta a ponta, então quem tiver o banco de dados e a chave mestra poderia lê-los."
+			],
+			"faq": [
+				{
+					"q": "O Password Pusher é gratuito e de código aberto?",
+					"a": "Sim. A edição de código aberto é gratuita, sob a licença Apache 2.0. Os criadores também vendem planos hospedados Premium e Pro no pwpush.com e o Self-Hosted Pro, uma edição comercial com extras como SSO."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send: qual é a diferença?",
+					"a": "O Bitwarden Send faz parte do gerenciador de senhas Bitwarden: você envia de uma conta do Bitwarden, e o conteúdo é criptografado de ponta a ponta. O Password Pusher é um app independente, para equipes que querem links secretos que expiram sem adotar um gerenciador de senhas."
+				},
+				{
+					"q": "Por que meu link do Password Pusher expirou antes de ser aberto?",
+					"a": "Na maioria das vezes, um scanner de links o abriu antes: sistemas de e-mail, chat e firewall seguem links e gastam visualizações. Marque “Use a 1-click retrieval step” ao criar o push, para que o segredo só apareça depois que o destinatário clicar."
+				},
+				{
+					"q": "O Password Pusher compartilha arquivos?",
+					"a": "Sim. Quem está conectado pode enviar arquivos, até 10 por push por padrão, e eles expiram por visualizações ou dias, como uma senha. A edição de código aberto inclui isso; no pwpush.com hospedado, compartilhar arquivos é um recurso pago."
+				},
+				{
+					"q": "Dá para usar o Password Pusher sem conta?",
+					"a": "Para abrir um link, sim: o destinatário nunca precisa de uma. Este template desativa pushes anônimos e novos cadastros; coloque ALLOW_ANONYMOUS=true ou DISABLE_SIGNUPS=false no .env do projeto e faça o deploy de novo para permitir um ou outro."
+				}
+			]
 		},
 		"ru": {
 			"description": "Пароли и секреты по ссылкам, которые истекают",
-			"notes": "Откройте адрес и создайте аккаунт администратора с boot code из лога сервиса pwpush на вкладке «Логи». Создавать ссылки могут только вошедшие аккаунты; кто получил ссылку, откроет ее без аккаунта. Чтобы создавать ссылки или регистрироваться мог любой, добавьте ALLOW_ANONYMOUS=true или DISABLE_SIGNUPS=false в .env проекта и задеплойте проект заново."
+			"notes": "Откройте адрес и создайте аккаунт администратора с boot code из лога сервиса pwpush на вкладке «Логи». Создавать ссылки могут только вошедшие аккаунты; кто получил ссылку, откроет ее без аккаунта. Чтобы создавать ссылки или регистрироваться мог любой, добавьте ALLOW_ANONYMOUS=true или DISABLE_SIGNUPS=false в .env проекта и задеплойте проект заново.",
+			"sizing": "Password Pusher: небольшие требования — около 300 MB памяти; ссылки с паролями истекают, поэтому диск почти пуст.",
+			"summary": "Self-hosted Password Pusher — open source альтернатива Onetime Secret для передачи паролей по самоуничтожающимся ссылкам. В Docker, в один клик.",
+			"about": [
+				"Password Pusher — это open source приложение для передачи паролей и других секретов по самоуничтожающимся ссылкам, альтернатива Onetime Secret. Вы делаете пуш: пароль, заметка, URL или файлы, и ссылка работает заданное число просмотров или дней — смотря что закончится раньше. Потом секрет удаляется навсегда. Пуш может требовать парольную фразу, а у тех, кто вошел в аккаунт, есть лог аудита: кто открыл пуш и когда.",
+				"Password Pusher хостят у себя, чтобы секреты и ключ, который их шифрует, оставались на машине, которую вы контролируете. Он подходит командам, которые раздают данные для входа: на странице, которую видит получатель, нет логотипов и посторонних ссылок, а JSON API и официальный CLI позволяют отправлять секреты и скриптам. Подвох: пуши шифруются на сервере, а не сквозным шифрованием, поэтому прочитать их может любой, у кого есть и база данных, и мастер-ключ."
+			],
+			"faq": [
+				{
+					"q": "Password Pusher бесплатный и с открытым кодом?",
+					"a": "Да. Версия с открытым кодом бесплатна, лицензия Apache 2.0. Его авторы также продают хостинг-тарифы Premium и Pro на pwpush.com и Self-Hosted Pro — коммерческую версию с дополнительными функциями, например SSO."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send: в чем разница?",
+					"a": "Bitwarden Send — часть менеджера паролей Bitwarden: вы отправляете из аккаунта Bitwarden, а содержимое защищено сквозным шифрованием. Password Pusher — отдельное приложение, для команд, которым нужны секретные ссылки с ограниченным сроком без внедрения менеджера паролей."
+				},
+				{
+					"q": "Почему ссылка Password Pusher истекла, пока ее никто не открыл?",
+					"a": "Чаще всего ее первым открыл сканер ссылок: почтовые системы, мессенджеры и файрволы переходят по ссылкам и расходуют просмотры. Отметьте «Use a 1-click retrieval step» при создании пуша, и секрет покажется только после клика получателя."
+				},
+				{
+					"q": "Умеет ли Password Pusher делиться файлами?",
+					"a": "Да. Те, кто вошел в аккаунт, могут отправлять файлы, по умолчанию до 10 за один пуш, и они истекают по просмотрам или дням, как пароль. В версии с открытым кодом это есть; на хостинговом pwpush.com обмен файлами — платная функция."
+				},
+				{
+					"q": "Можно ли пользоваться Password Pusher без аккаунта?",
+					"a": "Чтобы открыть ссылку — да: получателю аккаунт никогда не нужен. Этот шаблон отключает анонимные пуши и новые регистрации; добавьте ALLOW_ANONYMOUS=true или DISABLE_SIGNUPS=false в .env проекта и задеплойте заново, чтобы разрешить одно или другое."
+				}
+			]
 		},
 		"uk": {
 			"description": "Паролі й секрети за посиланнями, що спливають",
-			"notes": "Відкрийте адресу і створіть акаунт адміністратора з boot code з логу сервісу pwpush на вкладці «Логи». Створювати посилання можуть лише акаунти, що увійшли; хто отримав посилання, відкриє його без акаунта. Щоб створювати посилання чи реєструватися міг будь-хто, додайте ALLOW_ANONYMOUS=true або DISABLE_SIGNUPS=false у файл .env проєкту й задеплойте ще раз."
+			"notes": "Відкрийте адресу і створіть акаунт адміністратора з boot code з логу сервісу pwpush на вкладці «Логи». Створювати посилання можуть лише акаунти, що увійшли; хто отримав посилання, відкриє його без акаунта. Щоб створювати посилання чи реєструватися міг будь-хто, додайте ALLOW_ANONYMOUS=true або DISABLE_SIGNUPS=false у файл .env проєкту й задеплойте ще раз.",
+			"sizing": "Password Pusher має скромні вимоги: близько 300 MB пам’яті, а термін дії пушів спливає, тож диск майже порожній.",
+			"summary": "Self-hosted Password Pusher — альтернатива Onetime Secret із відкритим кодом для передавання паролів самознищувальними посиланнями. У Docker, в один клік.",
+			"about": [
+				"Password Pusher — це застосунок із відкритим кодом для передавання паролів та інших секретів за посиланнями, що самознищуються, альтернатива Onetime Secret. Ви робите пуш: пароль, нотатка, URL або файли, і посилання діє задану кількість переглядів чи днів — залежно від того, що закінчиться раніше. Потім секрет видаляється назавжди. Пуш може вимагати парольну фразу, а в тих, хто увійшов в акаунт, є лог аудиту: хто відкрив пуш і коли.",
+				"Password Pusher хостять у себе, щоб секрети й ключ, який їх шифрує, залишалися на машині, яку ви контролюєте. Він підходить командам, які роздають дані для входу: на сторінці, яку бачить одержувач, немає логотипів і сторонніх посилань, а JSON API та офіційний CLI дають змогу надсилати секрети й скриптам. Підводний камінь: пуші шифруються на сервері, а не наскрізним шифруванням, тому прочитати їх може будь-хто, у кого є і база даних, і майстер-ключ."
+			],
+			"faq": [
+				{
+					"q": "Password Pusher безплатний і з відкритим кодом?",
+					"a": "Так. Версія з відкритим кодом безплатна, за ліцензією Apache 2.0. Її автори також продають хостингові тарифи Premium і Pro на pwpush.com та Self-Hosted Pro — комерційну версію з додатковими можливостями, як-от SSO."
+				},
+				{
+					"q": "Password Pusher vs Bitwarden Send: у чому різниця?",
+					"a": "Bitwarden Send — частина менеджера паролів Bitwarden: ви надсилаєте з акаунта Bitwarden, а вміст захищено наскрізним шифруванням. Password Pusher — окремий застосунок, для команд, яким потрібні секретні посилання з обмеженим терміном без переходу на менеджер паролів."
+				},
+				{
+					"q": "Чому посилання Password Pusher спливло, перш ніж його хтось відкрив?",
+					"a": "Найчастіше його першим відкрив сканер посилань: поштові системи, месенджери та файрволи переходять за посиланнями й витрачають перегляди. Позначте «Use a 1-click retrieval step» під час створення пуша, і секрет з’явиться лише після кліка одержувача."
+				},
+				{
+					"q": "Чи вміє Password Pusher ділитися файлами?",
+					"a": "Так. Ті, хто увійшов в акаунт, можуть надсилати файли, типово до 10 за один пуш, і вони спливають за переглядами чи днями, як пароль. У версії з відкритим кодом це є; на хостинговому pwpush.com обмін файлами — платна функція."
+				},
+				{
+					"q": "Чи можна користуватися Password Pusher без акаунта?",
+					"a": "Щоб відкрити посилання — так: одержувачу акаунт ніколи не потрібен. Цей шаблон вимикає анонімні пуші та нові реєстрації; додайте ALLOW_ANONYMOUS=true або DISABLE_SIGNUPS=false у .env проєкту й задеплойте ще раз, щоб дозволити одне чи інше."
+				}
+			]
 		}
 	}
 }

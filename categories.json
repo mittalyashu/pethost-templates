@@ -1,0 +1,860 @@
+{
+	"ai": {
+		"name": {
+			"en": "AI and agents",
+			"de": "KI und Agenten",
+			"es": "IA y agentes",
+			"fr": "IA et agents",
+			"pl": "AI i agenci",
+			"pt": "IA e agentes",
+			"ru": "ИИ и агенты",
+			"uk": "ШІ та агенти"
+		},
+		"title": {
+			"en": "Self-hosted AI agents, chat interfaces and LLM tools",
+			"de": "KI-Agenten, Chat-Oberflächen und LLM-Tools selbst hosten",
+			"es": "Agentes de IA, chat y herramientas LLM autoalojados",
+			"fr": "Agents IA, interfaces de chat et outils LLM auto-hébergés",
+			"pl": "Self-hosted agenci AI, interfejsy czatu i narzędzia LLM",
+			"pt": "Agentes de IA e ferramentas de LLM auto-hospedados",
+			"ru": "Self-hosted ИИ-агенты, чат-интерфейсы и LLM-инструменты",
+			"uk": "Self-hosted ШІ-агенти, чат-інтерфейси та LLM-інструменти"
+		},
+		"summary": {
+			"en": "Self-host OpenClaw, Hermes Agent, Open WebUI, Langfuse and more: AI assistants, chat and LLM tools on your own machine, each in one click.",
+			"de": "OpenClaw, Hermes Agent, Open WebUI, Langfuse und mehr selbst hosten: KI-Assistenten, Chat und LLM-Tools auf deiner Maschine, jeweils mit einem Klick.",
+			"es": "Autoaloja OpenClaw, Hermes Agent, Open WebUI, Langfuse y más: asistentes de IA, chat y herramientas LLM en tu máquina, cada uno en un clic.",
+			"fr": "Auto-hébergez OpenClaw, Hermes Agent, Open WebUI, Langfuse et d’autres : assistants IA, chat et outils LLM sur votre machine, en un clic.",
+			"pl": "Self-hosted OpenClaw, Hermes Agent, Open WebUI, Langfuse i inne: asystenci AI, czat i narzędzia LLM na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede OpenClaw, Hermes Agent, Open WebUI, Langfuse e mais: assistentes de IA, chat e ferramentas de LLM na sua máquina, em um clique.",
+			"ru": "Разверните у себя OpenClaw, Hermes Agent, Open WebUI, Langfuse и другие: ИИ-ассистенты, чаты и LLM-инструменты на вашей машине в один клик.",
+			"uk": "Розгорніть у себе OpenClaw, Hermes Agent, Open WebUI, Langfuse та інші: ШІ-асистенти, чати й LLM-інструменти на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Self-hosted AI apps keep your agents, your chats and the keys they hold on a machine you control. An assistant that answers in Telegram or Slack needs a server that is always on, and the history stays where you decide.",
+				"OpenClaw, Hermes Agent and AstrBot are assistants you talk to in Telegram, Discord, Slack and other chat apps, and Octop serves a team or a family. Open WebUI is a chat interface for Ollama and OpenAI-compatible models, Flowise builds agents visually, and Langfuse traces and evaluates LLM apps. OpenConnector gives agents one MCP server for hundreds of services, and GitNexus turns a repository into a knowledge graph they can query."
+			],
+			"de": [
+				"Selbst gehostete KI-Apps halten deine Agenten, deine Chats und die API-Keys, die sie verwalten, auf einer Maschine, die du kontrollierst. Ein Assistent, der in Telegram oder Slack antwortet, muss rund um die Uhr laufen, und der Verlauf bleibt dort, wo du es bestimmst.",
+				"OpenClaw, Hermes Agent und AstrBot sind Assistenten, mit denen du in Telegram, Discord, Slack und anderen Chat-Apps schreibst; Octop ist für ein Team oder eine Familie gedacht. Open WebUI ist eine Chat-Oberfläche für Ollama und OpenAI-kompatible Modelle, Flowise baut Agenten visuell, und Langfuse macht LLM-Apps per Tracing nachvollziehbar und bewertet sie. OpenConnector gibt Agenten einen MCP-Server für Hunderte Dienste, und GitNexus macht aus einem Repository einen Wissensgraphen, den sie abfragen können."
+			],
+			"es": [
+				"Las apps de IA autoalojadas mantienen tus agentes, tus chats y las claves de API que usan en una máquina que controlas tú. Un asistente que responde en Telegram o Slack tiene que estar en marcha todo el día, y el historial se queda donde tú decides.",
+				"OpenClaw, Hermes Agent y AstrBot son asistentes con los que hablas en Telegram, Discord, Slack y otras apps de chat, y Octop sirve a un equipo o a una familia. Open WebUI es una interfaz de chat para Ollama y modelos compatibles con OpenAI, Flowise crea agentes de forma visual y Langfuse rastrea y evalúa apps con LLM. OpenConnector da a los agentes un único servidor MCP para cientos de servicios, y GitNexus convierte un repositorio en un grafo de conocimiento que pueden consultar."
+			],
+			"fr": [
+				"Les applications d’IA auto-hébergées gardent vos agents, vos conversations et les clés d’API qu’ils détiennent sur une machine que vous maîtrisez. Un assistant qui répond sur Telegram ou Slack doit tourner en permanence, et l’historique reste là où vous le décidez.",
+				"OpenClaw, Hermes Agent et AstrBot sont des assistants à qui vous parlez sur Telegram, Discord, Slack et d’autres messageries, et Octop s’adresse à une équipe ou à une famille. Open WebUI est une interface de chat pour Ollama et les modèles compatibles OpenAI, Flowise construit des agents visuellement et Langfuse trace et évalue les applications LLM. OpenConnector donne aux agents un seul serveur MCP pour des centaines de services, et GitNexus transforme un dépôt en graphe de connaissances qu’ils peuvent interroger."
+			],
+			"pl": [
+				"Aplikacje AI typu self-hosted trzymają twoich agentów, twoje rozmowy i klucze API, których używają, na maszynie, nad którą masz kontrolę. Asystent odpowiadający na Telegramie czy Slacku musi działać całą dobę, a historia zostaje tam, gdzie zdecydujesz.",
+				"OpenClaw, Hermes Agent i AstrBot to asystenci, z którymi rozmawiasz na Telegramie, Discordzie, Slacku i w innych komunikatorach, a Octop obsługuje zespół lub rodzinę. Open WebUI to interfejs czatu dla Ollamy i modeli zgodnych z OpenAI, Flowise buduje agentów wizualnie, a Langfuse śledzi i ocenia aplikacje LLM. OpenConnector daje agentom jeden serwer MCP dla setek usług, a GitNexus zamienia repozytorium w graf wiedzy, który mogą odpytywać."
+			],
+			"pt": [
+				"Apps de IA auto-hospedados mantêm seus agentes, suas conversas e as chaves de API que eles usam em uma máquina que você controla. Um assistente que responde no Telegram ou no Slack precisa ficar ligado o tempo todo, e o histórico fica onde você decidir.",
+				"OpenClaw, Hermes Agent e AstrBot são assistentes com quem você conversa no Telegram, no Discord, no Slack e em outros apps de chat, e o Octop atende uma equipe ou uma família. O Open WebUI é uma interface de chat para o Ollama e modelos compatíveis com a OpenAI, o Flowise cria agentes de forma visual e o Langfuse rastreia e avalia apps de LLM. O OpenConnector dá aos agentes um único servidor MCP para centenas de serviços, e o GitNexus transforma um repositório em um grafo de conhecimento que eles podem consultar."
+			],
+			"ru": [
+				"Self-hosted ИИ-приложения держат ваших агентов, ваши чаты и ключи API, которыми они пользуются, на машине, которую вы контролируете. Ассистент, который отвечает в Telegram или Slack, должен работать круглые сутки, а история остается там, где вы решили.",
+				"OpenClaw, Hermes Agent и AstrBot — ассистенты, с которыми вы общаетесь в Telegram, Discord, Slack и других мессенджерах, а Octop рассчитан на команду или семью. Open WebUI — интерфейс чата для Ollama и OpenAI-совместимых моделей, Flowise собирает агентов визуально, а Langfuse трассирует и оценивает LLM-приложения. OpenConnector дает агентам один MCP-сервер для сотен сервисов, а GitNexus превращает репозиторий в граф знаний, к которому они могут обращаться."
+			],
+			"uk": [
+				"Self-hosted ШІ-застосунки тримають ваших агентів, ваші чати й ключі API, якими вони користуються, на машині, яку ви контролюєте. Асистент, що відповідає в Telegram чи Slack, має працювати цілодобово, а історія лишається там, де ви вирішили.",
+				"OpenClaw, Hermes Agent і AstrBot — асистенти, з якими ви спілкуєтеся в Telegram, Discord, Slack та інших месенджерах, а Octop розрахований на команду чи родину. Open WebUI — інтерфейс чату для Ollama та OpenAI-сумісних моделей, Flowise збирає агентів візуально, а Langfuse трасує й оцінює LLM-застосунки. OpenConnector дає агентам один MCP-сервер для сотень сервісів, а GitNexus перетворює репозиторій на граф знань, до якого вони можуть звертатися."
+			]
+		}
+	},
+	"automation": {
+		"name": {
+			"en": "Automation",
+			"de": "Automatisierung",
+			"es": "Automatización",
+			"fr": "Automatisation",
+			"pl": "Automatyzacja",
+			"pt": "Automação",
+			"ru": "Автоматизация",
+			"uk": "Автоматизація"
+		},
+		"title": {
+			"en": "Self-hosted workflow automation and CI tools",
+			"de": "Workflow-Automatisierung und CI-Tools selbst hosten",
+			"es": "Automatización de flujos y herramientas de CI autoalojadas",
+			"fr": "Automatisation de workflows et outils CI auto-hébergés",
+			"pl": "Automatyzacja workflow i narzędzia CI self-hosted",
+			"pt": "Automação de fluxos e ferramentas de CI auto-hospedadas",
+			"ru": "Self-hosted автоматизация процессов и CI-инструменты",
+			"uk": "Self-hosted автоматизація процесів і CI-інструменти"
+		},
+		"summary": {
+			"en": "Self-host n8n, Activepieces, Windmill, Semaphore UI or Jenkins: workflows, scripts and builds on your own machine, each in one click.",
+			"de": "n8n, Activepieces, Windmill, Semaphore UI oder Jenkins selbst hosten: Workflows, Skripte und Builds auf deiner Maschine, jeweils mit einem Klick.",
+			"es": "Autoaloja n8n, Activepieces, Windmill, Semaphore UI o Jenkins: flujos de trabajo, scripts y builds en tu máquina, cada uno en un clic.",
+			"fr": "Auto-hébergez n8n, Activepieces, Windmill, Semaphore UI ou Jenkins : workflows, scripts et builds sur votre machine, chacun en un clic.",
+			"pl": "Self-hosted n8n, Activepieces, Windmill, Semaphore UI i Jenkins: workflowy, skrypty i buildy na twojej maszynie, każdy jednym kliknięciem.",
+			"pt": "Hospede n8n, Activepieces, Windmill, Semaphore UI ou Jenkins por conta própria: fluxos, scripts e builds na sua máquina, em um clique.",
+			"ru": "Запустите у себя n8n, Activepieces, Windmill, Semaphore UI или Jenkins: рабочие процессы, скрипты и сборки на вашей машине в один клик.",
+			"uk": "Запустіть у себе n8n, Activepieces, Windmill, Semaphore UI або Jenkins: робочі процеси, скрипти й збірки на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Workflow automation connects the services you use: a form entry lands in a spreadsheet, a webhook starts a script, a push to Git starts a build. Running the tool yourself keeps the credentials it holds for those accounts on your own machine.",
+				"n8n combines a visual canvas with custom code, and Activepieces, an open source replacement for Zapier, builds automations and AI agents from pieces with no code. Windmill turns scripts in Python, TypeScript, Go, SQL or Bash into flows and apps, and calls itself an alternative to Retool and Pipedream. Semaphore UI runs Ansible playbooks and Terraform, and Jenkins builds, tests and deploys."
+			],
+			"de": [
+				"Workflow-Automatisierung verbindet die Dienste, die du nutzt: Ein Formulareintrag landet in einer Tabelle, ein Webhook startet ein Skript, ein Git-Push löst einen Build aus. Betreibst du das Tool selbst, bleiben die Zugangsdaten, die es für diese Konten hält, auf deiner eigenen Maschine.",
+				"n8n verbindet eine visuelle Arbeitsfläche mit eigenem Code, und Activepieces, ein Open-Source-Ersatz für Zapier, baut Automatisierungen und KI-Agenten aus Bausteinen ohne Code. Windmill macht aus Skripten in Python, TypeScript, Go, SQL oder Bash Flows und Apps und nennt sich Alternative zu Retool und Pipedream. Semaphore UI führt Ansible-Playbooks und Terraform aus, und Jenkins baut, testet und deployt."
+			],
+			"es": [
+				"La automatización de flujos conecta los servicios que usas: una entrada de formulario llega a una hoja de cálculo, un webhook ejecuta un script, un push a Git inicia un build. Ejecutar la herramienta por tu cuenta mantiene en tu propia máquina las credenciales que guarda para esas cuentas.",
+				"n8n combina un lienzo visual con código propio, y Activepieces, un reemplazo de código abierto de Zapier, crea automatizaciones y agentes de IA a partir de piezas, sin escribir código. Windmill convierte scripts en Python, TypeScript, Go, SQL o Bash en flujos y apps, y se presenta como alternativa a Retool y Pipedream. Semaphore UI ejecuta playbooks de Ansible y Terraform, y Jenkins construye, prueba y despliega."
+			],
+			"fr": [
+				"L’automatisation de workflows relie les services que vous utilisez : une réponse de formulaire arrive dans un tableur, un webhook lance un script, un push vers Git déclenche un build. Faire tourner l’outil vous-même garde sur votre propre machine les identifiants qu’il détient pour ces comptes.",
+				"n8n associe un canevas visuel à du code sur mesure, et Activepieces, un remplaçant open source de Zapier, crée des automatisations et des agents IA à partir de briques, sans code. Windmill transforme des scripts Python, TypeScript, Go, SQL ou Bash en flux et en applications, et se présente comme une alternative à Retool et à Pipedream. Semaphore UI exécute des playbooks Ansible et Terraform, et Jenkins construit, teste et déploie."
+			],
+			"pl": [
+				"Automatyzacja workflow łączy usługi, z których korzystasz: wpis z formularza trafia do arkusza, webhook uruchamia skrypt, push do Gita zaczyna build. Gdy narzędzie działa u ciebie, dane dostępowe do tych kont, które dla nich trzyma, zostają na twojej maszynie.",
+				"n8n łączy wizualne płótno z własnym kodem, a Activepieces, otwartoźródłowy zamiennik Zapier, buduje automatyzacje i agentów AI z klocków, bez kodu. Windmill zamienia skrypty w Pythonie, TypeScripcie, Go, SQL lub Bashu w przepływy i aplikacje i przedstawia się jako alternatywa dla Retool i Pipedream. Semaphore UI uruchamia playbooki Ansible i Terraform, a Jenkins buduje, testuje i wdraża."
+			],
+			"pt": [
+				"A automação de fluxos conecta os serviços que você usa: o envio de um formulário vira uma linha em uma planilha, um webhook dispara um script, um push no Git inicia um build. Rodar a ferramenta por conta própria mantém na sua máquina as credenciais que ela guarda dessas contas.",
+				"O n8n combina uma tela visual com código próprio, e o Activepieces, um substituto open source do Zapier, cria automações e agentes de IA a partir de peças, sem código. O Windmill transforma scripts em Python, TypeScript, Go, SQL ou Bash em fluxos e apps, e se apresenta como alternativa ao Retool e ao Pipedream. O Semaphore UI executa playbooks do Ansible e o Terraform, e o Jenkins faz build, testa e faz deploy."
+			],
+			"ru": [
+				"Автоматизация рабочих процессов связывает сервисы, которыми вы пользуетесь: запись из формы попадает в таблицу, вебхук запускает скрипт, пуш в Git запускает сборку. Если инструмент работает у вас, учетные данные от этих аккаунтов остаются на вашей машине.",
+				"n8n сочетает визуальный редактор с собственным кодом, а Activepieces, замена Zapier с открытым кодом, собирает автоматизации и ИИ-агентов из готовых блоков без кода. Windmill превращает скрипты на Python, TypeScript, Go, SQL или Bash в потоки и приложения и называет себя альтернативой Retool и Pipedream. Semaphore UI запускает плейбуки Ansible и Terraform, а Jenkins собирает, тестирует и деплоит."
+			],
+			"uk": [
+				"Автоматизація робочих процесів поєднує сервіси, якими ви користуєтеся: запис із форми потрапляє в таблицю, вебхук запускає скрипт, пуш у Git запускає збірку. Якщо інструмент працює у вас, облікові дані від цих акаунтів лишаються на вашій машині.",
+				"n8n поєднує візуальний редактор із власним кодом, а Activepieces, заміна Zapier з відкритим кодом, збирає автоматизації та ШІ-агентів із готових блоків без коду. Windmill перетворює скрипти на Python, TypeScript, Go, SQL чи Bash на потоки й застосунки та називає себе альтернативою Retool і Pipedream. Semaphore UI запускає плейбуки Ansible і Terraform, а Jenkins збирає, тестує й деплоїть."
+			]
+		}
+	},
+	"developer-tools": {
+		"name": {
+			"en": "Developer tools",
+			"de": "Entwickler-Tools",
+			"es": "Herramientas de desarrollo",
+			"fr": "Outils de développement",
+			"pl": "Narzędzia dla programistów",
+			"pt": "Ferramentas de desenvolvimento",
+			"ru": "Инструменты разработчика",
+			"uk": "Інструменти розробника"
+		},
+		"title": {
+			"en": "Self-hosted Git, IDEs, databases and developer tools",
+			"de": "Git, IDEs, Datenbanken und Dev-Tools selbst hosten",
+			"es": "Git, IDEs y bases de datos autoalojados para desarrollo",
+			"fr": "Git, IDE, bases de données et outils de dev auto-hébergés",
+			"pl": "Self-hosted Git, IDE i bazy danych dla programistów",
+			"pt": "Git, IDEs e bancos de dados auto-hospedados para devs",
+			"ru": "Self-hosted Git, IDE, базы данных и инструменты разработчика",
+			"uk": "Self-hosted Git, IDE, бази даних та інструменти розробника"
+		},
+		"summary": {
+			"en": "Self-host Gitea, code-server, Coder, Hasura, LibreDB Studio and more: Git hosting, editors, backends and databases on your own machine in one click.",
+			"de": "Gitea, code-server, Coder, Hasura, LibreDB Studio und mehr selbst hosten: Git, Editoren, Backends und Datenbanken auf deiner Maschine in einem Klick.",
+			"es": "Autoaloja Gitea, code-server, Coder, Hasura, LibreDB Studio y más: alojamiento de Git, editores, backends y bases de datos en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Gitea, code-server, Coder, Hasura, LibreDB Studio et d’autres : Git, éditeurs, backends et bases de données sur votre machine, en un clic.",
+			"pl": "Self-hosted Gitea, code-server, Coder, Hasura, LibreDB Studio i inne: hosting Gita, edytory, backendy i bazy danych na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Gitea, code-server, Coder, Hasura, LibreDB Studio e mais: Git, editores, backends e bancos de dados na sua máquina, cada um em um clique.",
+			"ru": "Поднимите у себя Gitea, code-server, Coder, Hasura, LibreDB Studio и другие: Git, редакторы, бэкенды и базы данных на вашей машине в один клик.",
+			"uk": "Підніміть у себе Gitea, code-server, Coder, Hasura, LibreDB Studio та інші: Git, редактори, бекенди й бази даних на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Developer tools are what a team works in all day: the Git server, the editor, the backend behind an app and the database under it. Hosting them yourself keeps code and data on a machine you control, next to the projects they serve.",
+				"Gitea hosts Git with pull requests, issues and CI that can reuse GitHub Actions. code-server is VS Code in the browser, and Coder opens remote environments from Terraform templates. Hasura and Parse Server put APIs over a database, and InsForge is a backend for apps that coding agents build. LibreDB Studio is a SQL IDE in the browser, marimo a reactive Python notebook, and Kroki draws diagrams from text."
+			],
+			"de": [
+				"Entwickler-Tools sind das, womit ein Team den ganzen Tag arbeitet: der Git-Server, der Editor, das Backend hinter einer App und die Datenbank darunter. Wenn du sie selbst hostest, bleiben Code und Daten auf einer Maschine, die du kontrollierst, direkt neben den Projekten, denen sie dienen.",
+				"Gitea hostet Git mit Pull Requests, Issues und CI, die GitHub Actions wiederverwenden kann. code-server ist VS Code im Browser, und Coder öffnet Remote-Umgebungen aus Terraform-Templates. Hasura und Parse Server legen APIs über eine Datenbank, und InsForge ist ein Backend für Apps, die Coding-Agenten bauen. LibreDB Studio ist eine SQL-IDE im Browser, marimo ein reaktives Python-Notebook, und Kroki zeichnet Diagramme aus Text."
+			],
+			"es": [
+				"Las herramientas de desarrollo son aquello en lo que un equipo trabaja todo el día: el servidor de Git, el editor, el backend de una app y la base de datos que hay debajo. Alojarlas por tu cuenta mantiene el código y los datos en una máquina que controlas, junto a los proyectos a los que sirven.",
+				"Gitea aloja Git con pull requests, issues y CI que puede reutilizar GitHub Actions. code-server es VS Code en el navegador, y Coder abre entornos remotos a partir de plantillas de Terraform. Hasura y Parse Server ponen APIs sobre una base de datos, e InsForge es un backend para las apps que crean los agentes de programación. LibreDB Studio es un IDE de SQL en el navegador, marimo un notebook reactivo de Python y Kroki dibuja diagramas a partir de texto."
+			],
+			"fr": [
+				"Les outils de développement sont ceux dans lesquels une équipe travaille toute la journée : le serveur Git, l’éditeur, le backend d’une application et la base de données en dessous. Les héberger vous-même garde le code et les données sur une machine que vous maîtrisez, à côté des projets qu’ils servent.",
+				"Gitea héberge Git avec des pull requests, des tickets et une CI qui peut réutiliser GitHub Actions. code-server est VS Code dans le navigateur, et Coder ouvre des environnements distants à partir de templates Terraform. Hasura et Parse Server posent des API sur une base de données, et InsForge est un backend pour les applications que construisent des agents de code. LibreDB Studio est un IDE SQL dans le navigateur, marimo un notebook Python réactif, et Kroki dessine des diagrammes à partir de texte."
+			],
+			"pl": [
+				"Narzędzia programistyczne to miejsce, w którym zespół pracuje cały dzień: serwer Git, edytor, backend aplikacji i baza danych pod nią. Gdy działają u ciebie, kod i dane zostają na maszynie, którą kontrolujesz, obok projektów, którym służą.",
+				"Gitea hostuje Git z pull requestami, zgłoszeniami i CI, które potrafi korzystać z GitHub Actions. code-server to VS Code w przeglądarce, a Coder uruchamia zdalne środowiska z szablonów Terraform. Hasura i Parse Server dokładają API do bazy danych, a InsForge to backend dla aplikacji budowanych przez agentów kodujących. LibreDB Studio to IDE do SQL w przeglądarce, marimo to reaktywny notebook Pythona, a Kroki rysuje diagramy z tekstu."
+			],
+			"pt": [
+				"Ferramentas de desenvolvimento são aquilo em que uma equipe trabalha o dia todo: o servidor Git, o editor, o backend de um app e o banco de dados por baixo. Hospedá-las por conta própria mantém o código e os dados em uma máquina que você controla, ao lado dos projetos que elas servem.",
+				"O Gitea hospeda Git com pull requests, issues e CI que pode reaproveitar o GitHub Actions. O code-server é o VS Code no navegador, e o Coder abre ambientes remotos a partir de templates do Terraform. O Hasura e o Parse Server colocam APIs sobre um banco de dados, e o InsForge é um backend para apps que agentes de código criam. O LibreDB Studio é uma IDE de SQL no navegador, o marimo é um notebook reativo de Python e o Kroki desenha diagramas a partir de texto."
+			],
+			"ru": [
+				"Инструменты разработчика — это то, в чем команда работает целый день: Git-сервер, редактор, бэкенд приложения и база данных под ним. Если они работают у вас, код и данные остаются на машине, которую вы контролируете, рядом с проектами, которым они служат.",
+				"Gitea хостит Git с пулл-реквестами, задачами и CI, который умеет использовать GitHub Actions. code-server — это VS Code в браузере, а Coder поднимает удаленные среды из шаблонов Terraform. Hasura и Parse Server делают API поверх базы данных, а InsForge — бэкенд для приложений, которые пишут агенты. LibreDB Studio — SQL-IDE в браузере, marimo — реактивный блокнот Python, а Kroki рисует диаграммы по тексту."
+			],
+			"uk": [
+				"Інструменти розробника — це те, в чому команда працює цілий день: Git-сервер, редактор, бекенд застосунку й база даних під ним. Коли вони працюють у вас, код і дані лишаються на машині, яку ви контролюєте, поруч із проєктами, яким вони служать.",
+				"Gitea хостить Git із пул-реквестами, задачами та CI, що вміє використовувати GitHub Actions. code-server — це VS Code у браузері, а Coder піднімає віддалені середовища з шаблонів Terraform. Hasura і Parse Server роблять API поверх бази даних, а InsForge — бекенд для застосунків, які пишуть агенти. LibreDB Studio — SQL IDE у браузері, marimo — реактивний блокнот Python, а Kroki малює діаграми за текстом."
+			]
+		}
+	},
+	"websites": {
+		"name": {
+			"en": "Websites and shops",
+			"de": "Websites und Shops",
+			"es": "Sitios web y tiendas",
+			"fr": "Sites web et boutiques",
+			"pl": "Strony i sklepy",
+			"pt": "Sites e lojas",
+			"ru": "Сайты и магазины",
+			"uk": "Сайти й магазини"
+		},
+		"title": {
+			"en": "Self-hosted CMS, blog and online shop platforms",
+			"de": "CMS, Blog und Online-Shop selbst hosten",
+			"es": "CMS, blogs y tiendas en línea autoalojados",
+			"fr": "CMS, blogs et boutiques en ligne auto-hébergés",
+			"pl": "Self-hosted CMS, blogi i sklepy internetowe",
+			"pt": "CMS, blogs e lojas virtuais auto-hospedados",
+			"ru": "Self-hosted CMS, блоги и интернет-магазины",
+			"uk": "Self-hosted CMS, блоги та інтернет-магазини"
+		},
+		"summary": {
+			"en": "Self-host WordPress, Ghost, Grav or Spree Commerce: a website, blog, newsletter or online shop on your own machine, live in one click.",
+			"de": "WordPress, Ghost, Grav oder Spree Commerce selbst hosten: Website, Blog, Newsletter oder Online-Shop auf deiner Maschine, live mit einem Klick.",
+			"es": "Autoaloja WordPress, Ghost, Grav o Spree Commerce: un sitio web, blog, newsletter o tienda en línea en tu máquina, en marcha en un clic.",
+			"fr": "Auto-hébergez WordPress, Ghost, Grav ou Spree Commerce : un site, un blog, une newsletter ou une boutique en ligne sur votre machine, en un clic.",
+			"pl": "Self-hosted WordPress, Ghost, Grav i Spree Commerce: strona, blog, newsletter lub sklep internetowy na twojej maszynie, gotowe jednym kliknięciem.",
+			"pt": "Hospede WordPress, Ghost, Grav ou Spree Commerce por conta própria: site, blog, newsletter ou loja virtual na sua máquina, no ar em um clique.",
+			"ru": "WordPress, Ghost, Grav и Spree Commerce на вашей машине: сайт, блог, рассылка или интернет-магазин за один клик.",
+			"uk": "WordPress, Ghost, Grav і Spree Commerce на вашій машині: сайт, блог, розсилка чи інтернет-магазин за один клік."
+		},
+		"intro": {
+			"en": [
+				"A website, a blog or a shop needs a content management system under it. Running an open-source one yourself keeps the pages, the members and the orders in your own database, lets you add any theme or plugin, and serves the site at your own domain.",
+				"WordPress builds websites and blogs with themes and plugins. Ghost is made for publishing, with memberships, subscriptions and newsletters. Grav is a flat-file CMS: a fast site or blog with an admin panel and no database to run. Spree Commerce is an open-source e-commerce platform for products, orders and payments, with a headless API for any storefront."
+			],
+			"de": [
+				"Eine Website, ein Blog oder ein Shop braucht ein Content-Management-System darunter. Betreibst du ein Open-Source-System selbst, bleiben die Seiten, die Mitglieder und die Bestellungen in deiner eigenen Datenbank, du kannst jedes Theme und jedes Plugin einsetzen, und die Seite läuft unter deiner eigenen Domain.",
+				"WordPress baut Websites und Blogs mit Themes und Plugins. Ghost ist fürs Publizieren gemacht, mit Mitgliedschaften, Abos und Newslettern. Grav ist ein Flat-File-CMS: eine schnelle Website oder ein Blog mit Admin-Panel und ohne Datenbank, um die du dich kümmern musst. Spree Commerce ist eine Open-Source-E-Commerce-Plattform für Produkte, Bestellungen und Zahlungen, mit einer Headless-API für jedes Frontend."
+			],
+			"es": [
+				"Un sitio web, un blog o una tienda necesita un sistema de gestión de contenidos debajo. Ejecutar uno de código abierto por tu cuenta mantiene las páginas, los miembros y los pedidos en tu propia base de datos, te deja agregar cualquier tema o plugin y sirve el sitio en tu propio dominio.",
+				"WordPress crea sitios web y blogs con temas y plugins. Ghost está hecho para publicar, con membresías, suscripciones y newsletters. Grav es un CMS de archivos planos: un sitio o blog rápido con panel de administración y sin base de datos que mantener. Spree Commerce es una plataforma de comercio electrónico de código abierto para productos, pedidos y pagos, con una API headless para cualquier tienda."
+			],
+			"fr": [
+				"Un site, un blog ou une boutique repose sur un système de gestion de contenu. En faire tourner un open source vous-même garde les pages, les membres et les commandes dans votre propre base de données, vous laisse ajouter n’importe quel thème ou plugin et sert le site sur votre propre domaine.",
+				"WordPress crée des sites et des blogs avec des thèmes et des plugins. Ghost est fait pour publier, avec des adhésions, des abonnements et des newsletters. Grav est un CMS à fichiers plats : un site ou un blog rapide, avec un panneau d’administration et sans base de données à gérer. Spree Commerce est une plateforme e-commerce open source pour les produits, les commandes et les paiements, avec une API headless pour n’importe quelle vitrine."
+			],
+			"pl": [
+				"Strona, blog czy sklep potrzebuje pod spodem systemu zarządzania treścią. Gdy uruchamiasz taki system open source u siebie, strony, członkowie i zamówienia zostają w twojej własnej bazie danych, możesz dodać dowolny motyw i wtyczkę, a witryna działa pod twoją domeną.",
+				"WordPress tworzy strony i blogi za pomocą motywów i wtyczek. Ghost powstał do publikowania, z członkostwami, subskrypcjami i newsletterami. Grav to CMS oparty na plikach: szybka strona lub blog z panelem administracyjnym i bez bazy danych do obsługi. Spree Commerce to otwartoźródłowa platforma e-commerce do produktów, zamówień i płatności, z headless API dla dowolnej witryny sklepowej."
+			],
+			"pt": [
+				"Um site, um blog ou uma loja precisa de um sistema de gerenciamento de conteúdo por baixo. Rodar um de código aberto por conta própria mantém as páginas, os membros e os pedidos no seu próprio banco de dados, deixa você adicionar qualquer tema ou plugin e serve o site no seu próprio domínio.",
+				"O WordPress cria sites e blogs com temas e plugins. O Ghost foi feito para publicar, com áreas de membros, assinaturas e newsletters. O Grav é um CMS de arquivos planos: um site ou blog rápido, com painel de administração e sem banco de dados para manter. O Spree Commerce é uma plataforma de e-commerce de código aberto para produtos, pedidos e pagamentos, com uma API headless para qualquer vitrine."
+			],
+			"ru": [
+				"Сайту, блогу или магазину нужна система управления контентом. Если система с открытым кодом работает у вас, страницы, участники и заказы лежат в вашей собственной базе данных, можно поставить любую тему и любой плагин, а сайт открывается на вашем домене.",
+				"WordPress делает сайты и блоги из тем и плагинов. Ghost создан для публикаций: с членством, подписками и рассылками. Grav — CMS на плоских файлах: быстрый сайт или блог с админкой и без базы данных, которую нужно обслуживать. Spree Commerce — платформа электронной коммерции с открытым кодом для товаров, заказов и платежей, с headless API для любой витрины."
+			],
+			"uk": [
+				"Сайту, блогу чи магазину потрібна система керування вмістом. Якщо система з відкритим кодом працює у вас, сторінки, учасники й замовлення лежать у вашій власній базі даних, можна поставити будь-яку тему й будь-який плагін, а сайт відкривається на вашому домені.",
+				"WordPress робить сайти й блоги з тем і плагінів. Ghost створено для публікацій: із членством, підписками та розсилками. Grav — CMS на плоских файлах: швидкий сайт чи блог з адмінкою і без бази даних, яку треба обслуговувати. Spree Commerce — платформа електронної комерції з відкритим кодом для товарів, замовлень і платежів, з headless API для будь-якої вітрини."
+			]
+		}
+	},
+	"monitoring": {
+		"name": {
+			"en": "Analytics and monitoring",
+			"de": "Analytics und Monitoring",
+			"es": "Analítica y monitoreo",
+			"fr": "Audience et monitoring",
+			"pl": "Analityka i monitoring",
+			"pt": "Analytics e monitoramento",
+			"ru": "Аналитика и мониторинг",
+			"uk": "Аналітика й моніторинг"
+		},
+		"title": {
+			"en": "Self-hosted analytics and uptime monitoring",
+			"de": "Web-Analytics und Uptime-Monitoring selbst hosten",
+			"es": "Analítica web y monitoreo de disponibilidad autoalojados",
+			"fr": "Mesure d’audience et monitoring auto-hébergés",
+			"pl": "Self-hosted analityka webowa i monitoring uptime",
+			"pt": "Analytics web e monitoramento de uptime auto-hospedados",
+			"ru": "Self-hosted веб-аналитика и мониторинг доступности",
+			"uk": "Self-hosted вебаналітика та моніторинг доступності"
+		},
+		"summary": {
+			"en": "Self-host Umami, Uptime Kuma, Healthchecks and more: web analytics, uptime checks, status pages and alerts on your own machine in one click.",
+			"de": "Umami, Uptime Kuma, Healthchecks und mehr selbst hosten: Web-Analytics, Uptime-Checks, Statusseiten und Alerts auf deiner Maschine in einem Klick.",
+			"es": "Autoaloja Umami, Uptime Kuma, Healthchecks y más: analítica web, comprobaciones de disponibilidad, páginas de estado y alertas en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Umami, Uptime Kuma, Healthchecks et d’autres : audience web, disponibilité, pages d’état et alertes sur votre machine, en un clic.",
+			"pl": "Self-hosted Umami, Uptime Kuma, Healthchecks i inne: analityka, sprawdzanie dostępności, strony statusu i alerty na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Umami, Uptime Kuma, Healthchecks e mais: web analytics, checagens de uptime, páginas de status e alertas na sua máquina, em um clique.",
+			"ru": "Установите Umami, Uptime Kuma, Healthchecks и другие: веб-аналитика, проверки доступности, страницы статуса и оповещения на вашей машине в один клик.",
+			"uk": "Встановіть у себе Umami, Uptime Kuma, Healthchecks та інші: вебаналітика, перевірки доступності, сторінки статусу й сповіщення на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Analytics tells you who visits your sites and what they read, and monitoring tells you when a site or a scheduled job stops answering. Running these tools yourself keeps visitor data in your own database and lets you watch as many sites and jobs as you need.",
+				"Umami is privacy-first web analytics without cookies. Uptime Kuma, made as a self-hosted tool like Uptime Robot, and Checkmate check that your sites answer, alert you when they do not and draw status pages, and Kener is a status page with monitors and incidents. Healthchecks alerts you when a cron job's ping is late, and ntfy sends push notifications to your phone from any script over HTTP."
+			],
+			"de": [
+				"Analytics zeigt dir, wer deine Websites besucht und was die Leute lesen, und Monitoring sagt dir, wann eine Website oder ein geplanter Job nicht mehr antwortet. Betreibst du diese Tools selbst, bleiben die Zugriffsdaten in deiner eigenen Datenbank, und du kannst so viele Websites und Jobs überwachen, wie du brauchst.",
+				"Umami ist Web-Analytics mit Fokus auf Privatsphäre, ganz ohne Cookies. Uptime Kuma, ein selbst gehostetes Pendant zu Uptime Robot, und Checkmate prüfen, ob deine Websites antworten, schicken dir einen Alert, wenn nicht, und erzeugen Statusseiten; Kener ist eine Statusseite mit Monitoren und Vorfällen. Healthchecks meldet sich, wenn der Ping eines Cronjobs zu spät kommt, und ntfy schickt Push-Benachrichtigungen per HTTP aus jedem Skript auf dein Handy."
+			],
+			"es": [
+				"La analítica te dice quién visita tus sitios y qué lee, y el monitoreo te avisa cuando un sitio o una tarea programada deja de responder. Ejecutar estas herramientas por tu cuenta mantiene los datos de las visitas en tu propia base de datos y te deja vigilar tantos sitios y tareas como necesites.",
+				"Umami es analítica web que prioriza la privacidad y no usa cookies. Uptime Kuma, una herramienta autoalojada parecida a Uptime Robot, y Checkmate comprueban que tus sitios respondan, te alertan cuando no lo hacen y dibujan páginas de estado; Kener es una página de estado con monitores e incidentes. Healthchecks te avisa cuando el ping de un cron job llega tarde, y ntfy envía notificaciones push a tu teléfono desde cualquier script mediante HTTP."
+			],
+			"fr": [
+				"La mesure d’audience vous dit qui visite vos sites et ce qu’on y lit, et la supervision vous prévient quand un site ou une tâche planifiée cesse de répondre. Faire tourner ces outils vous-même garde les données de visite dans votre propre base de données et vous laisse surveiller autant de sites et de tâches que nécessaire.",
+				"Umami est une mesure d’audience web qui respecte la vie privée, sans cookies. Uptime Kuma, un équivalent auto-hébergé d’Uptime Robot, et Checkmate vérifient que vos sites répondent, vous alertent quand ce n’est pas le cas et dessinent des pages d’état ; Kener est une page d’état avec des moniteurs et des incidents. Healthchecks vous alerte quand le ping d’une tâche cron arrive en retard, et ntfy envoie des notifications push sur votre téléphone depuis n’importe quel script, par HTTP."
+			],
+			"pl": [
+				"Analityka mówi, kto odwiedza twoje strony i co czyta, a monitoring daje znać, gdy strona lub zaplanowane zadanie przestaje odpowiadać. Gdy te narzędzia działają u ciebie, dane o odwiedzinach zostają w twojej własnej bazie danych, a stron i zadań możesz pilnować tyle, ile potrzebujesz.",
+				"Umami to analityka webowa stawiająca na prywatność, bez plików cookie. Uptime Kuma, self-hosted odpowiednik Uptime Robot, i Checkmate sprawdzają, czy twoje strony odpowiadają, wysyłają alert, gdy tak nie jest, i rysują strony statusu, a Kener to strona statusu z monitorami i incydentami. Healthchecks daje znać, gdy ping zadania cron się spóźnia, a ntfy wysyła powiadomienia push na telefon z dowolnego skryptu przez HTTP."
+			],
+			"pt": [
+				"O analytics mostra quem visita seus sites e o que lê, e o monitoramento avisa quando um site ou uma tarefa agendada deixa de responder. Rodar essas ferramentas por conta própria mantém os dados de acesso no seu próprio banco de dados e deixa você vigiar quantos sites e tarefas precisar.",
+				"O Umami é um web analytics focado em privacidade e sem cookies. O Uptime Kuma, um equivalente auto-hospedado do Uptime Robot, e o Checkmate verificam se seus sites respondem, avisam você quando não respondem e desenham páginas de status; o Kener é uma página de status com monitores e incidentes. O Healthchecks avisa quando o ping de um cron job atrasa, e o ntfy envia notificações push para o seu celular a partir de qualquer script, por HTTP."
+			],
+			"ru": [
+				"Аналитика показывает, кто заходит на ваши сайты и что читает, а мониторинг сообщает, когда сайт или задача по расписанию перестает отвечать. Если эти инструменты работают у вас, данные о посетителях остаются в вашей собственной базе, а следить можно за любым числом сайтов и задач.",
+				"Umami — веб-аналитика с упором на приватность, без cookie. Uptime Kuma, self-hosted аналог Uptime Robot, и Checkmate проверяют, отвечают ли ваши сайты, оповещают, если нет, и рисуют страницы статуса, а Kener — страница статуса с мониторами и инцидентами. Healthchecks оповещает, когда пинг cron-задачи опаздывает, а ntfy отправляет push-уведомления на телефон из любого скрипта по HTTP."
+			],
+			"uk": [
+				"Аналітика показує, хто заходить на ваші сайти і що читає, а моніторинг повідомляє, коли сайт або завдання за розкладом перестає відповідати. Коли ці інструменти працюють у вас, дані про відвідувачів лишаються у вашій власній базі, а стежити можна за будь-якою кількістю сайтів і завдань.",
+				"Umami — вебаналітика з упором на приватність, без cookie. Uptime Kuma, self-hosted аналог Uptime Robot, і Checkmate перевіряють, чи відповідають ваші сайти, сповіщають, якщо ні, і малюють сторінки статусу, а Kener — сторінка статусу з моніторами та інцидентами. Healthchecks сповіщає, коли пінг cron-завдання запізнюється, а ntfy надсилає push-сповіщення на телефон із будь-якого скрипта через HTTP."
+			]
+		}
+	},
+	"files": {
+		"name": {
+			"en": "Files and documents",
+			"de": "Dateien und Dokumente",
+			"es": "Archivos y documentos",
+			"fr": "Fichiers et documents",
+			"pl": "Pliki i dokumenty",
+			"pt": "Arquivos e documentos",
+			"ru": "Файлы и документы",
+			"uk": "Файли та документи"
+		},
+		"title": {
+			"en": "Self-hosted file storage, documents and PDF tools",
+			"de": "Dateispeicher, Dokumente und PDF-Tools selbst hosten",
+			"es": "Almacenamiento de archivos, documentos y PDF autoalojados",
+			"fr": "Fichiers, documents et outils PDF auto-hébergés",
+			"pl": "Self-hosted chmura na pliki, dokumenty i narzędzia PDF",
+			"pt": "Arquivos, documentos e ferramentas de PDF auto-hospedados",
+			"ru": "Self-hosted хранилище файлов, документы и PDF-инструменты",
+			"uk": "Self-hosted сховище файлів, документи й PDF-інструменти"
+		},
+		"summary": {
+			"en": "Self-host Nextcloud, Paperless-ngx, OpenList, BentoPDF and more: file sync, scanned documents and PDF tools on your own machine in one click.",
+			"de": "Nextcloud, Paperless-ngx, OpenList, BentoPDF und mehr selbst hosten: Dateisync, gescannte Dokumente und PDF-Tools auf deiner Maschine in einem Klick.",
+			"es": "Autoaloja Nextcloud, Paperless-ngx, OpenList, BentoPDF y más: sincronización de archivos, documentos escaneados y PDF en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Nextcloud, Paperless-ngx, OpenList, BentoPDF et d’autres : synchronisation de fichiers, documents numérisés et outils PDF sur votre machine.",
+			"pl": "Self-hosted Nextcloud, Paperless-ngx, OpenList, BentoPDF i inne: pliki, skany dokumentów i narzędzia PDF na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Nextcloud, Paperless-ngx, OpenList, BentoPDF e mais: sincronização de arquivos, documentos escaneados e PDF na sua máquina, em um clique.",
+			"ru": "Запустите Nextcloud, Paperless-ngx, OpenList, BentoPDF и другие: синхронизация файлов, сканы документов и PDF-инструменты на вашей машине в один клик.",
+			"uk": "Запустіть Nextcloud, Paperless-ngx, OpenList, BentoPDF та інші: синхронізація файлів, скани документів і PDF-інструменти на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Files are what people least like to hand over: contracts, scans, receipts, years of work. A file app on your own server keeps them on a machine you control, reachable from every device and in the nightly backup.",
+				"Nextcloud syncs files, calendars and contacts. Paperless-ngx turns paper documents into a searchable online archive. OpenList shows many storages, from cloud drives to S3 and WebDAV, as one file list to browse and share. BentoPDF merges, splits, compresses and signs PDFs in the browser without uploading them, PDFMathTranslate translates scientific papers and keeps their formulas and layout, and Gopeed downloads over HTTP and BitTorrent."
+			],
+			"de": [
+				"Dateien gibt man am wenigsten gern aus der Hand: Verträge, Scans, Belege, die Arbeit von Jahren. Eine Datei-App auf deiner eigenen Maschine hält sie unter deiner Kontrolle, von jedem Gerät erreichbar und im nächtlichen Backup.",
+				"Nextcloud synchronisiert Dateien, Kalender und Kontakte. Paperless-ngx macht aus Papierdokumenten ein durchsuchbares Online-Archiv. OpenList zeigt viele Ablagen, von Cloud-Laufwerken bis S3 und WebDAV, als eine Dateiliste zum Durchstöbern und Teilen. BentoPDF führt PDFs zusammen, teilt, komprimiert und signiert sie im Browser, ohne sie hochzuladen, PDFMathTranslate übersetzt wissenschaftliche Paper und behält Formeln und Layout bei, und Gopeed lädt per HTTP und BitTorrent herunter."
+			],
+			"es": [
+				"Los archivos son lo que menos gusta entregar: contratos, escaneos, recibos, años de trabajo. Una app de archivos en tu propia máquina los mantiene bajo tu control, accesibles desde cada dispositivo y dentro del backup nocturno.",
+				"Nextcloud sincroniza archivos, calendarios y contactos. Paperless-ngx convierte documentos en papel en un archivo en línea en el que se puede buscar. OpenList muestra muchos almacenamientos, desde unidades en la nube hasta S3 y WebDAV, como una sola lista de archivos para explorar y compartir. BentoPDF une, divide, comprime y firma PDF en el navegador sin subirlos, PDFMathTranslate traduce artículos científicos y conserva sus fórmulas y su diseño, y Gopeed descarga por HTTP y BitTorrent."
+			],
+			"fr": [
+				"Les fichiers sont ce qu’on aime le moins confier : contrats, numérisations, reçus, des années de travail. Une application de fichiers sur votre propre machine les garde sous votre contrôle, accessibles depuis chaque appareil et inclus dans la sauvegarde de la nuit.",
+				"Nextcloud synchronise fichiers, agendas et contacts. Paperless-ngx transforme les documents papier en archive en ligne dans laquelle on peut chercher. OpenList présente de nombreux stockages, des disques cloud à S3 et WebDAV, comme une seule liste de fichiers à parcourir et à partager. BentoPDF fusionne, découpe, compresse et signe des PDF dans le navigateur sans les envoyer, PDFMathTranslate traduit des articles scientifiques en conservant leurs formules et leur mise en page, et Gopeed télécharge en HTTP et en BitTorrent."
+			],
+			"pl": [
+				"Pliki to coś, czego ludzie najmniej chcą oddawać: umowy, skany, paragony, lata pracy. Aplikacja do plików na twojej własnej maszynie trzyma je pod twoją kontrolą, dostępne z każdego urządzenia i objęte nocnym backupem.",
+				"Nextcloud synchronizuje pliki, kalendarze i kontakty. Paperless-ngx zamienia papierowe dokumenty w przeszukiwalne archiwum online. OpenList pokazuje wiele magazynów, od dysków w chmurze po S3 i WebDAV, jako jedną listę plików do przeglądania i udostępniania. BentoPDF łączy, dzieli, kompresuje i podpisuje pliki PDF w przeglądarce, bez wgrywania ich, PDFMathTranslate tłumaczy prace naukowe i zachowuje ich wzory oraz układ, a Gopeed pobiera przez HTTP i BitTorrent."
+			],
+			"pt": [
+				"Arquivos são o que as pessoas menos gostam de entregar: contratos, digitalizações, recibos, anos de trabalho. Um app de arquivos na sua própria máquina os mantém sob seu controle, acessíveis de qualquer dispositivo e no backup noturno.",
+				"O Nextcloud sincroniza arquivos, calendários e contatos. O Paperless-ngx transforma documentos em papel em um arquivo online com busca. O OpenList mostra vários armazenamentos, de drives na nuvem a S3 e WebDAV, como uma única lista de arquivos para navegar e compartilhar. O BentoPDF une, divide, comprime e assina PDFs no navegador, sem enviá-los, o PDFMathTranslate traduz artigos científicos e mantém suas fórmulas e o layout, e o Gopeed baixa por HTTP e BitTorrent."
+			],
+			"ru": [
+				"Файлы — это то, что люди меньше всего хотят отдавать: договоры, сканы, чеки, годы работы. Файловое приложение на вашей собственной машине держит их под вашим контролем, доступными с любого устройства и в ночном бэкапе.",
+				"Nextcloud синхронизирует файлы, календари и контакты. Paperless-ngx превращает бумажные документы в архив с поиском. OpenList показывает много хранилищ, от облачных дисков до S3 и WebDAV, как один список файлов, который можно листать и которым можно делиться. BentoPDF объединяет, разделяет, сжимает и подписывает PDF прямо в браузере, не загружая их, PDFMathTranslate переводит научные статьи и сохраняет формулы и верстку, а Gopeed скачивает по HTTP и BitTorrent."
+			],
+			"uk": [
+				"Файли — це те, що люди найменше хочуть віддавати: договори, скани, чеки, роки роботи. Файловий застосунок на вашій власній машині тримає їх під вашим контролем, доступними з будь-якого пристрою й у нічному бекапі.",
+				"Nextcloud синхронізує файли, календарі та контакти. Paperless-ngx перетворює паперові документи на архів із пошуком. OpenList показує багато сховищ, від хмарних дисків до S3 і WebDAV, як один список файлів, який можна переглядати й яким можна ділитися. BentoPDF об’єднує, розділяє, стискає й підписує PDF просто в браузері, не завантажуючи їх, PDFMathTranslate перекладає наукові статті та зберігає формули й верстку, а Gopeed звантажує за HTTP і BitTorrent."
+			]
+		}
+	},
+	"notes": {
+		"name": {
+			"en": "Notes and wikis",
+			"de": "Notizen und Wikis",
+			"es": "Notas y wikis",
+			"fr": "Notes et wikis",
+			"pl": "Notatki i wiki",
+			"pt": "Notas e wikis",
+			"ru": "Заметки и вики",
+			"uk": "Нотатки й вікі"
+		},
+		"title": {
+			"en": "Self-hosted notes, wikis and collaborative editors",
+			"de": "Notizen, Wikis und gemeinsame Editoren selbst hosten",
+			"es": "Notas, wikis y editores colaborativos autoalojados",
+			"fr": "Notes, wikis et éditeurs collaboratifs auto-hébergés",
+			"pl": "Self-hosted notatki, wiki i edytory do pracy w grupie",
+			"pt": "Notas, wikis e editores colaborativos auto-hospedados",
+			"ru": "Self-hosted заметки, вики и редакторы для совместной работы",
+			"uk": "Self-hosted нотатки, вікі та редактори для спільної роботи"
+		},
+		"summary": {
+			"en": "Self-host Memos, HedgeDoc, Etherpad, BookStack, Wiki.js or Obsidian LiveSync: notes, wikis and shared documents on your own machine in one click.",
+			"de": "Memos, HedgeDoc, Etherpad, BookStack, Wiki.js oder Obsidian LiveSync selbst hosten: Notizen, Wikis und gemeinsame Dokumente auf deiner Maschine.",
+			"es": "Autoaloja Memos, HedgeDoc, Etherpad, BookStack, Wiki.js u Obsidian LiveSync: notas, wikis y documentos compartidos en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Memos, HedgeDoc, Etherpad, BookStack, Wiki.js ou Obsidian LiveSync : notes, wikis et documents partagés sur votre machine, en un clic.",
+			"pl": "Self-hosted Memos, HedgeDoc, Etherpad, BookStack, Wiki.js i Obsidian LiveSync: notatki, wiki i wspólne dokumenty na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Memos, HedgeDoc, Etherpad, BookStack, Wiki.js ou Obsidian LiveSync: notas, wikis e documentos compartilhados na sua máquina, em um clique.",
+			"ru": "Поднимите у себя Memos, HedgeDoc, Etherpad, BookStack, Wiki.js или Obsidian LiveSync: заметки, вики и общие документы на вашей машине в один клик.",
+			"uk": "Розгорніть у себе Memos, HedgeDoc, Etherpad, BookStack, Wiki.js чи Obsidian LiveSync: нотатки, вікі й спільні документи на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Notes and wikis hold what a person or a team knows, and they grow for years. On your own server only the people you invite can read them, and every page is in the nightly backup of a machine you control.",
+				"Memos keeps short Markdown notes on a private timeline. HedgeDoc and Etherpad are editors people write in together in real time, HedgeDoc in Markdown and Etherpad with each author in their own colour. BookStack organises documentation as shelves, books, chapters and pages, and Wiki.js writes pages in Markdown or a visual editor. Obsidian LiveSync is the CouchDB server behind the Self-hosted LiveSync plugin, which syncs Obsidian vaults."
+			],
+			"de": [
+				"Notizen und Wikis halten fest, was eine Person oder ein Team weiß, und sie wachsen über Jahre. Auf deiner eigenen Maschine können sie nur die Leute lesen, die du einlädst, und jede Seite steckt im nächtlichen Backup.",
+				"Memos führt kurze Markdown-Notizen auf einer privaten Timeline. HedgeDoc und Etherpad sind Editoren, in denen mehrere Leute gemeinsam in Echtzeit schreiben, HedgeDoc in Markdown und Etherpad mit einer eigenen Farbe für jede schreibende Person. BookStack gliedert Dokumentation in Regale, Bücher, Kapitel und Seiten, und Wiki.js schreibt Seiten in Markdown oder einem visuellen Editor. Obsidian LiveSync ist der CouchDB-Server hinter dem Plugin Self-hosted LiveSync, das Obsidian-Vaults synchronisiert."
+			],
+			"es": [
+				"Las notas y las wikis guardan lo que sabe una persona o un equipo, y crecen durante años. En tu propia máquina solo pueden leerlas las personas que invitas, y cada página está en el backup nocturno.",
+				"Memos guarda notas cortas en Markdown en una línea de tiempo privada. HedgeDoc y Etherpad son editores en los que varias personas escriben juntas en tiempo real, HedgeDoc en Markdown y Etherpad con un color propio para cada persona. BookStack organiza la documentación en estantes, libros, capítulos y páginas, y Wiki.js escribe páginas en Markdown o en un editor visual. Obsidian LiveSync es el servidor CouchDB detrás del plugin Self-hosted LiveSync, que sincroniza vaults de Obsidian."
+			],
+			"fr": [
+				"Les notes et les wikis conservent ce que sait une personne ou une équipe, et ils grandissent pendant des années. Sur votre propre machine, seules les personnes que vous invitez peuvent les lire, et chaque page figure dans la sauvegarde de la nuit.",
+				"Memos garde de courtes notes Markdown sur une chronologie privée. HedgeDoc et Etherpad sont des éditeurs où plusieurs personnes écrivent ensemble en temps réel, HedgeDoc en Markdown et Etherpad avec une couleur par personne. BookStack organise la documentation en étagères, livres, chapitres et pages, et Wiki.js écrit les pages en Markdown ou dans un éditeur visuel. Obsidian LiveSync est le serveur CouchDB derrière le plugin Self-hosted LiveSync, qui synchronise les vaults Obsidian."
+			],
+			"pl": [
+				"Notatki i wiki przechowują to, co wie osoba lub zespół, i rosną przez lata. Na twojej własnej maszynie mogą je czytać tylko osoby, które zaprosisz, a każda strona trafia do nocnego backupu.",
+				"Memos trzyma krótkie notatki w Markdownie na prywatnej osi czasu. HedgeDoc i Etherpad to edytory, w których wiele osób pisze razem w czasie rzeczywistym: HedgeDoc w Markdownie, a Etherpad z osobnym kolorem dla każdej osoby. BookStack porządkuje dokumentację w półki, książki, rozdziały i strony, a Wiki.js zapisuje strony w Markdownie lub w edytorze wizualnym. Obsidian LiveSync to serwer CouchDB stojący za wtyczką Self-hosted LiveSync, która synchronizuje vaulty Obsidiana."
+			],
+			"pt": [
+				"Notas e wikis guardam o que uma pessoa ou uma equipe sabe, e crescem por anos. Na sua própria máquina, só as pessoas que você convida podem lê-las, e cada página entra no backup noturno.",
+				"O Memos guarda notas curtas em Markdown em uma linha do tempo privada. O HedgeDoc e o Etherpad são editores em que várias pessoas escrevem juntas em tempo real, o HedgeDoc em Markdown e o Etherpad com uma cor própria para cada pessoa. O BookStack organiza a documentação em estantes, livros, capítulos e páginas, e o Wiki.js escreve páginas em Markdown ou em um editor visual. O Obsidian LiveSync é o servidor CouchDB por trás do plugin Self-hosted LiveSync, que sincroniza vaults do Obsidian."
+			],
+			"ru": [
+				"В заметках и вики хранится то, что знает человек или команда, и они растут годами. На вашей собственной машине их могут читать только те, кого вы пригласили, а каждая страница попадает в ночной бэкап.",
+				"Memos хранит короткие заметки в Markdown на личной ленте. HedgeDoc и Etherpad — редакторы, в которых несколько человек пишут вместе в реальном времени: HedgeDoc в Markdown, а Etherpad с отдельным цветом для каждого участника. BookStack организует документацию в полки, книги, главы и страницы, а Wiki.js пишет страницы в Markdown или в визуальном редакторе. Obsidian LiveSync — сервер CouchDB за плагином Self-hosted LiveSync, который синхронизирует хранилища Obsidian."
+			],
+			"uk": [
+				"У нотатках і вікі зберігається те, що знає людина або команда, і вони ростуть роками. На вашій власній машині їх можуть читати лише ті, кого ви запросили, а кожна сторінка потрапляє в нічний бекап.",
+				"Memos зберігає короткі нотатки в Markdown на приватній стрічці. HedgeDoc і Etherpad — редактори, в яких кілька людей пишуть разом у реальному часі: HedgeDoc у Markdown, а Etherpad з окремим кольором для кожного учасника. BookStack організовує документацію в полиці, книги, розділи й сторінки, а Wiki.js пише сторінки в Markdown або у візуальному редакторі. Obsidian LiveSync — сервер CouchDB за плагіном Self-hosted LiveSync, який синхронізує сховища Obsidian."
+			]
+		}
+	},
+	"reading": {
+		"name": {
+			"en": "Feeds and bookmarks",
+			"de": "Feeds und Lesezeichen",
+			"es": "Feeds y marcadores",
+			"fr": "Flux et favoris",
+			"pl": "Kanały i zakładki",
+			"pt": "Feeds e favoritos",
+			"ru": "Ленты и закладки",
+			"uk": "Стрічки й закладки"
+		},
+		"title": {
+			"en": "Self-hosted RSS readers and bookmark managers",
+			"de": "RSS-Reader und Lesezeichen-Manager selbst hosten",
+			"es": "Lectores RSS y administradores de marcadores autoalojados",
+			"fr": "Lecteurs RSS et gestionnaires de favoris auto-hébergés",
+			"pl": "Self-hosted czytniki RSS i menedżery zakładek",
+			"pt": "Leitores de RSS e gerenciadores de favoritos auto-hospedados",
+			"ru": "Self-hosted RSS-читалки и менеджеры закладок",
+			"uk": "Self-hosted RSS-читалки та менеджери закладок"
+		},
+		"summary": {
+			"en": "Self-host FreshRSS, RSSHub, linkding, Karakeep, wallabag or ArchiveBox: feeds, bookmarks and read-later on your own machine in one click.",
+			"de": "FreshRSS, RSSHub, linkding, Karakeep, wallabag oder ArchiveBox selbst hosten: Feeds, Lesezeichen und Read-it-later auf deiner Maschine in einem Klick.",
+			"es": "Autoaloja FreshRSS, RSSHub, linkding, Karakeep, wallabag o ArchiveBox: feeds, marcadores y lectura pendiente en tu máquina, en un clic.",
+			"fr": "Auto-hébergez FreshRSS, RSSHub, linkding, Karakeep, wallabag ou ArchiveBox : flux, favoris et lecture différée sur votre machine, en un clic.",
+			"pl": "Self-hosted FreshRSS, RSSHub, linkding, Karakeep, wallabag i ArchiveBox: kanały RSS, zakładki i czytanie na później na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede FreshRSS, RSSHub, linkding, Karakeep, wallabag ou ArchiveBox: feeds, favoritos e leitura para depois na sua máquina, em um clique.",
+			"ru": "Установите у себя FreshRSS, RSSHub, linkding, Karakeep, wallabag или ArchiveBox: ленты, закладки и отложенное чтение на вашей машине в один клик.",
+			"uk": "Встановіть у себе FreshRSS, RSSHub, linkding, Karakeep, wallabag або ArchiveBox: стрічки, закладки й відкладене читання на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"An RSS reader shows the new posts of the sites you follow in the order they come, with no feed choosing for you. Bookmark and read-later apps keep what you found, and a web archive keeps it after the page is gone. On a server of your own, feeds are fetched around the clock.",
+				"FreshRSS reads RSS and Atom feeds, and RSSHub and RSS-Bridge make feeds for sites that have none. linkding is a bookmark manager with tags and search, and Karakeep saves links, notes and images with full-text search. wallabag saves web pages to read later, without ads or clutter. ArchiveBox keeps pages as HTML, PDF, screenshots and media files."
+			],
+			"de": [
+				"Ein RSS-Reader zeigt die neuen Beiträge der Websites, denen du folgst, in der Reihenfolge, in der sie kommen, ohne einen Algorithmus, der für dich auswählt. Lesezeichen- und Read-it-later-Apps bewahren auf, was du gefunden hast, und ein Webarchiv behält es, auch wenn die Seite längst weg ist. Läuft das Ganze auf deiner eigenen Maschine, werden Feeds rund um die Uhr abgeholt.",
+				"FreshRSS liest RSS- und Atom-Feeds, und RSSHub und RSS-Bridge erzeugen Feeds für Websites, die keinen haben. linkding ist ein Lesezeichen-Manager mit Tags und Suche, und Karakeep speichert Links, Notizen und Bilder mit Volltextsuche. wallabag speichert Webseiten zum späteren Lesen, ohne Werbung und Ballast. ArchiveBox bewahrt Seiten als HTML, PDF, Screenshots und Mediendateien auf."
+			],
+			"es": [
+				"Un lector RSS muestra las publicaciones nuevas de los sitios que sigues en el orden en que llegan, sin que nadie elija el feed por ti. Las apps de marcadores y de lectura pendiente guardan lo que encontraste, y un archivo web lo conserva cuando la página ya no existe. En una máquina propia, los feeds se descargan a todas horas.",
+				"FreshRSS lee feeds RSS y Atom, y RSSHub y RSS-Bridge crean feeds para sitios que no tienen ninguno. linkding es un administrador de marcadores con tags y búsqueda, y Karakeep guarda enlaces, notas e imágenes con búsqueda de texto completo. wallabag guarda páginas web para leerlas después, sin anuncios ni desorden. ArchiveBox conserva páginas como HTML, PDF, capturas de pantalla y archivos multimedia."
+			],
+			"fr": [
+				"Un lecteur RSS affiche les nouveaux articles des sites que vous suivez dans l’ordre où ils arrivent, sans qu’un algorithme choisisse à votre place. Les applications de favoris et de lecture différée gardent ce que vous avez trouvé, et une archive web le conserve quand la page a disparu. Sur votre propre machine, les flux sont récupérés jour et nuit.",
+				"FreshRSS lit les flux RSS et Atom, et RSSHub et RSS-Bridge créent des flux pour les sites qui n’en ont pas. linkding est un gestionnaire de favoris avec tags et recherche, et Karakeep enregistre liens, notes et images avec une recherche plein texte. wallabag enregistre des pages web à lire plus tard, sans publicité ni fouillis. ArchiveBox conserve les pages en HTML, en PDF, en captures d’écran et en fichiers multimédias."
+			],
+			"pl": [
+				"Czytnik RSS pokazuje nowe wpisy ze stron, które śledzisz, w kolejności, w jakiej się pojawiają, bez algorytmu wybierającego za ciebie. Aplikacje do zakładek i czytania na później przechowują to, co znajdziesz, a archiwum stron trzyma to dalej, gdy oryginał zniknie. Gdy czytnik działa na twojej własnej maszynie, kanały są pobierane całą dobę.",
+				"FreshRSS czyta kanały RSS i Atom, a RSSHub i RSS-Bridge tworzą kanały dla stron, które ich nie mają. linkding to menedżer zakładek z tagami i wyszukiwaniem, a Karakeep zapisuje linki, notatki i obrazy z wyszukiwaniem pełnotekstowym. wallabag zapisuje strony internetowe do przeczytania później, bez reklam i bałaganu. ArchiveBox przechowuje strony jako HTML, PDF, zrzuty ekranu i pliki multimedialne."
+			],
+			"pt": [
+				"Um leitor de RSS mostra as novas publicações dos sites que você segue na ordem em que chegam, sem um algoritmo escolhendo por você. Apps de favoritos e de leitura para depois guardam o que você encontrou, e um arquivo da web o mantém quando a página some. Em uma máquina sua, os feeds são buscados o dia todo.",
+				"O FreshRSS lê feeds RSS e Atom, e o RSSHub e o RSS-Bridge criam feeds para sites que não têm nenhum. O linkding é um gerenciador de favoritos com tags e busca, e o Karakeep salva links, notas e imagens com busca em texto completo. O wallabag salva páginas da web para ler depois, sem anúncios nem bagunça. O ArchiveBox guarda páginas como HTML, PDF, capturas de tela e arquivos de mídia."
+			],
+			"ru": [
+				"RSS-читалка показывает новые записи сайтов, на которые вы подписаны, в том порядке, в котором они выходят, без алгоритма, который выбирает за вас. Приложения для закладок и отложенного чтения хранят то, что вы нашли, а веб-архив сохраняет это, когда страница уже исчезла. На вашей собственной машине ленты обновляются круглосуточно.",
+				"FreshRSS читает ленты RSS и Atom, а RSSHub и RSS-Bridge делают ленты для сайтов, у которых их нет. linkding — менеджер закладок с тегами и поиском, а Karakeep сохраняет ссылки, заметки и картинки с полнотекстовым поиском. wallabag сохраняет веб-страницы, чтобы прочитать позже, без рекламы и лишнего. ArchiveBox хранит страницы как HTML, PDF, скриншоты и медиафайлы."
+			],
+			"uk": [
+				"RSS-читалка показує нові записи сайтів, на які ви підписані, в тому порядку, в якому вони виходять, без алгоритму, що вибирає за вас. Застосунки для закладок і відкладеного читання зберігають те, що ви знайшли, а вебархів зберігає це, коли сторінки вже немає. На вашій власній машині стрічки оновлюються цілодобово.",
+				"FreshRSS читає стрічки RSS і Atom, а RSSHub та RSS-Bridge роблять стрічки для сайтів, які їх не мають. linkding — менеджер закладок із тегами та пошуком, а Karakeep зберігає посилання, нотатки й зображення з повнотекстовим пошуком. wallabag зберігає вебсторінки, щоб прочитати пізніше, без реклами й зайвого. ArchiveBox зберігає сторінки як HTML, PDF, скриншоти й медіафайли."
+			]
+		}
+	},
+	"media": {
+		"name": {
+			"en": "Media",
+			"de": "Medien",
+			"es": "Multimedia",
+			"fr": "Médias",
+			"pl": "Multimedia",
+			"pt": "Mídia",
+			"ru": "Медиа",
+			"uk": "Медіа"
+		},
+		"title": {
+			"en": "Self-hosted media servers for music, books and video",
+			"de": "Medienserver für Musik, Bücher und Video selbst hosten",
+			"es": "Servidores multimedia autoalojados para música y libros",
+			"fr": "Serveur multimédia auto-hébergé : musique, livres, vidéo",
+			"pl": "Self-hosted serwer muzyki, książek i wideo",
+			"pt": "Servidor de mídia auto-hospedado: música, livros e vídeo",
+			"ru": "Self-hosted медиасервер для музыки, книг и видео",
+			"uk": "Self-hosted медіасервер для музики, книг і відео"
+		},
+		"summary": {
+			"en": "Self-host Navidrome, Audiobookshelf, Komga, PeerTube and more: stream your music, books, games and videos from your own machine, in one click.",
+			"de": "Navidrome, Audiobookshelf, Komga, PeerTube und mehr selbst hosten: Musik, Bücher, Spiele und Videos von deiner Maschine streamen, mit einem Klick.",
+			"es": "Autoaloja Navidrome, Audiobookshelf, Komga, PeerTube y más: música, libros, juegos y videos en streaming desde tu máquina, en un clic.",
+			"fr": "Auto-hébergez Navidrome, Audiobookshelf, Komga, PeerTube et d’autres : musique, livres, jeux et vidéos en streaming depuis votre machine, en un clic.",
+			"pl": "Self-hosted Navidrome, Audiobookshelf, Komga, PeerTube i inne: muzyka, książki, gry i filmy strumieniowane z twojej maszyny, jednym kliknięciem.",
+			"pt": "Hospede Navidrome, Audiobookshelf, Komga, PeerTube e mais: música, livros, jogos e vídeos em streaming a partir da sua máquina, em um clique.",
+			"ru": "Запустите у себя Navidrome, Audiobookshelf, Komga, PeerTube и другие: музыка, книги, игры и видео со своей машины в один клик.",
+			"uk": "Розгорніть у себе Navidrome, Audiobookshelf, Komga, PeerTube та інші: музика, книги, ігри й відео з вашої машини в один клік."
+		},
+		"intro": {
+			"en": [
+				"A media server streams the collection you already own to the browser and the phone: music, audiobooks, comics, games or photos. Your files stay where you put them, and the app adds the library, the player and the progress.",
+				"Navidrome, which calls itself your personal Spotify, and Koel stream your music collection, and Navidrome works with Subsonic clients. Audiobookshelf serves audiobooks and podcasts and keeps progress across devices. Komga reads comics, manga and ebooks, RomM plays retro games in the browser, and Lychee is a photo gallery. Owncast streams live video with chat on a page of your own, and PeerTube is a video platform in the fediverse."
+			],
+			"de": [
+				"Ein Medienserver streamt die Sammlung, die du schon besitzt, in den Browser und aufs Handy: Musik, Hörbücher, Comics, Spiele oder Fotos. Deine Dateien bleiben dort, wo du sie abgelegt hast, und die App liefert die Bibliothek, den Player und den Fortschritt.",
+				"Navidrome, das sich als dein persönliches Spotify versteht, und Koel streamen deine Musiksammlung, und Navidrome funktioniert mit Subsonic-Clients. Audiobookshelf stellt Hörbücher und Podcasts bereit und merkt sich den Fortschritt auf allen Geräten. Komga liest Comics, Manga und E-Books, RomM spielt Retro-Spiele im Browser, und Lychee ist eine Fotogalerie. Owncast streamt Live-Video mit Chat auf einer eigenen Seite, und PeerTube ist eine Videoplattform im Fediverse."
+			],
+			"es": [
+				"Un servidor multimedia transmite al navegador y al teléfono la colección que ya tienes: música, audiolibros, cómics, juegos o fotos. Tus archivos se quedan donde los pusiste, y la app agrega la biblioteca, el reproductor y el progreso.",
+				"Navidrome, que se presenta como tu Spotify personal, y Koel transmiten tu colección de música, y Navidrome funciona con clientes Subsonic. Audiobookshelf sirve audiolibros y podcasts y conserva el progreso entre dispositivos. Komga lee cómics, manga y ebooks, RomM ejecuta juegos retro en el navegador y Lychee es una galería de fotos. Owncast transmite video con chat en tiempo real en una página propia, y PeerTube es una plataforma de video en el fediverso."
+			],
+			"fr": [
+				"Un serveur multimédia diffuse vers le navigateur et le téléphone la collection que vous possédez déjà : musique, livres audio, bandes dessinées, jeux ou photos. Vos fichiers restent là où vous les avez mis, et l’application ajoute la bibliothèque, le lecteur et la progression.",
+				"Navidrome, qui se présente comme votre Spotify personnel, et Koel diffusent votre collection de musique, et Navidrome fonctionne avec les clients Subsonic. Audiobookshelf sert des livres audio et des podcasts et garde la progression d’un appareil à l’autre. Komga lit les bandes dessinées, les mangas et les ebooks, RomM fait tourner des jeux rétro dans le navigateur, et Lychee est une galerie photo. Owncast diffuse de la vidéo en direct avec un chat sur une page à vous, et PeerTube est une plateforme vidéo du fédivers."
+			],
+			"pl": [
+				"Serwer multimediów streamuje do przeglądarki i telefonu kolekcję, którą już masz: muzykę, audiobooki, komiksy, gry lub zdjęcia. Twoje pliki zostają tam, gdzie je położysz, a aplikacja dokłada bibliotekę, odtwarzacz i zapamiętany postęp.",
+				"Navidrome, który nazywa siebie twoim osobistym Spotify, i Koel streamują kolekcję muzyki, a Navidrome działa z klientami Subsonic. Audiobookshelf udostępnia audiobooki i podcasty oraz pamięta postęp na wszystkich urządzeniach. Komga czyta komiksy, mangi i ebooki, RomM uruchamia gry retro w przeglądarce, a Lychee to galeria zdjęć. Owncast transmituje wideo na żywo z czatem na twojej własnej stronie, a PeerTube to platforma wideo w fediwersum."
+			],
+			"pt": [
+				"Um servidor de mídia transmite para o navegador e para o celular a coleção que você já tem: música, audiolivros, quadrinhos, jogos ou fotos. Seus arquivos ficam onde você os colocou, e o app acrescenta a biblioteca, o player e o progresso.",
+				"O Navidrome, que se apresenta como o seu Spotify pessoal, e o Koel transmitem a sua coleção de música, e o Navidrome funciona com clientes Subsonic. O Audiobookshelf serve audiolivros e podcasts e guarda o progresso entre dispositivos. O Komga lê quadrinhos, mangás e e-books, o RomM roda jogos retrô no navegador e o Lychee é uma galeria de fotos. O Owncast transmite vídeo ao vivo com chat em uma página sua, e o PeerTube é uma plataforma de vídeo no fediverso."
+			],
+			"ru": [
+				"Медиасервер передает в браузер и на телефон коллекцию, которая у вас уже есть: музыку, аудиокниги, комиксы, игры или фото. Файлы остаются там, где вы их положили, а приложение добавляет библиотеку, плеер и сохранение прогресса.",
+				"Navidrome, который называет себя вашим личным Spotify, и Koel стримят вашу музыку, а Navidrome работает с клиентами Subsonic. Audiobookshelf раздает аудиокниги и подкасты и помнит прогресс на всех устройствах. Komga читает комиксы, мангу и электронные книги, RomM запускает ретро-игры в браузере, а Lychee — фотогалерея. Owncast транслирует живое видео с чатом на вашей странице, а PeerTube — видеоплатформа в федиверсе."
+			],
+			"uk": [
+				"Медіасервер передає в браузер і на телефон колекцію, яка у вас уже є: музику, аудіокниги, комікси, ігри чи фото. Файли лишаються там, де ви їх поклали, а застосунок додає бібліотеку, плеєр і збереження прогресу.",
+				"Navidrome, що називає себе вашим особистим Spotify, і Koel стрімлять вашу музику, а Navidrome працює з клієнтами Subsonic. Audiobookshelf роздає аудіокниги й подкасти та пам’ятає прогрес на всіх пристроях. Komga читає комікси, мангу й електронні книги, RomM запускає ретроігри в браузері, а Lychee — фотогалерея. Owncast транслює живе відео з чатом на вашій сторінці, а PeerTube — відеоплатформа у федиверсі."
+			]
+		}
+	},
+	"community": {
+		"name": {
+			"en": "Social and community",
+			"de": "Soziales und Community",
+			"es": "Redes y comunidad",
+			"fr": "Réseaux et communauté",
+			"pl": "Sieci i społeczność",
+			"pt": "Social e comunidade",
+			"ru": "Соцсети и сообщества",
+			"uk": "Соцмережі та спільноти"
+		},
+		"title": {
+			"en": "Self-hosted social networks, forums and chat",
+			"de": "Soziale Netzwerke, Foren und Chat selbst hosten",
+			"es": "Redes sociales, foros y chat autoalojados",
+			"fr": "Réseaux sociaux, forums et messagerie auto-hébergés",
+			"pl": "Self-hosted sieci społecznościowe, fora i czat",
+			"pt": "Redes sociais, fóruns e chat auto-hospedados",
+			"ru": "Self-hosted соцсети, форумы и чаты",
+			"uk": "Self-hosted соцмережі, форуми та чати"
+		},
+		"summary": {
+			"en": "Self-host Mastodon, Pixelfed, Lemmy, Synapse, NodeBB or listmonk: a social network, forum, chat or newsletter on your own machine in one click.",
+			"de": "Mastodon, Pixelfed, Lemmy, Synapse, NodeBB oder listmonk selbst hosten: soziales Netzwerk, Forum, Chat oder Newsletter auf deiner Maschine.",
+			"es": "Autoaloja Mastodon, Pixelfed, Lemmy, Synapse, NodeBB o listmonk: una red social, foro, chat o newsletter en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Mastodon, Pixelfed, Lemmy, Synapse, NodeBB ou listmonk : réseau social, forum, messagerie ou newsletter sur votre machine, en un clic.",
+			"pl": "Self-hosted Mastodon, Pixelfed, Lemmy, Synapse, NodeBB i listmonk: sieć społecznościowa, forum, czat lub newsletter na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Mastodon, Pixelfed, Lemmy, Synapse, NodeBB ou listmonk: rede social, fórum, chat ou newsletter na sua máquina, em um clique.",
+			"ru": "Поднимите у себя Mastodon, Pixelfed, Lemmy, Synapse, NodeBB или listmonk: соцсеть, форум, чат или рассылку на вашей машине в один клик.",
+			"uk": "Підніміть у себе Mastodon, Pixelfed, Lemmy, Synapse, NodeBB чи listmonk: соцмережу, форум, чат або розсилку на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"A community on someone else's platform lives by that platform's rules. On a server of your own you set the rules and run the moderation, and through the fediverse or Matrix your members still reach people on every other server.",
+				"Mastodon, Pixelfed and Lemmy are fediverse servers: Mastodon for posts and follows, Pixelfed for photo sharing without algorithms, and Lemmy, an alternative to Reddit, for links and discussions. Synapse is a Matrix server you chat on from Element or any Matrix app. NodeBB is a forum, Apache Answer a Q&A site for a community, a help center or a team, and listmonk sends newsletters to your mailing lists."
+			],
+			"de": [
+				"Eine Community auf der Plattform eines anderen lebt nach deren Regeln. Auf deiner eigenen Maschine legst du die Regeln fest und führst die Moderation, und über das Fediverse oder Matrix erreichen deine Mitglieder trotzdem Leute auf jedem anderen Server.",
+				"Mastodon, Pixelfed und Lemmy sind Fediverse-Server: Mastodon für Beiträge und Follows, Pixelfed zum Teilen von Fotos ohne Algorithmen, und Lemmy, eine Alternative zu Reddit, für Links und Diskussionen. Synapse ist ein Matrix-Server, auf dem du über Element oder jede andere Matrix-App chattest. NodeBB ist ein Forum, Apache Answer eine Q&A-Seite für eine Community, ein Help-Center oder ein Team, und listmonk verschickt Newsletter an deine Mailinglisten."
+			],
+			"es": [
+				"Una comunidad en la plataforma de otros vive según las reglas de esa plataforma. En una máquina propia tú pones las reglas y llevas la moderación, y a través del fediverso o de Matrix tus miembros siguen llegando a personas de cualquier otro servidor.",
+				"Mastodon, Pixelfed y Lemmy son servidores del fediverso: Mastodon para publicaciones y seguimientos, Pixelfed para compartir fotos sin algoritmos y Lemmy, una alternativa a Reddit, para enlaces y debates. Synapse es un servidor Matrix con el que chateas desde Element o cualquier app de Matrix. NodeBB es un foro, Apache Answer un sitio de preguntas y respuestas para una comunidad, un centro de ayuda o un equipo, y listmonk envía newsletters a tus listas de correo."
+			],
+			"fr": [
+				"Une communauté sur la plateforme d’un autre vit selon les règles de cette plateforme. Sur votre propre machine, vous fixez les règles et vous assurez la modération, et grâce au fédivers ou à Matrix vos membres joignent toujours des gens sur tous les autres serveurs.",
+				"Mastodon, Pixelfed et Lemmy sont des serveurs du fédivers : Mastodon pour les messages et les abonnements, Pixelfed pour partager des photos sans algorithme et Lemmy, une alternative à Reddit, pour les liens et les discussions. Synapse est un serveur Matrix sur lequel vous discutez depuis Element ou n’importe quelle application Matrix. NodeBB est un forum, Apache Answer un site de questions-réponses pour une communauté, un centre d’aide ou une équipe, et listmonk envoie des newsletters à vos listes de diffusion."
+			],
+			"pl": [
+				"Społeczność na cudzej platformie żyje według jej zasad. Na twojej własnej maszynie to ty ustalasz zasady i prowadzisz moderację, a przez fediwersum albo Matrix twoi członkowie wciąż docierają do ludzi na każdym innym serwerze.",
+				"Mastodon, Pixelfed i Lemmy to serwery fediwersum: Mastodon do wpisów i obserwowania, Pixelfed do dzielenia się zdjęciami bez algorytmów, a Lemmy, alternatywa dla Reddit, do linków i dyskusji. Synapse to serwer Matrix, na którym rozmawiasz z poziomu Element albo dowolnej aplikacji Matrix. NodeBB to forum, Apache Answer to serwis pytań i odpowiedzi dla społeczności, centrum pomocy lub zespołu, a listmonk wysyła newslettery na twoje listy mailingowe."
+			],
+			"pt": [
+				"Uma comunidade na plataforma dos outros vive pelas regras dessa plataforma. Em uma máquina sua, você define as regras e cuida da moderação, e pelo fediverso ou pelo Matrix seus membros ainda alcançam pessoas em qualquer outro servidor.",
+				"O Mastodon, o Pixelfed e o Lemmy são servidores do fediverso: o Mastodon para posts e seguidores, o Pixelfed para compartilhar fotos sem algoritmos e o Lemmy, uma alternativa ao Reddit, para links e discussões. O Synapse é um servidor Matrix em que você conversa pelo Element ou por qualquer app Matrix. O NodeBB é um fórum, o Apache Answer é um site de perguntas e respostas para uma comunidade, uma central de ajuda ou uma equipe, e o listmonk envia newsletters para as suas listas de e-mail."
+			],
+			"ru": [
+				"Сообщество на чужой платформе живет по ее правилам. На вашей собственной машине правила и модерация ваши, а через федиверс или Matrix участники по-прежнему общаются с людьми на любых других серверах.",
+				"Mastodon, Pixelfed и Lemmy — серверы федиверса: Mastodon для постов и подписок, Pixelfed для обмена фото без алгоритмов, а Lemmy, альтернатива Reddit, для ссылок и обсуждений. Synapse — сервер Matrix, на котором вы общаетесь через Element или любое приложение Matrix. NodeBB — форум, Apache Answer — сайт вопросов и ответов для сообщества, справочного центра или команды, а listmonk рассылает письма по вашим спискам."
+			],
+			"uk": [
+				"Спільнота на чужій платформі живе за її правилами. На вашій власній машині правила й модерація ваші, а через федиверс чи Matrix учасники й надалі спілкуються з людьми на будь-яких інших серверах.",
+				"Mastodon, Pixelfed і Lemmy — сервери федиверсу: Mastodon для дописів і підписок, Pixelfed для обміну фото без алгоритмів, а Lemmy, альтернатива Reddit, для посилань і обговорень. Synapse — сервер Matrix, на якому ви спілкуєтеся через Element або будь-який застосунок Matrix. NodeBB — форум, Apache Answer — сайт запитань і відповідей для спільноти, довідкового центру або команди, а listmonk розсилає листи за вашими списками."
+			]
+		}
+	},
+	"productivity": {
+		"name": {
+			"en": "Productivity",
+			"de": "Produktivität",
+			"es": "Productividad",
+			"fr": "Productivité",
+			"pl": "Produktywność",
+			"pt": "Produtividade",
+			"ru": "Продуктивность",
+			"uk": "Продуктивність"
+		},
+		"title": {
+			"en": "Self-hosted productivity apps",
+			"de": "Aufgaben, Rezepte und Tracker selbst hosten",
+			"es": "Apps de productividad autoalojadas: tareas, recetas y más",
+			"fr": "Applications de productivité auto-hébergées",
+			"pl": "Self-hosted aplikacje do zadań, przepisów i trackerów",
+			"pt": "Apps de produtividade auto-hospedados",
+			"ru": "Self-hosted приложения для задач, рецептов и трекеров",
+			"uk": "Self-hosted застосунки для завдань, рецептів і трекерів"
+		},
+		"summary": {
+			"en": "Self-host Vikunja, Mealie, Ryot, Reactive Resume or YOURLS: tasks, recipes, trackers, resumes and short links on your own machine in one click.",
+			"de": "Vikunja, Mealie, Ryot, Reactive Resume oder YOURLS selbst hosten: Aufgaben, Rezepte, Tracker, Lebensläufe und Kurzlinks auf deiner Maschine in einem Klick.",
+			"es": "Autoaloja Vikunja, Mealie, Ryot, Reactive Resume o YOURLS: tareas, recetas, seguimiento, currículos y enlaces cortos en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Vikunja, Mealie, Ryot, Reactive Resume ou YOURLS : tâches, recettes, suivis, CV et liens courts sur votre machine, en un clic.",
+			"pl": "Self-hosted Vikunja, Mealie, Ryot, Reactive Resume i YOURLS: zadania, przepisy, trackery, CV i skrócone linki na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Vikunja, Mealie, Ryot, Reactive Resume ou YOURLS: tarefas, receitas, trackers, currículos e links curtos na sua máquina, em um clique.",
+			"ru": "Установите у себя Vikunja, Mealie, Ryot, Reactive Resume или YOURLS: задачи, рецепты, трекеры, резюме и короткие ссылки на вашей машине в один клик.",
+			"uk": "Поставте у себе Vikunja, Mealie, Ryot, Reactive Resume чи YOURLS: завдання, рецепти, трекери, резюме й короткі посилання на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Everyday apps gather a lot of personal history: what you plan, cook, watch and apply for. Running them yourself keeps that history on one machine you control, rather than in a new account at a different company for each.",
+				"Vikunja is a task manager with lists, projects, kanban and Gantt views. Mealie keeps recipes and plans meals, and Ryot tracks the books you read, shows you watch, games you play and workouts you complete, with imports from Goodreads and Trakt. Reactive Resume writes and designs resumes and cover letters and exports them to PDF, and YOURLS is your own URL shortener with click stats."
+			],
+			"de": [
+				"Alltags-Apps sammeln viel persönliche Geschichte: was du planst, kochst, schaust und wofür du dich bewirbst. Betreibst du sie selbst, bleibt diese Geschichte auf einer Maschine, die du kontrollierst, statt in einem neuen Konto bei einer anderen Firma für jede App.",
+				"Vikunja ist ein Aufgabenmanager mit Listen, Projekten, Kanban- und Gantt-Ansicht. Mealie verwaltet Rezepte und plant Mahlzeiten, und Ryot verfolgt die Bücher, die du liest, die Serien, die du schaust, die Spiele, die du spielst, und die Workouts, die du absolvierst, mit Importen von Goodreads und Trakt. Reactive Resume schreibt und gestaltet Lebensläufe und Anschreiben und exportiert sie als PDF, und YOURLS ist dein eigener URL-Shortener mit Klickstatistiken."
+			],
+			"es": [
+				"Las apps del día a día acumulan mucha historia personal: lo que planeas, cocinas, ves y los trabajos que solicitas. Ejecutarlas por tu cuenta mantiene esa historia en una sola máquina que controlas, en lugar de en una cuenta nueva en otra empresa para cada una.",
+				"Vikunja es una app de tareas con listas, proyectos y vistas kanban y Gantt. Mealie guarda recetas y planifica comidas, y Ryot registra los libros que lees, las series que ves, los juegos que juegas y los entrenamientos que haces, con importaciones desde Goodreads y Trakt. Reactive Resume escribe y diseña currículos y cartas de presentación y los exporta a PDF, y YOURLS es tu propio acortador de URL con estadísticas de clics."
+			],
+			"fr": [
+				"Les applications du quotidien accumulent beaucoup d’historique personnel : ce que vous planifiez, cuisinez, regardez et les candidatures que vous envoyez. Les faire tourner vous-même garde cet historique sur une seule machine que vous maîtrisez, plutôt que dans un nouveau compte chez une autre entreprise pour chacune.",
+				"Vikunja est un gestionnaire de tâches avec des listes, des projets, des vues kanban et Gantt. Mealie garde les recettes et planifie les repas, et Ryot suit les livres que vous lisez, les séries que vous regardez, les jeux auxquels vous jouez et les séances de sport que vous faites, avec des imports depuis Goodreads et Trakt. Reactive Resume écrit et met en forme des CV et des lettres de motivation et les exporte en PDF, et YOURLS est votre propre raccourcisseur d’URL avec des statistiques de clics."
+			],
+			"pl": [
+				"Codzienne aplikacje zbierają mnóstwo osobistej historii: co planujesz, gotujesz, oglądasz i na co aplikujesz. Gdy działają u ciebie, ta historia zostaje na jednej maszynie, którą kontrolujesz, a nie na nowym koncie w innej firmie dla każdej z nich.",
+				"Vikunja to menedżer zadań z listami, projektami oraz widokami kanban i Gantta. Mealie trzyma przepisy i planuje posiłki, a Ryot śledzi książki, które czytasz, seriale, które oglądasz, gry, w które grasz, i treningi, które robisz, z importem z Goodreads i Trakt. Reactive Resume pisze i projektuje CV oraz listy motywacyjne i eksportuje je do PDF, a YOURLS to twój własny skracacz linków ze statystykami kliknięć."
+			],
+			"pt": [
+				"Os apps do dia a dia acumulam muita história pessoal: o que você planeja, cozinha, assiste e as vagas a que se candidata. Rodá-los por conta própria mantém essa história em uma máquina que você controla, em vez de em uma conta nova, em outra empresa, para cada um.",
+				"O Vikunja é um gerenciador de tarefas com listas, projetos e visões de kanban e Gantt. O Mealie guarda receitas e planeja refeições, e o Ryot acompanha os livros que você lê, as séries que assiste, os jogos que joga e os treinos que faz, com importação do Goodreads e do Trakt. O Reactive Resume escreve e desenha currículos e cartas de apresentação e os exporta em PDF, e o YOURLS é o seu próprio encurtador de URLs com estatísticas de cliques."
+			],
+			"ru": [
+				"Повседневные приложения собирают много личной истории: что вы планируете, готовите, смотрите и куда откликаетесь на вакансии. Если они работают у вас, эта история остается на одной машине, которую вы контролируете, а не в новом аккаунте у другой компании для каждого приложения.",
+				"Vikunja — менеджер задач со списками, проектами, канбан-досками и диаграммами Ганта. Mealie хранит рецепты и планирует меню, а Ryot отслеживает книги, которые вы читаете, сериалы, которые смотрите, игры, в которые играете, и тренировки, которые выполняете, с импортом из Goodreads и Trakt. Reactive Resume пишет и оформляет резюме и сопроводительные письма и экспортирует их в PDF, а YOURLS — ваш собственный сокращатель ссылок со статистикой кликов."
+			],
+			"uk": [
+				"Повсякденні застосунки збирають багато особистої історії: що ви плануєте, готуєте, дивитеся і куди відгукуєтеся на вакансії. Коли вони працюють у вас, ця історія лишається на одній машині, яку ви контролюєте, а не в новому акаунті в іншої компанії для кожного застосунку.",
+				"Vikunja — менеджер завдань зі списками, проєктами, канбан-дошками й діаграмами Ґанта. Mealie зберігає рецепти й планує меню, а Ryot відстежує книжки, які ви читаєте, серіали, які дивитеся, ігри, в які граєте, і тренування, які виконуєте, з імпортом із Goodreads і Trakt. Reactive Resume пише й оформлює резюме та супровідні листи й експортує їх у PDF, а YOURLS — ваш власний скорочувач посилань зі статистикою кліків."
+			]
+		}
+	},
+	"finance": {
+		"name": {
+			"en": "Personal finance",
+			"de": "Finanzen",
+			"es": "Finanzas personales",
+			"fr": "Finances personnelles",
+			"pl": "Finanse osobiste",
+			"pt": "Finanças pessoais",
+			"ru": "Личные финансы",
+			"uk": "Особисті фінанси"
+		},
+		"title": {
+			"en": "Self-hosted personal finance and budgeting apps",
+			"de": "Persönliche Finanzen und Budget-Apps selbst hosten",
+			"es": "Finanzas personales y presupuestos autoalojados",
+			"fr": "Budget et finances personnelles auto-hébergés",
+			"pl": "Self-hosted aplikacje do finansów osobistych i budżetu",
+			"pt": "Apps de finanças pessoais e orçamento auto-hospedados",
+			"ru": "Self-hosted личные финансы и учет бюджета",
+			"uk": "Self-hosted особисті фінанси та облік бюджету"
+		},
+		"summary": {
+			"en": "Self-host Actual Budget, Sure or Firefly III: budgets, accounts and spending tracked on your own machine, set up in one click.",
+			"de": "Actual Budget, Sure oder Firefly III selbst hosten: Budgets, Konten und Ausgaben auf deiner Maschine im Blick, eingerichtet in einem Klick.",
+			"es": "Autoaloja Actual Budget, Sure o Firefly III: presupuestos, cuentas y gastos en tu máquina, listos en un clic.",
+			"fr": "Auto-hébergez Actual Budget, Sure ou Firefly III : budgets, comptes et dépenses suivis sur votre machine, en un clic.",
+			"pl": "Self-hosted Actual Budget, Sure i Firefly III: budżety, konta i wydatki pod kontrolą na twojej maszynie, gotowe jednym kliknięciem.",
+			"pt": "Hospede Actual Budget, Sure ou Firefly III: orçamentos, contas e gastos na sua máquina, no ar em um clique.",
+			"ru": "Поднимите у себя Actual Budget, Sure или Firefly III: бюджеты, счета и расходы под контролем на вашей машине, готово за один клик.",
+			"uk": "Розгорніть у себе Actual Budget, Sure чи Firefly III: бюджети, рахунки й витрати під контролем на вашій машині, усе готово за один клік."
+		},
+		"intro": {
+			"en": [
+				"A personal finance app sees every payment you make. Running one yourself keeps that record on a machine you control, and the app keeps working for as long as you want it.",
+				"Actual Budget is a local-first tool for envelope budgeting that syncs your changes between devices. Sure is a community fork of Maybe Finance, with a dashboard of cashflow, net worth and spending, used in the browser or its apps. Firefly III is a personal finance manager built on double-entry bookkeeping, with budgets, categories, tags, rules for transactions, and income and expense reports."
+			],
+			"de": [
+				"Eine Finanz-App sieht jede Zahlung, die du machst. Betreibst du sie selbst, bleibt diese Aufzeichnung auf einer Maschine, die du kontrollierst, und die App läuft so lange weiter, wie du sie willst.",
+				"Actual Budget ist ein Local-first-Tool für Umschlag-Budgetierung, das deine Änderungen zwischen Geräten synchronisiert. Sure ist ein Community-Fork von Maybe Finance, mit einer Übersicht über Cashflow, Vermögen und Ausgaben, nutzbar im Browser oder in den Apps. Firefly III ist ein Finanzmanager für den privaten Gebrauch auf Basis der doppelten Buchführung, mit Budgets, Kategorien, Tags, Regeln für Transaktionen sowie Einnahmen- und Ausgabenberichten."
+			],
+			"es": [
+				"Una app de finanzas personales ve cada pago que haces. Ejecutarla por tu cuenta mantiene ese registro en una máquina que controlas, y la app sigue funcionando todo el tiempo que quieras.",
+				"Actual Budget es una herramienta local-first de presupuesto por sobres que sincroniza tus cambios entre dispositivos. Sure es un fork comunitario de Maybe Finance, con un panel de flujo de caja, patrimonio neto y gastos, que se usa en el navegador o en sus apps. Firefly III es un administrador de finanzas personales basado en la contabilidad por partida doble, con presupuestos, categorías, tags, reglas para transacciones e informes de ingresos y gastos."
+			],
+			"fr": [
+				"Une application de finances personnelles voit chaque paiement que vous faites. La faire tourner vous-même garde cet historique sur une machine que vous maîtrisez, et l’application fonctionne aussi longtemps que vous le voulez.",
+				"Actual Budget est un outil local-first de budget par enveloppes qui synchronise vos modifications entre appareils. Sure est un fork communautaire de Maybe Finance, avec un tableau de bord des flux de trésorerie, du patrimoine net et des dépenses, utilisé dans le navigateur ou dans ses applications. Firefly III est un gestionnaire de finances personnelles fondé sur la comptabilité en partie double, avec budgets, catégories, tags, règles pour les transactions et rapports de revenus et de dépenses."
+			],
+			"pl": [
+				"Aplikacja do finansów osobistych widzi każdą twoją płatność. Gdy działa u ciebie, ten zapis zostaje na maszynie, którą kontrolujesz, a aplikacja działa tak długo, jak jej potrzebujesz.",
+				"Actual Budget to narzędzie local-first do budżetowania kopertowego, które synchronizuje twoje zmiany między urządzeniami. Sure to fork społeczności z Maybe Finance, z pulpitem przepływów pieniężnych, wartości netto i wydatków, używany w przeglądarce lub w swoich aplikacjach. Firefly III to menedżer finansów osobistych oparty na księgowości podwójnej, z budżetami, kategoriami, tagami, regułami dla transakcji oraz raportami przychodów i wydatków."
+			],
+			"pt": [
+				"Um app de finanças pessoais vê cada pagamento que você faz. Rodá-lo por conta própria mantém esse registro em uma máquina que você controla, e o app continua funcionando pelo tempo que você quiser.",
+				"O Actual Budget é uma ferramenta local-first de orçamento por envelopes que sincroniza suas alterações entre dispositivos. O Sure é um fork da comunidade do Maybe Finance, com um painel de fluxo de caixa, patrimônio líquido e gastos, usado no navegador ou nos apps. O Firefly III é um gerenciador de finanças pessoais baseado em contabilidade de partidas dobradas, com orçamentos, categorias, tags, regras para transações e relatórios de receitas e despesas."
+			],
+			"ru": [
+				"Приложение для личных финансов видит каждый ваш платеж. Если оно работает у вас, эта запись остается на машине, которую вы контролируете, а приложение работает столько, сколько вам нужно.",
+				"Actual Budget — local-first инструмент для бюджета по конвертам, который синхронизирует ваши изменения между устройствами. Sure — форк Maybe Finance от сообщества, с панелью денежного потока, чистого капитала и расходов, работает в браузере и в своих приложениях. Firefly III — менеджер личных финансов на основе двойной записи, с бюджетами, категориями, тегами, правилами для транзакций и отчетами о доходах и расходах."
+			],
+			"uk": [
+				"Застосунок для особистих фінансів бачить кожен ваш платіж. Коли він працює у вас, цей запис лишається на машині, яку ви контролюєте, а застосунок працює стільки, скільки вам потрібно.",
+				"Actual Budget — local-first інструмент для бюджету за конвертами, що синхронізує ваші зміни між пристроями. Sure — форк Maybe Finance від спільноти, з панеллю грошового потоку, чистого капіталу та витрат, працює в браузері й у своїх застосунках. Firefly III — менеджер особистих фінансів на основі подвійного запису, з бюджетами, категоріями, тегами, правилами для транзакцій і звітами про доходи та витрати."
+			]
+		}
+	},
+	"security": {
+		"name": {
+			"en": "Passwords and sign-in",
+			"de": "Passwörter und Anmeldung",
+			"es": "Contraseñas e inicio de sesión",
+			"fr": "Mots de passe et connexion",
+			"pl": "Hasła i logowanie",
+			"pt": "Senhas e login",
+			"ru": "Пароли и вход",
+			"uk": "Паролі та вхід"
+		},
+		"title": {
+			"en": "Self-hosted password managers and sign-in",
+			"de": "Passwort-Manager und Anmeldung selbst hosten",
+			"es": "Gestor de contraseñas e inicio de sesión autoalojados",
+			"fr": "Mots de passe et authentification auto-hébergés",
+			"pl": "Self-hosted menedżery haseł i logowanie",
+			"pt": "Gerenciadores de senhas e login auto-hospedados",
+			"ru": "Self-hosted менеджеры паролей и авторизация",
+			"uk": "Self-hosted менеджери паролів і авторизація"
+		},
+		"summary": {
+			"en": "Self-host Vaultwarden, Password Pusher or Authorizer: passwords, secret links and sign-in for your apps on your own machine, in one click.",
+			"de": "Vaultwarden, Password Pusher oder Authorizer selbst hosten: Passwörter, Secret-Links und Anmeldung für deine Apps auf deiner Maschine in einem Klick.",
+			"es": "Autoaloja Vaultwarden, Password Pusher o Authorizer: contraseñas, enlaces secretos e inicio de sesión para tus apps en tu máquina, en un clic.",
+			"fr": "Auto-hébergez Vaultwarden, Password Pusher ou Authorizer : mots de passe, liens secrets et connexion pour vos applications sur votre machine, en un clic.",
+			"pl": "Self-hosted Vaultwarden, Password Pusher i Authorizer: hasła, linki do sekretów i logowanie do twoich aplikacji na twojej maszynie, jednym kliknięciem.",
+			"pt": "Hospede Vaultwarden, Password Pusher ou Authorizer: senhas, links de segredos e login para os seus apps na sua máquina, em um clique.",
+			"ru": "Установите у себя Vaultwarden, Password Pusher или Authorizer: пароли, ссылки на секреты и вход для ваших приложений на вашей машине в один клик.",
+			"uk": "Підніміть у себе Vaultwarden, Password Pusher чи Authorizer: паролі, посилання на секрети й вхід для ваших застосунків на вашій машині в один клік."
+		},
+		"intro": {
+			"en": [
+				"Passwords and sign-in are the keys to everything else, which is why many people would rather keep them on a machine they control. A self-hosted password manager keeps the vault on your own server while you go on using familiar apps.",
+				"Vaultwarden is a server for the official Bitwarden apps, written in Rust and lighter than Bitwarden's own server. Password Pusher shares passwords and secrets by links that expire. Authorizer is an authentication and authorization server for your own apps, with OAuth 2 and OpenID Connect, social login, MFA and magic links."
+			],
+			"de": [
+				"Passwörter und Anmeldung sind die Schlüssel zu allem anderen, deshalb halten viele sie lieber auf einer Maschine, die sie kontrollieren. Ein selbst gehosteter Passwort-Manager hält den Tresor auf deiner eigenen Maschine, während du vertraute Apps weiter nutzt.",
+				"Vaultwarden ist ein Server für die offiziellen Bitwarden-Apps, in Rust geschrieben und schlanker als der eigene Server von Bitwarden. Password Pusher teilt Passwörter und Secrets über Links, die ablaufen. Authorizer ist ein Authentifizierungs- und Autorisierungsserver für deine eigenen Apps, mit OAuth 2 und OpenID Connect, Social Login, MFA und Magic Links."
+			],
+			"es": [
+				"Las contraseñas y el inicio de sesión son las llaves de todo lo demás, y por eso muchas personas prefieren guardarlos en una máquina que controlan. Un gestor de contraseñas autoalojado mantiene la bóveda en tu propia máquina mientras sigues usando las apps de siempre.",
+				"Vaultwarden es un servidor para las apps oficiales de Bitwarden, escrito en Rust y más ligero que el servidor propio de Bitwarden. Password Pusher comparte contraseñas y secretos mediante enlaces que caducan. Authorizer es un servidor de autenticación y autorización para tus propias apps, con OAuth 2 y OpenID Connect, inicio de sesión social, MFA y enlaces mágicos."
+			],
+			"fr": [
+				"Les mots de passe et la connexion sont les clés de tout le reste, ce qui explique que beaucoup préfèrent les garder sur une machine qu’ils maîtrisent. Un gestionnaire de mots de passe auto-hébergé garde le coffre sur votre propre machine, pendant que vous continuez à utiliser des applications familières.",
+				"Vaultwarden est un serveur pour les applications Bitwarden officielles, écrit en Rust et plus léger que le serveur de Bitwarden lui-même. Password Pusher partage des mots de passe et des secrets par des liens qui expirent. Authorizer est un serveur d’authentification et d’autorisation pour vos propres applications, avec OAuth 2 et OpenID Connect, connexion sociale, MFA et liens magiques."
+			],
+			"pl": [
+				"Hasła i logowanie to klucze do wszystkiego innego, dlatego wiele osób woli trzymać je na maszynie, którą kontrolują. Menedżer haseł typu self-hosted trzyma sejf na twojej własnej maszynie, a ty dalej korzystasz ze znanych aplikacji.",
+				"Vaultwarden to serwer dla oficjalnych aplikacji Bitwarden, napisany w Ruście i lżejszy od własnego serwera Bitwarden. Password Pusher udostępnia hasła i sekrety przez linki, które wygasają. Authorizer to serwer uwierzytelniania i autoryzacji dla twoich własnych aplikacji, z OAuth 2 i OpenID Connect, logowaniem społecznościowym, MFA i magicznymi linkami."
+			],
+			"pt": [
+				"Senhas e login são as chaves de todo o resto, e por isso muita gente prefere mantê-los em uma máquina que controla. Um gerenciador de senhas auto-hospedado guarda o cofre na sua própria máquina, enquanto você continua usando os apps de sempre.",
+				"O Vaultwarden é um servidor para os apps oficiais do Bitwarden, escrito em Rust e mais leve que o servidor do próprio Bitwarden. O Password Pusher compartilha senhas e segredos por links que expiram. O Authorizer é um servidor de autenticação e autorização para os seus próprios apps, com OAuth 2 e OpenID Connect, login social, MFA e links mágicos."
+			],
+			"ru": [
+				"Пароли и вход — ключи ко всему остальному, поэтому многие предпочитают хранить их на машине, которую контролируют. Self-hosted менеджер паролей держит хранилище на вашей собственной машине, а вы продолжаете пользоваться привычными приложениями.",
+				"Vaultwarden — сервер для официальных приложений Bitwarden, написанный на Rust и легче собственного сервера Bitwarden. Password Pusher делится паролями и секретами по ссылкам, которые истекают. Authorizer — сервер аутентификации и авторизации для ваших собственных приложений, с OAuth 2 и OpenID Connect, входом через соцсети, MFA и магическими ссылками."
+			],
+			"uk": [
+				"Паролі та вхід — ключі до всього іншого, тому багато хто воліє тримати їх на машині, яку контролює. Self-hosted менеджер паролів тримає сховище на вашій власній машині, а ви й далі користуєтеся звичними застосунками.",
+				"Vaultwarden — сервер для офіційних застосунків Bitwarden, написаний на Rust і легший за власний сервер Bitwarden. Password Pusher ділиться паролями та секретами за посиланнями, які спливають. Authorizer — сервер автентифікації та авторизації для ваших власних застосунків, з OAuth 2 і OpenID Connect, входом через соцмережі, MFA і магічними посиланнями."
+			]
+		}
+	}
+}

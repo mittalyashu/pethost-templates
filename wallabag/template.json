@@ -1,6 +1,13 @@
 {
 	"name": "wallabag",
 	"emoji": "📰",
+	"category": "reading",
+	"alternatives": [
+		"Pocket",
+		"Instapaper",
+		"Omnivore"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "wallabag",
 		"port": 80
@@ -22,35 +29,259 @@
 	"texts": {
 		"en": {
 			"description": "Save web pages to read later, without ads or clutter, in the browser and in wallabag’s apps",
-			"notes": "Sign in as wallabag with the admin password you gave. Sign-ups are off; add people under Internal settings → Users. The mobile apps and browser extensions connect with a client made under API clients management."
+			"notes": "Sign in as wallabag with the admin password you gave. Sign-ups are off; add people under Internal settings → Users. The mobile apps and browser extensions connect with a client made under API clients management.",
+			"sizing": "wallabag is light: under 200 MB of memory, and thousands of saved articles with their images take a few gigabytes.",
+			"summary": "wallabag is an open-source read-it-later app and Pocket alternative. Self-host it in one click, with your saved articles on your own server.",
+			"about": [
+				"wallabag is an open-source read-it-later app that people self-host in place of Pocket. Send it a link from the browser extension, the phone app or its web interface, and it pulls the article's text out into a plain reading view. Tag articles by hand or by rule: readingTime <= 3 tags everything of three minutes or less as short reading. Select a passage to highlight it with a note. Your unread, starred and archived lists are also Atom feeds, so a feed reader can follow them.",
+				"Hosted read-it-later services can shut down, as Omnivore did in 2024. A wallabag of your own keeps the archive for as long as you run it, under the MIT license, with no ads or tracking. The catch is extraction: some sites come through broken or empty, and fixing one means writing a site config file of XPath rules for it."
+			],
+			"faq": [
+				{
+					"q": "Is wallabag free and open source?",
+					"a": "Yes. wallabag is free, open-source software under the MIT license, so you can run it, change it and share it at no cost."
+				},
+				{
+					"q": "Can I import my Pocket articles into wallabag?",
+					"a": "Yes. wallabag imports the CSV file inside Pocket's export ZIP, and exports from Omnivore, Instapaper, Pinboard, Readability and Firefox or Chrome bookmarks. Pocket has shut down, so only a file downloaded earlier works."
+				},
+				{
+					"q": "Does wallabag have a mobile app and a browser extension?",
+					"a": "Yes. There is an Android app, the wallabagger extension for Chrome and Firefox, and a quick-save app for Safari. On iOS, the app once listed as official is now paid and closed source."
+				},
+				{
+					"q": "Can I read wallabag articles on a Kindle or Kobo?",
+					"a": "Yes. Any article downloads as ePUB, PDF, CSV, JSON or XML, and community tools bring articles to e-readers: wallabako for Kobo, wallindle for Kindle and Plop Reader for PocketBook."
+				},
+				{
+					"q": "Can several people use one wallabag?",
+					"a": "Yes. Each person has their own account, articles and settings. The admin creates accounts under Users management, since this template turns open sign-ups off."
+				}
+			]
 		},
 		"de": {
 			"description": "Webseiten zum späteren Lesen speichern, ohne Werbung und Ballast, im Browser und in den Apps von wallabag",
-			"notes": "Melde dich als wallabag mit dem angegebenen Admin-Passwort an. Registrierungen sind aus; weitere Personen fügst du unter Internal settings → Users hinzu. Die Mobil-Apps und Browser-Erweiterungen verbinden sich mit einem Client aus API clients management."
+			"notes": "Melde dich als wallabag mit dem angegebenen Admin-Passwort an. Registrierungen sind aus; weitere Personen fügst du unter Internal settings → Users hinzu. Die Mobil-Apps und Browser-Erweiterungen verbinden sich mit einem Client aus API clients management.",
+			"sizing": "wallabag ist leicht: unter 200 MB RAM, und Tausende gespeicherte Artikel samt Bildern brauchen ein paar GB.",
+			"summary": "wallabag selbst hosten: Read-it-later-App und Pocket-Alternative, Open Source. In einem Klick, mit deinen Artikeln auf deiner eigenen Maschine.",
+			"about": [
+				"wallabag ist eine Open-Source-App zum späteren Lesen, die viele statt Pocket selbst hosten. Schick ihr einen Link aus der Browser-Erweiterung, der Handy-App oder der Weboberfläche, und sie zieht den Text des Artikels in eine schlichte Leseansicht. Artikel taggst du von Hand oder per Regel: readingTime <= 3 taggt alles mit drei Minuten Lesezeit oder weniger als Kurzlektüre. Wähl eine Passage aus, um sie mit einer Notiz hervorzuheben. Deine Listen der ungelesenen, favorisierten und archivierten Artikel sind zugleich Atom-Feeds, sodass ein Feedreader ihnen folgen kann.",
+				"Gehostete Read-it-later-Dienste können dichtmachen, wie Omnivore 2024. Ein eigenes wallabag behält das Archiv, solange du es betreibst, unter der MIT-Lizenz, ohne Werbung und Tracking. Der Haken ist die Extraktion: Manche Seiten kommen kaputt oder leer an, und eine zu reparieren heißt, dafür eine Konfigurationsdatei für die Seite mit XPath-Regeln zu schreiben."
+			],
+			"faq": [
+				{
+					"q": "Ist wallabag kostenlos und Open Source?",
+					"a": "Ja. wallabag ist kostenlose Open-Source-Software unter der MIT-Lizenz, du kannst es also kostenlos betreiben, ändern und weitergeben."
+				},
+				{
+					"q": "Kann ich meine Pocket-Artikel in wallabag importieren?",
+					"a": "Ja. wallabag importiert die CSV-Datei im Export-ZIP von Pocket sowie Exporte von Omnivore, Instapaper, Pinboard, Readability und Lesezeichen aus Firefox oder Chrome. Pocket wurde eingestellt, es funktioniert also nur eine Datei, die du früher heruntergeladen hast."
+				},
+				{
+					"q": "Gibt es wallabag als Handy-App und als Browser-Erweiterung?",
+					"a": "Ja. Es gibt eine Android-App, die Erweiterung wallabagger für Chrome und Firefox und eine Quick-Save-App für Safari. Unter iOS ist die App, die einmal als offiziell geführt wurde, jetzt kostenpflichtig und Closed Source."
+				},
+				{
+					"q": "Kann ich wallabag-Artikel auf einem Kindle oder Kobo lesen?",
+					"a": "Ja. Jeder Artikel lässt sich als ePUB, PDF, CSV, JSON oder XML herunterladen, und Community-Tools bringen Artikel auf E-Reader: wallabako für Kobo, wallindle für Kindle und Plop Reader für PocketBook."
+				},
+				{
+					"q": "Können mehrere Leute ein wallabag nutzen?",
+					"a": "Ja. Jede Person hat ein eigenes Konto mit eigenen Artikeln und Einstellungen. Die Konten legst du als Admin unter „Users management“ an, da diese Vorlage offene Registrierungen abschaltet."
+				}
+			]
 		},
 		"es": {
 			"description": "Guarda páginas web para leerlas más tarde, sin anuncios ni ruido, en el navegador y en las apps de wallabag",
-			"notes": "Entra como wallabag con la contraseña de administrador que indicaste. El registro está desactivado; añade personas en Internal settings → Users. Las apps móviles y las extensiones del navegador se conectan con un cliente creado en API clients management."
+			"notes": "Entra como wallabag con la contraseña de administrador que indicaste. El registro está desactivado; añade personas en Internal settings → Users. Las apps móviles y las extensiones del navegador se conectan con un cliente creado en API clients management.",
+			"sizing": "wallabag es ligero: menos de 200 MB de memoria, y miles de artículos guardados con sus imágenes ocupan unos pocos GB.",
+			"summary": "Autoaloja wallabag, la app de código abierto para leer más tarde y alternativa a Pocket. En un clic, con tus artículos guardados en tu propia máquina.",
+			"about": [
+				"wallabag es una app de código abierto para leer más tarde que mucha gente autoaloja en lugar de Pocket. Envíale un enlace desde la extensión del navegador, la app del móvil o su interfaz web, y extrae el texto del artículo en una vista de lectura limpia. Etiqueta los artículos a mano o por regla: readingTime <= 3 etiqueta como lectura corta todo lo que se lee en tres minutos o menos. Selecciona un pasaje para resaltarlo con una nota. Tus listas de no leídos, favoritos y archivados también son feeds Atom, así que un lector de feeds puede seguirlas.",
+				"Los servicios alojados para leer más tarde pueden cerrar, como Omnivore en 2024. Un wallabag propio conserva el archivo mientras lo tengas en marcha, bajo la licencia MIT, sin anuncios ni rastreo. El inconveniente es la extracción: algunos sitios llegan rotos o vacíos, y arreglar uno obliga a escribir para él un archivo de configuración del sitio con reglas XPath."
+			],
+			"faq": [
+				{
+					"q": "¿Es wallabag gratis y de código abierto?",
+					"a": "Sí. wallabag es software gratuito y de código abierto bajo la licencia MIT, así que puedes ejecutarlo, modificarlo y compartirlo gratis."
+				},
+				{
+					"q": "¿Puedo importar mis artículos de Pocket a wallabag?",
+					"a": "Sí. wallabag importa el archivo CSV que viene en el ZIP de exportación de Pocket, y también exportaciones de Omnivore, Instapaper, Pinboard, Readability y marcadores de Firefox o Chrome. Pocket cerró, así que solo sirve un archivo descargado antes."
+				},
+				{
+					"q": "¿Tiene wallabag app móvil y extensión para el navegador?",
+					"a": "Sí. Hay una app para Android, la extensión wallabagger para Chrome y Firefox y una app de guardado rápido para Safari. En iOS, la app que antes figuraba como oficial ahora es de pago y de código cerrado."
+				},
+				{
+					"q": "¿Puedo leer artículos de wallabag en un Kindle o un Kobo?",
+					"a": "Sí. Cualquier artículo se descarga como ePUB, PDF, CSV, JSON o XML, y hay herramientas de la comunidad que llevan los artículos a los lectores de libros electrónicos: wallabako para Kobo, wallindle para Kindle y Plop Reader para PocketBook."
+				},
+				{
+					"q": "¿Pueden varias personas usar un mismo wallabag?",
+					"a": "Sí. Cada persona tiene su propia cuenta, sus artículos y sus ajustes. Las cuentas las crea el administrador en “Users management”, porque esta plantilla desactiva el registro abierto."
+				}
+			]
 		},
 		"fr": {
 			"description": "Enregistrez des pages web pour les lire plus tard, sans publicité ni fioritures, dans le navigateur et dans les apps de wallabag",
-			"notes": "Connectez-vous en tant que wallabag avec le mot de passe administrateur indiqué. Les inscriptions sont fermées ; ajoutez des personnes dans Internal settings → Users. Les apps mobiles et les extensions de navigateur se connectent avec un client créé dans API clients management."
+			"notes": "Connectez-vous en tant que wallabag avec le mot de passe administrateur indiqué. Les inscriptions sont fermées ; ajoutez des personnes dans Internal settings → Users. Les apps mobiles et les extensions de navigateur se connectent avec un client créé dans API clients management.",
+			"sizing": "wallabag est léger : moins de 200 MB de mémoire, et des milliers d’articles enregistrés avec leurs images prennent quelques GB.",
+			"summary": "Auto-hébergez wallabag, l’application open source pour lire plus tard et alternative à Pocket. En un clic, avec vos articles sur votre propre machine.",
+			"about": [
+				"wallabag est une application open source pour lire plus tard, que beaucoup auto-hébergent à la place de Pocket. Envoyez-lui un lien depuis l’extension du navigateur, l’application mobile ou son interface web, et elle extrait le texte de l’article dans une vue de lecture épurée. Étiquetez les articles à la main ou par règle : readingTime <= 3 étiquette comme lecture courte tout ce qui se lit en trois minutes ou moins. Sélectionnez un passage pour le surligner avec une note. Vos listes d’articles non lus, favoris et archivés sont aussi des flux Atom, qu’un lecteur de flux peut suivre.",
+				"Les services hébergés pour lire plus tard peuvent fermer, comme Omnivore en 2024. Un wallabag à vous garde l’archive aussi longtemps que vous le faites tourner, sous licence MIT, sans publicité ni pistage. Le revers, c’est l’extraction : certains sites arrivent cassés ou vides, et en réparer un demande d’écrire pour lui un fichier de configuration du site avec des règles XPath."
+			],
+			"faq": [
+				{
+					"q": "wallabag est-il gratuit et open source ?",
+					"a": "Oui. wallabag est un logiciel open source gratuit, sous licence MIT : vous pouvez le faire tourner, le modifier et le partager sans rien payer."
+				},
+				{
+					"q": "Puis-je importer mes articles Pocket dans wallabag ?",
+					"a": "Oui. wallabag importe le fichier CSV contenu dans le ZIP d’export de Pocket, ainsi que les exports d’Omnivore, d’Instapaper, de Pinboard et de Readability, et les favoris de Firefox ou de Chrome. Pocket a fermé : seul un fichier téléchargé avant fonctionne."
+				},
+				{
+					"q": "wallabag a-t-il une application mobile et une extension de navigateur ?",
+					"a": "Oui. Il existe une application Android, l’extension wallabagger pour Chrome et Firefox, et une application d’enregistrement rapide pour Safari. Sous iOS, l’application qui figurait comme officielle est désormais payante et à code fermé."
+				},
+				{
+					"q": "Puis-je lire des articles wallabag sur une liseuse Kindle ou Kobo ?",
+					"a": "Oui. Chaque article se télécharge en ePUB, PDF, CSV, JSON ou XML, et des outils de la communauté envoient les articles vers les liseuses : wallabako pour Kobo, wallindle pour Kindle et Plop Reader pour PocketBook."
+				},
+				{
+					"q": "Plusieurs personnes peuvent-elles utiliser un même wallabag ?",
+					"a": "Oui. Chaque personne a son propre compte, ses articles et ses réglages. L’administrateur crée les comptes dans « Users management », car ce template désactive les inscriptions ouvertes."
+				}
+			]
 		},
 		"pl": {
 			"description": "Zapisuj strony do przeczytania później, bez reklam i zbędnych elementów, w przeglądarce i w aplikacjach wallabag",
-			"notes": "Zaloguj się jako wallabag hasłem administratora, które podano. Rejestracja jest wyłączona; inne osoby dodasz w Internal settings → Users. Aplikacje mobilne i rozszerzenia przeglądarki łączą się przez klienta utworzonego w API clients management."
+			"notes": "Zaloguj się jako wallabag hasłem administratora, które podano. Rejestracja jest wyłączona; inne osoby dodasz w Internal settings → Users. Aplikacje mobilne i rozszerzenia przeglądarki łączą się przez klienta utworzonego w API clients management.",
+			"sizing": "wallabag ma małe wymagania: poniżej 200 MB pamięci, a tysiące zapisanych artykułów z obrazami zajmują kilka GB.",
+			"summary": "Hostuj u siebie wallabag: aplikację open source do czytania na później i alternatywę dla Pocket. W jeden klik, z artykułami na własnej maszynie.",
+			"about": [
+				"wallabag to aplikacja open source do czytania na później, którą ludzie hostują u siebie zamiast Pocketa. Wyślij jej link z rozszerzenia przeglądarki, aplikacji mobilnej albo interfejsu webowego, a wyciągnie tekst artykułu do prostego widoku czytania. Artykuły tagujesz ręcznie albo regułą: readingTime <= 3 oznacza jako krótką lekturę wszystko, co czyta się trzy minuty lub krócej. Zaznacz fragment, żeby go wyróżnić i dodać do niego notatkę. Listy nieprzeczytanych, ulubionych i zarchiwizowanych artykułów są też kanałami Atom, więc czytnik kanałów może je śledzić.",
+				"Hostowane serwisy do czytania na później mogą się zamknąć, jak Omnivore w 2024 roku. Własny wallabag trzyma archiwum tak długo, jak go uruchamiasz, na licencji MIT, bez reklam i śledzenia. Haczyk to ekstrakcja: niektóre strony wychodzą zepsute albo puste, a naprawienie jednej oznacza napisanie dla niej pliku konfiguracji strony z regułami XPath."
+			],
+			"faq": [
+				{
+					"q": "Czy wallabag jest darmowy i open source?",
+					"a": "Tak. wallabag to darmowe oprogramowanie open source na licencji MIT, więc możesz go uruchamiać, zmieniać i udostępniać bez opłat."
+				},
+				{
+					"q": "Czy mogę zaimportować artykuły z Pocket do wallabag?",
+					"a": "Tak. wallabag importuje plik CSV z archiwum ZIP z eksportem z Pocket oraz eksporty z Omnivore, Instapaper, Pinboard i Readability, a także zakładki z przeglądarki Firefox lub Chrome. Pocket został zamknięty, więc działa tylko plik pobrany wcześniej."
+				},
+				{
+					"q": "Czy wallabag ma aplikację mobilną i rozszerzenie do przeglądarki?",
+					"a": "Tak. Jest aplikacja na Androida, rozszerzenie wallabagger do Chrome i Firefox oraz aplikacja do szybkiego zapisywania dla Safari. Na iOS aplikacja, która kiedyś figurowała jako oficjalna, jest teraz płatna i z zamkniętym kodem."
+				},
+				{
+					"q": "Czy mogę czytać artykuły z wallabag na Kindle albo Kobo?",
+					"a": "Tak. Każdy artykuł pobierzesz jako ePUB, PDF, CSV, JSON lub XML, a narzędzia społeczności przenoszą artykuły na czytniki e-booków: wallabako dla Kobo, wallindle dla Kindle i Plop Reader dla PocketBook."
+				},
+				{
+					"q": "Czy kilka osób może korzystać z jednego wallabag?",
+					"a": "Tak. Każda osoba ma własne konto, artykuły i ustawienia. Konta tworzy administrator w „Users management”, bo ten szablon wyłącza otwartą rejestrację."
+				}
+			]
 		},
 		"pt": {
 			"description": "Salve páginas da web para ler depois, sem anúncios nem poluição, no navegador e nos apps do wallabag",
-			"notes": "Entre como wallabag com a senha de administrador que você informou. O cadastro está desativado; adicione pessoas em Internal settings → Users. Os apps para celular e as extensões do navegador se conectam com um cliente criado em API clients management."
+			"notes": "Entre como wallabag com a senha de administrador que você informou. O cadastro está desativado; adicione pessoas em Internal settings → Users. Os apps para celular e as extensões do navegador se conectam com um cliente criado em API clients management.",
+			"sizing": "wallabag é leve: menos de 200 MB de memória, e milhares de artigos salvos com suas imagens ocupam alguns GB.",
+			"summary": "Auto-hospede o wallabag: app de código aberto para ler depois e alternativa ao Pocket. Em um clique, com seus artigos salvos na sua própria máquina.",
+			"about": [
+				"O wallabag é um app de código aberto para ler depois, que muita gente auto-hospeda no lugar do Pocket. Envie um link para ele pela extensão do navegador, pelo app do celular ou pela interface web, e ele extrai o texto do artigo para uma tela de leitura limpa. Marque os artigos com tags à mão ou por regra: readingTime <= 3 marca como leitura rápida tudo o que leva três minutos ou menos. Selecione um trecho para destacá-lo com uma anotação. Suas listas de não lidos, favoritos e arquivados também são feeds Atom, então um leitor de feeds pode acompanhá-las.",
+				"Serviços hospedados de leitura para depois podem fechar, como o Omnivore em 2024. Um wallabag seu guarda o arquivo enquanto você o mantiver rodando, sob a licença MIT, sem anúncios nem rastreamento. O porém é a extração: alguns sites chegam quebrados ou vazios, e consertar um exige escrever para ele um arquivo de configuração do site com regras XPath."
+			],
+			"faq": [
+				{
+					"q": "O wallabag é gratuito e de código aberto?",
+					"a": "Sim. O wallabag é um software gratuito e de código aberto sob a licença MIT, então você pode rodar, modificar e compartilhar sem pagar nada."
+				},
+				{
+					"q": "Posso importar meus artigos do Pocket para o wallabag?",
+					"a": "Sim. O wallabag importa o arquivo CSV que vem no ZIP de exportação do Pocket, além de exportações do Omnivore, Instapaper, Pinboard e Readability e favoritos do Firefox ou do Chrome. O Pocket foi encerrado, então só funciona um arquivo baixado antes."
+				},
+				{
+					"q": "O wallabag tem app para celular e extensão para navegador?",
+					"a": "Sim. Há um app para Android, a extensão wallabagger para Chrome e Firefox e um app de salvamento rápido para Safari. No iOS, o app que já foi listado como oficial agora é pago e de código fechado."
+				},
+				{
+					"q": "Dá para ler artigos do wallabag em um Kindle ou Kobo?",
+					"a": "Sim. Qualquer artigo pode ser baixado como ePUB, PDF, CSV, JSON ou XML, e ferramentas da comunidade levam os artigos para leitores de e-book: wallabako para o Kobo, wallindle para o Kindle e Plop Reader para o PocketBook."
+				},
+				{
+					"q": "Várias pessoas podem usar o mesmo wallabag?",
+					"a": "Sim. Cada pessoa tem a própria conta, os próprios artigos e as próprias configurações. O administrador cria as contas em “Users management”, porque este template desativa o cadastro aberto."
+				}
+			]
 		},
 		"ru": {
 			"description": "Сохраняйте веб-страницы, чтобы прочитать позже, без рекламы и лишнего, в браузере и в приложениях wallabag",
-			"notes": "Войдите как wallabag с паролем администратора, который вы указали. Регистрация выключена; других людей добавляют в Internal settings → Users. Мобильные приложения и расширения браузера подключаются через клиента, созданного в API clients management."
+			"notes": "Войдите как wallabag с паролем администратора, который вы указали. Регистрация выключена; других людей добавляют в Internal settings → Users. Мобильные приложения и расширения браузера подключаются через клиента, созданного в API clients management.",
+			"sizing": "wallabag: небольшие требования — менее 200 MB памяти, а тысячи сохраненных статей с картинками занимают несколько GB.",
+			"summary": "Self-hosted wallabag — open source приложение для чтения позже, альтернатива Pocket. В один клик, со статьями на вашей собственной машине.",
+			"about": [
+				"wallabag — это open source приложение для чтения позже, которое люди хостят у себя вместо Pocket. Отправьте ему ссылку из расширения браузера, мобильного приложения или веб-интерфейса, и оно извлечет текст статьи в простой режим чтения. Статьи можно помечать тегами вручную или по правилу: readingTime <= 3 помечает как короткое чтение все, что читается за три минуты или меньше. Выберите фрагмент, чтобы выделить его и добавить заметку. Ваши списки непрочитанного, избранного и архива — это еще и ленты Atom, так что их может отслеживать программа для чтения лент.",
+				"Чужие сервисы «прочитать позже» могут закрыться, как Omnivore в 2024 году. Собственный wallabag хранит архив, пока он у вас работает, под лицензией MIT, без рекламы и слежки. Но есть нюанс — извлечение: некоторые сайты приходят сломанными или пустыми, а чтобы исправить один, нужно написать для него файл конфигурации сайта с правилами XPath."
+			],
+			"faq": [
+				{
+					"q": "wallabag бесплатный и с открытым кодом?",
+					"a": "Да. wallabag — бесплатное программное обеспечение с открытым кодом под лицензией MIT, так что его можно запускать, менять и распространять бесплатно."
+				},
+				{
+					"q": "Можно ли импортировать статьи из Pocket в wallabag?",
+					"a": "Да. wallabag импортирует CSV-файл из ZIP-архива с экспортом Pocket, а также экспорты из Omnivore, Instapaper, Pinboard и Readability и закладки Firefox или Chrome. Pocket закрылся, поэтому подойдет только файл, скачанный раньше."
+				},
+				{
+					"q": "Есть ли у wallabag мобильное приложение и расширение для браузера?",
+					"a": "Да. Есть приложение для Android, расширение wallabagger для Chrome и Firefox и приложение быстрого сохранения для Safari. На iOS приложение, которое раньше значилось официальным, теперь платное и с закрытым кодом."
+				},
+				{
+					"q": "Можно ли читать статьи из wallabag на Kindle или Kobo?",
+					"a": "Да. Любую статью можно скачать как ePUB, PDF, CSV, JSON или XML, а инструменты от сообщества доставляют статьи на электронные книги: wallabako для Kobo, wallindle для Kindle и Plop Reader для PocketBook."
+				},
+				{
+					"q": "Могут ли несколько человек пользоваться одним wallabag?",
+					"a": "Да. У каждого человека свой аккаунт, свои статьи и настройки. Аккаунты создает администратор на странице «Users management», потому что этот шаблон выключает открытую регистрацию."
+				}
+			]
 		},
 		"uk": {
 			"description": "Зберігайте вебсторінки, щоб прочитати пізніше, без реклами й зайвого, у браузері та в застосунках wallabag",
-			"notes": "Увійдіть як wallabag із паролем адміністратора, який ви вказали. Реєстрацію вимкнено; інших людей додають в Internal settings → Users. Мобільні застосунки й розширення браузера підключаються через клієнта, створеного в API clients management."
+			"notes": "Увійдіть як wallabag із паролем адміністратора, який ви вказали. Реєстрацію вимкнено; інших людей додають в Internal settings → Users. Мобільні застосунки й розширення браузера підключаються через клієнта, створеного в API clients management.",
+			"sizing": "wallabag має скромні вимоги: менше 200 MB пам’яті, а тисячі збережених статей із зображеннями займають кілька GB.",
+			"summary": "Self-hosted wallabag — застосунок із відкритим кодом для читання пізніше, альтернатива Pocket. В один клік, зі статтями на вашій власній машині.",
+			"about": [
+				"wallabag — це застосунок із відкритим кодом для читання пізніше, який люди хостять у себе замість Pocket. Надішліть йому посилання з розширення браузера, мобільного застосунку чи вебінтерфейсу, і він витягне текст статті в простий режим читання. Статті можна позначати тегами вручну або за правилом: readingTime <= 3 позначає як коротке читання все, що читається за три хвилини чи менше. Виберіть фрагмент, щоб виділити його й додати нотатку. Ваші списки непрочитаного, обраного й архіву — це ще й стрічки Atom, тож їх може відстежувати програма для читання стрічок.",
+				"Чужі сервіси «прочитати пізніше» можуть закритися, як Omnivore у 2024 році. Власний wallabag зберігає архів, доки він у вас працює, за ліцензією MIT, без реклами й стеження. Але є нюанс — видобування: деякі сайти приходять зламаними або порожніми, а щоб виправити один, треба написати для нього файл конфігурації сайту з правилами XPath."
+			],
+			"faq": [
+				{
+					"q": "wallabag безплатний і з відкритим кодом?",
+					"a": "Так. wallabag — безплатне програмне забезпечення з відкритим кодом за ліцензією MIT, тож його можна запускати, змінювати й поширювати безплатно."
+				},
+				{
+					"q": "Чи можна імпортувати статті з Pocket у wallabag?",
+					"a": "Так. wallabag імпортує CSV-файл із ZIP-архіву з експортом Pocket, а також експорти з Omnivore, Instapaper, Pinboard і Readability та закладки Firefox або Chrome. Pocket закрився, тож підійде лише файл, завантажений раніше."
+				},
+				{
+					"q": "Чи є в wallabag мобільний застосунок і розширення для браузера?",
+					"a": "Так. Є застосунок для Android, розширення wallabagger для Chrome і Firefox та застосунок швидкого збереження для Safari. На iOS застосунок, який колись значився офіційним, тепер платний і з закритим кодом."
+				},
+				{
+					"q": "Чи можна читати статті з wallabag на Kindle або Kobo?",
+					"a": "Так. Будь-яку статтю можна завантажити як ePUB, PDF, CSV, JSON або XML, а інструменти від спільноти доставляють статті на електронні книги: wallabako для Kobo, wallindle для Kindle і Plop Reader для PocketBook."
+				},
+				{
+					"q": "Чи можуть кілька людей користуватися одним wallabag?",
+					"a": "Так. У кожної людини свій акаунт, свої статті й налаштування. Акаунти створює адміністратор на сторінці «Users management», бо цей шаблон вимикає відкриту реєстрацію."
+				}
+			]
 		}
 	}
 }

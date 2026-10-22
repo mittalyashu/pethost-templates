@@ -1,6 +1,12 @@
 {
 	"name": "Langfuse",
 	"emoji": "🪢",
+	"category": "ai",
+	"alternatives": [
+		"LangSmith",
+		"Braintrust"
+	],
+	"plan": "scale",
 	"route": {
 		"service": "langfuse-web",
 		"port": 3000
@@ -50,35 +56,259 @@
 	"texts": {
 		"en": {
 			"description": "Tracing, evals and prompt management for LLM apps",
-			"notes": "Sign in with the email and password you gave: that account owns the organization and the project named Default, and sign-up is closed. Create the project’s API keys in its settings and point the Langfuse SDK at https://{host}. Media uploads from SDKs need a public S3 endpoint, which this template does not open. Langfuse runs six services in about 2.7 GB of memory, so it needs the Grow plan’s 6 GB."
+			"notes": "Sign in with the email and password you gave: that account owns the organization and the project named Default, and sign-up is closed. Create the project’s API keys in its settings and point the Langfuse SDK at https://{host}. Media uploads from SDKs need a public S3 endpoint, which this template does not open. Langfuse runs six services in about 2.7 GB of memory, so it needs the Grow plan’s 6 GB.",
+			"sizing": "Langfuse is demanding: its ClickHouse and five other services want several gigabytes of memory, and traces pile up.",
+			"summary": "Langfuse is an open-source platform for LLM tracing, evals and prompt versions: a LangSmith alternative to self-host with Docker Compose in one click.",
+			"about": [
+				"Langfuse is an open-source LLM observability platform, often run in place of LangSmith. Each request your app or agent makes becomes a trace: the exact prompt, the model's answer, the tool calls and retrieval steps in between, with tokens, cost and latency. Traces filter by user, session or cost. Prompts live outside your code in versions, and the SDK serves the one labelled production, so a rollback is moving that label. Evaluations score answers with an LLM as a judge, code checks or manual labels, and datasets hold test sets for experiments before a release.",
+				"People self-host Langfuse to keep prompts and user conversations on a server they control. The MIT-licensed version is the whole product with no usage limits, so nothing is paid per trace or per seat. One catch: the Forgot password link works only once transactional email is set up, and without it a lost password means editing the database."
+			],
+			"faq": [
+				{
+					"q": "Is Langfuse free and open source?",
+					"a": "Yes. Everything outside its ee folders is MIT-licensed. Self-hosted, it needs a license key only for enterprise features such as audit logs, SCIM, data retention policies and project-level RBAC roles."
+				},
+				{
+					"q": "Langfuse vs LangSmith: what is the difference?",
+					"a": "Both trace and evaluate LLM apps. LangSmith, made by the LangChain team, is proprietary and can be self-hosted only on its Enterprise plan; Langfuse is MIT-licensed and free to self-host."
+				},
+				{
+					"q": "Does Langfuse support OpenTelemetry?",
+					"a": "Yes. Its Python and TypeScript SDKs are thin layers over OpenTelemetry, and other languages can send spans to its OTLP endpoint over HTTP. Integrations cover LangChain, LlamaIndex, the Vercel AI SDK and many more."
+				},
+				{
+					"q": "How does Langfuse track LLM cost?",
+					"a": "It records token usage on each generation and takes the cost your app sends, or works it out from built-in prices for OpenAI, Anthropic and Google models. Any other model gets its price in Project Settings > Models."
+				},
+				{
+					"q": "How do I send traces to a self-hosted Langfuse?",
+					"a": "Create API keys in the project's settings, then set LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY and LANGFUSE_BASE_URL, your instance's address, for the SDK. Without LANGFUSE_BASE_URL it sends to Langfuse's EU cloud."
+				}
+			]
 		},
 		"de": {
 			"description": "Tracing, Evals und Prompt-Verwaltung für LLM-Apps",
-			"notes": "Melde dich mit der E-Mail und dem Passwort an, die du festgelegt hast: Diesem Konto gehören die Organisation und das Projekt namens Default, und die Registrierung ist geschlossen. Leg die API-Keys des Projekts in seinen Einstellungen an und richte das Langfuse-SDK auf https://{host}. Medien-Uploads aus den SDKs brauchen einen öffentlichen S3-Endpunkt, den diese Vorlage nicht öffnet. Langfuse läuft mit sechs Diensten in etwa 2,7 GB Arbeitsspeicher und braucht deshalb die 6 GB des Grow-Plans."
+			"notes": "Melde dich mit der E-Mail und dem Passwort an, die du festgelegt hast: Diesem Konto gehören die Organisation und das Projekt namens Default, und die Registrierung ist geschlossen. Leg die API-Keys des Projekts in seinen Einstellungen an und richte das Langfuse-SDK auf https://{host}. Medien-Uploads aus den SDKs brauchen einen öffentlichen S3-Endpunkt, den diese Vorlage nicht öffnet. Langfuse läuft mit sechs Diensten in etwa 2,7 GB Arbeitsspeicher und braucht deshalb die 6 GB des Grow-Plans.",
+			"sizing": "Langfuse ist anspruchsvoll: sein ClickHouse und fünf weitere Services wollen mehrere GB RAM, und Traces sammeln sich an.",
+			"summary": "Langfuse selbst hosten: Open-Source-Plattform für LLM-Tracing, Evals und Prompt-Versionen, eine LangSmith-Alternative. Mit Docker Compose in einem Klick.",
+			"about": [
+				"Langfuse ist eine Open-Source-Plattform für LLM-Observability und wird oft anstelle von LangSmith betrieben. Jeder Request deiner App oder deines Agenten wird zu einem Trace: der genaue Prompt, die Antwort des Modells, die Tool-Aufrufe und Retrieval-Schritte dazwischen, dazu Tokens, Kosten und Latenz. Traces lassen sich nach Nutzer, Sitzung oder Kosten filtern. Prompts liegen in Versionen außerhalb deines Codes, und das SDK liefert die Version mit dem Label „production“ aus, ein Rollback ist also nur ein verschobenes Label. Evaluationen bewerten Antworten mit einem LLM als Richter, mit Code-Checks oder mit manuellen Labels, und Datasets halten Testsets für Experimente vor einem Release bereit.",
+				"Du hostest Langfuse selbst, damit Prompts und Gespräche deiner Nutzer auf einer Maschine bleiben, die du kontrollierst. Die MIT-lizenzierte Version ist das ganze Produkt ohne Nutzungslimits, du zahlst also weder pro Trace noch pro Seat. Ein Haken: Der Link „Forgot password“ funktioniert erst, wenn transaktionale E-Mails eingerichtet sind, und ohne sie heißt ein verlorenes Passwort, die Datenbank zu bearbeiten."
+			],
+			"faq": [
+				{
+					"q": "Ist Langfuse kostenlos und Open Source?",
+					"a": "Ja. Alles außerhalb der ee-Ordner steht unter der MIT-Lizenz. Selbst gehostet brauchst du nur für Enterprise-Funktionen einen Lizenzschlüssel, etwa Audit-Logs, SCIM, Richtlinien zur Datenaufbewahrung und RBAC-Rollen auf Projektebene."
+				},
+				{
+					"q": "Langfuse vs. LangSmith: Was ist der Unterschied?",
+					"a": "Beide tracen und evaluieren LLM-Apps. LangSmith vom LangChain-Team ist proprietär und lässt sich nur im Enterprise-Tarif selbst hosten; Langfuse steht unter der MIT-Lizenz und ist kostenlos selbst zu hosten."
+				},
+				{
+					"q": "Unterstützt Langfuse OpenTelemetry?",
+					"a": "Ja. Seine SDKs für Python und TypeScript sind dünne Schichten über OpenTelemetry, und andere Sprachen können Spans per HTTP an den OTLP-Endpoint schicken. Integrationen gibt es unter anderem für LangChain, LlamaIndex, das Vercel AI SDK und viele mehr."
+				},
+				{
+					"q": "Wie erfasst Langfuse die Kosten eines LLM?",
+					"a": "Es speichert die Token-Nutzung bei jeder Generation und übernimmt die Kosten, die deine App mitschickt, oder berechnet sie aus eingebauten Preisen für Modelle von OpenAI, Anthropic und Google. Für jedes andere Modell trägst du den Preis unter „Project Settings > Models“ ein."
+				},
+				{
+					"q": "Wie schicke ich Traces an ein selbst gehostetes Langfuse?",
+					"a": "Lege in den Einstellungen des Projekts API-Keys an und setze für das SDK LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY und LANGFUSE_BASE_URL, die Adresse deiner Instanz. Ohne LANGFUSE_BASE_URL sendet es an die EU-Cloud von Langfuse."
+				}
+			]
 		},
 		"es": {
 			"description": "Trazas, evaluaciones y gestión de prompts para apps con LLM",
-			"notes": "Inicia sesión con el correo y la contraseña que indicaste: esa cuenta es dueña de la organización y del proyecto llamados Default, y el registro está cerrado. Crea las claves de API del proyecto en sus ajustes y apunta el SDK de Langfuse a https://{host}. La subida de archivos multimedia desde los SDK necesita un endpoint S3 público, que esta plantilla no abre. Langfuse funciona con seis servicios en unos 2,7 GB de memoria, así que necesita los 6 GB del plan Grow."
+			"notes": "Inicia sesión con el correo y la contraseña que indicaste: esa cuenta es dueña de la organización y del proyecto llamados Default, y el registro está cerrado. Crea las claves de API del proyecto en sus ajustes y apunta el SDK de Langfuse a https://{host}. La subida de archivos multimedia desde los SDK necesita un endpoint S3 público, que esta plantilla no abre. Langfuse funciona con seis servicios en unos 2,7 GB de memoria, así que necesita los 6 GB del plan Grow.",
+			"sizing": "Langfuse es exigente: su ClickHouse y otros cinco servicios piden varios GB de memoria, y las trazas se acumulan.",
+			"summary": "Autoaloja Langfuse, plataforma de código abierto para trazas de LLM, evals y versiones de prompts: alternativa a LangSmith con Docker Compose en un clic.",
+			"about": [
+				"Langfuse es una plataforma de observabilidad de LLM de código abierto, que se usa a menudo en lugar de LangSmith. Cada petición que hace tu app o tu agente se convierte en una traza: el prompt exacto, la respuesta del modelo, las llamadas a herramientas y los pasos de recuperación intermedios, con tokens, gasto y latencia. Las trazas se filtran por usuario, sesión o gasto. Los prompts viven fuera de tu código, en versiones, y el SDK entrega la que lleva la etiqueta “production”, así que volver a una versión anterior consiste en mover esa etiqueta. Las evaluaciones puntúan las respuestas con un LLM como juez, con comprobaciones de código o con etiquetas manuales, y los datasets guardan conjuntos de prueba para experimentos antes de lanzar una versión.",
+				"Autoalojas Langfuse para que los prompts y las conversaciones de tus usuarios se queden en una máquina que controlas. La versión con licencia MIT es el producto completo, sin límites de uso, así que no se paga nada por traza ni por usuario. Un inconveniente: el enlace “Forgot password” solo funciona cuando el correo transaccional está configurado, y sin él, perder la contraseña obliga a editar la base de datos."
+			],
+			"faq": [
+				{
+					"q": "¿Langfuse es gratis y de código abierto?",
+					"a": "Sí. Todo lo que está fuera de sus carpetas ee tiene licencia MIT. Autoalojado, solo necesita una clave de licencia para las funciones enterprise, como los logs de auditoría, SCIM, las políticas de retención de datos y los roles RBAC a nivel de proyecto."
+				},
+				{
+					"q": "Langfuse vs. LangSmith: ¿cuál es la diferencia?",
+					"a": "Ambos rastrean y evalúan apps con LLM. LangSmith, creado por el equipo de LangChain, es software propietario y solo se puede autoalojar en su plan Enterprise; Langfuse tiene licencia MIT y es gratis de autoalojar."
+				},
+				{
+					"q": "¿Langfuse es compatible con OpenTelemetry?",
+					"a": "Sí. Sus SDK de Python y TypeScript son capas finas sobre OpenTelemetry, y otros lenguajes pueden enviar spans a su endpoint OTLP por HTTP. Hay integraciones con LangChain, LlamaIndex, el Vercel AI SDK y muchas más."
+				},
+				{
+					"q": "¿Cómo registra Langfuse el gasto de un LLM?",
+					"a": "Registra el uso de tokens en cada generación y toma el gasto que envía tu app, o lo calcula con precios integrados de los modelos de OpenAI, Anthropic y Google. Cualquier otro modelo recibe su precio en “Project Settings > Models”."
+				},
+				{
+					"q": "¿Cómo envío trazas a un Langfuse autoalojado?",
+					"a": "Crea claves de API en los ajustes del proyecto y define para el SDK LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY y LANGFUSE_BASE_URL, la dirección de tu instancia. Sin LANGFUSE_BASE_URL envía a la nube de Langfuse en la UE."
+				}
+			]
 		},
 		"fr": {
 			"description": "Traces, évaluations et gestion des prompts pour les apps LLM",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe que vous avez choisis : ce compte possède l’organisation et le projet nommés Default, et les inscriptions sont fermées. Créez les clés d’API du projet dans ses paramètres et pointez le SDK Langfuse vers https://{host}. L’envoi de médias depuis les SDK demande un point de terminaison S3 public, que ce modèle n’ouvre pas. Langfuse tourne avec six services dans environ 2,7 Go de mémoire : il lui faut les 6 Go de l’offre Grow."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe que vous avez choisis : ce compte possède l’organisation et le projet nommés Default, et les inscriptions sont fermées. Créez les clés d’API du projet dans ses paramètres et pointez le SDK Langfuse vers https://{host}. L’envoi de médias depuis les SDK demande un point de terminaison S3 public, que ce modèle n’ouvre pas. Langfuse tourne avec six services dans environ 2,7 Go de mémoire : il lui faut les 6 Go de l’offre Grow.",
+			"sizing": "Langfuse est exigeant : son ClickHouse et cinq autres services veulent plusieurs GB de mémoire, et les traces s’accumulent.",
+			"summary": "Auto-hébergez Langfuse, outil open source de traces LLM, d’évaluations et de versions de prompts : alternative à LangSmith avec Docker Compose en un clic.",
+			"about": [
+				"Langfuse est une plateforme d’observabilité LLM open source, souvent utilisée à la place de LangSmith. Chaque requête de votre application ou de votre agent devient une trace : le prompt exact, la réponse du modèle, les appels d’outils et les étapes de récupération entre les deux, avec les tokens, le coût et la latence. Les traces se filtrent par utilisateur, session ou coût. Les prompts vivent hors de votre code, en versions, et le SDK sert celle qui porte le label « production » : revenir à une version précédente, c’est déplacer ce label. Les évaluations notent les réponses avec un LLM comme juge, des vérifications par le code ou des labels manuels, et les datasets rassemblent des jeux de test pour des expériences avant la sortie d’une version.",
+				"Vous auto-hébergez Langfuse pour que les prompts et les conversations de vos utilisateurs restent sur une machine que vous contrôlez. La version sous licence MIT est le produit complet, sans limite d’utilisation : rien ne se paie par trace ni par siège. Un bémol : le lien « Forgot password » ne fonctionne qu’une fois l’e-mail transactionnel configuré, et sans lui, un mot de passe perdu oblige à modifier la base de données."
+			],
+			"faq": [
+				{
+					"q": "Langfuse est-il gratuit et open source ?",
+					"a": "Oui. Tout ce qui se trouve hors de ses dossiers ee est sous licence MIT. En auto-hébergement, une clé de licence n’est nécessaire que pour les fonctions entreprise comme les journaux d’audit, SCIM, les politiques de conservation des données et les rôles RBAC au niveau du projet."
+				},
+				{
+					"q": "Langfuse ou LangSmith : quelle différence ?",
+					"a": "Les deux tracent et évaluent des applications LLM. LangSmith, créé par l’équipe de LangChain, est propriétaire et ne s’auto-héberge que dans son offre Enterprise ; Langfuse est sous licence MIT et gratuit à auto-héberger."
+				},
+				{
+					"q": "Langfuse prend-il en charge OpenTelemetry ?",
+					"a": "Oui. Ses SDK Python et TypeScript sont de fines couches au-dessus d’OpenTelemetry, et les autres langages peuvent envoyer des spans à son endpoint OTLP en HTTP. Des intégrations existent pour LangChain, LlamaIndex, le Vercel AI SDK et bien d’autres."
+				},
+				{
+					"q": "Comment Langfuse suit-il le coût d’un LLM ?",
+					"a": "Il enregistre l’usage de tokens à chaque génération et prend le coût que votre application envoie, ou le calcule à partir de prix intégrés pour les modèles d’OpenAI, d’Anthropic et de Google. Tout autre modèle reçoit son prix dans « Project Settings > Models »."
+				},
+				{
+					"q": "Comment envoyer des traces à un Langfuse auto-hébergé ?",
+					"a": "Créez des clés d’API dans les paramètres du projet, puis définissez pour le SDK LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY et LANGFUSE_BASE_URL, l’adresse de votre instance. Sans LANGFUSE_BASE_URL, il envoie vers le cloud européen de Langfuse."
+				}
+			]
 		},
 		"pl": {
 			"description": "Śledzenie, ewaluacje i zarządzanie promptami dla aplikacji z LLM",
-			"notes": "Zaloguj się adresem e-mail i hasłem podanymi przy tworzeniu projektu: to konto jest właścicielem organizacji i projektu o nazwie Default, a rejestracja jest zamknięta. Klucze API projektu utworzysz w jego ustawieniach; SDK Langfuse skieruj na https://{host}. Przesyłanie mediów z SDK wymaga publicznego endpointu S3, którego ten szablon nie otwiera. Langfuse działa w sześciu usługach i zajmuje około 2,7 GB pamięci, więc potrzebuje 6 GB z planu Grow."
+			"notes": "Zaloguj się adresem e-mail i hasłem podanymi przy tworzeniu projektu: to konto jest właścicielem organizacji i projektu o nazwie Default, a rejestracja jest zamknięta. Klucze API projektu utworzysz w jego ustawieniach; SDK Langfuse skieruj na https://{host}. Przesyłanie mediów z SDK wymaga publicznego endpointu S3, którego ten szablon nie otwiera. Langfuse działa w sześciu usługach i zajmuje około 2,7 GB pamięci, więc potrzebuje 6 GB z planu Grow.",
+			"sizing": "Langfuse ma wysokie wymagania: jego ClickHouse i pięć innych usług potrzebują kilku GB pamięci, a trace’y się gromadzą.",
+			"summary": "Langfuse self-hosted jednym kliknięciem z Docker Compose: platforma open source do śledzenia LLM, ewaluacji i wersji promptów, alternatywa dla LangSmith.",
+			"about": [
+				"Langfuse to platforma observability dla LLM typu open source, często uruchamiana zamiast LangSmith. Każde żądanie twojej aplikacji lub agenta zapisuje się jako trace (ślad): dokładny prompt, odpowiedź modelu, wywołania narzędzi i kroki wyszukiwania pomiędzy nimi, a do tego tokeny, koszt i opóźnienie. Ślady filtrujesz po użytkowniku, sesji lub koszcie. Prompty żyją poza twoim kodem, w wersjach, a SDK podaje tę z etykietą „production”, więc powrót do poprzedniej wersji to przesunięcie tej etykiety. Ewaluacje oceniają odpowiedzi za pomocą LLM w roli sędziego, sprawdzeń w kodzie lub ręcznych etykiet, a datasety przechowują zestawy testowe do eksperymentów przed wydaniem.",
+				"Langfuse hostujesz u siebie, żeby prompty i rozmowy użytkowników zostały na maszynie, którą kontrolujesz. Wersja na licencji MIT to cały produkt bez limitów użycia, więc nie płaci się ani za ślady, ani za użytkowników. Jedno zastrzeżenie: link „Forgot password” działa dopiero po skonfigurowaniu transakcyjnych e-maili, a bez nich zgubione hasło oznacza edycję bazy danych."
+			],
+			"faq": [
+				{
+					"q": "Czy Langfuse jest darmowy i open source?",
+					"a": "Tak. Wszystko poza folderami ee jest na licencji MIT. W wersji hostowanej u siebie klucz licencyjny jest potrzebny tylko do funkcji enterprise, takich jak logi audytu, SCIM, polityki retencji danych i role RBAC na poziomie projektu."
+				},
+				{
+					"q": "Langfuse czy LangSmith: jaka jest różnica?",
+					"a": "Oba śledzą i oceniają aplikacje z LLM. LangSmith, stworzony przez zespół LangChain, jest własnościowy i można go hostować u siebie tylko w planie Enterprise; Langfuse jest na licencji MIT i hostowanie go u siebie nic nie kosztuje."
+				},
+				{
+					"q": "Czy Langfuse obsługuje OpenTelemetry?",
+					"a": "Tak. Jego SDK dla Pythona i TypeScriptu to cienkie warstwy nad OpenTelemetry, a inne języki mogą wysyłać spany na jego endpoint OTLP przez HTTP. Są integracje z LangChain, LlamaIndex, Vercel AI SDK i wieloma innymi."
+				},
+				{
+					"q": "Jak Langfuse śledzi koszt LLM?",
+					"a": "Zapisuje zużycie tokenów przy każdej generacji i bierze koszt, który wysyła twoja aplikacja, albo liczy go ze wbudowanych cen modeli OpenAI, Anthropic i Google. Każdy inny model dostaje cenę w „Project Settings > Models”."
+				},
+				{
+					"q": "Jak wysyłać ślady do Langfuse hostowanego u siebie?",
+					"a": "Utwórz klucze API w ustawieniach projektu, a potem ustaw dla SDK zmienne LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY i LANGFUSE_BASE_URL, czyli adres twojej instancji. Bez LANGFUSE_BASE_URL SDK wysyła dane do europejskiej chmury Langfuse."
+				}
+			]
 		},
 		"pt": {
 			"description": "Rastreamento, avaliações e gestão de prompts para apps com LLM",
-			"notes": "Entre com o e-mail e a senha que você definiu: essa conta é dona da organização e do projeto chamados Default, e o cadastro está fechado. Crie as chaves de API do projeto nas configurações dele e aponte o SDK do Langfuse para https://{host}. O envio de mídia pelos SDKs precisa de um endpoint S3 público, que este template não abre. O Langfuse roda com seis serviços em cerca de 2,7 GB de memória, então precisa dos 6 GB do plano Grow."
+			"notes": "Entre com o e-mail e a senha que você definiu: essa conta é dona da organização e do projeto chamados Default, e o cadastro está fechado. Crie as chaves de API do projeto nas configurações dele e aponte o SDK do Langfuse para https://{host}. O envio de mídia pelos SDKs precisa de um endpoint S3 público, que este template não abre. O Langfuse roda com seis serviços em cerca de 2,7 GB de memória, então precisa dos 6 GB do plano Grow.",
+			"sizing": "Langfuse é exigente: o ClickHouse e outros cinco serviços pedem vários GB de memória, e os traces se acumulam.",
+			"summary": "Hospede o Langfuse por conta própria: traces de LLM, avaliações e versões de prompts. Alternativa open source ao LangSmith com Docker Compose em um clique.",
+			"about": [
+				"O Langfuse é uma plataforma de observabilidade de LLM de código aberto, muitas vezes usada no lugar do LangSmith. Cada requisição do seu app ou agente vira um trace: o prompt exato, a resposta do modelo, as chamadas de ferramentas e as etapas de recuperação no meio do caminho, com tokens, custo e latência. Os traces podem ser filtrados por usuário, sessão ou custo. Os prompts ficam fora do seu código, em versões, e o SDK serve a que tem o rótulo “production”, então fazer rollback é só mover esse rótulo. As avaliações dão nota às respostas com um LLM como juiz, verificações em código ou rótulos manuais, e os datasets guardam conjuntos de teste para experimentos antes de um lançamento.",
+				"Você hospeda o Langfuse por conta própria para manter os prompts e as conversas dos seus usuários em uma máquina que você controla. A versão com licença MIT é o produto completo, sem limites de uso, então nada se paga por trace nem por usuário. Um porém: o link “Forgot password” só funciona depois que o e-mail transacional é configurado, e sem ele uma senha perdida significa editar o banco de dados."
+			],
+			"faq": [
+				{
+					"q": "O Langfuse é gratuito e de código aberto?",
+					"a": "Sim. Tudo fora das pastas ee tem licença MIT. Auto-hospedado, ele só pede uma chave de licença para recursos enterprise, como logs de auditoria, SCIM, políticas de retenção de dados e papéis RBAC no nível do projeto."
+				},
+				{
+					"q": "Langfuse vs. LangSmith: qual é a diferença?",
+					"a": "Os dois rastreiam e avaliam apps com LLM. O LangSmith, feito pela equipe do LangChain, é proprietário e só pode ser auto-hospedado no plano Enterprise; o Langfuse tem licença MIT e é gratuito para auto-hospedar."
+				},
+				{
+					"q": "O Langfuse tem suporte a OpenTelemetry?",
+					"a": "Sim. Os SDKs de Python e TypeScript são camadas finas sobre o OpenTelemetry, e outras linguagens podem enviar spans para o endpoint OTLP por HTTP. Há integrações com LangChain, LlamaIndex, o Vercel AI SDK e muitas outras."
+				},
+				{
+					"q": "Como o Langfuse acompanha o custo de um LLM?",
+					"a": "Ele registra o uso de tokens em cada geração e usa o custo que o seu app envia, ou calcula a partir de preços embutidos para modelos da OpenAI, da Anthropic e do Google. Qualquer outro modelo recebe o preço em “Project Settings > Models”."
+				},
+				{
+					"q": "Como envio traces para um Langfuse auto-hospedado?",
+					"a": "Crie chaves de API nas configurações do projeto e defina para o SDK LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY e LANGFUSE_BASE_URL, o endereço da sua instância. Sem LANGFUSE_BASE_URL, ele envia para a nuvem do Langfuse na UE."
+				}
+			]
 		},
 		"ru": {
 			"description": "Трейсинг, оценки и управление промптами для LLM-приложений",
-			"notes": "Войдите с email и паролем, которые вы задали: этому аккаунту принадлежат организация и проект Default, а регистрация закрыта. API-ключи проекта создаются в его настройках; SDK Langfuse направьте на https://{host}. Для загрузки медиа из SDK нужен публичный S3-эндпоинт, который этот шаблон не открывает. Langfuse работает из шести сервисов и занимает около 2,7 ГБ памяти, поэтому ему нужны 6 ГБ тарифа Grow."
+			"notes": "Войдите с email и паролем, которые вы задали: этому аккаунту принадлежат организация и проект Default, а регистрация закрыта. API-ключи проекта создаются в его настройках; SDK Langfuse направьте на https://{host}. Для загрузки медиа из SDK нужен публичный S3-эндпоинт, который этот шаблон не открывает. Langfuse работает из шести сервисов и занимает около 2,7 ГБ памяти, поэтому ему нужны 6 ГБ тарифа Grow.",
+			"sizing": "Langfuse: высокие требования — ClickHouse и еще пять сервисов просят несколько GB памяти, а трейсы копятся.",
+			"summary": "Self-hosted Langfuse — open source платформа для трейсинга LLM, оценок и версий промптов. Альтернатива LangSmith на Docker Compose в один клик.",
+			"about": [
+				"Langfuse — это open source платформа для наблюдаемости LLM-приложений, которую часто ставят вместо LangSmith. Каждый запрос вашего приложения или агента становится трейсом: точный промпт, ответ модели, вызовы инструментов и шаги поиска между ними, а также токены, стоимость и задержка. Трейсы фильтруются по пользователю, сессии или стоимости. Промпты хранятся отдельно от кода, в версиях, а SDK отдает ту, у которой метка «production», так что откат — это перенос этой метки. Оценки ответов выставляются с помощью LLM в роли судьи, проверок в коде или ручных меток, а датасеты хранят наборы тестов для экспериментов перед релизом.",
+				"Langfuse хостят у себя, чтобы промпты и разговоры пользователей оставались на машине, которую вы контролируете. Версия под лицензией MIT — это весь продукт без лимитов на использование, так что платить за каждый трейс или за каждого пользователя не нужно. Один подвох: ссылка «Forgot password» работает только после настройки транзакционных писем, а без нее потерянный пароль означает правку базы данных."
+			],
+			"faq": [
+				{
+					"q": "Langfuse бесплатный и с открытым кодом?",
+					"a": "Да. Все, что находится вне папок ee, распространяется под лицензией MIT. В self-hosted версии ключ лицензии нужен только для enterprise-функций: логов аудита, SCIM, политик хранения данных и ролей RBAC на уровне проекта."
+				},
+				{
+					"q": "Langfuse или LangSmith: в чем разница?",
+					"a": "Оба трейсят и оценивают LLM-приложения. LangSmith от команды LangChain — проприетарный, и self-hosted он доступен только в тарифе Enterprise; Langfuse работает под лицензией MIT и бесплатен для установки у себя."
+				},
+				{
+					"q": "Поддерживает ли Langfuse OpenTelemetry?",
+					"a": "Да. Его SDK для Python и TypeScript — тонкие обертки над OpenTelemetry, а из других языков можно отправлять спаны на его OTLP-эндпоинт по HTTP. Есть интеграции с LangChain, LlamaIndex, Vercel AI SDK и многими другими."
+				},
+				{
+					"q": "Как Langfuse считает стоимость LLM?",
+					"a": "Он записывает расход токенов для каждой генерации и берет стоимость, которую присылает ваше приложение, либо вычисляет ее по встроенным ценам на модели OpenAI, Anthropic и Google. Для любой другой модели цена задается в «Project Settings > Models»."
+				},
+				{
+					"q": "Как отправлять трейсы в self-hosted Langfuse?",
+					"a": "Создайте API-ключи в настройках проекта, затем задайте для SDK LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY и LANGFUSE_BASE_URL — адрес вашего экземпляра. Без LANGFUSE_BASE_URL SDK отправляет данные в европейское облако Langfuse."
+				}
+			]
 		},
 		"uk": {
 			"description": "Трейсинг, оцінювання й керування промптами для LLM-застосунків",
-			"notes": "Увійдіть з email і паролем, які ви вказали: цьому акаунту належать організація й проєкт Default, а реєстрацію закрито. API-ключі проєкту створюють у його налаштуваннях; SDK Langfuse спрямуйте на https://{host}. Для завантаження медіа з SDK потрібен публічний S3-ендпоінт, якого цей шаблон не відкриває. Langfuse працює із шести сервісів і займає близько 2,7 ГБ пам’яті, тому йому потрібні 6 ГБ тарифу Grow."
+			"notes": "Увійдіть з email і паролем, які ви вказали: цьому акаунту належать організація й проєкт Default, а реєстрацію закрито. API-ключі проєкту створюють у його налаштуваннях; SDK Langfuse спрямуйте на https://{host}. Для завантаження медіа з SDK потрібен публічний S3-ендпоінт, якого цей шаблон не відкриває. Langfuse працює із шести сервісів і займає близько 2,7 ГБ пам’яті, тому йому потрібні 6 ГБ тарифу Grow.",
+			"sizing": "Langfuse має високі вимоги: його ClickHouse і ще п’ять сервісів потребують кількох GB пам’яті, а трейси накопичуються.",
+			"summary": "Self-hosted Langfuse — платформа з відкритим кодом для трейсингу LLM, оцінювання та версій промптів. Альтернатива LangSmith на Docker Compose в один клік.",
+			"about": [
+				"Langfuse — це платформа спостережуваності LLM із відкритим кодом, яку часто ставлять замість LangSmith. Кожен запит вашого застосунку чи агента стає трейсом: точний промпт, відповідь моделі, виклики інструментів і кроки пошуку між ними, а також токени, вартість і затримка. Трейси фільтруються за користувачем, сесією або вартістю. Промпти зберігаються окремо від коду, у версіях, а SDK віддає ту, що має мітку «production», тож відкат — це перенесення цієї мітки. Відповіді оцінюють за допомогою LLM у ролі судді, перевірок у коді або ручних міток, а датасети зберігають набори тестів для експериментів перед релізом.",
+				"Langfuse хостять у себе, щоб промпти й розмови користувачів лишалися на машині, яку ви контролюєте. Версія за ліцензією MIT — це весь продукт без обмежень на використання, тож платити за кожен трейс чи за кожного користувача не потрібно. Є один нюанс: посилання «Forgot password» працює лише після налаштування транзакційних листів, а без цього втрачений пароль означає правку бази даних."
+			],
+			"faq": [
+				{
+					"q": "Langfuse безплатний і з відкритим кодом?",
+					"a": "Так. Усе поза папками ee має ліцензію MIT. У self-hosted версії ключ ліцензії потрібен лише для enterprise-функцій: логів аудиту, SCIM, політик зберігання даних і ролей RBAC на рівні проєкту."
+				},
+				{
+					"q": "Langfuse чи LangSmith: у чому різниця?",
+					"a": "Обидва трейсять і оцінюють LLM-застосунки. LangSmith від команди LangChain — пропрієтарний, і self-hosted він доступний лише в тарифі Enterprise; Langfuse має ліцензію MIT і безкоштовний для розгортання у себе."
+				},
+				{
+					"q": "Чи підтримує Langfuse OpenTelemetry?",
+					"a": "Так. Його SDK для Python і TypeScript — тонкі обгортки над OpenTelemetry, а з інших мов можна надсилати спани на його OTLP-ендпоінт через HTTP. Є інтеграції з LangChain, LlamaIndex, Vercel AI SDK та багатьма іншими."
+				},
+				{
+					"q": "Як Langfuse рахує вартість LLM?",
+					"a": "Він записує витрату токенів для кожної генерації та бере вартість, яку надсилає ваш застосунок, або обчислює її за вбудованими цінами на моделі OpenAI, Anthropic і Google. Ціну будь-якої іншої моделі задають у «Project Settings > Models»."
+				},
+				{
+					"q": "Як надсилати трейси в self-hosted Langfuse?",
+					"a": "Створіть API-ключі в налаштуваннях проєкту, потім задайте для SDK LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY і LANGFUSE_BASE_URL — адресу вашого екземпляра. Без LANGFUSE_BASE_URL SDK надсилає дані до європейської хмари Langfuse."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,11 @@
 {
 	"name": "Actual Budget",
 	"emoji": "💰",
+	"category": "finance",
+	"alternatives": [
+		"YNAB"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "actual",
 		"port": 5006
@@ -9,35 +14,259 @@
 	"texts": {
 		"en": {
 			"description": "Envelope budgeting for personal finances, with sync",
-			"notes": "Open the address and set the server’s password on the first page. Do it right away: until then the page is open to whoever has the address. Then create a budget file or import one."
+			"notes": "Open the address and set the server’s password on the first page. Do it right away: until then the page is open to whoever has the address. Then create a budget file or import one.",
+			"sizing": "Actual Budget is light: about 200 MB of memory, and years of transactions take well under a gigabyte.",
+			"summary": "Actual Budget is an open-source, local-first envelope budgeting app and a YNAB alternative. Self-host its sync server in one click.",
+			"about": [
+				"Actual Budget is an open-source envelope budgeting app that people run instead of YNAB. You budget only money you already have: income goes into categories until To Budget reaches zero, and whatever a category does not spend rolls over to next month. Transactions come in from bank files in CSV, QIF, OFX, QFX or CAMT format, and as you categorize them, Actual writes rules that give each payee its usual category.",
+				"The app is local-first. Every device keeps the whole budget and works offline, while the sync server keeps devices in step. People self-host that server so their finances stay on a machine they control, and optional end-to-end encryption leaves the server unable to read the numbers. One catch for the privacy-minded: bank sync keys sit on the server outside that encryption, so whoever runs the server can read them."
+			],
+			"faq": [
+				{
+					"q": "Is Actual Budget free and open source?",
+					"a": "Yes. Actual Budget is free and open source under the MIT license. Its official hosted subscription shut down in 2024, so today you run the sync server yourself or have someone host it."
+				},
+				{
+					"q": "Can I import my YNAB budget into Actual Budget?",
+					"a": "Yes. Actual has importers for YNAB4 and nYNAB that keep your history; nYNAB comes in as a JSON export of your budget. Actual handles credit card payments differently, so some category balances may need adjusting after the import."
+				},
+				{
+					"q": "Does Actual Budget have a mobile app?",
+					"a": "Not an official native one: the old mobile apps are deprecated. The web app is a Progressive Web App that installs to your phone's home screen, and the community maintains unofficial native clients."
+				},
+				{
+					"q": "Does Actual Budget support bank sync?",
+					"a": "Yes, through a provider you sign up with yourself and whose API keys you give Actual: SimpleFIN Bridge for North America, Enable Banking for Europe, Pluggy.ai for Brazil and Akahu for New Zealand."
+				},
+				{
+					"q": "Can several people share one Actual Budget server?",
+					"a": "Yes. Connect an OpenID provider and each person signs in with their own account; an admin then grants each user access to the budget files they should see."
+				}
+			]
 		},
 		"de": {
 			"description": "Budgetplanung nach der Umschlagmethode für private Finanzen, mit Sync",
-			"notes": "Öffne die Adresse und leg auf der ersten Seite das Passwort des Servers fest. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Erstell dann eine Budgetdatei oder importier eine."
+			"notes": "Öffne die Adresse und leg auf der ersten Seite das Passwort des Servers fest. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Erstell dann eine Budgetdatei oder importier eine.",
+			"sizing": "Actual Budget ist leicht: etwa 200 MB RAM, und Transaktionen aus Jahren brauchen weit unter 1 GB.",
+			"summary": "Actual Budget selbst hosten: Open-Source-App für Umschlag-Budgetierung, local-first und YNAB-Alternative. Der Sync-Server in einem Klick.",
+			"about": [
+				"Actual Budget ist eine Open-Source-App für Umschlag-Budgetierung, die viele statt YNAB nutzen. Du planst nur Geld, das du schon hast: Einnahmen fließen in Kategorien, bis To Budget bei null liegt, und was eine Kategorie nicht ausgibt, wird in den nächsten Monat übertragen. Transaktionen kommen aus Bankdateien im Format CSV, QIF, OFX, QFX oder CAMT, und beim Kategorisieren legt Actual Regeln an, die jedem Zahlungsempfänger seine übliche Kategorie zuweisen.",
+				"Die App ist local-first. Jedes Gerät hält das ganze Budget und funktioniert offline, während der Sync-Server die Geräte auf demselben Stand hält. Den Server hostest du selbst, damit deine Finanzen auf einer Maschine bleiben, die du kontrollierst, und mit der optionalen Ende-zu-Ende-Verschlüsselung kann der Server die Zahlen nicht lesen. Ein Haken für alle, denen Privatsphäre wichtig ist: Die Bank-Sync-Keys liegen auf dem Server außerhalb dieser Verschlüsselung, deshalb kann sie lesen, wer den Server betreibt."
+			],
+			"faq": [
+				{
+					"q": "Ist Actual Budget kostenlos und Open Source?",
+					"a": "Ja. Actual Budget ist kostenlos und Open Source unter der MIT-Lizenz. Das offizielle gehostete Abo wurde 2024 eingestellt, deshalb betreibst du den Sync-Server heute selbst oder lässt ihn von jemandem hosten."
+				},
+				{
+					"q": "Kann ich mein YNAB-Budget in Actual Budget importieren?",
+					"a": "Ja. Actual hat Importer für YNAB4 und nYNAB, die deinen Verlauf behalten; nYNAB kommt als JSON-Export deines Budgets herein. Actual behandelt Kreditkartenzahlungen anders, deshalb müssen manche Kategoriesalden nach dem Import eventuell angepasst werden."
+				},
+				{
+					"q": "Hat Actual Budget eine mobile App?",
+					"a": "Keine offizielle native: Die alten Mobile-Apps gelten als deprecated. Die Web-App ist eine Progressive Web App, die du auf den Startbildschirm deines Handys installieren kannst, und die Community pflegt inoffizielle native Clients."
+				},
+				{
+					"q": "Unterstützt Actual Budget Bank-Sync?",
+					"a": "Ja, über einen Anbieter, bei dem du dich selbst anmeldest und dessen API-Keys du in Actual einträgst: SimpleFIN Bridge für Nordamerika, Enable Banking für Europa, Pluggy.ai für Brasilien und Akahu für Neuseeland."
+				},
+				{
+					"q": "Können mehrere Personen einen Actual-Budget-Server gemeinsam nutzen?",
+					"a": "Ja. Verbinde einen OpenID-Provider, dann meldet sich jede Person mit ihrem eigenen Konto an. Anschließend legt ein Admin fest, auf welche Budgetdateien jede Person zugreifen darf."
+				}
+			]
 		},
 		"es": {
 			"description": "Presupuesto por sobres para finanzas personales, con sincronización",
-			"notes": "Abre la dirección y define la contraseña del servidor en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego crea un archivo de presupuesto o importa uno."
+			"notes": "Abre la dirección y define la contraseña del servidor en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego crea un archivo de presupuesto o importa uno.",
+			"sizing": "Actual Budget es ligero: unos 200 MB de memoria, y años de transacciones ocupan bastante menos de 1 GB.",
+			"summary": "Autoaloja Actual Budget, la app de presupuesto por sobres de código abierto, local-first y alternativa a YNAB. Su servidor de sincronización, en un clic.",
+			"about": [
+				"Actual Budget es una app de presupuesto por sobres de código abierto que la gente usa en lugar de YNAB. Solo presupuestas dinero que ya tienes: los ingresos pasan a las categorías hasta que To Budget llega a cero, y lo que una categoría no gasta se traslada al mes siguiente. Las transacciones llegan desde archivos bancarios en formato CSV, QIF, OFX, QFX o CAMT, y a medida que las categorizas, Actual escribe reglas que asignan a cada beneficiario su categoría habitual.",
+				"La app es local-first. Cada dispositivo guarda el presupuesto completo y funciona sin conexión, mientras el servidor de sincronización mantiene los dispositivos al día. Autoalojas ese servidor para que tus finanzas se queden en una máquina que controlas, y el cifrado de extremo a extremo opcional impide que el servidor lea las cifras. Un inconveniente para quien cuida la privacidad: las claves de la sincronización bancaria están en el servidor, fuera de ese cifrado, así que quien lo administra puede leerlas."
+			],
+			"faq": [
+				{
+					"q": "¿Actual Budget es gratis y de código abierto?",
+					"a": "Sí. Actual Budget es gratis y de código abierto con licencia MIT. Su suscripción oficial alojada cerró en 2024, así que hoy ejecutas tú el servidor de sincronización o se lo encargas a alguien que lo aloje."
+				},
+				{
+					"q": "¿Puedo importar mi presupuesto de YNAB a Actual Budget?",
+					"a": "Sí. Actual tiene importadores para YNAB4 y nYNAB que conservan tu historial; nYNAB entra como una exportación JSON de tu presupuesto. Actual trata los pagos con tarjeta de crédito de otra forma, así que puede que haya que ajustar algunos saldos de categoría después de importar."
+				},
+				{
+					"q": "¿Actual Budget tiene app móvil?",
+					"a": "No una nativa oficial: las apps móviles antiguas están obsoletas. La app web es una Progressive Web App que se instala en la pantalla de inicio del teléfono, y la comunidad mantiene clientes nativos no oficiales."
+				},
+				{
+					"q": "¿Actual Budget admite sincronización bancaria?",
+					"a": "Sí, a través de un proveedor en el que te registras tú y cuyas claves de API agregas en Actual: SimpleFIN Bridge para Norteamérica, Enable Banking para Europa, Pluggy.ai para Brasil y Akahu para Nueva Zelanda."
+				},
+				{
+					"q": "¿Pueden varias personas compartir un servidor de Actual Budget?",
+					"a": "Sí. Conecta un proveedor OpenID y cada persona inicia sesión con su propia cuenta; después un administrador da a cada usuario acceso a los archivos de presupuesto que debe ver."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un budget par enveloppes pour vos finances personnelles, avec synchronisation",
-			"notes": "Ouvrez l’adresse et définissez le mot de passe du serveur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Créez ensuite un fichier de budget, ou importez-en un."
+			"notes": "Ouvrez l’adresse et définissez le mot de passe du serveur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Créez ensuite un fichier de budget, ou importez-en un.",
+			"sizing": "Actual Budget est léger : environ 200 MB de mémoire, et des années de transactions pèsent bien moins de 1 GB.",
+			"summary": "Auto-hébergez Actual Budget : budget par enveloppes open source, local-first, alternative à YNAB. Son serveur de synchronisation, en un clic.",
+			"about": [
+				"Actual Budget est une application open source de budget par enveloppes que les gens utilisent à la place de YNAB. Vous ne budgétez que l’argent que vous avez déjà : les revenus sont répartis dans des catégories jusqu’à ce que To Budget tombe à zéro, et ce qu’une catégorie ne dépense pas est reporté au mois suivant. Les transactions arrivent depuis des fichiers bancaires aux formats CSV, QIF, OFX, QFX ou CAMT, et à mesure que vous les catégorisez, Actual écrit des règles qui donnent à chaque bénéficiaire sa catégorie habituelle.",
+				"L’application est local-first. Chaque appareil garde tout le budget et fonctionne hors ligne, tandis que le serveur de synchronisation garde les appareils alignés. Vous auto-hébergez ce serveur pour que vos finances restent sur une machine que vous contrôlez, et le chiffrement de bout en bout, facultatif, empêche le serveur de lire les montants. Le revers pour qui tient à sa vie privée : les clés de la synchronisation bancaire se trouvent sur le serveur, hors de ce chiffrement, si bien que quiconque l’administre peut les lire."
+			],
+			"faq": [
+				{
+					"q": "Actual Budget est-il gratuit et open source ?",
+					"a": "Oui. Actual Budget est gratuit et open source, sous licence MIT. Son abonnement hébergé officiel a fermé en 2024 : aujourd’hui, vous faites tourner le serveur de synchronisation vous-même, ou vous le confiez à quelqu’un qui l’héberge."
+				},
+				{
+					"q": "Puis-je importer mon budget YNAB dans Actual Budget ?",
+					"a": "Oui. Actual propose des importeurs pour YNAB4 et nYNAB qui conservent votre historique ; nYNAB arrive sous la forme d’un export JSON de votre budget. Actual gère les paiements par carte de crédit autrement, donc certains soldes de catégorie devront peut-être être ajustés après l’import."
+				},
+				{
+					"q": "Actual Budget a-t-il une application mobile ?",
+					"a": "Pas d’application native officielle : les anciennes applications mobiles sont dépréciées. L’application web est une Progressive Web App qui s’installe sur l’écran d’accueil de votre téléphone, et la communauté maintient des clients natifs non officiels."
+				},
+				{
+					"q": "Actual Budget prend-il en charge la synchronisation bancaire ?",
+					"a": "Oui, via un fournisseur auprès duquel vous vous inscrivez vous-même et dont vous ajoutez les clés d’API dans Actual : SimpleFIN Bridge pour l’Amérique du Nord, Enable Banking pour l’Europe, Pluggy.ai pour le Brésil et Akahu pour la Nouvelle-Zélande."
+				},
+				{
+					"q": "Plusieurs personnes peuvent-elles partager un même serveur Actual Budget ?",
+					"a": "Oui. Connectez un fournisseur OpenID et chaque personne se connecte avec son propre compte ; un administrateur donne ensuite à chaque utilisateur l’accès aux fichiers de budget qu’il doit voir."
+				}
+			]
 		},
 		"pl": {
 			"description": "Budżet kopertowy dla finansów osobistych, z synchronizacją",
-			"notes": "Otwórz adres projektu i na pierwszej stronie ustaw hasło serwera. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem utwórz plik budżetu albo zaimportuj gotowy."
+			"notes": "Otwórz adres projektu i na pierwszej stronie ustaw hasło serwera. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem utwórz plik budżetu albo zaimportuj gotowy.",
+			"sizing": "Actual Budget ma małe wymagania: około 200 MB pamięci, a lata transakcji zajmują znacznie poniżej 1 GB.",
+			"summary": "Hostuj u siebie Actual Budget: aplikację do budżetu kopertowego open source, local-first i alternatywę dla YNAB. Serwer synchronizacji w jeden klik.",
+			"about": [
+				"Actual Budget to aplikacja open source do budżetu kopertowego, której ludzie używają zamiast YNAB. Budżetujesz tylko pieniądze, które już masz: przychody trafiają do kategorii, aż To Budget spadnie do zera, a to, czego kategoria nie wyda, przechodzi na następny miesiąc. Transakcje wchodzą z plików bankowych w formacie CSV, QIF, OFX, QFX lub CAMT, a gdy je kategoryzujesz, Actual zapisuje reguły, które przypisują każdemu odbiorcy jego zwykłą kategorię.",
+				"Aplikacja jest local-first. Każde urządzenie trzyma cały budżet i działa offline, a serwer synchronizacji dba o to, żeby urządzenia miały te same dane. Serwer hostujesz u siebie, żeby twoje finanse zostały na maszynie, którą kontrolujesz, a opcjonalne szyfrowanie end-to-end sprawia, że serwer nie może odczytać kwot. Haczyk dla dbających o prywatność: klucze synchronizacji bankowej leżą na serwerze poza tym szyfrowaniem, więc może je odczytać każdy, kto ten serwer prowadzi."
+			],
+			"faq": [
+				{
+					"q": "Czy Actual Budget jest darmowy i open source?",
+					"a": "Tak. Actual Budget jest darmowy i open source, na licencji MIT. Jego oficjalna hostowana subskrypcja zakończyła działanie w 2024 roku, więc dziś serwer synchronizacji uruchamiasz sam albo ktoś hostuje go dla ciebie."
+				},
+				{
+					"q": "Czy mogę zaimportować budżet z YNAB do Actual Budget?",
+					"a": "Tak. Actual ma importery dla YNAB4 i nYNAB, które zachowują twoją historię; nYNAB wchodzi jako eksport JSON twojego budżetu. Actual inaczej traktuje płatności kartą kredytową, więc po imporcie salda niektórych kategorii mogą wymagać korekty."
+				},
+				{
+					"q": "Czy Actual Budget ma aplikację mobilną?",
+					"a": "Nie oficjalną natywną: dawne aplikacje mobilne są oznaczone jako przestarzałe. Aplikacja webowa to Progressive Web App, którą zainstalujesz na ekranie głównym telefonu, a społeczność utrzymuje nieoficjalne klienty natywne."
+				},
+				{
+					"q": "Czy Actual Budget obsługuje synchronizację z bankiem?",
+					"a": "Tak, przez dostawcę, u którego rejestrujesz się sam i którego klucze API dodajesz w Actual: SimpleFIN Bridge dla Ameryki Północnej, Enable Banking dla Europy, Pluggy.ai dla Brazylii i Akahu dla Nowej Zelandii."
+				},
+				{
+					"q": "Czy kilka osób może korzystać z jednego serwera Actual Budget?",
+					"a": "Tak. Podłącz dostawcę OpenID, a każda osoba zaloguje się własnym kontem; administrator nadaje potem każdemu użytkownikowi dostęp do plików budżetu, które ma widzieć."
+				}
+			]
 		},
 		"pt": {
 			"description": "Orçamento por envelopes para finanças pessoais, com sincronização",
-			"notes": "Abra o endereço e defina a senha do servidor na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois crie um arquivo de orçamento ou importe um."
+			"notes": "Abra o endereço e defina a senha do servidor na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois crie um arquivo de orçamento ou importe um.",
+			"sizing": "Actual Budget é leve: cerca de 200 MB de memória, e anos de transações ocupam bem menos de 1 GB.",
+			"summary": "Auto-hospede o Actual Budget: orçamento por envelopes de código aberto, local-first e alternativa ao YNAB. O servidor de sincronização, em um clique.",
+			"about": [
+				"O Actual Budget é um app de orçamento por envelopes de código aberto que as pessoas usam no lugar do YNAB. Você só orça o dinheiro que já tem: a renda vai para categorias até o To Budget chegar a zero, e o que uma categoria não gasta passa para o mês seguinte. As transações entram a partir de arquivos de banco nos formatos CSV, QIF, OFX, QFX ou CAMT, e, conforme você as categoriza, o Actual cria regras que dão a cada beneficiário a categoria de sempre.",
+				"O app é local-first. Cada dispositivo guarda o orçamento inteiro e funciona offline, enquanto o servidor de sincronização mantém os dispositivos em dia. Quem auto-hospeda esse servidor mantém as finanças em uma máquina que controla, e a criptografia de ponta a ponta opcional impede que o servidor leia os números. Um porém para quem se preocupa com privacidade: as chaves da sincronização bancária ficam no servidor, fora dessa criptografia, então quem administra o servidor consegue lê-las."
+			],
+			"faq": [
+				{
+					"q": "O Actual Budget é gratuito e de código aberto?",
+					"a": "Sim. O Actual Budget é gratuito e de código aberto, sob a licença MIT. A assinatura hospedada oficial foi encerrada em 2024, então hoje você roda o servidor de sincronização por conta própria ou pede para alguém hospedá-lo."
+				},
+				{
+					"q": "Posso importar meu orçamento do YNAB para o Actual Budget?",
+					"a": "Sim. O Actual tem importadores para YNAB4 e nYNAB que mantêm seu histórico; o nYNAB entra como uma exportação JSON do seu orçamento. O Actual trata pagamentos de cartão de crédito de outro jeito, então alguns saldos de categoria podem precisar de ajuste depois da importação."
+				},
+				{
+					"q": "O Actual Budget tem app para celular?",
+					"a": "Não um nativo oficial: os apps móveis antigos estão obsoletos. O app web é um Progressive Web App que se instala na tela inicial do celular, e a comunidade mantém clientes nativos não oficiais."
+				},
+				{
+					"q": "O Actual Budget oferece sincronização bancária?",
+					"a": "Sim, por meio de um provedor em que você mesmo se cadastra e cujas chaves de API você adiciona no Actual: SimpleFIN Bridge para a América do Norte, Enable Banking para a Europa, Pluggy.ai para o Brasil e Akahu para a Nova Zelândia."
+				},
+				{
+					"q": "Várias pessoas podem compartilhar um servidor do Actual Budget?",
+					"a": "Sim. Conecte um provedor OpenID e cada pessoa entra com a própria conta; depois um administrador dá a cada usuário acesso aos arquivos de orçamento que ele deve ver."
+				}
+			]
 		},
 		"ru": {
 			"description": "Бюджет по методу конвертов для личных финансов, с синхронизацией",
-			"notes": "Откройте адрес и задайте пароль сервера на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем создайте файл бюджета или импортируйте готовый."
+			"notes": "Откройте адрес и задайте пароль сервера на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем создайте файл бюджета или импортируйте готовый.",
+			"sizing": "Actual Budget: небольшие требования — около 200 MB памяти, а годы транзакций занимают намного меньше 1 GB.",
+			"summary": "Self-hosted Actual Budget — open source приложение для бюджета по методу конвертов, local-first, альтернатива YNAB. Сервер синхронизации в один клик.",
+			"about": [
+				"Actual Budget — это open source приложение для бюджета по методу конвертов, которое люди используют вместо YNAB. Вы распределяете только те деньги, которые у вас уже есть: доходы раскладываются по категориям, пока To Budget не обнулится, а то, что категория не потратила, переходит на следующий месяц. Транзакции попадают в приложение из банковских файлов в формате CSV, QIF, OFX, QFX или CAMT, а по мере того как вы их категоризируете, Actual создает правила, которые назначают каждому получателю его обычную категорию.",
+				"Приложение local-first. Каждое устройство хранит весь бюджет и работает офлайн, а сервер синхронизации следит, чтобы данные на устройствах совпадали. Этот сервер хостят у себя, чтобы финансы оставались на машине, которую вы контролируете, а необязательное сквозное шифрование не дает серверу прочитать цифры. Но есть нюанс для тех, кто заботится о приватности: ключи банковской синхронизации лежат на сервере вне этого шифрования, поэтому их может прочитать любой, кто этот сервер администрирует."
+			],
+			"faq": [
+				{
+					"q": "Actual Budget бесплатный и с открытым кодом?",
+					"a": "Да. Actual Budget бесплатный и с открытым кодом, лицензия MIT. Официальный хостинг по подписке закрылся в 2024 году, поэтому сегодня сервер синхронизации вы запускаете сами или просите кого-то его захостить."
+				},
+				{
+					"q": "Можно ли импортировать бюджет из YNAB в Actual Budget?",
+					"a": "Да. В Actual есть импорт из YNAB4 и nYNAB, который сохраняет вашу историю; nYNAB загружается из JSON-экспорта вашего бюджета. Actual по-другому обрабатывает платежи по кредитным картам, поэтому после импорта остатки в некоторых категориях, возможно, придется поправить."
+				},
+				{
+					"q": "Есть ли у Actual Budget мобильное приложение?",
+					"a": "Официального нативного нет: старые мобильные приложения помечены как deprecated. Веб-приложение — это Progressive Web App, его можно установить на главный экран телефона, а сообщество поддерживает неофициальные нативные клиенты."
+				},
+				{
+					"q": "Поддерживает ли Actual Budget синхронизацию с банком?",
+					"a": "Да, через провайдера, у которого вы регистрируетесь сами и API-ключи которого добавляете в Actual: SimpleFIN Bridge для Северной Америки, Enable Banking для Европы, Pluggy.ai для Бразилии и Akahu для Новой Зеландии."
+				},
+				{
+					"q": "Могут ли несколько человек пользоваться одним сервером Actual Budget?",
+					"a": "Да. Подключите провайдер OpenID, и каждый человек будет входить под своим аккаунтом; затем администратор выдает каждому пользователю доступ к тем файлам бюджета, которые ему нужно видеть."
+				}
+			]
 		},
 		"uk": {
 			"description": "Бюджет за методом конвертів для особистих фінансів, із синхронізацією",
-			"notes": "Відкрийте адресу й задайте пароль сервера на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім створіть файл бюджету або імпортуйте наявний."
+			"notes": "Відкрийте адресу й задайте пароль сервера на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім створіть файл бюджету або імпортуйте наявний.",
+			"sizing": "Actual Budget має скромні вимоги: близько 200 MB пам’яті, а роки транзакцій займають значно менше 1 GB.",
+			"summary": "Self-hosted Actual Budget — бюджет за методом конвертів із відкритим кодом, local-first, альтернатива YNAB. Сервер синхронізації в один клік.",
+			"about": [
+				"Actual Budget — це застосунок із відкритим кодом для бюджету за методом конвертів, яким люди користуються замість YNAB. Ви розподіляєте лише ті гроші, які вже маєте: доходи розкладаються за категоріями, доки To Budget не обнулиться, а те, що категорія не витратила, переходить на наступний місяць. Транзакції потрапляють у застосунок із банківських файлів у форматі CSV, QIF, OFX, QFX або CAMT, а коли ви їх категоризуєте, Actual створює правила, що призначають кожному отримувачу його звичайну категорію.",
+				"Застосунок local-first. Кожен пристрій зберігає весь бюджет і працює офлайн, а сервер синхронізації стежить, щоб дані на пристроях збігалися. Цей сервер хостять у себе, щоб фінанси залишалися на машині, яку ви контролюєте, а необов’язкове наскрізне шифрування не дає серверу прочитати цифри. Але є нюанс для тих, хто дбає про приватність: ключі банківської синхронізації лежать на сервері поза цим шифруванням, тож їх може прочитати кожен, хто цей сервер адмініструє."
+			],
+			"faq": [
+				{
+					"q": "Actual Budget безплатний і з відкритим кодом?",
+					"a": "Так. Actual Budget безплатний і має відкритий код за ліцензією MIT. Офіційний хостинг за підпискою закрився 2024 року, тому сьогодні сервер синхронізації ви запускаєте самі або просите когось його захостити."
+				},
+				{
+					"q": "Чи можна імпортувати бюджет із YNAB в Actual Budget?",
+					"a": "Так. В Actual є імпорт із YNAB4 і nYNAB, який зберігає вашу історію; nYNAB завантажується з JSON-експорту вашого бюджету. Actual інакше обробляє платежі кредитними картками, тому після імпорту залишки в деяких категоріях, можливо, доведеться підправити."
+				},
+				{
+					"q": "Чи є в Actual Budget мобільний застосунок?",
+					"a": "Офіційного нативного немає: старі мобільні застосунки позначені як deprecated. Вебзастосунок — це Progressive Web App, його можна встановити на головний екран телефона, а спільнота підтримує неофіційні нативні клієнти."
+				},
+				{
+					"q": "Чи підтримує Actual Budget синхронізацію з банком?",
+					"a": "Так, через провайдера, у якого ви реєструєтеся самі й API-ключі якого додаєте в Actual: SimpleFIN Bridge для Північної Америки, Enable Banking для Європи, Pluggy.ai для Бразилії та Akahu для Нової Зеландії."
+				},
+				{
+					"q": "Чи можуть кілька людей користуватися одним сервером Actual Budget?",
+					"a": "Так. Підключіть провайдера OpenID, і кожна людина входитиме під власним акаунтом; потім адміністратор надає кожному користувачеві доступ до тих файлів бюджету, які йому потрібно бачити."
+				}
+			]
 		}
 	}
 }

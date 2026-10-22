@@ -1,6 +1,13 @@
 {
 	"name": "linkding",
 	"emoji": "🔖",
+	"category": "reading",
+	"alternatives": [
+		"Pinboard",
+		"Raindrop.io",
+		"Pocket"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "linkding",
 		"port": 9090
@@ -22,35 +29,259 @@
 	"texts": {
 		"en": {
 			"description": "A bookmark manager with tags and search",
-			"notes": "Sign in with the username and password you gave. The password is changed in linkding’s own settings: the one in .env is read only once."
+			"notes": "Sign in with the username and password you gave. The password is changed in linkding’s own settings: the one in .env is read only once.",
+			"sizing": "linkding is light: about 150 MB of memory, and tens of thousands of bookmarks take well under a gigabyte.",
+			"summary": "linkding is an open-source bookmark manager and Pinboard alternative. Self-host it with Docker Compose on your own machine in one click.",
+			"about": [
+				"linkding is an open-source bookmark manager that people run in place of Pinboard. Save a link and it fetches the page's title, description and icon; you file it under tags and find it again by search. A bookmark can carry Markdown notes or be marked to read later, and a selection can be edited in bulk. Extensions for Firefox and Chrome, a bookmarklet and a REST API save links from anywhere.",
+				"People self-host it to keep their links on a server they control. It is designed to be minimal and fast, and updates migrate the database by themselves, so an instance needs little care. Several people can share one linkding instance, each with their own bookmarks, and pass chosen ones to each other or to guests. The catch is the phone: there is no official app."
+			],
+			"faq": [
+				{
+					"q": "Is linkding free and open source?",
+					"a": "Yes. linkding is open source under the MIT license, so anyone can use it, change it and run it on their own server for free."
+				},
+				{
+					"q": "Is linkding a good Pinboard alternative?",
+					"a": "Yes, if you want a fast, plain list of links that you tag and search. Import reads a Netscape HTML bookmarks file with its tags, and can bring bookmarks marked public in as shared ones."
+				},
+				{
+					"q": "Is there a linkding app for iPhone or Android?",
+					"a": "Not an official one. Community apps such as LinkBuddy and Linkdy run on both, and on Android the installed web app shows up in the share sheet."
+				},
+				{
+					"q": "Can I move my Pocket saves to linkding?",
+					"a": "Yes, if you kept your Pocket export. The community tool Pocket2Linkding turns its CSV files into HTML files that linkding imports, keeping your tags and the date each link was saved."
+				},
+				{
+					"q": "Can linkding archive web pages?",
+					"a": "Yes. This template's standard image can snapshot each bookmark on the Wayback Machine, and the SingleFile extension uploads local HTML copies. Server-made copies need the latest-plus image, which runs Chromium and needs at least 1 GB of RAM."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Lesezeichenmanager mit Tags und Suche",
-			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast. Das Passwort änderst du in den Einstellungen von linkding selbst: Das aus der .env wird nur einmal gelesen."
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast. Das Passwort änderst du in den Einstellungen von linkding selbst: Das aus der .env wird nur einmal gelesen.",
+			"sizing": "linkding ist leicht: etwa 150 MB RAM, und Zehntausende Lesezeichen brauchen weit unter 1 GB.",
+			"summary": "linkding selbst hosten: Open-Source-Lesezeichenmanager und Alternative zu Pinboard. Mit Docker Compose auf deiner eigenen Maschine, in einem Klick.",
+			"about": [
+				"linkding ist ein Open-Source-Lesezeichenmanager, den Leute statt Pinboard betreiben. Du speicherst einen Link, und linkding holt sich Titel, Beschreibung und Icon der Seite; du ordnest ihn mit Tags ein und findest ihn per Suche wieder. Ein Lesezeichen kann Notizen in Markdown tragen oder zum späteren Lesen markiert werden, und eine Auswahl lässt sich gesammelt bearbeiten. Mit Erweiterungen für Firefox und Chrome, einem Bookmarklet und einer REST-API speicherst du Links von überall.",
+				"Du hostest linkding selbst, damit deine Links auf einem Server liegen, den du kontrollierst. Es ist bewusst minimal und schnell gehalten, und Updates migrieren die Datenbank von selbst, sodass eine Instanz wenig Pflege braucht. Mehrere Personen können sich eine linkding-Instanz teilen, jede mit eigenen Lesezeichen, und ausgewählte untereinander oder an Gäste weitergeben. Der Haken ist das Handy: Es gibt keine offizielle App."
+			],
+			"faq": [
+				{
+					"q": "Ist linkding kostenlos und Open Source?",
+					"a": "Ja. linkding ist Open Source unter der MIT-Lizenz, also dürfen alle es nutzen, ändern und kostenlos auf dem eigenen Server betreiben."
+				},
+				{
+					"q": "Ist linkding eine gute Alternative zu Pinboard?",
+					"a": "Ja, wenn du eine schnelle, schlichte Linkliste willst, die du mit Tags versiehst und durchsuchst. Der Import liest eine HTML-Lesezeichendatei im Netscape-Format samt Tags und kann Lesezeichen, die als öffentlich markiert sind, als geteilte übernehmen."
+				},
+				{
+					"q": "Gibt es eine linkding-App für iPhone oder Android?",
+					"a": "Keine offizielle. Community-Apps wie LinkBuddy und Linkdy laufen auf beiden, und unter Android erscheint die installierte Web-App im Teilen-Menü."
+				},
+				{
+					"q": "Kann ich meine Pocket-Links in linkding übernehmen?",
+					"a": "Ja, wenn du deinen Pocket-Export aufgehoben hast. Das Community-Tool Pocket2Linkding macht aus den CSV-Dateien HTML-Dateien, die linkding importiert, und behält deine Tags und das Datum, an dem du jeden Link gespeichert hast."
+				},
+				{
+					"q": "Kann linkding Webseiten archivieren?",
+					"a": "Ja. Das Standard-Image dieser Vorlage kann von jedem Lesezeichen einen Snapshot in der Wayback Machine anlegen, und die Erweiterung SingleFile lädt lokale HTML-Kopien hoch. Vom Server erstellte Kopien brauchen das latest-plus-Image, das Chromium startet und mindestens 1 GB RAM benötigt."
+				}
+			]
 		},
 		"es": {
 			"description": "Un administrador de marcadores con etiquetas y búsqueda",
-			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste. La contraseña se cambia en los ajustes del propio linkding: la de .env se lee una sola vez."
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste. La contraseña se cambia en los ajustes del propio linkding: la de .env se lee una sola vez.",
+			"sizing": "linkding es ligero: unos 150 MB de memoria, y decenas de miles de marcadores ocupan bastante menos de 1 GB.",
+			"summary": "Autoaloja linkding, gestor de marcadores de código abierto y alternativa a Pinboard. Con Docker Compose en tu propia máquina, en un clic.",
+			"about": [
+				"linkding es un gestor de marcadores de código abierto que la gente usa en lugar de Pinboard. Guardas un enlace y linkding obtiene el título, la descripción y el icono de la página; lo organizas con etiquetas y lo encuentras después con la búsqueda. Un marcador puede llevar notas en Markdown o marcarse para leer más tarde, y una selección se puede editar en bloque. Con las extensiones para Firefox y Chrome, un bookmarklet y una API REST guardas enlaces desde cualquier sitio.",
+				"Autoalojas linkding para tener tus enlaces en un servidor que controlas tú. Está pensado para ser mínimo y rápido, y las actualizaciones migran la base de datos solas, así que una instancia pide poco mantenimiento. Varias personas pueden compartir una misma instancia de linkding, cada una con sus propios marcadores, y pasar los que elijan a las demás o a invitados. El inconveniente es el teléfono: no hay una app oficial."
+			],
+			"faq": [
+				{
+					"q": "¿linkding es gratis y de código abierto?",
+					"a": "Sí. linkding es de código abierto con licencia MIT, así que cualquiera puede usarlo, modificarlo y ejecutarlo gratis en su propio servidor."
+				},
+				{
+					"q": "¿linkding es una buena alternativa a Pinboard?",
+					"a": "Sí, si quieres una lista de enlaces rápida y sencilla que etiquetas y en la que buscas. La importación lee un archivo HTML de marcadores en formato Netscape con sus etiquetas, y puede traer como compartidos los que estaban marcados como públicos."
+				},
+				{
+					"q": "¿Hay una app de linkding para iPhone o Android?",
+					"a": "Oficial, no. Hay apps de la comunidad, como LinkBuddy y Linkdy, que funcionan en ambos, y en Android la app web instalada aparece en el menú de compartir."
+				},
+				{
+					"q": "¿Puedo llevar a linkding lo que guardé en Pocket?",
+					"a": "Sí, si conservaste tu exportación de Pocket. La herramienta de la comunidad Pocket2Linkding convierte sus archivos CSV en archivos HTML que linkding importa, y conserva tus etiquetas y la fecha en que guardaste cada enlace."
+				},
+				{
+					"q": "¿linkding puede archivar páginas web?",
+					"a": "Sí. La imagen estándar de esta plantilla puede guardar un snapshot de cada marcador en la Wayback Machine, y la extensión SingleFile sube copias HTML locales. Las copias hechas por el servidor necesitan la imagen latest-plus, que ejecuta Chromium y requiere al menos 1 GB de RAM."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un gestionnaire de favoris avec tags et recherche",
-			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis. Le mot de passe se modifie dans les paramètres de linkding lui-même : celui du .env n’est lu qu’une seule fois."
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis. Le mot de passe se modifie dans les paramètres de linkding lui-même : celui du .env n’est lu qu’une seule fois.",
+			"sizing": "linkding est léger : environ 150 MB de mémoire, et des dizaines de milliers de favoris pèsent bien moins de 1 GB.",
+			"summary": "Auto-hébergez linkding, gestionnaire de favoris open source et alternative à Pinboard, avec Docker Compose sur votre propre machine, en un clic.",
+			"about": [
+				"linkding est un gestionnaire de favoris open source que beaucoup utilisent à la place de Pinboard. Vous enregistrez un lien et linkding récupère le titre, la description et l’icône de la page ; vous le classez avec des tags et le retrouvez par la recherche. Un favori peut porter des notes en Markdown ou être marqué à lire plus tard, et une sélection se modifie en lot. Des extensions pour Firefox et Chrome, un bookmarklet et une API REST enregistrent des liens depuis n’importe où.",
+				"Vous auto-hébergez linkding pour garder vos liens sur un serveur que vous contrôlez. Il est conçu pour rester minimal et rapide, et les mises à jour migrent la base de données toutes seules, donc une instance demande peu de soins. Plusieurs personnes peuvent partager une même instance de linkding, chacune avec ses propres favoris, et en transmettre certains aux autres ou à des invités. Le hic, c’est le téléphone : il n’y a pas d’application officielle."
+			],
+			"faq": [
+				{
+					"q": "linkding est-il gratuit et open source ?",
+					"a": "Oui. linkding est open source sous licence MIT : chacun peut l’utiliser, le modifier et le faire tourner gratuitement sur son propre serveur."
+				},
+				{
+					"q": "linkding est-il une bonne alternative à Pinboard ?",
+					"a": "Oui, si vous voulez une liste de liens simple et rapide, classée par tags et consultable par recherche. L’import lit un fichier HTML de favoris au format Netscape avec ses tags, et peut importer comme partagés les favoris marqués publics."
+				},
+				{
+					"q": "Existe-t-il une application linkding pour iPhone ou Android ?",
+					"a": "Pas d’application officielle. Des applications de la communauté, comme LinkBuddy et Linkdy, fonctionnent sur les deux, et sur Android l’application web installée apparaît dans le menu de partage."
+				},
+				{
+					"q": "Puis-je transférer mes liens Pocket vers linkding ?",
+					"a": "Oui, si vous avez gardé votre export Pocket. L’outil communautaire Pocket2Linkding transforme ses fichiers CSV en fichiers HTML que linkding importe, en conservant vos tags et la date d’enregistrement de chaque lien."
+				},
+				{
+					"q": "linkding peut-il archiver des pages web ?",
+					"a": "Oui. L’image standard de ce template peut prendre un snapshot de chaque favori sur la Wayback Machine, et l’extension SingleFile envoie des copies HTML locales. Les copies faites par le serveur demandent l’image latest-plus, qui fait tourner Chromium et exige au moins 1 GB de RAM."
+				}
+			]
 		},
 		"pl": {
 			"description": "Menedżer zakładek z tagami i wyszukiwaniem",
-			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu. Hasło zmienisz w ustawieniach samej aplikacji linkding: to z .env jest odczytywane tylko raz."
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu. Hasło zmienisz w ustawieniach samej aplikacji linkding: to z .env jest odczytywane tylko raz.",
+			"sizing": "linkding ma małe wymagania: około 150 MB pamięci, a dziesiątki tysięcy zakładek zajmują znacznie poniżej 1 GB.",
+			"summary": "Hostuj linkding u siebie: menedżer zakładek open source i alternatywa dla Pinboarda. Z Docker Compose na własnej maszynie, w jeden klik.",
+			"about": [
+				"linkding to menedżer zakładek open source, z którego wiele osób korzysta zamiast Pinboarda. Zapisujesz link, a linkding pobiera tytuł, opis i ikonę strony; porządkujesz go tagami i znajdujesz ponownie wyszukiwaniem. Zakładka może mieć notatki w Markdown albo być oznaczona do przeczytania później, a zaznaczone zakładki można edytować zbiorczo. Rozszerzenia dla Chrome i Firefoksa, bookmarklet i REST API zapisują linki z dowolnego miejsca.",
+				"linkding hostujesz u siebie, żeby linki leżały na serwerze, który kontrolujesz. Aplikacja ma być minimalna i szybka, a aktualizacje same migrują bazę danych, więc instancja wymaga niewielkiej opieki. Kilka osób może dzielić jedną instancję linkding, każda z własnymi zakładkami, i przekazywać wybrane sobie nawzajem albo gościom. Haczyk to telefon: nie ma oficjalnej aplikacji."
+			],
+			"faq": [
+				{
+					"q": "Czy linkding jest darmowy i open source?",
+					"a": "Tak. linkding jest open source na licencji MIT, więc każdy może go używać, zmieniać i uruchamiać za darmo na własnym serwerze."
+				},
+				{
+					"q": "Czy linkding to dobra alternatywa dla Pinboarda?",
+					"a": "Tak, jeśli chcesz szybką, prostą listę linków, które tagujesz i przeszukujesz. Import czyta plik HTML z zakładkami w formacie Netscape razem z tagami, a zakładki oznaczone jako publiczne może przenieść jako udostępnione."
+				},
+				{
+					"q": "Czy linkding ma aplikację na iPhone’a lub Androida?",
+					"a": "Oficjalnej nie ma. Aplikacje społeczności, takie jak LinkBuddy i Linkdy, działają na obu systemach, a na Androidzie zainstalowana aplikacja webowa pojawia się w menu udostępniania."
+				},
+				{
+					"q": "Czy mogę przenieść do linkding zapisane linki z Pocket?",
+					"a": "Tak, jeśli masz zachowany eksport z Pocket. Narzędzie społeczności Pocket2Linkding zamienia jego pliki CSV na pliki HTML, które linkding importuje, zachowując twoje tagi i datę zapisania każdego linku."
+				},
+				{
+					"q": "Czy linkding potrafi archiwizować strony internetowe?",
+					"a": "Tak. Standardowy obraz z tego szablonu potrafi zrobić snapshot każdej zakładki w Wayback Machine, a rozszerzenie SingleFile wysyła lokalne kopie HTML. Kopie robione przez serwer wymagają obrazu latest-plus, który uruchamia Chromium i potrzebuje co najmniej 1 GB RAM."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um gerenciador de favoritos com tags e busca",
-			"notes": "Entre com o usuário e a senha que você definiu. A senha é alterada nas configurações do próprio linkding: a do .env só é lida uma vez."
+			"notes": "Entre com o usuário e a senha que você definiu. A senha é alterada nas configurações do próprio linkding: a do .env só é lida uma vez.",
+			"sizing": "linkding é leve: cerca de 150 MB de memória, e dezenas de milhares de favoritos ocupam bem menos de 1 GB.",
+			"summary": "Auto-hospede o linkding, gerenciador de favoritos de código aberto e alternativa ao Pinboard. Com Docker Compose na sua máquina, em um clique.",
+			"about": [
+				"O linkding é um gerenciador de favoritos de código aberto que muita gente usa no lugar do Pinboard. Você salva um link e ele busca o título, a descrição e o ícone da página; você o organiza com tags e o encontra de novo pela busca. Um favorito pode ter notas em Markdown ou ser marcado para ler depois, e uma seleção pode ser editada em lote. Extensões para Firefox e Chrome, um bookmarklet e uma API REST salvam links de qualquer lugar.",
+				"Auto-hospedar o linkding mantém seus links em um servidor que você controla. Ele foi pensado para ser mínimo e rápido, e as atualizações migram o banco de dados sozinhas, então uma instância pede pouco cuidado. Várias pessoas podem compartilhar uma mesma instância do linkding, cada uma com seus próprios favoritos, e repassar alguns escolhidos umas às outras ou a convidados. O porém é o celular: não há app oficial."
+			],
+			"faq": [
+				{
+					"q": "O linkding é gratuito e de código aberto?",
+					"a": "Sim. O linkding é de código aberto sob a licença MIT, então qualquer pessoa pode usá-lo, alterá-lo e rodá-lo de graça no próprio servidor."
+				},
+				{
+					"q": "O linkding é uma boa alternativa ao Pinboard?",
+					"a": "Sim, se você quer uma lista de links rápida e simples, que você organiza com tags e consulta pela busca. A importação lê um arquivo HTML de favoritos no formato Netscape com as tags, e pode trazer como compartilhados os favoritos marcados como públicos."
+				},
+				{
+					"q": "Existe um app do linkding para iPhone ou Android?",
+					"a": "Oficial, não. Apps da comunidade, como LinkBuddy e Linkdy, rodam nos dois, e no Android o app web instalado aparece no menu de compartilhamento."
+				},
+				{
+					"q": "Posso levar o que salvei no Pocket para o linkding?",
+					"a": "Sim, se você guardou sua exportação do Pocket. A ferramenta da comunidade Pocket2Linkding transforma os arquivos CSV dela em arquivos HTML que o linkding importa, mantendo suas tags e a data em que cada link foi salvo."
+				},
+				{
+					"q": "O linkding consegue arquivar páginas da web?",
+					"a": "Sim. A imagem padrão deste template pode tirar um snapshot de cada favorito na Wayback Machine, e a extensão SingleFile envia cópias HTML locais. As cópias feitas pelo servidor exigem a imagem latest-plus, que roda o Chromium e precisa de pelo menos 1 GB de RAM."
+				}
+			]
 		},
 		"ru": {
 			"description": "Менеджер закладок с тегами и поиском",
-			"notes": "Войдите с именем пользователя и паролем, которые вы задали. Пароль меняется в настройках самого linkding: тот, что в .env, читается только один раз."
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали. Пароль меняется в настройках самого linkding: тот, что в .env, читается только один раз.",
+			"sizing": "linkding: небольшие требования — около 150 MB памяти, а десятки тысяч закладок занимают намного меньше 1 GB.",
+			"summary": "Self-hosted linkding — open source менеджер закладок и альтернатива Pinboard. Запускается в Docker Compose на вашей машине в один клик.",
+			"about": [
+				"linkding — это open source менеджер закладок, который многие используют вместо Pinboard. Вы сохраняете ссылку, и linkding подтягивает название, описание и иконку страницы; раскладываете ее по тегам и потом находите поиском. К закладке можно добавить заметки в Markdown или пометить ее для чтения позже, а выбранные закладки можно изменять массово. Расширения для Firefox и Chrome, bookmarklet и REST API сохраняют ссылки откуда угодно.",
+				"Чтобы ссылки лежали на сервере, который вы контролируете, linkding хостят у себя. Он задуман минимальным и быстрым, а обновления сами мигрируют базу данных, поэтому экземпляр почти не требует ухода. Несколько человек могут делить один экземпляр linkding, у каждого свои закладки, и выбранные они передают друг другу или гостям. Подвох — телефон: официального приложения нет."
+			],
+			"faq": [
+				{
+					"q": "linkding бесплатный и с открытым кодом?",
+					"a": "Да. linkding распространяется с открытым кодом под лицензией MIT, поэтому любой может пользоваться им, менять его и бесплатно запускать на собственном сервере."
+				},
+				{
+					"q": "Подходит ли linkding как альтернатива Pinboard?",
+					"a": "Да, если вам нужен быстрый и простой список ссылок с тегами и поиском. Импорт читает HTML-файл закладок в формате Netscape вместе с тегами и умеет делать общими закладки, помеченные как публичные."
+				},
+				{
+					"q": "Есть ли приложение linkding для iPhone или Android?",
+					"a": "Официального нет. Приложения от сообщества, например LinkBuddy и Linkdy, работают на обеих платформах, а на Android установленное веб-приложение появляется в меню «Поделиться»."
+				},
+				{
+					"q": "Можно ли перенести сохраненное из Pocket в linkding?",
+					"a": "Да, если у вас остался экспорт из Pocket. Инструмент от сообщества Pocket2Linkding превращает его CSV-файлы в HTML-файлы, которые импортирует linkding, и сохраняет ваши теги и дату сохранения каждой ссылки."
+				},
+				{
+					"q": "Умеет ли linkding архивировать веб-страницы?",
+					"a": "Да. Стандартный образ этого шаблона может сохранять снимок каждой закладки в Wayback Machine, а расширение SingleFile загружает локальные HTML-копии. Копиям, которые делает сервер, нужен образ latest-plus: он запускает Chromium и требует не менее 1 GB RAM."
+				}
+			]
 		},
 		"uk": {
 			"description": "Менеджер закладок із тегами й пошуком",
-			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали. Пароль змінюють у налаштуваннях самого linkding: той, що в .env, читається лише раз."
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали. Пароль змінюють у налаштуваннях самого linkding: той, що в .env, читається лише раз.",
+			"sizing": "linkding має скромні вимоги: близько 150 MB пам’яті, а десятки тисяч закладок займають значно менше 1 GB.",
+			"summary": "Self-hosted linkding — менеджер закладок із відкритим кодом і альтернатива Pinboard. Запускається в Docker Compose на вашій машині в один клік.",
+			"about": [
+				"linkding — це менеджер закладок із відкритим кодом, який багато хто використовує замість Pinboard. Ви зберігаєте посилання, і linkding підтягує назву, опис та іконку сторінки; розкладаєте його за тегами й потім знаходите пошуком. До закладки можна додати нотатки в Markdown або позначити її для читання пізніше, а вибрані закладки можна змінювати масово. Розширення для Firefox і Chrome, bookmarklet та REST API зберігають посилання звідусіль.",
+				"Щоб посилання лежали на сервері, який ви контролюєте, linkding хостять у себе. Він задуманий мінімальним і швидким, а оновлення самі мігрують базу даних, тож екземпляр майже не потребує догляду. Кілька людей можуть ділити один екземпляр linkding, у кожного свої закладки, і вибрані вони передають одне одному або гостям. Підступ — телефон: офіційного застосунку немає."
+			],
+			"faq": [
+				{
+					"q": "linkding безплатний і з відкритим кодом?",
+					"a": "Так. linkding має відкритий код за ліцензією MIT, тож будь-хто може користуватися ним, змінювати його й безплатно запускати на власному сервері."
+				},
+				{
+					"q": "Чи підходить linkding як альтернатива Pinboard?",
+					"a": "Так, якщо вам потрібен швидкий і простий список посилань із тегами та пошуком. Імпорт читає HTML-файл закладок у форматі Netscape разом із тегами й уміє робити спільними закладки, позначені як публічні."
+				},
+				{
+					"q": "Чи є застосунок linkding для iPhone або Android?",
+					"a": "Офіційного немає. Застосунки від спільноти, як-от LinkBuddy і Linkdy, працюють на обох платформах, а на Android встановлений вебзастосунок з’являється в меню «Поділитися»."
+				},
+				{
+					"q": "Чи можна перенести збережене з Pocket у linkding?",
+					"a": "Так, якщо у вас лишився експорт із Pocket. Інструмент від спільноти Pocket2Linkding перетворює його CSV-файли на HTML-файли, які імпортує linkding, і зберігає ваші теги та дату збереження кожного посилання."
+				},
+				{
+					"q": "Чи вміє linkding архівувати вебсторінки?",
+					"a": "Так. Стандартний образ цього шаблону може зберігати знімок кожної закладки у Wayback Machine, а розширення SingleFile завантажує локальні HTML-копії. Копіям, які робить сервер, потрібен образ latest-plus: він запускає Chromium і вимагає щонайменше 1 GB RAM."
+				}
+			]
 		}
 	}
 }

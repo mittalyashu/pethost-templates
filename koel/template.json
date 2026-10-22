@@ -1,6 +1,11 @@
 {
 	"name": "Koel",
 	"emoji": "🎵",
+	"category": "media",
+	"alternatives": [
+		"Spotify"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "koel",
 		"port": 80
@@ -30,35 +35,259 @@
 	"texts": {
 		"en": {
 			"description": "Your music library streamed to the browser and the phone apps, a personal Spotify",
-			"notes": "Sign in with the email and the admin password you gave. Upload songs in Koel, or copy them into the project’s music volume and scan the library in Settings."
+			"notes": "Sign in with the email and the admin password you gave. Upload songs in Koel, or copy them into the project’s music volume and scan the library in Settings.",
+			"sizing": "Koel is light: about 150 MB with Postgres; the disk is your music, and a few hundred MP3 albums fit.",
+			"summary": "Koel is an open-source music streaming server for the songs you own, a self-hosted Spotify alternative. Run it with Docker in one click.",
+			"about": [
+				"Koel is an open-source music streaming server, a self-hosted Spotify alternative for the songs you own. Give it a folder of music files or drag them into the browser, and it sorts them into artists, albums and genres, with playlists and smart playlists. FLAC streams as it is, and formats browsers cannot play, such as AIFF and APE, are transcoded with FFmpeg. Songs can be cached in the browser for offline play, and podcasts and internet radio stations sit beside your music.",
+				"People run Koel so that a collection they bought or ripped plays anywhere, with no subscription. It suits one listener or a household: each person gets an account with private playlists and favorites. The catch is that in the free Community edition every account sees the same library, and a separate library per person needs Koel Plus, the paid edition."
+			],
+			"faq": [
+				{
+					"q": "Is Koel free and open source?",
+					"a": "Yes. Koel is open source under the MIT license, and its Community edition is free. Koel Plus, a one-time purchase, adds cloud storage such as S3 or Dropbox, single sign-on, custom themes and an AI assistant."
+				},
+				{
+					"q": "Does Koel have a mobile app?",
+					"a": "Yes. Koel Player is the official app for iOS and Android, a paid download that funds the project. Any Subsonic or OpenSubsonic client, such as Symfonium, Amperfy or substreamer, also works with your email and Subsonic API key."
+				},
+				{
+					"q": "Can Koel replace Spotify?",
+					"a": "For music you own, yes: your files stream to the browser and to phone apps wherever you are. It has no catalogue of its own, so it plays only the songs you add."
+				},
+				{
+					"q": "What is the default Koel login?",
+					"a": "The official Docker image creates admin@koel.dev with the password KoelIsCool. This template changes that first admin to the email and password you enter when you deploy, so the default pair never works."
+				},
+				{
+					"q": "How do I add music to Koel?",
+					"a": "Drag files into the web interface, or copy them into the music volume and click Save & Scan in Settings. For a large library, run php artisan koel:scan as www-data in the web terminal, since browser scans can time out."
+				}
+			]
 		},
 		"de": {
 			"description": "Deine Musiksammlung als Stream im Browser und in den Handy-Apps, ein persönliches Spotify",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an. Lade Songs in Koel hoch oder kopier sie ins Volume music des Projekts und scanne die Bibliothek in den Settings."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an. Lade Songs in Koel hoch oder kopier sie ins Volume music des Projekts und scanne die Bibliothek in den Settings.",
+			"sizing": "Koel ist leicht: etwa 150 MB mit Postgres; die Disk ist deine Musik, ein paar hundert MP3-Alben passen drauf.",
+			"summary": "Koel selbst hosten: Open-Source-Musikserver zum Streamen deiner eigenen Songs, eine Alternative zu Spotify. Mit Docker in einem Klick.",
+			"about": [
+				"Koel ist ein Open-Source-Musikserver zum Streamen, eine selbst gehostete Spotify-Alternative für die Songs, die du besitzt. Gib ihm einen Ordner mit Musikdateien oder zieh sie in den Browser, und er sortiert sie nach Künstlern, Alben und Genres, mit Playlists und Smart Playlists. FLAC wird unverändert gestreamt, und Formate, die Browser nicht abspielen können, etwa AIFF und APE, werden mit FFmpeg transcodiert. Songs lassen sich im Browser für die Offline-Wiedergabe zwischenspeichern, und neben deiner Musik gibt es Podcasts und Internetradiosender.",
+				"Viele hosten Koel selbst, damit eine gekaufte oder gerippte Sammlung überall abspielbar ist, ohne Abo. Er passt zu einer einzelnen Person oder einem Haushalt: Jede Person bekommt ein Konto mit privaten Playlists und Favoriten. Der Haken: In der kostenlosen Community-Edition sehen alle Konten dieselbe Bibliothek, und eine eigene Bibliothek pro Person gibt es erst mit Koel Plus, der kostenpflichtigen Edition."
+			],
+			"faq": [
+				{
+					"q": "Ist Koel kostenlos und Open Source?",
+					"a": "Ja. Koel ist Open Source unter der MIT-Lizenz, und die Community-Edition ist kostenlos. Koel Plus, ein Einmalkauf, ergänzt Cloud-Speicher wie S3 oder Dropbox, Single Sign-on, eigene Themes und einen KI-Assistenten."
+				},
+				{
+					"q": "Hat Koel eine Handy-App?",
+					"a": "Ja. Koel Player ist die offizielle App für iOS und Android, ein kostenpflichtiger Download, der das Projekt finanziert. Auch jeder Subsonic- oder OpenSubsonic-Client wie Symfonium, Amperfy oder substreamer funktioniert, mit deiner E-Mail-Adresse und deinem Subsonic-API-Key."
+				},
+				{
+					"q": "Kann Koel Spotify ersetzen?",
+					"a": "Für Musik, die dir gehört, ja: Deine Dateien werden überall an den Browser und an Handy-Apps gestreamt. Koel hat keinen eigenen Katalog und spielt nur die Songs ab, die du hinzufügst."
+				},
+				{
+					"q": "Wie lautet der Standard-Login von Koel?",
+					"a": "Das offizielle Docker-Image legt admin@koel.dev mit dem Passwort KoelIsCool an. Diese Vorlage ändert den ersten Admin auf die E-Mail-Adresse und das Passwort, die du beim Deploy eingibst, sodass das Standardpaar nie funktioniert."
+				},
+				{
+					"q": "Wie füge ich Musik zu Koel hinzu?",
+					"a": "Zieh Dateien in die Weboberfläche oder kopier sie ins Volume music und klick in den Settings auf Save & Scan. Bei einer großen Bibliothek führst du im Web-Terminal php artisan koel:scan als www-data aus, denn Scans über den Browser können mit einem Timeout abbrechen."
+				}
+			]
 		},
 		"es": {
 			"description": "Tu biblioteca de música en streaming en el navegador y en las apps del móvil, un Spotify personal",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste. Sube canciones en Koel, o cópialas en el volumen music del proyecto y escanea la biblioteca en Settings."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste. Sube canciones en Koel, o cópialas en el volumen music del proyecto y escanea la biblioteca en Settings.",
+			"sizing": "Koel es ligero: unos 150 MB con Postgres; el disco es tu música, y caben unos cientos de álbumes en MP3.",
+			"summary": "Autoaloja Koel: un servidor de streaming de música de código abierto para tus canciones, una alternativa a Spotify. Ejecútalo con Docker en un clic.",
+			"about": [
+				"Koel es un servidor de streaming de música de código abierto, una alternativa autoalojada a Spotify para las canciones que tienes. Dale una carpeta con archivos de música o arrástralos al navegador, y los ordena en artistas, álbumes y géneros, con listas de reproducción y listas inteligentes. FLAC se transmite tal cual, y los formatos que los navegadores no pueden reproducir, como AIFF y APE, se transcodifican con FFmpeg. Las canciones se pueden guardar en caché en el navegador para escucharlas sin conexión, y los podcasts y las emisoras de radio por internet conviven con tu música.",
+				"Quienes autoalojan Koel lo hacen para que una colección comprada o copiada de CD suene en cualquier lugar, sin suscripción. Va bien para una sola persona o para un hogar: cada persona tiene una cuenta con listas de reproducción y favoritos privados. El inconveniente: en la edición Community gratuita todas las cuentas ven la misma biblioteca, y una biblioteca separada por persona requiere Koel Plus, la edición de pago."
+			],
+			"faq": [
+				{
+					"q": "¿Koel es gratis y de código abierto?",
+					"a": "Sí. Koel es de código abierto bajo la licencia MIT, y su edición Community es gratis. Koel Plus, una compra única, agrega almacenamiento en la nube como S3 o Dropbox, inicio de sesión único, temas personalizados y un asistente de IA."
+				},
+				{
+					"q": "¿Koel tiene una app para el teléfono?",
+					"a": "Sí. Koel Player es la app oficial para iOS y Android, una descarga de pago que financia el proyecto. También funciona cualquier cliente Subsonic u OpenSubsonic, como Symfonium, Amperfy o substreamer, con tu correo y tu clave de API de Subsonic."
+				},
+				{
+					"q": "¿Koel puede reemplazar a Spotify?",
+					"a": "Para la música que tienes, sí: tus archivos se transmiten al navegador y a las apps del teléfono estés donde estés. No tiene un catálogo propio, así que solo reproduce las canciones que agregas."
+				},
+				{
+					"q": "¿Cuál es el inicio de sesión predeterminado de Koel?",
+					"a": "La imagen oficial de Docker crea admin@koel.dev con la contraseña KoelIsCool. Esta plantilla cambia ese primer administrador por el correo y la contraseña que escribes al desplegar, así que el par predeterminado nunca funciona."
+				},
+				{
+					"q": "¿Cómo agrego música a Koel?",
+					"a": "Arrastra archivos a la interfaz web, o cópialos en el volumen music y haz clic en Save & Scan en Settings. Para una biblioteca grande, ejecuta php artisan koel:scan como www-data desde tu terminal web, porque los escaneos desde el navegador pueden agotar el tiempo de espera."
+				}
+			]
 		},
 		"fr": {
 			"description": "Votre bibliothèque musicale en streaming dans le navigateur et les apps mobiles, un Spotify personnel",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Envoyez des morceaux dans Koel, ou copiez-les dans le volume music du projet et scannez la bibliothèque dans Settings."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Envoyez des morceaux dans Koel, ou copiez-les dans le volume music du projet et scannez la bibliothèque dans Settings.",
+			"sizing": "Koel est léger : environ 150 MB avec Postgres ; le disque, c’est votre musique, et quelques centaines d’albums MP3 y tiennent.",
+			"summary": "Auto-hébergez Koel : un serveur de streaming musical open source pour vos propres morceaux, une alternative à Spotify. Lancez-le avec Docker en un clic.",
+			"about": [
+				"Koel est un serveur de streaming musical open source, une alternative auto-hébergée à Spotify pour les morceaux que vous possédez. Donnez-lui un dossier de fichiers musicaux ou glissez-les dans le navigateur, et il les range par artistes, albums et genres, avec des playlists et des playlists intelligentes. Le FLAC est diffusé tel quel, et les formats que les navigateurs ne savent pas lire, comme l’AIFF et l’APE, sont transcodés avec FFmpeg. Les morceaux peuvent être mis en cache dans le navigateur pour une écoute hors ligne, et les podcasts et les radios web côtoient votre musique.",
+				"Vous auto-hébergez Koel pour qu’une collection achetée ou extraite de CD se lise partout, sans abonnement. Il convient à une seule personne ou à un foyer : chaque personne a un compte avec ses playlists et ses favoris privés. Le revers : dans l’édition Community gratuite, tous les comptes voient la même bibliothèque, et une bibliothèque distincte par personne demande Koel Plus, l’édition payante."
+			],
+			"faq": [
+				{
+					"q": "Koel est-il gratuit et open source ?",
+					"a": "Oui. Koel est open source sous licence MIT, et son édition Community est gratuite. Koel Plus, un achat unique, ajoute le stockage dans le cloud, comme S3 ou Dropbox, l’authentification unique, des thèmes personnalisés et un assistant IA."
+				},
+				{
+					"q": "Koel a-t-il une application mobile ?",
+					"a": "Oui. Koel Player est l’application officielle pour iOS et Android, un téléchargement payant qui finance le projet. Tout client Subsonic ou OpenSubsonic, comme Symfonium, Amperfy ou substreamer, fonctionne aussi avec votre e-mail et votre clé d’API Subsonic."
+				},
+				{
+					"q": "Koel peut-il remplacer Spotify ?",
+					"a": "Pour la musique que vous possédez, oui : vos fichiers sont diffusés vers le navigateur et les applications mobiles où que vous soyez. Il n’a pas de catalogue à lui et ne lit que les morceaux que vous ajoutez."
+				},
+				{
+					"q": "Quel est l’identifiant de connexion par défaut de Koel ?",
+					"a": "L’image Docker officielle crée admin@koel.dev avec le mot de passe KoelIsCool. Ce template remplace ce premier administrateur par l’e-mail et le mot de passe que vous saisissez au déploiement, si bien que le couple par défaut ne fonctionne jamais."
+				},
+				{
+					"q": "Comment ajouter de la musique à Koel ?",
+					"a": "Glissez des fichiers dans l’interface web, ou copiez-les dans le volume music et cliquez sur Save & Scan dans Settings. Pour une grande bibliothèque, lancez php artisan koel:scan en tant que www-data dans le terminal web, car les scans lancés depuis le navigateur peuvent expirer."
+				}
+			]
 		},
 		"pl": {
 			"description": "Własna biblioteka muzyki strumieniowana do przeglądarki i aplikacji na telefon, osobisty Spotify",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano. Wgraj utwory w Koel albo skopiuj je do wolumenu music projektu i przeskanuj bibliotekę w Settings."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano. Wgraj utwory w Koel albo skopiuj je do wolumenu music projektu i przeskanuj bibliotekę w Settings.",
+			"sizing": "Koel ma małe wymagania: około 150 MB z Postgresem; dysk to twoja muzyka, mieści się kilkaset albumów MP3.",
+			"summary": "Hostuj Koel u siebie: serwer streamingu muzyki open source dla twoich własnych utworów, alternatywa dla Spotify. Uruchom w Dockerze jednym kliknięciem.",
+			"about": [
+				"Koel to serwer do streamingu muzyki open source, alternatywa dla Spotify do hostowania u siebie, dla utworów, które posiadasz. Daj mu katalog z plikami muzycznymi albo przeciągnij je do przeglądarki, a posortuje je według wykonawców, albumów i gatunków, z playlistami i inteligentnymi playlistami. FLAC jest streamowany bez zmian, a formaty, których przeglądarki nie odtwarzają, jak AIFF i APE, są transkodowane przez FFmpeg. Utwory można zapisywać w pamięci podręcznej przeglądarki, żeby odtwarzać je offline, a podcasty i internetowe stacje radiowe znajdziesz obok swojej muzyki.",
+				"Ludzie hostują Koel u siebie, żeby kupiona lub zgrana kolekcja grała wszędzie, bez subskrypcji. Pasuje do jednego słuchacza albo do domowników: każda osoba ma konto z prywatnymi playlistami i ulubionymi. Haczyk: w darmowej edycji Community wszystkie konta widzą tę samą bibliotekę, a osobna biblioteka dla każdej osoby wymaga Koel Plus, płatnej edycji."
+			],
+			"faq": [
+				{
+					"q": "Czy Koel jest darmowy i open source?",
+					"a": "Tak. Koel jest open source na licencji MIT, a jego edycja Community jest darmowa. Koel Plus, kupowany jednorazowo, dodaje przechowywanie w chmurze, na przykład S3 lub Dropbox, logowanie jednokrotne (SSO), własne motywy i asystenta AI."
+				},
+				{
+					"q": "Czy Koel ma aplikację mobilną?",
+					"a": "Tak. Koel Player to oficjalna aplikacja na iOS i Androida, płatna, a wpływy z niej finansują projekt. Działa też każdy klient Subsonic lub OpenSubsonic, na przykład Symfonium, Amperfy czy substreamer, z twoim adresem e-mail i kluczem API Subsonic."
+				},
+				{
+					"q": "Czy Koel może zastąpić Spotify?",
+					"a": "W przypadku muzyki, którą posiadasz, tak: twoje pliki są streamowane do przeglądarki i aplikacji na telefon, gdziekolwiek jesteś. Koel nie ma własnego katalogu, więc odtwarza tylko utwory, które dodasz."
+				},
+				{
+					"q": "Jaki jest domyślny login do Koel?",
+					"a": "Oficjalny obraz Dockera tworzy admin@koel.dev z hasłem KoelIsCool. Ten szablon zmienia tego pierwszego administratora na adres e-mail i hasło, które podasz przy wdrożeniu, więc domyślna para nigdy nie działa."
+				},
+				{
+					"q": "Jak dodać muzykę do Koel?",
+					"a": "Przeciągnij pliki do interfejsu webowego albo skopiuj je do wolumenu music i kliknij Save & Scan w Settings. Przy dużej bibliotece uruchom w terminalu webowym php artisan koel:scan jako www-data, bo skanowanie z przeglądarki może się zakończyć przekroczeniem limitu czasu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Sua biblioteca de música em streaming no navegador e nos apps do celular, um Spotify pessoal",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou. Envie músicas pelo Koel, ou copie-as para o volume music do projeto e escaneie a biblioteca em Settings."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou. Envie músicas pelo Koel, ou copie-as para o volume music do projeto e escaneie a biblioteca em Settings.",
+			"sizing": "Koel é leve: cerca de 150 MB com o Postgres; o disco é a sua música, e cabem algumas centenas de álbuns em MP3.",
+			"summary": "Hospede o Koel por conta própria: servidor de streaming de música de código aberto para suas músicas, alternativa ao Spotify. Rode com Docker em um clique.",
+			"about": [
+				"O Koel é um servidor de streaming de música de código aberto, uma alternativa ao Spotify para hospedar por conta própria, para as músicas que você tem. Dê a ele uma pasta com arquivos de música ou arraste-os para o navegador, e ele os organiza em artistas, álbuns e gêneros, com playlists e playlists inteligentes. O FLAC faz streaming como está, e os formatos que os navegadores não tocam, como AIFF e APE, são transcodificados com o FFmpeg. As músicas podem ficar em cache no navegador para ouvir offline, e podcasts e rádios da internet ficam ao lado da sua música.",
+				"As pessoas hospedam o Koel por conta própria para que uma coleção comprada ou extraída de CDs toque em qualquer lugar, sem assinatura. Serve para uma pessoa só ou para uma casa: cada pessoa ganha uma conta com playlists e favoritos privados. O porém: na edição Community gratuita todas as contas veem a mesma biblioteca, e uma biblioteca separada para cada pessoa exige o Koel Plus, a edição paga."
+			],
+			"faq": [
+				{
+					"q": "O Koel é gratuito e de código aberto?",
+					"a": "Sim. O Koel é de código aberto sob a licença MIT, e a edição Community é gratuita. O Koel Plus, uma compra única, adiciona armazenamento na nuvem, como S3 ou Dropbox, login único, temas personalizados e um assistente de IA."
+				},
+				{
+					"q": "O Koel tem app para celular?",
+					"a": "Sim. O Koel Player é o app oficial para iOS e Android, um download pago que financia o projeto. Qualquer cliente Subsonic ou OpenSubsonic, como Symfonium, Amperfy ou substreamer, também funciona, com o seu e-mail e a chave de API do Subsonic."
+				},
+				{
+					"q": "O Koel pode substituir o Spotify?",
+					"a": "Para a música que você tem, sim: seus arquivos fazem streaming para o navegador e para os apps de celular, onde quer que você esteja. Ele não tem catálogo próprio, então só toca as músicas que você adiciona."
+				},
+				{
+					"q": "Qual é o login padrão do Koel?",
+					"a": "A imagem oficial do Docker cria admin@koel.dev com a senha KoelIsCool. Este template troca esse primeiro administrador pelo e-mail e pela senha que você informa ao fazer o deploy, então o par padrão nunca funciona."
+				},
+				{
+					"q": "Como adiciono músicas ao Koel?",
+					"a": "Arraste arquivos para a interface web, ou copie-os para o volume music e clique em Save & Scan em Settings. Para uma biblioteca grande, rode php artisan koel:scan como www-data no terminal web, porque os scans pelo navegador podem dar timeout."
+				}
+			]
 		},
 		"ru": {
 			"description": "Ваша музыкальная библиотека стримится в браузер и мобильные приложения — личный Spotify",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали. Загружайте песни в Koel или скопируйте их в том music проекта и просканируйте библиотеку в Settings."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали. Загружайте песни в Koel или скопируйте их в том music проекта и просканируйте библиотеку в Settings.",
+			"sizing": "Koel: небольшие требования — около 150 MB вместе с Postgres; диск занимает ваша музыка, несколько сотен альбомов в MP3 поместятся.",
+			"summary": "Self-hosted Koel — сервер стриминга музыки с открытым кодом для ваших песен, альтернатива Spotify. Запустите в Docker в один клик.",
+			"about": [
+				"Koel — музыкальный сервер с открытым исходным кодом для стриминга, self-hosted альтернатива Spotify для песен, которые у вас есть. Отдайте ему папку с музыкальными файлами или перетащите файлы в браузер, и он разложит их по исполнителям, альбомам и жанрам, с плейлистами и умными плейлистами. FLAC стримится как есть, а форматы, которые браузеры не умеют воспроизводить, например AIFF и APE, транскодируются через FFmpeg. Песни можно кешировать в браузере для прослушивания офлайн, а рядом с музыкой в нем живут подкасты и интернет-радиостанции.",
+				"Koel хостят у себя, чтобы купленная или оцифрованная с дисков коллекция играла где угодно и без подписки. Он подходит одному слушателю или семье: у каждого человека свой аккаунт с личными плейлистами и избранным. Подвох: в бесплатной версии Community у всех аккаунтов одна общая библиотека, а отдельная библиотека для каждого человека есть только в Koel Plus, платной версии."
+			],
+			"faq": [
+				{
+					"q": "Koel бесплатный и с открытым исходным кодом?",
+					"a": "Да. Koel распространяется с открытым исходным кодом под лицензией MIT, а версия Community бесплатна. Koel Plus, который покупается один раз, добавляет облачные хранилища вроде S3 или Dropbox, единый вход (SSO), собственные темы и ИИ-ассистента."
+				},
+				{
+					"q": "Есть ли у Koel мобильное приложение?",
+					"a": "Да. Koel Player — официальное приложение для iOS и Android, платное: его покупки финансируют проект. Любой клиент Subsonic или OpenSubsonic, например Symfonium, Amperfy или substreamer, тоже работает: нужны ваша почта и API-ключ Subsonic."
+				},
+				{
+					"q": "Может ли Koel заменить Spotify?",
+					"a": "Для музыки, которая у вас есть, да: ваши файлы стримятся в браузер и в мобильные приложения, где бы вы ни были. Собственного каталога у Koel нет, поэтому он играет только те песни, которые вы добавите."
+				},
+				{
+					"q": "Какой логин по умолчанию у Koel?",
+					"a": "Официальный Docker-образ создает admin@koel.dev с паролем KoelIsCool. Этот шаблон заменяет такого первого администратора на почту и пароль, которые вы вводите при деплое, поэтому пара по умолчанию никогда не работает."
+				},
+				{
+					"q": "Как добавить музыку в Koel?",
+					"a": "Перетащите файлы в веб-интерфейс или скопируйте их в том music и нажмите Save & Scan в Settings. Для большой библиотеки запустите php artisan koel:scan от имени www-data в веб-терминале: сканирование из браузера может прерваться по тайм-ауту."
+				}
+			]
 		},
 		"uk": {
 			"description": "Ваша музична бібліотека стримиться в браузер і мобільні застосунки — особистий Spotify",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали. Завантажуйте пісні в Koel або скопіюйте їх у том music проєкту й проскануйте бібліотеку в Settings."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали. Завантажуйте пісні в Koel або скопіюйте їх у том music проєкту й проскануйте бібліотеку в Settings.",
+			"sizing": "Koel має скромні вимоги: близько 150 MB з Postgres; диск — це ваша музика, там вміщаються кілька сотень альбомів MP3.",
+			"summary": "Self-hosted Koel — сервер стрімінгу музики з відкритим кодом для ваших пісень, альтернатива Spotify. Запустіть у Docker в один клік.",
+			"about": [
+				"Koel — музичний сервер з відкритим вихідним кодом для стрімінгу, self-hosted альтернатива Spotify для пісень, які у вас є. Дайте йому папку з музичними файлами або перетягніть файли в браузер, і він розкладе їх за виконавцями, альбомами та жанрами, з плейлистами й розумними плейлистами. FLAC стрімиться як є, а формати, які браузери не вміють відтворювати, як-от AIFF і APE, транскодуються через FFmpeg. Пісні можна кешувати в браузері для прослуховування офлайн, а поруч із музикою в ньому живуть подкасти та інтернет-радіостанції.",
+				"Koel хостять у себе, щоб куплена чи оцифрована з дисків колекція грала будь-де й без підписки. Він підходить одному слухачеві чи родині: кожна людина має акаунт з особистими плейлистами й обраним. Підвох: у безкоштовній версії Community в усіх акаунтів одна спільна бібліотека, а окрема бібліотека для кожної людини є лише в Koel Plus, платній версії."
+			],
+			"faq": [
+				{
+					"q": "Чи Koel безкоштовний і з відкритим кодом?",
+					"a": "Так. Koel має відкритий вихідний код за ліцензією MIT, а версія Community безкоштовна. Koel Plus, який купують один раз, додає хмарні сховища на кшталт S3 чи Dropbox, єдиний вхід (SSO), власні теми й ШІ-асистента."
+				},
+				{
+					"q": "Чи є в Koel мобільний застосунок?",
+					"a": "Так. Koel Player — офіційний застосунок для iOS і Android, платний: його покупки фінансують проєкт. Будь-який клієнт Subsonic чи OpenSubsonic, як-от Symfonium, Amperfy або substreamer, теж працює: потрібні ваша пошта й API-ключ Subsonic."
+				},
+				{
+					"q": "Чи може Koel замінити Spotify?",
+					"a": "Для музики, яка у вас є, так: Koel стрімить ваші файли в браузер і в мобільні застосунки, де б ви не були. Власного каталогу в нього немає, тож він грає лише ті пісні, які ви додасте."
+				},
+				{
+					"q": "Який у Koel типовий логін?",
+					"a": "Офіційний Docker-образ створює admin@koel.dev з паролем KoelIsCool. Цей шаблон змінює такого першого адміністратора на пошту й пароль, які ви вводите під час деплою, тому типова пара ніколи не працює."
+				},
+				{
+					"q": "Як додати музику в Koel?",
+					"a": "Перетягніть файли у вебінтерфейс або скопіюйте їх у том music і натисніть Save & Scan у Settings. Для великої бібліотеки запустіть php artisan koel:scan від імені www-data у вебтерміналі: сканування з браузера може завершитися за тайм-аутом."
+				}
+			]
 		}
 	}
 }

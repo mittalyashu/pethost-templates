@@ -1,6 +1,12 @@
 {
 	"name": "Open Design",
 	"emoji": "🎨",
+	"category": "ai",
+	"alternatives": [
+		"Claude Design",
+		"v0"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "open-design",
 		"port": 7456
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "Design with AI: prototypes, slides and pages from a prompt, an open alternative to Claude Design",
-			"notes": "The browser asks for a user name and a password: the user name is open-design, the password the one you gave. Then in Settings choose API provider and give your provider’s base URL, key and model."
+			"notes": "The browser asks for a user name and a password: the user name is open-design, the password the one you gave. Then in Settings choose API provider and give your provider’s base URL, key and model.",
+			"sizing": "Open Design is light: under 200 MB of memory, as the model runs at your provider; projects take little disk.",
+			"summary": "Self-host OpenDesign, the open-source Claude Design alternative: an AI model turns a brief into HTML prototypes, dashboards and decks on your server.",
+			"about": [
+				"OpenDesign is an open-source AI design tool and an alternative to Claude Design. You describe what you want, pick a design system, and an AI model writes it as working HTML in a live preview: web and mobile app prototypes, dashboards, landing pages, slide decks. A design system is a DESIGN.md file with a brand's colors, type, spacing and components, and over a hundred come with the app. You can then edit elements by hand and export the result as HTML, PDF or PNG.",
+				"People self-host OpenDesign to keep their projects on their own server and to pick the model: Anthropic, OpenAI, Google Gemini or any OpenAI-compatible endpoint. It is Apache 2.0 licensed, has no seat fee, and needs no coding to get a clickable prototype. The catch: your model provider bills every generation, and turning a prototype into a production app is still engineering work."
+			],
+			"faq": [
+				{
+					"q": "Is OpenDesign free and open source?",
+					"a": "Yes. OpenDesign is open source under the Apache 2.0 license and free to run with your own API key or coding agent, which bill you as usual. OpenDesign Cloud, its optional hosted model service, has paid plans with monthly credits."
+				},
+				{
+					"q": "OpenDesign vs Claude Design: what is the difference?",
+					"a": "Claude Design is Anthropic's hosted product. OpenDesign is open source, runs on your own computer or server, works with the model or coding agent you choose, and keeps designs as HTML files with a portable DESIGN.md for the brand."
+				},
+				{
+					"q": "Does OpenDesign work with Claude Code?",
+					"a": "Yes, in the desktop app, which runs Claude Code, Codex, Cursor and other coding agents already on your computer. The Docker image bundles no agent, so a server generates through a model provider's API with your key."
+				},
+				{
+					"q": "Can OpenDesign export to Figma?",
+					"a": "No, OpenDesign has no Figma export. It exports standalone HTML, PDF and PNG, and you can hand the project's files to a coding agent to keep building."
+				},
+				{
+					"q": "Does self-hosted OpenDesign have user accounts?",
+					"a": "No. A self-hosted OpenDesign is protected by one shared password, so everyone who has it works in the same workspace. Owner, Admin and Member roles come with OpenDesign's paid Team plan."
+				}
+			]
 		},
 		"de": {
 			"description": "Design mit KI: Prototypen, Folien und Seiten aus einem Prompt, eine offene Alternative zu Claude Design",
-			"notes": "Der Browser fragt nach Benutzername und Passwort: Der Benutzername ist open-design, das Passwort das angegebene. Wähl dann in den Settings „API provider“ und gib Base-URL, Key und Modell deines Anbieters an."
+			"notes": "Der Browser fragt nach Benutzername und Passwort: Der Benutzername ist open-design, das Passwort das angegebene. Wähl dann in den Settings „API provider“ und gib Base-URL, Key und Modell deines Anbieters an.",
+			"sizing": "Open Design ist leicht: unter 200 MB RAM, da das Modell bei deinem Anbieter läuft; Projekte brauchen wenig Disk.",
+			"summary": "OpenDesign selbst hosten, Open-Source-Alternative zu Claude Design: KI macht aus einem Briefing HTML-Prototypen, Dashboards und Folien auf deinem Server.",
+			"about": [
+				"OpenDesign ist ein Open-Source-Designtool mit KI und eine Alternative zu Claude Design. Du beschreibst, was du willst, wählst ein Designsystem, und ein KI-Modell schreibt es als funktionierendes HTML in einer Live-Vorschau: Prototypen für Web- und Mobile-Apps, Dashboards, Landingpages, Präsentationen. Ein Designsystem ist eine DESIGN.md-Datei mit Farben, Typografie, Abständen und Komponenten einer Marke, und über hundert gehören zur App. Danach kannst du Elemente von Hand bearbeiten und das Ergebnis als HTML, PDF oder PNG exportieren.",
+				"Du hostest OpenDesign selbst, damit deine Projekte auf deinem eigenen Server bleiben und du das Modell wählen kannst: Anthropic, OpenAI, Google Gemini oder jeder OpenAI-kompatible Endpoint. Es steht unter der Apache-2.0-Lizenz, hat keine Gebühr pro Nutzer, und für einen klickbaren Prototyp musst du nicht programmieren. Der Haken: Dein Modellanbieter berechnet jede Generierung, und aus einem Prototyp eine App für die Produktion zu machen, bleibt Engineering-Arbeit."
+			],
+			"faq": [
+				{
+					"q": "Ist OpenDesign kostenlos und Open Source?",
+					"a": "Ja. OpenDesign ist Open Source unter der Apache-2.0-Lizenz und kostenlos zu betreiben, mit deinem eigenen API-Key oder Coding-Agent, die dir wie gewohnt Kosten verursachen. OpenDesign Cloud, der optionale gehostete Modelldienst, hat kostenpflichtige Tarife mit monatlichen Credits."
+				},
+				{
+					"q": "OpenDesign oder Claude Design: Was ist der Unterschied?",
+					"a": "Claude Design ist das gehostete Produkt von Anthropic. OpenDesign ist Open Source, läuft auf deinem eigenen Rechner oder Server, funktioniert mit dem Modell oder dem Coding-Agent deiner Wahl und speichert Designs als HTML-Dateien mit einer portablen DESIGN.md für die Marke."
+				},
+				{
+					"q": "Funktioniert OpenDesign mit Claude Code?",
+					"a": "Ja, in der Desktop-App, die Claude Code, Codex, Cursor und andere Coding-Agenten nutzt, die schon auf deinem Rechner sind. Das Docker-Image bringt keinen Agenten mit, daher generiert ein Server über die API eines Modellanbieters mit deinem Key."
+				},
+				{
+					"q": "Kann OpenDesign nach Figma exportieren?",
+					"a": "Nein, OpenDesign hat keinen Figma-Export. Es exportiert eigenständiges HTML, PDF und PNG, und du kannst die Dateien des Projekts einem Coding-Agenten geben, damit er weiterbaut."
+				},
+				{
+					"q": "Hat selbst gehostetes OpenDesign Benutzerkonten?",
+					"a": "Nein. Ein selbst gehostetes OpenDesign ist durch ein gemeinsames Passwort geschützt, wer es kennt, arbeitet also im selben Workspace. Die Rollen Owner, Admin und Member gehören zum kostenpflichtigen Team-Tarif von OpenDesign."
+				}
+			]
 		},
 		"es": {
 			"description": "Diseño con IA: prototipos, diapositivas y páginas a partir de un prompt, una alternativa abierta a Claude Design",
-			"notes": "El navegador pide un usuario y una contraseña: el usuario es open-design y la contraseña, la que indicaste. Luego, en Settings, elige API provider y pon la URL base, la clave y el modelo de tu proveedor."
+			"notes": "El navegador pide un usuario y una contraseña: el usuario es open-design y la contraseña, la que indicaste. Luego, en Settings, elige API provider y pon la URL base, la clave y el modelo de tu proveedor.",
+			"sizing": "Open Design es ligero: menos de 200 MB de memoria, porque el modelo se ejecuta en tu proveedor; los proyectos ocupan poco disco.",
+			"summary": "Autoaloja OpenDesign, alternativa de código abierto a Claude Design: una IA convierte un brief en prototipos HTML, paneles y presentaciones en tu servidor.",
+			"about": [
+				"OpenDesign es una herramienta de diseño con IA de código abierto y una alternativa a Claude Design. Describes lo que quieres, eliges un sistema de diseño, y un modelo de IA lo escribe como HTML funcional en una vista previa en tiempo real: prototipos de apps web y móviles, paneles, landing pages, presentaciones. Un sistema de diseño es un archivo DESIGN.md con los colores, la tipografía, los espaciados y los componentes de una marca, y más de cien vienen con la app. Después puedes editar elementos a mano y exportar el resultado como HTML, PDF o PNG.",
+				"Quienes autoalojan OpenDesign quieren guardar sus proyectos en su propio servidor y elegir el modelo: Anthropic, OpenAI, Google Gemini o cualquier endpoint compatible con OpenAI. Tiene licencia Apache 2.0, no cobra por usuario y no hace falta programar para obtener un prototipo clicable. El inconveniente: tu proveedor de modelos cobra cada generación, y convertir un prototipo en una app de producción sigue siendo trabajo de ingeniería."
+			],
+			"faq": [
+				{
+					"q": "¿OpenDesign es gratis y de código abierto?",
+					"a": "Sí. OpenDesign es de código abierto bajo la licencia Apache 2.0 y se ejecuta gratis con tu propia clave de API o tu agente de programación, que te cobran como siempre. OpenDesign Cloud, su servicio opcional de modelos alojado, tiene planes de pago con créditos mensuales."
+				},
+				{
+					"q": "¿OpenDesign o Claude Design: qué diferencia hay?",
+					"a": "Claude Design es el producto alojado de Anthropic. OpenDesign es de código abierto, se ejecuta en tu propio equipo o servidor, funciona con el modelo o el agente de programación que elijas y guarda los diseños como archivos HTML con un DESIGN.md portable para la marca."
+				},
+				{
+					"q": "¿OpenDesign funciona con Claude Code?",
+					"a": "Sí, en la app de escritorio, que ejecuta Claude Code, Codex, Cursor y otros agentes de programación que ya tengas en tu equipo. La imagen de Docker no incluye ningún agente, así que un servidor genera a través de la API de un proveedor de modelos con tu clave."
+				},
+				{
+					"q": "¿OpenDesign puede exportar a Figma?",
+					"a": "No, OpenDesign no tiene exportación a Figma. Exporta HTML independiente, PDF y PNG, y puedes pasar los archivos del proyecto a un agente de programación para seguir construyendo."
+				},
+				{
+					"q": "¿OpenDesign autoalojado tiene cuentas de usuario?",
+					"a": "No. Un OpenDesign autoalojado se protege con una sola contraseña compartida, así que todas las personas que la tienen trabajan en el mismo espacio de trabajo. Los roles Owner, Admin y Member vienen con el plan Team de pago de OpenDesign."
+				}
+			]
 		},
 		"fr": {
 			"description": "Le design avec l’IA : prototypes, diapositives et pages à partir d’un prompt, une alternative ouverte à Claude Design",
-			"notes": "Le navigateur demande un nom d’utilisateur et un mot de passe : le nom est open-design, le mot de passe celui que vous avez indiqué. Ensuite, dans Settings, choisissez API provider et indiquez l’URL de base, la clé et le modèle de votre fournisseur."
+			"notes": "Le navigateur demande un nom d’utilisateur et un mot de passe : le nom est open-design, le mot de passe celui que vous avez indiqué. Ensuite, dans Settings, choisissez API provider et indiquez l’URL de base, la clé et le modèle de votre fournisseur.",
+			"sizing": "Open Design est léger : moins de 200 MB de mémoire, car le modèle tourne chez votre fournisseur ; peu de disque pour les projets.",
+			"summary": "Auto-hébergez OpenDesign, l’alternative open source à Claude Design : une IA transforme un brief en prototypes HTML, tableaux de bord et présentations.",
+			"about": [
+				"OpenDesign est un outil de design par IA open source et une alternative à Claude Design. Vous décrivez ce que vous voulez, choisissez un design system, et un modèle d’IA l’écrit sous forme de HTML fonctionnel dans un aperçu en direct : prototypes d’applications web et mobiles, tableaux de bord, landing pages, présentations. Un design system est un fichier DESIGN.md avec les couleurs, la typographie, les espacements et les composants d’une marque, et plus d’une centaine sont fournis avec l’application. Vous pouvez ensuite modifier les éléments à la main et exporter le résultat en HTML, PDF ou PNG.",
+				"Vous auto-hébergez OpenDesign pour garder vos projets sur votre propre serveur et choisir le modèle : Anthropic, OpenAI, Google Gemini ou tout endpoint compatible OpenAI. Il est sous licence Apache 2.0, sans frais par utilisateur, et il n’y a pas besoin de coder pour obtenir un prototype cliquable. Le revers : votre fournisseur de modèles facture chaque génération, et transformer un prototype en application de production reste du travail d’ingénierie."
+			],
+			"faq": [
+				{
+					"q": "OpenDesign est-il gratuit et open source ?",
+					"a": "Oui. OpenDesign est open source sous licence Apache 2.0 et gratuit à faire tourner avec votre propre clé d’API ou votre agent de code, qui vous sont facturés comme d’habitude. OpenDesign Cloud, son service de modèles hébergé et facultatif, propose des offres payantes avec des crédits mensuels."
+				},
+				{
+					"q": "OpenDesign ou Claude Design : quelle différence ?",
+					"a": "Claude Design est le produit hébergé d’Anthropic. OpenDesign est open source, tourne sur votre propre ordinateur ou serveur, fonctionne avec le modèle ou l’agent de code de votre choix et garde les designs sous forme de fichiers HTML, avec un DESIGN.md portable pour la marque."
+				},
+				{
+					"q": "OpenDesign fonctionne-t-il avec Claude Code ?",
+					"a": "Oui, dans l’application de bureau, qui fait tourner Claude Code, Codex, Cursor et d’autres agents de code déjà présents sur votre ordinateur. L’image Docker n’embarque aucun agent : un serveur génère donc via l’API d’un fournisseur de modèles, avec votre clé."
+				},
+				{
+					"q": "OpenDesign peut-il exporter vers Figma ?",
+					"a": "Non, OpenDesign n’a pas d’export vers Figma. Il exporte du HTML autonome, du PDF et du PNG, et vous pouvez confier les fichiers du projet à un agent de code pour continuer à construire."
+				},
+				{
+					"q": "OpenDesign auto-hébergé a-t-il des comptes utilisateurs ?",
+					"a": "Non. Un OpenDesign auto-hébergé est protégé par un seul mot de passe partagé : toutes les personnes qui l’ont travaillent dans le même espace de travail. Les rôles Owner, Admin et Member viennent avec l’offre Team payante d’OpenDesign."
+				}
+			]
 		},
 		"pl": {
 			"description": "Projektowanie z AI: prototypy, slajdy i strony z jednego promptu, otwarta alternatywa dla Claude Design",
-			"notes": "Przeglądarka poprosi o nazwę użytkownika i hasło: nazwa to open-design, a hasło to, które podano. Potem w Settings wybierz API provider i podaj bazowy URL, klucz i model swojego dostawcy."
+			"notes": "Przeglądarka poprosi o nazwę użytkownika i hasło: nazwa to open-design, a hasło to, które podano. Potem w Settings wybierz API provider i podaj bazowy URL, klucz i model swojego dostawcy.",
+			"sizing": "Open Design ma małe wymagania: poniżej 200 MB pamięci, bo model działa u twojego dostawcy; projekty zajmują mało miejsca na dysku.",
+			"summary": "Hostuj u siebie OpenDesign, otwartą alternatywę dla Claude Design: model AI zamienia brief w prototypy HTML, dashboardy i prezentacje na twoim serwerze.",
+			"about": [
+				"OpenDesign to narzędzie do projektowania z AI o otwartym kodzie i alternatywa dla Claude Design. Opisujesz, czego chcesz, wybierasz design system, a model AI zapisuje to jako działający HTML w podglądzie na żywo: prototypy aplikacji webowych i mobilnych, dashboardy, landing page’e, prezentacje. Design system to plik DESIGN.md z kolorami, typografią, odstępami i komponentami marki, a ponad sto z nich jest dołączonych do aplikacji. Potem możesz ręcznie edytować elementy i wyeksportować wynik jako HTML, PDF albo PNG.",
+				"OpenDesign hostuje się u siebie po to, żeby trzymać projekty na własnym serwerze i wybrać model: Anthropic, OpenAI, Google Gemini albo dowolny endpoint zgodny z OpenAI. Działa na licencji Apache 2.0, nie ma opłaty za użytkownika i nie trzeba programować, żeby dostać klikalny prototyp. Haczyk: dostawca modelu rozlicza każde generowanie, a zamiana prototypu w aplikację produkcyjną to nadal praca inżynierska."
+			],
+			"faq": [
+				{
+					"q": "Czy OpenDesign jest darmowy i open source?",
+					"a": "Tak. OpenDesign jest open source na licencji Apache 2.0 i można go uruchamiać za darmo z własnym kluczem API albo agentem do kodowania, za które płacisz jak zwykle. OpenDesign Cloud, jego opcjonalna hostowana usługa modeli, ma płatne plany z miesięcznymi kredytami."
+				},
+				{
+					"q": "OpenDesign czy Claude Design: jaka jest różnica?",
+					"a": "Claude Design to hostowany produkt Anthropic. OpenDesign jest open source, działa na twoim komputerze albo serwerze, współpracuje z modelem lub agentem do kodowania, który sam wybierzesz, i trzyma projekty jako pliki HTML z przenośnym DESIGN.md dla marki."
+				},
+				{
+					"q": "Czy OpenDesign działa z Claude Code?",
+					"a": "Tak, w aplikacji desktopowej, która uruchamia Claude Code, Codex, Cursor i innych agentów do kodowania, już zainstalowanych na twoim komputerze. Obraz Dockera nie zawiera żadnego agenta, więc serwer generuje przez API dostawcy modeli z twoim kluczem."
+				},
+				{
+					"q": "Czy OpenDesign eksportuje do Figmy?",
+					"a": "Nie, OpenDesign nie ma eksportu do Figmy. Eksportuje samodzielny HTML, PDF i PNG, a pliki projektu możesz przekazać agentowi do kodowania, żeby budował dalej."
+				},
+				{
+					"q": "Czy OpenDesign hostowany u siebie ma konta użytkowników?",
+					"a": "Nie. OpenDesign hostowany u siebie jest chroniony jednym wspólnym hasłem, więc każdy, kto je zna, pracuje w tej samej przestrzeni roboczej. Role Owner, Admin i Member są w płatnym planie Team OpenDesign."
+				}
+			]
 		},
 		"pt": {
 			"description": "Design com IA: protótipos, slides e páginas a partir de um prompt, uma alternativa aberta ao Claude Design",
-			"notes": "O navegador pede um nome de usuário e uma senha: o usuário é open-design e a senha, a que você informou. Depois, em Settings, escolha API provider e informe a URL base, a chave e o modelo do seu provedor."
+			"notes": "O navegador pede um nome de usuário e uma senha: o usuário é open-design e a senha, a que você informou. Depois, em Settings, escolha API provider e informe a URL base, a chave e o modelo do seu provedor.",
+			"sizing": "Open Design é leve: menos de 200 MB de memória, já que o modelo roda no seu provedor; os projetos ocupam pouco disco.",
+			"summary": "Auto-hospede o OpenDesign, alternativa de código aberto ao Claude Design: um modelo de IA faz protótipos HTML, dashboards e apresentações no seu servidor.",
+			"about": [
+				"O OpenDesign é uma ferramenta de design com IA de código aberto e uma alternativa ao Claude Design. Você descreve o que quer, escolhe um design system, e um modelo de IA escreve o resultado como HTML funcional em uma prévia ao vivo: protótipos de apps web e mobile, dashboards, landing pages, apresentações. Um design system é um arquivo DESIGN.md com as cores, a tipografia, os espaçamentos e os componentes de uma marca, e mais de cem vêm com o app. Depois você pode editar elementos à mão e exportar o resultado como HTML, PDF ou PNG.",
+				"Você hospeda o OpenDesign por conta própria para manter seus projetos no seu próprio servidor e escolher o modelo: Anthropic, OpenAI, Google Gemini ou qualquer endpoint compatível com a OpenAI. Ele tem licença Apache 2.0, não cobra por usuário e dispensa programação para ter um protótipo clicável. O porém: o provedor do modelo cobra cada geração, e transformar um protótipo em um app de produção continua sendo trabalho de engenharia."
+			],
+			"faq": [
+				{
+					"q": "O OpenDesign é gratuito e de código aberto?",
+					"a": "Sim. O OpenDesign é de código aberto sob a licença Apache 2.0 e gratuito para rodar com sua própria chave de API ou seu agente de programação, que continuam sendo cobrados como de costume. O OpenDesign Cloud, o serviço opcional de modelos hospedado, tem planos pagos com créditos mensais."
+				},
+				{
+					"q": "OpenDesign ou Claude Design: qual é a diferença?",
+					"a": "O Claude Design é o produto hospedado da Anthropic. O OpenDesign é de código aberto, roda no seu próprio computador ou servidor, funciona com o modelo ou o agente de programação que você escolher e guarda os designs como arquivos HTML, com um DESIGN.md portátil para a marca."
+				},
+				{
+					"q": "O OpenDesign funciona com o Claude Code?",
+					"a": "Sim, no app de desktop, que roda o Claude Code, o Codex, o Cursor e outros agentes de programação que já estão no seu computador. A imagem do Docker não traz nenhum agente, então um servidor gera pela API de um provedor de modelos, com a sua chave."
+				},
+				{
+					"q": "O OpenDesign exporta para o Figma?",
+					"a": "Não, o OpenDesign não tem exportação para o Figma. Ele exporta HTML independente, PDF e PNG, e você pode entregar os arquivos do projeto a um agente de programação para continuar construindo."
+				},
+				{
+					"q": "O OpenDesign auto-hospedado tem contas de usuário?",
+					"a": "Não. Um OpenDesign auto-hospedado é protegido por uma única senha compartilhada, então todos que a têm trabalham no mesmo espaço de trabalho. Os papéis Owner, Admin e Member vêm com o plano Team pago do OpenDesign."
+				}
+			]
 		},
 		"ru": {
 			"description": "Дизайн с ИИ: прототипы, слайды и страницы по промпту, открытая альтернатива Claude Design",
-			"notes": "Браузер спросит имя пользователя и пароль: имя — open-design, пароль — тот, что вы указали. Затем в Settings выберите API provider и укажите базовый URL, ключ и модель вашего провайдера."
+			"notes": "Браузер спросит имя пользователя и пароль: имя — open-design, пароль — тот, что вы указали. Затем в Settings выберите API provider и укажите базовый URL, ключ и модель вашего провайдера.",
+			"sizing": "Open Design: небольшие требования — менее 200 MB памяти, модель работает у вашего провайдера; проекты занимают мало диска.",
+			"summary": "Self-hosted OpenDesign, open source альтернатива Claude Design: ИИ-модель превращает бриф в HTML-прототипы, дашборды и презентации на вашем сервере.",
+			"about": [
+				"OpenDesign — это open source ИИ-инструмент для дизайна и альтернатива Claude Design. Вы описываете, что хотите, выбираете дизайн-систему, а ИИ-модель пишет это как рабочий HTML в живом превью: прототипы веб- и мобильных приложений, дашборды, лендинги, презентации. Дизайн-система — это файл DESIGN.md с цветами, шрифтами, отступами и компонентами бренда, и больше сотни их идет в комплекте с приложением. Затем можно править элементы вручную и экспортировать результат в HTML, PDF или PNG.",
+				"OpenDesign хостят у себя, чтобы держать проекты на собственном сервере и выбирать модель: Anthropic, OpenAI, Google Gemini или любой OpenAI-совместимый эндпоинт. Лицензия Apache 2.0, платы за пользователей нет, а чтобы получить кликабельный прототип, программировать не нужно. Но есть нюанс: провайдер модели списывает деньги за каждую генерацию, а превращение прототипа в приложение для продакшена по-прежнему остается инженерной работой."
+			],
+			"faq": [
+				{
+					"q": "OpenDesign бесплатный и с открытым исходным кодом?",
+					"a": "Да. OpenDesign — open source по лицензии Apache 2.0, и запускать его можно бесплатно со своим API-ключом или агентом, которые оплачиваются как обычно. OpenDesign Cloud, его необязательный облачный сервис моделей, имеет платные тарифы с ежемесячными кредитами."
+				},
+				{
+					"q": "OpenDesign или Claude Design: в чем разница?",
+					"a": "Claude Design — облачный продукт Anthropic. OpenDesign — open source, работает на вашем компьютере или сервере, подходит к любой модели или агенту на ваш выбор и хранит дизайны как HTML-файлы с переносимым DESIGN.md для бренда."
+				},
+				{
+					"q": "OpenDesign работает с Claude Code?",
+					"a": "Да, в десктопном приложении, которое запускает Claude Code, Codex, Cursor и других агентов, уже установленных на вашем компьютере. В Docker-образе агентов нет, поэтому сервер генерирует через API провайдера модели с вашим ключом."
+				},
+				{
+					"q": "Можно ли экспортировать из OpenDesign в Figma?",
+					"a": "Нет, экспорта в Figma в OpenDesign нет. Он экспортирует самостоятельный HTML, PDF и PNG, а файлы проекта можно передать агенту, чтобы он продолжил разработку."
+				},
+				{
+					"q": "Есть ли в self-hosted OpenDesign аккаунты пользователей?",
+					"a": "Нет. Self-hosted OpenDesign защищен одним общим паролем, поэтому все, у кого он есть, работают в одном рабочем пространстве. Роли Owner, Admin и Member входят в платный тариф Team у OpenDesign."
+				}
+			]
 		},
 		"uk": {
 			"description": "Дизайн з ШІ: прототипи, слайди й сторінки з промпту, відкрита альтернатива Claude Design",
-			"notes": "Браузер запитає ім’я користувача й пароль: ім’я — open-design, пароль — той, що ви вказали. Потім у Settings виберіть API provider і вкажіть базовий URL, ключ і модель вашого провайдера."
+			"notes": "Браузер запитає ім’я користувача й пароль: ім’я — open-design, пароль — той, що ви вказали. Потім у Settings виберіть API provider і вкажіть базовий URL, ключ і модель вашого провайдера.",
+			"sizing": "Open Design має скромні вимоги: менше 200 MB пам’яті, бо модель працює у вашого провайдера; проєкти займають мало місця на диску.",
+			"summary": "Self-hosted OpenDesign, альтернатива Claude Design з відкритим кодом: ШІ перетворює бриф на HTML-прототипи, дашборди й презентації на вашому сервері.",
+			"about": [
+				"OpenDesign — це ШІ-інструмент для дизайну з відкритим кодом і альтернатива Claude Design. Ви описуєте, що хочете, обираєте дизайн-систему, а ШІ-модель пише це як робочий HTML у живому прев’ю: прототипи вебзастосунків і мобільних застосунків, дашборди, лендінги, презентації. Дизайн-система — це файл DESIGN.md з кольорами, шрифтами, відступами та компонентами бренду, і понад сотню їх іде в комплекті із застосунком. Потім можна редагувати елементи вручну й експортувати результат у HTML, PDF або PNG.",
+				"OpenDesign хостять у себе, щоб тримати проєкти на власному сервері й обирати модель: Anthropic, OpenAI, Google Gemini або будь-який OpenAI-сумісний ендпоінт. Ліцензія Apache 2.0, плати за користувачів немає, а щоб отримати клікабельний прототип, програмувати не треба. Але є нюанс: провайдер моделі виставляє рахунок за кожну генерацію, а перетворення прототипу на застосунок для продакшену й надалі лишається інженерною роботою."
+			],
+			"faq": [
+				{
+					"q": "Чи OpenDesign безкоштовний і з відкритим кодом?",
+					"a": "Так. OpenDesign має відкритий код за ліцензією Apache 2.0 і безкоштовний у запуску зі своїм API-ключем або агентом, які оплачуються як зазвичай. OpenDesign Cloud, його необов’язковий хмарний сервіс моделей, має платні тарифи з щомісячними кредитами."
+				},
+				{
+					"q": "OpenDesign чи Claude Design: яка різниця?",
+					"a": "Claude Design — хмарний продукт Anthropic. OpenDesign має відкритий код, працює на вашому комп’ютері чи сервері, підходить до будь-якої моделі чи агента на ваш вибір і зберігає дизайни як HTML-файли з переносним DESIGN.md для бренду."
+				},
+				{
+					"q": "Чи працює OpenDesign з Claude Code?",
+					"a": "Так, у десктопному застосунку, який запускає Claude Code, Codex, Cursor та інших агентів, що вже встановлені на вашому комп’ютері. У Docker-образі агентів немає, тому сервер генерує через API провайдера моделі з вашим ключем."
+				},
+				{
+					"q": "Чи можна експортувати з OpenDesign у Figma?",
+					"a": "Ні, експорту у Figma в OpenDesign немає. Він експортує самостійний HTML, PDF і PNG, а файли проєкту можна передати агентові, щоб він продовжив розробку."
+				},
+				{
+					"q": "Чи є в self-hosted OpenDesign акаунти користувачів?",
+					"a": "Ні. Self-hosted OpenDesign захищений одним спільним паролем, тож усі, хто його має, працюють в одному робочому просторі. Ролі Owner, Admin і Member входять у платний тариф Team в OpenDesign."
+				}
+			]
 		}
 	}
 }

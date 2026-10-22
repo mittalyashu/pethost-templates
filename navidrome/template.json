@@ -1,6 +1,11 @@
 {
 	"name": "Navidrome",
 	"emoji": "🎵",
+	"category": "media",
+	"alternatives": [
+		"Spotify"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "navidrome",
 		"port": 4533
@@ -14,35 +19,259 @@
 	"texts": {
 		"en": {
 			"description": "A music server that streams your own collection",
-			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address. Music goes into /music in the navidrome service: upload files in its Files tab or copy folders over SFTP, and Navidrome finds them by itself. Subsonic apps on a phone connect to https://{host}."
+			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address. Music goes into /music in the navidrome service: upload files in its Files tab or copy folders over SFTP, and Navidrome finds them by itself. Subsonic apps on a phone connect to https://{host}.",
+			"sizing": "Navidrome is very light: under 100 MB of memory; the disk is your music, and a few hundred MP3 albums fit.",
+			"summary": "Navidrome is an open-source music server that streams the music you own to a browser and phone apps, like a personal Spotify.",
+			"about": [
+				"Navidrome is an open-source music server, a personal Spotify for the files you already own. It reads the tags you have curated, handles compilations and multi-disc box sets, and streams nearly any audio format to its web player or to Subsonic apps on phones and desktops. It can transcode as you play, Opus included, so listening on mobile data does not use up your plan. Each listener gets an account with their own playlists, favourites and play counts, and plays can be scrobbled to Last.fm or ListenBrainz.",
+				"People self-host Navidrome to reach their whole collection from anywhere, with no subscription. It is light enough for a Raspberry Pi and still copes with very large libraries. The catch: it browses by tags, not folders, so a badly tagged collection looks messy. Fix the tags first with MusicBrainz Picard or beets, because Navidrome never writes to your files."
+			],
+			"faq": [
+				{
+					"q": "Is Navidrome free and open source?",
+					"a": "Yes. Navidrome is free and open source under the GPL-3.0 licence, and its code is on GitHub at navidrome/navidrome."
+				},
+				{
+					"q": "Can Navidrome replace Spotify?",
+					"a": "Only for music you own. Navidrome has no catalogue of its own: it streams the files in your library, which you buy, rip or download yourself."
+				},
+				{
+					"q": "What apps work with Navidrome on iPhone and Android?",
+					"a": "Any app that speaks the Subsonic or OpenSubsonic API. Navidrome's site lists Amperfy and play:Sub for iPhone, Symfonium, Tempo and DSub for Android, and Supersonic for the desktop."
+				},
+				{
+					"q": "Does Navidrome support folder browsing?",
+					"a": "No. Navidrome organises music only by its tags, and apps that ask for folders get ones built from the tags, such as Album Artist/Album. The project has chosen not to add a real folder mode."
+				},
+				{
+					"q": "How do I upload music to Navidrome?",
+					"a": "Copy the files into its music folder over SFTP, a network share or a file manager such as FileBrowser. Navidrome has no upload button, by design, and picks up new files by itself."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Musikserver, der deine eigene Sammlung streamt",
-			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Musik kommt nach /music im Service navidrome: Lade Dateien in dessen Tab „Dateien“ hoch oder kopier Ordner per SFTP, Navidrome findet sie von selbst. Subsonic-Apps auf dem Handy verbinden sich mit https://{host}."
+			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Musik kommt nach /music im Service navidrome: Lade Dateien in dessen Tab „Dateien“ hoch oder kopier Ordner per SFTP, Navidrome findet sie von selbst. Subsonic-Apps auf dem Handy verbinden sich mit https://{host}.",
+			"sizing": "Navidrome ist sehr leicht: unter 100 MB RAM; die Disk ist deine Musik, ein paar hundert MP3-Alben passen drauf.",
+			"summary": "Navidrome ist ein Open-Source-Musikserver, der deine eigene Musik an Browser und Handy-Apps streamt, wie ein eigenes Spotify.",
+			"about": [
+				"Navidrome ist ein Open-Source-Musikserver, ein eigenes Spotify für die Dateien, die du schon besitzt. Er liest die Tags, die du gepflegt hast, kommt mit Compilations und Boxsets mit mehreren Discs zurecht und streamt fast jedes Audioformat an seinen Webplayer oder an Subsonic-Apps auf Handy und Desktop. Er kann während des Abspielens transcodieren, auch nach Opus, sodass das Hören über mobile Daten dein Datenvolumen nicht aufbraucht. Alle, die zuhören, bekommen ein eigenes Konto mit eigenen Playlists, Favoriten und Wiedergabezählern, und Wiedergaben lassen sich an Last.fm oder ListenBrainz scrobbeln.",
+				"Viele hosten Navidrome selbst, um von überall auf die ganze Sammlung zuzugreifen, ohne Abo. Navidrome ist schlank genug für einen Raspberry Pi und kommt trotzdem mit sehr großen Bibliotheken klar. Der Haken: Statt nach Ordnern sortiert Navidrome nach Tags, daher wirkt eine schlecht getaggte Sammlung unordentlich. Bring die Tags deshalb zuerst mit MusicBrainz Picard oder beets in Ordnung, denn Navidrome schreibt nie in deine Dateien."
+			],
+			"faq": [
+				{
+					"q": "Ist Navidrome kostenlos und Open Source?",
+					"a": "Ja. Navidrome ist freie Open-Source-Software unter der GPL-3.0-Lizenz, und der Code liegt auf GitHub unter navidrome/navidrome."
+				},
+				{
+					"q": "Kann Navidrome Spotify ersetzen?",
+					"a": "Nur für Musik, die dir gehört. Navidrome hat keinen eigenen Katalog: Es streamt die Dateien deiner Bibliothek, die du selbst kaufst, rippst oder herunterlädst."
+				},
+				{
+					"q": "Welche Apps funktionieren mit Navidrome auf iPhone und Android?",
+					"a": "Jede App, die die Subsonic- oder OpenSubsonic-API spricht. Auf der Website von Navidrome stehen Amperfy und play:Sub für das iPhone, Symfonium, Tempo und DSub für Android sowie Supersonic für den Desktop."
+				},
+				{
+					"q": "Hat Navidrome eine Ordneransicht?",
+					"a": "Nein. Navidrome ordnet Musik nur nach ihren Tags, und Apps, die nach Ordnern fragen, bekommen aus den Tags gebaute, etwa Album Artist/Album. Das Projekt hat sich dagegen entschieden, einen echten Ordnermodus einzubauen."
+				},
+				{
+					"q": "Wie lade ich Musik in Navidrome hoch?",
+					"a": "Kopiere die Dateien per SFTP, über eine Netzwerkfreigabe oder mit einem Dateimanager wie FileBrowser in den Musikordner von Navidrome. Einen Upload-Button gibt es absichtlich nicht, neue Dateien findet Navidrome von selbst."
+				}
+			]
 		},
 		"es": {
 			"description": "Un servidor de música que transmite tu propia colección",
-			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. La música va en /music, en el servicio navidrome: sube archivos en su pestaña Archivos o copia carpetas por SFTP, y Navidrome los encuentra solo. Las apps de Subsonic en el teléfono se conectan a https://{host}."
+			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. La música va en /music, en el servicio navidrome: sube archivos en su pestaña Archivos o copia carpetas por SFTP, y Navidrome los encuentra solo. Las apps de Subsonic en el teléfono se conectan a https://{host}.",
+			"sizing": "Navidrome es muy ligero: menos de 100 MB de memoria; el disco es tu música, y caben unos cientos de álbumes en MP3.",
+			"summary": "Navidrome es un servidor de música de código abierto que transmite tu propia música a un navegador y a apps del teléfono, como un Spotify propio.",
+			"about": [
+				"Navidrome es un servidor de música de código abierto, un Spotify propio para los archivos que ya tienes. Lee las etiquetas que ya ordenaste, maneja recopilatorios y box sets de varios discos, y transmite casi cualquier formato de audio a su reproductor web o a apps Subsonic en el teléfono y en el escritorio. Puede transcodificar mientras reproduces, incluido Opus, así que escuchar con datos móviles no agota tu plan. Cada oyente tiene una cuenta con sus propias listas de reproducción, favoritos y recuentos de reproducciones, y las reproducciones se pueden enviar a Last.fm o ListenBrainz mediante scrobbling.",
+				"Quienes autoalojan Navidrome lo hacen para llegar a toda su colección desde cualquier lugar, sin suscripción. Es lo bastante ligero para una Raspberry Pi y aun así maneja bibliotecas enormes. El inconveniente: explora por etiquetas, no por carpetas, así que una colección mal etiquetada se ve desordenada. Arregla primero las etiquetas con MusicBrainz Picard o beets, porque Navidrome nunca escribe en tus archivos."
+			],
+			"faq": [
+				{
+					"q": "¿Navidrome es gratis y de código abierto?",
+					"a": "Sí. Navidrome es software libre y de código abierto bajo la licencia GPL-3.0, y su código está en GitHub, en navidrome/navidrome."
+				},
+				{
+					"q": "¿Navidrome puede reemplazar a Spotify?",
+					"a": "Solo para la música que tienes. Navidrome no tiene un catálogo propio: transmite los archivos de tu biblioteca, que compras, copias de CD o descargas tú."
+				},
+				{
+					"q": "¿Qué apps funcionan con Navidrome en iPhone y Android?",
+					"a": "Cualquier app que use la API de Subsonic o de OpenSubsonic. El sitio de Navidrome incluye en su lista Amperfy y play:Sub para iPhone, Symfonium, Tempo y DSub para Android, y Supersonic para el escritorio."
+				},
+				{
+					"q": "¿Navidrome permite explorar por carpetas?",
+					"a": "No. Navidrome organiza la música solo por sus etiquetas, y las apps que piden carpetas reciben otras armadas a partir de las etiquetas, como Album Artist/Album. El proyecto decidió no agregar un modo de carpetas real."
+				},
+				{
+					"q": "¿Cómo subo música a Navidrome?",
+					"a": "Copia los archivos a su carpeta de música por SFTP, desde un recurso compartido de red o con un administrador de archivos como FileBrowser. Navidrome no tiene un botón para subir archivos, por diseño, y detecta solo los archivos nuevos."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un serveur de musique qui diffuse votre propre collection",
-			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. La musique va dans /music, dans le service navidrome : envoyez des fichiers depuis son onglet Fichiers ou copiez des dossiers en SFTP, et Navidrome les trouve tout seul. Les applications Subsonic sur un téléphone se connectent à https://{host}."
+			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. La musique va dans /music, dans le service navidrome : envoyez des fichiers depuis son onglet Fichiers ou copiez des dossiers en SFTP, et Navidrome les trouve tout seul. Les applications Subsonic sur un téléphone se connectent à https://{host}.",
+			"sizing": "Navidrome est très léger : moins de 100 MB de mémoire ; le disque, c’est votre musique : quelques centaines d’albums MP3.",
+			"summary": "Navidrome est un serveur de musique open source qui diffuse votre musique vers un navigateur et des applications mobiles, comme un Spotify personnel.",
+			"about": [
+				"Navidrome est un serveur de musique open source, un Spotify personnel pour les fichiers que vous possédez déjà. Il lit les tags que vous avez soignés, gère les compilations et les coffrets de plusieurs disques, et diffuse presque tous les formats audio vers son lecteur web ou vers des applications Subsonic sur téléphone et sur ordinateur. Il peut transcoder pendant la lecture, Opus compris, si bien qu’écouter en données mobiles n’entame pas votre forfait. Chaque auditeur a un compte avec ses propres playlists, favoris et compteurs d’écoutes, et les écoutes peuvent être scrobblées vers Last.fm ou ListenBrainz.",
+				"Vous auto-hébergez Navidrome pour retrouver toute votre collection de n’importe où, sans abonnement. Il est assez léger pour un Raspberry Pi et gère pourtant de très grandes bibliothèques. Le revers : il classe la musique par tags et non par dossiers, si bien qu’une collection mal taguée paraît en désordre. Corrigez d’abord les tags avec MusicBrainz Picard ou beets, car Navidrome n’écrit jamais dans vos fichiers."
+			],
+			"faq": [
+				{
+					"q": "Navidrome est-il gratuit et open source ?",
+					"a": "Oui. Navidrome est un logiciel libre et open source sous licence GPL-3.0, et son code est sur GitHub, dans navidrome/navidrome."
+				},
+				{
+					"q": "Navidrome peut-il remplacer Spotify ?",
+					"a": "Seulement pour la musique que vous possédez. Navidrome n’a pas de catalogue à lui : il diffuse les fichiers de votre bibliothèque, que vous achetez, extrayez de CD ou téléchargez vous-même."
+				},
+				{
+					"q": "Quelles applications fonctionnent avec Navidrome sur iPhone et Android ?",
+					"a": "Toute application qui parle l’API Subsonic ou OpenSubsonic. Le site de Navidrome cite Amperfy et play:Sub pour iPhone, Symfonium, Tempo et DSub pour Android, et Supersonic pour l’ordinateur."
+				},
+				{
+					"q": "Navidrome permet-il de parcourir les dossiers ?",
+					"a": "Non. Navidrome n’organise la musique que par ses tags, et les applications qui demandent des dossiers en reçoivent qui sont construits à partir des tags, comme Album Artist/Album. Le projet a choisi de ne pas ajouter de vrai mode dossiers."
+				},
+				{
+					"q": "Comment envoyer de la musique sur Navidrome ?",
+					"a": "Copiez les fichiers dans son dossier de musique par SFTP, via un partage réseau ou avec un gestionnaire de fichiers comme FileBrowser. Navidrome n’a pas de bouton d’envoi, par choix, et repère tout seul les nouveaux fichiers."
+				}
+			]
 		},
 		"pl": {
 			"description": "Serwer muzyczny, który streamuje twoją własną kolekcję",
-			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Muzyka trafia do /music w usłudze navidrome: wgraj pliki w jej zakładce Pliki albo skopiuj katalogi przez SFTP, a Navidrome znajdzie je sam. Aplikacje Subsonic na telefonie łączą się z https://{host}."
+			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Muzyka trafia do /music w usłudze navidrome: wgraj pliki w jej zakładce Pliki albo skopiuj katalogi przez SFTP, a Navidrome znajdzie je sam. Aplikacje Subsonic na telefonie łączą się z https://{host}.",
+			"sizing": "Navidrome ma bardzo małe wymagania: poniżej 100 MB pamięci; dysk to twoja muzyka, mieści się kilkaset albumów MP3.",
+			"summary": "Navidrome to serwer muzyczny open source, który streamuje twoją własną muzykę do przeglądarki i aplikacji na telefon, jak osobisty Spotify.",
+			"about": [
+				"Navidrome to serwer muzyczny open source, osobisty Spotify dla plików, które już masz. Czyta tagi, które masz uporządkowane, radzi sobie z kompilacjami i wielopłytowymi box setami i streamuje niemal każdy format audio do odtwarzacza w przeglądarce albo do aplikacji Subsonic na telefonach i komputerach. Potrafi transkodować w trakcie odtwarzania, także do formatu Opus, więc słuchanie na danych mobilnych nie zjada twojego pakietu danych. Każdy słuchacz dostaje konto z własnymi playlistami, ulubionymi i licznikami odtworzeń, a odtworzenia można scrobblować do Last.fm lub ListenBrainz.",
+				"Ludzie hostują Navidrome u siebie (self-hosted), żeby mieć dostęp do całej kolekcji z każdego miejsca, bez abonamentu. Jest na tyle lekki, że działa na Raspberry Pi, a mimo to radzi sobie z bardzo dużymi bibliotekami. Haczyk: przegląda muzykę po tagach, a nie po katalogach, więc źle otagowana kolekcja wygląda bałaganiarsko. Najpierw popraw tagi w MusicBrainz Picard lub beets, bo Navidrome nigdy nie zapisuje niczego w twoich plikach."
+			],
+			"faq": [
+				{
+					"q": "Czy Navidrome jest darmowy i open source?",
+					"a": "Tak. Navidrome to wolne oprogramowanie open source na licencji GPL-3.0, a jego kod jest na GitHubie, w navidrome/navidrome."
+				},
+				{
+					"q": "Czy Navidrome może zastąpić Spotify?",
+					"a": "Tylko w przypadku muzyki, którą posiadasz. Navidrome nie ma własnego katalogu: streamuje pliki z twojej biblioteki, które kupujesz, zgrywasz lub pobierasz samodzielnie."
+				},
+				{
+					"q": "Jakie aplikacje działają z Navidrome na iPhonie i Androidzie?",
+					"a": "Każda aplikacja, która obsługuje API Subsonic lub OpenSubsonic. Strona Navidrome wymienia Amperfy i play:Sub na iPhone’a, Symfonium, Tempo i DSub na Androida oraz Supersonic na komputer."
+				},
+				{
+					"q": "Czy w Navidrome można przeglądać muzykę po katalogach?",
+					"a": "Nie. Navidrome porządkuje muzykę wyłącznie według tagów, a aplikacje, które proszą o katalogi, dostają katalogi zbudowane z tagów, na przykład Album Artist/Album. Projekt zdecydował, że nie doda prawdziwego trybu katalogów."
+				},
+				{
+					"q": "Jak wgrać muzykę do Navidrome?",
+					"a": "Skopiuj pliki do jego katalogu z muzyką przez SFTP, udział sieciowy albo menedżer plików, taki jak FileBrowser. Przycisku do wgrywania celowo nie ma, a nowe pliki Navidrome wykrywa sam."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um servidor de música que faz streaming da sua própria coleção",
-			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. A música vai em /music, no serviço navidrome: envie arquivos pela aba Arquivos dele ou copie pastas por SFTP, e o Navidrome encontra tudo sozinho. Os apps Subsonic no celular se conectam a https://{host}."
+			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. A música vai em /music, no serviço navidrome: envie arquivos pela aba Arquivos dele ou copie pastas por SFTP, e o Navidrome encontra tudo sozinho. Os apps Subsonic no celular se conectam a https://{host}.",
+			"sizing": "Navidrome é muito leve: menos de 100 MB de memória; o disco é a sua música, e cabem algumas centenas de álbuns em MP3.",
+			"summary": "O Navidrome é um servidor de música de código aberto que faz streaming da sua própria música para o navegador e apps de celular, como um Spotify pessoal.",
+			"about": [
+				"O Navidrome é um servidor de música de código aberto, um Spotify pessoal para os arquivos que você já tem. Ele lê as tags que você organizou, cuida de coletâneas e box sets de vários discos e faz streaming de quase qualquer formato de áudio para o player web ou para apps Subsonic em celulares e computadores. Ele pode transcodificar enquanto você ouve, inclusive para Opus, então ouvir com dados móveis não gasta seu pacote de dados. Cada ouvinte ganha uma conta com suas próprias playlists, favoritos e contagens de reprodução, e as reproduções podem ser enviadas por scrobble ao Last.fm ou ao ListenBrainz.",
+				"As pessoas hospedam o Navidrome por conta própria para acessar a coleção inteira de qualquer lugar, sem assinatura. Ele é leve o bastante para um Raspberry Pi e ainda dá conta de bibliotecas enormes. O porém: ele navega por tags, não por pastas, então uma coleção mal etiquetada fica bagunçada. Corrija as tags antes com o MusicBrainz Picard ou o beets, porque o Navidrome nunca escreve nos seus arquivos."
+			],
+			"faq": [
+				{
+					"q": "O Navidrome é gratuito e de código aberto?",
+					"a": "Sim. O Navidrome é software livre e de código aberto sob a licença GPL-3.0, e o código dele está no GitHub, em navidrome/navidrome."
+				},
+				{
+					"q": "O Navidrome pode substituir o Spotify?",
+					"a": "Só para a música que você tem. O Navidrome não tem catálogo próprio: ele faz streaming dos arquivos da sua biblioteca, que você mesmo compra, extrai de CDs ou baixa."
+				},
+				{
+					"q": "Quais apps funcionam com o Navidrome no iPhone e no Android?",
+					"a": "Qualquer app que fale a API Subsonic ou OpenSubsonic. O site do Navidrome lista Amperfy e play:Sub para iPhone, Symfonium, Tempo e DSub para Android e Supersonic para o desktop."
+				},
+				{
+					"q": "O Navidrome navega por pastas?",
+					"a": "Não. O Navidrome organiza a música apenas pelas tags, e os apps que pedem pastas recebem pastas montadas a partir das tags, como Album Artist/Album. O projeto decidiu não criar um modo de pastas de verdade."
+				},
+				{
+					"q": "Como envio músicas para o Navidrome?",
+					"a": "Copie os arquivos para a pasta de música dele por SFTP, por um compartilhamento de rede ou por um gerenciador de arquivos como o FileBrowser. O Navidrome não tem botão de upload, por decisão de projeto, e encontra os arquivos novos sozinho."
+				}
+			]
 		},
 		"ru": {
 			"description": "Музыкальный сервер, который стримит вашу собственную коллекцию",
-			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Музыка лежит в /music в сервисе navidrome: загрузите файлы на его вкладке «Файлы» или скопируйте папки по SFTP, и Navidrome найдет их сам. Subsonic-приложения на телефоне подключаются к https://{host}."
+			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Музыка лежит в /music в сервисе navidrome: загрузите файлы на его вкладке «Файлы» или скопируйте папки по SFTP, и Navidrome найдет их сам. Subsonic-приложения на телефоне подключаются к https://{host}.",
+			"sizing": "Navidrome: совсем небольшие требования — менее 100 MB памяти; диск занимает ваша музыка, несколько сотен MP3-альбомов поместятся.",
+			"summary": "Navidrome — музыкальный сервер с открытым кодом, который стримит вашу музыку в браузер и приложения на телефоне, как личный Spotify.",
+			"about": [
+				"Navidrome — музыкальный сервер с открытым исходным кодом, личный Spotify для файлов, которые у вас уже есть. Он читает теги, которые вы привели в порядок, справляется со сборниками и многодисковыми бокс-сетами и стримит почти любой аудиоформат в свой веб-плеер или в Subsonic-приложения на телефонах и компьютерах. Он умеет транскодировать на лету, в том числе в Opus, так что прослушивание по мобильному интернету не съедает пакет трафика. У каждого слушателя свой аккаунт со своими плейлистами, избранным и счетчиками прослушиваний, а прослушивания можно скробблить в Last.fm или ListenBrainz.",
+				"Navidrome разворачивают у себя на сервере (self-hosted), чтобы слушать всю коллекцию откуда угодно и без подписки. Он достаточно легкий для Raspberry Pi и при этом справляется с очень большими библиотеками. Подвох: он показывает музыку по тегам, а не по папкам, поэтому плохо размеченная коллекция выглядит беспорядочно. Сначала приведите теги в порядок через MusicBrainz Picard или beets: Navidrome никогда ничего не записывает в ваши файлы."
+			],
+			"faq": [
+				{
+					"q": "Navidrome бесплатный и с открытым исходным кодом?",
+					"a": "Да. Navidrome — свободное ПО с открытым кодом под лицензией GPL-3.0, а его код лежит на GitHub: navidrome/navidrome."
+				},
+				{
+					"q": "Может ли Navidrome заменить Spotify?",
+					"a": "Только для музыки, которая у вас есть. У Navidrome нет собственного каталога: он стримит файлы вашей библиотеки, которые вы сами покупаете, оцифровываете с дисков или скачиваете."
+				},
+				{
+					"q": "Какие приложения работают с Navidrome на iPhone и Android?",
+					"a": "Любое приложение, которое понимает API Subsonic или OpenSubsonic. На сайте Navidrome перечислены Amperfy и play:Sub для iPhone, Symfonium, Tempo и DSub для Android и Supersonic для компьютера."
+				},
+				{
+					"q": "Есть ли в Navidrome просмотр по папкам?",
+					"a": "Нет. Navidrome упорядочивает музыку только по тегам, а приложениям, которые запрашивают папки, отдает папки, собранные из тегов, вроде Album Artist/Album. Проект решил не добавлять настоящий режим папок."
+				},
+				{
+					"q": "Как загрузить музыку в Navidrome?",
+					"a": "Скопируйте файлы в его папку с музыкой по SFTP, через сетевую папку или файловый менеджер вроде FileBrowser. Кнопки загрузки в Navidrome нет, так задумано, а новые файлы он находит сам."
+				}
+			]
 		},
 		"uk": {
 			"description": "Музичний сервер, що стрімить вашу власну колекцію",
-			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Музика лежить у /music у сервісі navidrome: завантажте файли на його вкладці «Файли» або скопіюйте папки через SFTP, і Navidrome знайде їх сам. Застосунки Subsonic на телефоні підключаються до https://{host}."
+			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Музика лежить у /music у сервісі navidrome: завантажте файли на його вкладці «Файли» або скопіюйте папки через SFTP, і Navidrome знайде їх сам. Застосунки Subsonic на телефоні підключаються до https://{host}.",
+			"sizing": "Navidrome має дуже скромні вимоги: менше 100 MB пам’яті; диск — це ваша музика, там вміщаються кілька сотень альбомів MP3.",
+			"summary": "Navidrome — музичний сервер з відкритим кодом, що стрімить вашу музику в браузер і застосунки на телефоні, як особистий Spotify.",
+			"about": [
+				"Navidrome — музичний сервер з відкритим вихідним кодом, особистий Spotify для файлів, які у вас уже є. Він читає теги, які ви впорядкували, справляється зі збірками та багатодисковими бокс-сетами й стрімить майже будь-який аудіоформат у свій вебплеєр або в Subsonic-застосунки на телефонах і комп’ютерах. Він уміє транскодувати на льоту, зокрема в Opus, тож прослуховування через мобільний інтернет не з’їдає пакет трафіку. Кожен слухач має свій акаунт зі своїми плейлистами, обраним і лічильниками прослуховувань, а прослуховування можна скроблити в Last.fm або ListenBrainz.",
+				"Navidrome розгортають у себе на сервері (self-hosted), щоб слухати всю колекцію звідусіль і без підписки. Він достатньо легкий для Raspberry Pi і водночас справляється з дуже великими бібліотеками. Підвох: він показує музику за тегами, а не за папками, тож погано розмічена колекція виглядає безладно. Спершу впорядкуйте теги через MusicBrainz Picard або beets: Navidrome ніколи нічого не записує у ваші файли."
+			],
+			"faq": [
+				{
+					"q": "Navidrome безкоштовний і з відкритим вихідним кодом?",
+					"a": "Так. Navidrome — вільне програмне забезпечення з відкритим кодом під ліцензією GPL-3.0, а його код лежить на GitHub: navidrome/navidrome."
+				},
+				{
+					"q": "Чи може Navidrome замінити Spotify?",
+					"a": "Лише для музики, яка у вас є. У Navidrome немає власного каталогу: він стрімить файли вашої бібліотеки, які ви самі купуєте, оцифровуєте з дисків або звантажуєте."
+				},
+				{
+					"q": "Які застосунки працюють із Navidrome на iPhone та Android?",
+					"a": "Будь-який застосунок, що розуміє API Subsonic або OpenSubsonic. На сайті Navidrome перелічено Amperfy і play:Sub для iPhone, Symfonium, Tempo і DSub для Android та Supersonic для комп’ютера."
+				},
+				{
+					"q": "Чи є в Navidrome перегляд за папками?",
+					"a": "Ні. Navidrome впорядковує музику лише за тегами, а застосункам, що просять папки, віддає папки, зібрані з тегів, на кшталт Album Artist/Album. Проєкт вирішив не додавати справжній режим папок."
+				},
+				{
+					"q": "Як завантажити музику в Navidrome?",
+					"a": "Скопіюйте файли в його папку з музикою через SFTP, мережеву папку або файловий менеджер на кшталт FileBrowser. Кнопки завантаження в Navidrome немає, так задумано, а нові файли він знаходить сам."
+				}
+			]
 		}
 	}
 }

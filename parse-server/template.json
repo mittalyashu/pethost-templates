@@ -1,6 +1,11 @@
 {
 	"name": "Parse Server",
 	"emoji": "🧩",
+	"category": "developer-tools",
+	"alternatives": [
+		"Firebase"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "proxy",
 		"port": 80
@@ -34,35 +39,259 @@
 	"texts": {
 		"en": {
 			"description": "An open-source backend for apps: a database API, users, files, cloud code and push, with Parse Dashboard",
-			"notes": "The dashboard is at https://{host}: sign in as admin with the admin password you gave. Apps use https://{host}/parse as the server URL, with the APP_ID from the project’s .env; the MASTER_KEY there is for servers only. MongoDB is part of the project."
+			"notes": "The dashboard is at https://{host}: sign in as admin with the admin password you gave. Apps use https://{host}/parse as the server URL, with the APP_ID from the project’s .env; the MASTER_KEY there is for servers only. MongoDB is part of the project.",
+			"sizing": "Parse Server is moderate: about 500 MB with MongoDB and the dashboard; the disk holds your app's data and files.",
+			"summary": "Parse Server is an open-source backend for mobile and web apps, run instead of Firebase. Self-host it with Parse Dashboard in one click.",
+			"about": [
+				"Parse Server is an open-source backend for mobile and web apps, often run in place of Firebase. Your app stores its objects through a REST API, or through a GraphQL API that Parse Server generates from your schema. Users sign up with a password, a third-party login or anonymously, and access control lists decide who can read or change each object. Cloud Code runs your own JavaScript as functions, triggers and jobs.",
+				"People self-host Parse Server to keep the backend and its data in their own hands: the code is open under the Apache 2.0 licence and runs anywhere Node.js does. It suits a solo developer or a small team who wants accounts, data and files without writing an API. The catch is outside services: email verification and password reset need an email adapter for a mail provider, and push notifications need your own APNs and FCM credentials."
+			],
+			"faq": [
+				{
+					"q": "Is Parse Server a good Firebase alternative?",
+					"a": "For a typical app backend, yes. Besides data, users and Cloud Code, it has Live Query for realtime updates, file storage and push notifications, and Parse Dashboard to browse and edit your data."
+				},
+				{
+					"q": "Is Parse Server still maintained?",
+					"a": "Yes. The Parse community develops it in the open on GitHub, ships new versions regularly and still releases updates for the previous major version."
+				},
+				{
+					"q": "Does Parse Server work with PostgreSQL?",
+					"a": "Yes. It runs on MongoDB or on PostgreSQL with the PostGIS extension, version 2.2.0 or later, and its README lists the database versions each release is tested with."
+				},
+				{
+					"q": "Which SDKs does Parse Server have?",
+					"a": "The Parse community publishes SDKs for iOS and other Apple platforms, including a Swift SDK, plus Android, JavaScript, Flutter and Dart, .NET, PHP and Arduino. Other clients can call the REST or GraphQL API directly."
+				},
+				{
+					"q": "How do I connect my app to Parse Server on Pethost?",
+					"a": "Point the SDK at https://your-address/parse and give it the APP_ID from the project's .env file. Keep the MASTER_KEY from that file on servers only: it overrides every access control list."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Open-Source-Backend für Apps: Datenbank-API, Benutzer, Dateien, Cloud Code und Push, mit dem Parse Dashboard",
-			"notes": "Das Dashboard liegt unter https://{host}: Melde dich als admin mit dem angegebenen Admin-Passwort an. Apps nutzen https://{host}/parse als Server-URL, mit der APP_ID aus der .env des Projekts; der MASTER_KEY dort ist nur für Server. MongoDB gehört zum Projekt."
+			"notes": "Das Dashboard liegt unter https://{host}: Melde dich als admin mit dem angegebenen Admin-Passwort an. Apps nutzen https://{host}/parse als Server-URL, mit der APP_ID aus der .env des Projekts; der MASTER_KEY dort ist nur für Server. MongoDB gehört zum Projekt.",
+			"sizing": "Parse Server ist mittelschwer: etwa 500 MB mit MongoDB und Dashboard; auf der Disk liegen die Daten und Dateien deiner App.",
+			"summary": "Parse Server selbst hosten: das Open-Source-Backend für mobile und Web-Apps, das oft Firebase ersetzt. Mit Parse Dashboard in einem Klick.",
+			"about": [
+				"Parse Server ist ein Open-Source-Backend für mobile und Web-Apps, das oft anstelle von Firebase läuft. Deine App speichert ihre Objekte über eine REST-API oder über eine GraphQL-API, die Parse Server aus deinem Schema erzeugt. Die Registrierung läuft mit Passwort, über einen Login bei einem Drittanbieter oder anonym, und Zugriffskontrolllisten legen fest, wer jedes Objekt lesen oder ändern darf. Cloud Code führt dein eigenes JavaScript als Funktionen, Trigger und Jobs aus.",
+				"Du hostest Parse Server selbst, damit das Backend und seine Daten in deiner Hand bleiben: Der Code ist offen, steht unter der Apache-2.0-Lizenz und läuft überall, wo Node.js läuft. Es passt, wenn du allein oder in einem kleinen Team Konten, Daten und Dateien willst, ohne eine API zu schreiben. Der Haken liegt bei externen Diensten: E-Mail-Bestätigung und Passwort-Reset brauchen einen E-Mail-Adapter für einen Mail-Anbieter, und Push-Benachrichtigungen brauchen deine eigenen APNs- und FCM-Zugangsdaten."
+			],
+			"faq": [
+				{
+					"q": "Ist Parse Server eine gute Firebase-Alternative?",
+					"a": "Für ein typisches App-Backend ja. Neben Daten, Nutzerkonten und Cloud Code bietet es Live Query für Echtzeit-Updates, Dateispeicher und Push-Benachrichtigungen sowie Parse Dashboard, um deine Daten anzusehen und zu bearbeiten."
+				},
+				{
+					"q": "Wird Parse Server noch gepflegt?",
+					"a": "Ja. Die Parse-Community entwickelt es offen auf GitHub, veröffentlicht regelmäßig neue Versionen und bringt weiterhin Updates für die vorherige Hauptversion heraus."
+				},
+				{
+					"q": "Funktioniert Parse Server mit PostgreSQL?",
+					"a": "Ja. Es läuft auf MongoDB oder auf PostgreSQL mit der Erweiterung PostGIS ab Version 2.2.0, und die README nennt die Datenbankversionen, mit denen jedes Release getestet wird."
+				},
+				{
+					"q": "Welche SDKs gibt es für Parse Server?",
+					"a": "Die Parse-Community veröffentlicht SDKs für iOS und andere Apple-Plattformen, darunter ein Swift-SDK, außerdem für Android, JavaScript, Flutter und Dart, .NET, PHP und Arduino. Andere Clients können die REST- oder GraphQL-API direkt aufrufen."
+				},
+				{
+					"q": "Wie verbinde ich meine App mit Parse Server auf Pethost?",
+					"a": "Richte das SDK auf https://deine-adresse/parse aus und gib ihm die APP_ID aus der .env-Datei des Projekts. Der MASTER_KEY aus dieser Datei gehört nur auf Server: Er setzt jede Zugriffskontrollliste außer Kraft."
+				}
+			]
 		},
 		"es": {
 			"description": "Un backend de código abierto para apps: API de base de datos, usuarios, archivos, cloud code y push, con Parse Dashboard",
-			"notes": "El panel está en https://{host}: entra como admin con la contraseña de administrador que indicaste. Las apps usan https://{host}/parse como URL del servidor, con el APP_ID del .env del proyecto; el MASTER_KEY de ahí es solo para servidores. MongoDB forma parte del proyecto."
+			"notes": "El panel está en https://{host}: entra como admin con la contraseña de administrador que indicaste. Las apps usan https://{host}/parse como URL del servidor, con el APP_ID del .env del proyecto; el MASTER_KEY de ahí es solo para servidores. MongoDB forma parte del proyecto.",
+			"sizing": "Parse Server es moderado: unos 500 MB con MongoDB y el panel; el disco guarda los datos y archivos de tu app.",
+			"summary": "Autoaloja Parse Server, el backend de código abierto para apps móviles y web que se usa en lugar de Firebase. Con Parse Dashboard en un clic.",
+			"about": [
+				"Parse Server es un backend de código abierto para apps móviles y web, que se usa a menudo en lugar de Firebase. Tu app guarda sus objetos mediante una API REST, o mediante una API GraphQL que Parse Server genera a partir de tu esquema. Los usuarios se registran con contraseña, con un inicio de sesión de terceros o de forma anónima, y las listas de control de acceso deciden quién puede leer o cambiar cada objeto. Cloud Code ejecuta tu propio JavaScript como funciones, triggers y jobs.",
+				"Autoalojas Parse Server para tener el backend y sus datos en tus propias manos: el código es abierto, tiene licencia Apache 2.0 y funciona en cualquier lugar donde funcione Node.js. Encaja si desarrollas por tu cuenta o en un equipo pequeño y quieres cuentas, datos y archivos sin escribir una API. El inconveniente son los servicios externos: la verificación del correo y el restablecimiento de contraseña necesitan un adaptador de correo para un proveedor de correo, y las notificaciones push necesitan tus propias credenciales de APNs y FCM."
+			],
+			"faq": [
+				{
+					"q": "¿Es Parse Server una buena alternativa a Firebase?",
+					"a": "Para el backend de una app típica, sí. Además de datos, usuarios y Cloud Code, incluye Live Query para actualizaciones en tiempo real, almacenamiento de archivos y notificaciones push, y Parse Dashboard para explorar y editar tus datos."
+				},
+				{
+					"q": "¿Se sigue manteniendo Parse Server?",
+					"a": "Sí. La comunidad de Parse lo desarrolla en abierto en GitHub, publica versiones nuevas con regularidad y sigue sacando actualizaciones de la versión principal anterior."
+				},
+				{
+					"q": "¿Parse Server funciona con PostgreSQL?",
+					"a": "Sí. Funciona con MongoDB o con PostgreSQL más la extensión PostGIS (versión 2.2.0 o posterior), y su README indica las versiones de base de datos con las que se prueba cada release."
+				},
+				{
+					"q": "¿Qué SDKs tiene Parse Server?",
+					"a": "La comunidad de Parse publica SDKs para iOS y otras plataformas de Apple, incluido un SDK de Swift, además de Android, JavaScript, Flutter y Dart, .NET, PHP y Arduino. Otros clientes pueden llamar directamente a la API REST o GraphQL."
+				},
+				{
+					"q": "¿Cómo conecto mi app a Parse Server en Pethost?",
+					"a": "Apunta el SDK a https://tu-direccion/parse y dale el APP_ID del archivo .env del proyecto. Guarda el MASTER_KEY de ese archivo solo en servidores: anula todas las listas de control de acceso."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un backend open source pour les apps : une API de base de données, des utilisateurs, des fichiers, du cloud code et des notifications push, avec Parse Dashboard",
-			"notes": "Le tableau de bord est à https://{host} : connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué. Les apps utilisent https://{host}/parse comme URL du serveur, avec l’APP_ID du .env du projet ; le MASTER_KEY qui s’y trouve est réservé aux serveurs. MongoDB fait partie du projet."
+			"notes": "Le tableau de bord est à https://{host} : connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué. Les apps utilisent https://{host}/parse comme URL du serveur, avec l’APP_ID du .env du projet ; le MASTER_KEY qui s’y trouve est réservé aux serveurs. MongoDB fait partie du projet.",
+			"sizing": "Parse Server est modéré : environ 500 MB avec MongoDB et le dashboard ; le disque garde données et fichiers de votre application.",
+			"summary": "Auto-hébergez Parse Server, le backend open source pour apps mobiles et web, utilisé à la place de Firebase. Avec Parse Dashboard, en un clic.",
+			"about": [
+				"Parse Server est un backend open source pour les apps mobiles et web, souvent utilisé à la place de Firebase. Votre app stocke ses objets via une API REST, ou via une API GraphQL que Parse Server génère à partir de votre schéma. Les utilisateurs s’inscrivent avec un mot de passe, une connexion via un fournisseur tiers ou de façon anonyme, et des listes de contrôle d’accès décident qui peut lire ou modifier chaque objet. Cloud Code exécute votre propre JavaScript sous forme de fonctions, de triggers et de jobs.",
+				"Vous auto-hébergez Parse Server pour garder le backend et ses données entre vos mains : le code est ouvert, sous licence Apache 2.0, et tourne partout où Node.js tourne. Il convient quand on travaille seul ou en petite équipe et qu’on veut des comptes, des données et des fichiers sans écrire d’API. Le hic, ce sont les services extérieurs : la vérification de l’e-mail et la réinitialisation du mot de passe demandent un adaptateur e-mail pour un fournisseur de messagerie, et les notifications push demandent vos propres identifiants APNs et FCM."
+			],
+			"faq": [
+				{
+					"q": "Parse Server est-il une bonne alternative à Firebase ?",
+					"a": "Pour le backend d’une app classique, oui. En plus des données, des utilisateurs et de Cloud Code, il propose Live Query pour les mises à jour en temps réel, le stockage de fichiers et les notifications push, ainsi que Parse Dashboard pour parcourir et modifier vos données."
+				},
+				{
+					"q": "Parse Server est-il toujours maintenu ?",
+					"a": "Oui. La communauté Parse le développe publiquement sur GitHub, publie régulièrement de nouvelles versions et continue de sortir des mises à jour pour la version majeure précédente."
+				},
+				{
+					"q": "Parse Server fonctionne-t-il avec PostgreSQL ?",
+					"a": "Oui. Il fonctionne avec MongoDB, ou avec PostgreSQL et l’extension PostGIS (version 2.2.0 ou ultérieure), et son README liste les versions de base de données avec lesquelles chaque release est testée."
+				},
+				{
+					"q": "Quels SDK existe-t-il pour Parse Server ?",
+					"a": "La communauté Parse publie des SDK pour iOS et les autres plateformes Apple, dont un SDK Swift, ainsi que pour Android, JavaScript, Flutter et Dart, .NET, PHP et Arduino. D’autres clients peuvent appeler directement l’API REST ou GraphQL."
+				},
+				{
+					"q": "Comment connecter mon app à Parse Server sur Pethost ?",
+					"a": "Pointez le SDK vers https://votre-adresse/parse et donnez-lui l’APP_ID du fichier .env du projet. Gardez le MASTER_KEY de ce fichier sur les serveurs uniquement : il outrepasse toutes les listes de contrôle d’accès."
+				}
+			]
 		},
 		"pl": {
 			"description": "Backend open source dla aplikacji: API bazy danych, użytkownicy, pliki, cloud code i push, z Parse Dashboard",
-			"notes": "Panel jest pod https://{host}: zaloguj się jako admin hasłem administratora, które podano. Aplikacje używają https://{host}/parse jako adresu serwera, z APP_ID z pliku .env projektu; MASTER_KEY stamtąd jest tylko dla serwerów. MongoDB jest częścią projektu."
+			"notes": "Panel jest pod https://{host}: zaloguj się jako admin hasłem administratora, które podano. Aplikacje używają https://{host}/parse jako adresu serwera, z APP_ID z pliku .env projektu; MASTER_KEY stamtąd jest tylko dla serwerów. MongoDB jest częścią projektu.",
+			"sizing": "Parse Server ma średnie wymagania: około 500 MB z MongoDB i dashboardem; dysk zajmują dane i pliki twojej aplikacji.",
+			"summary": "Hostuj u siebie Parse Server, backend open source dla aplikacji mobilnych i webowych, używany zamiast Firebase. Z Parse Dashboard, w jeden klik.",
+			"about": [
+				"Parse Server to backend open source dla aplikacji mobilnych i webowych, często używany zamiast Firebase. Twoja aplikacja zapisuje obiekty przez REST API albo przez GraphQL API, które Parse Server generuje na podstawie twojego schematu. Użytkownicy rejestrują się hasłem, logowaniem przez zewnętrznego dostawcę albo anonimowo, a listy kontroli dostępu decydują, kto może odczytać lub zmienić każdy obiekt. Cloud Code uruchamia twój własny JavaScript jako funkcje, triggery i joby.",
+				"Parse Server hostujesz u siebie, żeby backend i jego dane zostały w twoich rękach: kod jest otwarty, na licencji Apache 2.0, i działa wszędzie tam, gdzie działa Node.js. Pasuje, gdy pracujesz w pojedynkę albo w małym zespole i chcesz mieć konta, dane i pliki bez pisania własnego API. Haczyk to usługi zewnętrzne: weryfikacja e-maila i reset hasła wymagają adaptera e-mail dla dostawcy poczty, a powiadomienia push wymagają twoich własnych danych dostępowych do APNs i FCM."
+			],
+			"faq": [
+				{
+					"q": "Czy Parse Server to dobra alternatywa dla Firebase?",
+					"a": "Dla typowego backendu aplikacji tak. Oprócz danych, użytkowników i Cloud Code ma Live Query do aktualizacji w czasie rzeczywistym, przechowywanie plików i powiadomienia push oraz Parse Dashboard do przeglądania i edycji twoich danych."
+				},
+				{
+					"q": "Czy Parse Server jest nadal rozwijany?",
+					"a": "Tak. Społeczność Parse rozwija go otwarcie na GitHubie, regularnie wydaje nowe wersje i nadal publikuje aktualizacje poprzedniej wersji głównej."
+				},
+				{
+					"q": "Czy Parse Server działa z PostgreSQL?",
+					"a": "Tak. Działa na MongoDB albo na PostgreSQL z rozszerzeniem PostGIS w wersji 2.2.0 lub nowszej, a jego README podaje wersje baz danych, z którymi testowane jest każde wydanie."
+				},
+				{
+					"q": "Jakie SDK ma Parse Server?",
+					"a": "Społeczność Parse publikuje SDK dla iOS i innych platform Apple, w tym SDK dla Swifta, a także dla Androida, JavaScriptu, Fluttera i Darta, .NET, PHP i Arduino. Inni klienci mogą wywoływać REST API lub GraphQL API bezpośrednio."
+				},
+				{
+					"q": "Jak połączyć aplikację z Parse Server na Pethost?",
+					"a": "Ustaw w SDK adres https://twoj-adres/parse i podaj APP_ID z pliku .env projektu. MASTER_KEY z tego pliku trzymaj tylko na serwerach: omija wszystkie listy kontroli dostępu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um backend open source para apps: API de banco de dados, usuários, arquivos, cloud code e push, com o Parse Dashboard",
-			"notes": "O painel fica em https://{host}: entre como admin com a senha de administrador que você informou. Os apps usam https://{host}/parse como URL do servidor, com o APP_ID do .env do projeto; o MASTER_KEY de lá é só para servidores. O MongoDB faz parte do projeto."
+			"notes": "O painel fica em https://{host}: entre como admin com a senha de administrador que você informou. Os apps usam https://{host}/parse como URL do servidor, com o APP_ID do .env do projeto; o MASTER_KEY de lá é só para servidores. O MongoDB faz parte do projeto.",
+			"sizing": "Parse Server é moderado: cerca de 500 MB com o MongoDB e o dashboard; o disco guarda os dados e arquivos do seu app.",
+			"summary": "Auto-hospede o Parse Server, backend de código aberto para apps mobile e web, usado no lugar do Firebase. Com Parse Dashboard, em um clique.",
+			"about": [
+				"O Parse Server é um backend de código aberto para apps mobile e web, muitas vezes usado no lugar do Firebase. Seu app guarda os objetos por uma API REST, ou por uma API GraphQL que o Parse Server gera a partir do seu schema. Os usuários se cadastram com senha, com um login de terceiros ou de forma anônima, e listas de controle de acesso decidem quem pode ler ou alterar cada objeto. O Cloud Code roda o seu próprio JavaScript como funções, triggers e jobs.",
+				"Você hospeda o Parse Server por conta própria para manter o backend e os dados nas suas mãos: o código é aberto, sob a licença Apache 2.0, e roda em qualquer lugar onde o Node.js rode. Serve para quem desenvolve sozinho ou para um time pequeno que quer contas, dados e arquivos sem escrever uma API. O porém são os serviços externos: a verificação de e-mail e a redefinição de senha precisam de um adaptador de e-mail para um provedor de e-mail, e as notificações push precisam das suas próprias credenciais do APNs e do FCM."
+			],
+			"faq": [
+				{
+					"q": "O Parse Server é uma boa alternativa ao Firebase?",
+					"a": "Para o backend de um app comum, sim. Além de dados, usuários e Cloud Code, ele tem Live Query para atualizações em tempo real, armazenamento de arquivos e notificações push, e o Parse Dashboard para explorar e editar seus dados."
+				},
+				{
+					"q": "O Parse Server ainda é mantido?",
+					"a": "Sim. A comunidade do Parse desenvolve o projeto abertamente no GitHub, lança novas versões com regularidade e ainda publica atualizações da versão principal anterior."
+				},
+				{
+					"q": "O Parse Server funciona com PostgreSQL?",
+					"a": "Sim. Ele roda no MongoDB ou no PostgreSQL com a extensão PostGIS, versão 2.2.0 ou posterior, e o README lista as versões de banco de dados com as quais cada lançamento é testado."
+				},
+				{
+					"q": "Quais SDKs o Parse Server tem?",
+					"a": "A comunidade do Parse publica SDKs para iOS e outras plataformas da Apple, incluindo um SDK em Swift, além de Android, JavaScript, Flutter e Dart, .NET, PHP e Arduino. Outros clientes podem chamar a API REST ou GraphQL diretamente."
+				},
+				{
+					"q": "Como conecto meu app ao Parse Server no Pethost?",
+					"a": "Aponte o SDK para https://seu-endereco/parse e informe o APP_ID do arquivo .env do projeto. Mantenha o MASTER_KEY desse arquivo só em servidores: ele passa por cima de todas as listas de controle de acesso."
+				}
+			]
 		},
 		"ru": {
 			"description": "Бэкенд с открытым кодом для приложений: API базы данных, пользователи, файлы, cloud code и push, с Parse Dashboard",
-			"notes": "Панель открывается по адресу https://{host}: войдите как admin с паролем администратора, который вы указали. Приложения используют https://{host}/parse как адрес сервера, с APP_ID из .env проекта; MASTER_KEY оттуда — только для серверов. MongoDB входит в проект."
+			"notes": "Панель открывается по адресу https://{host}: войдите как admin с паролем администратора, который вы указали. Приложения используют https://{host}/parse как адрес сервера, с APP_ID из .env проекта; MASTER_KEY оттуда — только для серверов. MongoDB входит в проект.",
+			"sizing": "Parse Server: умеренные требования — около 500 MB вместе с MongoDB и дашбордом; на диске данные и файлы вашего приложения.",
+			"summary": "Self-hosted Parse Server — бэкенд с открытым кодом для мобильных и веб-приложений, замена Firebase. С Parse Dashboard, в один клик.",
+			"about": [
+				"Parse Server — это бэкенд с открытым кодом для мобильных и веб-приложений, который часто запускают вместо Firebase. Ваше приложение хранит объекты через REST API или через GraphQL API, которое Parse Server генерирует по вашей схеме. Пользователи регистрируются по паролю, через сторонний логин или анонимно, а списки контроля доступа решают, кто может читать или менять каждый объект. Cloud Code выполняет ваш собственный JavaScript в виде функций, триггеров и задач.",
+				"Parse Server хостят у себя, чтобы бэкенд и его данные оставались в ваших руках: код открыт под лицензией Apache 2.0 и работает везде, где работает Node.js. Он подойдет и тем, кто разрабатывает в одиночку, и небольшой команде, которым нужны аккаунты, данные и файлы без написания собственного API. Подвох во внешних сервисах: для подтверждения почты и сброса пароля нужен почтовый адаптер для почтового провайдера, а для push-уведомлений — ваши собственные учетные данные APNs и FCM."
+			],
+			"faq": [
+				{
+					"q": "Parse Server — хорошая альтернатива Firebase?",
+					"a": "Для типичного бэкенда приложения — да. Помимо данных, пользователей и Cloud Code, в нем есть Live Query для обновлений в реальном времени, хранение файлов и push-уведомления, а также Parse Dashboard, чтобы просматривать и редактировать ваши данные."
+				},
+				{
+					"q": "Поддерживается ли Parse Server до сих пор?",
+					"a": "Да. Сообщество Parse разрабатывает его открыто на GitHub, регулярно публикует новые версии и по-прежнему выпускает обновления для предыдущей мажорной версии."
+				},
+				{
+					"q": "Работает ли Parse Server с PostgreSQL?",
+					"a": "Да. Он работает на MongoDB или на PostgreSQL с расширением PostGIS версии 2.2.0 или новее, а в его README перечислены версии баз данных, на которых тестируется каждый релиз."
+				},
+				{
+					"q": "Какие SDK есть у Parse Server?",
+					"a": "Сообщество Parse выпускает SDK для iOS и других платформ Apple, включая SDK для Swift, а также для Android, JavaScript, Flutter и Dart, .NET, PHP и Arduino. Другие клиенты могут обращаться к REST API или GraphQL API напрямую."
+				},
+				{
+					"q": "Как подключить приложение к Parse Server в Pethost?",
+					"a": "Укажите в SDK адрес https://ваш-адрес/parse и передайте ему APP_ID из файла .env проекта. MASTER_KEY из этого файла держите только на серверах: он обходит все списки контроля доступа."
+				}
+			]
 		},
 		"uk": {
 			"description": "Бекенд із відкритим кодом для застосунків: API бази даних, користувачі, файли, cloud code і push, з Parse Dashboard",
-			"notes": "Панель відкривається за адресою https://{host}: увійдіть як admin із паролем адміністратора, який ви вказали. Застосунки використовують https://{host}/parse як адресу сервера, з APP_ID із .env проєкту; MASTER_KEY звідти — лише для серверів. MongoDB входить у проєкт."
+			"notes": "Панель відкривається за адресою https://{host}: увійдіть як admin із паролем адміністратора, який ви вказали. Застосунки використовують https://{host}/parse як адресу сервера, з APP_ID із .env проєкту; MASTER_KEY звідти — лише для серверів. MongoDB входить у проєкт.",
+			"sizing": "Parse Server має помірні вимоги: близько 500 MB з MongoDB і дашбордом; диск займають дані й файли вашого застосунку.",
+			"summary": "Self-hosted Parse Server — бекенд із відкритим кодом для мобільних і вебзастосунків, заміна Firebase. З Parse Dashboard, в один клік.",
+			"about": [
+				"Parse Server — це бекенд із відкритим кодом для мобільних і вебзастосунків, який часто запускають замість Firebase. Ваш застосунок зберігає об’єкти через REST API або через GraphQL API, яке Parse Server генерує з вашої схеми. Користувачі реєструються за паролем, через сторонній логін або анонімно, а списки контролю доступу вирішують, хто може читати чи змінювати кожен об’єкт. Cloud Code виконує ваш власний JavaScript як функції, тригери й завдання.",
+				"Parse Server хостять у себе, щоб бекенд і його дані залишалися у ваших руках: код відкритий під ліцензією Apache 2.0 і працює скрізь, де працює Node.js. Він пасує і тим, хто розробляє наодинці, і невеликій команді, яким потрібні акаунти, дані й файли без написання власного API. Підступ у зовнішніх сервісах: для підтвердження пошти та скидання пароля потрібен поштовий адаптер для поштового провайдера, а для push-сповіщень — ваші власні облікові дані APNs і FCM."
+			],
+			"faq": [
+				{
+					"q": "Чи Parse Server — хороша альтернатива Firebase?",
+					"a": "Для типового бекенду застосунку — так. Окрім даних, користувачів і Cloud Code, у ньому є Live Query для оновлень у реальному часі, зберігання файлів і push-сповіщення, а ще Parse Dashboard, щоб переглядати й редагувати ваші дані."
+				},
+				{
+					"q": "Чи досі підтримується Parse Server?",
+					"a": "Так. Спільнота Parse розробляє його відкрито на GitHub, регулярно випускає нові версії й досі випускає оновлення для попередньої мажорної версії."
+				},
+				{
+					"q": "Чи працює Parse Server з PostgreSQL?",
+					"a": "Так. Він працює на MongoDB або на PostgreSQL із розширенням PostGIS версії 2.2.0 чи новішої, а в його README перелічено версії баз даних, на яких тестують кожен реліз."
+				},
+				{
+					"q": "Які SDK має Parse Server?",
+					"a": "Спільнота Parse випускає SDK для iOS та інших платформ Apple, зокрема SDK для Swift, а також для Android, JavaScript, Flutter і Dart, .NET, PHP та Arduino. Інші клієнти можуть звертатися до REST API або GraphQL API напряму."
+				},
+				{
+					"q": "Як підключити застосунок до Parse Server у Pethost?",
+					"a": "Вкажіть у SDK адресу https://ваша-адреса/parse і передайте йому APP_ID із файлу .env проєкту. MASTER_KEY із цього файлу тримайте лише на серверах: він обходить усі списки контролю доступу."
+				}
+			]
 		}
 	}
 }

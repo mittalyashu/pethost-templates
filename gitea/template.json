@@ -1,6 +1,13 @@
 {
 	"name": "Gitea",
 	"emoji": "🍵",
+	"category": "developer-tools",
+	"alternatives": [
+		"GitHub",
+		"GitLab",
+		"Bitbucket"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "gitea",
 		"port": 3000
@@ -34,35 +41,259 @@
 	"texts": {
 		"en": {
 			"description": "Git hosting with pull requests and issues",
-			"notes": "Sign in with the username and password you gave: that account is the administrator, and registration is closed, so it adds the other accounts in Site Administration. The name admin is reserved by Gitea: pick another. The password in .env is read only once; change it in Gitea’s settings. Git over SSH is at {host}, port 2222."
+			"notes": "Sign in with the username and password you gave: that account is the administrator, and registration is closed, so it adds the other accounts in Site Administration. The name admin is reserved by Gitea: pick another. The password in .env is read only once; change it in Gitea’s settings. Git over SSH is at {host}, port 2222.",
+			"sizing": "Gitea is light: about 100 MB of memory, and the disk holds your repositories, a few gigabytes for most teams.",
+			"summary": "Gitea is a lightweight open-source GitHub alternative: repositories, code review, issues and Actions CI. Self-host it with Docker in one click.",
+			"about": [
+				"Gitea is an open-source Git server, a lightweight alternative to GitHub that you run yourself. Each repository gets pull requests with code review, issues with labels, milestones and time tracking, kanban project boards and its own wiki. Gitea Actions runs CI/CD from YAML workflow files, and a built-in registry holds more than 20 kinds of packages, container images, npm, PyPI and Maven among them.",
+				"People self-host Gitea to keep code, issues and builds on a server they control, with no fee per user. It is built to be lightweight and fast, and it suits one developer's private repositories as well as a whole team's workflow. The catch is for companies: SAML single sign-on comes only with the paid Enterprise edition, while the free one signs people in through LDAP, OAuth 2.0 or OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "Is Gitea free and open source?",
+					"a": "Yes. Gitea is MIT-licensed and free to run on your own server. CommitGo, the company that leads the project, also sells Gitea Cloud, a managed service, and Gitea Enterprise, which adds audit logs and support under an SLA."
+				},
+				{
+					"q": "Gitea vs GitLab: what is the difference?",
+					"a": "GitLab CE does more, and Gitea is lighter. Gitea's own comparison lists subgroups, confidential issues, a service desk and resolving merge conflicts in the browser as GitLab features it lacks, and marks low RAM and CPU use for Gitea alone."
+				},
+				{
+					"q": "Does Gitea have CI/CD like GitHub Actions?",
+					"a": "Yes. Gitea Actions is built in and, as its docs put it, mostly compatible with GitHub Actions. Jobs run on Gitea Runner, a separate program that this template does not include: you deploy it and register it with your server."
+				},
+				{
+					"q": "How do I migrate a repository from GitHub to Gitea?",
+					"a": "Choose New Migration, pick GitHub and paste the repository's URL; enter at least your username to bring its issues and pull requests too. Gitea can also keep the repository as a mirror that syncs periodically."
+				},
+				{
+					"q": "Can I use Git over SSH with Gitea on Pethost?",
+					"a": "Yes. The template starts Gitea's built-in SSH server on port 2222 at the app's own address. Add your public key under Settings, SSH / GPG Keys, and each repository shows its SSH clone URL."
+				}
+			]
 		},
 		"de": {
 			"description": "Git-Hosting mit Pull-Requests und Issues",
-			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Dieses Konto ist der Admin, und die Registrierung ist geschlossen, also legst du weitere Konten in der Website-Administration an. Den Namen admin reserviert Gitea: Nimm einen anderen. Das Passwort aus der .env wird nur einmal gelesen; ändere es in den Einstellungen von Gitea. Git über SSH erreichst du unter {host}, Port 2222."
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Dieses Konto ist der Admin, und die Registrierung ist geschlossen, also legst du weitere Konten in der Website-Administration an. Den Namen admin reserviert Gitea: Nimm einen anderen. Das Passwort aus der .env wird nur einmal gelesen; ändere es in den Einstellungen von Gitea. Git über SSH erreichst du unter {host}, Port 2222.",
+			"sizing": "Gitea ist leicht: etwa 100 MB RAM, und auf der Disk liegen deine Repositorys, für die meisten Teams ein paar GB.",
+			"summary": "Gitea selbst hosten: die leichte Open-Source-Alternative zu GitHub mit Repositorys, Code-Review, Issues und Actions-CI. Mit Docker, mit einem Klick.",
+			"about": [
+				"Gitea ist ein Open-Source-Git-Server, eine leichte Alternative zu GitHub, die du selbst betreibst. Jedes Repository bekommt Pull-Requests mit Code-Review, Issues mit Labels, Meilensteine und Zeiterfassung, Kanban-Boards für Projekte und ein eigenes Wiki. Gitea Actions führt CI/CD anhand von YAML-Workflow-Dateien aus, und in einer eingebauten Registry liegen mehr als 20 Paketarten, darunter Container-Images, npm, PyPI und Maven.",
+				"Wer Gitea selbst hostet, behält Code, Issues und Builds auf einer Maschine unter eigener Kontrolle, ohne Gebühr pro Benutzer. Gitea ist als leichte und schnelle Lösung gebaut und passt zu den privaten Repositorys einer einzelnen Person genauso wie zum Workflow eines ganzen Teams. Der Haken betrifft Unternehmen: Single Sign-on per SAML gibt es nur in der kostenpflichtigen Enterprise-Edition, während sich in der kostenlosen Edition Leute per LDAP, OAuth 2.0 oder OpenID Connect anmelden."
+			],
+			"faq": [
+				{
+					"q": "Ist Gitea kostenlos und Open Source?",
+					"a": "Ja. Gitea steht unter der MIT-Lizenz und lässt sich kostenlos auf deiner eigenen Maschine betreiben. CommitGo, das Unternehmen, das das Projekt leitet, verkauft außerdem Gitea Cloud, einen Managed Service, und Gitea Enterprise, das Audit-Logs und Support unter einem SLA hinzufügt."
+				},
+				{
+					"q": "Gitea vs. GitLab: Was ist der Unterschied?",
+					"a": "GitLab CE kann mehr, Gitea ist leichter. Im eigenen Vergleich von Gitea stehen Untergruppen, vertrauliche Issues, ein Service Desk und das Lösen von Merge-Konflikten im Browser als GitLab-Funktionen, die Gitea fehlen, und niedriger RAM- und CPU-Verbrauch ist nur bei Gitea abgehakt."
+				},
+				{
+					"q": "Hat Gitea CI/CD wie GitHub Actions?",
+					"a": "Ja. Gitea Actions ist eingebaut und laut eigener Doku größtenteils mit GitHub Actions kompatibel. Die Jobs laufen auf Gitea Runner, einem separaten Programm, das diese Vorlage nicht enthält: Du deployst es und registrierst es bei deinem Server."
+				},
+				{
+					"q": "Wie migriere ich ein Repository von GitHub zu Gitea?",
+					"a": "Wähle New Migration, dann GitHub und füge die URL des Repositorys ein. Gib mindestens deinen Benutzernamen an, damit auch Issues und Pull-Requests mitkommen. Gitea kann das Repository außerdem als Mirror behalten, der sich regelmäßig synchronisiert."
+				},
+				{
+					"q": "Kann ich Git über SSH mit Gitea auf Pethost nutzen?",
+					"a": "Ja. Die Vorlage startet den eingebauten SSH-Server von Gitea auf Port 2222 unter der eigenen Adresse der App. Füge deinen Public Key unter Settings, SSH / GPG Keys hinzu, dann zeigt jedes Repository seine SSH-Clone-URL."
+				}
+			]
 		},
 		"es": {
 			"description": "Hosting de Git con pull requests e issues",
-			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: esa cuenta es la del administrador, y el registro está cerrado, así que las demás cuentas se crean en la Administración del sitio. Gitea reserva el nombre admin: elige otro. La contraseña de .env se lee una sola vez; cámbiala en los ajustes de Gitea. Git por SSH está en {host}, puerto 2222."
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: esa cuenta es la del administrador, y el registro está cerrado, así que las demás cuentas se crean en la Administración del sitio. Gitea reserva el nombre admin: elige otro. La contraseña de .env se lee una sola vez; cámbiala en los ajustes de Gitea. Git por SSH está en {host}, puerto 2222.",
+			"sizing": "Gitea es ligero: unos 100 MB de memoria, y el disco guarda tus repositorios, unos pocos GB para la mayoría de los equipos.",
+			"summary": "Autoaloja Gitea, la alternativa ligera y de código abierto a GitHub: repositorios, revisión de código, issues y CI con Actions. Con Docker, en un clic.",
+			"about": [
+				"Gitea es un servidor Git de código abierto, una alternativa ligera a GitHub que ejecutas tú mismo. Cada repositorio tiene pull requests con revisión de código, issues con etiquetas, hitos y seguimiento del tiempo, tableros kanban de proyecto y su propia wiki. Gitea Actions ejecuta CI/CD a partir de archivos de workflow en YAML, y su registro de paquetes integrado guarda más de 20 tipos, entre ellos imágenes de contenedor, npm, PyPI y Maven.",
+				"Autoalojas Gitea para mantener el código, los issues y los builds en una máquina que controlas, sin cobro por usuario. Está pensado para ser ligero y rápido, y sirve tanto para los repositorios privados de un solo desarrollador como para el flujo de trabajo de un equipo entero. El inconveniente es para las empresas: el inicio de sesión único con SAML solo viene con la edición Enterprise de pago, mientras que la gratuita permite iniciar sesión con LDAP, OAuth 2.0 u OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "¿Gitea es gratis y de código abierto?",
+					"a": "Sí. Gitea tiene licencia MIT y es gratis para ejecutarlo en tu propia máquina. CommitGo, la empresa que lidera el proyecto, también vende Gitea Cloud, un servicio administrado, y Gitea Enterprise, que agrega logs de auditoría y soporte con un SLA."
+				},
+				{
+					"q": "Gitea frente a GitLab: ¿cuál es la diferencia?",
+					"a": "GitLab CE hace más y Gitea es más ligero. En su propia comparación, Gitea lista subgrupos, issues confidenciales, un service desk y la resolución de conflictos de merge en el navegador como funciones de GitLab que no tiene, y marca el bajo uso de RAM y CPU solo para Gitea."
+				},
+				{
+					"q": "¿Gitea tiene CI/CD como GitHub Actions?",
+					"a": "Sí. Gitea Actions viene integrado y, según su documentación, es en su mayor parte compatible con GitHub Actions. Los jobs se ejecutan en Gitea Runner, un programa aparte que esta plantilla no incluye: lo despliegas y lo registras en tu servidor."
+				},
+				{
+					"q": "¿Cómo migro un repositorio de GitHub a Gitea?",
+					"a": "Elige New Migration, selecciona GitHub y pega la URL del repositorio. Indica al menos tu nombre de usuario para traer también sus issues y pull requests. Gitea también puede mantener el repositorio como un mirror que se sincroniza periódicamente."
+				},
+				{
+					"q": "¿Puedo usar Git por SSH con Gitea en Pethost?",
+					"a": "Sí. La plantilla inicia el servidor SSH integrado de Gitea en el puerto 2222, en la dirección propia de la app. Agrega tu clave pública en Settings, SSH / GPG Keys y cada repositorio mostrará su URL de clonación por SSH."
+				}
+			]
 		},
 		"fr": {
 			"description": "Hébergement Git avec pull requests et issues",
-			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : ce compte est l’administrateur, et les inscriptions sont fermées, donc les autres comptes se créent dans l’Administration du site. Gitea réserve le nom admin : choisissez-en un autre. Le mot de passe du .env n’est lu qu’une seule fois ; changez-le dans les paramètres de Gitea. Git en SSH est à l’adresse {host}, port 2222."
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : ce compte est l’administrateur, et les inscriptions sont fermées, donc les autres comptes se créent dans l’Administration du site. Gitea réserve le nom admin : choisissez-en un autre. Le mot de passe du .env n’est lu qu’une seule fois ; changez-le dans les paramètres de Gitea. Git en SSH est à l’adresse {host}, port 2222.",
+			"sizing": "Gitea est léger : environ 100 MB de mémoire, et le disque contient vos dépôts, quelques GB pour la plupart des équipes.",
+			"summary": "Auto-hébergez Gitea, l’alternative légère et open source à GitHub : dépôts, revue de code, issues et CI avec Actions. Avec Docker, en un clic.",
+			"about": [
+				"Gitea est un serveur Git open source, une alternative légère à GitHub que vous faites tourner vous-même. Chaque dépôt reçoit des pull requests avec revue de code, des issues avec étiquettes, des jalons et un suivi du temps, des tableaux de projet kanban et son propre wiki. Gitea Actions exécute le CI/CD à partir de fichiers de workflow YAML, et un registre intégré héberge plus de 20 types de paquets, dont des images de conteneur, npm, PyPI et Maven.",
+				"Vous auto-hébergez Gitea pour garder le code, les issues et les builds sur une machine que vous contrôlez, sans frais par utilisateur. Il est conçu pour être léger et rapide, et convient aussi bien aux dépôts privés d’un seul développeur qu’au workflow de toute une équipe. Le revers concerne les entreprises : l’authentification unique SAML n’existe que dans l’édition Enterprise payante, alors que l’édition gratuite connecte les utilisateurs via LDAP, OAuth 2.0 ou OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "Gitea est-il gratuit et open source ?",
+					"a": "Oui. Gitea est sous licence MIT et gratuit à faire tourner sur votre propre machine. CommitGo, l’entreprise qui dirige le projet, vend aussi Gitea Cloud, un service géré, et Gitea Enterprise, qui ajoute des logs d’audit et un support sous SLA."
+				},
+				{
+					"q": "Gitea ou GitLab : quelle différence ?",
+					"a": "GitLab CE en fait plus, et Gitea est plus léger. Dans sa propre comparaison, Gitea liste comme des fonctions de GitLab qui lui manquent les sous-groupes, les issues confidentielles, un service desk et la résolution des conflits de merge dans le navigateur, et seul Gitea y est coché pour la faible consommation de RAM et de CPU."
+				},
+				{
+					"q": "Gitea a-t-il du CI/CD comme GitHub Actions ?",
+					"a": "Oui. Gitea Actions est intégré et, selon sa documentation, en grande partie compatible avec GitHub Actions. Les jobs tournent sur Gitea Runner, un programme distinct que ce template n’inclut pas : vous le déployez et l’enregistrez auprès de votre serveur."
+				},
+				{
+					"q": "Comment migrer un dépôt de GitHub vers Gitea ?",
+					"a": "Choisissez New Migration, sélectionnez GitHub et collez l’URL du dépôt. Saisissez au moins votre nom d’utilisateur pour récupérer aussi ses issues et ses pull requests. Gitea peut aussi garder le dépôt comme un miroir qui se synchronise périodiquement."
+				},
+				{
+					"q": "Puis-je utiliser Git en SSH avec Gitea sur Pethost ?",
+					"a": "Oui. Le template démarre le serveur SSH intégré de Gitea sur le port 2222, à l’adresse propre de l’application. Ajoutez votre clé publique dans Settings, SSH / GPG Keys, et chaque dépôt affiche son URL de clonage SSH."
+				}
+			]
 		},
 		"pl": {
 			"description": "Hosting Git z pull requestami i zgłoszeniami",
-			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: to konto jest administratorem, a rejestracja jest zamknięta, więc pozostałe konta dodajesz w Administracji witryny. Nazwę admin Gitea rezerwuje dla siebie: wybierz inną. Hasło z .env jest odczytywane tylko raz; zmienisz je w ustawieniach Gitea. Git przez SSH jest pod adresem {host}, port 2222."
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: to konto jest administratorem, a rejestracja jest zamknięta, więc pozostałe konta dodajesz w Administracji witryny. Nazwę admin Gitea rezerwuje dla siebie: wybierz inną. Hasło z .env jest odczytywane tylko raz; zmienisz je w ustawieniach Gitea. Git przez SSH jest pod adresem {host}, port 2222.",
+			"sizing": "Gitea ma małe wymagania: około 100 MB pamięci, a dysk zajmują twoje repozytoria, dla większości zespołów kilka GB.",
+			"summary": "Gitea to lekka alternatywa open source dla GitHuba: repozytoria, code review, zgłoszenia i CI w Actions. Hostuj u siebie w Dockerze, jednym kliknięciem.",
+			"about": [
+				"Gitea to serwer Git open source, lekka alternatywa dla GitHuba, którą uruchamiasz sam. Każde repozytorium dostaje pull requesty z code review, zgłoszenia z etykietami, kamienie milowe i śledzenie czasu, tablice kanban dla projektów oraz własną wiki. Gitea Actions uruchamia CI/CD z plików workflow w YAML, a wbudowany rejestr przechowuje ponad 20 rodzajów pakietów, w tym obrazy kontenerów, npm, PyPI i Maven.",
+				"Hostując u siebie serwer Gitea, trzymasz kod, zgłoszenia i buildy na maszynie, którą kontrolujesz, i nie płacisz za każdego użytkownika. Gitea jest zaprojektowana jako lekka i szybka, więc pasuje do prywatnych repozytoriów jednego dewelopera, a także do pracy całego zespołu. Haczyk dotyczy firm: logowanie jednokrotne przez SAML jest tylko w płatnej edycji Enterprise, a darmowa loguje użytkowników przez LDAP, OAuth 2.0 lub OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "Czy Gitea jest darmowa i open source?",
+					"a": "Tak. Gitea jest na licencji MIT i można ją uruchomić za darmo na własnej maszynie. CommitGo, firma kierująca projektem, sprzedaje też Gitea Cloud, usługę zarządzaną, oraz Gitea Enterprise, która dodaje logi audytu i wsparcie w ramach SLA."
+				},
+				{
+					"q": "Gitea czy GitLab: jaka jest różnica?",
+					"a": "GitLab CE robi więcej, a Gitea jest lżejsza. We własnym porównaniu Gitea wymienia podgrupy, poufne zgłoszenia, service desk i rozwiązywanie konfliktów merge w przeglądarce jako funkcje GitLaba, których jej brakuje, a niskie zużycie RAM-u i CPU zaznacza tylko u siebie."
+				},
+				{
+					"q": "Czy Gitea ma CI/CD jak GitHub Actions?",
+					"a": "Tak. Funkcja Gitea Actions jest wbudowana i, jak podaje jej dokumentacja, w większości zgodna z GitHub Actions. Joby działają na Gitea Runner, osobnym programie, którego ten szablon nie zawiera: wdrażasz go i rejestrujesz na swoim serwerze."
+				},
+				{
+					"q": "Jak przenieść repozytorium z GitHuba do Gitea?",
+					"a": "Wybierz New Migration, wskaż GitHub i wklej adres URL repozytorium. Podaj co najmniej swoją nazwę użytkownika, żeby przenieść także zgłoszenia i pull requesty. Gitea może też trzymać repozytorium jako mirror, który synchronizuje się cyklicznie."
+				},
+				{
+					"q": "Czy mogę używać Gita przez SSH z Gitea na Pethost?",
+					"a": "Tak. Szablon uruchamia wbudowany serwer SSH Gitea na porcie 2222, pod własnym adresem aplikacji. Dodaj swój klucz publiczny w Settings, SSH / GPG Keys, a każde repozytorium pokaże swój adres URL do klonowania przez SSH."
+				}
+			]
 		},
 		"pt": {
 			"description": "Hospedagem de Git com pull requests e issues",
-			"notes": "Entre com o usuário e a senha que você definiu: essa conta é a do administrador, e o cadastro está fechado, então as outras contas são criadas na Administração do site. O Gitea reserva o nome admin: escolha outro. A senha do .env só é lida uma vez; troque-a nas configurações do Gitea. O Git por SSH fica em {host}, porta 2222."
+			"notes": "Entre com o usuário e a senha que você definiu: essa conta é a do administrador, e o cadastro está fechado, então as outras contas são criadas na Administração do site. O Gitea reserva o nome admin: escolha outro. A senha do .env só é lida uma vez; troque-a nas configurações do Gitea. O Git por SSH fica em {host}, porta 2222.",
+			"sizing": "Gitea é leve: cerca de 100 MB de memória, e o disco guarda seus repositórios, alguns GB para a maioria das equipes.",
+			"summary": "Auto-hospede o Gitea: a alternativa leve e de código aberto ao GitHub, com repositórios, code review, issues e CI com Actions. Com Docker, em um clique.",
+			"about": [
+				"O Gitea é um servidor Git de código aberto, uma alternativa leve ao GitHub que você mesmo roda. Cada repositório ganha pull requests com code review, issues com labels, milestones e controle de tempo, quadros kanban de projeto e uma wiki própria. O Gitea Actions roda CI/CD a partir de arquivos de workflow em YAML, e um registro de pacotes integrado guarda mais de 20 tipos, entre eles imagens de container, npm, PyPI e Maven.",
+				"Auto-hospedar o Gitea mantém código, issues e builds em uma máquina que você controla, sem cobrança por usuário. Ele foi feito para ser leve e rápido, e serve tanto para os repositórios privados de um único desenvolvedor quanto para o fluxo de trabalho de uma equipe inteira. O porém é para as empresas: o login único com SAML só vem na edição Enterprise paga, enquanto a gratuita autentica as pessoas por LDAP, OAuth 2.0 ou OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "O Gitea é gratuito e de código aberto?",
+					"a": "Sim. O Gitea usa a licença MIT e é gratuito para rodar na sua própria máquina. A CommitGo, empresa que lidera o projeto, também vende o Gitea Cloud, um serviço gerenciado, e o Gitea Enterprise, que acrescenta logs de auditoria e suporte com SLA."
+				},
+				{
+					"q": "Gitea ou GitLab: qual é a diferença?",
+					"a": "O GitLab CE faz mais, e o Gitea é mais leve. A comparação do próprio Gitea lista subgrupos, issues confidenciais, um service desk e a resolução de conflitos de merge no navegador como recursos do GitLab que ele não tem, e marca o baixo uso de RAM e CPU só para o Gitea."
+				},
+				{
+					"q": "O Gitea tem CI/CD como o GitHub Actions?",
+					"a": "Sim. O Gitea Actions já vem integrado e, segundo a própria documentação, é em grande parte compatível com o GitHub Actions. Os jobs rodam no Gitea Runner, um programa separado que este template não inclui: você faz o deploy dele e o registra no seu servidor."
+				},
+				{
+					"q": "Como migro um repositório do GitHub para o Gitea?",
+					"a": "Escolha New Migration, selecione GitHub e cole a URL do repositório. Informe pelo menos o seu usuário para trazer também as issues e os pull requests. O Gitea também pode manter o repositório como um mirror, que se sincroniza periodicamente."
+				},
+				{
+					"q": "Posso usar Git por SSH com o Gitea no Pethost?",
+					"a": "Sim. O template inicia o servidor SSH integrado do Gitea na porta 2222, no endereço próprio do app. Adicione sua chave pública em Settings, SSH / GPG Keys, e cada repositório mostra a própria URL de clone por SSH."
+				}
+			]
 		},
 		"ru": {
 			"description": "Git-хостинг с пул-реквестами и задачами",
-			"notes": "Войдите с именем пользователя и паролем, которые вы задали: этот аккаунт администратора, а регистрация закрыта, так что остальные аккаунты он заводит в «Администрировании сайта». Имя admin Gitea резервирует за собой: выберите другое. Пароль из .env читается только один раз; меняется он в настройках Gitea. Git по SSH доступен на {host}, порт 2222."
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: этот аккаунт администратора, а регистрация закрыта, так что остальные аккаунты он заводит в «Администрировании сайта». Имя admin Gitea резервирует за собой: выберите другое. Пароль из .env читается только один раз; меняется он в настройках Gitea. Git по SSH доступен на {host}, порт 2222.",
+			"sizing": "Gitea: небольшие требования — около 100 MB памяти, а на диске ваши репозитории, для большинства команд несколько GB.",
+			"summary": "Self-hosted Gitea — легкая open source альтернатива GitHub: репозитории, ревью кода, задачи и CI на Actions. Разворачивается в Docker в один клик.",
+			"about": [
+				"Gitea — Git-сервер с открытым исходным кодом, легкая альтернатива GitHub, которую вы запускаете сами. В каждом репозитории есть пул-реквесты с ревью кода, задачи с метками, этапы и учет времени, канбан-доски проектов и собственная вики. Gitea Actions запускает CI/CD по YAML-файлам workflow, а во встроенном реестре хранятся пакеты более 20 видов, среди них образы контейнеров, npm, PyPI и Maven.",
+				"Gitea хостят у себя, чтобы код, задачи и сборки оставались на машине, которую вы контролируете, и без платы за каждого пользователя. Это легкий и быстрый сервис: он подходит и для приватных репозиториев одного разработчика, и для рабочего процесса целой команды. Подвох касается компаний: единый вход (SSO) через SAML есть только в платной редакции Enterprise, а бесплатная пускает пользователей через LDAP, OAuth 2.0 или OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "Gitea бесплатная и с открытым кодом?",
+					"a": "Да. Gitea распространяется под лицензией MIT и бесплатно запускается на вашей собственной машине. CommitGo, компания, которая возглавляет проект, продает также Gitea Cloud, управляемый сервис, и Gitea Enterprise, где добавлены логи аудита и поддержка по SLA."
+				},
+				{
+					"q": "Gitea или GitLab: в чем разница?",
+					"a": "GitLab CE умеет больше, а Gitea легче. В собственном сравнении Gitea подгруппы, конфиденциальные задачи, service desk и разрешение merge-конфликтов в браузере значатся как возможности GitLab, которых в Gitea нет, а низкое потребление RAM и CPU отмечено только за Gitea."
+				},
+				{
+					"q": "Есть ли в Gitea CI/CD, как в GitHub Actions?",
+					"a": "Да. Gitea Actions встроен и, как сказано в его документации, в основном совместим с GitHub Actions. Задания выполняет Gitea Runner — отдельная программа, которую этот шаблон не включает: вы разворачиваете ее и регистрируете на своем сервере."
+				},
+				{
+					"q": "Как перенести репозиторий с GitHub в Gitea?",
+					"a": "Выберите New Migration, затем GitHub и вставьте URL репозитория. Чтобы перенести заодно задачи и пул-реквесты, введите хотя бы свое имя пользователя. Gitea может также оставить репозиторий как зеркало, которое периодически синхронизируется."
+				},
+				{
+					"q": "Можно ли использовать Git по SSH с Gitea на Pethost?",
+					"a": "Да. Шаблон запускает встроенный SSH-сервер Gitea на порту 2222 по собственному адресу приложения. Добавьте публичный ключ в Settings, SSH / GPG Keys, и каждый репозиторий покажет свой URL для клонирования по SSH."
+				}
+			]
 		},
 		"uk": {
 			"description": "Git-хостинг із пул-реквестами й задачами",
-			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: цей акаунт адміністратора, а реєстрацію закрито, тож інші акаунти він додає в «Адмініструванні сайту». Ім’я admin Gitea резервує за собою: оберіть інше. Пароль із .env читається лише раз; змінюють його в налаштуваннях Gitea. Git через SSH працює за адресою {host}, порт 2222."
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: цей акаунт адміністратора, а реєстрацію закрито, тож інші акаунти він додає в «Адмініструванні сайту». Ім’я admin Gitea резервує за собою: оберіть інше. Пароль із .env читається лише раз; змінюють його в налаштуваннях Gitea. Git через SSH працює за адресою {host}, порт 2222.",
+			"sizing": "Gitea має скромні вимоги: близько 100 MB пам’яті, а диск займають ваші репозиторії — для більшості команд кілька GB.",
+			"summary": "Self-hosted Gitea — легка альтернатива GitHub із відкритим кодом: репозиторії, рев’ю коду, задачі та CI на Actions. Розгортається в Docker в один клік.",
+			"about": [
+				"Gitea — Git-сервер із відкритим кодом, легка альтернатива GitHub, яку ви запускаєте самі. Кожен репозиторій отримує пул-реквести з рев’ю коду, задачі з мітками, етапи й облік часу, канбан-дошки проєктів і власну вікі. Gitea Actions запускає CI/CD за YAML-файлами workflow, а у вбудованому реєстрі зберігаються пакети понад 20 видів, серед них образи контейнерів, npm, PyPI і Maven.",
+				"Gitea хостять у себе, щоб код, задачі й збірки лишалися на машині, яку ви контролюєте, і без плати за кожного користувача. Це легке й швидке рішення: воно підходить і для приватних репозиторіїв одного розробника, і для робочого процесу цілої команди. Але є нюанс для компаній: єдиний вхід (SSO) через SAML є лише в платній редакції Enterprise, а безкоштовна пускає користувачів через LDAP, OAuth 2.0 або OpenID Connect."
+			],
+			"faq": [
+				{
+					"q": "Gitea безкоштовна й з відкритим кодом?",
+					"a": "Так. Gitea поширюється за ліцензією MIT і безкоштовно запускається на вашій власній машині. CommitGo, компанія, що очолює проєкт, також продає Gitea Cloud, керований сервіс, і Gitea Enterprise, де додано логи аудиту та підтримку за SLA."
+				},
+				{
+					"q": "Gitea чи GitLab: у чому різниця?",
+					"a": "GitLab CE вміє більше, а Gitea легша. У власному порівнянні Gitea підгрупи, конфіденційні задачі, service desk і розв’язання merge-конфліктів у браузері значаться як можливості GitLab, яких у Gitea немає, а низьке споживання RAM і CPU позначено лише за Gitea."
+				},
+				{
+					"q": "Чи є в Gitea CI/CD, як у GitHub Actions?",
+					"a": "Так. Gitea Actions вбудовано, і, як сказано в його документації, він здебільшого сумісний з GitHub Actions. Завдання виконує Gitea Runner — окрема програма, якої цей шаблон не містить: ви розгортаєте її й реєструєте на своєму сервері."
+				},
+				{
+					"q": "Як перенести репозиторій із GitHub у Gitea?",
+					"a": "Виберіть New Migration, потім GitHub і вставте URL репозиторію. Щоб перенести заодно задачі й пул-реквести, вкажіть хоча б своє ім’я користувача. Gitea також може тримати репозиторій як дзеркало, що періодично синхронізується."
+				},
+				{
+					"q": "Чи можна користуватися Git через SSH з Gitea на Pethost?",
+					"a": "Так. Шаблон запускає вбудований SSH-сервер Gitea на порту 2222 за власною адресою застосунку. Додайте публічний ключ у Settings, SSH / GPG Keys, і кожен репозиторій покаже свій URL для клонування через SSH."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,13 @@
 {
 	"name": "Windmill",
 	"emoji": "🌀",
+	"category": "automation",
+	"alternatives": [
+		"Retool",
+		"Pipedream",
+		"Temporal"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "windmill_server",
 		"port": 8000
@@ -26,35 +33,259 @@
 	"texts": {
 		"en": {
 			"description": "Scripts, flows and apps from Python, TypeScript, Go, SQL or Bash, run by workers on a schedule, a webhook or a button",
-			"notes": "Sign in with the email and the admin password you gave: Windmill makes that superadmin at the first start. Create a workspace, then a script or a flow; its packages are installed on the first run."
+			"notes": "Sign in with the email and the admin password you gave: Windmill makes that superadmin at the first start. Create a workspace, then a script or a flow; its packages are installed on the first run.",
+			"sizing": "Windmill is moderate: about 700 MB at rest, more while its workers run scripts, and cached packages grow the disk.",
+			"summary": "Windmill turns Python, TypeScript or SQL scripts into forms, webhooks, flows and apps. Self-host this open-source Retool alternative in one click.",
+			"about": [
+				"Windmill is an open-source developer platform for internal tools and background jobs, often run instead of Retool. You write a script in Python, TypeScript or one of many other languages, and Windmill reads its parameters to build a form for it; every script also gets its own webhook. Scripts chain into flows with retries, branches, loops, sleeps and approval steps, drawn in a low-code editor or written as YAML. Apps put a React or Svelte frontend on top.",
+				"People self-host it to keep their code, the secrets it uses and the logs of every run on a server they control, and to pay nothing per execution: the free Community Edition does not count them. Its limits lie elsewhere: 50 users, 10 of them on SSO, three workspaces, and job runs kept for 30 days at most. Audit logs and SAML need the paid Enterprise Edition. It suits teams that would rather write code than wire up blocks."
+			],
+			"faq": [
+				{
+					"q": "Is Windmill free and open source?",
+					"a": "Mostly. Its core is AGPLv3 and the Community Edition is free to use internally, but its Docker images also hold proprietary code, and selling it or running it as a managed service needs a commercial licence."
+				},
+				{
+					"q": "Windmill vs Retool: what is the difference?",
+					"a": "Both build internal tools. Retool is closed source and starts from its UI builder; Windmill has an open-source core and starts from code: scripts become forms and endpoints, flows chain them with retries and approvals, and apps sit on top."
+				},
+				{
+					"q": "Windmill vs n8n: which one to choose?",
+					"a": "Choose n8n to connect services with its ready-made integration nodes, and Windmill to run your own code with whatever packages it imports. Windmill's core is open source, while n8n is source-available under its Sustainable Use License."
+				},
+				{
+					"q": "Does Windmill have roles and permissions?",
+					"a": "Yes. In a workspace a Developer writes scripts, flows and apps, an Operator runs them and manages schedules and triggers, and an admin sees and edits everything. Folders and groups share items with people as Viewer or Writer."
+				},
+				{
+					"q": "What is the default Windmill login?",
+					"a": "A stock install lets anyone sign in as admin@windmill.dev with the password changeme. This template never exposes it: it creates your email and password as the superadmin and deletes admin@windmill.dev before Windmill answers on its port."
+				}
+			]
 		},
 		"de": {
 			"description": "Skripte, Flows und Apps aus Python, TypeScript, Go, SQL oder Bash, von Workern nach Zeitplan, per Webhook oder Knopfdruck ausgeführt",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Windmill legt diesen Superadmin beim ersten Start an. Lege einen Workspace an, dann ein Skript oder einen Flow; seine Pakete werden beim ersten Lauf installiert."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Windmill legt diesen Superadmin beim ersten Start an. Lege einen Workspace an, dann ein Skript oder einen Flow; seine Pakete werden beim ersten Lauf installiert.",
+			"sizing": "Windmill ist mittelschwer: etwa 700 MB im Leerlauf, mehr, wenn Worker Skripte ausführen; gecachte Pakete lassen die Disk wachsen.",
+			"summary": "Windmill selbst hosten: Aus Python-, TypeScript- oder SQL-Skripten werden Formulare, Flows und Apps. Open-Source-Alternative zu Retool, in einem Klick.",
+			"about": [
+				"Windmill ist eine Open-Source-Entwicklerplattform für interne Tools und Hintergrundjobs, die oft statt Retool betrieben wird. Du schreibst ein Skript in Python, TypeScript oder einer von vielen weiteren Sprachen, und Windmill liest dessen Parameter aus und baut daraus ein Formular; jedes Skript bekommt außerdem einen eigenen Webhook. Skripte lassen sich zu Flows mit Retries, Verzweigungen, Schleifen, Pausen und Freigabeschritten verketten, in einem Low-Code-Editor gezeichnet oder als YAML geschrieben. Apps setzen ein React- oder Svelte-Frontend obendrauf.",
+				"Du hostest Windmill selbst, damit dein Code, die Secrets, die er nutzt, und die Logs jedes Laufs auf einer Maschine bleiben, die du kontrollierst, und damit du nichts pro Ausführung zahlst: Die kostenlose Community Edition zählt sie nicht mit. Ihre Grenzen liegen woanders: 50 Benutzer, davon 10 mit SSO, drei Workspaces und Job-Läufe, die höchstens 30 Tage aufbewahrt werden. Audit-Logs und SAML brauchen die kostenpflichtige Enterprise Edition. Es passt zu Teams, die lieber Code schreiben, als Blöcke zu verdrahten."
+			],
+			"faq": [
+				{
+					"q": "Ist Windmill kostenlos und Open Source?",
+					"a": "Größtenteils. Der Kern steht unter AGPLv3, und die Community Edition ist für den internen Einsatz kostenlos, aber die Docker-Images enthalten auch proprietären Code, und wer Windmill verkaufen oder als Managed Service betreiben will, braucht eine kommerzielle Lizenz."
+				},
+				{
+					"q": "Windmill vs. Retool: Was ist der Unterschied?",
+					"a": "Beide bauen interne Tools. Retool ist Closed Source und beginnt beim UI-Builder; Windmill hat einen Open-Source-Kern und beginnt beim Code: Skripte werden zu Formularen und Endpunkten, Flows verketten sie mit Retries und Freigaben, und Apps sitzen obendrauf."
+				},
+				{
+					"q": "Windmill vs. n8n: Was soll ich wählen?",
+					"a": "Wähl n8n, um Services mit den fertigen Integrations-Nodes zu verbinden, und Windmill, um eigenen Code mit beliebigen importierten Paketen auszuführen. Der Kern von Windmill ist Open Source, n8n dagegen ist source-available unter der Sustainable Use License."
+				},
+				{
+					"q": "Hat Windmill Rollen und Berechtigungen?",
+					"a": "Ja. In einem Workspace schreibt ein Developer Skripte, Flows und Apps, ein Operator führt sie aus und verwaltet Zeitpläne und Trigger, und ein Admin sieht und bearbeitet alles. Ordner und Gruppen teilen Elemente mit Personen als Viewer oder Writer."
+				},
+				{
+					"q": "Wie lauten Standard-Login und Passwort von Windmill?",
+					"a": "Eine Standardinstallation lässt jeden als admin@windmill.dev mit dem Passwort changeme anmelden. Diese Vorlage legt das nie offen: Sie erstellt deine E-Mail-Adresse und dein Passwort als Superadmin und löscht admin@windmill.dev, bevor Windmill an seinem Port antwortet."
+				}
+			]
 		},
 		"es": {
 			"description": "Scripts, flujos y apps en Python, TypeScript, Go, SQL o Bash, ejecutados por workers según un horario, un webhook o un botón",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste: Windmill crea ese superadministrador en el primer arranque. Crea un workspace y luego un script o un flujo; sus paquetes se instalan en la primera ejecución."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste: Windmill crea ese superadministrador en el primer arranque. Crea un workspace y luego un script o un flujo; sus paquetes se instalan en la primera ejecución.",
+			"sizing": "Windmill es moderado: unos 700 MB en reposo, más mientras sus workers ejecutan scripts; el disco crece con los paquetes en caché.",
+			"summary": "Autoaloja Windmill: convierte scripts de Python, TypeScript o SQL en formularios, flujos y apps. Alternativa de código abierto a Retool, en un clic.",
+			"about": [
+				"Windmill es una plataforma de código abierto para desarrolladores, pensada para herramientas internas y trabajos en segundo plano, que a menudo se usa en lugar de Retool. Escribes un script en Python, TypeScript o uno de muchos otros lenguajes, y Windmill lee sus parámetros para crear un formulario; además, cada script tiene su propio webhook. Los scripts se encadenan en flujos con reintentos, ramificaciones, bucles, pausas y pasos de aprobación, que se dibujan en un editor low-code o se escriben en YAML. Las apps ponen un frontend de React o Svelte encima.",
+				"Autoalojas Windmill para que tu código, los secretos que usa y los logs de cada ejecución se queden en una máquina que controlas, y para no pagar nada por ejecución: la Community Edition gratuita no las cuenta. Sus límites están en otra parte: 50 usuarios, 10 de ellos con SSO, tres workspaces y ejecuciones de jobs guardadas 30 días como máximo. Los logs de auditoría y SAML requieren la Enterprise Edition de pago. Encaja con equipos que prefieren escribir código a conectar bloques."
+			],
+			"faq": [
+				{
+					"q": "¿Windmill es gratis y de código abierto?",
+					"a": "En su mayor parte. Su núcleo tiene licencia AGPLv3 y la Community Edition es gratis para uso interno, pero sus imágenes de Docker también contienen código propietario, y venderlo o ofrecerlo como servicio administrado requiere una licencia comercial."
+				},
+				{
+					"q": "Windmill vs Retool: ¿cuál es la diferencia?",
+					"a": "Ambos crean herramientas internas. Retool es de código cerrado y parte de su constructor de interfaces; Windmill tiene un núcleo de código abierto y parte del código: los scripts se convierten en formularios y endpoints, los flujos los encadenan con reintentos y aprobaciones, y las apps van encima."
+				},
+				{
+					"q": "Windmill vs n8n: ¿cuál elegir?",
+					"a": "Elige n8n para conectar servicios con sus nodos de integración ya hechos, y Windmill para ejecutar tu propio código con los paquetes que importe. El núcleo de Windmill es de código abierto, mientras que n8n es source-available bajo su Sustainable Use License."
+				},
+				{
+					"q": "¿Windmill tiene roles y permisos?",
+					"a": "Sí. En un workspace, un Developer escribe scripts, flujos y apps, un Operator los ejecuta y administra horarios y triggers, y un admin lo ve y lo edita todo. Las carpetas y los grupos comparten elementos con personas como Viewer o Writer."
+				},
+				{
+					"q": "¿Cuál es el usuario y la contraseña por defecto de Windmill?",
+					"a": "Una instalación estándar deja que cualquiera entre como admin@windmill.dev con la contraseña changeme. Esta plantilla nunca lo expone: crea tu correo y tu contraseña como superadmin y elimina admin@windmill.dev antes de que Windmill responda en su puerto."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des scripts, des flows et des applis en Python, TypeScript, Go, SQL ou Bash, lancés par des workers selon un horaire, un webhook ou un bouton",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : Windmill crée ce superadmin au premier démarrage. Créez un workspace, puis un script ou un flow ; ses paquets sont installés à la première exécution."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : Windmill crée ce superadmin au premier démarrage. Créez un workspace, puis un script ou un flow ; ses paquets sont installés à la première exécution.",
+			"sizing": "Windmill est modéré : environ 700 MB au repos, plus quand ses workers lancent des scripts ; le cache de paquets grossit le disque.",
+			"summary": "Auto-hébergez Windmill : vos scripts Python, TypeScript ou SQL deviennent des formulaires, flows et applis. Alternative open source à Retool, en un clic.",
+			"about": [
+				"Windmill est une plateforme open source pour développeurs, destinée aux outils internes et aux tâches en arrière-plan, souvent utilisée à la place de Retool. Vous écrivez un script en Python, en TypeScript ou dans l’un des nombreux autres langages, et Windmill lit ses paramètres pour en faire un formulaire ; chaque script reçoit aussi son propre webhook. Les scripts s’enchaînent en flows avec des nouvelles tentatives, des branches, des boucles, des pauses et des étapes d’approbation, dessinés dans un éditeur low-code ou écrits en YAML. Les applis posent un frontend React ou Svelte par-dessus.",
+				"Vous auto-hébergez Windmill pour garder votre code, les secrets qu’il utilise et les logs de chaque exécution sur une machine que vous contrôlez, et pour ne rien payer par exécution : la Community Edition gratuite ne les compte pas. Ses limites sont ailleurs : 50 utilisateurs, dont 10 avec SSO, trois workspaces, et des exécutions de jobs conservées 30 jours au maximum. Les logs d’audit et SAML demandent l’Enterprise Edition payante. Il convient aux équipes qui préfèrent écrire du code plutôt que relier des blocs."
+			],
+			"faq": [
+				{
+					"q": "Windmill est-il gratuit et open source ?",
+					"a": "En grande partie. Son cœur est sous licence AGPLv3 et la Community Edition est gratuite pour un usage interne, mais ses images Docker contiennent aussi du code propriétaire, et le vendre ou le proposer comme service managé demande une licence commerciale."
+				},
+				{
+					"q": "Windmill ou Retool : quelle différence ?",
+					"a": "Les deux servent à créer des outils internes. Retool est à code fermé et part de son constructeur d’interface ; Windmill a un cœur open source et part du code : les scripts deviennent des formulaires et des endpoints, les flows les enchaînent avec des nouvelles tentatives et des approbations, et les applis se posent par-dessus."
+				},
+				{
+					"q": "Windmill ou n8n : lequel choisir ?",
+					"a": "Choisissez n8n pour relier des services avec ses nœuds d’intégration prêts à l’emploi, et Windmill pour exécuter votre propre code avec les packages qu’il importe. Le cœur de Windmill est open source, alors que n8n est source-available sous sa Sustainable Use License."
+				},
+				{
+					"q": "Windmill gère-t-il les rôles et les permissions ?",
+					"a": "Oui. Dans un workspace, un Developer écrit des scripts, des flows et des applis, un Operator les exécute et gère les planifications et les triggers, et un admin voit et modifie tout. Des dossiers et des groupes partagent des éléments avec des personnes en tant que Viewer ou Writer."
+				},
+				{
+					"q": "Quels sont l’identifiant et le mot de passe par défaut de Windmill ?",
+					"a": "Une installation standard laisse n’importe qui se connecter en admin@windmill.dev avec le mot de passe changeme. Ce template ne l’expose jamais : il crée votre e-mail et votre mot de passe comme superadmin et supprime admin@windmill.dev avant que Windmill ne réponde sur son port."
+				}
+			]
 		},
 		"pl": {
 			"description": "Skrypty, flow i aplikacje w Pythonie, TypeScripcie, Go, SQL lub Bashu, uruchamiane przez workery według harmonogramu, webhookiem albo przyciskiem",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: Windmill tworzy tego superadmina przy pierwszym starcie. Utwórz workspace, a potem skrypt albo flow; jego pakiety instalują się przy pierwszym uruchomieniu."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: Windmill tworzy tego superadmina przy pierwszym starcie. Utwórz workspace, a potem skrypt albo flow; jego pakiety instalują się przy pierwszym uruchomieniu.",
+			"sizing": "Windmill ma średnie wymagania: około 700 MB w spoczynku, więcej gdy workery uruchamiają skrypty; cache pakietów rośnie na dysku.",
+			"summary": "Hostuj Windmill u siebie jednym kliknięciem: skrypty w Pythonie, TypeScripcie czy SQL zamienia w formularze i flow. Alternatywa dla Retoola open source.",
+			"about": [
+				"Windmill to platforma open source dla programistów, do narzędzi wewnętrznych i zadań w tle, często uruchamiana zamiast Retoola. Piszesz skrypt w Pythonie, TypeScripcie albo w jednym z wielu innych języków, a Windmill czyta jego parametry i buduje z nich formularz; każdy skrypt dostaje też własny webhook. Skrypty łączą się we flow z ponowieniami, rozgałęzieniami, pętlami, pauzami i krokami zatwierdzania, rysowane w edytorze low-code albo pisane jako YAML. Aplikacje dokładają na wierzch frontend w React albo Svelte.",
+				"Windmill hostujesz u siebie, żeby twój kod, używane przez niego sekrety i logi każdego uruchomienia zostały na maszynie, którą kontrolujesz, i żeby nie płacić nic za wykonanie: darmowa Community Edition ich nie zlicza. Jej limity leżą gdzie indziej: 50 użytkowników, w tym 10 z SSO, trzy workspace’y i uruchomienia zadań przechowywane najwyżej 30 dni. Logi audytu i SAML wymagają płatnej Enterprise Edition. Pasuje do zespołów, które wolą pisać kod, niż łączyć klocki."
+			],
+			"faq": [
+				{
+					"q": "Czy Windmill jest darmowy i open source?",
+					"a": "W większości tak. Jego rdzeń jest na licencji AGPLv3, a Community Edition jest darmowa do użytku wewnętrznego, ale obrazy Dockera zawierają też zastrzeżony kod, a sprzedaż albo uruchamianie jako usługi zarządzanej wymaga licencji komercyjnej."
+				},
+				{
+					"q": "Windmill czy Retool: jaka jest różnica?",
+					"a": "Oba budują narzędzia wewnętrzne. Retool ma zamknięty kod i zaczyna od kreatora interfejsu; Windmill ma rdzeń open source i zaczyna od kodu: skrypty stają się formularzami i endpointami, flow łączą je z ponowieniami i zatwierdzeniami, a aplikacje leżą na wierzchu."
+				},
+				{
+					"q": "Windmill czy n8n: co wybrać?",
+					"a": "Wybierz n8n, żeby łączyć usługi gotowymi węzłami integracji, a Windmill, żeby uruchamiać własny kod z dowolnymi importowanymi pakietami. Windmill ma rdzeń open source, a n8n jest source-available na licencji Sustainable Use License."
+				},
+				{
+					"q": "Czy Windmill ma role i uprawnienia?",
+					"a": "Tak. W workspace’ie Developer pisze skrypty, flow i aplikacje, Operator je uruchamia i zarządza harmonogramami oraz triggerami, a admin widzi i edytuje wszystko. Foldery i grupy udostępniają elementy osobom jako Viewer albo Writer."
+				},
+				{
+					"q": "Jaki jest domyślny login i hasło do Windmilla?",
+					"a": "Standardowa instalacja pozwala każdemu zalogować się jako admin@windmill.dev z hasłem changeme. Ten szablon nigdy go nie odsłania: tworzy twój e-mail i hasło jako superadmina i usuwa admin@windmill.dev, zanim Windmill odpowie na swoim porcie."
+				}
+			]
 		},
 		"pt": {
 			"description": "Scripts, fluxos e apps em Python, TypeScript, Go, SQL ou Bash, executados por workers num agendamento, num webhook ou num botão",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou: o Windmill cria esse superadmin na primeira inicialização. Crie um workspace e depois um script ou um fluxo; os pacotes dele são instalados na primeira execução."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou: o Windmill cria esse superadmin na primeira inicialização. Crie um workspace e depois um script ou um fluxo; os pacotes dele são instalados na primeira execução.",
+			"sizing": "Windmill é moderado: cerca de 700 MB em repouso, mais enquanto os workers rodam scripts; pacotes em cache fazem o disco crescer.",
+			"summary": "Auto-hospede o Windmill: transforma scripts em Python, TypeScript ou SQL em formulários, fluxos e apps. Alternativa open source ao Retool, em um clique.",
+			"about": [
+				"O Windmill é uma plataforma de código aberto para desenvolvedores, voltada a ferramentas internas e tarefas em segundo plano, muitas vezes usada no lugar do Retool. Você escreve um script em Python, TypeScript ou em uma de muitas outras linguagens, e o Windmill lê os parâmetros dele para montar um formulário; todo script também ganha um webhook próprio. Os scripts se encadeiam em fluxos com retries, ramificações, loops, pausas e etapas de aprovação, desenhados em um editor low-code ou escritos em YAML. Os apps colocam um frontend em React ou Svelte por cima.",
+				"Auto-hospedar o Windmill mantém seu código, os segredos que ele usa e os logs de cada execução em uma máquina que você controla, e você não paga nada por execução: a Community Edition gratuita não as conta. Os limites dela estão em outro lugar: 50 usuários, 10 deles com SSO, três workspaces e execuções de jobs guardadas por no máximo 30 dias. Logs de auditoria e SAML exigem a Enterprise Edition paga. Serve para equipes que preferem escrever código a ligar blocos."
+			],
+			"faq": [
+				{
+					"q": "O Windmill é gratuito e de código aberto?",
+					"a": "Em grande parte. O núcleo usa a licença AGPLv3 e a Community Edition é gratuita para uso interno, mas as imagens Docker também têm código proprietário, e vendê-lo ou rodá-lo como serviço gerenciado exige uma licença comercial."
+				},
+				{
+					"q": "Windmill vs Retool: qual é a diferença?",
+					"a": "Os dois criam ferramentas internas. O Retool é de código fechado e parte do construtor de interface; o Windmill tem um núcleo de código aberto e parte do código: scripts viram formulários e endpoints, fluxos os encadeiam com retries e aprovações, e os apps ficam por cima."
+				},
+				{
+					"q": "Windmill vs n8n: qual escolher?",
+					"a": "Escolha o n8n para conectar serviços com os nós de integração prontos dele, e o Windmill para rodar o seu próprio código com os pacotes que ele importar. O núcleo do Windmill é de código aberto, enquanto o n8n é source-available sob a Sustainable Use License."
+				},
+				{
+					"q": "O Windmill tem papéis e permissões?",
+					"a": "Sim. Em um workspace, um Developer escreve scripts, fluxos e apps, um Operator os executa e gerencia agendamentos e triggers, e um admin vê e edita tudo. Pastas e grupos compartilham itens com as pessoas como Viewer ou Writer."
+				},
+				{
+					"q": "Qual é o login e a senha padrão do Windmill?",
+					"a": "Uma instalação padrão deixa qualquer pessoa entrar como admin@windmill.dev com a senha changeme. Este template nunca a expõe: ele cria seu e-mail e sua senha como superadmin e exclui admin@windmill.dev antes de o Windmill responder na porta dele."
+				}
+			]
 		},
 		"ru": {
 			"description": "Скрипты, флоу и приложения на Python, TypeScript, Go, SQL или Bash, которые воркеры запускают по расписанию, вебхуку или кнопке",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали: Windmill создаёт этого суперадмина при первом запуске. Создайте workspace, затем скрипт или флоу; его пакеты ставятся при первом запуске."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали: Windmill создаёт этого суперадмина при первом запуске. Создайте workspace, затем скрипт или флоу; его пакеты ставятся при первом запуске.",
+			"sizing": "Windmill: умеренные требования — около 700 MB в простое, больше, пока воркеры запускают скрипты; кеш пакетов растит диск.",
+			"summary": "Self-hosted Windmill — скрипты на Python, TypeScript и SQL становятся формами, вебхуками, флоу и приложениями. Open source альтернатива Retool в один клик.",
+			"about": [
+				"Windmill — это open source платформа для разработчиков, нужная для внутренних инструментов и фоновых задач; ее часто ставят вместо Retool. Вы пишете скрипт на Python, TypeScript или одном из многих других языков, а Windmill читает его параметры и строит для него форму; у каждого скрипта есть и свой вебхук. Скрипты собираются во флоу с повторами, ветвлением, циклами, паузами и шагами согласования, которые рисуют в low-code редакторе или пишут на YAML. Приложения добавляют сверху фронтенд на React или Svelte.",
+				"Windmill хостят у себя, чтобы код, нужные ему секреты и логи каждого запуска оставались на машине, которую вы контролируете, и чтобы не платить за каждое выполнение: бесплатная Community Edition их не считает. Ограничения у нее в другом: 50 пользователей, из них 10 с SSO, три workspace и запуски задач, которые хранятся не дольше 30 дней. Для логов аудита и SAML нужна платная Enterprise Edition. Он подходит командам, которым проще писать код, чем соединять блоки."
+			],
+			"faq": [
+				{
+					"q": "Windmill бесплатный и с открытым кодом?",
+					"a": "В основном. Ядро под лицензией AGPLv3, а Community Edition бесплатна для внутреннего использования, но Docker-образы содержат и проприетарный код, а чтобы продавать Windmill или запускать его как управляемый сервис, нужна коммерческая лицензия."
+				},
+				{
+					"q": "Windmill или Retool: в чем разница?",
+					"a": "Оба строят внутренние инструменты. Retool — с закрытым кодом и начинается с конструктора интерфейсов; у Windmill ядро с открытым кодом, и он начинается с кода: скрипты становятся формами и эндпоинтами, флоу связывают их с повторами и согласованиями, а приложения лежат сверху."
+				},
+				{
+					"q": "Windmill или n8n: что выбрать?",
+					"a": "Выбирайте n8n, чтобы соединять сервисы его готовыми узлами интеграций, а Windmill — чтобы запускать собственный код с любыми пакетами, которые он импортирует. Ядро Windmill — open source, а n8n — source-available под лицензией Sustainable Use License."
+				},
+				{
+					"q": "Есть ли в Windmill роли и права доступа?",
+					"a": "Да. В workspace Developer пишет скрипты, флоу и приложения, Operator запускает их и управляет расписаниями и триггерами, а admin видит и меняет все. Папки и группы дают людям доступ к элементам как Viewer или Writer."
+				},
+				{
+					"q": "Какой логин и пароль по умолчанию у Windmill?",
+					"a": "Стандартная установка пускает любого как admin@windmill.dev с паролем changeme. Этот шаблон никогда его не открывает: он создает вашу почту и пароль как superadmin и удаляет admin@windmill.dev до того, как Windmill начнет отвечать на своем порту."
+				}
+			]
 		},
 		"uk": {
 			"description": "Скрипти, флоу й застосунки на Python, TypeScript, Go, SQL чи Bash, які воркери запускають за розкладом, вебхуком або кнопкою",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: Windmill створює цього суперадміна під час першого запуску. Створіть workspace, потім скрипт або флоу; його пакети встановлюються під час першого запуску."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: Windmill створює цього суперадміна під час першого запуску. Створіть workspace, потім скрипт або флоу; його пакети встановлюються під час першого запуску.",
+			"sizing": "Windmill має помірні вимоги: близько 700 MB без навантаження, більше — коли воркери виконують скрипти; кеш пакетів росте на диску.",
+			"summary": "Self-hosted Windmill — скрипти на Python, TypeScript і SQL стають формами, флоу та застосунками. Альтернатива Retool із відкритим кодом в один клік.",
+			"about": [
+				"Windmill — це платформа з відкритим кодом для розробників, призначена для внутрішніх інструментів і фонових завдань; її часто ставлять замість Retool. Ви пишете скрипт на Python, TypeScript або одній із багатьох інших мов, а Windmill читає його параметри й будує для нього форму; кожен скрипт також має власний вебхук. Скрипти збираються у флоу з повторами, розгалуженнями, циклами, паузами та кроками погодження, які малюють у low-code редакторі або пишуть на YAML. Застосунки додають зверху фронтенд на React чи Svelte.",
+				"Windmill хостять у себе, щоб код, потрібні йому секрети й логи кожного запуску лишалися на машині, яку ви контролюєте, і щоб не платити за кожне виконання: безплатна Community Edition їх не рахує. Обмеження в неї інші: 50 користувачів, з них 10 із SSO, три workspace і запуски завдань, які зберігаються не довше ніж 30 днів. Для логів аудиту та SAML потрібна платна Enterprise Edition. Він підходить командам, яким легше писати код, ніж з’єднувати блоки."
+			],
+			"faq": [
+				{
+					"q": "Windmill безплатний і з відкритим кодом?",
+					"a": "Здебільшого. Ядро — під ліцензією AGPLv3, а Community Edition безплатна для внутрішнього використання, але Docker-образи містять і пропрієтарний код, а щоб продавати Windmill або запускати його як керований сервіс, потрібна комерційна ліцензія."
+				},
+				{
+					"q": "Windmill чи Retool: у чому різниця?",
+					"a": "Обидва створюють внутрішні інструменти. Retool має закритий код і починається з конструктора інтерфейсів; у Windmill ядро з відкритим кодом, і він починається з коду: скрипти стають формами та ендпоінтами, флоу з’єднують їх із повторами й погодженнями, а застосунки лежать зверху."
+				},
+				{
+					"q": "Windmill чи n8n: що обрати?",
+					"a": "Обирайте n8n, щоб з’єднувати сервіси його готовими вузлами інтеграцій, а Windmill — щоб запускати власний код з будь-якими пакетами, які він імпортує. Ядро Windmill — open source, а n8n — source-available під ліцензією Sustainable Use License."
+				},
+				{
+					"q": "Чи є у Windmill ролі та права доступу?",
+					"a": "Так. У workspace Developer пише скрипти, флоу та застосунки, Operator запускає їх і керує розкладами й тригерами, а admin бачить і змінює все. Папки та групи надають людям доступ до елементів як Viewer або Writer."
+				},
+				{
+					"q": "Який логін і пароль за замовчуванням у Windmill?",
+					"a": "Стандартне встановлення пускає будь-кого як admin@windmill.dev із паролем changeme. Цей шаблон ніколи його не відкриває: він створює вашу пошту й пароль як superadmin і видаляє admin@windmill.dev до того, як Windmill почне відповідати на своєму порту."
+				}
+			]
 		}
 	}
 }

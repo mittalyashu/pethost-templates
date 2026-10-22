@@ -1,6 +1,12 @@
 {
 	"name": "ArchiveBox",
 	"emoji": "🗃️",
+	"category": "reading",
+	"alternatives": [
+		"Wayback Machine",
+		"archive.today"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "archivebox",
 		"port": 5797
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "Save web pages, videos and articles as HTML, PDF, screenshots and media files, your own web archive",
-			"notes": "Sign in as admin with the admin password you gave. The archive is private: nothing in it is seen and nothing is added without signing in. Archived pages are shown without their JavaScript, as ArchiveBox does on one address."
+			"notes": "Sign in as admin with the admin password you gave. The archive is private: nothing in it is seen and nothing is added without signing in. Archived pages are shown without their JavaScript, as ArchiveBox does on one address.",
+			"sizing": "ArchiveBox is moderate: about 1 GB while Chromium saves a page; each page takes megabytes, a video far more.",
+			"summary": "ArchiveBox is an open-source web archiver that keeps your own copy of each page: HTML, PDF, screenshot, WARC and video. Self-host it in one click.",
+			"about": [
+				"ArchiveBox is an open-source web archiver, a Wayback Machine of your own. Give it a link, a feed or a bookmarks file, and it saves each page several ways at once: the original HTML, a single-file HTML copy, a PDF, a screenshot, a WARC and the article text. Videos and audio come down with yt-dlp, and GitHub or GitLab links are cloned with git. Imports can run on a schedule, and tags and full-text search keep a large collection findable.",
+				"People self-host it so the pages they rely on outlive the sites that published them, including pages behind a login that public archives cannot reach. Each snapshot is a folder of ordinary files indexed in SQLite, readable without ArchiveBox. It suits anyone keeping evidence for a legal case, research sources or years of bookmarks. The catch: big sites such as Reddit and Twitter block archiving bots, and getting past them takes cookies or extra setup."
+			],
+			"faq": [
+				{
+					"q": "Is ArchiveBox free and open source?",
+					"a": "Yes. ArchiveBox is free and open source under the MIT License. The project operates as a US 501(c)(3) nonprofit through fiscal sponsorship and takes tax-deductible donations."
+				},
+				{
+					"q": "Does ArchiveBox send my links to archive.org?",
+					"a": "Yes, by default: ArchiveBox submits each URL to the Wayback Machine as a backup copy and saves the link it gets back. Setting ARCHIVEDOTORG_ENABLED to False keeps a private archive local only."
+				},
+				{
+					"q": "Can ArchiveBox archive pages behind a login or paywall?",
+					"a": "Yes. Import a signed-in Chrome profile into a persona, or give it a cookies.txt file, and ArchiveBox archives as that account. Anyone who can view the archive may see those cookies and session tokens, so keep it private."
+				},
+				{
+					"q": "Can I import my bookmarks into ArchiveBox?",
+					"a": "Yes. ArchiveBox reads browser bookmark exports, RSS and Atom feeds, and HTML, JSON or text lists of URLs. Its README links the export steps for Pinboard, Instapaper, Shaarli, Wallabag and other services."
+				},
+				{
+					"q": "Is there an ArchiveBox browser extension or mobile app?",
+					"a": "Yes. The extension for Chrome, Firefox and Edge, and ArchiveBox.app for iPhone, iPad and Mac with its Safari extension, save pages to your server with an API key. The extension can also archive pages matching URL patterns automatically."
+				}
+			]
 		},
 		"de": {
 			"description": "Webseiten, Videos und Artikel als HTML, PDF, Screenshots und Mediendateien sichern, dein eigenes Webarchiv",
-			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an. Das Archiv ist privat: Ohne Anmeldung sieht man nichts darin und fügt nichts hinzu. Archivierte Seiten werden ohne ihr JavaScript gezeigt, wie ArchiveBox es unter einer Adresse tut."
+			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an. Das Archiv ist privat: Ohne Anmeldung sieht man nichts darin und fügt nichts hinzu. Archivierte Seiten werden ohne ihr JavaScript gezeigt, wie ArchiveBox es unter einer Adresse tut.",
+			"sizing": "ArchiveBox ist mittelschwer: etwa 1 GB, solange Chromium eine Seite speichert; jede Seite braucht einige MB, ein Video viel mehr.",
+			"summary": "ArchiveBox selbst hosten: Open-Source-Webarchiv mit deiner eigenen Kopie jeder Seite als HTML, PDF, Screenshot, WARC und Video. Mit einem Klick.",
+			"about": [
+				"ArchiveBox ist ein Open-Source-Tool zum Archivieren von Webseiten, eine eigene Wayback Machine. Gib ihm einen Link, einen Feed oder eine Lesezeichen-Datei, und es speichert jede Seite gleich auf mehrere Arten: als originales HTML, als HTML-Kopie in einer einzigen Datei, als PDF, als Screenshot, als WARC und als Artikeltext. Videos und Audio lädt es mit yt-dlp herunter, GitHub- und GitLab-Links klont es mit git. Importe können nach Zeitplan laufen, und Tags sowie Volltextsuche halten auch eine große Sammlung auffindbar.",
+				"Du hostest ArchiveBox selbst, damit die Seiten, auf die du dich verlässt, länger leben als die Websites, die sie veröffentlicht haben. Das gilt auch für Seiten hinter einem Login, an die öffentliche Archive nicht herankommen. Jeder Snapshot ist ein Ordner mit gewöhnlichen Dateien, in SQLite indiziert und auch ohne ArchiveBox lesbar. ArchiveBox passt, wenn du Beweise für einen Rechtsstreit, Quellen für eine Recherche oder Lesezeichen aus vielen Jahren aufbewahrst. Der Haken: Große Seiten wie Reddit und Twitter sperren Archivierungs-Bots aus, und wer daran vorbeikommen will, braucht Cookies oder zusätzliche Einrichtung."
+			],
+			"faq": [
+				{
+					"q": "Ist ArchiveBox kostenlos und Open Source?",
+					"a": "Ja. ArchiveBox ist kostenlos und Open Source unter der MIT-Lizenz. Das Projekt arbeitet über ein Fiscal Sponsorship als US-amerikanische gemeinnützige Organisation nach 501(c)(3) und nimmt steuerlich absetzbare Spenden an."
+				},
+				{
+					"q": "Sendet ArchiveBox meine Links an archive.org?",
+					"a": "Ja, standardmäßig: ArchiveBox schickt jede URL als zusätzliche Kopie an die Wayback Machine und speichert den Link, den es zurückbekommt. Mit ARCHIVEDOTORG_ENABLED auf False bleibt ein privates Archiv rein lokal."
+				},
+				{
+					"q": "Kann ArchiveBox Seiten hinter einem Login oder einer Paywall archivieren?",
+					"a": "Ja. Importiere ein angemeldetes Chrome-Profil in eine Persona oder gib ArchiveBox eine cookies.txt-Datei, dann archiviert es als dieses Konto. Wer das Archiv ansehen kann, kann diese Cookies und Sitzungs-Tokens womöglich sehen, also halte es privat."
+				},
+				{
+					"q": "Kann ich meine Lesezeichen in ArchiveBox importieren?",
+					"a": "Ja. ArchiveBox liest Lesezeichen-Exporte aus Browsern, RSS- und Atom-Feeds sowie HTML-, JSON- oder Textlisten mit URLs. Die README verlinkt die Export-Schritte für Pinboard, Instapaper, Shaarli, Wallabag und weitere Dienste."
+				},
+				{
+					"q": "Gibt es eine Browser-Erweiterung oder mobile App für ArchiveBox?",
+					"a": "Ja. Die Erweiterung für Chrome, Firefox und Edge sowie ArchiveBox.app für iPhone, iPad und Mac mit Safari-Erweiterung speichern Seiten per API-Key auf deiner Maschine. Die Erweiterung kann außerdem Seiten, die zu URL-Mustern passen, automatisch archivieren."
+				}
+			]
 		},
 		"es": {
 			"description": "Guarda páginas web, vídeos y artículos como HTML, PDF, capturas y archivos multimedia, tu propio archivo de la web",
-			"notes": "Entra como admin con la contraseña de administrador que indicaste. El archivo es privado: sin iniciar sesión no se ve nada ni se añade nada. Las páginas archivadas se muestran sin su JavaScript, como hace ArchiveBox en una sola dirección."
+			"notes": "Entra como admin con la contraseña de administrador que indicaste. El archivo es privado: sin iniciar sesión no se ve nada ni se añade nada. Las páginas archivadas se muestran sin su JavaScript, como hace ArchiveBox en una sola dirección.",
+			"sizing": "ArchiveBox es moderado: cerca de 1 GB mientras Chromium guarda una página; cada página ocupa MB, y un video mucho más.",
+			"summary": "Autoaloja ArchiveBox, el archivador web de código abierto: tu propia copia de cada página en HTML, PDF, captura, WARC y vídeo. En un clic.",
+			"about": [
+				"ArchiveBox es un archivador web de código abierto, una Wayback Machine propia. Le das un enlace, un feed o un archivo de marcadores y guarda cada página de varias formas a la vez: el HTML original, una copia en HTML de un solo archivo, un PDF, una captura, un WARC y el texto del artículo. Los vídeos y el audio se descargan con yt-dlp, y los enlaces de GitHub o GitLab se clonan con git. Las importaciones pueden ejecutarse de forma programada, y las etiquetas y la búsqueda de texto completo mantienen localizable una colección grande.",
+				"Autoalojas ArchiveBox para que las páginas de las que dependes sobrevivan a los sitios que las publicaron, también las que están tras un inicio de sesión y a las que no llegan los archivos web públicos. Cada snapshot es una carpeta de archivos normales indexada en SQLite, que se puede leer sin ArchiveBox. ArchiveBox sirve para quien guarda pruebas de un caso legal, fuentes de una investigación o años de marcadores. El inconveniente: los sitios grandes, como Reddit y Twitter, bloquean a los bots de archivado, y sortearlos requiere cookies o configuración adicional."
+			],
+			"faq": [
+				{
+					"q": "¿ArchiveBox es gratis y de código abierto?",
+					"a": "Sí. ArchiveBox es gratuito y de código abierto, con licencia MIT. El proyecto funciona como una organización sin fines de lucro 501(c)(3) de EE. UU. mediante patrocinio fiscal y acepta donaciones deducibles de impuestos."
+				},
+				{
+					"q": "¿ArchiveBox envía mis enlaces a archive.org?",
+					"a": "Sí, de forma predeterminada: ArchiveBox envía cada URL a la Wayback Machine como copia adicional y guarda el enlace que recibe. Si defines ARCHIVEDOTORG_ENABLED en False, un archivo web privado se queda solo en local."
+				},
+				{
+					"q": "¿Puede ArchiveBox archivar páginas tras un inicio de sesión o un muro de pago?",
+					"a": "Sí. Importa un perfil de Chrome con la sesión iniciada en una “persona”, o dale un archivo cookies.txt, y ArchiveBox archiva como esa cuenta. Quien pueda ver el archivo web puede ver esas cookies y tokens de sesión, así que mantenlo privado."
+				},
+				{
+					"q": "¿Puedo importar mis marcadores a ArchiveBox?",
+					"a": "Sí. ArchiveBox lee exportaciones de marcadores del navegador, feeds RSS y Atom, y listas de URL en HTML, JSON o texto. Su README enlaza los pasos de exportación de Pinboard, Instapaper, Shaarli, Wallabag y otros servicios."
+				},
+				{
+					"q": "¿Hay una extensión de navegador o una app móvil de ArchiveBox?",
+					"a": "Sí. La extensión para Chrome, Firefox y Edge, y ArchiveBox.app para iPhone, iPad y Mac con su extensión de Safari, guardan páginas en tu máquina con una clave de API. La extensión también puede archivar automáticamente las páginas que coinciden con patrones de URL."
+				}
+			]
 		},
 		"fr": {
 			"description": "Sauvegardez pages web, vidéos et articles en HTML, PDF, captures et fichiers média, votre propre archive du web",
-			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué. L’archive est privée : sans connexion, on n’y voit rien et on n’y ajoute rien. Les pages archivées s’affichent sans leur JavaScript, comme le fait ArchiveBox sur une seule adresse."
+			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué. L’archive est privée : sans connexion, on n’y voit rien et on n’y ajoute rien. Les pages archivées s’affichent sans leur JavaScript, comme le fait ArchiveBox sur une seule adresse.",
+			"sizing": "ArchiveBox est modéré : environ 1 GB pendant que Chromium enregistre une page ; chaque page prend des MB, une vidéo bien plus.",
+			"summary": "Auto-hébergez ArchiveBox, l’outil d’archivage web open source : votre copie de chaque page en HTML, PDF, capture, WARC et vidéo. En un clic.",
+			"about": [
+				"ArchiveBox est un outil d’archivage web open source, une Wayback Machine à vous. Donnez-lui un lien, un flux ou un fichier de favoris, et il enregistre chaque page de plusieurs façons à la fois : le HTML d’origine, une copie HTML en un seul fichier, un PDF, une capture, un WARC et le texte de l’article. Les vidéos et l’audio sont téléchargés avec yt-dlp, et les liens GitHub ou GitLab sont clonés avec git. Les imports peuvent être planifiés, et les tags et la recherche en texte intégral permettent de retrouver le contenu d’une grande collection.",
+				"Vous auto-hébergez ArchiveBox pour que les pages sur lesquelles vous comptez survivent aux sites qui les ont publiées, y compris celles derrière une connexion, que les archives publiques ne peuvent pas atteindre. Chaque snapshot est un dossier de fichiers ordinaires, indexé dans SQLite et lisible sans ArchiveBox. ArchiveBox convient à qui conserve des preuves pour une procédure judiciaire, des sources de recherche ou des années de favoris. Le revers : les gros sites comme Reddit et Twitter bloquent les robots d’archivage, et les contourner demande des cookies ou une configuration supplémentaire."
+			],
+			"faq": [
+				{
+					"q": "ArchiveBox est-il gratuit et open source ?",
+					"a": "Oui. ArchiveBox est gratuit et open source, sous licence MIT. Le projet fonctionne comme une organisation américaine à but non lucratif 501(c)(3), grâce à un parrainage fiscal, et accepte les dons déductibles des impôts."
+				},
+				{
+					"q": "ArchiveBox envoie-t-il mes liens à archive.org ?",
+					"a": "Oui, par défaut : ArchiveBox soumet chaque URL à la Wayback Machine comme copie supplémentaire et enregistre le lien obtenu en retour. Avec ARCHIVEDOTORG_ENABLED à False, une archive privée reste uniquement locale."
+				},
+				{
+					"q": "ArchiveBox peut-il archiver des pages derrière une connexion ou un paywall ?",
+					"a": "Oui. Importez un profil Chrome connecté dans une « persona », ou donnez-lui un fichier cookies.txt, et ArchiveBox archive avec ce compte. Quiconque peut consulter l’archive peut voir ces cookies et ces tokens de session : gardez-la privée."
+				},
+				{
+					"q": "Puis-je importer mes favoris dans ArchiveBox ?",
+					"a": "Oui. ArchiveBox lit les exports de favoris des navigateurs, les flux RSS et Atom, et les listes d’URL en HTML, JSON ou texte. Son README renvoie aux étapes d’export de Pinboard, Instapaper, Shaarli, Wallabag et d’autres services."
+				},
+				{
+					"q": "Existe-t-il une extension de navigateur ou une application mobile pour ArchiveBox ?",
+					"a": "Oui. L’extension pour Chrome, Firefox et Edge, ainsi qu’ArchiveBox.app pour iPhone, iPad et Mac avec son extension Safari, enregistrent des pages sur votre machine avec une clé d’API. L’extension peut aussi archiver automatiquement les pages qui correspondent à des motifs d’URL."
+				}
+			]
 		},
 		"pl": {
 			"description": "Zapisuj strony, filmy i artykuły jako HTML, PDF, zrzuty ekranu i pliki multimedialne, własne archiwum sieci",
-			"notes": "Zaloguj się jako admin hasłem administratora, które podano. Archiwum jest prywatne: bez logowania nic w nim nie widać i nic się nie dodaje. Zarchiwizowane strony są pokazywane bez JavaScriptu, jak robi to ArchiveBox pod jednym adresem."
+			"notes": "Zaloguj się jako admin hasłem administratora, które podano. Archiwum jest prywatne: bez logowania nic w nim nie widać i nic się nie dodaje. Zarchiwizowane strony są pokazywane bez JavaScriptu, jak robi to ArchiveBox pod jednym adresem.",
+			"sizing": "ArchiveBox ma średnie wymagania: około 1 GB, gdy Chromium zapisuje stronę; każda strona to megabajty, wideo znacznie więcej.",
+			"summary": "Hostuj ArchiveBoxa u siebie: archiwizator stron open source, twoja kopia każdej strony jako HTML, PDF, zrzut ekranu, WARC i wideo. Jednym kliknięciem.",
+			"about": [
+				"ArchiveBox to archiwizator stron internetowych open source, czyli twoja własna wersja Wayback Machine. Podaj mu link, feed lub plik z zakładkami, a zapisze każdą stronę na kilka sposobów naraz: jako oryginalny HTML, kopię HTML w jednym pliku, PDF, zrzut ekranu, WARC i tekst artykułu. Filmy i dźwięk pobiera yt-dlp, a linki do GitHuba i GitLaba są klonowane przez git. Importy mogą działać według harmonogramu, a tagi i wyszukiwanie pełnotekstowe pozwalają odnaleźć wszystko nawet w dużej kolekcji.",
+				"ArchiveBoxa hostujesz u siebie, żeby strony, na których polegasz, przetrwały witryny, które je opublikowały. Dotyczy to też stron za logowaniem, do których publiczne archiwa nie dotrą. Każdy snapshot to katalog zwykłych plików zindeksowanych w SQLite, czytelnych bez ArchiveBoxa. ArchiveBox sprawdza się, gdy zbierasz dowody do sprawy sądowej, źródła do badań albo zakładki z wielu lat. Haczyk: duże serwisy, takie jak Reddit i Twitter, blokują boty archiwizujące, a ominięcie tego wymaga plików cookie albo dodatkowej konfiguracji."
+			],
+			"faq": [
+				{
+					"q": "Czy ArchiveBox jest darmowy i open source?",
+					"a": "Tak. ArchiveBox jest darmowy i open source, na licencji MIT. Projekt działa jako amerykańska organizacja non-profit 501(c)(3) w ramach sponsoringu fiskalnego i przyjmuje darowizny odliczane od podatku."
+				},
+				{
+					"q": "Czy ArchiveBox wysyła moje linki do archive.org?",
+					"a": "Tak, domyślnie: ArchiveBox zgłasza każdy URL do Wayback Machine jako dodatkową kopię i zapisuje link, który dostanie w odpowiedzi. Ustawienie ARCHIVEDOTORG_ENABLED na False sprawia, że prywatne archiwum zostaje tylko lokalne."
+				},
+				{
+					"q": "Czy ArchiveBox zarchiwizuje strony za logowaniem lub paywallem?",
+					"a": "Tak. Zaimportuj zalogowany profil Chrome do „persony” albo podaj plik cookies.txt, a ArchiveBox będzie archiwizować jako to konto. Każdy, kto może oglądać archiwum, może zobaczyć te pliki cookie i tokeny sesji, więc zostaw archiwum prywatne."
+				},
+				{
+					"q": "Czy mogę zaimportować zakładki do ArchiveBoxa?",
+					"a": "Tak. ArchiveBox czyta eksporty zakładek z przeglądarek, feedy RSS i Atom oraz listy adresów URL w HTML, JSON lub tekście. W jego README są linki do kroków eksportu z Pinboard, Instapaper, Shaarli, Wallabag i innych usług."
+				},
+				{
+					"q": "Czy jest rozszerzenie do przeglądarki albo aplikacja mobilna ArchiveBox?",
+					"a": "Tak. Rozszerzenie do przeglądarek Chrome, Firefox i Edge oraz aplikacja ArchiveBox.app na iPhone, iPad i Mac, z jej rozszerzeniem do Safari, zapisują strony na twojej maszynie za pomocą klucza API. Rozszerzenie może też automatycznie archiwizować strony pasujące do wzorców URL."
+				}
+			]
 		},
 		"pt": {
 			"description": "Guarde páginas web, vídeos e artigos como HTML, PDF, capturas de tela e arquivos de mídia, seu próprio arquivo da web",
-			"notes": "Entre como admin com a senha de administrador que você informou. O arquivo é privado: sem entrar, nada nele é visto e nada é adicionado. As páginas arquivadas aparecem sem o JavaScript delas, como o ArchiveBox faz em um único endereço."
+			"notes": "Entre como admin com a senha de administrador que você informou. O arquivo é privado: sem entrar, nada nele é visto e nada é adicionado. As páginas arquivadas aparecem sem o JavaScript delas, como o ArchiveBox faz em um único endereço.",
+			"sizing": "ArchiveBox é moderado: cerca de 1 GB enquanto o Chromium salva uma página; cada página ocupa MB, e um vídeo bem mais.",
+			"summary": "Auto-hospede o ArchiveBox: arquivador web de código aberto, sua cópia de cada página em HTML, PDF, captura de tela, WARC e vídeo. Em um clique.",
+			"about": [
+				"O ArchiveBox é um arquivador web de código aberto, uma Wayback Machine só sua. Dê a ele um link, um feed ou um arquivo de favoritos, e ele salva cada página de várias formas ao mesmo tempo: o HTML original, uma cópia em HTML de um único arquivo, um PDF, uma captura de tela, um WARC e o texto do artigo. Vídeos e áudio são baixados com o yt-dlp, e links do GitHub ou do GitLab são clonados com o git. As importações podem rodar em um agendamento, e tags e busca em texto completo mantêm uma coleção grande fácil de encontrar.",
+				"Você hospeda o ArchiveBox por conta própria para que as páginas em que você confia durem mais que os sites que as publicaram, inclusive as atrás de um login, que os arquivos públicos da web não alcançam. Cada snapshot é uma pasta de arquivos comuns, indexada no SQLite e legível sem o ArchiveBox. O ArchiveBox serve para quem guarda provas de um processo judicial, fontes de pesquisa ou anos de favoritos. O porém: sites grandes como Reddit e Twitter bloqueiam bots de arquivamento, e passar por isso exige cookies ou configuração extra."
+			],
+			"faq": [
+				{
+					"q": "O ArchiveBox é gratuito e de código aberto?",
+					"a": "Sim. O ArchiveBox é gratuito e de código aberto, sob a licença MIT. O projeto funciona como uma organização sem fins lucrativos 501(c)(3) dos EUA, por meio de patrocínio fiscal, e aceita doações dedutíveis de impostos."
+				},
+				{
+					"q": "O ArchiveBox envia meus links para o archive.org?",
+					"a": "Sim, por padrão: o ArchiveBox envia cada URL à Wayback Machine como cópia extra e guarda o link que recebe de volta. Definir ARCHIVEDOTORG_ENABLED como False mantém um arquivo web privado somente local."
+				},
+				{
+					"q": "O ArchiveBox consegue arquivar páginas atrás de login ou paywall?",
+					"a": "Sim. Importe um perfil do Chrome em que você já entrou para uma “persona”, ou dê a ele um arquivo cookies.txt, e o ArchiveBox arquiva como essa conta. Quem puder ver o arquivo web pode ver esses cookies e tokens de sessão, então mantenha-o privado."
+				},
+				{
+					"q": "Posso importar meus favoritos para o ArchiveBox?",
+					"a": "Sim. O ArchiveBox lê exportações de favoritos do navegador, feeds RSS e Atom e listas de URLs em HTML, JSON ou texto. O README dele traz links com os passos de exportação do Pinboard, Instapaper, Shaarli, Wallabag e outros serviços."
+				},
+				{
+					"q": "Existe uma extensão de navegador ou um app para celular do ArchiveBox?",
+					"a": "Sim. A extensão para Chrome, Firefox e Edge e o ArchiveBox.app para iPhone, iPad e Mac, com a extensão para Safari, salvam páginas na sua máquina com uma chave de API. A extensão também pode arquivar automaticamente páginas que correspondem a padrões de URL."
+				}
+			]
 		},
 		"ru": {
 			"description": "Сохраняйте страницы, видео и статьи в HTML, PDF, скриншотах и медиафайлах — свой архив интернета",
-			"notes": "Войдите как admin с паролем администратора, который вы указали. Архив закрытый: без входа в нём ничего не видно и ничего не добавить. Архивные страницы показываются без своего JavaScript, как ArchiveBox делает на одном адресе."
+			"notes": "Войдите как admin с паролем администратора, который вы указали. Архив закрытый: без входа в нём ничего не видно и ничего не добавить. Архивные страницы показываются без своего JavaScript, как ArchiveBox делает на одном адресе.",
+			"sizing": "ArchiveBox: умеренные требования — около 1 GB, пока Chromium сохраняет страницу; страница — мегабайты, видео — гораздо больше.",
+			"summary": "Self-hosted ArchiveBox — open source архиватор сайтов: ваша копия каждой страницы в HTML, PDF, скриншоте, WARC и видео. На вашей машине в один клик.",
+			"about": [
+				"ArchiveBox — это open source архиватор веб-страниц, ваша собственная Wayback Machine. Дайте ему ссылку, ленту или файл с закладками, и он сохранит каждую страницу сразу несколькими способами: исходный HTML, копию HTML в одном файле, PDF, скриншот, WARC и текст статьи. Видео и аудио скачиваются через yt-dlp, а ссылки на GitHub и GitLab клонируются через git. Импорт можно запускать по расписанию, а теги и полнотекстовый поиск помогают находить нужное в большой коллекции.",
+				"ArchiveBox хостят у себя, чтобы страницы, на которые вы полагаетесь, пережили сайты, которые их опубликовали. Это касается и страниц за логином, до которых публичные архивы не дотянутся. Каждый снимок — это папка с обычными файлами, которая проиндексирована в SQLite и читается без ArchiveBox. ArchiveBox подойдет тем, кто хранит доказательства для судебного дела, источники для исследования или закладки за много лет. Подвох: крупные сайты вроде Reddit и Twitter блокируют боты-архиваторы, и чтобы их обойти, нужны cookies или дополнительная настройка."
+			],
+			"faq": [
+				{
+					"q": "ArchiveBox бесплатный и с открытым кодом?",
+					"a": "Да. ArchiveBox бесплатный, с открытым кодом, под лицензией MIT. Проект работает как американская некоммерческая организация 501(c)(3) через фискальное спонсорство и принимает пожертвования, которые можно вычесть из налогов."
+				},
+				{
+					"q": "ArchiveBox отправляет мои ссылки в archive.org?",
+					"a": "Да, по умолчанию: ArchiveBox отправляет каждый URL в Wayback Machine как запасную копию и сохраняет ссылку, которую получает в ответ. Если задать ARCHIVEDOTORG_ENABLED в False, закрытый архив остается только локальным."
+				},
+				{
+					"q": "Может ли ArchiveBox архивировать страницы за логином или пейволлом?",
+					"a": "Да. Импортируйте профиль Chrome с выполненным входом в «персону» или дайте файл cookies.txt, и ArchiveBox будет архивировать от имени этого аккаунта. Любой, кто может смотреть архив, может увидеть эти cookies и токены сессии, поэтому держите архив закрытым."
+				},
+				{
+					"q": "Можно ли импортировать закладки в ArchiveBox?",
+					"a": "Да. ArchiveBox читает экспорт закладок из браузеров, ленты RSS и Atom, а также списки URL в HTML, JSON или текстовом виде. В его README есть ссылки на шаги экспорта из Pinboard, Instapaper, Shaarli, Wallabag и других сервисов."
+				},
+				{
+					"q": "Есть ли у ArchiveBox расширение для браузера или мобильное приложение?",
+					"a": "Да. Расширение для Chrome, Firefox и Edge и ArchiveBox.app для iPhone, iPad и Mac с расширением для Safari сохраняют страницы на вашу машину по API-ключу. Расширение также может автоматически архивировать страницы, подходящие под шаблоны URL."
+				}
+			]
 		},
 		"uk": {
 			"description": "Зберігайте сторінки, відео й статті в HTML, PDF, скриншотах і медіафайлах — власний архів інтернету",
-			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали. Архів закритий: без входу в ньому нічого не видно й нічого не додати. Архівні сторінки показуються без свого JavaScript, як ArchiveBox робить на одній адресі."
+			"notes": "Увійдіть як admin із паролем адміністратора, який ви вказали. Архів закритий: без входу в ньому нічого не видно й нічого не додати. Архівні сторінки показуються без свого JavaScript, як ArchiveBox робить на одній адресі.",
+			"sizing": "ArchiveBox має помірні вимоги: близько 1 GB, поки Chromium зберігає сторінку; кожна сторінка — мегабайти, відео — значно більше.",
+			"summary": "Self-hosted ArchiveBox — архіватор вебсторінок із відкритим кодом: ваша копія кожної сторінки в HTML, PDF, скріншоті, WARC і відео. В один клік.",
+			"about": [
+				"ArchiveBox — це архіватор вебсторінок із відкритим кодом, ваша власна Wayback Machine. Дайте йому посилання, стрічку або файл із закладками, і він збереже кожну сторінку одразу кількома способами: початковий HTML, копію HTML в одному файлі, PDF, скріншот, WARC і текст статті. Відео й аудіо завантажуються через yt-dlp, а посилання на GitHub чи GitLab клонуються через git. Імпорт можна запускати за розкладом, а теги й повнотекстовий пошук допомагають знаходити потрібне у великій колекції.",
+				"ArchiveBox хостять у себе, щоб сторінки, на які ви покладаєтеся, пережили сайти, що їх опублікували. Це стосується й сторінок за логіном, до яких публічні архіви не дістануться. Кожен знімок — це папка зі звичайними файлами, яка проіндексована в SQLite і читається без ArchiveBox. ArchiveBox підходить тим, хто зберігає докази для судової справи, джерела для дослідження чи закладки за багато років. Загвоздка в тому, що великі сайти, як-от Reddit і Twitter, блокують боти-архіватори, а щоб їх обійти, потрібні cookies або додаткове налаштування."
+			],
+			"faq": [
+				{
+					"q": "ArchiveBox безкоштовний і з відкритим кодом?",
+					"a": "Так. ArchiveBox безкоштовний, з відкритим кодом, за ліцензією MIT. Проєкт працює як американська неприбуткова організація 501(c)(3) через фіскальне спонсорство і приймає пожертви, які можна відняти від податків."
+				},
+				{
+					"q": "ArchiveBox надсилає мої посилання в archive.org?",
+					"a": "Так, за замовчуванням: ArchiveBox надсилає кожен URL до Wayback Machine як запасну копію й зберігає посилання, яке отримує у відповідь. Якщо задати ARCHIVEDOTORG_ENABLED у False, закритий архів залишається лише локальним."
+				},
+				{
+					"q": "Чи може ArchiveBox архівувати сторінки за логіном або пейволом?",
+					"a": "Так. Імпортуйте профіль Chrome з виконаним входом у «персону» або дайте файл cookies.txt, і ArchiveBox архівуватиме від імені цього акаунта. Будь-хто, хто може дивитися архів, може побачити ці cookies і токени сесії, тому тримайте архів закритим."
+				},
+				{
+					"q": "Чи можна імпортувати закладки в ArchiveBox?",
+					"a": "Так. ArchiveBox читає експорт закладок із браузерів, стрічки RSS і Atom, а також списки URL у форматі HTML, JSON або текстом. У його README є посилання на кроки експорту з Pinboard, Instapaper, Shaarli, Wallabag та інших сервісів."
+				},
+				{
+					"q": "Чи є в ArchiveBox розширення для браузера або мобільний застосунок?",
+					"a": "Так. Розширення для Chrome, Firefox і Edge та ArchiveBox.app для iPhone, iPad і Mac з розширенням для Safari зберігають сторінки на вашу машину за API-ключем. Розширення також може автоматично архівувати сторінки, що підпадають під шаблони URL."
+				}
+			]
 		}
 	}
 }

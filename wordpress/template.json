@@ -1,6 +1,13 @@
 {
 	"name": "WordPress",
 	"emoji": "✍️",
+	"category": "websites",
+	"alternatives": [
+		"Wix",
+		"Squarespace",
+		"WordPress.com"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "wordpress",
 		"port": 80
@@ -18,35 +25,259 @@
 	"texts": {
 		"en": {
 			"description": "A website and blog builder with themes and plugins",
-			"notes": "Open the site and finish the install page: the language, the title and the admin account. Do it right away: whoever opens that page first becomes the admin."
+			"notes": "Open the site and finish the install page: the language, the title and the admin account. Do it right away: whoever opens that page first becomes the admin.",
+			"sizing": "WordPress is light: about 200 MB with MariaDB, more with heavy plugins; media uploads are what fill the disk.",
+			"summary": "WordPress is the open-source website builder and blogging platform people run instead of Wix. Self-host it with Docker in one click.",
+			"about": [
+				"WordPress is an open-source website builder and blogging platform that people run in place of Wix. Posts and pages are built from blocks in the block editor. With a block theme, the Site Editor reworks the header, the footer and every template from the same blocks, without code. Plugins add what the core leaves out, such as a WooCommerce store. Each user gets a role, from Administrator and Editor down to Contributor, who can write posts but not publish them.",
+				"People self-host WordPress for the freedom its GPL license gives: install any theme or plugin, change its code, and keep the files and the database on a server of their own. It suits a blog, a portfolio, a company site or a small shop. The catch: the official Docker image cannot send email, so password resets and notifications need an SMTP plugin and a mail service."
+			],
+			"faq": [
+				{
+					"q": "Is WordPress free and open source?",
+					"a": "Yes. WordPress is free software under the GPL, version 2 or later: you may run it for any purpose, study and change its code, and share copies, changed or not."
+				},
+				{
+					"q": "What is the difference between WordPress.org and WordPress.com?",
+					"a": "Where it is hosted. Both run the same WordPress software: WordPress.org gives it to you to install on hosting you choose, and WordPress.com is a hosted service of Automattic that runs the site for you."
+				},
+				{
+					"q": "Can I build an online store with WordPress?",
+					"a": "Yes, with WooCommerce, a free, open-source plugin. It sells physical goods and digital downloads and takes payments through Stripe, PayPal or Square; subscriptions, bookings and memberships come as paid extensions."
+				},
+				{
+					"q": "How do I move a WordPress site to a new host?",
+					"a": "Export it with Tools > Export, which saves posts, pages, comments, categories, tags and users in one WXR file. Tools > Import > WordPress on the new site reads it and can download the media. Themes and plugins stay behind."
+				},
+				{
+					"q": "How do I increase the WordPress upload limit in Docker?",
+					"a": "Put upload_max_filesize and post_max_size in an .ini file in PHP's conf.d folder: the official image keeps PHP's 2 MB default and has no variable for it. This template already sets both to 64 MB."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Baukasten für Websites und Blogs, mit Themes und Plugins",
-			"notes": "Öffne die Website und füll die Installationsseite aus: Sprache, Titel und Admin-Konto. Mach das gleich: Wer die Seite zuerst öffnet, wird Admin."
+			"notes": "Öffne die Website und füll die Installationsseite aus: Sprache, Titel und Admin-Konto. Mach das gleich: Wer die Seite zuerst öffnet, wird Admin.",
+			"sizing": "WordPress ist leicht: etwa 200 MB mit MariaDB, mehr mit schweren Plugins; Medien-Uploads füllen die Disk.",
+			"summary": "WordPress mit Docker in einem Klick selbst hosten: der Open-Source-Baukasten für Websites und Blogs, den viele statt Wix betreiben.",
+			"about": [
+				"WordPress ist ein Open-Source-Baukasten für Websites und Blogs, den viele statt Wix betreiben. Beiträge und Seiten entstehen im Block-Editor aus Blöcken. Mit einem Block-Theme gestaltet der Site Editor Header, Footer und jedes Template aus denselben Blöcken um, ganz ohne Code. Plugins ergänzen, was der Kern weglässt, etwa einen WooCommerce-Shop. Jedes Konto bekommt eine Rolle, von Administrator und Editor bis hin zum Contributor, der Beiträge schreiben, aber nicht veröffentlichen darf.",
+				"Viele hosten WordPress wegen der Freiheit, die die GPL-Lizenz gibt, selbst: ein beliebiges Theme oder Plugin installieren, den Code ändern und die Dateien und die Datenbank auf einem eigenen Server behalten. Es passt zu einem Blog, einem Portfolio, einer Firmenwebsite oder einem kleinen Shop. Der Haken: Das offizielle Docker-Image kann keine E-Mails senden, für Passwort-Resets und Benachrichtigungen brauchst du also ein SMTP-Plugin und einen Mail-Service."
+			],
+			"faq": [
+				{
+					"q": "Ist WordPress kostenlos und Open Source?",
+					"a": "Ja. WordPress ist freie Software unter der GPL, Version 2 oder neuer: Du darfst es für jeden Zweck einsetzen, seinen Code studieren und ändern und Kopien weitergeben, geändert oder nicht."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen WordPress.org und WordPress.com?",
+					"a": "Wo es gehostet wird. Beide nutzen dieselbe WordPress-Software: WordPress.org gibt sie dir zum Installieren bei einem Hoster deiner Wahl, und WordPress.com ist ein gehosteter Service von Automattic, der die Website für dich betreibt."
+				},
+				{
+					"q": "Kann ich mit WordPress einen Online-Shop bauen?",
+					"a": "Ja, mit WooCommerce, einem kostenlosen Open-Source-Plugin. Es verkauft physische Waren und digitale Downloads und nimmt Zahlungen über Stripe, PayPal oder Square an; Abos, Buchungen und Mitgliedschaften gibt es als kostenpflichtige Erweiterungen."
+				},
+				{
+					"q": "Wie ziehe ich eine WordPress-Website auf einen neuen Host um?",
+					"a": "Exportiere sie mit Tools > Export: Das speichert Beiträge, Seiten, Kommentare, Kategorien, Schlagwörter und Benutzer in einer WXR-Datei. Tools > Import > WordPress auf der neuen Website liest sie ein und kann die Medien herunterladen. Themes und Plugins bleiben zurück."
+				},
+				{
+					"q": "Wie erhöhe ich das Upload-Limit von WordPress in Docker?",
+					"a": "Trag upload_max_filesize und post_max_size in eine .ini-Datei im conf.d-Ordner von PHP ein: Das offizielle Image behält den PHP-Standard von 2 MB und hat dafür keine Variable. Diese Vorlage setzt beides schon auf 64 MB."
+				}
+			]
 		},
 		"es": {
 			"description": "Un creador de sitios web y blogs con temas y plugins",
-			"notes": "Abre el sitio y completa la página de instalación: el idioma, el título y la cuenta de administrador. Hazlo enseguida: quien abra primero esa página será el administrador."
+			"notes": "Abre el sitio y completa la página de instalación: el idioma, el título y la cuenta de administrador. Hazlo enseguida: quien abra primero esa página será el administrador.",
+			"sizing": "WordPress es ligero: unos 200 MB con MariaDB, más con plugins pesados; los archivos multimedia que subes llenan el disco.",
+			"summary": "Autoaloja WordPress con Docker en un clic: el creador de sitios web y blogs de código abierto que se usa en lugar de Wix.",
+			"about": [
+				"WordPress es un creador de sitios web de código abierto y una plataforma de blogs que mucha gente usa en lugar de Wix. Las entradas y las páginas se arman con bloques en el editor de bloques. Con un tema de bloques, el Site Editor rehace el encabezado, el pie de página y cada plantilla con esos mismos bloques, sin código. Los plugins agregan lo que el núcleo no trae, como una tienda con WooCommerce. Cada usuario tiene un rol, desde Administrator y Editor hasta Contributor, que puede escribir entradas pero no publicarlas.",
+				"Quienes autoalojan WordPress lo hacen por la libertad que da su licencia GPL: instalar cualquier tema o plugin, cambiar su código y mantener los archivos y la base de datos en un servidor propio. Sirve para un blog, un portafolio, el sitio de una empresa o una tienda pequeña. El inconveniente: la imagen oficial de Docker no puede enviar correos, así que los restablecimientos de contraseña y las notificaciones necesitan un plugin SMTP y un servicio de correo."
+			],
+			"faq": [
+				{
+					"q": "¿WordPress es gratis y de código abierto?",
+					"a": "Sí. WordPress es software libre bajo la GPL, versión 2 o posterior: puedes usarlo con cualquier fin, estudiar y cambiar su código, y compartir copias, modificadas o no."
+				},
+				{
+					"q": "¿Qué diferencia hay entre WordPress.org y WordPress.com?",
+					"a": "Dónde se aloja. Los dos usan el mismo software de WordPress: WordPress.org te lo da para instalarlo en el hosting que elijas, y WordPress.com es un servicio alojado de Automattic que se ocupa del sitio por ti."
+				},
+				{
+					"q": "¿Puedo crear una tienda en línea con WordPress?",
+					"a": "Sí, con WooCommerce, un plugin gratuito y de código abierto. Vende productos físicos y descargas digitales y acepta pagos con Stripe, PayPal o Square; las suscripciones, las reservas y las membresías vienen como extensiones de pago."
+				},
+				{
+					"q": "¿Cómo traslado un sitio de WordPress a un nuevo hosting?",
+					"a": "Expórtalo con Tools > Export, que guarda las entradas, las páginas, los comentarios, las categorías, las etiquetas y los usuarios en un solo archivo WXR. Tools > Import > WordPress en el sitio nuevo lo lee y puede descargar los archivos multimedia. Los temas y los plugins se quedan atrás."
+				},
+				{
+					"q": "¿Cómo aumento el límite de subida de archivos de WordPress en Docker?",
+					"a": "Pon upload_max_filesize y post_max_size en un archivo .ini de la carpeta conf.d de PHP: la imagen oficial conserva el valor predeterminado de PHP, 2 MB, y no tiene una variable para esto. Esta plantilla ya fija ambos en 64 MB."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un créateur de sites et de blogs, avec thèmes et plugins",
-			"notes": "Ouvrez le site et complétez la page d’installation : la langue, le titre et le compte administrateur. Faites-le tout de suite : la première personne à ouvrir cette page devient l’administrateur."
+			"notes": "Ouvrez le site et complétez la page d’installation : la langue, le titre et le compte administrateur. Faites-le tout de suite : la première personne à ouvrir cette page devient l’administrateur.",
+			"sizing": "WordPress est léger : environ 200 MB avec MariaDB, plus avec des plugins lourds ; les médias envoyés remplissent le disque.",
+			"summary": "Auto-hébergez WordPress avec Docker en un clic : le créateur de sites et de blogs open source que beaucoup utilisent à la place de Wix.",
+			"about": [
+				"WordPress est un créateur de sites web open source et une plateforme de blog que beaucoup utilisent à la place de Wix. Les articles et les pages se composent de blocs dans l’éditeur de blocs. Avec un thème de blocs, le Site Editor refait l’en-tête, le pied de page et chaque modèle à partir des mêmes blocs, sans code. Les plugins ajoutent ce que le noyau laisse de côté, comme une boutique WooCommerce. Chaque utilisateur reçoit un rôle, d’Administrator et d’Editor jusqu’à Contributor, qui peut écrire des articles mais pas les publier.",
+				"Vous auto-hébergez WordPress pour la liberté qu’offre sa licence GPL : vous installez n’importe quel thème ou plugin, vous modifiez son code et vous gardez les fichiers et la base de données sur un serveur à vous. Il convient à un blog, un portfolio, un site d’entreprise ou une petite boutique. Le revers : l’image Docker officielle ne sait pas envoyer d’e-mails, donc les réinitialisations de mot de passe et les notifications demandent un plugin SMTP et un service de messagerie."
+			],
+			"faq": [
+				{
+					"q": "WordPress est-il gratuit et open source ?",
+					"a": "Oui. WordPress est un logiciel libre sous licence GPL, version 2 ou ultérieure : vous pouvez l’utiliser pour n’importe quel usage, étudier et modifier son code, et en partager des copies, modifiées ou non."
+				},
+				{
+					"q": "Quelle est la différence entre WordPress.org et WordPress.com ?",
+					"a": "Là où il est hébergé. Les deux font tourner le même logiciel WordPress : WordPress.org vous le donne à installer chez l’hébergeur de votre choix, et WordPress.com est un service hébergé d’Automattic qui gère le site pour vous."
+				},
+				{
+					"q": "Puis-je créer une boutique en ligne avec WordPress ?",
+					"a": "Oui, avec WooCommerce, un plugin gratuit et open source. Il vend des produits physiques et des téléchargements numériques et accepte les paiements par Stripe, PayPal ou Square ; les abonnements, les réservations et les adhésions sont proposés en extensions payantes."
+				},
+				{
+					"q": "Comment déplacer un site WordPress vers un nouvel hébergeur ?",
+					"a": "Exportez-le avec Tools > Export, qui enregistre les articles, les pages, les commentaires, les catégories, les étiquettes et les utilisateurs dans un seul fichier WXR. Tools > Import > WordPress sur le nouveau site le lit et peut télécharger les médias. Les thèmes et les plugins ne suivent pas."
+				},
+				{
+					"q": "Comment augmenter la limite d’envoi de fichiers de WordPress dans Docker ?",
+					"a": "Placez upload_max_filesize et post_max_size dans un fichier .ini du dossier conf.d de PHP : l’image officielle garde la valeur par défaut de PHP, 2 MB, et n’a pas de variable pour cela. Ce template définit déjà les deux à 64 MB."
+				}
+			]
 		},
 		"pl": {
 			"description": "Kreator stron i blogów z motywami i wtyczkami",
-			"notes": "Otwórz witrynę i wypełnij stronę instalacji: język, tytuł i konto administratora. Zrób to od razu: kto pierwszy otworzy tę stronę, zostaje administratorem."
+			"notes": "Otwórz witrynę i wypełnij stronę instalacji: język, tytuł i konto administratora. Zrób to od razu: kto pierwszy otworzy tę stronę, zostaje administratorem.",
+			"sizing": "WordPress ma małe wymagania: około 200 MB z MariaDB, więcej z ciężkimi pluginami; dysk zapełniają wgrane media.",
+			"summary": "Hostuj WordPress u siebie w Dockerze jednym kliknięciem: kreator stron i blogów open source, którego używa się zamiast Wix.",
+			"about": [
+				"WordPress to kreator stron i platforma blogowa open source, której ludzie używają zamiast Wix. Wpisy i strony składa się z bloków w edytorze blokowym. W motywie blokowym Site Editor przebudowuje nagłówek, stopkę i każdy szablon z tych samych bloków, bez kodu. Pluginy dodają to, czego rdzeń nie ma, na przykład sklep WooCommerce. Każdy użytkownik ma rolę, od Administrator i Editor po Contributor, który może pisać wpisy, ale ich nie publikować.",
+				"WordPress hostuje się u siebie ze względu na wolność, jaką daje licencja GPL: można zainstalować dowolny motyw lub plugin, zmienić jego kod i trzymać pliki oraz bazę danych na własnym serwerze. Pasuje do bloga, portfolio, strony firmowej albo małego sklepu. Haczyk: oficjalny obraz Dockera nie wysyła e-maili, więc resetowanie haseł i powiadomienia wymagają pluginu SMTP i usługi pocztowej."
+			],
+			"faq": [
+				{
+					"q": "Czy WordPress jest darmowy i open source?",
+					"a": "Tak. WordPress to wolne oprogramowanie na licencji GPL w wersji 2 lub nowszej: możesz używać go do dowolnego celu, badać i zmieniać jego kod oraz udostępniać kopie, zmienione lub nie."
+				},
+				{
+					"q": "Czym różni się WordPress.org od WordPress.com?",
+					"a": "Tym, gdzie jest hostowany. Oba korzystają z tego samego oprogramowania WordPress: WordPress.org daje je do zainstalowania u wybranego przez ciebie dostawcy hostingu, a WordPress.com to usługa hostowana firmy Automattic, która prowadzi stronę za ciebie."
+				},
+				{
+					"q": "Czy mogę zrobić sklep internetowy na WordPressie?",
+					"a": "Tak, z WooCommerce, darmowym pluginem open source. Sprzedaje towary fizyczne i pliki cyfrowe do pobrania oraz przyjmuje płatności przez Stripe, PayPal lub Square; subskrypcje, rezerwacje i członkostwa są dostępne jako płatne rozszerzenia."
+				},
+				{
+					"q": "Jak przenieść stronę WordPress na nowy hosting?",
+					"a": "Wyeksportuj ją przez Tools > Export: wpisy, strony, komentarze, kategorie, tagi i użytkownicy trafiają do jednego pliku WXR. Tools > Import > WordPress na nowej stronie wczytuje ten plik i może pobrać media. Motywy i pluginy zostają na starym miejscu."
+				},
+				{
+					"q": "Jak zwiększyć limit wgrywania plików w WordPressie w Dockerze?",
+					"a": "Wpisz upload_max_filesize i post_max_size do pliku .ini w katalogu conf.d PHP: oficjalny obraz zostawia domyślne 2 MB z PHP i nie ma na to zmiennej. Ten szablon ustawia już oba na 64 MB."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um criador de sites e blogs com temas e plugins",
-			"notes": "Abra o site e preencha a página de instalação: o idioma, o título e a conta de administrador. Faça isso logo: quem abrir essa página primeiro vira o administrador."
+			"notes": "Abra o site e preencha a página de instalação: o idioma, o título e a conta de administrador. Faça isso logo: quem abrir essa página primeiro vira o administrador.",
+			"sizing": "WordPress é leve: cerca de 200 MB com o MariaDB, mais com plugins pesados; os uploads de mídia é que enchem o disco.",
+			"summary": "Hospede o WordPress por conta própria com Docker em um clique: o criador de sites e blogs de código aberto que muita gente usa no lugar do Wix.",
+			"about": [
+				"O WordPress é um criador de sites e uma plataforma de blogs de código aberto que muita gente usa no lugar do Wix. Posts e páginas são montados com blocos no editor de blocos. Com um tema de blocos, o Site Editor refaz o cabeçalho, o rodapé e cada template a partir dos mesmos blocos, sem código. Plugins acrescentam o que o core não traz, como uma loja com WooCommerce. Cada usuário recebe uma função, de Administrator e Editor até Contributor, que pode escrever posts, mas não publicá-los.",
+				"Você hospeda o WordPress por conta própria pela liberdade que a licença GPL dá: instalar qualquer tema ou plugin, alterar o código e manter os arquivos e o banco de dados em um servidor seu. Serve para um blog, um portfólio, um site de empresa ou uma loja pequena. O porém: a imagem oficial do Docker não consegue enviar e-mails, então redefinições de senha e notificações precisam de um plugin SMTP e de um serviço de e-mail."
+			],
+			"faq": [
+				{
+					"q": "O WordPress é gratuito e de código aberto?",
+					"a": "Sim. O WordPress é software livre sob a GPL, versão 2 ou posterior: você pode usá-lo para qualquer finalidade, estudar e alterar o código dele e compartilhar cópias, alteradas ou não."
+				},
+				{
+					"q": "Qual é a diferença entre o WordPress.org e o WordPress.com?",
+					"a": "Onde ele fica hospedado. Os dois rodam o mesmo software WordPress: o WordPress.org entrega o software para você instalar na hospedagem que escolher, e o WordPress.com é um serviço hospedado da Automattic que cuida do site para você."
+				},
+				{
+					"q": "Posso criar uma loja virtual com o WordPress?",
+					"a": "Sim, com o WooCommerce, um plugin gratuito e de código aberto. Ele vende produtos físicos e downloads digitais e aceita pagamentos pelo Stripe, PayPal ou Square; assinaturas, reservas e áreas de membros vêm como extensões pagas."
+				},
+				{
+					"q": "Como migrar um site WordPress para outra hospedagem?",
+					"a": "Exporte em Tools > Export, que salva posts, páginas, comentários, categorias, tags e usuários em um único arquivo WXR. Tools > Import > WordPress no novo site lê esse arquivo e pode baixar a mídia. Temas e plugins ficam para trás."
+				},
+				{
+					"q": "Como aumentar o limite de upload do WordPress no Docker?",
+					"a": "Coloque upload_max_filesize e post_max_size em um arquivo .ini na pasta conf.d do PHP: a imagem oficial mantém o padrão de 2 MB do PHP e não tem uma variável para isso. Este template já define os dois como 64 MB."
+				}
+			]
 		},
 		"ru": {
 			"description": "Конструктор сайтов и блогов с темами и плагинами",
-			"notes": "Откройте сайт и заполните страницу установки: язык, название и аккаунт администратора. Сделайте это сразу: администратором станет тот, кто откроет эту страницу первым."
+			"notes": "Откройте сайт и заполните страницу установки: язык, название и аккаунт администратора. Сделайте это сразу: администратором станет тот, кто откроет эту страницу первым.",
+			"sizing": "WordPress: небольшие требования — около 200 MB вместе с MariaDB, больше с тяжелыми плагинами; диск заполняют медиафайлы.",
+			"summary": "Self-hosted WordPress через Docker в один клик: open source конструктор сайтов и блогов, которым пользуются вместо Wix.",
+			"about": [
+				"WordPress — это open source конструктор сайтов и платформа для блогов, которой пользуются вместо Wix. Записи и страницы собираются из блоков в блочном редакторе. С блочной темой Site Editor переделывает шапку, подвал и каждый шаблон из тех же блоков, без кода. Плагины добавляют то, чего нет в ядре, например магазин на WooCommerce. У каждого пользователя есть роль, от Administrator и Editor до Contributor, который может писать записи, но не публиковать их.",
+				"WordPress хостят у себя ради свободы, которую дает лицензия GPL: ставить любые темы и плагины, менять код и держать файлы и базу данных на собственном сервере. Он подходит для блога, портфолио, сайта компании или небольшого магазина. Но есть нюанс: официальный образ Docker не умеет отправлять почту, поэтому сбросу пароля и уведомлениям нужны SMTP-плагин и почтовый сервис."
+			],
+			"faq": [
+				{
+					"q": "WordPress бесплатный и с открытым исходным кодом?",
+					"a": "Да. WordPress — свободное ПО по лицензии GPL версии 2 или новее: его можно использовать для любых целей, изучать и менять его код, делиться копиями, измененными или нет."
+				},
+				{
+					"q": "Чем отличаются WordPress.org и WordPress.com?",
+					"a": "Тем, где он размещается. Оба работают на одном и том же ПО WordPress: WordPress.org отдает его вам для установки на выбранный вами хостинг, а WordPress.com — это хостинговый сервис Automattic, который ведет сайт за вас."
+				},
+				{
+					"q": "Можно ли сделать интернет-магазин на WordPress?",
+					"a": "Да, с помощью WooCommerce — бесплатного плагина с открытым кодом. Он продает физические товары и цифровые файлы для скачивания и принимает платежи через Stripe, PayPal или Square; подписки, бронирования и членство подключаются платными расширениями."
+				},
+				{
+					"q": "Как перенести сайт WordPress на новый хостинг?",
+					"a": "Экспортируйте его через Tools > Export: записи, страницы, комментарии, рубрики, метки и пользователи сохраняются в одном файле WXR. Tools > Import > WordPress на новом сайте читает этот файл и может скачать медиафайлы. Темы и плагины остаются на старом месте."
+				},
+				{
+					"q": "Как увеличить лимит загрузки файлов в WordPress в Docker?",
+					"a": "Пропишите upload_max_filesize и post_max_size в .ini-файле в папке conf.d у PHP: официальный образ оставляет значение PHP по умолчанию, 2 MB, и переменной для этого у него нет. В этом шаблоне оба уже заданы равными 64 MB."
+				}
+			]
 		},
 		"uk": {
 			"description": "Конструктор сайтів і блогів із темами та плагінами",
-			"notes": "Відкрийте сайт і заповніть сторінку встановлення: мова, назва й акаунт адміністратора. Зробіть це одразу: адміністратором стане той, хто відкриє цю сторінку першим."
+			"notes": "Відкрийте сайт і заповніть сторінку встановлення: мова, назва й акаунт адміністратора. Зробіть це одразу: адміністратором стане той, хто відкриє цю сторінку першим.",
+			"sizing": "WordPress має скромні вимоги: близько 200 MB з MariaDB, більше з важкими плагінами; диск заповнюють завантажені медіафайли.",
+			"summary": "Self-hosted WordPress через Docker в один клік: конструктор сайтів і блогів з відкритим кодом, яким користуються замість Wix.",
+			"about": [
+				"WordPress — це конструктор сайтів і платформа для блогів з відкритим кодом, якою користуються замість Wix. Записи й сторінки збираються з блоків у блоковому редакторі. З блоковою темою Site Editor переробляє шапку, підвал і кожен шаблон із тих самих блоків, без коду. Плагіни додають те, чого немає в ядрі, наприклад магазин на WooCommerce. Кожен користувач має роль, від Administrator і Editor до Contributor, який може писати записи, але не публікувати їх.",
+				"WordPress хостять у себе заради свободи, яку дає ліцензія GPL: ставити будь-які теми й плагіни, змінювати код і тримати файли та базу даних на власному сервері. Він підходить для блогу, портфоліо, сайту компанії чи невеликого магазину. Але є нюанс: офіційний образ Docker не вміє надсилати пошту, тому скиданню пароля й сповіщенням потрібні SMTP-плагін і поштовий сервіс."
+			],
+			"faq": [
+				{
+					"q": "Чи WordPress безкоштовний і з відкритим кодом?",
+					"a": "Так. WordPress — вільне програмне забезпечення за ліцензією GPL версії 2 або новішої: його можна використовувати для будь-яких цілей, вивчати й змінювати його код, поширювати копії, змінені чи ні."
+				},
+				{
+					"q": "Чим відрізняються WordPress.org і WordPress.com?",
+					"a": "Тим, де він розміщується. Обидва використовують те саме програмне забезпечення WordPress: WordPress.org віддає його вам для встановлення на обраний вами хостинг, а WordPress.com — це хостинговий сервіс Automattic, який веде сайт за вас."
+				},
+				{
+					"q": "Чи можна зробити інтернет-магазин на WordPress?",
+					"a": "Так, за допомогою WooCommerce — безкоштовного плагіна з відкритим кодом. Він продає фізичні товари та цифрові файли для звантаження й приймає платежі через Stripe, PayPal або Square; підписки, бронювання та членство доступні як платні розширення."
+				},
+				{
+					"q": "Як перенести сайт WordPress на новий хостинг?",
+					"a": "Експортуйте його через Tools > Export: записи, сторінки, коментарі, рубрики, мітки та користувачі зберігаються в одному файлі WXR. Tools > Import > WordPress на новому сайті читає цей файл і може звантажити медіафайли. Теми й плагіни лишаються на старому місці."
+				},
+				{
+					"q": "Як збільшити ліміт завантаження файлів у WordPress у Docker?",
+					"a": "Пропишіть upload_max_filesize і post_max_size у .ini-файлі в каталозі conf.d PHP: офіційний образ лишає типове значення PHP, 2 MB, і змінної для цього в нього немає. У цьому шаблоні обидва вже задано 64 MB."
+				}
+			]
 		}
 	}
 }

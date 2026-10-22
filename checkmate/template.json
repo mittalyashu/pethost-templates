@@ -1,6 +1,13 @@
 {
 	"name": "Checkmate",
 	"emoji": "♟️",
+	"category": "monitoring",
+	"alternatives": [
+		"UptimeRobot",
+		"Better Stack",
+		"Pingdom"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "checkmate",
 		"port": 52345
@@ -18,35 +25,259 @@
 	"texts": {
 		"en": {
 			"description": "Uptime, page speed and infrastructure monitoring, with status pages",
-			"notes": "Open the address and create the account: the first one made is the admin, and everyone after joins by an invite. Do it right away: until then whoever has the address can make it. Email alerts and invites go out once an SMTP server is set in Settings."
+			"notes": "Open the address and create the account: the first one made is the admin, and everyone after joins by an invite. Do it right away: until then whoever has the address can make it. Email alerts and invites go out once an SMTP server is set in Settings.",
+			"sizing": "Checkmate is moderate: about half a gigabyte with its MongoDB, and months of checks take a few gigabytes.",
+			"summary": "Checkmate is open-source uptime, page speed and server monitoring with status pages. Run it on your own machine in one click instead of UptimeRobot.",
+			"about": [
+				"Checkmate is an open-source uptime and server monitoring tool that people run instead of UptimeRobot. It checks sites and services over HTTP, ping, TCP ports, DNS, gRPC and WebSocket, watches Docker containers and game servers, and warns before an SSL certificate expires. PageSpeed monitors run Google Lighthouse on a schedule and record Core Web Vitals. The first failed check opens an incident and sends an alert by email, Slack, Discord, Telegram or webhook, and a public status page shows visitors what is down.",
+				"People self-host it so the bill does not grow with each monitor: there are no monitor limits, and the one tier has every feature, free. Checks, incidents and accounts stay in your own database, with no telemetry. Checkmate is AGPL-3.0. The catch is that support is Discord and GitHub issues, with no paid tier, and email alerts need an SMTP server of your own."
+			],
+			"faq": [
+				{
+					"q": "Is Checkmate free and open source?",
+					"a": "Yes. Checkmate is free and open source under AGPL-3.0: you can run, fork and modify it. If you offer a modified version as a network service, you must share your changes under the same license."
+				},
+				{
+					"q": "Checkmate vs UptimeRobot: what is the difference?",
+					"a": "UptimeRobot is a hosted service; Checkmate is software you run on your own server. Its makers say commercial tools meter by host or monitor, and that you trade the managed cloud and some polish for unlimited monitors."
+				},
+				{
+					"q": "Can Checkmate monitor server CPU, memory and disk?",
+					"a": "Yes, with Capture, its agent for Linux, Windows, Mac, Raspberry Pi or any device that runs Go. Installed on a server, it lets Checkmate chart that machine's CPU, memory, disk, network and temperature."
+				},
+				{
+					"q": "Can I import my monitors from another tool into Checkmate?",
+					"a": "There is no one-click import. Most HTTP, ping, TCP, Docker and status page setups map over directly, and the API accepts JSON, so a short script can create monitors in bulk."
+				},
+				{
+					"q": "How do I set up email alerts in Checkmate?",
+					"a": "Open Settings, then the Email tab, and enter your SMTP host, port, username, password and From address. Click Save, then Test to check that it works."
+				}
+			]
 		},
 		"de": {
 			"description": "Überwachung von Erreichbarkeit, Ladezeiten und Servern, mit Statusseiten",
-			"notes": "Öffne die Adresse und erstell das Konto: Das erste wird Admin, alle weiteren kommen per Einladung dazu. Mach das gleich: Bis dahin kann es jeder anlegen, der die Adresse hat. Alarme und Einladungen per E-Mail gehen raus, sobald in den Settings ein SMTP-Server eingetragen ist."
+			"notes": "Öffne die Adresse und erstell das Konto: Das erste wird Admin, alle weiteren kommen per Einladung dazu. Mach das gleich: Bis dahin kann es jeder anlegen, der die Adresse hat. Alarme und Einladungen per E-Mail gehen raus, sobald in den Settings ein SMTP-Server eingetragen ist.",
+			"sizing": "Checkmate ist mittelschwer: etwa ein halbes GB mit MongoDB, und Monate an Checks brauchen ein paar GB.",
+			"summary": "Checkmate selbst hosten: Open-Source-Monitoring für Erreichbarkeit, Ladezeit und Server mit Statusseiten, statt UptimeRobot. Mit einem Klick.",
+			"about": [
+				"Checkmate ist ein Open-Source-Tool zur Überwachung von Uptime und Servern, das Leute statt UptimeRobot betreiben. Es prüft Websites und Services per HTTP, Ping, TCP-Ports, DNS, gRPC und WebSocket, überwacht Docker-Container und Gameserver und warnt, bevor ein SSL-Zertifikat abläuft. PageSpeed-Monitore führen Google Lighthouse nach Zeitplan aus und zeichnen die Core Web Vitals auf. Der erste fehlgeschlagene Check eröffnet einen Vorfall und schickt einen Alert per E-Mail, Slack, Discord, Telegram oder Webhook, und eine öffentliche Statusseite zeigt allen, die sie öffnen, was gerade ausfällt.",
+				"Wer Checkmate selbst hostet, will, dass die Rechnung nicht mit jedem Monitor wächst: Es gibt keine Monitor-Limits, und der einzige Tarif enthält alle Funktionen, kostenlos. Checks, Vorfälle und Konten bleiben in deiner eigenen Datenbank, ohne Telemetrie. Checkmate steht unter AGPL-3.0. Der Haken: Support gibt es über Discord und GitHub-Issues, einen bezahlten Tarif gibt es nicht, und E-Mail-Alerts brauchen einen eigenen SMTP-Server."
+			],
+			"faq": [
+				{
+					"q": "Ist Checkmate kostenlos und Open Source?",
+					"a": "Ja. Checkmate ist kostenlos und Open Source unter AGPL-3.0: Du kannst es betreiben, forken und verändern. Wenn du eine veränderte Version als Netzwerkdienst anbietest, musst du deine Änderungen unter derselben Lizenz teilen."
+				},
+				{
+					"q": "Checkmate oder UptimeRobot: Was ist der Unterschied?",
+					"a": "UptimeRobot ist ein gehosteter Dienst, Checkmate ist Software, die du auf deinem eigenen Server betreibst. Laut den Machern von Checkmate rechnen kommerzielle Tools nach Host oder Monitor ab, und man tauscht die verwaltete Cloud und etwas Feinschliff gegen unbegrenzt viele Monitore ein."
+				},
+				{
+					"q": "Kann Checkmate CPU, RAM und Disk eines Servers überwachen?",
+					"a": "Ja, mit Capture, seinem Agenten für Linux, Windows, Mac, Raspberry Pi oder jedes Gerät, auf dem Go läuft. Auf einem Server installiert, lässt er Checkmate CPU, RAM, Disk, Netzwerk und Temperatur dieses Servers als Diagramme zeigen."
+				},
+				{
+					"q": "Kann ich meine Monitore aus einem anderen Tool in Checkmate importieren?",
+					"a": "Einen Import per Klick gibt es nicht. Die meisten Setups für HTTP, Ping, TCP, Docker und Statusseiten lassen sich direkt übertragen, und die API nimmt JSON entgegen, sodass ein kurzes Skript Monitore in großer Zahl anlegen kann."
+				},
+				{
+					"q": "Wie richte ich E-Mail-Alerts in Checkmate ein?",
+					"a": "Öffne „Settings“, dann den Tab „Email“, und trage SMTP-Host, Port, Benutzername, Passwort und From-Adresse ein. Klick auf „Save“ und dann auf „Test“, um zu prüfen, ob es funktioniert."
+				}
+			]
 		},
 		"es": {
 			"description": "Monitoreo de disponibilidad, velocidad de páginas e infraestructura, con páginas de estado",
-			"notes": "Abre la dirección y crea la cuenta: la primera es la de administrador, y las siguientes entran por invitación. Hazlo enseguida: hasta entonces la puede crear cualquiera que tenga la dirección. Las alertas y las invitaciones por correo salen cuando pones un servidor SMTP en Settings."
+			"notes": "Abre la dirección y crea la cuenta: la primera es la de administrador, y las siguientes entran por invitación. Hazlo enseguida: hasta entonces la puede crear cualquiera que tenga la dirección. Las alertas y las invitaciones por correo salen cuando pones un servidor SMTP en Settings.",
+			"sizing": "Checkmate es moderado: cerca de medio gigabyte con su MongoDB, y meses de comprobaciones ocupan unos pocos GB.",
+			"summary": "Autoaloja Checkmate, monitoreo de código abierto de uptime, velocidad de páginas y servidores, con páginas de estado, en lugar de UptimeRobot. En un clic.",
+			"about": [
+				"Checkmate es una herramienta de código abierto para monitorear el uptime y los servidores que la gente ejecuta en lugar de UptimeRobot. Comprueba sitios y servicios por HTTP, ping, puertos TCP, DNS, gRPC y WebSocket, vigila contenedores Docker y servidores de juegos, y avisa antes de que venza un certificado SSL. Los monitores PageSpeed ejecutan Google Lighthouse de forma programada y registran los Core Web Vitals. La primera comprobación fallida abre un incidente y envía una alerta por correo, Slack, Discord, Telegram o webhook, y una página de estado pública muestra a los visitantes qué está caído.",
+				"La gente lo autoaloja para que la factura no crezca con cada monitor: no hay límite de monitores y el único plan incluye todas las funciones, gratis. Las comprobaciones, los incidentes y las cuentas se quedan en tu propia base de datos, sin telemetría. Checkmate usa la licencia AGPL-3.0. El inconveniente: el soporte es por Discord y por los issues de GitHub, no hay un plan de pago, y las alertas por correo necesitan un servidor SMTP propio."
+			],
+			"faq": [
+				{
+					"q": "¿Checkmate es gratis y de código abierto?",
+					"a": "Sí. Checkmate es gratis y de código abierto bajo la licencia AGPL-3.0: puedes ejecutarlo, hacer un fork y modificarlo. Si ofreces una versión modificada como servicio de red, debes compartir tus cambios con la misma licencia."
+				},
+				{
+					"q": "Checkmate frente a UptimeRobot: ¿cuál es la diferencia?",
+					"a": "UptimeRobot es un servicio alojado; Checkmate es software que ejecutas en tu propio servidor. Según los creadores de Checkmate, las herramientas comerciales cobran por host o por monitor, y a cambio de monitores ilimitados se renuncia a la nube administrada y a parte del pulido."
+				},
+				{
+					"q": "¿Checkmate puede monitorear la CPU, la memoria y el disco de un servidor?",
+					"a": "Sí, con Capture, su agente para Linux, Windows, Mac, Raspberry Pi o cualquier dispositivo que ejecute Go. Instalado en un servidor, permite que Checkmate muestre en gráficos la CPU, la memoria, el disco, la red y la temperatura de ese servidor."
+				},
+				{
+					"q": "¿Puedo importar mis monitores de otra herramienta a Checkmate?",
+					"a": "No hay importación con un clic. La mayoría de las configuraciones de HTTP, ping, TCP, Docker y páginas de estado se pasan directamente, y la API acepta JSON, así que un script corto puede crear monitores en bloque."
+				},
+				{
+					"q": "¿Cómo configuro las alertas por correo en Checkmate?",
+					"a": "Abre “Settings”, luego la pestaña “Email”, e introduce el host SMTP, el puerto, el usuario, la contraseña y la dirección From. Haz clic en “Save” y después en “Test” para comprobar que funciona."
+				}
+			]
 		},
 		"fr": {
 			"description": "Surveillance de la disponibilité, de la vitesse des pages et des serveurs, avec pages de statut",
-			"notes": "Ouvrez l’adresse et créez le compte : le premier créé est l’administrateur, les suivants arrivent par invitation. Faites-le tout de suite : d’ici là, quiconque connaît l’adresse peut le créer. Les alertes et les invitations par e-mail partent une fois un serveur SMTP indiqué dans Settings."
+			"notes": "Ouvrez l’adresse et créez le compte : le premier créé est l’administrateur, les suivants arrivent par invitation. Faites-le tout de suite : d’ici là, quiconque connaît l’adresse peut le créer. Les alertes et les invitations par e-mail partent une fois un serveur SMTP indiqué dans Settings.",
+			"sizing": "Checkmate est modéré : environ 0,5 GB avec son MongoDB, et des mois de vérifications prennent quelques GB.",
+			"summary": "Auto-hébergez Checkmate, surveillance open source de disponibilité, de vitesse de pages et de serveurs, avec pages de statut, à la place d’UptimeRobot.",
+			"about": [
+				"Checkmate est un outil open source de surveillance de la disponibilité et des serveurs que l’on fait tourner à la place d’UptimeRobot. Il vérifie des sites et des services en HTTP, ping, ports TCP, DNS, gRPC et WebSocket, surveille des conteneurs Docker et des serveurs de jeu, et prévient avant l’expiration d’un certificat SSL. Les sondes PageSpeed lancent Google Lighthouse de façon planifiée et enregistrent les Core Web Vitals. La première vérification qui échoue ouvre un incident et envoie une alerte par e-mail, Slack, Discord, Telegram ou webhook, et une page de statut publique montre aux visiteurs ce qui est en panne.",
+				"On l’auto-héberge pour que la facture ne grossisse pas avec chaque sonde : il n’y a aucune limite de sondes, et l’unique offre comprend toutes les fonctionnalités, gratuitement. Les vérifications, les incidents et les comptes restent dans votre propre base de données, sans télémétrie. Checkmate est sous licence AGPL-3.0. Le revers : le support passe par Discord et les issues GitHub, il n’existe pas d’offre payante, et les alertes par e-mail demandent votre propre serveur SMTP."
+			],
+			"faq": [
+				{
+					"q": "Checkmate est-il gratuit et open source ?",
+					"a": "Oui. Checkmate est gratuit et open source sous licence AGPL-3.0 : vous pouvez l’exécuter, le forker et le modifier. Si vous proposez une version modifiée comme service réseau, vous devez partager vos modifications sous la même licence."
+				},
+				{
+					"q": "Checkmate ou UptimeRobot : quelle différence ?",
+					"a": "UptimeRobot est un service hébergé ; Checkmate est un logiciel que vous faites tourner sur votre propre serveur. Selon les créateurs de Checkmate, les outils commerciaux tarifent au nombre d’hôtes ou de sondes, et l’on échange le cloud managé et un peu de finition contre des sondes illimitées."
+				},
+				{
+					"q": "Checkmate peut-il surveiller le CPU, la mémoire et le disque d’un serveur ?",
+					"a": "Oui, avec Capture, son agent pour Linux, Windows, Mac, Raspberry Pi ou tout appareil capable d’exécuter Go. Installé sur un serveur, il permet à Checkmate de tracer le CPU, la mémoire, le disque, le réseau et la température de ce serveur."
+				},
+				{
+					"q": "Puis-je importer mes sondes d’un autre outil dans Checkmate ?",
+					"a": "Il n’y a pas d’import en un clic. La plupart des configurations HTTP, ping, TCP, Docker et pages de statut se transposent directement, et l’API accepte le JSON, si bien qu’un court script peut créer des sondes en masse."
+				},
+				{
+					"q": "Comment configurer les alertes par e-mail dans Checkmate ?",
+					"a": "Ouvrez « Settings », puis l’onglet « Email », et saisissez l’hôte SMTP, le port, le nom d’utilisateur, le mot de passe et l’adresse From. Cliquez sur « Save », puis sur « Test » pour vérifier que cela fonctionne."
+				}
+			]
 		},
 		"pl": {
 			"description": "Monitoring dostępności, szybkości stron i serwerów, ze stronami statusu",
-			"notes": "Otwórz adres projektu i załóż konto: pierwsze założone jest kontem administratora, a kolejni dołączają przez zaproszenie. Zrób to od razu: do tego czasu może je założyć każdy, kto zna adres. Alerty i zaproszenia e-mailem wychodzą, gdy w Settings podasz serwer SMTP."
+			"notes": "Otwórz adres projektu i załóż konto: pierwsze założone jest kontem administratora, a kolejni dołączają przez zaproszenie. Zrób to od razu: do tego czasu może je założyć każdy, kto zna adres. Alerty i zaproszenia e-mailem wychodzą, gdy w Settings podasz serwer SMTP.",
+			"sizing": "Checkmate ma średnie wymagania: około 0,5 GB z MongoDB, a miesiące sprawdzeń zajmują kilka GB.",
+			"summary": "Hostuj Checkmate u siebie jednym kliknięciem: monitoring open source dostępności, szybkości stron i serwerów, ze stronami statusu, zamiast UptimeRobota.",
+			"about": [
+				"Checkmate to narzędzie open source do monitorowania dostępności i serwerów, które ludzie uruchamiają zamiast UptimeRobota. Sprawdza strony i usługi przez HTTP, ping, porty TCP, DNS, gRPC i WebSocket, pilnuje kontenerów Docker i serwerów gier oraz ostrzega, zanim wygaśnie certyfikat SSL. Monitory PageSpeed uruchamiają Google Lighthouse według harmonogramu i zapisują Core Web Vitals. Pierwsze nieudane sprawdzenie otwiera incydent i wysyła alert e-mailem, przez Slack, Discord, Telegram albo webhook, a publiczna strona statusu pokazuje odwiedzającym, co nie działa.",
+				"Checkmate hostuje się u siebie, żeby rachunek nie rósł z każdym monitorem: nie ma limitów monitorów, a jedyny plan ma wszystkie funkcje i jest darmowy. Sprawdzenia, incydenty i konta zostają w twojej własnej bazie danych, bez telemetrii. Checkmate ma licencję AGPL-3.0. Haczyk: wsparcie to Discord i zgłoszenia na GitHubie, płatnego planu nie ma, a alerty e-mailem wymagają własnego serwera SMTP."
+			],
+			"faq": [
+				{
+					"q": "Czy Checkmate jest darmowy i open source?",
+					"a": "Tak. Checkmate jest darmowy i open source na licencji AGPL-3.0: możesz go uruchamiać, forkować i modyfikować. Jeśli udostępniasz zmodyfikowaną wersję jako usługę sieciową, musisz udostępnić swoje zmiany na tej samej licencji."
+				},
+				{
+					"q": "Checkmate czy UptimeRobot: jaka jest różnica?",
+					"a": "UptimeRobot to usługa hostowana, a Checkmate to oprogramowanie, które uruchamiasz na własnym serwerze. Według twórców Checkmate komercyjne narzędzia rozliczają się za host albo monitor, a w zamian za nielimitowane monitory rezygnuje się z zarządzanej chmury i części dopracowania."
+				},
+				{
+					"q": "Czy Checkmate może monitorować CPU, pamięć i dysk serwera?",
+					"a": "Tak, dzięki Capture, jego agentowi dla Linuksa, Windowsa, Maca, Raspberry Pi albo dowolnego urządzenia, na którym działa Go. Zainstalowany na serwerze, pozwala Checkmate rysować wykresy CPU, pamięci, dysku, sieci i temperatury tego serwera."
+				},
+				{
+					"q": "Czy mogę zaimportować monitory z innego narzędzia do Checkmate?",
+					"a": "Nie ma importu jednym kliknięciem. Większość konfiguracji HTTP, ping, TCP, Docker i stron statusu przenosi się wprost, a API przyjmuje JSON, więc krótki skrypt może tworzyć monitory hurtowo."
+				},
+				{
+					"q": "Jak ustawić alerty e-mail w Checkmate?",
+					"a": "Otwórz „Settings”, potem zakładkę „Email” i wpisz host SMTP, port, nazwę użytkownika, hasło i adres From. Kliknij „Save”, a potem „Test”, żeby sprawdzić, czy działa."
+				}
+			]
 		},
 		"pt": {
 			"description": "Monitoramento de disponibilidade, velocidade de páginas e servidores, com páginas de status",
-			"notes": "Abra o endereço e crie a conta: a primeira criada é a de administrador, e as seguintes entram por convite. Faça isso logo: até lá, quem tiver o endereço pode criá-la. Os alertas e os convites por e-mail saem quando você coloca um servidor SMTP em Settings."
+			"notes": "Abra o endereço e crie a conta: a primeira criada é a de administrador, e as seguintes entram por convite. Faça isso logo: até lá, quem tiver o endereço pode criá-la. Os alertas e os convites por e-mail saem quando você coloca um servidor SMTP em Settings.",
+			"sizing": "Checkmate é moderado: cerca de meio gigabyte com o MongoDB, e meses de verificações ocupam alguns GB.",
+			"summary": "Auto-hospede o Checkmate com um clique: monitoramento open source de uptime, velocidade de páginas, servidores e páginas de status, em vez do UptimeRobot.",
+			"about": [
+				"O Checkmate é uma ferramenta open source de monitoramento de uptime e de servidores que as pessoas rodam no lugar do UptimeRobot. Ele verifica sites e serviços por HTTP, ping, portas TCP, DNS, gRPC e WebSocket, acompanha containers Docker e servidores de jogos, e avisa antes de um certificado SSL expirar. Os monitores PageSpeed rodam o Google Lighthouse de forma agendada e registram as Core Web Vitals. A primeira verificação que falha abre um incidente e envia um alerta por e-mail, Slack, Discord, Telegram ou webhook, e uma página de status pública mostra aos visitantes o que está fora do ar.",
+				"As pessoas auto-hospedam o Checkmate para que a conta não cresça a cada monitor: não há limite de monitores, e o único plano tem todos os recursos, de graça. As verificações, os incidentes e as contas ficam no seu próprio banco de dados, sem telemetria. O Checkmate é AGPL-3.0. O porém: o suporte é pelo Discord e pelas issues do GitHub, não existe plano pago, e os alertas por e-mail precisam de um servidor SMTP seu."
+			],
+			"faq": [
+				{
+					"q": "O Checkmate é gratuito e open source?",
+					"a": "Sim. O Checkmate é gratuito e open source sob a AGPL-3.0: você pode rodar, fazer fork e modificar. Se você oferecer uma versão modificada como serviço de rede, precisa compartilhar suas alterações sob a mesma licença."
+				},
+				{
+					"q": "Checkmate ou UptimeRobot: qual é a diferença?",
+					"a": "O UptimeRobot é um serviço hospedado; o Checkmate é um software que você roda no seu próprio servidor. Segundo os criadores do Checkmate, as ferramentas comerciais cobram por host ou por monitor, e em troca de monitores ilimitados você abre mão da nuvem gerenciada e de parte do acabamento."
+				},
+				{
+					"q": "O Checkmate consegue monitorar CPU, memória e disco de um servidor?",
+					"a": "Consegue, com o Capture, seu agente para Linux, Windows, Mac, Raspberry Pi ou qualquer dispositivo que rode Go. Instalado em um servidor, ele permite que o Checkmate exiba em gráficos a CPU, a memória, o disco, a rede e a temperatura desse servidor."
+				},
+				{
+					"q": "Posso importar meus monitores de outra ferramenta para o Checkmate?",
+					"a": "Não há importação com um clique. A maioria das configurações de HTTP, ping, TCP, Docker e páginas de status passa direto, e a API aceita JSON, então um script curto pode criar monitores em massa."
+				},
+				{
+					"q": "Como configuro os alertas por e-mail no Checkmate?",
+					"a": "Abra “Settings”, depois a aba “Email”, e informe o host SMTP, a porta, o usuário, a senha e o endereço From. Clique em “Save” e depois em “Test” para conferir se funciona."
+				}
+			]
 		},
 		"ru": {
 			"description": "Мониторинг доступности, скорости страниц и серверов, со страницами статуса",
-			"notes": "Откройте адрес и создайте аккаунт: первый созданный становится администратором, остальные входят по приглашению. Сделайте это сразу: до тех пор его может создать любой, кто знает адрес. Оповещения и приглашения по почте уходят, когда в Settings указан SMTP-сервер."
+			"notes": "Откройте адрес и создайте аккаунт: первый созданный становится администратором, остальные входят по приглашению. Сделайте это сразу: до тех пор его может создать любой, кто знает адрес. Оповещения и приглашения по почте уходят, когда в Settings указан SMTP-сервер.",
+			"sizing": "Checkmate: умеренные требования — около 500 MB вместе с MongoDB, а месяцы проверок занимают несколько GB.",
+			"summary": "Self-hosted Checkmate в один клик: open-source мониторинг доступности, скорости страниц и серверов со страницами статуса вместо UptimeRobot.",
+			"about": [
+				"Checkmate — open-source инструмент мониторинга доступности и серверов, который запускают вместо UptimeRobot. Он проверяет сайты и сервисы по HTTP, ping, TCP-портам, DNS, gRPC и WebSocket, следит за Docker-контейнерами и игровыми серверами и предупреждает до истечения SSL-сертификата. PageSpeed-мониторы по расписанию запускают Google Lighthouse и записывают Core Web Vitals. Первая неудачная проверка открывает инцидент и отправляет оповещение по почте, в Slack, Discord, Telegram или вебхуком, а публичная страница статуса показывает посетителям, что недоступно.",
+				"Checkmate хостят у себя, чтобы счет не рос с каждым монитором: лимитов на мониторы нет, а единственный тариф включает все функции и бесплатен. Проверки, инциденты и аккаунты остаются в вашей собственной базе данных, без телеметрии. Checkmate распространяется под лицензией AGPL-3.0. Подвох в том, что поддержка — это Discord и issues на GitHub, платного тарифа нет, а оповещения по почте требуют собственного SMTP-сервера."
+			],
+			"faq": [
+				{
+					"q": "Checkmate бесплатный и open source?",
+					"a": "Да. Checkmate бесплатен и открыт под лицензией AGPL-3.0: его можно запускать, форкать и изменять. Если вы предлагаете измененную версию как сетевой сервис, свои изменения нужно опубликовать под той же лицензией."
+				},
+				{
+					"q": "Checkmate или UptimeRobot: в чем разница?",
+					"a": "UptimeRobot — облачный сервис, а Checkmate — программа, которую вы запускаете на собственном сервере. По словам создателей Checkmate, коммерческие инструменты берут плату за хост или монитор, а за неограниченное число мониторов приходится отказаться от управляемого облака и от части лоска."
+				},
+				{
+					"q": "Может ли Checkmate следить за процессором, памятью и диском сервера?",
+					"a": "Да, с помощью Capture — его агента для Linux, Windows, Mac, Raspberry Pi или любого устройства, на котором работает Go. Установленный на сервере, он позволяет Checkmate строить графики процессора, памяти, диска, сети и температуры этого сервера."
+				},
+				{
+					"q": "Можно ли импортировать мониторы из другого инструмента в Checkmate?",
+					"a": "Импорта в один клик нет. Большинство настроек HTTP, ping, TCP, Docker и страниц статуса переносится напрямую, а API принимает JSON, так что короткий скрипт может создать мониторы пачкой."
+				},
+				{
+					"q": "Как настроить оповещения по почте в Checkmate?",
+					"a": "Откройте «Settings», затем вкладку «Email» и введите SMTP-хост, порт, имя пользователя, пароль и адрес From. Нажмите «Save», а затем «Test», чтобы проверить, что все работает."
+				}
+			]
 		},
 		"uk": {
 			"description": "Моніторинг доступності, швидкості сторінок і серверів, зі сторінками статусу",
-			"notes": "Відкрийте адресу й створіть акаунт: перший створений стає адміністратором, решта входять за запрошенням. Зробіть це одразу: доти його може створити будь-хто, хто знає адресу. Сповіщення й запрошення поштою йдуть, коли в Settings вказано SMTP-сервер."
+			"notes": "Відкрийте адресу й створіть акаунт: перший створений стає адміністратором, решта входять за запрошенням. Зробіть це одразу: доти його може створити будь-хто, хто знає адресу. Сповіщення й запрошення поштою йдуть, коли в Settings вказано SMTP-сервер.",
+			"sizing": "Checkmate має помірні вимоги: близько 0,5 GB з MongoDB, а місяці перевірок займають кілька GB.",
+			"summary": "Self-hosted Checkmate в один клік: open-source моніторинг доступності, швидкості сторінок і серверів зі сторінками статусу замість UptimeRobot.",
+			"about": [
+				"Checkmate — open-source інструмент моніторингу доступності та серверів, який запускають замість UptimeRobot. Він перевіряє сайти й сервіси за HTTP, ping, TCP-портами, DNS, gRPC і WebSocket, стежить за Docker-контейнерами та ігровими серверами й попереджає до завершення строку дії SSL-сертифіката. PageSpeed-монітори за розкладом запускають Google Lighthouse і записують Core Web Vitals. Перша невдала перевірка відкриває інцидент і надсилає сповіщення поштою, у Slack, Discord, Telegram або вебхуком, а публічна сторінка статусу показує відвідувачам, що недоступне.",
+				"Checkmate хостять у себе, щоб рахунок не ріс із кожним монітором: обмежень на монітори немає, а єдиний тариф містить усі функції й безкоштовний. Перевірки, інциденти й акаунти лишаються у вашій власній базі даних, без телеметрії. Checkmate поширюється за ліцензією AGPL-3.0. Підводний камінь у тому, що підтримка — це Discord і issues на GitHub, платного тарифу немає, а сповіщення поштою потребують власного SMTP-сервера."
+			],
+			"faq": [
+				{
+					"q": "Checkmate безкоштовний і open source?",
+					"a": "Так. Checkmate безкоштовний і відкритий за ліцензією AGPL-3.0: його можна запускати, форкати та змінювати. Якщо ви пропонуєте змінену версію як мережевий сервіс, свої зміни потрібно оприлюднити за тією самою ліцензією."
+				},
+				{
+					"q": "Checkmate чи UptimeRobot: у чому різниця?",
+					"a": "UptimeRobot — хмарний сервіс, а Checkmate — програма, яку ви запускаєте на власному сервері. За словами творців Checkmate, комерційні інструменти беруть плату за хост або монітор, а заради необмеженої кількості моніторів доводиться відмовитися від керованої хмари та від частини лиску."
+				},
+				{
+					"q": "Чи може Checkmate стежити за процесором, пам’яттю й диском сервера?",
+					"a": "Так, за допомогою Capture — його агента для Linux, Windows, Mac, Raspberry Pi або будь-якого пристрою, на якому працює Go. Встановлений на сервері, він дає змогу Checkmate будувати графіки процесора, пам’яті, диска, мережі й температури цього сервера."
+				},
+				{
+					"q": "Чи можна імпортувати монітори з іншого інструмента в Checkmate?",
+					"a": "Імпорту в один клік немає. Більшість налаштувань HTTP, ping, TCP, Docker і сторінок статусу переноситься напряму, а API приймає JSON, тож короткий скрипт може створити монітори пачкою."
+				},
+				{
+					"q": "Як налаштувати сповіщення поштою в Checkmate?",
+					"a": "Відкрийте «Settings», потім вкладку «Email» і введіть SMTP-хост, порт, ім’я користувача, пароль і адресу From. Натисніть «Save», а тоді «Test», щоб перевірити, що все працює."
+				}
+			]
 		}
 	}
 }

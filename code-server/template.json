@@ -1,6 +1,11 @@
 {
 	"name": "code-server",
 	"emoji": "💻",
+	"category": "developer-tools",
+	"alternatives": [
+		"GitHub Codespaces"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "code-server",
 		"port": 8080
@@ -14,35 +19,259 @@
 	"texts": {
 		"en": {
 			"description": "VS Code in the browser",
-			"notes": "Sign in with the password you gave. Keep your work under /home/coder: that folder is kept, and what is installed outside it is gone when the container is made anew."
+			"notes": "Sign in with the password you gave. Keep your work under /home/coder: that folder is kept, and what is installed outside it is gone when the container is made anew.",
+			"sizing": "code-server is heavy: the editor is small, but language servers, extensions and your builds take a few gigabytes.",
+			"summary": "Self-host code-server with Docker in one click: VS Code on your own server, opened from any browser, an alternative to GitHub Codespaces.",
+			"about": [
+				"code-server is an open-source project that runs VS Code on a server and opens it in any browser, a self-hosted alternative to GitHub Codespaces. You get the editor, its terminal and your extensions on a laptop or an iPad, with the same setup on each. Tests, builds and downloads run on the server, so the device in your hands keeps its battery.",
+				"People run code-server for one development environment that follows them, on a server they choose, free under the MIT license. Settings are kept on the server's disk, as in desktop VS Code, and its web views do not call out to Microsoft's servers. The catch is that Microsoft's closed-source extensions, Live Share and the Remote ones for SSH, Containers and WSL, do not work."
+			],
+			"faq": [
+				{
+					"q": "Is code-server free and open source?",
+					"a": "Yes. code-server is free under the MIT license, and its source is on GitHub at coder/code-server, a project of Coder."
+				},
+				{
+					"q": "What is the difference between code-server and GitHub Codespaces?",
+					"a": "Both open VS Code in a browser. Codespaces is a closed-source, paid service from GitHub and Microsoft; code-server is free software on your own server, with password sign-in, a built-in proxy to the server's ports and your choice of marketplace."
+				},
+				{
+					"q": "Does code-server support VS Code extensions?",
+					"a": "Yes, from the Open VSX gallery rather than Microsoft's marketplace, whose terms limit it to Microsoft's products. You can also install a .vsix file, or point code-server at another marketplace with $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "Can I use code-server on an iPad?",
+					"a": "Yes. Open it in Safari, tap Share, then Add to Home Screen: as an app it gets more room and shortcuts such as cmd+w. Expect to edit some shortcuts, and ctrl+c does not stop a long-running terminal process."
+				},
+				{
+					"q": "Can several people share one code-server?",
+					"a": "Not well. code-server was built for individuals, with a single password. For several users the project recommends one virtual machine each, and it points teams to Coder, made by the same company."
+				}
+			]
 		},
 		"de": {
 			"description": "VS Code im Browser",
-			"notes": "Melde dich mit dem Passwort an, das du festgelegt hast. Leg deine Arbeit unter /home/coder ab: Dieser Ordner bleibt erhalten, und was außerhalb davon installiert ist, geht verloren, wenn der Container neu erstellt wird."
+			"notes": "Melde dich mit dem Passwort an, das du festgelegt hast. Leg deine Arbeit unter /home/coder ab: Dieser Ordner bleibt erhalten, und was außerhalb davon installiert ist, geht verloren, wenn der Container neu erstellt wird.",
+			"sizing": "code-server ist schwer: der Editor ist klein, aber Language Server, Extensions und deine Builds brauchen ein paar GB.",
+			"summary": "code-server mit Docker in einem Klick selbst hosten: VS Code auf deinem eigenen Server, in jedem Browser geöffnet, eine Alternative zu GitHub Codespaces.",
+			"about": [
+				"code-server ist ein Open-Source-Projekt, das VS Code auf einem Server ausführt und in jedem Browser öffnet, eine selbst gehostete Alternative zu GitHub Codespaces. Du bekommst den Editor, sein Terminal und deine Erweiterungen auf einem Laptop oder einem iPad, überall mit demselben Setup. Tests, Builds und Downloads laufen auf dem Server, das Gerät in deiner Hand schont also seinen Akku.",
+				"Du hostest code-server selbst für eine einzige Entwicklungsumgebung, die dir überallhin folgt, auf einem Server deiner Wahl und kostenlos unter der MIT-Lizenz. Die Einstellungen liegen auf der Disk des Servers, wie im Desktop-VS-Code, und seine Webviews rufen keine Server von Microsoft auf. Der Haken: Die Closed-Source-Erweiterungen von Microsoft, Live Share und die Remote-Erweiterungen für SSH, Container und WSL, funktionieren nicht."
+			],
+			"faq": [
+				{
+					"q": "Ist code-server kostenlos und Open Source?",
+					"a": "Ja. code-server ist kostenlos unter der MIT-Lizenz, und der Quellcode liegt auf GitHub unter coder/code-server, einem Projekt von Coder."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen code-server und GitHub Codespaces?",
+					"a": "Beide öffnen VS Code im Browser. Codespaces ist ein kostenpflichtiges Closed-Source-Angebot von GitHub und Microsoft; code-server ist freie Software auf deinem eigenen Server, mit Passwort-Anmeldung, einem eingebauten Proxy zu den Ports des Servers und einem Marketplace deiner Wahl."
+				},
+				{
+					"q": "Unterstützt code-server Erweiterungen von VS Code?",
+					"a": "Ja, aus der Open-VSX-Galerie statt aus Microsofts Marketplace, dessen Bedingungen ihn auf Microsofts Produkte beschränken. Du kannst auch eine .vsix-Datei installieren oder code-server mit $EXTENSIONS_GALLERY auf einen anderen Marketplace zeigen lassen."
+				},
+				{
+					"q": "Kann ich code-server auf einem iPad nutzen?",
+					"a": "Ja. Öffne code-server in Safari, tippe auf „Teilen“ und dann auf „Zum Home-Bildschirm“: Als App bekommt es mehr Platz und Tastenkürzel wie cmd+w. Einige Tastenkürzel musst du vermutlich anpassen, und ctrl+c stoppt keinen lang laufenden Prozess im Terminal."
+				},
+				{
+					"q": "Können sich mehrere Personen eine Instanz von code-server teilen?",
+					"a": "Nicht gut. code-server wurde für Einzelne gebaut, mit nur einem Passwort. Für mehrere Personen empfiehlt das Projekt je eine eigene virtuelle Maschine, und Teams verweist es auf Coder, entwickelt von derselben Firma."
+				}
+			]
 		},
 		"es": {
 			"description": "VS Code en el navegador",
-			"notes": "Inicia sesión con la contraseña que indicaste. Guarda tu trabajo en /home/coder: esa carpeta se conserva, y lo que se instale fuera de ella se pierde al recrear el contenedor."
+			"notes": "Inicia sesión con la contraseña que indicaste. Guarda tu trabajo en /home/coder: esa carpeta se conserva, y lo que se instale fuera de ella se pierde al recrear el contenedor.",
+			"sizing": "code-server es pesado: el editor es pequeño, pero los language servers, las extensiones y tus builds suman unos pocos GB.",
+			"summary": "Autoaloja code-server con Docker en un clic: VS Code en tu propio servidor, abierto desde cualquier navegador, una alternativa a GitHub Codespaces.",
+			"about": [
+				"code-server es un proyecto de código abierto que ejecuta VS Code en un servidor y lo abre en cualquier navegador, una alternativa autoalojada a GitHub Codespaces. Tienes el editor, su terminal y tus extensiones en un equipo portátil o en un iPad, con la misma configuración en cada uno. Las pruebas, los builds y las descargas se ejecutan en el servidor, así que el dispositivo que tienes en la mano conserva su batería.",
+				"Quienes autoalojan code-server buscan un único entorno de desarrollo que los acompañe, en un servidor que ellos elijan, gratis bajo la licencia MIT. La configuración se guarda en el disco del servidor, como en VS Code de escritorio, y sus vistas web no llaman a los servidores de Microsoft. El inconveniente: las extensiones de código cerrado de Microsoft, Live Share y las Remote para SSH, Containers y WSL, no funcionan."
+			],
+			"faq": [
+				{
+					"q": "¿code-server es gratis y de código abierto?",
+					"a": "Sí. code-server es gratis bajo la licencia MIT, y su código fuente está en GitHub, en coder/code-server, un proyecto de Coder."
+				},
+				{
+					"q": "¿Qué diferencia hay entre code-server y GitHub Codespaces?",
+					"a": "Los dos abren VS Code en un navegador. Codespaces es un servicio de pago y de código cerrado de GitHub y Microsoft; code-server es software libre en tu propio servidor, con inicio de sesión con contraseña, un proxy integrado hacia los puertos del servidor y el marketplace que tú elijas."
+				},
+				{
+					"q": "¿code-server admite las extensiones de VS Code?",
+					"a": "Sí, desde la galería Open VSX en lugar del marketplace de Microsoft, cuyos términos lo limitan a los productos de Microsoft. También puedes instalar un archivo .vsix, o apuntar code-server a otro marketplace con $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "¿Puedo usar code-server en un iPad?",
+					"a": "Sí. Ábrelo en Safari, toca “Compartir” y luego “Agregar a pantalla de inicio”: como app tiene más espacio y atajos como cmd+w. Es probable que tengas que editar algunos atajos, y ctrl+c no detiene un proceso de terminal de larga duración."
+				},
+				{
+					"q": "¿Pueden varias personas compartir un mismo code-server?",
+					"a": "No muy bien. code-server se creó para personas individuales, con una sola contraseña. Para varios usuarios, el proyecto recomienda una máquina virtual para cada uno, y a los equipos los remite a Coder, hecho por la misma empresa."
+				}
+			]
 		},
 		"fr": {
 			"description": "VS Code dans le navigateur",
-			"notes": "Connectez-vous avec le mot de passe que vous avez choisi. Gardez votre travail sous /home/coder : ce dossier est conservé, et ce qui est installé ailleurs disparaît quand le conteneur est recréé."
+			"notes": "Connectez-vous avec le mot de passe que vous avez choisi. Gardez votre travail sous /home/coder : ce dossier est conservé, et ce qui est installé ailleurs disparaît quand le conteneur est recréé.",
+			"sizing": "code-server est lourd : l’éditeur est petit, mais les serveurs de langage, les extensions et vos builds prennent quelques GB.",
+			"summary": "Auto-hébergez code-server avec Docker en un clic : VS Code sur votre serveur, dans n’importe quel navigateur. Une alternative à GitHub Codespaces.",
+			"about": [
+				"code-server est un projet open source qui exécute VS Code sur un serveur et l’ouvre dans n’importe quel navigateur, une alternative auto-hébergée à GitHub Codespaces. Vous retrouvez l’éditeur, son terminal et vos extensions sur un ordinateur portable ou un iPad, avec la même configuration partout. Les tests, les builds et les téléchargements s’exécutent sur le serveur : l’appareil que vous avez en main ménage donc sa batterie.",
+				"Vous auto-hébergez code-server pour disposer d’un seul environnement de développement qui vous suit, sur un serveur de votre choix, gratuitement sous licence MIT. Les paramètres sont conservés sur le disque du serveur, comme dans VS Code sur ordinateur, et ses vues web n’appellent pas les serveurs de Microsoft. Le revers : les extensions propriétaires de Microsoft, Live Share et les extensions Remote pour SSH, les conteneurs et WSL, ne fonctionnent pas."
+			],
+			"faq": [
+				{
+					"q": "code-server est-il gratuit et open source ?",
+					"a": "Oui. code-server est gratuit sous licence MIT, et son code source est sur GitHub, dans coder/code-server, un projet de Coder."
+				},
+				{
+					"q": "Quelle est la différence entre code-server et GitHub Codespaces ?",
+					"a": "Les deux ouvrent VS Code dans un navigateur. Codespaces est un service payant et propriétaire de GitHub et Microsoft ; code-server est un logiciel libre sur votre propre serveur, avec connexion par mot de passe, un proxy intégré vers les ports du serveur et la marketplace de votre choix."
+				},
+				{
+					"q": "code-server prend-il en charge les extensions de VS Code ?",
+					"a": "Oui, depuis la galerie Open VSX plutôt que la marketplace de Microsoft, dont les conditions la limitent aux produits de Microsoft. Vous pouvez aussi installer un fichier .vsix, ou pointer code-server vers une autre marketplace avec $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "Puis-je utiliser code-server sur un iPad ?",
+					"a": "Oui. Ouvrez-le dans Safari, touchez « Partager » puis « Sur l’écran d’accueil » : en tant qu’application, il dispose de plus de place et de raccourcis comme cmd+w. Attendez-vous à devoir modifier certains raccourcis, et ctrl+c n’arrête pas un processus de longue durée dans le terminal."
+				},
+				{
+					"q": "Plusieurs personnes peuvent-elles partager un même code-server ?",
+					"a": "Pas très bien. code-server a été conçu pour des individus, avec un seul mot de passe. Pour plusieurs utilisateurs, le projet recommande une machine virtuelle chacun, et il oriente les équipes vers Coder, créé par la même entreprise."
+				}
+			]
 		},
 		"pl": {
 			"description": "VS Code w przeglądarce",
-			"notes": "Zaloguj się hasłem podanym przy tworzeniu projektu. Trzymaj swoją pracę w /home/coder: ten katalog zostaje, a to, co zainstalujesz poza nim, przepada przy ponownym utworzeniu kontenera."
+			"notes": "Zaloguj się hasłem podanym przy tworzeniu projektu. Trzymaj swoją pracę w /home/coder: ten katalog zostaje, a to, co zainstalujesz poza nim, przepada przy ponownym utworzeniu kontenera.",
+			"sizing": "code-server ma duże wymagania: sam edytor jest mały, ale serwery językowe, rozszerzenia i twoje buildy zajmują kilka GB.",
+			"summary": "Hostuj code-server u siebie w Dockerze jednym kliknięciem: VS Code na swoim serwerze, otwierany w każdej przeglądarce. Alternatywa dla GitHub Codespaces.",
+			"about": [
+				"code-server to projekt open source, który uruchamia VS Code na serwerze i otwiera go w dowolnej przeglądarce. To alternatywa dla GitHub Codespaces, którą hostujesz u siebie. Dostajesz edytor, jego terminal i swoje rozszerzenia na laptopie albo iPadzie, z tą samą konfiguracją na każdym. Testy, buildy i pobrania działają na serwerze, więc urządzenie w twojej ręce oszczędza baterię.",
+				"code-server hostuje się po to, żeby mieć jedno środowisko programistyczne, które idzie za tobą, na serwerze, który sam wybierzesz, za darmo na licencji MIT. Ustawienia są zapisane na dysku serwera, jak w desktopowym VS Code, a jego widoki webowe nie łączą się z serwerami Microsoftu. Haczyk: rozszerzenia Microsoftu o zamkniętym kodzie, Live Share i rozszerzenia Remote dla SSH, kontenerów i WSL, nie działają."
+			],
+			"faq": [
+				{
+					"q": "Czy code-server jest darmowy i open source?",
+					"a": "Tak. code-server jest darmowy na licencji MIT, a jego kod źródłowy jest na GitHubie w coder/code-server, projekcie firmy Coder."
+				},
+				{
+					"q": "Czym różni się code-server od GitHub Codespaces?",
+					"a": "Oba otwierają VS Code w przeglądarce. Codespaces to płatna usługa GitHuba i Microsoftu o zamkniętym kodzie; code-server to wolne oprogramowanie na twoim własnym serwerze, z logowaniem hasłem, wbudowanym proxy do portów serwera i marketplace’em, który sam wybierasz."
+				},
+				{
+					"q": "Czy code-server obsługuje rozszerzenia VS Code?",
+					"a": "Tak, z galerii Open VSX, a nie z marketplace’u Microsoftu, którego warunki zawężają jego użycie do produktów Microsoftu. Możesz też zainstalować plik .vsix albo ustawić w code-server inny marketplace przez $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "Czy mogę używać code-server na iPadzie?",
+					"a": "Tak. Otwórz go w Safari, dotknij „Udostępnij”, potem „Dodaj do ekranu początkowego”: jako aplikacja ma więcej miejsca i skróty takie jak cmd+w. Przygotuj się na zmianę części skrótów, a ctrl+c nie zatrzymuje długo działającego procesu w terminalu."
+				},
+				{
+					"q": "Czy kilka osób może dzielić jeden code-server?",
+					"a": "Niezbyt dobrze. code-server powstał z myślą o pojedynczych osobach, z jednym hasłem. Dla kilku osób projekt zaleca osobną maszynę wirtualną dla każdej, a zespoły odsyła do Codera, stworzonego przez tę samą firmę."
+				}
+			]
 		},
 		"pt": {
 			"description": "O VS Code no navegador",
-			"notes": "Entre com a senha que você definiu. Mantenha seu trabalho em /home/coder: essa pasta é preservada, e o que for instalado fora dela se perde quando o container é recriado."
+			"notes": "Entre com a senha que você definiu. Mantenha seu trabalho em /home/coder: essa pasta é preservada, e o que for instalado fora dela se perde quando o container é recriado.",
+			"sizing": "code-server é pesado: o editor é pequeno, mas language servers, extensões e seus builds somam alguns GB.",
+			"summary": "Hospede o code-server por conta própria com Docker em um clique: VS Code no seu servidor, em qualquer navegador. Alternativa ao GitHub Codespaces.",
+			"about": [
+				"O code-server é um projeto de código aberto que roda o VS Code em um servidor e o abre em qualquer navegador, uma alternativa auto-hospedada ao GitHub Codespaces. Você tem o editor, o terminal dele e suas extensões em um notebook ou em um iPad, com a mesma configuração em cada um. Testes, builds e downloads rodam no servidor, então o aparelho na sua mão preserva a bateria.",
+				"Você hospeda o code-server por conta própria para ter um único ambiente de desenvolvimento que vai com você, em um servidor da sua escolha, grátis sob a licença MIT. As configurações ficam no disco do servidor, como no VS Code de desktop, e as web views dele não chamam os servidores da Microsoft. O porém: as extensões de código fechado da Microsoft, o Live Share e as Remote para SSH, containers e WSL, não funcionam."
+			],
+			"faq": [
+				{
+					"q": "O code-server é gratuito e de código aberto?",
+					"a": "Sim. O code-server é gratuito sob a licença MIT, e o código-fonte dele está no GitHub, em coder/code-server, um projeto da Coder."
+				},
+				{
+					"q": "Qual é a diferença entre o code-server e o GitHub Codespaces?",
+					"a": "Os dois abrem o VS Code em um navegador. O Codespaces é um serviço pago e de código fechado do GitHub e da Microsoft; o code-server é software livre no seu próprio servidor, com login por senha, um proxy embutido para as portas do servidor e o marketplace que você escolher."
+				},
+				{
+					"q": "O code-server suporta extensões do VS Code?",
+					"a": "Sim, pela galeria Open VSX, e não pelo marketplace da Microsoft, cujos termos o limitam aos produtos da Microsoft. Você também pode instalar um arquivo .vsix ou apontar o code-server para outro marketplace com $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "Posso usar o code-server em um iPad?",
+					"a": "Sim. Abra no Safari, toque em “Compartilhar” e depois em “Adicionar à Tela de Início”: como app, ele ganha mais espaço e atalhos como cmd+w. Espere ter que editar alguns atalhos, e o ctrl+c não interrompe um processo de longa duração no terminal."
+				},
+				{
+					"q": "Várias pessoas podem compartilhar um mesmo code-server?",
+					"a": "Não muito bem. O code-server foi feito para uso individual, com uma única senha. Para vários usuários, o projeto recomenda uma máquina virtual para cada um, e indica o Coder para equipes, feito pela mesma empresa."
+				}
+			]
 		},
 		"ru": {
 			"description": "VS Code в браузере",
-			"notes": "Войдите с паролем, который вы задали. Храните свою работу в папке /home/coder: она сохраняется, а все, что установлено вне ее, пропадет при пересоздании контейнера."
+			"notes": "Войдите с паролем, который вы задали. Храните свою работу в папке /home/coder: она сохраняется, а все, что установлено вне ее, пропадет при пересоздании контейнера.",
+			"sizing": "code-server: высокие требования — сам редактор небольшой, но языковые серверы, расширения и ваши сборки занимают несколько GB.",
+			"summary": "Self-hosted code-server через Docker в один клик: VS Code на вашем собственном сервере, открывается в любом браузере. Альтернатива GitHub Codespaces.",
+			"about": [
+				"code-server — это open source проект, который запускает VS Code на сервере и открывает его в любом браузере, self-hosted альтернатива GitHub Codespaces. Вы получаете редактор, его терминал и свои расширения на ноутбуке или iPad, с одной и той же настройкой везде. Тесты, сборки и скачивания выполняются на сервере, поэтому устройство в ваших руках бережет заряд батареи.",
+				"code-server хостят у себя ради одной среды разработки, которая следует за вами повсюду, на выбранном вами сервере и бесплатно по лицензии MIT. Настройки хранятся на диске сервера, как в десктопном VS Code, а его веб-представления не обращаются к серверам Microsoft. Но есть нюанс: закрытые расширения Microsoft, Live Share и Remote для SSH, контейнеров и WSL, не работают."
+			],
+			"faq": [
+				{
+					"q": "code-server бесплатный и с открытым исходным кодом?",
+					"a": "Да. code-server бесплатный и распространяется по лицензии MIT, а исходный код лежит на GitHub в coder/code-server — это проект Coder."
+				},
+				{
+					"q": "Чем code-server отличается от GitHub Codespaces?",
+					"a": "Оба открывают VS Code в браузере. Codespaces — платный сервис с закрытым кодом от GitHub и Microsoft; code-server — свободное ПО на вашем собственном сервере, со входом по паролю, встроенным прокси к портам сервера и маркетплейсом на ваш выбор."
+				},
+				{
+					"q": "code-server поддерживает расширения VS Code?",
+					"a": "Да, из галереи Open VSX, а не из маркетплейса Microsoft, условия которого разрешают пользоваться им только в продуктах Microsoft. Можно также установить файл .vsix или указать code-server другой маркетплейс через $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "Можно ли пользоваться code-server на iPad?",
+					"a": "Да. Откройте его в Safari, нажмите «Поделиться», затем «На экран „Домой“»: как приложение он получает больше места и сочетания клавиш вроде cmd+w. Часть сочетаний, скорее всего, придется поправить, а ctrl+c не останавливает долго выполняющийся процесс в терминале."
+				},
+				{
+					"q": "Могут ли несколько человек пользоваться одним code-server?",
+					"a": "Не очень. code-server делали для одного человека, с единственным паролем. Для нескольких пользователей проект советует отдельную виртуальную машину каждому, а команды отправляет к Coder, который делает та же компания."
+				}
+			]
 		},
 		"uk": {
 			"description": "VS Code у браузері",
-			"notes": "Увійдіть із паролем, який ви вказали. Тримайте свою роботу в /home/coder: ця папка зберігається, а встановлене поза нею зникне, коли контейнер буде перестворено."
+			"notes": "Увійдіть із паролем, який ви вказали. Тримайте свою роботу в /home/coder: ця папка зберігається, а встановлене поза нею зникне, коли контейнер буде перестворено.",
+			"sizing": "code-server має високі вимоги: сам редактор невеликий, але мовні сервери, розширення та ваші збірки займають кілька GB.",
+			"summary": "Self-hosted code-server через Docker в один клік: VS Code на вашому власному сервері, відкривається в будь-якому браузері. Альтернатива GitHub Codespaces.",
+			"about": [
+				"code-server — це проєкт з відкритим кодом, який запускає VS Code на сервері й відкриває його в будь-якому браузері, self-hosted альтернатива GitHub Codespaces. Ви отримуєте редактор, його термінал і свої розширення на ноутбуці чи iPad, з однаковим налаштуванням на кожному. Тести, збірки та звантаження виконуються на сервері, тож пристрій у ваших руках береже заряд батареї.",
+				"code-server хостять у себе, щоб мати одне середовище розробки, яке завжди з вами, на сервері на ваш вибір і безкоштовно за ліцензією MIT. Налаштування зберігаються на диску сервера, як у десктопному VS Code, а його вебпредставлення не звертаються до серверів Microsoft. Але є нюанс: закриті розширення Microsoft, Live Share і Remote для SSH, контейнерів та WSL, не працюють."
+			],
+			"faq": [
+				{
+					"q": "Чи code-server безкоштовний і з відкритим кодом?",
+					"a": "Так. code-server безкоштовний за ліцензією MIT, а його вихідний код лежить на GitHub у coder/code-server, проєкті компанії Coder."
+				},
+				{
+					"q": "Чим code-server відрізняється від GitHub Codespaces?",
+					"a": "Обидва відкривають VS Code у браузері. Codespaces — платний сервіс із закритим кодом від GitHub і Microsoft; code-server — вільне програмне забезпечення на вашому власному сервері, зі входом за паролем, вбудованим проксі до портів сервера й маркетплейсом на ваш вибір."
+				},
+				{
+					"q": "Чи підтримує code-server розширення VS Code?",
+					"a": "Так, з галереї Open VSX, а не з маркетплейсу Microsoft, умови якого обмежують його продуктами Microsoft. Також можна встановити файл .vsix або вказати code-server інший маркетплейс через $EXTENSIONS_GALLERY."
+				},
+				{
+					"q": "Чи можна користуватися code-server на iPad?",
+					"a": "Так. Відкрийте його в Safari, торкніться «Поділитися», потім «Додати на екран „Додому“»: як застосунок він отримує більше місця й сполучення клавіш на кшталт cmd+w. Деякі сполучення, імовірно, доведеться змінити, а ctrl+c не зупиняє довготривалий процес у терміналі."
+				},
+				{
+					"q": "Чи можуть кілька людей користуватися одним code-server?",
+					"a": "Не дуже. code-server створювали для однієї людини, з єдиним паролем. Для кількох користувачів проєкт радить окрему віртуальну машину кожному, а команди відсилає до Coder, який створює та сама компанія."
+				}
+			]
 		}
 	}
 }

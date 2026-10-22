@@ -1,6 +1,12 @@
 {
 	"name": "Activepieces",
 	"emoji": "🧩",
+	"category": "automation",
+	"alternatives": [
+		"Zapier",
+		"Make"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "activepieces",
 		"port": 80
@@ -34,35 +40,259 @@
 	"texts": {
 		"en": {
 			"description": "Automations and AI agents built from hundreds of pieces, with no code",
-			"notes": "Sign in with the email and the admin password you gave, at least 8 characters: the template signs that admin up at the first start. Then connect your apps and build a flow; webhooks reach it at https://{host}."
+			"notes": "Sign in with the email and the admin password you gave, at least 8 characters: the template signs that admin up at the first start. Then connect your apps and build a flow; webhooks reach it at https://{host}.",
+			"sizing": "Activepieces is moderate: about 800 MB with its Postgres and Redis, and run history grows slowly.",
+			"summary": "Activepieces is an open-source Zapier alternative for no-code flows across hundreds of apps, with TypeScript where needed. Self-host it in one click.",
+			"about": [
+				"Activepieces is an open-source workflow automation tool that people run instead of Zapier. A flow starts with a trigger, such as a new row in Google Sheets or a webhook call, then runs steps across hundreds of apps, each one a piece. Loops, branches, retries, delays and subflows sit on the same canvas, and a flow can pause until a person approves it. AI steps call the model you choose with your own API key.",
+				"People self-host Activepieces to keep their connections and run history on their own server, and because the Community edition is free there, while Activepieces Cloud counts a credit for every run. It suits developers too: a piece is a TypeScript npm package, so an internal API can get a piece of its own. The catch is that Agents, Chat, SSO, roles and audit logs come only with paid plans."
+			],
+			"faq": [
+				{
+					"q": "Is Activepieces free and open source?",
+					"a": "Its core is. The Community edition, everything outside the repository's ee folders, is MIT-licensed and free to self-host. The enterprise code in those folders is under a commercial license."
+				},
+				{
+					"q": "Can Activepieces replace Zapier?",
+					"a": "Its own README calls it an open source replacement for Zapier. Before moving, check that its catalog has pieces for your apps; any other service with an API is reachable through the HTTP piece or a webhook."
+				},
+				{
+					"q": "Does Activepieces have an MCP server?",
+					"a": "Yes. It has a built-in MCP server, so Claude, Cursor or another MCP client can build flows, manage tables, test automations and look into failed runs in plain language."
+				},
+				{
+					"q": "Can I write code in Activepieces?",
+					"a": "Yes. A Code step runs TypeScript inside a flow and can import npm packages, for the data shaping or API call that no piece covers."
+				},
+				{
+					"q": "Do Activepieces webhooks need a public URL?",
+					"a": "Yes. Webhooks and many app triggers need an address other services can reach. On Pethost, Activepieces runs at its own HTTPS address, under yourname.pethost.app or your own domain, so they reach it there."
+				}
+			]
 		},
 		"de": {
 			"description": "Automatisierungen und KI-Agenten aus Hunderten Bausteinen, ohne Code",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an, mindestens 8 Zeichen: Die Vorlage registriert diesen Admin beim ersten Start. Verbinde dann deine Apps und bau einen Flow; Webhooks erreichen ihn unter https://{host}."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an, mindestens 8 Zeichen: Die Vorlage registriert diesen Admin beim ersten Start. Verbinde dann deine Apps und bau einen Flow; Webhooks erreichen ihn unter https://{host}.",
+			"sizing": "Activepieces ist mittelschwer: etwa 800 MB mit Postgres und Redis, und der Verlauf der Ausführungen wächst langsam.",
+			"summary": "Activepieces selbst hosten: Open-Source-Alternative zu Zapier für No-Code-Flows über Hunderte Apps, mit TypeScript bei Bedarf. Mit einem Klick.",
+			"about": [
+				"Activepieces ist ein Open-Source-Tool zur Workflow-Automatisierung, das Leute statt Zapier betreiben. Ein Flow startet mit einem Trigger, etwa einer neuen Zeile in Google Sheets oder einem Webhook-Aufruf, und führt dann Schritte über Hunderte Apps hinweg aus, jede davon ein Baustein. Schleifen, Verzweigungen, Wiederholungen, Verzögerungen und Subflows liegen auf derselben Arbeitsfläche, und ein Flow kann anhalten, bis eine Person ihn freigibt. KI-Schritte rufen das Modell auf, das du wählst, mit deinem eigenen API-Key.",
+				"Wer Activepieces selbst hostet, will seine Verbindungen und den Ausführungsverlauf auf dem eigenen Server behalten, und die Community Edition ist dort kostenlos, während Activepieces Cloud für jede Ausführung einen Credit zählt. Es passt auch zu Entwicklern: Ein Baustein ist ein TypeScript-npm-Paket, sodass eine interne API einen eigenen Baustein bekommen kann. Der Haken: Agents, Chat, SSO, Rollen und Audit-Logs gibt es nur mit kostenpflichtigen Tarifen."
+			],
+			"faq": [
+				{
+					"q": "Ist Activepieces kostenlos und Open Source?",
+					"a": "Der Kern ja. Die Community Edition, also alles außerhalb der ee-Ordner des Repositorys, steht unter der MIT-Lizenz und ist beim Selbsthosten kostenlos. Der Enterprise-Code in diesen Ordnern steht unter einer kommerziellen Lizenz."
+				},
+				{
+					"q": "Kann Activepieces Zapier ersetzen?",
+					"a": "Das README nennt es selbst einen Open-Source-Ersatz für Zapier. Prüfe vor dem Umstieg, ob der Katalog Bausteine für deine Apps hat; alles andere mit einer API erreichst du über den HTTP-Baustein oder einen Webhook."
+				},
+				{
+					"q": "Hat Activepieces einen MCP-Server?",
+					"a": "Ja. Er hat einen eingebauten MCP-Server, sodass Claude, Cursor oder ein anderer MCP-Client in natürlicher Sprache Flows bauen, Tabellen verwalten, Automatisierungen testen und fehlgeschlagene Ausführungen untersuchen kann."
+				},
+				{
+					"q": "Kann ich in Activepieces Code schreiben?",
+					"a": "Ja. Ein Code-Schritt führt TypeScript in einem Flow aus und kann npm-Pakete importieren, für die Datenumformung oder den API-Aufruf, die kein Baustein abdeckt."
+				},
+				{
+					"q": "Brauchen Webhooks in Activepieces eine öffentliche URL?",
+					"a": "Ja. Webhooks und viele App-Trigger brauchen eine Adresse, die andere Systeme erreichen können. Auf Pethost läuft Activepieces unter einer eigenen HTTPS-Adresse, unter deinname.pethost.app oder deiner eigenen Domain, und sie erreichen es dort."
+				}
+			]
 		},
 		"es": {
 			"description": "Automatizaciones y agentes de IA hechos con cientos de piezas, sin código",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste, de al menos 8 caracteres: la plantilla registra a ese administrador en el primer arranque. Luego conecta tus apps y crea un flujo; los webhooks llegan a él en https://{host}."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste, de al menos 8 caracteres: la plantilla registra a ese administrador en el primer arranque. Luego conecta tus apps y crea un flujo; los webhooks llegan a él en https://{host}.",
+			"sizing": "Activepieces es moderado: unos 800 MB con su Postgres y su Redis, y el historial de ejecuciones crece despacio.",
+			"summary": "Autoaloja Activepieces, la alternativa de código abierto a Zapier para flujos sin código entre cientos de apps, con TypeScript si hace falta. En un clic.",
+			"about": [
+				"Activepieces es una herramienta de código abierto para automatizar flujos de trabajo que la gente ejecuta en lugar de Zapier. Un flujo empieza con un disparador, como una fila nueva en Google Sheets o una llamada a un webhook, y luego ejecuta pasos en cientos de apps, cada una de ellas una pieza. Los bucles, las ramas, los reintentos, las esperas y los subflujos conviven en el mismo lienzo, y un flujo puede pausarse hasta que una persona lo apruebe. Los pasos de IA llaman al modelo que elijas con tu propia clave de API.",
+				"La gente autoaloja Activepieces para conservar sus conexiones y su historial de ejecuciones en su propio servidor, y porque la edición Community es gratis ahí, mientras que Activepieces Cloud cuenta un crédito por cada ejecución. También encaja con quienes desarrollan: una pieza es un paquete npm de TypeScript, así que una API interna puede tener su propia pieza. El inconveniente: Agents, Chat, SSO, los roles y los logs de auditoría solo vienen con los planes de pago."
+			],
+			"faq": [
+				{
+					"q": "¿Activepieces es gratis y de código abierto?",
+					"a": "El núcleo sí. La edición Community, todo lo que está fuera de las carpetas ee del repositorio, tiene licencia MIT y es gratis para autoalojar. El código enterprise de esas carpetas tiene una licencia comercial."
+				},
+				{
+					"q": "¿Activepieces puede reemplazar a Zapier?",
+					"a": "Su propio README lo llama un reemplazo de código abierto de Zapier. Antes de dar el paso, comprueba que su catálogo tenga piezas para tus apps; cualquier otro servicio con API se puede conectar con la pieza HTTP o con un webhook."
+				},
+				{
+					"q": "¿Activepieces tiene un servidor MCP?",
+					"a": "Sí. Tiene un servidor MCP integrado, así que Claude, Cursor u otro cliente MCP puede crear flujos, administrar tablas, probar automatizaciones y revisar ejecuciones fallidas en lenguaje natural."
+				},
+				{
+					"q": "¿Puedo escribir código en Activepieces?",
+					"a": "Sí. Un paso Code ejecuta TypeScript dentro de un flujo y puede importar paquetes npm, para la transformación de datos o la llamada a una API que ninguna pieza cubre."
+				},
+				{
+					"q": "¿Los webhooks de Activepieces necesitan una URL pública?",
+					"a": "Sí. Los webhooks y muchos disparadores de apps necesitan una dirección a la que otros servicios puedan llegar. En Pethost, Activepieces funciona en su propia dirección HTTPS, bajo tunombre.pethost.app o tu propio dominio, y por eso llegan hasta él."
+				}
+			]
 		},
 		"fr": {
 			"description": "Automatisations et agents IA construits à partir de centaines de briques, sans code",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués, d’au moins 8 caractères : le modèle inscrit cet administrateur au premier démarrage. Connectez ensuite vos applications et créez un flow ; les webhooks l’atteignent à https://{host}."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués, d’au moins 8 caractères : le modèle inscrit cet administrateur au premier démarrage. Connectez ensuite vos applications et créez un flow ; les webhooks l’atteignent à https://{host}.",
+			"sizing": "Activepieces est modéré : environ 800 MB avec son Postgres et son Redis, et l’historique des exécutions grossit lentement.",
+			"summary": "Auto-hébergez Activepieces, alternative open source à Zapier : des flows sans code entre des centaines d’applications, TypeScript au besoin. En un clic.",
+			"about": [
+				"Activepieces est un outil d’automatisation de workflows open source que l’on fait tourner à la place de Zapier. Un flow démarre avec un déclencheur, comme une nouvelle ligne dans Google Sheets ou un appel de webhook, puis enchaîne des étapes dans des centaines d’applications, chacune étant une brique. Les boucles, les branches, les nouvelles tentatives, les temporisations et les sous-flows se trouvent sur le même canevas, et un flow peut se mettre en pause jusqu’à ce qu’une personne l’approuve. Les étapes d’IA appellent le modèle de votre choix avec votre propre clé d’API.",
+				"Vous auto-hébergez Activepieces pour garder vos connexions et l’historique de vos exécutions sur votre propre serveur, et parce que la Community edition y est gratuite, alors qu’Activepieces Cloud compte un crédit pour chaque exécution. Il convient aussi aux développeurs : une brique est un paquet npm en TypeScript, si bien qu’une API interne peut avoir la sienne. Le revers : Agents, Chat, SSO, rôles et logs d’audit ne sont proposés que dans les offres payantes."
+			],
+			"faq": [
+				{
+					"q": "Activepieces est-il gratuit et open source ?",
+					"a": "Son cœur l’est. La Community edition, soit tout ce qui se trouve hors des dossiers ee du dépôt, est sous licence MIT et gratuite à auto-héberger. Le code Enterprise de ces dossiers est sous licence commerciale."
+				},
+				{
+					"q": "Activepieces peut-il remplacer Zapier ?",
+					"a": "Son propre README le présente comme un remplaçant open source de Zapier. Avant de migrer, vérifiez que son catalogue contient des briques pour vos applications ; tout autre service doté d’une API est accessible via la brique HTTP ou un webhook."
+				},
+				{
+					"q": "Activepieces a-t-il un serveur MCP ?",
+					"a": "Oui. Il intègre un serveur MCP, si bien que Claude, Cursor ou un autre client MCP peut créer des flows, gérer des tables, tester des automatisations et examiner les exécutions en échec en langage naturel."
+				},
+				{
+					"q": "Puis-je écrire du code dans Activepieces ?",
+					"a": "Oui. Une étape Code exécute du TypeScript dans un flow et peut importer des paquets npm, pour la mise en forme de données ou l’appel d’API qu’aucune brique ne couvre."
+				},
+				{
+					"q": "Les webhooks d’Activepieces ont-ils besoin d’une URL publique ?",
+					"a": "Oui. Les webhooks et de nombreux déclencheurs d’applications ont besoin d’une adresse que les autres services peuvent joindre. Sur Pethost, Activepieces tourne à sa propre adresse HTTPS, sous votrenom.pethost.app ou votre propre domaine, et ils l’y joignent."
+				}
+			]
 		},
 		"pl": {
 			"description": "Automatyzacje i agenci AI z setek gotowych klocków, bez kodu",
-			"notes": "Zaloguj się e-mailem i hasłem administratora, które podano, co najmniej 8 znaków: szablon rejestruje tego administratora przy pierwszym uruchomieniu. Potem połącz swoje aplikacje i zbuduj flow; webhooki trafiają do niego pod https://{host}."
+			"notes": "Zaloguj się e-mailem i hasłem administratora, które podano, co najmniej 8 znaków: szablon rejestruje tego administratora przy pierwszym uruchomieniu. Potem połącz swoje aplikacje i zbuduj flow; webhooki trafiają do niego pod https://{host}.",
+			"sizing": "Activepieces ma średnie wymagania: około 800 MB z Postgresem i Redisem, a historia uruchomień rośnie powoli.",
+			"summary": "Hostuj Activepieces u siebie jednym kliknięciem: alternatywa dla Zapiera o otwartym kodzie, flow bez kodu w setkach aplikacji i TypeScript, gdy trzeba.",
+			"about": [
+				"Activepieces to narzędzie open source do automatyzacji workflowów, które ludzie uruchamiają zamiast Zapiera. Flow zaczyna się od wyzwalacza, na przykład nowego wiersza w Google Sheets albo wywołania webhooka, a potem wykonuje kroki w setkach aplikacji, z których każda jest osobnym klockiem. Pętle, rozgałęzienia, ponowienia, opóźnienia i subflow leżą na jednym canvasie, a flow może się zatrzymać, dopóki człowiek go nie zatwierdzi. Kroki AI wywołują wybrany przez ciebie model z twoim własnym kluczem API.",
+				"Activepieces hostuje się u siebie, żeby połączenia i historię uruchomień trzymać na własnym serwerze, a także dlatego, że edycja Community jest tam darmowa, podczas gdy Activepieces Cloud liczy kredyt za każde uruchomienie. Pasuje też programistom: klocek to pakiet npm napisany w TypeScripcie, więc wewnętrzne API może dostać własny klocek. Haczyk w tym, że Agents, Chat, SSO, role i logi audytu są tylko w płatnych planach."
+			],
+			"faq": [
+				{
+					"q": "Czy Activepieces jest darmowy i open source?",
+					"a": "Jego rdzeń tak. Edycja Community, czyli wszystko poza folderami ee w repozytorium, ma licencję MIT i jest darmowa do hostowania u siebie. Kod enterprise w tych folderach podlega licencji komercyjnej."
+				},
+				{
+					"q": "Czy Activepieces może zastąpić Zapiera?",
+					"a": "Własny README nazywa go zamiennikiem Zapiera o otwartym kodzie. Zanim przejdziesz, sprawdź, czy katalog ma klocki do twoich aplikacji; każdy inny system z API podłączysz przez klocek HTTP albo webhook."
+				},
+				{
+					"q": "Czy Activepieces ma serwer MCP?",
+					"a": "Tak. Ma wbudowany serwer MCP, więc Claude, Cursor albo inny klient MCP może zwykłym językiem budować flow, zarządzać tabelami, testować automatyzacje i zaglądać do nieudanych uruchomień."
+				},
+				{
+					"q": "Czy mogę pisać kod w Activepieces?",
+					"a": "Tak. Krok Code uruchamia TypeScript wewnątrz flow i może importować pakiety npm, do przekształcenia danych albo wywołania API, którego żaden klocek nie obsługuje."
+				},
+				{
+					"q": "Czy webhooki Activepieces potrzebują publicznego adresu URL?",
+					"a": "Tak. Webhooki i wiele wyzwalaczy aplikacji potrzebują adresu, do którego inne usługi mogą się dostać. Na Pethost Activepieces działa pod własnym adresem HTTPS, w domenie twojanazwa.pethost.app albo twojej własnej, więc docierają do niego właśnie tam."
+				}
+			]
 		},
 		"pt": {
 			"description": "Automações e agentes de IA montados com centenas de peças, sem código",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou, de pelo menos 8 caracteres: o template cadastra esse administrador na primeira inicialização. Depois conecte seus apps e monte um flow; os webhooks chegam a ele em https://{host}."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou, de pelo menos 8 caracteres: o template cadastra esse administrador na primeira inicialização. Depois conecte seus apps e monte um flow; os webhooks chegam a ele em https://{host}.",
+			"sizing": "Activepieces é moderado: cerca de 800 MB com o Postgres e o Redis, e o histórico de execuções cresce devagar.",
+			"summary": "Auto-hospede o Activepieces com um clique: alternativa open source ao Zapier para fluxos sem código entre centenas de apps, com TypeScript quando precisar.",
+			"about": [
+				"O Activepieces é uma ferramenta open source de automação de workflows que as pessoas rodam no lugar do Zapier. Um flow começa com um gatilho, como uma nova linha no Google Sheets ou uma chamada de webhook, e depois executa etapas em centenas de apps, cada um deles uma peça. Loops, ramificações, novas tentativas, atrasos e subflows ficam no mesmo canvas, e um flow pode pausar até que uma pessoa o aprove. As etapas de IA chamam o modelo que você escolher, com a sua própria chave de API.",
+				"Você auto-hospeda o Activepieces para manter suas conexões e o histórico de execuções no seu próprio servidor, e porque a Community edition é gratuita nesse caso, enquanto o Activepieces Cloud conta um crédito para cada execução. Ele também serve a quem desenvolve: uma peça é um pacote npm em TypeScript, então uma API interna pode ter a sua própria peça. O porém: Agents, Chat, SSO, papéis e logs de auditoria vêm só nos planos pagos."
+			],
+			"faq": [
+				{
+					"q": "O Activepieces é gratuito e open source?",
+					"a": "O núcleo é. A Community edition, tudo que fica fora das pastas ee do repositório, tem licença MIT e é gratuita para auto-hospedar. O código enterprise dessas pastas está sob licença comercial."
+				},
+				{
+					"q": "O Activepieces pode substituir o Zapier?",
+					"a": "O próprio README o chama de substituto open source do Zapier. Antes de migrar, confira se o catálogo dele tem peças para os seus apps; qualquer outro serviço com API dá para alcançar pela peça HTTP ou por um webhook."
+				},
+				{
+					"q": "O Activepieces tem servidor MCP?",
+					"a": "Tem. Ele traz um servidor MCP embutido, então o Claude, o Cursor ou outro cliente MCP pode criar flows, gerenciar tabelas, testar automações e investigar execuções com falha em linguagem natural."
+				},
+				{
+					"q": "Posso escrever código no Activepieces?",
+					"a": "Pode. Uma etapa Code roda TypeScript dentro de um flow e pode importar pacotes npm, para a transformação de dados ou a chamada de API que nenhuma peça cobre."
+				},
+				{
+					"q": "Os webhooks do Activepieces precisam de uma URL pública?",
+					"a": "Precisam. Webhooks e muitos gatilhos de apps precisam de um endereço que outros serviços consigam alcançar. No Pethost, o Activepieces roda no próprio endereço HTTPS, em seunome.pethost.app ou no seu próprio domínio, e é lá que eles chegam até ele."
+				}
+			]
 		},
 		"ru": {
 			"description": "Автоматизации и AI-агенты из сотен готовых блоков, без кода",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали, не короче 8 символов: шаблон регистрирует этого администратора при первом запуске. Затем подключите свои приложения и соберите flow; вебхуки приходят к нему на https://{host}."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали, не короче 8 символов: шаблон регистрирует этого администратора при первом запуске. Затем подключите свои приложения и соберите flow; вебхуки приходят к нему на https://{host}.",
+			"sizing": "Activepieces: умеренные требования — около 800 MB вместе с Postgres и Redis, а история запусков растет медленно.",
+			"summary": "Self-hosted Activepieces в один клик: open-source альтернатива Zapier для no-code flow между сотнями приложений, с TypeScript там, где нужно.",
+			"about": [
+				"Activepieces — open-source инструмент автоматизации воркфлоу, который запускают вместо Zapier. Flow начинается с триггера, например новой строки в Google Sheets или вызова вебхука, а затем выполняет шаги в сотнях приложений, и каждое из них — отдельный блок. Циклы, ветвления, повторные попытки, задержки и вложенные flow лежат на одном холсте, а flow может встать на паузу, пока человек его не одобрит. ИИ-шаги вызывают выбранную вами модель с вашим собственным API-ключом.",
+				"Activepieces хостят у себя, чтобы подключения и историю запусков держать на своем сервере, и потому что редакция Community там бесплатна, а Activepieces Cloud считает кредит за каждый запуск. Он подходит и разработчикам: блок — это npm-пакет на TypeScript, так что у внутреннего API может быть свой блок. Подвох в том, что Agents, Chat, SSO, роли и логи аудита есть только в платных тарифах."
+			],
+			"faq": [
+				{
+					"q": "Activepieces бесплатный и open source?",
+					"a": "Его ядро — да. Редакция Community, то есть все за пределами папок ee в репозитории, распространяется под лицензией MIT, и ее можно бесплатно развернуть у себя. Enterprise-код в этих папках идет под коммерческой лицензией."
+				},
+				{
+					"q": "Может ли Activepieces заменить Zapier?",
+					"a": "В собственном README он назван open-source заменой Zapier. Перед переходом проверьте, есть ли в его каталоге блоки для ваших приложений; любая другая система с API доступна через блок HTTP или вебхук."
+				},
+				{
+					"q": "Есть ли у Activepieces MCP-сервер?",
+					"a": "Да. В него встроен MCP-сервер, поэтому Claude, Cursor или другой MCP-клиент может строить flow, управлять таблицами, тестировать автоматизации и разбирать неудачные запуски на обычном языке."
+				},
+				{
+					"q": "Можно ли писать код в Activepieces?",
+					"a": "Да. Шаг Code выполняет TypeScript внутри flow и может импортировать npm-пакеты — для обработки данных или вызова API, которые не закрывает ни один блок."
+				},
+				{
+					"q": "Нужен ли вебхукам Activepieces публичный URL?",
+					"a": "Да. Вебхукам и многим триггерам приложений нужен адрес, до которого могут достучаться другие сервисы. На Pethost Activepieces работает на собственном HTTPS-адресе, под yourname.pethost.app или на вашем домене, и они достучатся до него там."
+				}
+			]
 		},
 		"uk": {
 			"description": "Автоматизації та AI-агенти із сотень готових блоків, без коду",
-			"notes": "Увійдіть з поштою й паролем адміністратора, які ви вказали, не коротшим за 8 символів: шаблон реєструє цього адміністратора під час першого запуску. Потім підключіть свої застосунки й зберіть flow; вебхуки надходять до нього на https://{host}."
+			"notes": "Увійдіть з поштою й паролем адміністратора, які ви вказали, не коротшим за 8 символів: шаблон реєструє цього адміністратора під час першого запуску. Потім підключіть свої застосунки й зберіть flow; вебхуки надходять до нього на https://{host}.",
+			"sizing": "Activepieces має помірні вимоги: близько 800 MB з Postgres і Redis, а історія запусків росте повільно.",
+			"summary": "Self-hosted Activepieces в один клік: open-source альтернатива Zapier для no-code flow між сотнями застосунків, із TypeScript там, де потрібно.",
+			"about": [
+				"Activepieces — open-source інструмент автоматизації воркфлоу, який запускають замість Zapier. Flow починається з тригера, наприклад нового рядка в Google Sheets або виклику вебхука, а потім виконує кроки в сотнях застосунків, і кожен із них — окремий блок. Цикли, розгалуження, повторні спроби, затримки та вкладені flow лежать на одному полотні, а flow може стати на паузу, доки людина його не схвалить. ШІ-кроки викликають обрану вами модель із вашим власним API-ключем.",
+				"Activepieces хостять у себе, щоб підключення та історію запусків тримати на своєму сервері, і тому, що редакція Community там безкоштовна, а Activepieces Cloud рахує кредит за кожен запуск. Він підходить і розробникам: блок — це npm-пакет на TypeScript, тож у внутрішнього API може бути свій блок. Підводний камінь у тому, що Agents, Chat, SSO, ролі та логи аудиту є лише в платних тарифах."
+			],
+			"faq": [
+				{
+					"q": "Activepieces безкоштовний і open source?",
+					"a": "Його ядро — так. Редакція Community, тобто все поза папками ee в репозиторії, має ліцензію MIT, і її можна безкоштовно розгорнути у себе. Enterprise-код у цих папках поширюється за комерційною ліцензією."
+				},
+				{
+					"q": "Чи може Activepieces замінити Zapier?",
+					"a": "У власному README його названо open-source заміною Zapier. Перед переходом перевірте, чи є в його каталозі блоки для ваших застосунків; будь-яка інша система з API доступна через блок HTTP або вебхук."
+				},
+				{
+					"q": "Чи є в Activepieces MCP-сервер?",
+					"a": "Так. У нього вбудований MCP-сервер, тож Claude, Cursor або інший MCP-клієнт може будувати flow, керувати таблицями, тестувати автоматизації й розбирати невдалі запуски звичайною мовою."
+				},
+				{
+					"q": "Чи можна писати код в Activepieces?",
+					"a": "Так. Крок Code виконує TypeScript усередині flow і може імпортувати npm-пакети — для обробки даних або виклику API, яких не закриває жоден блок."
+				},
+				{
+					"q": "Чи потрібен вебхукам Activepieces публічний URL?",
+					"a": "Так. Вебхукам і багатьом тригерам застосунків потрібна адреса, до якої можуть достукатися інші сервіси. На Pethost Activepieces працює на власній HTTPS-адресі, під yourname.pethost.app або на вашому домені, і вони дістаються до нього саме там."
+				}
+			]
 		}
 	}
 }

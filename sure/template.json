@@ -1,6 +1,12 @@
 {
 	"name": "Sure",
 	"emoji": "💵",
+	"category": "finance",
+	"alternatives": [
+		"YNAB",
+		"Mint"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "web",
 		"port": 3000
@@ -22,35 +28,259 @@
 	"texts": {
 		"en": {
 			"description": "A personal finance app, a fork of Maybe Finance",
-			"notes": "Open the address and sign up: the first account is the admin. Do it right away: until then the page is open to whoever has the address. Then close sign-ups under Settings > Self-Hosting > Onboarding."
+			"notes": "Open the address and sign up: the first account is the admin. Do it right away: until then the page is open to whoever has the address. Then close sign-ups under Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure is moderate: about 1 GB across web, worker, Postgres and Redis, and years of transactions take little disk.",
+			"summary": "Sure is an open-source personal finance app and YNAB alternative, forked from Maybe Finance. Self-host it on your own server in one click.",
+			"about": [
+				"Sure is an open-source personal finance app that people run instead of YNAB, and the community fork of Maybe Finance. It keeps every account in one place, from checking and credit cards to stocks, crypto, loans and property, in any currency. A dashboard charts your net worth and cash flow. Rules sort transactions into categories, and each category gets a budget. An optional AI assistant answers questions about your money, through an OpenAI-compatible API or a local model such as Ollama.",
+				"People self-host Sure to keep a full record of their finances on a server they control, with no subscription. A household can share one instance, with personal budgets beside a shared household budget. The catch is bank sync: it goes through an outside provider you sign up with yourself. Without one, you import transactions from files or enter them by hand."
+			],
+			"faq": [
+				{
+					"q": "Is Sure free and open source?",
+					"a": "Yes. Sure is open source under the AGPLv3 licence, and self-hosting it is free. Its makers also run a hosted version at sure.am."
+				},
+				{
+					"q": "Is Sure the same as Maybe Finance?",
+					"a": "No, but it grew out of it. Sure is the community fork of Maybe Finance, started after the Maybe team stopped work on the app and archived its repository, and it is developed under its own name."
+				},
+				{
+					"q": "Can I import my YNAB or Mint data into Sure?",
+					"a": "Yes. Sure has ready-made imports for YNAB, Mint and Actual Budget exports, besides CSV and QIF files. A Sure data export can be imported into another Sure server, to move everything at once."
+				},
+				{
+					"q": "Can Sure sync with my bank automatically?",
+					"a": "Yes, through a provider you connect with your own account or key: Plaid, SimpleFIN, Enable Banking, Lunch Flow and others, plus some brokers and crypto exchanges. Sure's docs note that Plaid does not serve European users."
+				},
+				{
+					"q": "Does Sure have a mobile app?",
+					"a": "Yes, a companion app for iOS and Android, which for now covers signing in and account balances. Everything else is in the web app, which also comes as a macOS desktop app."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine App für private Finanzen, ein Fork von Maybe Finance",
-			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Schließ dann die Registrierung unter „Settings > Self-Hosting > Onboarding“."
+			"notes": "Öffne die Adresse und registrier dich: Das erste Konto ist das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Schließ dann die Registrierung unter „Settings > Self-Hosting > Onboarding“.",
+			"sizing": "Sure ist mittelschwer: etwa 1 GB über Web, Worker, Postgres und Redis, und Transaktionen aus Jahren brauchen wenig Disk.",
+			"summary": "Sure selbst hosten: Open-Source-App für private Finanzen, Fork von Maybe Finance und YNAB-Alternative. Auf deinem eigenen Server, in einem Klick.",
+			"about": [
+				"Sure ist eine Open-Source-App für private Finanzen, die viele statt YNAB nutzen, und der Community-Fork von Maybe Finance. Sie führt alle Konten an einem Ort zusammen, vom Girokonto und der Kreditkarte bis zu Aktien, Krypto, Krediten und Immobilien, in jeder Währung. Ein Dashboard zeigt dein Nettovermögen und deinen Cashflow in Diagrammen. Regeln sortieren Transaktionen in Kategorien, und jede Kategorie bekommt ein Budget. Ein optionaler KI-Assistent beantwortet Fragen zu deinem Geld, über eine OpenAI-kompatible API oder ein lokales Modell wie Ollama.",
+				"Leute hosten Sure selbst, um ihre Finanzen vollständig auf einem Server zu führen, den sie kontrollieren, ohne Abo. Ein Haushalt kann sich eine Instanz teilen, mit persönlichen Budgets neben einem gemeinsamen Haushaltsbudget. Der Haken ist der Bank-Sync: Er läuft über einen externen Anbieter, bei dem du dich selbst anmeldest. Ohne einen importierst du Transaktionen aus Dateien oder trägst sie von Hand ein."
+			],
+			"faq": [
+				{
+					"q": "Ist Sure kostenlos und Open Source?",
+					"a": "Ja. Sure ist Open Source unter der Lizenz AGPLv3, und du kannst es kostenlos selbst hosten. Die Macher betreiben außerdem eine gehostete Version unter sure.am."
+				},
+				{
+					"q": "Ist Sure dasselbe wie Maybe Finance?",
+					"a": "Nein, aber es ist daraus entstanden. Sure ist der Community-Fork von Maybe Finance, gestartet, nachdem das Maybe-Team die Arbeit an der App eingestellt und das Repository archiviert hatte, und wird unter eigenem Namen weiterentwickelt."
+				},
+				{
+					"q": "Kann ich meine YNAB- oder Mint-Daten in Sure importieren?",
+					"a": "Ja. Sure hat fertige Importe für Exporte von YNAB, Mint und Actual Budget, außerdem für CSV- und QIF-Dateien. Ein Daten-Export aus Sure lässt sich in einen anderen Sure-Server importieren, um alles auf einmal umzuziehen."
+				},
+				{
+					"q": "Kann Sure automatisch mit meiner Bank synchronisieren?",
+					"a": "Ja, über einen Anbieter, den du mit einem eigenen Konto oder Key verbindest: Plaid, SimpleFIN, Enable Banking, Lunch Flow und weitere, dazu einige Broker und Krypto-Börsen. Laut der Doku von Sure ist Plaid für Leute in Europa nicht verfügbar."
+				},
+				{
+					"q": "Hat Sure eine mobile App?",
+					"a": "Ja, eine Companion-App für iOS und Android, die vorerst die Anmeldung und die Kontostände abdeckt. Alles andere steckt in der Web-App, die es auch als macOS-Desktop-App gibt."
+				}
+			]
 		},
 		"es": {
 			"description": "Una app de finanzas personales, fork de Maybe Finance",
-			"notes": "Abre la dirección y regístrate: la primera cuenta es la del administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego cierra el registro en Settings > Self-Hosting > Onboarding."
+			"notes": "Abre la dirección y regístrate: la primera cuenta es la del administrador. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Luego cierra el registro en Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure es moderado: cerca de 1 GB entre web, worker, Postgres y Redis, y años de transacciones ocupan poco disco.",
+			"summary": "Autoaloja Sure, la app de finanzas personales de código abierto, fork de Maybe Finance y alternativa a YNAB. En tu propio servidor, en un clic.",
+			"about": [
+				"Sure es una app de finanzas personales de código abierto que la gente usa en lugar de YNAB, y el fork de la comunidad de Maybe Finance. Reúne todas tus cuentas en un solo lugar, desde la cuenta corriente y las tarjetas de crédito hasta acciones, criptomonedas, préstamos e inmuebles, en cualquier moneda. Un panel muestra en gráficos tu patrimonio neto y tu flujo de caja. Las reglas clasifican las transacciones en categorías, y cada categoría tiene un presupuesto. Un asistente de IA opcional responde preguntas sobre tu dinero, mediante una API compatible con OpenAI o un modelo local como Ollama.",
+				"La gente autoaloja Sure para tener un registro completo de sus finanzas en un servidor que controla, sin suscripción. Un hogar puede compartir una instancia, con presupuestos personales junto a un presupuesto compartido del hogar. El inconveniente es la sincronización bancaria: pasa por un proveedor externo en el que te registras tú. Sin uno, importas las transacciones desde archivos o las escribes a mano."
+			],
+			"faq": [
+				{
+					"q": "¿Sure es gratis y de código abierto?",
+					"a": "Sí. Sure es de código abierto con licencia AGPLv3, y autoalojarlo es gratis. Sus creadores también mantienen una versión alojada en sure.am."
+				},
+				{
+					"q": "¿Sure es lo mismo que Maybe Finance?",
+					"a": "No, pero nació a partir de Maybe Finance. Sure es el fork de la comunidad de Maybe Finance, creado después de que el equipo de Maybe dejara de trabajar en la app y archivara su repositorio, y se desarrolla con su propio nombre."
+				},
+				{
+					"q": "¿Puedo importar mis datos de YNAB o Mint a Sure?",
+					"a": "Sí. Sure tiene importaciones listas para exportaciones de YNAB, Mint y Actual Budget, además de archivos CSV y QIF. Una exportación de datos de Sure se puede importar en otro servidor de Sure, para mover todo de una vez."
+				},
+				{
+					"q": "¿Sure puede sincronizarse con mi banco automáticamente?",
+					"a": "Sí, a través de un proveedor que conectas con tu propia cuenta o clave: Plaid, SimpleFIN, Enable Banking, Lunch Flow y otros, además de algunos brókeres y exchanges de criptomonedas. La documentación de Sure señala que Plaid no da servicio a usuarios europeos."
+				},
+				{
+					"q": "¿Sure tiene app móvil?",
+					"a": "Sí, una app complementaria para iOS y Android, que por ahora cubre el inicio de sesión y los saldos de las cuentas. Todo lo demás está en la app web, que también existe como app de escritorio para macOS."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une application de finances personnelles, fork de Maybe Finance",
-			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est l’administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Fermez ensuite les inscriptions dans Settings > Self-Hosting > Onboarding."
+			"notes": "Ouvrez l’adresse et inscrivez-vous : le premier compte est l’administrateur. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Fermez ensuite les inscriptions dans Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure est modéré : environ 1 GB sur web, worker, Postgres et Redis, et des années de transactions pèsent peu sur le disque.",
+			"summary": "Auto-hébergez Sure : application open source de finances personnelles, fork de Maybe Finance et alternative à YNAB. Sur votre serveur, en un clic.",
+			"about": [
+				"Sure est une application open source de finances personnelles que les gens utilisent à la place de YNAB, et le fork communautaire de Maybe Finance. Elle garde tous vos comptes au même endroit, du compte courant et des cartes de crédit aux actions, aux cryptomonnaies, aux prêts et à l’immobilier, dans n’importe quelle devise. Un tableau de bord trace en graphiques votre patrimoine net et votre flux de trésorerie. Des règles classent les transactions par catégorie, et chaque catégorie reçoit un budget. Un assistant IA facultatif répond aux questions sur votre argent, via une API compatible OpenAI ou un modèle local comme Ollama.",
+				"Les gens auto-hébergent Sure pour garder un historique complet de leurs finances sur un serveur qu’ils contrôlent, sans abonnement. Un foyer peut partager une instance, avec des budgets personnels à côté d’un budget commun du foyer. Le revers, c’est la synchronisation bancaire : elle passe par un fournisseur externe auprès duquel vous vous inscrivez vous-même. Sans fournisseur, vous importez les transactions depuis des fichiers ou vous les saisissez à la main."
+			],
+			"faq": [
+				{
+					"q": "Sure est-il gratuit et open source ?",
+					"a": "Oui. Sure est open source, sous licence AGPLv3, et vous pouvez l’auto-héberger gratuitement. Ses créateurs proposent aussi une version hébergée sur sure.am."
+				},
+				{
+					"q": "Sure, est-ce la même chose que Maybe Finance ?",
+					"a": "Non, mais il en est issu. Sure est le fork communautaire de Maybe Finance, lancé après que l’équipe de Maybe a arrêté de travailler sur l’application et archivé son dépôt, et il est développé sous son propre nom."
+				},
+				{
+					"q": "Puis-je importer mes données YNAB ou Mint dans Sure ?",
+					"a": "Oui. Sure propose des imports prêts à l’emploi pour les exports de YNAB, de Mint et d’Actual Budget, en plus des fichiers CSV et QIF. Un export de données Sure peut être importé dans un autre serveur Sure, pour tout déplacer d’un coup."
+				},
+				{
+					"q": "Sure peut-il se synchroniser automatiquement avec ma banque ?",
+					"a": "Oui, via un fournisseur que vous connectez avec votre propre compte ou votre propre clé : Plaid, SimpleFIN, Enable Banking, Lunch Flow et d’autres, ainsi que certains courtiers et plateformes d’échange de cryptomonnaies. La documentation de Sure précise que Plaid ne dessert pas les utilisateurs européens."
+				},
+				{
+					"q": "Sure a-t-il une application mobile ?",
+					"a": "Oui, une application compagnon pour iOS et Android, qui couvre pour l’instant la connexion et les soldes des comptes. Tout le reste se trouve dans l’application web, qui existe aussi en application de bureau macOS."
+				}
+			]
 		},
 		"pl": {
 			"description": "Aplikacja do finansów osobistych, fork Maybe Finance",
-			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto jest administratorem. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem zamknij rejestrację w Settings > Self-Hosting > Onboarding."
+			"notes": "Otwórz adres projektu i załóż konto: pierwsze konto jest administratorem. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Potem zamknij rejestrację w Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure ma średnie wymagania: około 1 GB w usługach web, worker, Postgres i Redis, a lata transakcji zajmują mało miejsca na dysku.",
+			"summary": "Hostuj u siebie Sure: aplikację do finansów osobistych open source, fork Maybe Finance i alternatywę dla YNAB. Na własnym serwerze, w jeden klik.",
+			"about": [
+				"Sure to aplikacja open source do finansów osobistych, której ludzie używają zamiast YNAB, oraz społecznościowy fork Maybe Finance. Trzyma wszystkie konta w jednym miejscu, od rachunku bieżącego i kart kredytowych po akcje, krypto, kredyty i nieruchomości, w dowolnej walucie. Dashboard pokazuje na wykresach twój majątek netto i przepływy pieniężne. Reguły sortują transakcje do kategorii, a każda kategoria dostaje budżet. Opcjonalny asystent AI odpowiada na pytania o twoje pieniądze, przez API zgodne z OpenAI lub lokalny model, taki jak Ollama.",
+				"Ludzie hostują Sure u siebie, żeby trzymać pełny zapis swoich finansów na serwerze, który kontrolują, bez subskrypcji. Gospodarstwo domowe może dzielić jedną instancję, z osobistymi budżetami obok wspólnego budżetu domowego. Haczyk to synchronizacja z bankiem: odbywa się przez zewnętrznego dostawcę, u którego rejestrujesz się sam. Bez niego importujesz transakcje z plików albo wpisujesz je ręcznie."
+			],
+			"faq": [
+				{
+					"q": "Czy Sure jest darmowy i open source?",
+					"a": "Tak. Sure jest open source na licencji AGPLv3, a hostowanie go u siebie jest darmowe. Jego twórcy prowadzą też hostowaną wersję pod adresem sure.am."
+				},
+				{
+					"q": "Czy Sure to to samo co Maybe Finance?",
+					"a": "Nie, ale się z niego wywodzi. Sure to społecznościowy fork Maybe Finance, powstały po tym, jak zespół Maybe przestał pracować nad aplikacją i zarchiwizował jej repozytorium, i jest rozwijany pod własną nazwą."
+				},
+				{
+					"q": "Czy mogę zaimportować dane z YNAB lub Mint do Sure?",
+					"a": "Tak. Sure ma gotowe importy dla eksportów z YNAB, Mint i Actual Budget, a także dla plików CSV i QIF. Eksport danych z Sure można zaimportować do innego serwera Sure, żeby przenieść wszystko naraz."
+				},
+				{
+					"q": "Czy Sure może automatycznie synchronizować się z moim bankiem?",
+					"a": "Tak, przez dostawcę, którego podłączasz własnym kontem lub kluczem: Plaid, SimpleFIN, Enable Banking, Lunch Flow i innych, a także niektórych brokerów i giełd kryptowalut. W dokumentacji Sure napisano, że Plaid nie obsługuje użytkowników z Europy."
+				},
+				{
+					"q": "Czy Sure ma aplikację mobilną?",
+					"a": "Tak, aplikację towarzyszącą na iOS i Androida, która na razie obejmuje logowanie i salda kont. Wszystko inne jest w aplikacji webowej, która jest też dostępna jako aplikacja desktopowa na macOS."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um app de finanças pessoais, fork do Maybe Finance",
-			"notes": "Abra o endereço e cadastre-se: a primeira conta é a do administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois feche o cadastro em Settings > Self-Hosting > Onboarding."
+			"notes": "Abra o endereço e cadastre-se: a primeira conta é a do administrador. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Depois feche o cadastro em Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure é moderado: cerca de 1 GB entre web, worker, Postgres e Redis, e anos de transações ocupam pouco disco.",
+			"summary": "Auto-hospede o Sure: app de finanças pessoais de código aberto, fork do Maybe Finance e alternativa ao YNAB. No seu próprio servidor, em um clique.",
+			"about": [
+				"O Sure é um app de finanças pessoais de código aberto que as pessoas usam no lugar do YNAB, e o fork da comunidade do Maybe Finance. Ele reúne todas as contas em um só lugar, de conta corrente e cartões de crédito a ações, criptomoedas, empréstimos e imóveis, em qualquer moeda. Um painel mostra em gráficos seu patrimônio líquido e seu fluxo de caixa. Regras classificam as transações em categorias, e cada categoria recebe um orçamento. Um assistente de IA opcional responde a perguntas sobre seu dinheiro, por uma API compatível com a OpenAI ou por um modelo local como o Ollama.",
+				"As pessoas auto-hospedam o Sure para manter um registro completo das finanças em um servidor que controlam, sem assinatura. Quem mora junto pode compartilhar uma instância, com orçamentos pessoais ao lado de um orçamento compartilhado da casa. O porém é a sincronização bancária: ela passa por um provedor externo em que você mesmo se cadastra. Sem um, você importa as transações de arquivos ou as lança à mão."
+			],
+			"faq": [
+				{
+					"q": "O Sure é gratuito e de código aberto?",
+					"a": "Sim. O Sure é de código aberto, sob a licença AGPLv3, e auto-hospedá-lo é de graça. Os criadores também mantêm uma versão hospedada em sure.am."
+				},
+				{
+					"q": "O Sure é o mesmo que o Maybe Finance?",
+					"a": "Não, mas nasceu dele. O Sure é o fork da comunidade do Maybe Finance, criado depois que a equipe do Maybe parou de trabalhar no app e arquivou o repositório, e é desenvolvido com nome próprio."
+				},
+				{
+					"q": "Posso importar meus dados do YNAB ou do Mint para o Sure?",
+					"a": "Sim. O Sure tem importações prontas para exportações do YNAB, do Mint e do Actual Budget, além de arquivos CSV e QIF. Uma exportação de dados do Sure pode ser importada em outro servidor do Sure, para levar tudo de uma vez."
+				},
+				{
+					"q": "O Sure sincroniza com meu banco automaticamente?",
+					"a": "Sim, por meio de um provedor que você conecta com sua própria conta ou chave: Plaid, SimpleFIN, Enable Banking, Lunch Flow e outros, além de algumas corretoras e exchanges de criptomoedas. A documentação do Sure observa que a Plaid não atende usuários europeus."
+				},
+				{
+					"q": "O Sure tem app para celular?",
+					"a": "Sim, um app complementar para iOS e Android, que por enquanto cobre o login e os saldos das contas. Todo o resto está no app web, que também existe como app de desktop para macOS."
+				}
+			]
 		},
 		"ru": {
 			"description": "Приложение для личных финансов, форк Maybe Finance",
-			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт становится администратором. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем закройте регистрацию в Settings > Self-Hosting > Onboarding."
+			"notes": "Откройте адрес и зарегистрируйтесь: первый аккаунт становится администратором. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Затем закройте регистрацию в Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure: умеренные требования — около 1 GB на веб, воркер, Postgres и Redis, а годы транзакций занимают мало диска.",
+			"summary": "Self-hosted Sure — open source приложение для личных финансов, форк Maybe Finance, альтернатива YNAB. Ставится на ваш сервер в один клик.",
+			"about": [
+				"Sure — это open source приложение для личных финансов, которое люди используют вместо YNAB, и форк Maybe Finance, созданный сообществом. Оно собирает все счета в одном месте: от текущих счетов и кредитных карт до акций, криптовалют, кредитов и недвижимости, в любой валюте. Панель показывает на графиках ваш чистый капитал и денежный поток. Правила раскладывают транзакции по категориям, и у каждой категории есть бюджет. Необязательный ИИ-ассистент отвечает на вопросы о ваших деньгах через OpenAI-совместимый API или локальную модель вроде Ollama.",
+				"Sure хостят у себя, чтобы вести полный учет финансов на сервере, который вы контролируете, и без подписки. Одним экземпляром может пользоваться вся семья: личные бюджеты у каждого и рядом общий семейный бюджет. Подвох в банковской синхронизации: она работает через внешнего провайдера, в котором вы регистрируетесь сами. Без него вы импортируете транзакции из файлов или вводите их вручную."
+			],
+			"faq": [
+				{
+					"q": "Sure бесплатный и с открытым кодом?",
+					"a": "Да. У Sure открытый код под лицензией AGPLv3, и развернуть его у себя можно бесплатно. Его авторы также сами хостят версию на sure.am."
+				},
+				{
+					"q": "Sure — это то же самое, что Maybe Finance?",
+					"a": "Нет, но он вырос из него. Sure — форк Maybe Finance от сообщества, который начали после того, как команда Maybe прекратила работу над приложением и заархивировала его репозиторий; развивается он под собственным именем."
+				},
+				{
+					"q": "Можно ли импортировать данные из YNAB или Mint в Sure?",
+					"a": "Да. В Sure есть готовый импорт из экспортов YNAB, Mint и Actual Budget, а также из файлов CSV и QIF. Экспорт данных Sure можно импортировать на другой сервер Sure, чтобы перенести все сразу."
+				},
+				{
+					"q": "Умеет ли Sure автоматически синхронизироваться с банком?",
+					"a": "Да, через провайдера, которого вы подключаете своим аккаунтом или ключом: Plaid, SimpleFIN, Enable Banking, Lunch Flow и другие, а также некоторые брокеры и криптобиржи. В документации Sure отмечено, что Plaid не обслуживает пользователей из Европы."
+				},
+				{
+					"q": "Есть ли у Sure мобильное приложение?",
+					"a": "Да, приложение-компаньон для iOS и Android; пока оно покрывает вход и остатки на счетах. Все остальное есть в веб-приложении, которое также выпускается как десктопное приложение для macOS."
+				}
+			]
 		},
 		"uk": {
 			"description": "Застосунок для особистих фінансів, форк Maybe Finance",
-			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт стає адміністратором. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім закрийте реєстрацію в Settings > Self-Hosting > Onboarding."
+			"notes": "Відкрийте адресу й зареєструйтеся: перший акаунт стає адміністратором. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Потім закрийте реєстрацію в Settings > Self-Hosting > Onboarding.",
+			"sizing": "Sure має помірні вимоги: близько 1 GB у сервісах web, worker, Postgres і Redis, а роки транзакцій займають мало місця на диску.",
+			"summary": "Self-hosted Sure — застосунок для особистих фінансів із відкритим кодом, форк Maybe Finance, альтернатива YNAB. Розгортання на вашому сервері в один клік.",
+			"about": [
+				"Sure — це застосунок для особистих фінансів із відкритим кодом, яким люди користуються замість YNAB, і форк Maybe Finance від спільноти. Він збирає всі рахунки в одному місці: від поточних рахунків і кредитних карток до акцій, криптовалют, кредитів і нерухомості, в будь-якій валюті. Панель показує на графіках ваш чистий капітал і грошовий потік. Правила розкладають транзакції за категоріями, і кожна категорія має бюджет. Необов’язковий ШІ-асистент відповідає на запитання про ваші гроші через OpenAI-сумісний API або локальну модель на кшталт Ollama.",
+				"Sure хостять у себе, щоб вести повний облік фінансів на сервері, який ви контролюєте, і без передплати. Одним екземпляром може користуватися вся сім’я: особисті бюджети в кожного та поруч спільний сімейний бюджет. Загвоздка в банківській синхронізації: вона працює через стороннього провайдера, у якого ви реєструєтеся самі. Без нього ви імпортуєте транзакції з файлів або вводите їх вручну."
+			],
+			"faq": [
+				{
+					"q": "Sure безплатний і з відкритим кодом?",
+					"a": "Так. Sure має відкритий код за ліцензією AGPLv3, а розгорнути його в себе можна безплатно. Його автори також самі хостять версію на sure.am."
+				},
+				{
+					"q": "Sure — це те саме, що Maybe Finance?",
+					"a": "Ні, але він виріс із нього. Sure — форк Maybe Finance від спільноти, який започаткували після того, як команда Maybe припинила роботу над застосунком і заархівувала його репозиторій; розвивається він під власною назвою."
+				},
+				{
+					"q": "Чи можна імпортувати дані з YNAB або Mint у Sure?",
+					"a": "Так. У Sure є готовий імпорт з експортів YNAB, Mint і Actual Budget, а також із файлів CSV і QIF. Експорт даних Sure можна імпортувати на інший сервер Sure, щоб перенести все одразу."
+				},
+				{
+					"q": "Чи вміє Sure автоматично синхронізуватися з банком?",
+					"a": "Так, через провайдера, якого ви підключаєте власним акаунтом або ключем: Plaid, SimpleFIN, Enable Banking, Lunch Flow та інші, а також деякі брокери й криптобіржі. У документації Sure зазначено, що Plaid не обслуговує користувачів з Європи."
+				},
+				{
+					"q": "Чи є в Sure мобільний застосунок?",
+					"a": "Так, застосунок-компаньйон для iOS і Android; поки що він охоплює вхід і залишки на рахунках. Усе інше — у вебзастосунку, який також випускають як десктопний застосунок для macOS."
+				}
+			]
 		}
 	}
 }

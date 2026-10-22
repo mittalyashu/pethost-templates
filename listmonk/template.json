@@ -1,6 +1,12 @@
 {
 	"name": "listmonk",
 	"emoji": "📧",
+	"category": "community",
+	"alternatives": [
+		"Mailchimp",
+		"MailerLite"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "app",
 		"port": 9000
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "A newsletter and mailing list manager",
-			"notes": "Sign in as admin with the password you gave. Then set Settings > General > Root URL to https://{host}, and add your SMTP server under Settings > SMTP."
+			"notes": "Sign in as admin with the password you gave. Then set Settings > General > Root URL to https://{host}, and add your SMTP server under Settings > SMTP.",
+			"sizing": "listmonk is light: about 100 MB with Postgres, and tens of thousands of subscribers take a few gigabytes.",
+			"summary": "Self-host listmonk, the open-source newsletter and mailing list tool and Mailchimp alternative, on a server of your own in one click.",
+			"about": [
+				"listmonk is an open-source newsletter and mailing list manager, a self-hosted alternative to Mailchimp. Your lists and subscribers live in PostgreSQL, behind a web dashboard for campaigns, templates and analytics. Write a campaign in a drag-and-drop builder, Markdown or raw HTML, and personalize it from each subscriber's JSON attributes, which you can also segment with SQL. A transactional API sends one-off emails, such as a welcome or a password reset.",
+				"People run listmonk themselves to keep their subscriber list in a database they control. There is no fee per subscriber or per email, and its site says it fits a few hundred subscribers on a tiny VPS as well as millions. Every feature is in its HTTP API too, so a signup form or a script can add subscribers. The catch is that listmonk delivers no mail itself: you need an SMTP service such as Amazon SES or Postmark."
+			],
+			"faq": [
+				{
+					"q": "Is listmonk free and open source?",
+					"a": "Yes. listmonk is free software under the AGPL-3.0 licence, with its source on GitHub at knadh/listmonk. You pay only for the server it runs on and the SMTP service that delivers the mail."
+				},
+				{
+					"q": "Does listmonk need an SMTP server to send emails?",
+					"a": "Yes. listmonk hands every message to SMTP servers you configure, such as Amazon SES, SendGrid, Postmark or your own, and can use several at once. Its rate limits keep a large campaign within the provider's quota."
+				},
+				{
+					"q": "Is listmonk a good Mailchimp alternative?",
+					"a": "For newsletters to opt-in lists, yes: it has segmentation, a visual campaign builder, templates, bounce handling and campaign analytics. The difference is that subscribers live in your own PostgreSQL database and mail goes through an SMTP provider you pick."
+				},
+				{
+					"q": "Can listmonk import subscribers from a CSV file?",
+					"a": "Yes. The Import page takes a CSV, or a ZIP holding one, with an email column and optional name and JSON attributes columns. It can overwrite the details of subscribers who already exist, and the API offers the same import."
+				},
+				{
+					"q": "How do I update listmonk to a new version on Pethost?",
+					"a": "Change the image tag in the project's compose.yaml and deploy, or ask your agent to. The container applies the database migrations at each start, so going back needs a backup made before the upgrade, not just the old tag."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Manager für Newsletter und Mailinglisten",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast. Setz dann „Settings > General > Root URL“ auf https://{host} und trag deinen SMTP-Server unter „Settings > SMTP“ ein."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast. Setz dann „Settings > General > Root URL“ auf https://{host} und trag deinen SMTP-Server unter „Settings > SMTP“ ein.",
+			"sizing": "listmonk ist leicht: etwa 100 MB mit Postgres, und Zehntausende Abos brauchen ein paar GB.",
+			"summary": "listmonk selbst hosten: Open-Source-Tool für Newsletter und Mailinglisten, Alternative zu Mailchimp, mit einem Klick auf einem eigenen Server.",
+			"about": [
+				"listmonk ist ein Open-Source-Tool für Newsletter und Mailinglisten, eine selbst gehostete Alternative zu Mailchimp. Listen und Abonnenten liegen in PostgreSQL, bedient wird alles über ein Web-Dashboard für Kampagnen, Vorlagen und Statistiken. Kampagnen schreibst du im Drag-and-drop-Builder, in Markdown oder in reinem HTML und personalisierst sie mit den JSON-Attributen jedes Abonnenten, nach denen du auch per SQL segmentieren kannst. Eine transaktionale API verschickt einzelne E-Mails, etwa eine Willkommensmail oder eine Mail zum Zurücksetzen des Passworts.",
+				"listmonk hostest du selbst, damit deine Abonnentenliste in einer Datenbank liegt, die du kontrollierst. Es gibt keine Gebühr pro Abonnent oder pro E-Mail, und laut der Website passt es zu ein paar hundert Abonnenten auf einem winzigen VPS genauso wie zu Millionen. Jede Funktion steckt auch in der HTTP-API, ein Anmeldeformular oder ein Skript kann also Abonnenten hinzufügen. Der Haken: listmonk stellt selbst keine Mails zu, du brauchst einen SMTP-Service wie Amazon SES oder Postmark."
+			],
+			"faq": [
+				{
+					"q": "Ist listmonk kostenlos und Open Source?",
+					"a": "Ja. listmonk ist freie Software unter der AGPL-3.0-Lizenz, der Quellcode liegt auf GitHub unter knadh/listmonk. Du zahlst nur für den Server, auf dem es läuft, und für den SMTP-Service, der die Mails zustellt."
+				},
+				{
+					"q": "Braucht listmonk einen SMTP-Server, um E-Mails zu verschicken?",
+					"a": "Ja. listmonk gibt jede Nachricht an SMTP-Server weiter, die du einrichtest, etwa Amazon SES, SendGrid, Postmark oder einen eigenen, und kann mehrere gleichzeitig nutzen. Seine Ratenlimits halten eine große Kampagne im Kontingent des Anbieters."
+				},
+				{
+					"q": "Ist listmonk eine gute Alternative zu Mailchimp?",
+					"a": "Für Newsletter an Opt-in-Listen ja: Es bietet Segmentierung, einen visuellen Kampagnen-Builder, Vorlagen, Bounce-Verwaltung und Statistiken pro Kampagne. Der Unterschied: Die Abonnenten liegen in deiner eigenen PostgreSQL-Datenbank, und die Mails laufen über einen SMTP-Anbieter deiner Wahl."
+				},
+				{
+					"q": "Kann listmonk Abonnenten aus einer CSV-Datei importieren?",
+					"a": "Ja. Die Seite „Import“ nimmt eine CSV-Datei oder eine ZIP-Datei mit einer CSV an, mit einer E-Mail-Spalte und optional Spalten für Name und JSON-Attribute. Bereits vorhandene Abonnenten kann der Import überschreiben, und die API bietet denselben Import."
+				},
+				{
+					"q": "Wie aktualisiere ich listmonk bei Pethost auf eine neue Version?",
+					"a": "Ändere den Image-Tag in der compose.yaml des Projekts und deploye, oder bitte deinen Agenten darum. Der Container wendet die Datenbankmigrationen bei jedem Start an. Zurück geht es deshalb nicht allein mit dem alten Tag, sondern nur mit einem Backup, das vor dem Upgrade gemacht wurde."
+				}
+			]
 		},
 		"es": {
 			"description": "Un administrador de newsletters y listas de correo",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste. Luego pon https://{host} en Settings > General > Root URL y agrega tu servidor SMTP en Settings > SMTP."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste. Luego pon https://{host} en Settings > General > Root URL y agrega tu servidor SMTP en Settings > SMTP.",
+			"sizing": "listmonk es ligero: unos 100 MB con Postgres, y decenas de miles de suscriptores ocupan unos pocos GB.",
+			"summary": "Autoaloja listmonk, la alternativa de código abierto a Mailchimp para newsletters y listas de correo, en un servidor propio con un clic.",
+			"about": [
+				"listmonk es un gestor de newsletters y listas de correo de código abierto, una alternativa autoalojada a Mailchimp. Tus listas y suscriptores viven en PostgreSQL, con un panel web para campañas, plantillas y analíticas. Escribes la campaña en un constructor de arrastrar y soltar, en Markdown o en HTML puro, y la personalizas con los atributos JSON de cada suscriptor, que también puedes segmentar con SQL. Una API transaccional envía correos sueltos, como uno de bienvenida o de restablecimiento de contraseña.",
+				"La gente autoaloja listmonk para tener su lista de suscriptores en una base de datos que controla. No se paga por suscriptor ni por correo, y según su web sirve igual para unos cientos de suscriptores en un VPS diminuto que para millones. Cada función está también en su API HTTP, así que un formulario de registro o un script puede agregar suscriptores. El inconveniente es que listmonk no entrega el correo por sí mismo: necesitas un servicio SMTP como Amazon SES o Postmark."
+			],
+			"faq": [
+				{
+					"q": "¿Es listmonk gratis y de código abierto?",
+					"a": "Sí. listmonk es software libre con licencia AGPL-3.0, y su código está en GitHub, en knadh/listmonk. Solo pagas el servidor donde se ejecuta y el servicio SMTP que entrega el correo."
+				},
+				{
+					"q": "¿Necesita listmonk un servidor SMTP para enviar correos?",
+					"a": "Sí. listmonk pasa cada mensaje a los servidores SMTP que configures, como Amazon SES, SendGrid, Postmark o uno propio, y puede usar varios a la vez. Sus límites de tasa mantienen una campaña grande dentro de la cuota del proveedor."
+				},
+				{
+					"q": "¿Es listmonk una buena alternativa a Mailchimp?",
+					"a": "Para newsletters a listas con opt-in, sí: tiene segmentación, un constructor visual de campañas, plantillas, manejo de rebotes y analíticas por campaña. La diferencia: los suscriptores viven en tu propia base de datos PostgreSQL y el correo sale por el proveedor SMTP que elijas."
+				},
+				{
+					"q": "¿Puede listmonk importar suscriptores desde un archivo CSV?",
+					"a": "Sí. La página “Import” acepta un CSV, o un ZIP que contenga uno, con una columna de correo y columnas opcionales de nombre y atributos JSON. Puede sobrescribir los datos de los suscriptores que ya existen, y la API ofrece la misma importación."
+				},
+				{
+					"q": "¿Cómo actualizo listmonk a una versión nueva en Pethost?",
+					"a": "Cambia el tag de la imagen en el compose.yaml del proyecto y despliega, o pídeselo a tu agente. El contenedor aplica las migraciones de la base de datos en cada inicio, así que no basta con volver al tag anterior: hace falta un backup hecho antes de actualizar."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un gestionnaire de newsletters et de listes de diffusion",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Mettez ensuite https://{host} dans Settings > General > Root URL, et ajoutez votre serveur SMTP dans Settings > SMTP."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi. Mettez ensuite https://{host} dans Settings > General > Root URL, et ajoutez votre serveur SMTP dans Settings > SMTP.",
+			"sizing": "listmonk est léger : environ 100 MB avec Postgres, et des dizaines de milliers d’abonnés prennent quelques GB.",
+			"summary": "Auto-hébergez listmonk, l’alternative open source à Mailchimp pour vos newsletters et listes de diffusion, sur votre propre serveur en un clic.",
+			"about": [
+				"listmonk est un outil open source de newsletters et de listes de diffusion, une alternative auto-hébergée à Mailchimp. Vos listes et vos abonnés vivent dans PostgreSQL, derrière un tableau de bord web pour les campagnes, les templates et les statistiques. Vous écrivez une campagne dans un éditeur visuel par glisser-déposer, en Markdown ou en HTML brut, et vous la personnalisez avec les attributs JSON de chaque abonné, que vous pouvez aussi segmenter en SQL. Une API transactionnelle envoie des e-mails ponctuels, comme un e-mail de bienvenue ou de réinitialisation de mot de passe.",
+				"On auto-héberge listmonk pour garder sa liste d’abonnés dans une base que l’on contrôle. Il n’y a pas de frais par abonné ni par e-mail, et d’après son site, il convient à quelques centaines d’abonnés sur un tout petit VPS comme à des millions. Chaque fonction existe aussi dans son API HTTP : un formulaire d’inscription ou un script peut donc ajouter des abonnés. La contrepartie : listmonk ne livre aucun e-mail lui-même, il vous faut un service SMTP comme Amazon SES ou Postmark."
+			],
+			"faq": [
+				{
+					"q": "listmonk est-il gratuit et open source ?",
+					"a": "Oui. listmonk est un logiciel libre sous licence AGPL-3.0, avec son code source sur GitHub, dans knadh/listmonk. Vous ne payez que le serveur sur lequel il tourne et le service SMTP qui livre les e-mails."
+				},
+				{
+					"q": "listmonk a-t-il besoin d’un serveur SMTP pour envoyer des e-mails ?",
+					"a": "Oui. listmonk confie chaque message aux serveurs SMTP que vous configurez, comme Amazon SES, SendGrid, Postmark ou le vôtre, et peut en utiliser plusieurs à la fois. Ses limites de débit gardent une grosse campagne dans le quota du fournisseur."
+				},
+				{
+					"q": "listmonk est-il une bonne alternative à Mailchimp ?",
+					"a": "Pour envoyer des newsletters à des listes en opt-in, oui : il offre la segmentation, un éditeur visuel de campagnes, des templates, la gestion des rebonds et des statistiques par campagne. La différence : les abonnés sont dans votre propre base PostgreSQL et les e-mails passent par le fournisseur SMTP que vous choisissez."
+				},
+				{
+					"q": "listmonk peut-il importer des abonnés depuis un fichier CSV ?",
+					"a": "Oui. La page « Import » accepte un fichier CSV, ou un ZIP qui en contient un, avec une colonne e-mail et des colonnes facultatives de nom et d’attributs JSON. Elle peut écraser les données des abonnés déjà présents, et l’API propose le même import."
+				},
+				{
+					"q": "Comment mettre à jour listmonk vers une nouvelle version sur Pethost ?",
+					"a": "Changez le tag de l’image dans le compose.yaml du projet et déployez, ou demandez-le à votre agent. Le conteneur applique les migrations de la base à chaque démarrage : pour revenir en arrière, l’ancien tag ne suffit pas, il faut une sauvegarde faite avant la mise à jour."
+				}
+			]
 		},
 		"pl": {
 			"description": "Menedżer newsletterów i list mailingowych",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Potem ustaw Settings > General > Root URL na https://{host} i dodaj swój serwer SMTP w Settings > SMTP."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu. Potem ustaw Settings > General > Root URL na https://{host} i dodaj swój serwer SMTP w Settings > SMTP.",
+			"sizing": "listmonk ma małe wymagania: około 100 MB z Postgresem, a dziesiątki tysięcy subskrybentów zajmują kilka GB.",
+			"summary": "Hostuj listmonk u siebie jednym kliknięciem: narzędzie open source do newsletterów i list mailingowych, alternatywa dla Mailchimpa, na własnym serwerze.",
+			"about": [
+				"listmonk to narzędzie open source do newsletterów i list mailingowych, alternatywa dla Mailchimpa, którą hostujesz u siebie. Listy i subskrybenci leżą w PostgreSQL, a całością zarządzasz z panelu webowego: kampanie, szablony i statystyki. Kampanię napiszesz w edytorze drag-and-drop, w Markdownie albo w surowym HTML-u i spersonalizujesz ją atrybutami JSON każdego subskrybenta, po których możesz też segmentować w SQL. Transakcyjne API wysyła pojedyncze maile, na przykład powitalny albo z resetem hasła.",
+				"Hostuje się go u siebie, żeby lista subskrybentów leżała w bazie, nad którą masz kontrolę. Nie ma opłaty za subskrybenta ani za e-mail, a według strony projektu sprawdza się i przy kilkuset subskrybentach na maleńkim VPS-ie, i przy milionach. Każda funkcja jest też w API HTTP, więc formularz zapisu albo skrypt może dodawać subskrybentów. Haczyk: listmonk sam nie dostarcza poczty, potrzebujesz usługi SMTP, takiej jak Amazon SES albo Postmark."
+			],
+			"faq": [
+				{
+					"q": "Czy listmonk jest darmowy i open source?",
+					"a": "Tak. listmonk to wolne oprogramowanie na licencji AGPL-3.0, a kod źródłowy jest na GitHubie w knadh/listmonk. Płacisz tylko za serwer, na którym działa, i za usługę SMTP, która dostarcza pocztę."
+				},
+				{
+					"q": "Czy listmonk potrzebuje serwera SMTP do wysyłania maili?",
+					"a": "Tak. listmonk przekazuje każdą wiadomość serwerom SMTP, które skonfigurujesz, na przykład Amazon SES, SendGrid, Postmark albo własnemu, i może używać kilku naraz. Jego limity szybkości pozwalają zmieścić dużą kampanię w limicie dostawcy."
+				},
+				{
+					"q": "Czy listmonk to dobra alternatywa dla Mailchimpa?",
+					"a": "Do newsletterów na listy z opt-inem tak: ma segmentację, wizualny kreator kampanii, szablony, obsługę bounce’ów i statystyki każdej kampanii. Różnica: subskrybenci są w twojej własnej bazie PostgreSQL, a poczta idzie przez dostawcę SMTP, którego wybierzesz."
+				},
+				{
+					"q": "Czy listmonk potrafi zaimportować subskrybentów z pliku CSV?",
+					"a": "Tak. Strona Import przyjmuje plik CSV albo ZIP z jednym CSV, z kolumną e-mail i opcjonalnymi kolumnami imienia i atrybutów JSON. Może nadpisać dane istniejących już subskrybentów, a API oferuje ten sam import."
+				},
+				{
+					"q": "Jak zaktualizować listmonk do nowej wersji na Pethost?",
+					"a": "Zmień tag obrazu w pliku compose.yaml projektu i wdróż, albo poproś o to swojego agenta. Kontener stosuje migracje bazy przy każdym starcie, więc sam stary tag nie pozwoli wrócić: potrzebny jest backup zrobiony przed aktualizacją."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um gerenciador de newsletters e listas de e-mail",
-			"notes": "Entre como admin com a senha que você definiu. Depois defina Settings > General > Root URL como https://{host} e adicione seu servidor SMTP em Settings > SMTP."
+			"notes": "Entre como admin com a senha que você definiu. Depois defina Settings > General > Root URL como https://{host} e adicione seu servidor SMTP em Settings > SMTP.",
+			"sizing": "listmonk é leve: cerca de 100 MB com o Postgres, e dezenas de milhares de assinantes ocupam alguns GB.",
+			"summary": "Auto-hospede o listmonk, a alternativa de código aberto ao Mailchimp para newsletters e listas de e-mail, em um servidor seu com um clique.",
+			"about": [
+				"O listmonk é um gerenciador de newsletters e listas de e-mail de código aberto, uma alternativa auto-hospedada ao Mailchimp. Suas listas e assinantes ficam no PostgreSQL, com um painel web para campanhas, templates e análises. Você escreve a campanha em um construtor de arrastar e soltar, em Markdown ou em HTML puro, e a personaliza com os atributos JSON de cada assinante, que também dá para segmentar com SQL. Uma API transacional envia e-mails avulsos, como um de boas-vindas ou de redefinição de senha.",
+				"As pessoas auto-hospedam o listmonk para manter a lista de assinantes em um banco de dados que elas controlam. Não há cobrança por assinante nem por e-mail, e, segundo o site, ele serve tanto para algumas centenas de assinantes em um VPS minúsculo quanto para milhões. Todas as funções também estão na API HTTP, então um formulário de inscrição ou um script pode adicionar assinantes. O porém: o listmonk não entrega e-mail por conta própria, você precisa de um serviço SMTP, como Amazon SES ou Postmark."
+			],
+			"faq": [
+				{
+					"q": "O listmonk é gratuito e de código aberto?",
+					"a": "Sim. O listmonk é software livre sob a licença AGPL-3.0, com o código-fonte no GitHub, em knadh/listmonk. Você paga só pelo servidor em que ele roda e pelo serviço SMTP que entrega os e-mails."
+				},
+				{
+					"q": "O listmonk precisa de um servidor SMTP para enviar e-mails?",
+					"a": "Sim. O listmonk passa cada mensagem para os servidores SMTP que você configurar, como Amazon SES, SendGrid, Postmark ou um seu, e pode usar vários ao mesmo tempo. Os limites de taxa mantêm uma campanha grande dentro da cota do provedor."
+				},
+				{
+					"q": "O listmonk é uma boa alternativa ao Mailchimp?",
+					"a": "Para newsletters em listas com opt-in, sim: tem segmentação, construtor visual de campanhas, templates, tratamento de bounces e análises por campanha. A diferença: os assinantes ficam no seu próprio banco PostgreSQL, e os e-mails saem pelo provedor SMTP que você escolher."
+				},
+				{
+					"q": "O listmonk consegue importar assinantes de um arquivo CSV?",
+					"a": "Sim. A página “Import” aceita um CSV, ou um ZIP com um dentro, com uma coluna de e-mail e colunas opcionais de nome e atributos JSON. Ela pode sobrescrever os dados de assinantes que já existem, e a API oferece a mesma importação."
+				},
+				{
+					"q": "Como atualizo o listmonk para uma versão nova no Pethost?",
+					"a": "Troque a tag da imagem no compose.yaml do projeto e faça o deploy, ou peça ao seu agente. O container aplica as migrações do banco a cada inicialização, então voltar à tag antiga não basta: é preciso um backup feito antes do upgrade."
+				}
+			]
 		},
 		"ru": {
 			"description": "Менеджер рассылок и списков подписчиков",
-			"notes": "Войдите как admin с паролем, который вы задали. Затем в Settings > General > Root URL укажите https://{host} и добавьте свой SMTP-сервер в Settings > SMTP."
+			"notes": "Войдите как admin с паролем, который вы задали. Затем в Settings > General > Root URL укажите https://{host} и добавьте свой SMTP-сервер в Settings > SMTP.",
+			"sizing": "listmonk: небольшие требования — около 100 MB вместе с Postgres, а десятки тысяч подписчиков занимают несколько GB.",
+			"summary": "listmonk на своем сервере в один клик: self-hosted менеджер рассылок с открытым кодом, альтернатива Mailchimp для email-рассылок.",
+			"about": [
+				"listmonk — менеджер рассылок и списков подписчиков с открытым кодом, self-hosted альтернатива Mailchimp. Списки и подписчики лежат в PostgreSQL, а управлять всем можно из веб-панели: кампании, шаблоны, аналитика. Кампанию можно написать в визуальном конструкторе с перетаскиванием, в Markdown или в чистом HTML и персонализировать по JSON-атрибутам каждого подписчика; по ним же можно сегментировать через SQL. Транзакционный API отправляет разовые письма, например приветственное или для сброса пароля.",
+				"listmonk ставят на свой сервер, чтобы хранить список подписчиков в базе, которую контролируете вы сами. Платы за подписчика или за письмо нет, а по словам авторов на сайте, он одинаково подходит и для пары сотен подписчиков на крошечном VPS, и для миллионов. Любая функция есть и в HTTP API, поэтому форма подписки или скрипт могут добавлять подписчиков. Но есть нюанс: сам listmonk письма не доставляет, нужен SMTP-сервис, например Amazon SES или Postmark."
+			],
+			"faq": [
+				{
+					"q": "Бесплатен ли listmonk и открыт ли его исходный код?",
+					"a": "Да. listmonk — свободное ПО под лицензией AGPL-3.0, исходный код лежит на GitHub в репозитории knadh/listmonk. Вы платите только за сервер, на котором он работает, и за SMTP-сервис, который доставляет почту."
+				},
+				{
+					"q": "Нужен ли listmonk SMTP-сервер для отправки писем?",
+					"a": "Да. listmonk передает каждое письмо SMTP-серверам, которые вы настроите, например Amazon SES, SendGrid, Postmark или собственному, и может использовать несколько одновременно. Его лимиты скорости помогают уложить большую кампанию в квоту провайдера."
+				},
+				{
+					"q": "Годится ли listmonk как альтернатива Mailchimp?",
+					"a": "Для рассылок по спискам с opt-in — да: есть сегментация, визуальный конструктор кампаний, шаблоны, обработка баунсов и аналитика по каждой кампании. Разница в том, что подписчики хранятся в вашей собственной базе PostgreSQL, а почта уходит через SMTP-провайдера, которого вы выберете."
+				},
+				{
+					"q": "Умеет ли listmonk импортировать подписчиков из CSV-файла?",
+					"a": "Да. Страница «Import» принимает CSV или ZIP с CSV внутри: нужен столбец с email, а имя и JSON-атрибуты необязательны. Данные уже существующих подписчиков можно перезаписать, а в API есть тот же импорт."
+				},
+				{
+					"q": "Как обновить listmonk до новой версии на Pethost?",
+					"a": "Измените тег образа в compose.yaml проекта и задеплойте или попросите об этом своего агента. Контейнер применяет миграции базы при каждом запуске, поэтому одного старого тега для отката мало: нужен бэкап, сделанный до обновления."
+				}
+			]
 		},
 		"uk": {
 			"description": "Менеджер розсилок і списків розсилки",
-			"notes": "Увійдіть як admin із паролем, який ви вказали. Потім у Settings > General > Root URL вкажіть https://{host}, а в Settings > SMTP додайте свій SMTP-сервер."
+			"notes": "Увійдіть як admin із паролем, який ви вказали. Потім у Settings > General > Root URL вкажіть https://{host}, а в Settings > SMTP додайте свій SMTP-сервер.",
+			"sizing": "listmonk має скромні вимоги: близько 100 MB з Postgres, а десятки тисяч підписників займають кілька GB.",
+			"summary": "listmonk на власному сервері в один клік: self-hosted менеджер розсилок із відкритим кодом, альтернатива Mailchimp для email-розсилок.",
+			"about": [
+				"listmonk — менеджер розсилок і списків підписників із відкритим кодом, self-hosted альтернатива Mailchimp. Списки й підписники лежать у PostgreSQL, а керувати всім можна з вебпанелі: кампанії, шаблони, аналітика. Кампанію можна написати у візуальному конструкторі з перетягуванням, у Markdown чи в чистому HTML і персоналізувати за JSON-атрибутами кожного підписника; за ними ж можна сегментувати через SQL. Транзакційний API надсилає разові листи, наприклад вітальний або для скидання пароля.",
+				"listmonk ставлять на власний сервер, щоб тримати список підписників у базі, яку контролюєте ви самі. Плати за підписника чи за лист немає, а за словами авторів на сайті, він однаково підходить і для кількох сотень підписників на крихітному VPS, і для мільйонів. Кожна функція є і в HTTP API, тож форма підписки чи скрипт можуть додавати підписників. Але є нюанс: сам listmonk листи не доставляє, потрібен SMTP-сервіс, наприклад Amazon SES або Postmark."
+			],
+			"faq": [
+				{
+					"q": "Чи безкоштовний listmonk і чи має він відкритий код?",
+					"a": "Так. listmonk — вільне програмне забезпечення під ліцензією AGPL-3.0, вихідний код лежить на GitHub у репозиторії knadh/listmonk. Ви платите лише за сервер, на якому він працює, і за SMTP-сервіс, що доставляє пошту."
+				},
+				{
+					"q": "Чи потрібен listmonk SMTP-сервер, щоб надсилати листи?",
+					"a": "Так. listmonk передає кожен лист SMTP-серверам, які ви налаштуєте, наприклад Amazon SES, SendGrid, Postmark чи власному, і може використовувати кілька одночасно. Його ліміти швидкості допомагають вкласти велику кампанію в квоту провайдера."
+				},
+				{
+					"q": "Чи годиться listmonk як альтернатива Mailchimp?",
+					"a": "Для розсилок за списками з opt-in — так: є сегментація, візуальний конструктор кампаній, шаблони, обробка баунсів і аналітика по кожній кампанії. Різниця в тому, що підписники зберігаються у вашій власній базі PostgreSQL, а пошта йде через SMTP-провайдера, якого ви оберете."
+				},
+				{
+					"q": "Чи вміє listmonk імпортувати підписників із CSV-файлу?",
+					"a": "Так. Сторінка «Import» приймає CSV або ZIP із CSV всередині: потрібен стовпець з email, а ім’я та JSON-атрибути необов’язкові. Дані вже наявних підписників можна перезаписати, а в API є той самий імпорт."
+				},
+				{
+					"q": "Як оновити listmonk до нової версії на Pethost?",
+					"a": "Змініть тег образу в compose.yaml проєкту й задеплойте або попросіть про це свого агента. Контейнер застосовує міграції бази під час кожного запуску, тож для відкату одного старого тега мало: потрібен бекап, зроблений до оновлення."
+				}
+			]
 		}
 	}
 }

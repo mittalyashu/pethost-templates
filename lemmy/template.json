@@ -1,6 +1,11 @@
 {
 	"name": "Lemmy",
 	"emoji": "🐀",
+	"category": "community",
+	"alternatives": [
+		"Reddit"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "proxy",
 		"port": 8536
@@ -26,35 +31,259 @@
 	"texts": {
 		"en": {
 			"description": "A link aggregator and forum for the fediverse",
-			"notes": "Sign in as admin with the password you gave; the first start takes a minute or two. New accounts wait for your approval: Registration Mode is under Admin Settings. The password is changed in Lemmy’s own settings: the one in .env is read only once. The address is the instance’s name in the fediverse, so keep it."
+			"notes": "Sign in as admin with the password you gave; the first start takes a minute or two. New accounts wait for your approval: Registration Mode is under Admin Settings. The password is changed in Lemmy’s own settings: the one in .env is read only once. The address is the instance’s name in the fediverse, so keep it.",
+			"sizing": "Lemmy is moderate: under 1 GB across five services, and federated posts and thumbnails add gigabytes a year.",
+			"summary": "Lemmy is an open-source Reddit alternative: communities, votes and threaded comments across federated servers. Self-host your instance in one click.",
+			"about": [
+				"Lemmy is an open-source Reddit alternative: a link aggregator and discussion board that anyone can run on a server of their own. People join communities, post links, text and images, then vote and comment in threads. Posts and comments are formatted with Markdown, and every community has an RSS feed. Each server, called an instance, keeps its own communities, rules and moderators, yet its users can follow communities and talk with people on any other instance, much as email works between providers.",
+				"People self-host Lemmy to give a club, a project or a topic a forum of its own, with their rules and their moderators, while it stays part of the wider network. Vote scores are shown in full, and every moderator action is listed in a public mod log. The catch is email: password resets and notifications go out only through an SMTP server added to the config."
+			],
+			"faq": [
+				{
+					"q": "Is Lemmy free and open source?",
+					"a": "Yes. Lemmy is free software under the AGPL-3.0 license, with its source code on GitHub. Anyone may run, change and share it, and a changed version offered over a network must publish its source too."
+				},
+				{
+					"q": "What is the difference between Lemmy and Reddit?",
+					"a": "Lemmy works much like Reddit, with communities, upvotes, downvotes and threaded comments, but no company owns it. It has no advertising, no user tracking and no venture capital: the project runs on donations."
+				},
+				{
+					"q": "Is there a Lemmy app for Android and iPhone?",
+					"a": "Yes. Jerboa is the Android app made by Lemmy's developers, on Google Play and F-Droid. Voyager, Thunder and Mlem run on the iPhone, and the web interface is mobile-friendly."
+				},
+				{
+					"q": "Can Mastodon users follow Lemmy communities?",
+					"a": "Yes. A Mastodon user can follow any Lemmy community, comment under its posts, and start a post in it by mentioning the community's handle in a public post."
+				},
+				{
+					"q": "Can I change my Lemmy instance's domain later?",
+					"a": "Not once it has federated: Lemmy's docs warn that changing the domain then breaks federation. Settle on the address, a name under yourname.pethost.app or your own domain, before the first deploy."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Link-Aggregator und Forum für das Fediverse",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast; der erste Start dauert ein bis zwei Minuten. Neue Konten warten auf deine Bestätigung: „Registration Mode“ findest du unter „Admin Settings“. Das Passwort änderst du in den Einstellungen von Lemmy selbst: Das aus der .env wird nur einmal gelesen. Die Adresse ist der Name der Instanz im Fediverse, behalt sie also bei."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast; der erste Start dauert ein bis zwei Minuten. Neue Konten warten auf deine Bestätigung: „Registration Mode“ findest du unter „Admin Settings“. Das Passwort änderst du in den Einstellungen von Lemmy selbst: Das aus der .env wird nur einmal gelesen. Die Adresse ist der Name der Instanz im Fediverse, behalt sie also bei.",
+			"sizing": "Lemmy ist mittelschwer: unter 1 GB über fünf Services, und föderierte Posts und Thumbnails kommen mit mehreren GB im Jahr dazu.",
+			"summary": "Lemmy selbst hosten: Open-Source-Alternative zu Reddit mit Communitys, Votes und verschachtelten Kommentaren über föderierte Server. Mit einem Klick.",
+			"about": [
+				"Lemmy ist eine Open-Source-Alternative zu Reddit: ein Link-Aggregator und Diskussionsforum, das alle auf einem eigenen Server betreiben können. Man tritt Communitys bei, postet Links, Text und Bilder, stimmt ab und kommentiert in Threads. Beiträge und Kommentare lassen sich mit Markdown formatieren, und jede Community hat einen RSS-Feed. Jeder Server, eine Instanz genannt, hat eigene Communitys, Regeln und eine eigene Moderation. Wer dort ein Konto hat, kann trotzdem Communitys auf jeder anderen Instanz folgen und mit den Leuten dort reden, ähnlich wie E-Mail zwischen verschiedenen Anbietern funktioniert.",
+				"Lemmy hostet man selbst, um einem Verein, einem Projekt oder einem Thema ein eigenes Forum zu geben, mit eigenen Regeln und eigener Moderation, das trotzdem Teil des größeren Netzwerks bleibt. Die Vote-Punktzahlen werden vollständig angezeigt, und jede Aktion der Moderation steht in einem öffentlichen Mod-Log. Der Haken ist die E-Mail: Passwort-Resets und Benachrichtigungen gehen nur über einen SMTP-Server raus, den du in der Konfiguration einträgst."
+			],
+			"faq": [
+				{
+					"q": "Ist Lemmy kostenlos und Open Source?",
+					"a": "Ja. Lemmy ist freie Software unter der AGPL-3.0-Lizenz, der Quellcode liegt auf GitHub. Alle dürfen sie betreiben, ändern und weitergeben, und eine geänderte Version, die über ein Netzwerk angeboten wird, muss ebenfalls ihren Quellcode veröffentlichen."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen Lemmy und Reddit?",
+					"a": "Lemmy funktioniert ähnlich wie Reddit, mit Communitys, Upvotes, Downvotes und verschachtelten Kommentaren, gehört aber keinem Unternehmen. Es gibt keine Werbung, kein Tracking und kein Wagniskapital: Das Projekt lebt von Spenden."
+				},
+				{
+					"q": "Gibt es eine Lemmy-App für Android und iPhone?",
+					"a": "Ja. Jerboa ist die Android-App, die das Lemmy-Entwicklungsteam selbst baut, erhältlich bei Google Play und F-Droid. Voyager, Thunder und Mlem laufen auf dem iPhone, und die Weboberfläche ist für Mobilgeräte geeignet."
+				},
+				{
+					"q": "Können Leute auf Mastodon Lemmy-Communitys folgen?",
+					"a": "Ja. Wer auf Mastodon ist, kann jeder Lemmy-Community folgen, unter ihren Beiträgen kommentieren und einen Beitrag in ihr starten, indem man in einem öffentlichen Post den Handle der Community erwähnt."
+				},
+				{
+					"q": "Kann ich die Domain meiner Lemmy-Instanz später ändern?",
+					"a": "Nicht mehr, sobald sie föderiert ist: Laut der Lemmy-Dokumentation bricht die Föderation ab, wenn man die Domain dann ändert. Entscheide dich vor dem ersten Deploy für die Adresse: einen Namen unter deinname.pethost.app oder deine eigene Domain."
+				}
+			]
 		},
 		"es": {
 			"description": "Un agregador de enlaces y foro para el fediverso",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste; el primer inicio tarda uno o dos minutos. Las cuentas nuevas esperan tu aprobación: Registration Mode está en Admin Settings. La contraseña se cambia en los ajustes del propio Lemmy: la de .env se lee una sola vez. La dirección es el nombre de la instancia en el fediverso, así que consérvala."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste; el primer inicio tarda uno o dos minutos. Las cuentas nuevas esperan tu aprobación: Registration Mode está en Admin Settings. La contraseña se cambia en los ajustes del propio Lemmy: la de .env se lee una sola vez. La dirección es el nombre de la instancia en el fediverso, así que consérvala.",
+			"sizing": "Lemmy es moderado: menos de 1 GB entre cinco servicios, y las publicaciones federadas y las miniaturas suman GB al año.",
+			"summary": "Autoaloja Lemmy, la alternativa de código abierto a Reddit: comunidades, votos y comentarios en hilos entre servidores federados. En un clic.",
+			"about": [
+				"Lemmy es una alternativa de código abierto a Reddit: un agregador de enlaces y foro de discusión que cualquiera puede ejecutar en un servidor propio. La gente se une a comunidades, publica enlaces, texto e imágenes, y luego vota y comenta en hilos. Las publicaciones y los comentarios se formatean con Markdown, y cada comunidad tiene un feed RSS. Cada servidor, llamado instancia, tiene sus propias comunidades, reglas y moderadores, pero sus usuarios pueden seguir comunidades y conversar con personas de cualquier otra instancia, de forma parecida a como funciona el correo entre proveedores.",
+				"La gente autoaloja Lemmy para darle a un club, a un proyecto o a un tema un foro propio, con sus reglas y sus moderadores, sin dejar de formar parte de la red más amplia. Las puntuaciones de los votos se muestran completas, y cada acción de moderación aparece en un log de moderación público. El inconveniente es el correo: los restablecimientos de contraseña y las notificaciones solo salen a través de un servidor SMTP que se agrega a la configuración."
+			],
+			"faq": [
+				{
+					"q": "¿Lemmy es gratis y de código abierto?",
+					"a": "Sí. Lemmy es software libre con licencia AGPL-3.0 y su código fuente está en GitHub. Cualquiera puede ejecutarlo, modificarlo y compartirlo, y una versión modificada que se ofrece por una red también debe publicar su código fuente."
+				},
+				{
+					"q": "¿En qué se diferencia Lemmy de Reddit?",
+					"a": "Lemmy funciona de forma muy parecida a Reddit, con comunidades, votos positivos y negativos y comentarios en hilos, pero no pertenece a ninguna empresa. No tiene publicidad, ni rastreo de usuarios, ni capital de riesgo: el proyecto se mantiene con donaciones."
+				},
+				{
+					"q": "¿Hay una app de Lemmy para Android y iPhone?",
+					"a": "Sí. Jerboa es la app para Android que hacen los desarrolladores de Lemmy, disponible en Google Play y F-Droid. Voyager, Thunder y Mlem funcionan en el iPhone, y la interfaz web se adapta bien al móvil."
+				},
+				{
+					"q": "¿Quienes usan Mastodon pueden seguir comunidades de Lemmy?",
+					"a": "Sí. Quien usa Mastodon puede seguir cualquier comunidad de Lemmy, comentar bajo sus publicaciones y empezar una publicación en ella mencionando el handle de la comunidad en una publicación pública."
+				},
+				{
+					"q": "¿Puedo cambiar el dominio de mi instancia de Lemmy más adelante?",
+					"a": "No cuando la instancia ya se federó: la documentación de Lemmy advierte que cambiar entonces el dominio rompe la federación. Decide la dirección, un nombre bajo tunombre.pethost.app o tu propio dominio, antes del primer despliegue."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un agrégateur de liens et un forum pour le fédivers",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi ; le premier démarrage prend une à deux minutes. Les nouveaux comptes attendent votre approbation : Registration Mode se trouve dans Admin Settings. Le mot de passe se modifie dans les paramètres de Lemmy lui-même : celui du .env n’est lu qu’une seule fois. L’adresse est le nom de l’instance dans le fédivers, gardez-la donc."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi ; le premier démarrage prend une à deux minutes. Les nouveaux comptes attendent votre approbation : Registration Mode se trouve dans Admin Settings. Le mot de passe se modifie dans les paramètres de Lemmy lui-même : celui du .env n’est lu qu’une seule fois. L’adresse est le nom de l’instance dans le fédivers, gardez-la donc.",
+			"sizing": "Lemmy est modéré : moins de 1 GB sur cinq services, et les posts fédérés et leurs miniatures ajoutent des GB par an.",
+			"summary": "Auto-hébergez Lemmy, alternative open source à Reddit : communautés, votes et commentaires en fils sur des serveurs fédérés. En un clic.",
+			"about": [
+				"Lemmy est une alternative open source à Reddit : un agrégateur de liens et un forum de discussion que chacun peut faire tourner sur son propre serveur. On y rejoint des communautés, on y publie des liens, du texte et des images, puis on vote et on commente en fils de discussion. Les publications et les commentaires se mettent en forme avec Markdown, et chaque communauté a son flux RSS. Chaque serveur, appelé instance, garde ses propres communautés, règles et modérateurs, mais ses utilisateurs peuvent suivre des communautés et échanger avec les gens de n’importe quelle autre instance, un peu comme l’e-mail fonctionne entre fournisseurs.",
+				"On auto-héberge Lemmy pour offrir à un club, à un projet ou à un sujet un forum bien à lui, avec ses règles et ses modérateurs, tout en restant dans le réseau plus large. Les scores de vote s’affichent en entier, et chaque action de modération figure dans un journal de modération public. Le hic, c’est l’e-mail : les réinitialisations de mot de passe et les notifications ne partent que par un serveur SMTP ajouté à la configuration."
+			],
+			"faq": [
+				{
+					"q": "Lemmy est-il gratuit et open source ?",
+					"a": "Oui. Lemmy est un logiciel libre sous licence AGPL-3.0, avec son code source sur GitHub. Chacun peut l’exécuter, le modifier et le partager, et une version modifiée proposée sur un réseau doit elle aussi publier son code source."
+				},
+				{
+					"q": "En quoi Lemmy diffère-t-il de Reddit ?",
+					"a": "Lemmy fonctionne à peu près comme Reddit, avec des communautés, des votes positifs et négatifs et des commentaires en fils, mais aucune entreprise n’en est propriétaire. Il n’y a ni publicité, ni pistage des utilisateurs, ni capital-risque : le projet vit de dons."
+				},
+				{
+					"q": "Existe-t-il une application Lemmy pour Android et iPhone ?",
+					"a": "Oui. Jerboa est l’application Android faite par les développeurs de Lemmy, sur Google Play et F-Droid. Voyager, Thunder et Mlem tournent sur l’iPhone, et l’interface web est adaptée aux mobiles."
+				},
+				{
+					"q": "Les utilisateurs de Mastodon peuvent-ils suivre des communautés Lemmy ?",
+					"a": "Oui. Un utilisateur de Mastodon peut suivre n’importe quelle communauté Lemmy, commenter sous ses publications et y lancer une publication en mentionnant l’identifiant de la communauté dans une publication publique."
+				},
+				{
+					"q": "Puis-je changer plus tard le domaine de mon instance Lemmy ?",
+					"a": "Pas une fois qu’elle est fédérée : la documentation de Lemmy prévient que changer le domaine casse alors la fédération. Fixez l’adresse, un nom sous votrenom.pethost.app ou votre propre domaine, avant le premier déploiement."
+				}
+			]
 		},
 		"pl": {
 			"description": "Agregator linków i forum dla fediwersum",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu; pierwsze uruchomienie trwa minutę lub dwie. Nowe konta czekają na twoje zatwierdzenie: Registration Mode jest w Admin Settings. Hasło zmienisz w ustawieniach samej aplikacji Lemmy: to z .env jest odczytywane tylko raz. Adres to nazwa instancji we fediwersum, więc go zachowaj."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu; pierwsze uruchomienie trwa minutę lub dwie. Nowe konta czekają na twoje zatwierdzenie: Registration Mode jest w Admin Settings. Hasło zmienisz w ustawieniach samej aplikacji Lemmy: to z .env jest odczytywane tylko raz. Adres to nazwa instancji we fediwersum, więc go zachowaj.",
+			"sizing": "Lemmy ma średnie wymagania: poniżej 1 GB w pięciu usługach, a sfederowane posty i miniatury dokładają gigabajty rocznie.",
+			"summary": "Hostuj Lemmy u siebie: alternatywa dla Reddita o otwartym kodzie – społeczności, głosy i wątki komentarzy na sfederowanych serwerach. Jednym kliknięciem.",
+			"about": [
+				"Lemmy to alternatywa dla Reddita o otwartym kodzie: agregator linków i forum dyskusyjne, które każdy może uruchomić na własnym serwerze. Ludzie dołączają do społeczności, publikują linki, tekst i obrazy, a potem głosują i komentują w wątkach. Posty i komentarze formatuje się w Markdownie, a każda społeczność ma kanał RSS. Każdy serwer, zwany instancją, ma własne społeczności, zasady i moderatorów, a mimo to jego użytkownicy mogą obserwować społeczności i rozmawiać z ludźmi z dowolnej innej instancji, mniej więcej tak, jak działa poczta e-mail między dostawcami.",
+				"Lemmy hostuje się u siebie, żeby dać klubowi, projektowi albo tematowi własne forum, z własnymi zasadami i moderatorami, a jednocześnie zostać częścią szerszej sieci. Wyniki głosowania są pokazywane w całości, a każde działanie moderatora trafia do publicznego logu moderacji. Haczyk to e-mail: resety haseł i powiadomienia wychodzą tylko przez serwer SMTP dodany do konfiguracji."
+			],
+			"faq": [
+				{
+					"q": "Czy Lemmy to darmowe oprogramowanie open source?",
+					"a": "Tak. Lemmy to wolne oprogramowanie na licencji AGPL-3.0, a jego kod źródłowy jest na GitHubie. Każdy może je uruchamiać, zmieniać i udostępniać, a zmieniona wersja oferowana przez sieć też musi udostępnić swój kod źródłowy."
+				},
+				{
+					"q": "Czym Lemmy różni się od Reddita?",
+					"a": "Lemmy działa mniej więcej jak Reddit, ze społecznościami, głosami za i przeciw oraz komentarzami w wątkach, ale nie należy do żadnej firmy. Nie ma w nim reklam, śledzenia użytkowników ani venture capital: projekt utrzymuje się z darowizn."
+				},
+				{
+					"q": "Czy jest aplikacja Lemmy na Androida i iPhone’a?",
+					"a": "Tak. Jerboa to aplikacja na Androida, którą robią twórcy Lemmy, dostępna w Google Play i F-Droid. Na iPhone’ie działają Voyager, Thunder i Mlem, a interfejs webowy jest przystosowany do telefonów."
+				},
+				{
+					"q": "Czy użytkownicy Mastodona mogą obserwować społeczności Lemmy?",
+					"a": "Tak. Użytkownik Mastodona może obserwować dowolną społeczność Lemmy, komentować pod jej postami i zacząć w niej post, wspominając jej handle w publicznym wpisie."
+				},
+				{
+					"q": "Czy mogę później zmienić domenę mojej instancji Lemmy?",
+					"a": "Nie, gdy instancja już się sfederowała: dokumentacja Lemmy ostrzega, że zmiana domeny psuje wtedy federację. Zdecyduj się na adres, czyli nazwę w domenie twojanazwa.pethost.app albo własną domenę, przed pierwszym wdrożeniem."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um agregador de links e fórum para o fediverso",
-			"notes": "Entre como admin com a senha que você definiu; na primeira vez, o app leva de um a dois minutos para iniciar. As contas novas esperam a sua aprovação: Registration Mode fica em Admin Settings. A senha é alterada nas configurações do próprio Lemmy: a do .env só é lida uma vez. O endereço é o nome da instância no fediverso, então mantenha-o."
+			"notes": "Entre como admin com a senha que você definiu; na primeira vez, o app leva de um a dois minutos para iniciar. As contas novas esperam a sua aprovação: Registration Mode fica em Admin Settings. A senha é alterada nas configurações do próprio Lemmy: a do .env só é lida uma vez. O endereço é o nome da instância no fediverso, então mantenha-o.",
+			"sizing": "Lemmy é moderado: menos de 1 GB em cinco serviços, e posts federados e miniaturas somam GB por ano.",
+			"summary": "Auto-hospede o Lemmy: alternativa open source ao Reddit, com comunidades, votos e comentários em threads entre servidores federados. Em um clique.",
+			"about": [
+				"O Lemmy é uma alternativa open source ao Reddit: um agregador de links e fórum de discussão que qualquer pessoa pode rodar em um servidor próprio. As pessoas entram em comunidades, postam links, textos e imagens e depois votam e comentam em threads. Os posts e comentários são formatados com Markdown, e cada comunidade tem um feed RSS. Cada servidor, chamado de instância, mantém suas próprias comunidades, regras e moderadores, mas seus usuários podem seguir comunidades e conversar com pessoas de qualquer outra instância, de um jeito parecido com o e-mail entre provedores.",
+				"As pessoas auto-hospedam o Lemmy para dar a um clube, a um projeto ou a um assunto um fórum só seu, com suas regras e seus moderadores, sem sair da rede maior. As pontuações dos votos aparecem por inteiro, e toda ação de moderação fica listada em um log de moderação público. O porém é o e-mail: redefinições de senha e notificações só saem por um servidor SMTP adicionado à configuração."
+			],
+			"faq": [
+				{
+					"q": "O Lemmy é gratuito e open source?",
+					"a": "É. O Lemmy é software livre sob a licença AGPL-3.0, com o código-fonte no GitHub. Qualquer pessoa pode rodar, alterar e compartilhar, e uma versão alterada oferecida por uma rede também precisa publicar o seu código-fonte."
+				},
+				{
+					"q": "Qual é a diferença entre o Lemmy e o Reddit?",
+					"a": "O Lemmy funciona de forma parecida com o Reddit, com comunidades, upvotes, downvotes e comentários em threads, mas nenhuma empresa é dona dele. Não tem publicidade, rastreamento de usuários nem capital de risco: o projeto se sustenta com doações."
+				},
+				{
+					"q": "Existe um app do Lemmy para Android e iPhone?",
+					"a": "Existe. O Jerboa é o app para Android feito pelos desenvolvedores do Lemmy, no Google Play e no F-Droid. O Voyager, o Thunder e o Mlem rodam no iPhone, e a interface web funciona bem no celular."
+				},
+				{
+					"q": "Quem usa o Mastodon pode seguir comunidades do Lemmy?",
+					"a": "Pode. Quem usa o Mastodon pode seguir qualquer comunidade do Lemmy, comentar nos posts dela e começar um post nela mencionando o handle da comunidade em um post público."
+				},
+				{
+					"q": "Posso trocar o domínio da minha instância do Lemmy depois?",
+					"a": "Não, depois que a instância começa a federar: a documentação do Lemmy avisa que trocar o domínio nesse ponto quebra a federação. Defina o endereço, um nome em seunome.pethost.app ou o seu próprio domínio, antes do primeiro deploy."
+				}
+			]
 		},
 		"ru": {
 			"description": "Агрегатор ссылок и форум для федиверса",
-			"notes": "Войдите как admin с паролем, который вы задали; первый запуск занимает минуту-две. Новые аккаунты ждут вашего одобрения: Registration Mode находится в Admin Settings. Пароль меняется в настройках самого Lemmy: тот, что в .env, читается только один раз. Адрес — это имя инстанса в федиверсе, поэтому не меняйте его."
+			"notes": "Войдите как admin с паролем, который вы задали; первый запуск занимает минуту-две. Новые аккаунты ждут вашего одобрения: Registration Mode находится в Admin Settings. Пароль меняется в настройках самого Lemmy: тот, что в .env, читается только один раз. Адрес — это имя инстанса в федиверсе, поэтому не меняйте его.",
+			"sizing": "Lemmy: умеренные требования — менее 1 GB на пять сервисов, а посты и превью из федерации добавляют гигабайты в год.",
+			"summary": "Self-hosted Lemmy в один клик: open-source альтернатива Reddit с сообществами, голосами и ветками комментариев на федеративных серверах.",
+			"about": [
+				"Lemmy — open-source альтернатива Reddit: агрегатор ссылок и форум для обсуждений, который любой может запустить на своем сервере. Люди вступают в сообщества, публикуют ссылки, текст и картинки, а потом голосуют и комментируют в ветках. Посты и комментарии оформляются в Markdown, а у каждого сообщества есть RSS-лента. Каждый сервер, который называется инстансом, держит свои сообщества, правила и модераторов, но его пользователи могут подписываться на сообщества и общаться с людьми на любом другом инстансе, примерно так, как работает электронная почта между провайдерами.",
+				"Lemmy ставят у себя, чтобы дать клубу, проекту или теме собственный форум со своими правилами и модераторами, оставаясь частью большой сети. Счет голосов показывается полностью, а каждое действие модератора попадает в публичный лог модерации. Загвоздка в почте: сброс пароля и уведомления уходят только через SMTP-сервер, добавленный в конфиг."
+			],
+			"faq": [
+				{
+					"q": "Lemmy бесплатный и open source?",
+					"a": "Да. Lemmy — свободное программное обеспечение под лицензией AGPL-3.0, исходный код лежит на GitHub. Запускать, менять и распространять его может кто угодно, а измененная версия, доступная по сети, тоже обязана опубликовать свой исходный код."
+				},
+				{
+					"q": "Чем Lemmy отличается от Reddit?",
+					"a": "Lemmy работает почти как Reddit, с сообществами, апвотами, даунвотами и комментариями в ветках, но не принадлежит никакой компании. Рекламы, слежки за пользователями и венчурных денег в нем нет: проект живет на пожертвования."
+				},
+				{
+					"q": "Есть ли приложение Lemmy для Android и iPhone?",
+					"a": "Да. Jerboa — приложение для Android от разработчиков Lemmy, его можно взять в Google Play и F-Droid. На iPhone работают Voyager, Thunder и Mlem, а веб-интерфейс удобен на телефоне."
+				},
+				{
+					"q": "Могут ли пользователи Mastodon подписываться на сообщества Lemmy?",
+					"a": "Да. Пользователь Mastodon может подписаться на любое сообщество Lemmy, комментировать его посты и начать в нем пост, упомянув handle сообщества в публичном посте."
+				},
+				{
+					"q": "Можно ли потом сменить домен своего инстанса Lemmy?",
+					"a": "Нет, если инстанс уже подключился к федерации: в документации Lemmy предупреждают, что смена домена после этого ломает федерацию. Определитесь с адресом — именем под yourname.pethost.app или своим доменом — до первого деплоя."
+				}
+			]
 		},
 		"uk": {
 			"description": "Агрегатор посилань і форум для федіверсу",
-			"notes": "Увійдіть як admin із паролем, який ви вказали; перший запуск триває хвилину-дві. Нові акаунти чекають на ваше підтвердження: Registration Mode — у розділі Admin Settings. Пароль змінюють у налаштуваннях самого Lemmy: той, що в .env, читається лише раз. Адреса — це назва інстансу у федіверсі, тож не змінюйте її."
+			"notes": "Увійдіть як admin із паролем, який ви вказали; перший запуск триває хвилину-дві. Нові акаунти чекають на ваше підтвердження: Registration Mode — у розділі Admin Settings. Пароль змінюють у налаштуваннях самого Lemmy: той, що в .env, читається лише раз. Адреса — це назва інстансу у федіверсі, тож не змінюйте її.",
+			"sizing": "Lemmy має помірні вимоги: менше 1 GB у п’яти сервісах, а федеративні дописи й мініатюри додають гігабайти на рік.",
+			"summary": "Self-hosted Lemmy в один клік: open-source альтернатива Reddit зі спільнотами, голосами та гілками коментарів на федеративних серверах.",
+			"about": [
+				"Lemmy — open-source альтернатива Reddit: агрегатор посилань і форум для обговорень, який будь-хто може запустити на власному сервері. Люди долучаються до спільнот, публікують посилання, текст і зображення, а потім голосують і коментують у гілках. Дописи та коментарі оформлюються в Markdown, а в кожної спільноти є RSS-стрічка. Кожен сервер, який називається інстансом, тримає свої спільноти, правила й модераторів, але його користувачі можуть підписуватися на спільноти й спілкуватися з людьми на будь-якому іншому інстансі, приблизно так, як працює електронна пошта між провайдерами.",
+				"Lemmy ставлять у себе, щоб дати клубу, проєкту чи темі власний форум зі своїми правилами та модераторами, залишаючись частиною більшої мережі. Рахунок голосів показується повністю, а кожна дія модератора потрапляє до публічного лога модерації. Підводний камінь у пошті: скидання паролів і сповіщення йдуть лише через SMTP-сервер, доданий до конфігурації."
+			],
+			"faq": [
+				{
+					"q": "Lemmy безкоштовний і open source?",
+					"a": "Так. Lemmy — вільне програмне забезпечення за ліцензією AGPL-3.0, а його вихідний код лежить на GitHub. Запускати, змінювати й поширювати його може будь-хто, а змінена версія, доступна через мережу, теж зобов’язана опублікувати свій вихідний код."
+				},
+				{
+					"q": "Чим Lemmy відрізняється від Reddit?",
+					"a": "Lemmy працює майже як Reddit, зі спільнотами, апвотами, даунвотами та коментарями в гілках, але не належить жодній компанії. У ньому немає реклами, стеження за користувачами та венчурних грошей: проєкт живе на пожертви."
+				},
+				{
+					"q": "Чи є застосунок Lemmy для Android та iPhone?",
+					"a": "Так. Jerboa — застосунок для Android від розробників Lemmy, його можна взяти в Google Play і F-Droid. На iPhone працюють Voyager, Thunder і Mlem, а вебінтерфейс зручний на телефоні."
+				},
+				{
+					"q": "Чи можуть користувачі Mastodon підписуватися на спільноти Lemmy?",
+					"a": "Так. Користувач Mastodon може підписатися на будь-яку спільноту Lemmy, коментувати її дописи та почати в ній допис, згадавши handle спільноти в публічному дописі."
+				},
+				{
+					"q": "Чи можна потім змінити домен свого інстансу Lemmy?",
+					"a": "Ні, якщо інстанс уже підключився до федерації: у документації Lemmy попереджають, що зміна домену після цього ламає федерацію. Визначтеся з адресою — іменем під yourname.pethost.app або власним доменом — до першого деплою."
+				}
+			]
 		}
 	}
 }

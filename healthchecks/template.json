@@ -1,6 +1,12 @@
 {
 	"name": "Healthchecks",
 	"emoji": "⏰",
+	"category": "monitoring",
+	"alternatives": [
+		"Cronitor",
+		"Dead Man's Snitch"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "healthchecks",
 		"port": 8000
@@ -30,35 +36,259 @@
 	"texts": {
 		"en": {
 			"description": "Monitoring for cron jobs and background tasks: each job pings its URL, and you hear when a ping is late",
-			"notes": "Sign in with the email and the admin password you gave; sign-up is closed, so nobody else gets an account. Add a check, then have your job call its ping URL. Alerts go to the integrations you add under Integrations: email needs an SMTP server first."
+			"notes": "Sign in with the email and the admin password you gave; sign-up is closed, so nobody else gets an account. Add a check, then have your job call its ping URL. Alerts go to the integrations you add under Integrations: email needs an SMTP server first.",
+			"sizing": "Healthchecks is light: about 200 MB with Postgres, and it keeps only the latest pings of each job.",
+			"summary": "Healthchecks is open-source cron job monitoring that alerts you when a job stops pinging. A Cronitor alternative you self-host in one click.",
+			"about": [
+				"Healthchecks is an open-source cron job monitoring tool, run in place of Cronitor to watch jobs that fail without a sound, such as backups and certificate renewals. Each check gets its own ping URL, which the job calls every time it runs. The check's schedule is a period or a cron expression, plus a grace time. If no ping arrives before the grace time runs out, the check goes Down and alerts go out by email, Slack, ntfy, PagerDuty, a webhook or another of its 25-plus integrations.",
+				"People self-host Healthchecks to keep job names, ping logs and the output their jobs send on their own server. Your own instance allows 10,000 checks per account, and a project can be shared with a team, each person as a Team Member, a Manager or Read-only. The catch: email alerts need an SMTP server, while Slack, ntfy and webhook alerts work without one."
+			],
+			"faq": [
+				{
+					"q": "Is Healthchecks free and open source?",
+					"a": "Yes. Healthchecks is under the BSD 3-Clause license, so running your own instance costs only the server. Healthchecks.io is the hosted service of the same project, run by its author."
+				},
+				{
+					"q": "How do I ping Healthchecks from a cron job?",
+					"a": "End the job's crontab line with && curl -fsS -m 10 --retry 5 -o /dev/null followed by the check's ping URL. The && sends the ping only when the job exits successfully."
+				},
+				{
+					"q": "Can Healthchecks alert when a cron job fails?",
+					"a": "Yes. Add /fail to the ping URL, or the job's exit status, where 0 means success and anything else a failure. A /start ping before the job also records how long each run takes."
+				},
+				{
+					"q": "What is the difference between Healthchecks and an uptime monitor?",
+					"a": "An uptime monitor requests your site and alerts when it stops answering. Healthchecks does the opposite: it waits for your jobs' pings and alerts when one is missing, so it watches work that has no address."
+				},
+				{
+					"q": "Does Healthchecks have an API?",
+					"a": "Yes. Its Management API lists, creates, updates, pauses and deletes checks and reads their ping logs. A slug-based ping URL ending in ?create=1 also creates a missing check on its first ping."
+				}
+			]
 		},
 		"de": {
 			"description": "Überwachung für Cronjobs und Hintergrundaufgaben: Jeder Job pingt seine URL, und du erfährst es, wenn ein Ping ausbleibt",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an; die Registrierung ist geschlossen, sodass niemand sonst ein Konto bekommt. Lege einen Check an und lass deinen Job seine Ping-URL aufrufen. Alarme gehen an die Integrationen, die du unter Integrations hinzufügst: E-Mail braucht zuerst einen SMTP-Server."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an; die Registrierung ist geschlossen, sodass niemand sonst ein Konto bekommt. Lege einen Check an und lass deinen Job seine Ping-URL aufrufen. Alarme gehen an die Integrationen, die du unter Integrations hinzufügst: E-Mail braucht zuerst einen SMTP-Server.",
+			"sizing": "Healthchecks ist leicht: etwa 200 MB mit Postgres, und es behält nur die letzten Pings jedes Jobs.",
+			"summary": "Healthchecks selbst hosten: Open-Source-Cronjob-Monitoring, das Alarm schlägt, wenn ein Job nicht mehr pingt. Cronitor-Alternative mit einem Klick.",
+			"about": [
+				"Healthchecks ist ein Open-Source-Tool zur Überwachung von Cronjobs, das du statt Cronitor einsetzt, um Jobs im Blick zu behalten, die lautlos scheitern, etwa Backups und Zertifikatserneuerungen. Jeder Check bekommt eine eigene Ping-URL, die der Job bei jedem Lauf aufruft. Der Zeitplan eines Checks ist ein Intervall oder ein Cron-Ausdruck, dazu kommt eine Grace Time. Trifft vor Ablauf der Grace Time kein Ping ein, wechselt der Check auf Down, und Alerts gehen per E-Mail, Slack, ntfy, PagerDuty, Webhook oder über eine andere seiner über 25 Integrationen raus.",
+				"Du hostest Healthchecks selbst, damit Jobnamen, Ping-Logs und die Ausgabe, die deine Jobs mitschicken, auf deiner eigenen Maschine bleiben. Deine eigene Instanz erlaubt 10.000 Checks pro Konto, und ein Projekt lässt sich mit einem Team teilen, jede Person als Team Member, Manager oder Read-only. Der Haken: E-Mail-Alerts brauchen einen SMTP-Server, Alerts über Slack, ntfy und Webhooks funktionieren auch ohne."
+			],
+			"faq": [
+				{
+					"q": "Ist Healthchecks kostenlos und Open Source?",
+					"a": "Ja. Healthchecks steht unter der BSD-3-Clause-Lizenz, deine eigene Instanz kostet also nur die Maschine. Healthchecks.io ist der gehostete Dienst desselben Projekts, betrieben von seinem Autor."
+				},
+				{
+					"q": "Wie pinge ich Healthchecks aus einem Cronjob an?",
+					"a": "Ergänze die crontab-Zeile des Jobs am Ende um && curl -fsS -m 10 --retry 5 -o /dev/null, gefolgt von der Ping-URL des Checks. Das && schickt den Ping nur, wenn der Job erfolgreich beendet wurde."
+				},
+				{
+					"q": "Kann Healthchecks Alarm schlagen, wenn ein Cronjob fehlschlägt?",
+					"a": "Ja. Hänge /fail oder den Exit-Status des Jobs an die Ping-URL an, wobei 0 für Erfolg steht und alles andere für einen Fehlschlag. Ein /start-Ping vor dem Job erfasst außerdem, wie lange jeder Lauf dauert."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen Healthchecks und einem Uptime-Monitor?",
+					"a": "Ein Uptime-Monitor ruft deine Website auf und schlägt Alarm, wenn sie nicht mehr antwortet. Healthchecks macht das Gegenteil: Es wartet auf die Pings deiner Jobs und schlägt Alarm, wenn einer fehlt, und überwacht so Arbeit, die keine Adresse hat."
+				},
+				{
+					"q": "Hat Healthchecks eine API?",
+					"a": "Ja. Über die Management API kannst du Checks auflisten, erstellen, aktualisieren, pausieren und löschen sowie ihre Ping-Logs lesen. Eine Ping-URL auf Slug-Basis, die auf ?create=1 endet, legt außerdem beim ersten Ping einen fehlenden Check an."
+				}
+			]
 		},
 		"es": {
 			"description": "Monitorización de tareas cron y en segundo plano: cada tarea hace ping a su URL y te enteras cuando un ping se retrasa",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste; el registro está cerrado, así que nadie más obtiene una cuenta. Añade un check y haz que tu tarea llame a su URL de ping. Las alertas van a las integraciones que añadas en Integrations: el correo necesita antes un servidor SMTP."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste; el registro está cerrado, así que nadie más obtiene una cuenta. Añade un check y haz que tu tarea llame a su URL de ping. Las alertas van a las integraciones que añadas en Integrations: el correo necesita antes un servidor SMTP.",
+			"sizing": "Healthchecks es ligero: unos 200 MB con Postgres, y solo guarda los últimos pings de cada tarea.",
+			"summary": "Autoaloja Healthchecks en un clic: monitoreo de tareas cron de código abierto que avisa cuando una tarea deja de hacer ping. Alternativa a Cronitor.",
+			"about": [
+				"Healthchecks es una herramienta de código abierto para monitorear tareas cron, que se usa en lugar de Cronitor para vigilar las tareas que fallan en silencio, como los backups y las renovaciones de certificados. Cada check recibe su propia URL de ping, que la tarea llama cada vez que se ejecuta. El horario de un check es un periodo o una expresión cron, más un Grace Time. Si no llega ningún ping antes de que termine el Grace Time, el check pasa a Down y las alertas salen por correo, Slack, ntfy, PagerDuty, un webhook o alguna de sus más de 25 integraciones.",
+				"Autoalojas Healthchecks para que los nombres de tus tareas, los logs de ping y la salida que estas envían se queden en tu propia máquina. Tu propia instancia permite 10 000 checks por cuenta, y un proyecto se puede compartir con un equipo, con cada persona como Team Member, Manager o Read-only. El inconveniente: las alertas por correo necesitan un servidor SMTP, mientras que las de Slack, ntfy y webhook funcionan sin él."
+			],
+			"faq": [
+				{
+					"q": "¿Healthchecks es gratis y de código abierto?",
+					"a": "Sí. Healthchecks tiene licencia BSD 3-Clause, así que ejecutar tu propia instancia solo cuesta la máquina. Healthchecks.io es el servicio alojado del mismo proyecto, a cargo de su autor."
+				},
+				{
+					"q": "¿Cómo hago ping a Healthchecks desde una tarea cron?",
+					"a": "Termina la línea de crontab de la tarea con && curl -fsS -m 10 --retry 5 -o /dev/null seguido de la URL de ping del check. El && envía el ping solo cuando la tarea termina con éxito."
+				},
+				{
+					"q": "¿Puede Healthchecks avisar cuando falla una tarea cron?",
+					"a": "Sí. Agrega /fail a la URL de ping, o el estado de salida de la tarea, donde 0 significa éxito y cualquier otro valor significa que la tarea falló. Un ping /start antes de la tarea también registra cuánto dura cada ejecución."
+				},
+				{
+					"q": "¿Qué diferencia hay entre Healthchecks y un monitor de uptime?",
+					"a": "Un monitor de uptime consulta tu sitio y avisa cuando deja de responder. Healthchecks hace lo contrario: espera los pings de tus tareas y avisa cuando falta uno, así que vigila trabajo que no tiene dirección."
+				},
+				{
+					"q": "¿Healthchecks tiene API?",
+					"a": "Sí. Con su Management API se pueden listar, crear, actualizar, pausar y eliminar checks, y leer sus logs de ping. Una URL de ping basada en slug que termina en ?create=1 también crea un check que falta con su primer ping."
+				}
+			]
 		},
 		"fr": {
 			"description": "La surveillance des tâches cron et en arrière-plan : chaque tâche appelle son URL, et vous êtes prévenu quand un ping tarde",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués ; l’inscription est fermée, donc personne d’autre n’obtient de compte. Ajoutez un check, puis faites appeler son URL de ping par votre tâche. Les alertes partent vers les intégrations ajoutées dans Integrations : l’e-mail demande d’abord un serveur SMTP."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués ; l’inscription est fermée, donc personne d’autre n’obtient de compte. Ajoutez un check, puis faites appeler son URL de ping par votre tâche. Les alertes partent vers les intégrations ajoutées dans Integrations : l’e-mail demande d’abord un serveur SMTP.",
+			"sizing": "Healthchecks est léger : environ 200 MB avec Postgres, et il ne garde que les derniers pings de chaque job.",
+			"summary": "Auto-hébergez Healthchecks en un clic : surveillance open source de tâches cron qui vous alerte quand un ping manque. Alternative à Cronitor.",
+			"about": [
+				"Healthchecks est un outil open source de surveillance de tâches cron, utilisé à la place de Cronitor pour suivre les tâches qui échouent en silence, comme les sauvegardes et les renouvellements de certificats. Chaque check reçoit sa propre URL de ping, que la tâche appelle à chaque exécution. Le calendrier d’un check est une période ou une expression cron, plus un Grace Time. Si aucun ping n’arrive avant la fin du Grace Time, le check passe à Down, et des alertes partent par e-mail, Slack, ntfy, PagerDuty, un webhook ou l’une de ses 25 intégrations et plus.",
+				"Vous auto-hébergez Healthchecks pour que les noms de vos tâches, les journaux de ping et la sortie que vos tâches envoient restent sur votre propre machine. Votre instance permet 10 000 checks par compte, et un projet peut être partagé avec une équipe, chaque personne en Team Member, Manager ou Read-only. Le revers : les alertes par e-mail demandent un serveur SMTP, alors que celles de Slack, ntfy et des webhooks fonctionnent sans."
+			],
+			"faq": [
+				{
+					"q": "Healthchecks est-il gratuit et open source ?",
+					"a": "Oui. Healthchecks est sous licence BSD 3-Clause : faire tourner votre propre instance ne coûte que la machine. Healthchecks.io est le service hébergé du même projet, exploité par son auteur."
+				},
+				{
+					"q": "Comment pinguer Healthchecks depuis une tâche cron ?",
+					"a": "Terminez la ligne crontab de la tâche par && curl -fsS -m 10 --retry 5 -o /dev/null, suivi de l’URL de ping du check. Le && n’envoie le ping que si la tâche se termine avec succès."
+				},
+				{
+					"q": "Healthchecks peut-il alerter quand une tâche cron échoue ?",
+					"a": "Oui. Ajoutez /fail à l’URL de ping, ou le statut de sortie de la tâche, où 0 signifie succès et toute autre valeur un échec. Un ping /start avant la tâche enregistre aussi la durée de chaque exécution."
+				},
+				{
+					"q": "Quelle est la différence entre Healthchecks et un moniteur de disponibilité ?",
+					"a": "Un moniteur de disponibilité interroge votre site et alerte quand il ne répond plus. Healthchecks fait l’inverse : il attend les pings de vos tâches et alerte quand l’un d’eux manque, donc il surveille un travail qui n’a pas d’adresse."
+				},
+				{
+					"q": "Healthchecks a-t-il une API ?",
+					"a": "Oui. Sa Management API liste, crée, met à jour, met en pause et supprime des checks, et lit leurs journaux de ping. Une URL de ping à base de slug qui se termine par ?create=1 crée aussi un check manquant dès son premier ping."
+				}
+			]
 		},
 		"pl": {
 			"description": "Monitorowanie zadań cron i zadań w tle: każde zadanie pinguje swój URL, a ty dowiadujesz się, gdy ping się spóźnia",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano; rejestracja jest zamknięta, więc nikt inny nie dostanie konta. Dodaj check i niech twoje zadanie wywołuje jego URL pingu. Alerty trafiają do integracji dodanych w Integrations: e-mail wymaga najpierw serwera SMTP."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano; rejestracja jest zamknięta, więc nikt inny nie dostanie konta. Dodaj check i niech twoje zadanie wywołuje jego URL pingu. Alerty trafiają do integracji dodanych w Integrations: e-mail wymaga najpierw serwera SMTP.",
+			"sizing": "Healthchecks ma małe wymagania: około 200 MB z Postgresem, a z każdego zadania trzyma tylko ostatnie pingi.",
+			"summary": "Hostuj Healthchecks u siebie jednym kliknięciem: monitoring zadań cron open source, który alarmuje, gdy zadanie przestaje pingować. Zamiennik Cronitora.",
+			"about": [
+				"Healthchecks to narzędzie typu open source do monitorowania zadań cron, używane zamiast Cronitora do pilnowania zadań, które zawodzą po cichu, jak backupy i odnowienia certyfikatów. Każdy check dostaje własny URL pingu, który zadanie wywołuje przy każdym uruchomieniu. Harmonogram checka to okres albo wyrażenie cron, plus Grace Time. Jeśli ping nie dotrze przed upływem Grace Time, check przechodzi w stan Down, a alerty wychodzą e-mailem albo przez Slack, ntfy, PagerDuty, webhook lub inną z ponad 25 integracji.",
+				"Healthchecks hostujesz u siebie, żeby nazwy zadań, logi pingów i dane wyjściowe, które wysyłają twoje zadania, zostały na twojej własnej maszynie. Twoja instancja pozwala na 10 000 checków na konto, a projekt można udostępnić zespołowi, każdą osobę jako Team Member, Manager albo Read-only. Haczyk: alerty e-mailowe wymagają serwera SMTP, a alerty przez Slack, ntfy i webhook działają bez niego."
+			],
+			"faq": [
+				{
+					"q": "Czy Healthchecks jest darmowy i open source?",
+					"a": "Tak. Healthchecks działa na licencji BSD 3-Clause, więc własna instancja kosztuje tylko maszynę. Healthchecks.io to hostowana usługa tego samego projektu, prowadzona przez jego autora."
+				},
+				{
+					"q": "Jak pingować Healthchecks z zadania cron?",
+					"a": "Dopisz na końcu linii crontab zadania && curl -fsS -m 10 --retry 5 -o /dev/null, a za tym URL pingu checka. Operator && wysyła ping tylko wtedy, gdy zadanie zakończy się powodzeniem."
+				},
+				{
+					"q": "Czy Healthchecks wyśle alert, gdy zadanie cron się nie powiedzie?",
+					"a": "Tak. Dopisz do URL pingu /fail albo kod wyjścia zadania, gdzie 0 oznacza sukces, a każda inna wartość błąd. Ping /start przed zadaniem zapisuje też, ile trwa każde uruchomienie."
+				},
+				{
+					"q": "Czym Healthchecks różni się od monitora dostępności?",
+					"a": "Monitor dostępności odpytuje twoją stronę i alarmuje, gdy przestaje odpowiadać. Healthchecks robi odwrotnie: czeka na pingi twoich zadań i alarmuje, gdy któregoś brakuje, więc pilnuje pracy, która nie ma adresu."
+				},
+				{
+					"q": "Czy Healthchecks ma API?",
+					"a": "Tak. Jego Management API wyświetla, tworzy, aktualizuje, wstrzymuje i usuwa checki oraz czyta ich logi pingów. URL pingu oparty na slugu, zakończony ?create=1, tworzy też brakujący check przy pierwszym pingu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Monitoramento de tarefas cron e em segundo plano: cada tarefa faz ping na sua URL, e você fica sabendo quando um ping atrasa",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou; o cadastro está fechado, então ninguém mais obtém uma conta. Adicione um check e faça sua tarefa chamar a URL de ping dele. Os alertas vão para as integrações que você adicionar em Integrations: o e-mail precisa antes de um servidor SMTP."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou; o cadastro está fechado, então ninguém mais obtém uma conta. Adicione um check e faça sua tarefa chamar a URL de ping dele. Os alertas vão para as integrações que você adicionar em Integrations: o e-mail precisa antes de um servidor SMTP.",
+			"sizing": "Healthchecks é leve: cerca de 200 MB com o Postgres, e guarda só os últimos pings de cada tarefa.",
+			"summary": "Auto-hospede o Healthchecks em um clique: monitor de tarefas cron de código aberto que avisa quando uma tarefa para de pingar. Alternativa ao Cronitor.",
+			"about": [
+				"O Healthchecks é uma ferramenta de código aberto para monitorar tarefas cron, usada no lugar do Cronitor para vigiar tarefas que falham em silêncio, como backups e renovações de certificado. Cada check recebe sua própria URL de ping, que a tarefa chama a cada execução. O agendamento de um check é um período ou uma expressão cron, mais um Grace Time. Se nenhum ping chegar antes de o Grace Time acabar, o check passa para Down e os alertas saem por e-mail, Slack, ntfy, PagerDuty, webhook ou outra das suas mais de 25 integrações.",
+				"Auto-hospedar o Healthchecks mantém os nomes das tarefas, os logs de ping e a saída que as tarefas enviam na sua própria máquina. Sua instância permite 10.000 checks por conta, e um projeto pode ser compartilhado com uma equipe, cada pessoa como Team Member, Manager ou Read-only. O porém: os alertas por e-mail precisam de um servidor SMTP, enquanto os alertas de Slack, ntfy e webhook funcionam sem ele."
+			],
+			"faq": [
+				{
+					"q": "O Healthchecks é gratuito e de código aberto?",
+					"a": "Sim. O Healthchecks usa a licença BSD 3-Clause, então rodar sua própria instância custa só a máquina. O Healthchecks.io é o serviço hospedado do mesmo projeto, mantido pelo seu autor."
+				},
+				{
+					"q": "Como faço ping no Healthchecks a partir de uma tarefa cron?",
+					"a": "Termine a linha de crontab da tarefa com && curl -fsS -m 10 --retry 5 -o /dev/null seguido da URL de ping do check. O && só envia o ping quando a tarefa termina com sucesso."
+				},
+				{
+					"q": "O Healthchecks pode alertar quando uma tarefa cron falha?",
+					"a": "Pode. Adicione /fail à URL de ping, ou o status de saída da tarefa, em que 0 significa sucesso e qualquer outro valor significa falha. Um ping /start antes da tarefa também registra quanto tempo cada execução leva."
+				},
+				{
+					"q": "Qual é a diferença entre o Healthchecks e um monitor de uptime?",
+					"a": "Um monitor de uptime acessa o seu site e alerta quando ele para de responder. O Healthchecks faz o contrário: espera os pings das suas tarefas e alerta quando um deles falta, então vigia trabalho que não tem endereço."
+				},
+				{
+					"q": "O Healthchecks tem API?",
+					"a": "Tem. A Management API lista, cria, atualiza, pausa e exclui checks e lê os logs de ping deles. Uma URL de ping baseada em slug que termina em ?create=1 também cria um check ausente já no primeiro ping."
+				}
+			]
 		},
 		"ru": {
 			"description": "Мониторинг cron-задач и фоновых заданий: каждое задание пингует свой URL, и вы узнаёте, когда пинг опаздывает",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали; регистрация закрыта, поэтому больше никто аккаунт не получит. Добавьте check и пусть задание вызывает его URL пинга. Оповещения уходят в интеграции, добавленные в Integrations: для почты сначала нужен SMTP-сервер."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали; регистрация закрыта, поэтому больше никто аккаунт не получит. Добавьте check и пусть задание вызывает его URL пинга. Оповещения уходят в интеграции, добавленные в Integrations: для почты сначала нужен SMTP-сервер.",
+			"sizing": "Healthchecks: небольшие требования — около 200 MB вместе с Postgres, а от каждой задачи хранятся только последние пинги.",
+			"summary": "Self-hosted Healthchecks в один клик: open source мониторинг cron-задач, который оповещает, когда задание перестает пинговать. Альтернатива Cronitor.",
+			"about": [
+				"Healthchecks — это open source инструмент мониторинга cron-задач, который используют вместо Cronitor, чтобы следить за заданиями, которые падают молча, например за бэкапами и продлением сертификатов. У каждого check свой URL пинга, который задание вызывает при каждом запуске. Расписание check — это период или cron-выражение плюс Grace Time. Если пинг не пришел до конца Grace Time, check переходит в Down, и оповещения уходят по почте, в Slack, ntfy, PagerDuty, вебхуком или через другую из более чем 25 интеграций.",
+				"Healthchecks хостят у себя, чтобы названия заданий, логи пингов и вывод, который присылают задания, оставались на вашей собственной машине. Ваш экземпляр допускает 10 000 check на аккаунт, а проектом можно поделиться с командой, и каждый человек получает роль Team Member, Manager или Read-only. Подвох: оповещения по почте требуют SMTP-сервера, а оповещения в Slack, ntfy и вебхуки работают без него."
+			],
+			"faq": [
+				{
+					"q": "Healthchecks бесплатный и с открытым кодом?",
+					"a": "Да. Healthchecks распространяется под лицензией BSD 3-Clause, так что свой экземпляр обходится лишь в стоимость машины. Healthchecks.io — облачный сервис того же проекта, который ведет его автор."
+				},
+				{
+					"q": "Как пинговать Healthchecks из cron-задачи?",
+					"a": "Допишите в конец строки задания в crontab && curl -fsS -m 10 --retry 5 -o /dev/null и после него URL пинга check. Оператор && отправляет пинг, только если задание завершилось успешно."
+				},
+				{
+					"q": "Может ли Healthchecks оповестить, если cron-задача упала?",
+					"a": "Да. Добавьте к URL пинга /fail или код завершения задания, где 0 — успех, а любое другое значение — сбой. Пинг /start перед заданием еще и записывает, сколько длится каждый запуск."
+				},
+				{
+					"q": "Чем Healthchecks отличается от монитора аптайма?",
+					"a": "Монитор аптайма запрашивает ваш сайт и оповещает, когда тот перестает отвечать. Healthchecks работает наоборот: он ждет пинги ваших заданий и оповещает, когда одного не хватает, так что следит за работой, у которой нет адреса."
+				},
+				{
+					"q": "Есть ли у Healthchecks API?",
+					"a": "Да. С помощью Management API можно получить список check, создать, обновить, приостановить и удалить их, а также прочитать их логи пингов. URL пинга на основе slug, оканчивающийся на ?create=1, еще и создает отсутствующий check при первом пинге."
+				}
+			]
 		},
 		"uk": {
 			"description": "Моніторинг cron-задач і фонових завдань: кожне завдання пінгує свій URL, і ви дізнаєтеся, коли пінг запізнюється",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали; реєстрацію закрито, тож більше ніхто акаунт не отримає. Додайте check і нехай завдання викликає його URL пінгу. Сповіщення йдуть в інтеграції, додані в Integrations: для пошти спершу потрібен SMTP-сервер."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали; реєстрацію закрито, тож більше ніхто акаунт не отримає. Додайте check і нехай завдання викликає його URL пінгу. Сповіщення йдуть в інтеграції, додані в Integrations: для пошти спершу потрібен SMTP-сервер.",
+			"sizing": "Healthchecks має скромні вимоги: близько 200 MB з Postgres, а від кожного завдання зберігає лише останні пінги.",
+			"summary": "Self-hosted Healthchecks в один клік: моніторинг cron-задач з відкритим кодом, що сповіщає, коли завдання перестає пінгувати. Альтернатива Cronitor.",
+			"about": [
+				"Healthchecks — це інструмент моніторингу cron-задач з відкритим кодом, який використовують замість Cronitor, щоб стежити за завданнями, що падають мовчки, як-от бекапи й оновлення сертифікатів. Кожен check має власний URL пінгу, який завдання викликає під час кожного запуску. Розклад check — це період або cron-вираз плюс Grace Time. Якщо пінг не надійшов до кінця Grace Time, check переходить у Down, а сповіщення надходять поштою, у Slack, ntfy, PagerDuty, вебхуком або через іншу з понад 25 інтеграцій.",
+				"Healthchecks хостять у себе, щоб назви завдань, логи пінгів і вивід, який надсилають завдання, залишалися на вашій власній машині. Ваш екземпляр допускає 10 000 check на акаунт, а проєктом можна поділитися з командою, і кожна людина отримує роль Team Member, Manager або Read-only. Підводний камінь: сповіщення поштою потребують SMTP-сервера, а сповіщення в Slack, ntfy і вебхуки працюють без нього."
+			],
+			"faq": [
+				{
+					"q": "Healthchecks безплатний і з відкритим кодом?",
+					"a": "Так. Healthchecks має ліцензію BSD 3-Clause, тож власний екземпляр коштує лише машину. Healthchecks.io — хмарний сервіс того самого проєкту, який веде його автор."
+				},
+				{
+					"q": "Як пінгувати Healthchecks із cron-задачі?",
+					"a": "Допишіть наприкінці рядка завдання в crontab && curl -fsS -m 10 --retry 5 -o /dev/null, а після нього URL пінгу check. Оператор && надсилає пінг, лише якщо завдання завершилося успішно."
+				},
+				{
+					"q": "Чи може Healthchecks сповістити, якщо cron-задача впала?",
+					"a": "Так. Додайте до URL пінгу /fail або код завершення завдання, де 0 означає успіх, а будь-яке інше значення — збій. Пінг /start перед завданням ще й записує, скільки триває кожен запуск."
+				},
+				{
+					"q": "Чим Healthchecks відрізняється від монітора аптайму?",
+					"a": "Монітор аптайму запитує ваш сайт і сповіщає, коли той перестає відповідати. Healthchecks працює навпаки: він чекає на пінги ваших завдань і сповіщає, коли одного бракує, тож стежить за роботою, яка не має адреси."
+				},
+				{
+					"q": "Чи має Healthchecks API?",
+					"a": "Так. За допомогою Management API можна отримати список check, створити, оновити, призупинити й видалити їх, а також прочитати їхні логи пінгів. URL пінгу на основі slug, що закінчується на ?create=1, ще й створює відсутній check під час першого пінгу."
+				}
+			]
 		}
 	}
 }

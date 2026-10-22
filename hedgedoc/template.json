@@ -1,6 +1,11 @@
 {
 	"name": "HedgeDoc",
 	"emoji": "🦔",
+	"category": "notes",
+	"alternatives": [
+		"HackMD"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "hedgedoc",
 		"port": 3000
@@ -30,35 +35,259 @@
 	"texts": {
 		"en": {
 			"description": "Markdown notes you write together in real time",
-			"notes": "Sign in with the email and password you gave. Nobody else can sign up: to let others in, add CMD_ALLOW_EMAIL_REGISTER=true to the project’s .env and deploy again. The password is changed in .env too: every start sets it again."
+			"notes": "Sign in with the email and password you gave. Nobody else can sign up: to let others in, add CMD_ALLOW_EMAIL_REGISTER=true to the project’s .env and deploy again. The password is changed in .env too: every start sets it again.",
+			"sizing": "HedgeDoc is light: about 250 MB with Postgres, and thousands of notes with their images take a few gigabytes.",
+			"summary": "HedgeDoc is an open-source collaborative Markdown editor and HackMD alternative. Self-host it with Docker Compose in one click, with HTTPS.",
+			"about": [
+				"HedgeDoc is an open-source collaborative Markdown editor and an alternative to HackMD. Several people type into one note at once in the browser, with the rendered preview beside the text. The owner of a note sets who may read or edit it, in six levels from Freely to Private. Slide Mode turns a note into a reveal.js presentation, notes draw Mermaid and Graphviz diagrams and LaTeX math, and every change is kept as a revision you can go back to.",
+				"People self-host HedgeDoc to keep their notes on their own server, with no limit on accounts and nothing to pay. It suits friends, family or colleagues who write together, and it is light: the project says it runs smoothly even on a Raspberry Pi. The catch: version 1.x, the current release, is maintenance-only and takes no feature requests, while HedgeDoc 2, a full rewrite, has no release yet."
+			],
+			"faq": [
+				{
+					"q": "Is HedgeDoc free and open source?",
+					"a": "Yes. HedgeDoc is free software under the GNU AGPL 3.0, with its source on GitHub. The license does not cover the HedgeDoc logo."
+				},
+				{
+					"q": "What is the difference between HedgeDoc, CodiMD and HackMD?",
+					"a": "HedgeDoc began as CodiMD, the open-source edition split off from HackMD in 2017. HackMD stayed a commercial service at hackmd.io, and the community forked CodiMD in 2018 and renamed it HedgeDoc in 2020."
+				},
+				{
+					"q": "How do I export notes from HedgeDoc?",
+					"a": "From a note's Menu, download it as Markdown, HTML or Raw HTML. Export user data, in the start page's user menu, zips every note you own as Markdown files. PDF export was removed; print to PDF from the browser."
+				},
+				{
+					"q": "Can I share a HedgeDoc note read-only?",
+					"a": "Yes. Publish gives a read-only link to the note. Or set its permission to Locked: signed-in users and guests can read it, and only its owner can edit."
+				},
+				{
+					"q": "Can other people sign up on my HedgeDoc on Pethost?",
+					"a": "Not until you allow it. The template makes one account from the email and password you enter and leaves registration closed. Adding CMD_ALLOW_EMAIL_REGISTER=true to .env and deploying again opens it."
+				}
+			]
 		},
 		"de": {
 			"description": "Markdown-Notizen, die du mit anderen in Echtzeit gemeinsam schreibst",
-			"notes": "Melde dich mit der E-Mail-Adresse und dem Passwort an, die du festgelegt hast. Niemand sonst kann sich registrieren: Damit auch andere hineinkommen, trag CMD_ALLOW_EMAIL_REGISTER=true in die .env des Projekts ein und deploy neu. Auch das Passwort änderst du in der .env: Jeder Start setzt es neu."
+			"notes": "Melde dich mit der E-Mail-Adresse und dem Passwort an, die du festgelegt hast. Niemand sonst kann sich registrieren: Damit auch andere hineinkommen, trag CMD_ALLOW_EMAIL_REGISTER=true in die .env des Projekts ein und deploy neu. Auch das Passwort änderst du in der .env: Jeder Start setzt es neu.",
+			"sizing": "HedgeDoc ist leicht: etwa 250 MB mit Postgres, und Tausende Notizen samt Bildern brauchen ein paar GB.",
+			"summary": "HedgeDoc selbst hosten: kollaborativer Open-Source-Markdown-Editor und Alternative zu HackMD. Mit Docker Compose in einem Klick, mit HTTPS.",
+			"about": [
+				"HedgeDoc ist ein kollaborativer Open-Source-Markdown-Editor und eine Alternative zu HackMD. Mehrere Leute tippen im Browser gleichzeitig in dieselbe Notiz, die gerenderte Vorschau steht neben dem Text. Wer eine Notiz besitzt, legt fest, wer sie lesen oder bearbeiten darf, in sechs Stufen von Freely bis Private. Der Slide Mode macht aus einer Notiz eine reveal.js-Präsentation, Notizen zeichnen Mermaid- und Graphviz-Diagramme sowie LaTeX-Formeln, und jede Änderung bleibt als Revision erhalten, zu der du zurückkehren kannst.",
+				"Du hostest HedgeDoc selbst, um deine Notizen auf deiner eigenen Maschine zu behalten, ohne Limit bei den Konten und ohne etwas zu zahlen. Es passt zu allen, die gemeinsam schreiben, ob im Freundeskreis, in der Familie oder unter Kolleginnen und Kollegen, und es ist leichtgewichtig: Laut Projekt läuft es sogar auf einem Raspberry Pi flüssig. Der Haken: Version 1.x, das aktuelle Release, wird nur gewartet und nimmt keine Feature-Requests an, während HedgeDoc 2, eine komplette Neuentwicklung, noch kein Release hat."
+			],
+			"faq": [
+				{
+					"q": "Ist HedgeDoc kostenlos und Open Source?",
+					"a": "Ja. HedgeDoc ist freie Software unter der GNU AGPL 3.0, der Quellcode liegt auf GitHub. Die Lizenz gilt nicht für das HedgeDoc-Logo."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen HedgeDoc, CodiMD und HackMD?",
+					"a": "HedgeDoc begann als CodiMD, die Open-Source-Edition, die sich 2017 von HackMD abspaltete. HackMD blieb ein kommerzielles Angebot unter hackmd.io, die Community forkte CodiMD 2018 und benannte es 2020 in HedgeDoc um."
+				},
+				{
+					"q": "Wie exportiere ich Notizen aus HedgeDoc?",
+					"a": "Im „Menu“ einer Notiz lädst du sie als Markdown, HTML oder Raw HTML herunter. „Export user data“ im Benutzermenü der Startseite packt alle Notizen, die dir gehören, als Markdown-Dateien in eine ZIP-Datei. Der PDF-Export wurde entfernt; drucke im Browser in eine PDF-Datei."
+				},
+				{
+					"q": "Kann ich eine HedgeDoc-Notiz schreibgeschützt teilen?",
+					"a": "Ja. „Publish“ gibt einen schreibgeschützten Link zur Notiz. Oder stell ihre Berechtigung auf „Locked“: Angemeldete Personen und Gäste können sie lesen, bearbeiten kann sie nur die Person, der sie gehört."
+				},
+				{
+					"q": "Können sich andere auf meinem HedgeDoc bei Pethost registrieren?",
+					"a": "Erst, wenn du es erlaubst. Die Vorlage legt ein Konto aus der E-Mail-Adresse und dem Passwort an, die du eingibst, und lässt die Registrierung geschlossen. Wenn du CMD_ALLOW_EMAIL_REGISTER=true in die .env einträgst und neu deployst, öffnet sie sich."
+				}
+			]
 		},
 		"es": {
 			"description": "Notas en Markdown que escribes junto con otros en tiempo real",
-			"notes": "Inicia sesión con el correo y la contraseña que indicaste. Nadie más puede registrarse: para dejar entrar a otros, agrega CMD_ALLOW_EMAIL_REGISTER=true al .env del proyecto y vuelve a desplegar. La contraseña también se cambia en .env: cada inicio la vuelve a establecer."
+			"notes": "Inicia sesión con el correo y la contraseña que indicaste. Nadie más puede registrarse: para dejar entrar a otros, agrega CMD_ALLOW_EMAIL_REGISTER=true al .env del proyecto y vuelve a desplegar. La contraseña también se cambia en .env: cada inicio la vuelve a establecer.",
+			"sizing": "HedgeDoc es ligero: unos 250 MB con Postgres, y miles de notas con sus imágenes ocupan unos pocos GB.",
+			"summary": "Autoaloja HedgeDoc, el editor colaborativo de Markdown de código abierto y alternativa a HackMD. Con Docker Compose, en un clic y con HTTPS.",
+			"about": [
+				"HedgeDoc es un editor colaborativo de Markdown de código abierto y una alternativa a HackMD. Varias personas escriben a la vez en una misma nota desde el navegador, con la vista previa renderizada junto al texto. Quien es propietario de una nota decide quién puede leerla o editarla, en seis niveles que van de Freely a Private. Slide Mode convierte una nota en una presentación de reveal.js, las notas dibujan diagramas de Mermaid y Graphviz y fórmulas de LaTeX, y cada cambio se guarda como una revisión a la que puedes volver.",
+				"Autoalojas HedgeDoc para guardar tus notas en tu propia máquina, sin límite de cuentas y sin pagar nada. Sirve para amigos, familia o compañeros de trabajo que escriben juntos, y es ligero: el proyecto dice que funciona con fluidez incluso en una Raspberry Pi. El inconveniente: la versión 1.x, la actual, solo recibe mantenimiento y no acepta peticiones de funciones nuevas, mientras que HedgeDoc 2, una reescritura completa, aún no tiene ninguna versión publicada."
+			],
+			"faq": [
+				{
+					"q": "¿HedgeDoc es gratis y de código abierto?",
+					"a": "Sí. HedgeDoc es software libre con licencia GNU AGPL 3.0, y su código fuente está en GitHub. La licencia no cubre el logo de HedgeDoc."
+				},
+				{
+					"q": "¿Cuál es la diferencia entre HedgeDoc, CodiMD y HackMD?",
+					"a": "HedgeDoc empezó como CodiMD, la edición de código abierto que se separó de HackMD en 2017. HackMD siguió como servicio comercial en hackmd.io, y la comunidad hizo un fork de CodiMD en 2018 y le cambió el nombre a HedgeDoc en 2020."
+				},
+				{
+					"q": "¿Cómo exporto notas de HedgeDoc?",
+					"a": "Desde el “Menu” de una nota puedes descargarla como Markdown, HTML o Raw HTML. “Export user data”, en el menú de usuario de la página de inicio, guarda en un ZIP todas las notas que posees, como archivos Markdown. La exportación a PDF se eliminó; imprime a PDF desde el navegador."
+				},
+				{
+					"q": "¿Puedo compartir una nota de HedgeDoc en solo lectura?",
+					"a": "Sí. “Publish” da un enlace de solo lectura a la nota. O pon su permiso en “Locked”: las personas con sesión iniciada y los invitados pueden leerla, y solo su propietario puede editarla."
+				},
+				{
+					"q": "¿Pueden registrarse otras personas en mi HedgeDoc de Pethost?",
+					"a": "Solo cuando tú lo permitas. La plantilla crea una cuenta con el correo y la contraseña que indicas, y deja el registro cerrado. Si agregas CMD_ALLOW_EMAIL_REGISTER=true al .env y vuelves a desplegar, se abre."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des notes Markdown que l’on écrit à plusieurs, en temps réel",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe que vous avez choisis. Personne d’autre ne peut s’inscrire : pour laisser entrer d’autres personnes, ajoutez CMD_ALLOW_EMAIL_REGISTER=true au .env du projet et redéployez. Le mot de passe se modifie lui aussi dans le .env : chaque démarrage l’applique de nouveau."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe que vous avez choisis. Personne d’autre ne peut s’inscrire : pour laisser entrer d’autres personnes, ajoutez CMD_ALLOW_EMAIL_REGISTER=true au .env du projet et redéployez. Le mot de passe se modifie lui aussi dans le .env : chaque démarrage l’applique de nouveau.",
+			"sizing": "HedgeDoc est léger : environ 250 MB avec Postgres, et des milliers de notes avec leurs images prennent quelques GB.",
+			"summary": "Auto-hébergez HedgeDoc, l’éditeur Markdown collaboratif open source et alternative à HackMD. Avec Docker Compose, en un clic, en HTTPS.",
+			"about": [
+				"HedgeDoc est un éditeur Markdown collaboratif open source, une alternative à HackMD. Plusieurs personnes écrivent en même temps dans une même note depuis le navigateur, avec l’aperçu rendu à côté du texte. Le propriétaire d’une note décide qui peut la lire ou la modifier, selon six niveaux, de Freely à Private. Le Slide Mode transforme une note en présentation reveal.js, les notes dessinent des diagrammes Mermaid et Graphviz et des formules LaTeX, et chaque modification est conservée comme une révision à laquelle vous pouvez revenir.",
+				"Vous auto-hébergez HedgeDoc pour garder vos notes sur votre propre machine, sans limite de comptes et sans rien payer. Il convient aux amis, à la famille ou aux collègues qui écrivent ensemble, et il est léger : le projet affirme qu’il tourne sans souci, même sur un Raspberry Pi. Le revers : la version actuelle, la 1.x, ne reçoit que de la maintenance et n’accepte aucune demande de fonctionnalité, tandis que HedgeDoc 2, une réécriture complète, n’a pas encore de version publiée."
+			],
+			"faq": [
+				{
+					"q": "HedgeDoc est-il gratuit et open source ?",
+					"a": "Oui. HedgeDoc est un logiciel libre sous licence GNU AGPL 3.0, et son code source est sur GitHub. La licence ne couvre pas le logo de HedgeDoc."
+				},
+				{
+					"q": "Quelle est la différence entre HedgeDoc, CodiMD et HackMD ?",
+					"a": "HedgeDoc est né sous le nom de CodiMD, l’édition open source séparée de HackMD en 2017. HackMD est resté un service commercial sur hackmd.io, et la communauté a forké CodiMD en 2018 et l’a renommé HedgeDoc en 2020."
+				},
+				{
+					"q": "Comment exporter des notes depuis HedgeDoc ?",
+					"a": "Depuis le « Menu » d’une note, vous la téléchargez en Markdown, en HTML ou en Raw HTML. « Export user data », dans le menu utilisateur de la page d’accueil, regroupe dans un ZIP toutes les notes dont vous êtes propriétaire, en fichiers Markdown. L’export PDF a été supprimé : imprimez en PDF depuis le navigateur."
+				},
+				{
+					"q": "Peut-on partager une note HedgeDoc en lecture seule ?",
+					"a": "Oui. « Publish » donne un lien en lecture seule vers la note. Ou passez sa permission sur « Locked » : les utilisateurs connectés et les invités peuvent la lire, et seul son propriétaire peut la modifier."
+				},
+				{
+					"q": "D’autres personnes peuvent-elles s’inscrire sur mon HedgeDoc chez Pethost ?",
+					"a": "Pas tant que vous ne l’autorisez pas. Le template crée un compte avec l’e-mail et le mot de passe que vous saisissez, et laisse l’inscription fermée. Ajouter CMD_ALLOW_EMAIL_REGISTER=true au .env et redéployer l’ouvre."
+				}
+			]
 		},
 		"pl": {
 			"description": "Notatki w Markdownie, które piszesz razem z innymi w czasie rzeczywistym",
-			"notes": "Zaloguj się adresem e-mail i hasłem podanymi przy tworzeniu projektu. Nikt inny nie może się zarejestrować: żeby wpuścić innych, dodaj CMD_ALLOW_EMAIL_REGISTER=true do pliku .env projektu i wdróż ponownie. Hasło też zmienisz w .env: każde uruchomienie ustawia je od nowa."
+			"notes": "Zaloguj się adresem e-mail i hasłem podanymi przy tworzeniu projektu. Nikt inny nie może się zarejestrować: żeby wpuścić innych, dodaj CMD_ALLOW_EMAIL_REGISTER=true do pliku .env projektu i wdróż ponownie. Hasło też zmienisz w .env: każde uruchomienie ustawia je od nowa.",
+			"sizing": "HedgeDoc ma małe wymagania: około 250 MB z Postgresem, a tysiące notatek z obrazami zajmują kilka GB.",
+			"summary": "Hostuj u siebie HedgeDoc, edytor Markdown open source do wspólnej pracy i alternatywę dla HackMD. Z Docker Compose, w jeden klik i z HTTPS.",
+			"about": [
+				"HedgeDoc to edytor Markdown open source do wspólnej pracy, alternatywa dla HackMD. Kilka osób pisze w przeglądarce jednocześnie w tej samej notatce, a wyrenderowany podgląd jest obok tekstu. Właściciel notatki ustawia, kto może ją czytać lub edytować, na sześciu poziomach od Freely do Private. Slide Mode zamienia notatkę w prezentację reveal.js, notatki rysują diagramy Mermaid i Graphviz oraz wzory LaTeX, a każda zmiana zostaje jako wersja, do której możesz wrócić.",
+				"HedgeDoca hostujesz u siebie, żeby trzymać notatki na własnej maszynie, bez limitu kont i bez płacenia. Sprawdza się u znajomych, w rodzinie albo wśród współpracowników, którzy piszą razem, i jest lekki: projekt podaje, że działa płynnie nawet na Raspberry Pi. Haczyk: wersja 1.x, czyli obecne wydanie, jest tylko utrzymywana i nie przyjmuje próśb o nowe funkcje, a HedgeDoc 2, pełne przepisanie od zera, nie ma jeszcze wydania."
+			],
+			"faq": [
+				{
+					"q": "Czy HedgeDoc jest darmowy i open source?",
+					"a": "Tak. HedgeDoc to wolne oprogramowanie na licencji GNU AGPL 3.0, a jego kod źródłowy jest na GitHubie. Licencja nie obejmuje logo HedgeDoc."
+				},
+				{
+					"q": "Czym różnią się HedgeDoc, CodiMD i HackMD?",
+					"a": "HedgeDoc zaczął jako CodiMD, edycja open source wydzielona z HackMD w 2017 roku. HackMD został komercyjną usługą pod adresem hackmd.io, a społeczność zrobiła fork CodiMD w 2018 roku i w 2020 zmieniła jego nazwę na HedgeDoc."
+				},
+				{
+					"q": "Jak wyeksportować notatki z HedgeDoc?",
+					"a": "W „Menu” notatki pobierzesz ją jako Markdown, HTML albo Raw HTML. „Export user data” w menu użytkownika na stronie startowej pakuje do ZIP-a wszystkie notatki, których jesteś właścicielem, jako pliki Markdown. Eksport do PDF usunięto; wydrukuj do PDF z przeglądarki."
+				},
+				{
+					"q": "Czy mogę udostępnić notatkę HedgeDoc tylko do odczytu?",
+					"a": "Tak. „Publish” daje link do notatki tylko do odczytu. Możesz też ustawić jej uprawnienie na „Locked”: zalogowani użytkownicy i goście mogą ją czytać, a edytować może tylko jej właściciel."
+				},
+				{
+					"q": "Czy inni mogą się zarejestrować w moim HedgeDocu na Pethost?",
+					"a": "Nie, dopóki tego nie pozwolisz. Szablon tworzy jedno konto z podanego przez ciebie adresu e-mail i hasła, a rejestrację zostawia zamkniętą. Dodanie CMD_ALLOW_EMAIL_REGISTER=true do pliku .env i ponowne wdrożenie ją otwiera."
+				}
+			]
 		},
 		"pt": {
 			"description": "Notas em Markdown que você escreve com outras pessoas, em tempo real",
-			"notes": "Entre com o e-mail e a senha que você definiu. Ninguém mais pode se cadastrar: para deixar outras pessoas entrarem, adicione CMD_ALLOW_EMAIL_REGISTER=true ao .env do projeto e faça o deploy de novo. A senha também é alterada no .env: toda vez que o app inicia, ela é definida de novo."
+			"notes": "Entre com o e-mail e a senha que você definiu. Ninguém mais pode se cadastrar: para deixar outras pessoas entrarem, adicione CMD_ALLOW_EMAIL_REGISTER=true ao .env do projeto e faça o deploy de novo. A senha também é alterada no .env: toda vez que o app inicia, ela é definida de novo.",
+			"sizing": "HedgeDoc é leve: cerca de 250 MB com o Postgres, e milhares de notas com suas imagens ocupam alguns GB.",
+			"summary": "Auto-hospede o HedgeDoc, editor de Markdown colaborativo de código aberto e alternativa ao HackMD. Com Docker Compose, em um clique e com HTTPS.",
+			"about": [
+				"O HedgeDoc é um editor de Markdown colaborativo de código aberto e uma alternativa ao HackMD. Várias pessoas escrevem ao mesmo tempo na mesma nota, no navegador, com a prévia renderizada ao lado do texto. Quem é dono de uma nota define quem pode lê-la ou editá-la, em seis níveis, de Freely a Private. O Slide Mode transforma uma nota em uma apresentação reveal.js, as notas desenham diagramas Mermaid e Graphviz e fórmulas LaTeX, e cada alteração fica guardada como uma revisão para a qual você pode voltar.",
+				"Você auto-hospeda o HedgeDoc para manter suas notas na sua própria máquina, sem limite de contas e sem pagar nada. Ele serve para amigos, família ou colegas que escrevem juntos, e é leve: o projeto diz que roda tranquilo até em um Raspberry Pi. O porém: a versão 1.x, a atual, recebe só manutenção e não aceita pedidos de funcionalidades novas, enquanto o HedgeDoc 2, uma reescrita completa, ainda não foi lançado."
+			],
+			"faq": [
+				{
+					"q": "O HedgeDoc é gratuito e de código aberto?",
+					"a": "Sim. O HedgeDoc é software livre sob a GNU AGPL 3.0, e o código-fonte dele está no GitHub. A licença não cobre o logo do HedgeDoc."
+				},
+				{
+					"q": "Qual é a diferença entre HedgeDoc, CodiMD e HackMD?",
+					"a": "O HedgeDoc nasceu como CodiMD, a edição de código aberto que se separou do HackMD em 2017. O HackMD continuou como serviço comercial em hackmd.io, e a comunidade fez um fork do CodiMD em 2018 e o renomeou para HedgeDoc em 2020."
+				},
+				{
+					"q": "Como exporto notas do HedgeDoc?",
+					"a": "No “Menu” de uma nota, você baixa como Markdown, HTML ou Raw HTML. “Export user data”, no menu de usuário da página inicial, compacta em um ZIP todas as notas das quais você é dono, como arquivos Markdown. A exportação em PDF foi removida; imprima em PDF pelo navegador."
+				},
+				{
+					"q": "Dá para compartilhar uma nota do HedgeDoc somente para leitura?",
+					"a": "Sim. “Publish” gera um link somente leitura para a nota. Ou defina a permissão dela como “Locked”: usuários que fizeram login e convidados podem lê-la, e só o dono pode editá-la."
+				},
+				{
+					"q": "Outras pessoas podem se cadastrar no meu HedgeDoc no Pethost?",
+					"a": "Só quando você permitir. O template cria uma conta com o e-mail e a senha que você informa e deixa o cadastro fechado. Adicionar CMD_ALLOW_EMAIL_REGISTER=true ao .env e fazer o deploy de novo abre o cadastro."
+				}
+			]
 		},
 		"ru": {
 			"description": "Markdown-заметки, которые вы пишете вместе с другими в реальном времени",
-			"notes": "Войдите с email и паролем, которые вы задали. Больше никто не сможет зарегистрироваться: чтобы пустить других, добавьте CMD_ALLOW_EMAIL_REGISTER=true в .env проекта и задеплойте проект заново. Пароль тоже меняется в .env: при каждом запуске он задается заново."
+			"notes": "Войдите с email и паролем, которые вы задали. Больше никто не сможет зарегистрироваться: чтобы пустить других, добавьте CMD_ALLOW_EMAIL_REGISTER=true в .env проекта и задеплойте проект заново. Пароль тоже меняется в .env: при каждом запуске он задается заново.",
+			"sizing": "HedgeDoc: небольшие требования — около 250 MB вместе с Postgres, а тысячи заметок с картинками занимают несколько GB.",
+			"summary": "Self-hosted HedgeDoc — open source редактор Markdown для совместной работы, альтернатива HackMD. Через Docker Compose в один клик, с HTTPS.",
+			"about": [
+				"HedgeDoc — это open source редактор Markdown для совместной работы и альтернатива HackMD. Несколько человек одновременно пишут в одной заметке прямо в браузере, а отрендеренный предпросмотр показывается рядом с текстом. Владелец заметки задает, кто может ее читать или редактировать, на шести уровнях от Freely до Private. Slide Mode превращает заметку в презентацию reveal.js, заметки рисуют диаграммы Mermaid и Graphviz и формулы LaTeX, а каждое изменение сохраняется как версия, к которой можно вернуться.",
+				"HedgeDoc хостят у себя, чтобы держать заметки на своей машине, без ограничения на число аккаунтов и без платы. Он подходит друзьям, семье или коллегам, которые пишут вместе, и он легкий: по словам проекта, без проблем работает даже на Raspberry Pi. Но есть нюанс: версия 1.x, текущий релиз, только поддерживается и не принимает запросы на новые функции, а у HedgeDoc 2, который полностью переписан с нуля, релиза пока нет."
+			],
+			"faq": [
+				{
+					"q": "HedgeDoc бесплатный и с открытым кодом?",
+					"a": "Да. HedgeDoc — свободное ПО под лицензией GNU AGPL 3.0, исходный код лежит на GitHub. Лицензия не распространяется на логотип HedgeDoc."
+				},
+				{
+					"q": "Чем отличаются HedgeDoc, CodiMD и HackMD?",
+					"a": "HedgeDoc начинался как CodiMD, open source версия, отделившаяся от HackMD в 2017 году. HackMD остался коммерческим сервисом на hackmd.io, а сообщество сделало форк CodiMD в 2018 году и в 2020 переименовало его в HedgeDoc."
+				},
+				{
+					"q": "Как экспортировать заметки из HedgeDoc?",
+					"a": "Через «Menu» заметки ее можно скачать как Markdown, HTML или Raw HTML. «Export user data» в меню пользователя на стартовой странице упаковывает в ZIP все заметки, которыми вы владеете, в виде файлов Markdown. Экспорт в PDF убрали: печатайте в PDF из браузера."
+				},
+				{
+					"q": "Можно ли поделиться заметкой HedgeDoc только для чтения?",
+					"a": "Да. «Publish» дает ссылку на заметку только для чтения. Или поставьте ей права «Locked»: пользователи, вошедшие в аккаунт, и гости могут ее читать, а редактировать может только владелец."
+				},
+				{
+					"q": "Могут ли другие зарегистрироваться в моем HedgeDoc на Pethost?",
+					"a": "Только когда вы это разрешите. Шаблон создает один аккаунт из email и пароля, которые вы указываете, а регистрацию оставляет закрытой. Если добавить CMD_ALLOW_EMAIL_REGISTER=true в .env и задеплоить заново, регистрация откроется."
+				}
+			]
 		},
 		"uk": {
 			"description": "Нотатки в Markdown, які ви пишете разом з іншими в реальному часі",
-			"notes": "Увійдіть з адресою електронної пошти й паролем, які ви вказали. Більше ніхто не зможе зареєструватися: щоб пустити інших, додайте CMD_ALLOW_EMAIL_REGISTER=true у файл .env проєкту й задеплойте ще раз. Пароль теж змінюють у .env: кожен запуск задає його заново."
+			"notes": "Увійдіть з адресою електронної пошти й паролем, які ви вказали. Більше ніхто не зможе зареєструватися: щоб пустити інших, додайте CMD_ALLOW_EMAIL_REGISTER=true у файл .env проєкту й задеплойте ще раз. Пароль теж змінюють у .env: кожен запуск задає його заново.",
+			"sizing": "HedgeDoc має скромні вимоги: близько 250 MB з Postgres, а тисячі нотаток із зображеннями займають кілька GB.",
+			"summary": "Self-hosted HedgeDoc — редактор Markdown для спільної роботи з відкритим кодом, альтернатива HackMD. Через Docker Compose в один клік, з HTTPS.",
+			"about": [
+				"HedgeDoc — це редактор Markdown для спільної роботи з відкритим кодом і альтернатива HackMD. Кілька людей одночасно пишуть в одній нотатці просто в браузері, а відрендерений попередній перегляд показується поруч із текстом. Власник нотатки визначає, хто може її читати чи редагувати, на шести рівнях від Freely до Private. Slide Mode перетворює нотатку на презентацію reveal.js, нотатки малюють діаграми Mermaid і Graphviz та формули LaTeX, а кожна зміна зберігається як версія, до якої можна повернутися.",
+				"HedgeDoc хостять у себе, щоб тримати нотатки на власній машині, без обмеження на кількість акаунтів і без оплати. Він підходить друзям, родині чи колегам, які пишуть разом, і він легкий: за словами проєкту, без проблем працює навіть на Raspberry Pi. Але є нюанс: версія 1.x, поточний реліз, лише підтримується й не приймає запитів на нові функції, а у HedgeDoc 2, який повністю переписано з нуля, релізу поки немає."
+			],
+			"faq": [
+				{
+					"q": "HedgeDoc безплатний і з відкритим кодом?",
+					"a": "Так. HedgeDoc — вільне програмне забезпечення за ліцензією GNU AGPL 3.0, а його вихідний код лежить на GitHub. Ліцензія не поширюється на логотип HedgeDoc."
+				},
+				{
+					"q": "Чим відрізняються HedgeDoc, CodiMD і HackMD?",
+					"a": "HedgeDoc починався як CodiMD, версія з відкритим кодом, що відділилася від HackMD у 2017 році. HackMD залишився комерційним сервісом на hackmd.io, а спільнота зробила форк CodiMD у 2018 році й у 2020-му перейменувала його на HedgeDoc."
+				},
+				{
+					"q": "Як експортувати нотатки з HedgeDoc?",
+					"a": "Через «Menu» нотатки її можна звантажити як Markdown, HTML або Raw HTML. «Export user data» в меню користувача на стартовій сторінці пакує в ZIP усі нотатки, якими ви володієте, як файли Markdown. Експорт у PDF прибрали: друкуйте в PDF із браузера."
+				},
+				{
+					"q": "Чи можна поділитися нотаткою HedgeDoc лише для читання?",
+					"a": "Так. «Publish» дає посилання на нотатку лише для читання. Або встановіть їй дозвіл «Locked»: користувачі, які увійшли в акаунт, і гості можуть її читати, а редагувати може лише власник."
+				},
+				{
+					"q": "Чи можуть інші зареєструватися на моєму HedgeDoc у Pethost?",
+					"a": "Лише коли ви це дозволите. Шаблон створює один акаунт із пошти й пароля, які ви вказуєте, а реєстрацію залишає закритою. Якщо додати CMD_ALLOW_EMAIL_REGISTER=true у .env і задеплоїти ще раз, реєстрація відкриється."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,12 @@
 {
 	"name": "RSS-Bridge",
 	"emoji": "🌉",
+	"category": "reading",
+	"alternatives": [
+		"RSS.app",
+		"FetchRSS"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "rss-bridge",
 		"port": 80
@@ -9,35 +15,259 @@
 	"texts": {
 		"en": {
 			"description": "RSS and Atom feeds for sites that have none",
-			"notes": "Open the address, pick a bridge, fill in its form and copy the feed’s link into your reader. RSS-Bridge has no accounts: anyone with the address can use it."
+			"notes": "Open the address, pick a bridge, fill in its form and copy the feed’s link into your reader. RSS-Bridge has no accounts: anyone with the address can use it.",
+			"sizing": "RSS-Bridge is very light: tens of megabytes of memory, and it keeps nothing on disk but a cache.",
+			"summary": "RSS-Bridge is an open-source alternative to RSS.app: feeds for YouTube, Reddit, Telegram and sites with no RSS. Self-host it in one click.",
+			"about": [
+				"RSS-Bridge is an open-source RSS feed generator, an alternative to RSS.app, that makes feeds for websites that don't offer one. It works through bridges, small scrapers each written for one site, and there are hundreds: YouTube channels and playlists, subreddits, public Telegram channels, Mastodon and TikTok accounts. Other bridges merge several feeds into one or filter a feed by keyword. When a bridge breaks, the error arrives as an item in the feed, so your reader tells you.",
+				"It suits anyone who follows sites in a feed reader rather than through email alerts or by checking back. Self-hosting it puts the instance in your hands: you decide which bridges it shows, and a site with no bridge yet can get one as a short PHP class of your own. The catch: RSS-Bridge has no user accounts, so an instance is open to anyone who finds its address until you protect it in its config."
+			],
+			"faq": [
+				{
+					"q": "Is RSS-Bridge free and open source?",
+					"a": "Yes. Its code is released into the public domain under the Unlicense, so you can use, change and host it for free. Bundled libraries such as Parsedown and PHP Simple HTML DOM Parser are under the MIT License."
+				},
+				{
+					"q": "Can RSS-Bridge make an RSS feed for any website?",
+					"a": "Not every site, but a page with no bridge of its own can still get a feed: CssSelectorBridge and XPathBridge scrape one out of it with CSS selectors or XPath expressions you give them."
+				},
+				{
+					"q": "Why is my RSS-Bridge feed not updating?",
+					"a": "Because of its cache. A feed is fetched again only when someone requests it after the bridge's cache timeout, usually one hour, has passed. On your own instance, custom_timeout = true lets a feed's link ask for a shorter one."
+				},
+				{
+					"q": "How do I password-protect RSS-Bridge?",
+					"a": "Add an [authentication] section to config.ini.php with either a token, which every feed link must then carry, or enable = true with a username and password for HTTP Basic Auth, which your feed reader must send."
+				},
+				{
+					"q": "What feed formats does RSS-Bridge support?",
+					"a": "Atom and MRSS for feed readers, JSON and plain text for other programs, a simple HTML page to read in a browser, and sfeed's tab-separated text. You choose the format when you generate a feed."
+				}
+			]
 		},
 		"de": {
 			"description": "RSS- und Atom-Feeds für Websites, die keine haben",
-			"notes": "Öffne die Adresse, wähl eine Bridge, füll ihr Formular aus und kopier den Link des Feeds in deinen Reader. RSS-Bridge hat keine Konten: Alle, die die Adresse haben, können es nutzen."
+			"notes": "Öffne die Adresse, wähl eine Bridge, füll ihr Formular aus und kopier den Link des Feeds in deinen Reader. RSS-Bridge hat keine Konten: Alle, die die Adresse haben, können es nutzen.",
+			"sizing": "RSS-Bridge ist sehr leicht: Dutzende MB RAM, und auf der Disk liegt nur ein Cache.",
+			"summary": "RSS-Bridge selbst hosten: Open-Source-Alternative zu RSS.app mit Feeds für YouTube, Reddit, Telegram und Seiten ohne RSS. In einem Klick.",
+			"about": [
+				"RSS-Bridge ist ein Open-Source-Generator für RSS-Feeds, eine Alternative zu RSS.app, der Feeds für Websites baut, die selbst keinen anbieten. Er arbeitet mit Bridges, kleinen Scrapern, die jeweils für eine Seite geschrieben sind, und davon gibt es Hunderte: YouTube-Kanäle und -Playlists, Subreddits, öffentliche Telegram-Kanäle, Mastodon- und TikTok-Konten. Andere Bridges führen mehrere Feeds zu einem zusammen oder filtern einen Feed nach Stichwort. Wenn eine Bridge kaputtgeht, kommt der Fehler als Eintrag im Feed an, und dein Reader sagt dir Bescheid.",
+				"RSS-Bridge passt zu allen, die Seiten lieber in einem Feed-Reader verfolgen als über E-Mail-Benachrichtigungen oder durch regelmäßiges Nachsehen. Wenn du es selbst hostest, hast du die Instanz in der Hand: Du entscheidest, welche Bridges sie zeigt, und für eine Seite ohne Bridge kannst du eine eigene als kurze PHP-Klasse schreiben. Der Haken: RSS-Bridge hat keine Benutzerkonten, die Instanz steht also allen offen, die ihre Adresse finden, bis du sie in der Konfiguration schützt."
+			],
+			"faq": [
+				{
+					"q": "Ist RSS-Bridge kostenlos und Open Source?",
+					"a": "Ja. Der Code ist unter der Unlicense gemeinfrei, du kannst ihn also kostenlos nutzen, ändern und hosten. Mitgelieferte Bibliotheken wie Parsedown und PHP Simple HTML DOM Parser stehen unter der MIT-Lizenz."
+				},
+				{
+					"q": "Kann RSS-Bridge einen RSS-Feed für jede Website erstellen?",
+					"a": "Nicht für jede, aber auch eine Seite ohne eigene Bridge kann einen Feed bekommen: CssSelectorBridge und XPathBridge holen ihn mit CSS-Selektoren oder XPath-Ausdrücken, die du ihnen gibst, aus der Seite heraus."
+				},
+				{
+					"q": "Warum aktualisiert sich mein RSS-Bridge-Feed nicht?",
+					"a": "Wegen des Caches. Ein Feed wird erst neu abgerufen, wenn ihn jemand anfordert, nachdem der Cache-Timeout der Bridge, meist eine Stunde, abgelaufen ist. Auf deiner eigenen Instanz lässt custom_timeout = true den Link eines Feeds einen kürzeren Timeout anfordern."
+				},
+				{
+					"q": "Wie schütze ich RSS-Bridge mit einem Passwort?",
+					"a": "Füg in config.ini.php einen Abschnitt [authentication] hinzu, entweder mit einem Token, das jeder Feed-Link dann enthalten muss, oder mit enable = true samt Benutzername und Passwort für HTTP Basic Auth, die dein Reader senden muss."
+				},
+				{
+					"q": "Welche Feed-Formate unterstützt RSS-Bridge?",
+					"a": "Atom und MRSS für Feed-Reader, JSON und Klartext für andere Programme, eine einfache HTML-Seite zum Lesen im Browser und den tabulatorgetrennten Text von sfeed. Das Format wählst du, wenn du einen Feed erzeugst."
+				}
+			]
 		},
 		"es": {
 			"description": "Feeds RSS y Atom para sitios que no los tienen",
-			"notes": "Abre la dirección, elige un bridge, completa su formulario y copia el enlace del feed en tu lector. RSS-Bridge no tiene cuentas: cualquiera que tenga la dirección puede usarlo."
+			"notes": "Abre la dirección, elige un bridge, completa su formulario y copia el enlace del feed en tu lector. RSS-Bridge no tiene cuentas: cualquiera que tenga la dirección puede usarlo.",
+			"sizing": "RSS-Bridge es muy ligero: decenas de MB de memoria, y en disco solo guarda una caché.",
+			"summary": "Autoaloja RSS-Bridge, la alternativa de código abierto a RSS.app: feeds para YouTube, Reddit, Telegram y sitios sin RSS. En un clic.",
+			"about": [
+				"RSS-Bridge es un generador de feeds RSS de código abierto, una alternativa a RSS.app, que crea feeds para los sitios web que no ofrecen uno. Funciona con bridges, pequeños scrapers escritos cada uno para un solo sitio, y hay cientos: canales y listas de reproducción de YouTube, subreddits, canales públicos de Telegram, cuentas de Mastodon y TikTok. Otros bridges combinan varios feeds en uno o filtran un feed por palabra clave. Cuando un bridge se rompe, el error llega como un elemento del feed, así que tu lector te avisa.",
+				"RSS-Bridge es para quien sigue sitios en un lector de feeds en vez de con alertas por correo o volviendo a mirar. Al autoalojarlo, la instancia queda en tus manos: tú decides qué bridges muestra, y un sitio que aún no tiene bridge puede conseguir uno como una clase PHP corta escrita por ti. El inconveniente: RSS-Bridge no tiene cuentas de usuario, así que la instancia está abierta a cualquiera que encuentre su dirección hasta que la protejas en su configuración."
+			],
+			"faq": [
+				{
+					"q": "¿RSS-Bridge es gratis y de código abierto?",
+					"a": "Sí. Su código se publica en el dominio público bajo la Unlicense, así que puedes usarlo, modificarlo y alojarlo gratis. Las bibliotecas incluidas, como Parsedown y PHP Simple HTML DOM Parser, tienen licencia MIT."
+				},
+				{
+					"q": "¿RSS-Bridge puede crear un feed RSS para cualquier sitio web?",
+					"a": "No para todos, pero una página sin bridge propio también puede tener un feed: CssSelectorBridge y XPathBridge lo extraen de ella con los selectores CSS o las expresiones XPath que les des."
+				},
+				{
+					"q": "¿Por qué no se actualiza mi feed de RSS-Bridge?",
+					"a": "Por su caché. Un feed solo se vuelve a pedir cuando alguien lo solicita después de que haya pasado el tiempo de caché del bridge, normalmente una hora. En tu propia instancia, custom_timeout = true permite que el enlace de un feed pida uno más corto."
+				},
+				{
+					"q": "¿Cómo protejo RSS-Bridge con contraseña?",
+					"a": "Agrega una sección [authentication] a config.ini.php, con un token que todos los enlaces de feed deberán llevar, o con enable = true y un usuario y una contraseña para HTTP Basic Auth, que tu lector de feeds deberá enviar."
+				},
+				{
+					"q": "¿Qué formatos de feed admite RSS-Bridge?",
+					"a": "Atom y MRSS para los lectores de feeds, JSON y texto plano para otros programas, una página HTML sencilla para leer en el navegador y el texto separado por tabuladores de sfeed. El formato lo eliges al generar un feed."
+				}
+			]
 		},
 		"fr": {
 			"description": "Des flux RSS et Atom pour les sites qui n’en ont pas",
-			"notes": "Ouvrez l’adresse, choisissez un bridge, remplissez son formulaire et copiez le lien du flux dans votre lecteur. RSS-Bridge n’a pas de comptes : quiconque connaît l’adresse peut l’utiliser."
+			"notes": "Ouvrez l’adresse, choisissez un bridge, remplissez son formulaire et copiez le lien du flux dans votre lecteur. RSS-Bridge n’a pas de comptes : quiconque connaît l’adresse peut l’utiliser.",
+			"sizing": "RSS-Bridge est très léger : quelques dizaines de MB de mémoire, et il ne garde sur le disque qu’un cache.",
+			"summary": "Auto-hébergez RSS-Bridge, l’alternative open source à RSS.app : des flux pour YouTube, Reddit, Telegram et les sites sans RSS. En un clic.",
+			"about": [
+				"RSS-Bridge est un générateur de flux RSS open source, une alternative à RSS.app, qui crée des flux pour les sites web qui n’en proposent pas. Il fonctionne avec des bridges, de petits scrapers écrits chacun pour un seul site, et il y en a des centaines : chaînes et playlists YouTube, subreddits, chaînes Telegram publiques, comptes Mastodon et TikTok. D’autres bridges fusionnent plusieurs flux en un seul ou filtrent un flux par mot-clé. Quand un bridge tombe en panne, l’erreur arrive comme un élément du flux, et c’est votre lecteur qui vous prévient.",
+				"RSS-Bridge convient à quiconque suit des sites dans un lecteur de flux plutôt que par des alertes e-mail ou en y retournant de temps en temps. Auto-hébergé, il met l’instance entre vos mains : vous décidez des bridges qu’elle affiche, et un site sans bridge peut en recevoir un, sous la forme d’une courte classe PHP de votre cru. Le revers : RSS-Bridge n’a pas de comptes utilisateur, donc l’instance est ouverte à quiconque trouve son adresse tant que vous ne la protégez pas dans sa configuration."
+			],
+			"faq": [
+				{
+					"q": "RSS-Bridge est-il gratuit et open source ?",
+					"a": "Oui. Son code est placé dans le domaine public sous la licence Unlicense : vous pouvez l’utiliser, le modifier et l’héberger gratuitement. Les bibliothèques incluses, comme Parsedown et PHP Simple HTML DOM Parser, sont sous licence MIT."
+				},
+				{
+					"q": "RSS-Bridge peut-il créer un flux RSS pour n’importe quel site web ?",
+					"a": "Pas pour tous, mais une page sans bridge propre peut quand même avoir un flux : CssSelectorBridge et XPathBridge en extraient un avec les sélecteurs CSS ou les expressions XPath que vous leur donnez."
+				},
+				{
+					"q": "Pourquoi mon flux RSS-Bridge ne se met-il pas à jour ?",
+					"a": "À cause de son cache. Un flux n’est récupéré à nouveau que si quelqu’un le demande une fois le délai de cache du bridge écoulé, généralement une heure. Sur votre propre instance, custom_timeout = true permet au lien d’un flux d’en demander un plus court."
+				},
+				{
+					"q": "Comment protéger RSS-Bridge par mot de passe ?",
+					"a": "Ajoutez une section [authentication] à config.ini.php, soit avec un token que chaque lien de flux devra alors contenir, soit avec enable = true, un nom d’utilisateur et un mot de passe pour l’authentification HTTP Basic, que votre lecteur de flux devra envoyer."
+				},
+				{
+					"q": "Quels formats de flux RSS-Bridge prend-il en charge ?",
+					"a": "Atom et MRSS pour les lecteurs de flux, JSON et texte brut pour d’autres programmes, une page HTML simple à lire dans un navigateur, et le texte séparé par des tabulations de sfeed. Vous choisissez le format en générant un flux."
+				}
+			]
 		},
 		"pl": {
 			"description": "Kanały RSS i Atom dla stron, które ich nie mają",
-			"notes": "Otwórz adres projektu, wybierz bridge, wypełnij jego formularz i skopiuj link do kanału do swojego czytnika. RSS-Bridge nie ma kont: może z niego korzystać każdy, kto zna adres."
+			"notes": "Otwórz adres projektu, wybierz bridge, wypełnij jego formularz i skopiuj link do kanału do swojego czytnika. RSS-Bridge nie ma kont: może z niego korzystać każdy, kto zna adres.",
+			"sizing": "RSS-Bridge ma bardzo małe wymagania: dziesiątki MB pamięci, a na dysku trzyma tylko cache.",
+			"summary": "Hostuj RSS-Bridge u siebie: alternatywa open source dla RSS.app, z kanałami dla YouTube’a, Reddita, Telegrama i stron bez RSS. W jeden klik.",
+			"about": [
+				"RSS-Bridge to generator kanałów RSS open source, alternatywa dla RSS.app, który robi kanały dla stron, które same ich nie oferują. Działa przez bridge’e, małe scrapery pisane każdy pod jedną stronę, a są ich setki: kanały i playlisty YouTube’a, subreddity, publiczne kanały Telegrama, konta na Mastodonie i TikToku. Inne bridge’e łączą kilka kanałów w jeden albo filtrują kanał po słowie kluczowym. Gdy bridge przestaje działać, błąd przychodzi jako wpis w kanale, więc powiadomi cię czytnik.",
+				"RSS-Bridge pasuje każdemu, kto śledzi strony w czytniku kanałów, a nie przez powiadomienia e-mailem czy zaglądanie co jakiś czas. Jeśli hostujesz go u siebie, instancja jest w twoich rękach: sam decydujesz, które bridge’e pokazuje, a strona bez bridge’a może dostać własny, napisany jako krótka klasa PHP. Haczyk: RSS-Bridge nie ma kont użytkowników, więc instancja jest otwarta dla każdego, kto znajdzie jej adres, dopóki nie zabezpieczysz jej w konfiguracji."
+			],
+			"faq": [
+				{
+					"q": "Czy RSS-Bridge jest darmowy i open source?",
+					"a": "Tak. Jego kod jest udostępniony jako domena publiczna na licencji Unlicense, więc możesz go za darmo używać, zmieniać i hostować. Dołączone biblioteki, takie jak Parsedown i PHP Simple HTML DOM Parser, mają licencję MIT."
+				},
+				{
+					"q": "Czy RSS-Bridge może zrobić kanał RSS dla każdej strony?",
+					"a": "Nie dla każdej, ale strona bez własnego bridge’a też może dostać kanał: CssSelectorBridge i XPathBridge wyciągają go z niej za pomocą selektorów CSS albo wyrażeń XPath, które im podasz."
+				},
+				{
+					"q": "Dlaczego mój kanał z RSS-Bridge się nie aktualizuje?",
+					"a": "Przez cache. Kanał jest pobierany ponownie dopiero wtedy, gdy ktoś o niego poprosi po tym, jak minie timeout cache dla bridge’a, zwykle godzina. Na własnej instancji custom_timeout = true pozwala, żeby link do kanału prosił o krótszy."
+				},
+				{
+					"q": "Jak zabezpieczyć RSS-Bridge hasłem?",
+					"a": "Dodaj do config.ini.php sekcję [authentication], z tokenem, który musi wtedy zawierać każdy link do kanału, albo z enable = true oraz nazwą użytkownika i hasłem do HTTP Basic Auth, które musi wysyłać twój czytnik."
+				},
+				{
+					"q": "Jakie formaty kanałów obsługuje RSS-Bridge?",
+					"a": "Atom i MRSS dla czytników kanałów, JSON i zwykły tekst dla innych programów, prostą stronę HTML do czytania w przeglądarce oraz tekst rozdzielany tabulatorami, jak w sfeed. Format wybierasz przy generowaniu kanału."
+				}
+			]
 		},
 		"pt": {
 			"description": "Feeds RSS e Atom para sites que não têm",
-			"notes": "Abra o endereço, escolha um bridge, preencha o formulário dele e copie o link do feed para o seu leitor. O RSS-Bridge não tem contas: qualquer pessoa com o endereço pode usá-lo."
+			"notes": "Abra o endereço, escolha um bridge, preencha o formulário dele e copie o link do feed para o seu leitor. O RSS-Bridge não tem contas: qualquer pessoa com o endereço pode usá-lo.",
+			"sizing": "RSS-Bridge é muito leve: dezenas de MB de memória, e no disco guarda só um cache.",
+			"summary": "Auto-hospede o RSS-Bridge, alternativa de código aberto ao RSS.app: feeds para YouTube, Reddit, Telegram e sites sem RSS. Em um clique.",
+			"about": [
+				"O RSS-Bridge é um gerador de feeds RSS de código aberto, uma alternativa ao RSS.app, que cria feeds para sites que não oferecem um. Ele funciona com bridges, pequenos scrapers escritos cada um para um site, e há centenas: canais e playlists do YouTube, subreddits, canais públicos do Telegram, contas do Mastodon e do TikTok. Outros bridges juntam vários feeds em um ou filtram um feed por palavra-chave. Quando um bridge quebra, o erro chega como um item do feed, e quem avisa é o seu leitor.",
+				"O RSS-Bridge serve para quem acompanha sites em um leitor de feeds em vez de alertas por e-mail ou de ficar voltando para conferir. Ao auto-hospedar, a instância fica na sua mão: você decide quais bridges ela mostra, e um site que ainda não tem bridge pode ganhar um, como uma classe PHP curta escrita por você. O porém: o RSS-Bridge não tem contas de usuário, então a instância fica aberta a qualquer pessoa que encontre o endereço dela até você protegê-la na configuração."
+			],
+			"faq": [
+				{
+					"q": "O RSS-Bridge é gratuito e de código aberto?",
+					"a": "Sim. O código dele é liberado em domínio público sob a Unlicense, então você pode usar, alterar e hospedar de graça. As bibliotecas incluídas, como Parsedown e PHP Simple HTML DOM Parser, estão sob a licença MIT."
+				},
+				{
+					"q": "O RSS-Bridge cria um feed RSS para qualquer site?",
+					"a": "Nem para todos, mas uma página sem bridge próprio ainda pode ganhar um feed: o CssSelectorBridge e o XPathBridge extraem um dela com os seletores CSS ou as expressões XPath que você passar."
+				},
+				{
+					"q": "Por que o feed do meu RSS-Bridge não atualiza?",
+					"a": "Por causa do cache. Um feed só é buscado de novo quando alguém o pede depois que o tempo de cache do bridge, normalmente uma hora, passou. Na sua própria instância, custom_timeout = true deixa o link de um feed pedir um tempo menor."
+				},
+				{
+					"q": "Como proteger o RSS-Bridge com senha?",
+					"a": "Adicione uma seção [authentication] ao config.ini.php, com um token que todo link de feed passa a precisar levar, ou com enable = true, um usuário e uma senha para HTTP Basic Auth, que o seu leitor de feeds precisa enviar."
+				},
+				{
+					"q": "Quais formatos de feed o RSS-Bridge aceita?",
+					"a": "Atom e MRSS para leitores de feeds, JSON e texto simples para outros programas, uma página HTML simples para ler no navegador e o texto separado por tabulações do sfeed. Você escolhe o formato ao gerar um feed."
+				}
+			]
 		},
 		"ru": {
 			"description": "RSS- и Atom-ленты для сайтов, у которых их нет",
-			"notes": "Откройте адрес, выберите бридж, заполните его форму и скопируйте ссылку на ленту в свою читалку. В RSS-Bridge нет аккаунтов: им может пользоваться любой, кто знает адрес."
+			"notes": "Откройте адрес, выберите бридж, заполните его форму и скопируйте ссылку на ленту в свою читалку. В RSS-Bridge нет аккаунтов: им может пользоваться любой, кто знает адрес.",
+			"sizing": "RSS-Bridge: совсем небольшие требования — десятки MB памяти, а на диске только кеш.",
+			"summary": "Self-hosted RSS-Bridge: альтернатива RSS.app с открытым кодом, ленты для YouTube, Reddit, Telegram и сайтов без RSS. Запускается в один клик.",
+			"about": [
+				"RSS-Bridge — это генератор RSS-лент с открытым кодом, альтернатива RSS.app, который делает ленты для сайтов, где их нет. Он работает через бриджи, небольшие скрейперы, каждый из которых написан под один сайт, и их сотни: каналы и плейлисты YouTube, сабреддиты, публичные каналы Telegram, аккаунты Mastodon и TikTok. Другие бриджи объединяют несколько лент в одну или фильтруют ленту по ключевому слову. Когда бридж ломается, ошибка приходит элементом ленты, так что о ней сообщит ваша читалка.",
+				"RSS-Bridge подойдет тем, кто следит за сайтами через читалку лент, а не через уведомления на почту или регулярные заходы на сайт. Если хостить его у себя, инстанс оказывается в ваших руках: вы решаете, какие бриджи он показывает, а для сайта, у которого бриджа еще нет, можно написать свой в виде короткого PHP-класса. Нюанс: в RSS-Bridge нет аккаунтов, поэтому инстанс открыт любому, кто найдет его адрес, пока вы не защитите его в конфиге."
+			],
+			"faq": [
+				{
+					"q": "RSS-Bridge бесплатный и с открытым исходным кодом?",
+					"a": "Да. Код опубликован как общественное достояние по лицензии Unlicense, поэтому его можно бесплатно использовать, менять и хостить. Входящие в состав библиотеки, например Parsedown и PHP Simple HTML DOM Parser, распространяются по лицензии MIT."
+				},
+				{
+					"q": "Может ли RSS-Bridge сделать RSS-ленту для любого сайта?",
+					"a": "Не для любого, но и у страницы без своего бриджа может появиться лента: CssSelectorBridge и XPathBridge достанут ее из страницы по CSS-селекторам или выражениям XPath, которые вы им зададите."
+				},
+				{
+					"q": "Почему лента RSS-Bridge не обновляется?",
+					"a": "Из-за кеша. Лента запрашивается заново, только когда кто-то обращается к ней после того, как истек таймаут кеша бриджа, обычно час. На своем инстансе custom_timeout = true позволяет ссылке на ленту запросить более короткий."
+				},
+				{
+					"q": "Как защитить RSS-Bridge паролем?",
+					"a": "Добавьте в config.ini.php секцию [authentication] с токеном, который тогда должна содержать каждая ссылка на ленту, либо с enable = true, именем пользователя и паролем для HTTP Basic Auth, которые должна отправлять ваша читалка."
+				},
+				{
+					"q": "Какие форматы лент поддерживает RSS-Bridge?",
+					"a": "Atom и MRSS для читалок, JSON и обычный текст для других программ, простую HTML-страницу для чтения в браузере и текст, разделенный табуляциями, как в sfeed. Формат вы выбираете при создании ленты."
+				}
+			]
 		},
 		"uk": {
 			"description": "RSS- та Atom-стрічки для сайтів, які їх не мають",
-			"notes": "Відкрийте адресу, оберіть бридж, заповніть його форму й скопіюйте посилання на стрічку у свою читалку. У RSS-Bridge немає акаунтів: ним може користуватися кожен, хто знає адресу."
+			"notes": "Відкрийте адресу, оберіть бридж, заповніть його форму й скопіюйте посилання на стрічку у свою читалку. У RSS-Bridge немає акаунтів: ним може користуватися кожен, хто знає адресу.",
+			"sizing": "RSS-Bridge має дуже скромні вимоги: десятки MB пам’яті, а на диску тримає лише кеш.",
+			"summary": "Self-hosted RSS-Bridge: альтернатива RSS.app із відкритим кодом, стрічки для YouTube, Reddit, Telegram і сайтів без RSS. Запускається в один клік.",
+			"about": [
+				"RSS-Bridge — це генератор RSS-стрічок із відкритим кодом, альтернатива RSS.app, що робить стрічки для сайтів, які їх не пропонують. Він працює через бриджі, невеликі скрейпери, кожен з яких написано під один сайт, і їх сотні: канали та плейлисти YouTube, сабреддіти, публічні канали Telegram, акаунти Mastodon і TikTok. Інші бриджі об’єднують кілька стрічок в одну або фільтрують стрічку за ключовим словом. Коли бридж ламається, помилка приходить елементом стрічки, тож про неї повідомить ваша читалка.",
+				"RSS-Bridge підійде тим, хто стежить за сайтами через читалку стрічок, а не через сповіщення на пошту чи регулярні заходи на сайт. Якщо хостити його у себе, інстанс опиняється у ваших руках: ви вирішуєте, які бриджі він показує, а для сайту, у якого бриджа ще немає, можна написати свій у вигляді короткого PHP-класу. Нюанс: у RSS-Bridge немає акаунтів, тому інстанс відкритий для будь-кого, хто знайде його адресу, доки ви не захистите його в конфігу."
+			],
+			"faq": [
+				{
+					"q": "RSS-Bridge безплатний і з відкритим кодом?",
+					"a": "Так. Код опубліковано як суспільне надбання за ліцензією Unlicense, тому його можна безплатно використовувати, змінювати й хостити. Бібліотеки в складі, як-от Parsedown і PHP Simple HTML DOM Parser, поширюються за ліцензією MIT."
+				},
+				{
+					"q": "Чи може RSS-Bridge зробити RSS-стрічку для будь-якого сайту?",
+					"a": "Не для будь-якого, але й сторінка без власного бриджа може отримати стрічку: CssSelectorBridge і XPathBridge дістають її зі сторінки за CSS-селекторами або виразами XPath, які ви їм задасте."
+				},
+				{
+					"q": "Чому стрічка RSS-Bridge не оновлюється?",
+					"a": "Через кеш. Стрічку запитують знову, лише коли хтось звертається до неї після того, як минув таймаут кешу бриджа, зазвичай година. На власному інстансі custom_timeout = true дає змогу посиланню на стрічку попросити коротший."
+				},
+				{
+					"q": "Як захистити RSS-Bridge паролем?",
+					"a": "Додайте до config.ini.php секцію [authentication] з токеном, який тоді має містити кожне посилання на стрічку, або з enable = true, іменем користувача й паролем для HTTP Basic Auth, які має надсилати ваша читалка."
+				},
+				{
+					"q": "Які формати стрічок підтримує RSS-Bridge?",
+					"a": "Atom і MRSS для читалок, JSON і звичайний текст для інших програм, просту HTML-сторінку для читання в браузері та текст, розділений табуляціями, як у sfeed. Формат ви обираєте під час створення стрічки."
+				}
+			]
 		}
 	}
 }

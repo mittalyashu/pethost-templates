@@ -1,6 +1,12 @@
 {
 	"name": "Lychee",
 	"emoji": "📸",
+	"category": "media",
+	"alternatives": [
+		"Flickr",
+		"Google Photos"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "lychee",
 		"port": 8000
@@ -22,35 +28,259 @@
 	"texts": {
 		"en": {
 			"description": "A photo gallery to upload, sort and share your photos",
-			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address."
+			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address.",
+			"sizing": "Lychee is moderate: about 600 MB with MariaDB; the disk is your photos plus resized copies of each.",
+			"summary": "Lychee is an open-source photo gallery with albums, star ratings, a map and password-protected sharing. Self-host it in one click.",
+			"about": [
+				"Lychee is an open-source photo gallery and photo management app that people run on their own server in place of Flickr. You upload photos in the browser, sort them into albums and subalbums, tag them and rate them from one to five stars. It reads each photo's EXIF data and shows geotagged ones on a map. An album can be public, locked with a password or shared with chosen users, and you decide whether visitors may download the files.",
+				"People self-host it to keep full-size photos under their own control: Lychee stores originals without compression and sets no storage limit. It suits a photographer's portfolio or a family's shared albums. The catch is that it keeps photos in its own folder structure, so an existing library has to be imported, not browsed where it already is."
+			],
+			"faq": [
+				{
+					"q": "Is Lychee free and open source?",
+					"a": "Yes, Lychee is free and released under the MIT license. A paid Supporter Edition adds extras such as library statistics, watermarking and secured image links, and its code is public on GitHub under MIT as well."
+				},
+				{
+					"q": "Is Lychee a good Google Photos alternative?",
+					"a": "Partly. It covers browsing and sharing, with albums, a timeline, a map and search. It does not back up a phone on its own: photos go in by upload or by an import command."
+				},
+				{
+					"q": "How do I import existing photos into Lychee?",
+					"a": "Upload them in the browser, or run php artisan lychee:sync /path/to/import inside the Lychee container: each folder becomes an album. It deletes the original files after import unless you add --delete_imported=0."
+				},
+				{
+					"q": "Can Lychee have multiple users?",
+					"a": "Yes. The admin adds users in the Users menu, and albums are shared with them read-only or with full access. User groups and per-user upload quotas come with the Supporter Edition."
+				},
+				{
+					"q": "Does Lychee support videos?",
+					"a": "Yes. Lychee takes videos alongside photos, in ogv, mp4, mpg, webm, mov, m4v, avi and wmv formats."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Fotogalerie, um deine Fotos hochzuladen, zu ordnen und zu teilen",
-			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben."
+			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben.",
+			"sizing": "Lychee ist mittelschwer: etwa 600 MB mit MariaDB; die Disk füllen deine Fotos plus verkleinerte Kopien von jedem.",
+			"summary": "Lychee selbst hosten: Open-Source-Fotogalerie mit Alben, Sternebewertung, Karte und passwortgeschütztem Teilen. Mit einem Klick.",
+			"about": [
+				"Lychee ist eine Open-Source-Fotogalerie und Fotoverwaltung, die viele statt Flickr auf dem eigenen Server betreiben. Du lädst Fotos im Browser hoch, sortierst sie in Alben und Unteralben, versiehst sie mit Tags und bewertest sie mit ein bis fünf Sternen. Lychee liest die EXIF-Daten jedes Fotos und zeigt Fotos mit Geotag auf einer Karte. Ein Album kann öffentlich sein, mit einem Passwort gesperrt oder mit ausgewählten Nutzern geteilt werden, und du legst fest, ob Besucher die Dateien herunterladen dürfen.",
+				"Viele hosten Lychee selbst, um ihre Fotos in voller Größe unter eigener Kontrolle zu behalten: Lychee speichert die Originale unkomprimiert und setzt kein Speicherlimit. Es eignet sich für das Portfolio einer Fotografin oder eines Fotografen ebenso wie für gemeinsame Familienalben. Der Haken: Lychee legt Fotos in einer eigenen Ordnerstruktur ab, eine bestehende Bibliothek muss also importiert werden, statt sie dort anzuzeigen, wo sie schon liegt."
+			],
+			"faq": [
+				{
+					"q": "Ist Lychee kostenlos und Open Source?",
+					"a": "Ja, Lychee ist kostenlos und steht unter der MIT-Lizenz. Eine kostenpflichtige Supporter Edition bringt Extras wie Bibliotheksstatistiken, Wasserzeichen und gesicherte Bildlinks, und ihr Code ist ebenfalls unter MIT öffentlich auf GitHub."
+				},
+				{
+					"q": "Ist Lychee eine gute Alternative zu Google Fotos?",
+					"a": "Teilweise. Lychee deckt das Durchstöbern und Teilen ab, mit Alben, Zeitleiste, Karte und Suche. Das Handy sichert es nicht von allein: Fotos kommen per Upload oder per Import-Befehl hinein."
+				},
+				{
+					"q": "Wie importiere ich vorhandene Fotos in Lychee?",
+					"a": "Lade sie im Browser hoch oder führe im Lychee-Container php artisan lychee:sync /path/to/import aus: Jeder Ordner wird zu einem Album. Nach dem Import löscht der Befehl die Originaldateien, außer du hängst --delete_imported=0 an."
+				},
+				{
+					"q": "Kann Lychee mehrere Nutzer haben?",
+					"a": "Ja. Der Admin legt Nutzer im Menü Users an, und Alben werden mit ihnen schreibgeschützt oder mit vollem Zugriff geteilt. Benutzergruppen und Upload-Kontingente pro Nutzer gibt es mit der Supporter Edition."
+				},
+				{
+					"q": "Unterstützt Lychee Videos?",
+					"a": "Ja. Lychee nimmt neben Fotos auch Videos auf, in den Formaten ogv, mp4, mpg, webm, mov, m4v, avi und wmv."
+				}
+			]
 		},
 		"es": {
 			"description": "Una galería para subir, ordenar y compartir tus fotos",
-			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección."
+			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección.",
+			"sizing": "Lychee es moderado: unos 600 MB con MariaDB; el disco son tus fotos más copias redimensionadas de cada una.",
+			"summary": "Autoaloja Lychee, una galería de fotos de código abierto con álbumes, valoración con estrellas, mapa y uso compartido con contraseña. En un clic.",
+			"about": [
+				"Lychee es una galería de fotos de código abierto y una app para administrar fotos que mucha gente ejecuta en su propio servidor en lugar de Flickr. Subes las fotos desde el navegador, las ordenas en álbumes y subálbumes, les pones etiquetas y las valoras de una a cinco estrellas. Lee los datos EXIF de cada foto y muestra en un mapa las que tienen geoetiqueta. Un álbum puede ser público, estar protegido con contraseña o compartirse con usuarios elegidos, y tú decides si los visitantes pueden descargar los archivos.",
+				"Quienes autoalojan Lychee lo hacen para tener el control de sus fotos a tamaño completo: Lychee guarda los originales sin comprimir y no pone límite de almacenamiento. Sirve tanto para el portafolio de un fotógrafo como para los álbumes compartidos de una familia. El inconveniente: guarda las fotos en su propia estructura de carpetas, así que una biblioteca existente hay que importarla, no se puede explorar donde ya está."
+			],
+			"faq": [
+				{
+					"q": "¿Lychee es gratis y de código abierto?",
+					"a": "Sí, Lychee es gratis y se publica con licencia MIT. Una Supporter Edition de pago agrega extras como estadísticas de la biblioteca, marcas de agua y enlaces de imagen protegidos, y su código también es público en GitHub con licencia MIT."
+				},
+				{
+					"q": "¿Lychee es una buena alternativa a Google Fotos?",
+					"a": "En parte. Cubre la exploración y el uso compartido, con álbumes, línea de tiempo, mapa y búsqueda. No hace backup del teléfono por sí solo: las fotos entran subiéndolas o con un comando de importación."
+				},
+				{
+					"q": "¿Cómo importo fotos existentes a Lychee?",
+					"a": "Súbelas desde el navegador o ejecuta php artisan lychee:sync /path/to/import dentro del contenedor de Lychee: cada carpeta se convierte en un álbum. Borra los archivos originales después de importar, salvo que agregues --delete_imported=0."
+				},
+				{
+					"q": "¿Lychee admite varios usuarios?",
+					"a": "Sí. El administrador agrega usuarios en el menú Users, y los álbumes se comparten con ellos en solo lectura o con acceso completo. Los grupos de usuarios y las cuotas de subida por usuario vienen con la Supporter Edition."
+				},
+				{
+					"q": "¿Lychee admite videos?",
+					"a": "Sí. Lychee acepta videos junto con las fotos, en los formatos ogv, mp4, mpg, webm, mov, m4v, avi y wmv."
+				}
+			]
 		},
 		"fr": {
 			"description": "Une galerie pour téléverser, classer et partager vos photos",
-			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse."
+			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse.",
+			"sizing": "Lychee est modéré : environ 600 MB avec MariaDB ; le disque, ce sont vos photos plus des copies redimensionnées de chacune.",
+			"summary": "Auto-hébergez Lychee, la galerie photo open source avec albums, notes en étoiles, carte et partage protégé par mot de passe. En un clic.",
+			"about": [
+				"Lychee est une galerie photo open source et un outil de gestion de photos que l’on fait tourner sur son propre serveur à la place de Flickr. Vous envoyez vos photos depuis le navigateur, les classez dans des albums et des sous-albums, les étiquetez et leur donnez une note de une à cinq étoiles. Il lit les données EXIF de chaque photo et place sur une carte celles qui sont géolocalisées. Un album peut être public, verrouillé par un mot de passe ou partagé avec des utilisateurs choisis, et vous décidez si les visiteurs peuvent télécharger les fichiers.",
+				"Vous auto-hébergez Lychee pour garder vos photos en pleine taille sous votre contrôle : Lychee conserve les originaux sans compression et ne fixe aucune limite de stockage. Il convient aussi bien au portfolio d’un photographe qu’aux albums partagés d’une famille. Le revers : il range les photos dans sa propre arborescence de dossiers, si bien qu’une photothèque existante doit être importée, et non parcourue là où elle se trouve déjà."
+			],
+			"faq": [
+				{
+					"q": "Lychee est-il gratuit et open source ?",
+					"a": "Oui, Lychee est gratuit et publié sous licence MIT. Une Supporter Edition payante ajoute des extras comme les statistiques de la bibliothèque, le filigrane et les liens d’images sécurisés, et son code est lui aussi public sur GitHub sous licence MIT."
+				},
+				{
+					"q": "Lychee est-il une bonne alternative à Google Photos ?",
+					"a": "En partie. Il couvre la consultation et le partage, avec des albums, une chronologie, une carte et la recherche. Il ne sauvegarde pas un téléphone tout seul : les photos arrivent par envoi ou par une commande d’import."
+				},
+				{
+					"q": "Comment importer mes photos existantes dans Lychee ?",
+					"a": "Envoyez-les depuis le navigateur, ou lancez php artisan lychee:sync /path/to/import dans le conteneur de Lychee : chaque dossier devient un album. La commande supprime les fichiers d’origine après l’import, sauf si vous ajoutez --delete_imported=0."
+				},
+				{
+					"q": "Lychee peut-il avoir plusieurs utilisateurs ?",
+					"a": "Oui. L’administrateur ajoute des utilisateurs dans le menu Users, et les albums sont partagés avec eux en lecture seule ou avec un accès complet. Les groupes d’utilisateurs et les quotas d’envoi par utilisateur viennent avec la Supporter Edition."
+				},
+				{
+					"q": "Lychee prend-il en charge les vidéos ?",
+					"a": "Oui. Lychee accepte les vidéos en plus des photos, aux formats ogv, mp4, mpg, webm, mov, m4v, avi et wmv."
+				}
+			]
 		},
 		"pl": {
 			"description": "Galeria do wgrywania, porządkowania i udostępniania zdjęć",
-			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres."
+			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres.",
+			"sizing": "Lychee ma średnie wymagania: około 600 MB z MariaDB; dysk to twoje zdjęcia plus pomniejszone kopie każdego.",
+			"summary": "Hostuj Lychee u siebie: galeria zdjęć open source z albumami, ocenami w gwiazdkach, mapą i udostępnianiem chronionym hasłem. W jeden klik.",
+			"about": [
+				"Lychee to galeria zdjęć open source i aplikacja do zarządzania zdjęciami, którą ludzie uruchamiają na własnym serwerze zamiast Flickra. Wgrywasz zdjęcia w przeglądarce, porządkujesz je w albumach i podalbumach, oznaczasz tagami i oceniasz od jednej do pięciu gwiazdek. Lychee czyta dane EXIF każdego zdjęcia i pokazuje te z geotagiem na mapie. Album może być publiczny, zablokowany hasłem albo udostępniony wybranym użytkownikom, a ty decydujesz, czy odwiedzający mogą pobierać pliki.",
+				"Ludzie hostują Lychee u siebie (self-hosted), żeby trzymać zdjęcia w pełnym rozmiarze pod własną kontrolą: Lychee przechowuje oryginały bez kompresji i nie ustawia żadnego limitu miejsca. Pasuje zarówno do portfolio fotografa, jak i do wspólnych albumów rodziny. Haczyk: trzyma zdjęcia we własnej strukturze katalogów, więc istniejącą bibliotekę trzeba zaimportować, a nie przeglądać tam, gdzie już leży."
+			],
+			"faq": [
+				{
+					"q": "Czy Lychee jest darmowe i open source?",
+					"a": "Tak, Lychee jest darmowe i wydane na licencji MIT. Płatna wersja Supporter Edition dodaje dodatki, takie jak statystyki biblioteki, znaki wodne i zabezpieczone linki do obrazów, a jej kod też jest publiczny na GitHubie na licencji MIT."
+				},
+				{
+					"q": "Czy Lychee to dobra alternatywa dla Zdjęć Google?",
+					"a": "Częściowo. Lychee obejmuje przeglądanie i udostępnianie, z albumami, osią czasu, mapą i wyszukiwarką. Samo nie robi backupu telefonu: zdjęcia trafiają do niego przez wgranie albo polecenie importu."
+				},
+				{
+					"q": "Jak zaimportować istniejące zdjęcia do Lychee?",
+					"a": "Wgraj je w przeglądarce albo uruchom php artisan lychee:sync /path/to/import w kontenerze Lychee: każdy katalog staje się albumem. Po imporcie polecenie usuwa oryginalne pliki, chyba że dodasz --delete_imported=0."
+				},
+				{
+					"q": "Czy Lychee obsługuje wielu użytkowników?",
+					"a": "Tak. Administrator dodaje użytkowników w menu Users, a albumy udostępnia się im tylko do odczytu albo z pełnym dostępem. Grupy użytkowników i limity wgrywania na użytkownika są w wersji Supporter Edition."
+				},
+				{
+					"q": "Czy Lychee obsługuje wideo?",
+					"a": "Tak. Lychee przyjmuje wideo obok zdjęć, w formatach ogv, mp4, mpg, webm, mov, m4v, avi i wmv."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma galeria para enviar, organizar e compartilhar suas fotos",
-			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço."
+			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço.",
+			"sizing": "Lychee é moderado: cerca de 600 MB com o MariaDB; o disco são as suas fotos mais cópias redimensionadas de cada uma.",
+			"summary": "Auto-hospede o Lychee: galeria de fotos de código aberto com álbuns, avaliação por estrelas, mapa e compartilhamento com senha. Em um clique.",
+			"about": [
+				"O Lychee é uma galeria e um app de gerenciamento de fotos de código aberto que as pessoas rodam no próprio servidor no lugar do Flickr. Você envia as fotos pelo navegador, organiza em álbuns e subálbuns, adiciona tags e dá notas de uma a cinco estrelas. Ele lê os dados EXIF de cada foto e mostra no mapa as que têm geolocalização. Um álbum pode ser público, protegido por senha ou compartilhado com usuários escolhidos, e você decide se os visitantes podem baixar os arquivos.",
+				"As pessoas hospedam o Lychee por conta própria para manter as fotos em tamanho real sob seu controle: o Lychee guarda os originais sem compressão e não impõe limite de armazenamento. Serve tanto para o portfólio de um fotógrafo quanto para os álbuns compartilhados de uma família. O porém: ele guarda as fotos na própria estrutura de pastas, então uma biblioteca existente precisa ser importada, não navegada no lugar onde já está."
+			],
+			"faq": [
+				{
+					"q": "O Lychee é gratuito e de código aberto?",
+					"a": "Sim, o Lychee é gratuito e lançado sob a licença MIT. Uma Supporter Edition paga acrescenta extras como estatísticas da biblioteca, marca d’água e links de imagem protegidos, e o código dela também é público no GitHub sob a MIT."
+				},
+				{
+					"q": "O Lychee é uma boa alternativa ao Google Fotos?",
+					"a": "Em parte. Ele cobre a navegação e o compartilhamento, com álbuns, linha do tempo, mapa e busca. Não faz backup do celular sozinho: as fotos entram por upload ou por um comando de importação."
+				},
+				{
+					"q": "Como importo para o Lychee as fotos que já tenho?",
+					"a": "Envie pelo navegador ou rode php artisan lychee:sync /path/to/import dentro do container do Lychee: cada pasta vira um álbum. O comando apaga os arquivos originais depois da importação, a menos que você acrescente --delete_imported=0."
+				},
+				{
+					"q": "O Lychee aceita vários usuários?",
+					"a": "Sim. O admin adiciona usuários no menu Users, e os álbuns são compartilhados com eles somente para leitura ou com acesso total. Grupos de usuários e cotas de upload por usuário vêm com a Supporter Edition."
+				},
+				{
+					"q": "O Lychee aceita vídeos?",
+					"a": "Sim. O Lychee recebe vídeos junto com as fotos, nos formatos ogv, mp4, mpg, webm, mov, m4v, avi e wmv."
+				}
+			]
 		},
 		"ru": {
 			"description": "Фотогалерея, чтобы загружать, упорядочивать и показывать ваши фото",
-			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес."
+			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес.",
+			"sizing": "Lychee: умеренные требования — около 600 MB вместе с MariaDB; диск занимают ваши фото и уменьшенные копии каждого.",
+			"summary": "Self-hosted Lychee — фотогалерея с открытым кодом: альбомы, оценки звездами, карта и доступ по паролю. В один клик.",
+			"about": [
+				"Lychee — фотогалерея и приложение для управления фотографиями с открытым исходным кодом, которое запускают на своем сервере вместо Flickr. Вы загружаете фото в браузере, раскладываете их по альбомам и подальбомам, ставите теги и оцениваете от одной до пяти звезд. Lychee читает EXIF-данные каждого фото и показывает снимки с геотегом на карте. Альбом может быть публичным, закрытым паролем или доступным выбранным пользователям, а вы решаете, смогут ли посетители скачивать файлы.",
+				"Lychee разворачивают у себя (self-hosted), чтобы хранить фото в полном размере под своим контролем: Lychee сохраняет оригиналы без сжатия и не ограничивает объем хранилища. Подойдет и для портфолио фотографа, и для общих семейных альбомов. Подвох: фото лежат в собственной структуре папок, поэтому готовую библиотеку нужно импортировать, а не смотреть там, где она уже лежит."
+			],
+			"faq": [
+				{
+					"q": "Lychee бесплатный и с открытым исходным кодом?",
+					"a": "Да, Lychee бесплатный и выпускается под лицензией MIT. Платная Supporter Edition добавляет дополнительные возможности вроде статистики библиотеки, водяных знаков и защищенных ссылок на изображения, а ее код тоже открыт на GitHub под лицензией MIT."
+				},
+				{
+					"q": "Lychee — хорошая альтернатива Google Фото?",
+					"a": "Отчасти. Lychee закрывает просмотр и общий доступ: есть альбомы, лента по времени, карта и поиск. Сам по себе он не делает бэкап телефона: фото попадают в него загрузкой или командой импорта."
+				},
+				{
+					"q": "Как импортировать в Lychee уже имеющиеся фото?",
+					"a": "Загрузите их в браузере или запустите php artisan lychee:sync /path/to/import внутри контейнера Lychee: каждая папка станет альбомом. После импорта команда удаляет исходные файлы, если не добавить --delete_imported=0."
+				},
+				{
+					"q": "Поддерживает ли Lychee несколько пользователей?",
+					"a": "Да. Администратор добавляет пользователей в меню Users, а альбомами с ними делятся только для чтения или с полным доступом. Группы пользователей и квоты на загрузку для каждого пользователя входят в Supporter Edition."
+				},
+				{
+					"q": "Поддерживает ли Lychee видео?",
+					"a": "Да. Lychee принимает видео наряду с фото, в форматах ogv, mp4, mpg, webm, mov, m4v, avi и wmv."
+				}
+			]
 		},
 		"uk": {
 			"description": "Фотогалерея, щоб завантажувати, упорядковувати й показувати ваші фото",
-			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу."
+			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу.",
+			"sizing": "Lychee має помірні вимоги: близько 600 MB з MariaDB; диск — це ваші фото плюс зменшені копії кожного.",
+			"summary": "Self-hosted Lychee — фотогалерея з відкритим кодом: альбоми, оцінки зірками, мапа й доступ за паролем. В один клік.",
+			"about": [
+				"Lychee — фотогалерея й застосунок для керування фотографіями з відкритим вихідним кодом, який запускають на власному сервері замість Flickr. Ви завантажуєте фото в браузері, розкладаєте їх по альбомах і підальбомах, додаєте теги та оцінюєте від однієї до п’яти зірок. Lychee читає EXIF-дані кожного фото й показує знімки з геотегом на мапі. Альбом може бути публічним, закритим паролем або доступним обраним користувачам, а ви вирішуєте, чи зможуть відвідувачі завантажувати файли.",
+				"Lychee розгортають у себе (self-hosted), щоб тримати фото в повному розмірі під власним контролем: Lychee зберігає оригінали без стиснення й не обмежує обсяг сховища. Підійде і для портфоліо фотографа, і для спільних сімейних альбомів. Підвох: фото лежать у власній структурі папок, тому наявну бібліотеку треба імпортувати, а не переглядати там, де вона вже лежить."
+			],
+			"faq": [
+				{
+					"q": "Lychee безкоштовний і з відкритим вихідним кодом?",
+					"a": "Так, Lychee безкоштовний і виходить під ліцензією MIT. Платна Supporter Edition додає додаткові можливості на кшталт статистики бібліотеки, водяних знаків і захищених посилань на зображення, а її код теж відкритий на GitHub під ліцензією MIT."
+				},
+				{
+					"q": "Чи хороша Lychee альтернатива Google Фото?",
+					"a": "Почасти. Lychee закриває перегляд і спільний доступ: є альбоми, стрічка за часом, мапа та пошук. Сам по собі він не робить бекап телефона: фото потрапляють до нього завантаженням або командою імпорту."
+				},
+				{
+					"q": "Як імпортувати в Lychee наявні фото?",
+					"a": "Завантажте їх у браузері або запустіть php artisan lychee:sync /path/to/import усередині контейнера Lychee: кожна папка стане альбомом. Після імпорту команда видаляє вихідні файли, якщо не додати --delete_imported=0."
+				},
+				{
+					"q": "Чи підтримує Lychee кількох користувачів?",
+					"a": "Так. Адміністратор додає користувачів у меню Users, а альбомами з ними діляться лише для читання або з повним доступом. Групи користувачів і квоти на завантаження для кожного користувача входять до Supporter Edition."
+				},
+				{
+					"q": "Чи підтримує Lychee відео?",
+					"a": "Так. Lychee приймає відео нарівні з фото, у форматах ogv, mp4, mpg, webm, mov, m4v, avi та wmv."
+				}
+			]
 		}
 	}
 }

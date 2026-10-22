@@ -1,6 +1,13 @@
 {
 	"name": "Synapse",
 	"emoji": "💬",
+	"category": "community",
+	"alternatives": [
+		"Discord",
+		"Slack",
+		"Microsoft Teams"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "synapse",
 		"port": 8008
@@ -34,35 +41,259 @@
 	"texts": {
 		"en": {
 			"description": "Your own Matrix server: chat with anyone on Matrix, from Element or any other app",
-			"notes": "In Element (app.element.io) or any Matrix app, sign in on the server {host} with the username and password you gave: that account is the admin. Usernames are lowercase. Other people create their accounts on {host} with the registration token, REGISTRATION_TOKEN in the project’s .env. The password in .env is read only at the first start; change it in Element. The server name is this address for good, so give the project its final address before anyone joins. Other Matrix servers reach it at {host}, on port 443."
+			"notes": "In Element (app.element.io) or any Matrix app, sign in on the server {host} with the username and password you gave: that account is the admin. Usernames are lowercase. Other people create their accounts on {host} with the registration token, REGISTRATION_TOKEN in the project’s .env. The password in .env is read only at the first start; change it in Element. The server name is this address for good, so give the project its final address before anyone joins. Other Matrix servers reach it at {host}, on port 443.",
+			"sizing": "Synapse is light for a team's own rooms, about 300 MB, but joining big public rooms takes gigabytes of memory.",
+			"summary": "Synapse is an open-source Matrix homeserver, a self-hosted alternative to Discord and Slack. Run your own chat server in one click.",
+			"about": [
+				"Synapse is an open-source Matrix homeserver: the chat server people run for a community in place of Discord. Matrix works like email. Your users get addresses such as @anna:yourdomain, yet they can join rooms and message people on matrix.org or any other Matrix server. They chat from Element, FluffyChat or another Matrix app on the web, desktop and phones. Rooms can be end-to-end encrypted, and bridges connect them to other chat networks.",
+				"People self-host Synapse to keep accounts and message history on a machine they control, under their own domain, with no fee per user. It suits a family, a group of friends or a small team. The catch is the server name, the domain in every address: it is set at install and cannot be changed later, so choose it before anyone signs up."
+			],
+			"faq": [
+				{
+					"q": "Is Synapse free and open source?",
+					"a": "Yes. Synapse is free under the GNU Affero General Public License, version 3 or later, and Element also sells it under a commercial license. Element gives support only to paying subscribers."
+				},
+				{
+					"q": "Is Synapse the same as Element?",
+					"a": "No. Synapse is the server, and Element is one of the apps that sign in to it; the company Element makes both. FluffyChat, Cinny, Nheko and other Matrix clients work with Synapse too."
+				},
+				{
+					"q": "Is Matrix Synapse a good Discord alternative?",
+					"a": "For text chat, yes. matrix.org suggests Cinny, a Matrix app with a familiar layout, to people coming from Discord."
+				},
+				{
+					"q": "Can Synapse bridge to WhatsApp, Telegram or Discord?",
+					"a": "Yes, through Matrix bridges, which exist for WhatsApp, Telegram, Signal, Discord, Slack, IRC and many more. Each bridge is a separate program that Synapse registers as an application service, in its app_service_config_files setting."
+				},
+				{
+					"q": "How do people sign up on my Synapse server on Pethost?",
+					"a": "With a registration token: the template allows sign-up only with one, the REGISTRATION_TOKEN value in .env, which never expires and has no limit of uses. The admin is the account you name when deploying."
+				}
+			]
 		},
 		"de": {
 			"description": "Dein eigener Matrix-Server: chatte mit allen im Matrix-Netz, aus Element oder jeder anderen App",
-			"notes": "Melde dich in Element (app.element.io) oder einer anderen Matrix-App auf dem Server {host} mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Dieses Konto ist der Admin. Benutzernamen werden kleingeschrieben. Andere legen ihre Konten auf {host} mit dem Registrierungs-Token an, REGISTRATION_TOKEN in der .env des Projekts. Das Passwort aus der .env wird nur beim ersten Start gelesen; ändere es in Element. Der Servername ist für immer diese Adresse, also gib dem Projekt seine endgültige Adresse, bevor jemand beitritt. Andere Matrix-Server erreichen ihn unter {host}, Port 443."
+			"notes": "Melde dich in Element (app.element.io) oder einer anderen Matrix-App auf dem Server {host} mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Dieses Konto ist der Admin. Benutzernamen werden kleingeschrieben. Andere legen ihre Konten auf {host} mit dem Registrierungs-Token an, REGISTRATION_TOKEN in der .env des Projekts. Das Passwort aus der .env wird nur beim ersten Start gelesen; ändere es in Element. Der Servername ist für immer diese Adresse, also gib dem Projekt seine endgültige Adresse, bevor jemand beitritt. Andere Matrix-Server erreichen ihn unter {host}, Port 443.",
+			"sizing": "Synapse ist leicht für die Räume eines Teams, etwa 300 MB, doch der Beitritt zu großen öffentlichen Räumen braucht mehrere GB RAM.",
+			"summary": "Synapse selbst hosten: der Open-Source-Matrix-Homeserver, eine Alternative zu Discord und Slack. Dein eigener Chat-Server mit einem Klick.",
+			"about": [
+				"Synapse ist ein Open-Source-Matrix-Homeserver: der Chat-Server, den Leute für eine Community betreiben, statt Discord zu nutzen. Matrix funktioniert wie E-Mail. Wer ein Konto auf deinem Server hat, bekommt eine Adresse wie @anna:yourdomain, kann aber trotzdem Räumen beitreten und Leuten auf matrix.org oder jedem anderen Matrix-Server schreiben. Gechattet wird in Element, FluffyChat oder einer anderen Matrix-App im Web, auf dem Desktop und auf dem Handy. Räume können Ende-zu-Ende-verschlüsselt sein, und Bridges verbinden sie mit anderen Chat-Netzwerken.",
+				"Du hostest Synapse selbst, um Konten und Nachrichtenverlauf auf einer Maschine zu behalten, die du kontrollierst, unter deiner eigenen Domain und ohne Gebühr pro Person. Das passt zu einer Familie, einem Freundeskreis oder einem kleinen Team. Der Haken ist der Servername, die Domain in jeder Adresse: Er wird bei der Installation festgelegt und lässt sich später nicht mehr ändern, also wähl ihn, bevor sich jemand registriert."
+			],
+			"faq": [
+				{
+					"q": "Ist Synapse kostenlos und Open Source?",
+					"a": "Ja. Synapse ist kostenlos unter der GNU Affero General Public License, Version 3 oder neuer, und Element vertreibt es zusätzlich unter einer kommerziellen Lizenz. Support gibt es von Element nur mit einem bezahlten Abo."
+				},
+				{
+					"q": "Ist Synapse dasselbe wie Element?",
+					"a": "Nein. Synapse ist der Server, und Element ist eine der Apps, die sich bei ihm anmelden; beides stammt von der Firma Element. FluffyChat, Cinny, Nheko und andere Matrix-Clients funktionieren ebenfalls mit Synapse."
+				},
+				{
+					"q": "Ist Matrix Synapse eine gute Discord-Alternative?",
+					"a": "Für Textchat ja. matrix.org empfiehlt Leuten, die von Discord kommen, Cinny, eine Matrix-App mit vertrautem Aufbau."
+				},
+				{
+					"q": "Kann Synapse per Bridge mit WhatsApp, Telegram oder Discord verbunden werden?",
+					"a": "Ja, über Matrix-Bridges, die es für WhatsApp, Telegram, Signal, Discord, Slack, IRC und viele weitere gibt. Jede Bridge ist ein eigenes Programm, das Synapse in seiner Einstellung app_service_config_files als Application Service registriert."
+				},
+				{
+					"q": "Wie registrieren sich Leute auf meinem Synapse-Server, der bei Pethost läuft?",
+					"a": "Mit einem Registrierungs-Token: Die Vorlage erlaubt die Registrierung nur damit. Es ist der Wert REGISTRATION_TOKEN in der .env, läuft nie ab und lässt sich beliebig oft verwenden. Admin ist das Konto, das du beim Deploy angibst."
+				}
+			]
 		},
 		"es": {
 			"description": "Tu propio servidor de Matrix: chatea con cualquiera en Matrix, desde Element o cualquier otra app",
-			"notes": "En Element (app.element.io) o cualquier app de Matrix, inicia sesión en el servidor {host} con el nombre de usuario y la contraseña que indicaste: esa cuenta es la del administrador. Los nombres de usuario van en minúsculas. Las demás personas crean sus cuentas en {host} con el token de registro, REGISTRATION_TOKEN en el .env del proyecto. La contraseña de .env solo se lee en el primer arranque; cámbiala en Element. El nombre del servidor queda ligado a esta dirección para siempre, así que dale al proyecto su dirección definitiva antes de que entre nadie. Los demás servidores de Matrix lo encuentran en {host}, puerto 443."
+			"notes": "En Element (app.element.io) o cualquier app de Matrix, inicia sesión en el servidor {host} con el nombre de usuario y la contraseña que indicaste: esa cuenta es la del administrador. Los nombres de usuario van en minúsculas. Las demás personas crean sus cuentas en {host} con el token de registro, REGISTRATION_TOKEN en el .env del proyecto. La contraseña de .env solo se lee en el primer arranque; cámbiala en Element. El nombre del servidor queda ligado a esta dirección para siempre, así que dale al proyecto su dirección definitiva antes de que entre nadie. Los demás servidores de Matrix lo encuentran en {host}, puerto 443.",
+			"sizing": "Synapse es ligero para las salas de un equipo, unos 300 MB, pero unirse a salas públicas grandes pide varios GB de memoria.",
+			"summary": "Autoaloja Synapse, el homeserver de Matrix de código abierto y alternativa a Discord y Slack. Tu propio servidor de chat en un clic.",
+			"about": [
+				"Synapse es un homeserver de Matrix de código abierto: el servidor de chat que la gente monta para una comunidad en lugar de Discord. Matrix funciona como el correo electrónico. Quienes tienen una cuenta en tu servidor reciben una dirección como @anna:yourdomain y, aun así, pueden unirse a salas y escribir a personas en matrix.org o en cualquier otro servidor de Matrix. Chatean desde Element, FluffyChat u otra app de Matrix en la web, en el escritorio y en el teléfono. Las salas pueden tener cifrado de extremo a extremo, y los bridges las conectan con otras redes de chat.",
+				"Autoalojas Synapse para guardar las cuentas y el historial de mensajes en una máquina que controlas, bajo tu propio dominio y sin cobro por usuario. Sirve para una familia, un grupo de amigos o un equipo pequeño. El inconveniente es el nombre del servidor, el dominio de cada dirección: se fija al instalar y no se puede cambiar después, así que elígelo antes de que se registre nadie."
+			],
+			"faq": [
+				{
+					"q": "¿Synapse es gratis y de código abierto?",
+					"a": "Sí. Synapse es gratis bajo la GNU Affero General Public License, versión 3 o posterior, y Element también lo vende con una licencia comercial. Element da soporte solo a quienes pagan una suscripción."
+				},
+				{
+					"q": "¿Synapse es lo mismo que Element?",
+					"a": "No. Synapse es el servidor, y Element es una de las apps que inician sesión en él; la empresa Element hace ambos. FluffyChat, Cinny, Nheko y otros clientes de Matrix también funcionan con Synapse."
+				},
+				{
+					"q": "¿Matrix Synapse es una buena alternativa a Discord?",
+					"a": "Para el chat de texto, sí. matrix.org recomienda Cinny, una app de Matrix con un diseño familiar, a quienes vienen de Discord."
+				},
+				{
+					"q": "¿Synapse se puede conectar con WhatsApp, Telegram o Discord?",
+					"a": "Sí, mediante bridges de Matrix, que existen para WhatsApp, Telegram, Signal, Discord, Slack, IRC y muchos más. Cada bridge es un programa aparte que Synapse registra como application service, en su ajuste app_service_config_files."
+				},
+				{
+					"q": "¿Cómo se registra la gente en mi servidor Synapse en Pethost?",
+					"a": "Con un token de registro: la plantilla solo permite registrarse con uno, el valor REGISTRATION_TOKEN del .env, que nunca caduca y no tiene límite de usos. El administrador es la cuenta que indicas al desplegar."
+				}
+			]
 		},
 		"fr": {
 			"description": "Votre propre serveur Matrix : discutez avec tout le monde sur Matrix, depuis Element ou n’importe quelle autre app",
-			"notes": "Dans Element (app.element.io) ou n’importe quelle app Matrix, connectez-vous au serveur {host} avec le nom d’utilisateur et le mot de passe que vous avez choisis : ce compte est l’administrateur. Les noms d’utilisateur sont en minuscules. Les autres créent leur compte sur {host} avec le jeton d’inscription, REGISTRATION_TOKEN dans le .env du projet. Le mot de passe du .env n’est lu qu’au premier démarrage ; changez-le dans Element. Le nom du serveur reste cette adresse pour toujours : donnez au projet son adresse définitive avant que quiconque le rejoigne. Les autres serveurs Matrix le joignent à l’adresse {host}, port 443."
+			"notes": "Dans Element (app.element.io) ou n’importe quelle app Matrix, connectez-vous au serveur {host} avec le nom d’utilisateur et le mot de passe que vous avez choisis : ce compte est l’administrateur. Les noms d’utilisateur sont en minuscules. Les autres créent leur compte sur {host} avec le jeton d’inscription, REGISTRATION_TOKEN dans le .env du projet. Le mot de passe du .env n’est lu qu’au premier démarrage ; changez-le dans Element. Le nom du serveur reste cette adresse pour toujours : donnez au projet son adresse définitive avant que quiconque le rejoigne. Les autres serveurs Matrix le joignent à l’adresse {host}, port 443.",
+			"sizing": "Synapse est léger pour les salons d’une équipe, environ 300 MB, mais rejoindre de grands salons publics prend des GB de mémoire.",
+			"summary": "Auto-hébergez Synapse, le homeserver Matrix open source et alternative à Discord et Slack. Votre propre serveur de discussion en un clic.",
+			"about": [
+				"Synapse est un homeserver Matrix open source : le serveur de discussion que des gens montent pour une communauté à la place de Discord. Matrix fonctionne comme le courrier électronique. Vos utilisateurs ont des adresses comme @anna:yourdomain, et peuvent pourtant rejoindre des salons et écrire à des gens sur matrix.org ou sur n’importe quel autre serveur Matrix. Ils discutent depuis Element, FluffyChat ou une autre app Matrix, sur le web, sur ordinateur et sur téléphone. Les salons peuvent être chiffrés de bout en bout, et des bridges les relient à d’autres réseaux de discussion.",
+				"Vous auto-hébergez Synapse pour garder les comptes et l’historique des messages sur une machine que vous contrôlez, sous votre propre domaine, sans frais par utilisateur. Il convient à une famille, à un groupe d’amis ou à une petite équipe. Le hic, c’est le nom du serveur, le domaine de chaque adresse : il est fixé à l’installation et ne peut plus être changé ensuite, alors choisissez-le avant que quiconque s’inscrive."
+			],
+			"faq": [
+				{
+					"q": "Synapse est-il gratuit et open source ?",
+					"a": "Oui. Synapse est gratuit, sous licence GNU Affero General Public License version 3 ou ultérieure, et Element le vend aussi sous licence commerciale. Element n’assure le support qu’aux personnes qui paient un abonnement."
+				},
+				{
+					"q": "Synapse, est-ce la même chose qu’Element ?",
+					"a": "Non. Synapse est le serveur, et Element est l’une des apps qui s’y connectent ; l’entreprise Element fait les deux. FluffyChat, Cinny, Nheko et d’autres clients Matrix fonctionnent aussi avec Synapse."
+				},
+				{
+					"q": "Matrix Synapse est-il une bonne alternative à Discord ?",
+					"a": "Pour la discussion écrite, oui. matrix.org suggère Cinny, une app Matrix à la présentation familière, aux personnes qui viennent de Discord."
+				},
+				{
+					"q": "Synapse peut-il se relier à WhatsApp, Telegram ou Discord ?",
+					"a": "Oui, grâce aux bridges Matrix, qui existent pour WhatsApp, Telegram, Signal, Discord, Slack, IRC et bien d’autres. Chaque bridge est un programme à part que Synapse enregistre comme application service, dans son réglage app_service_config_files."
+				},
+				{
+					"q": "Comment les gens s’inscrivent-ils sur mon serveur Synapse chez Pethost ?",
+					"a": "Avec un token d’inscription : le template n’autorise l’inscription qu’avec lui, c’est la valeur REGISTRATION_TOKEN du .env, qui n’expire jamais et n’a pas de limite d’utilisations. L’administrateur est le compte que vous nommez au déploiement."
+				}
+			]
 		},
 		"pl": {
 			"description": "Twój własny serwer Matrix: rozmawiaj z każdym w Matrix, z Elementu lub dowolnej innej aplikacji",
-			"notes": "W Elemencie (app.element.io) lub dowolnej aplikacji Matrix zaloguj się na serwerze {host} nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: to konto jest administratorem. Nazwy użytkowników są pisane małymi literami. Pozostali zakładają konta na {host} z tokenem rejestracji, REGISTRATION_TOKEN w pliku .env projektu. Hasło z .env jest odczytywane tylko przy pierwszym starcie; zmienisz je w Elemencie. Nazwa serwera to na zawsze ten adres, więc nadaj projektowi docelowy adres, zanim ktokolwiek dołączy. Inne serwery Matrix łączą się z nim pod {host}, port 443."
+			"notes": "W Elemencie (app.element.io) lub dowolnej aplikacji Matrix zaloguj się na serwerze {host} nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: to konto jest administratorem. Nazwy użytkowników są pisane małymi literami. Pozostali zakładają konta na {host} z tokenem rejestracji, REGISTRATION_TOKEN w pliku .env projektu. Hasło z .env jest odczytywane tylko przy pierwszym starcie; zmienisz je w Elemencie. Nazwa serwera to na zawsze ten adres, więc nadaj projektowi docelowy adres, zanim ktokolwiek dołączy. Inne serwery Matrix łączą się z nim pod {host}, port 443.",
+			"sizing": "Synapse ma małe wymagania dla pokoi zespołu, około 300 MB, ale dołączenie do dużych publicznych pokoi zjada gigabajty pamięci.",
+			"summary": "Hostuj Synapse u siebie: homeserver Matrix open source, alternatywa dla Discorda i Slacka. Własny serwer czatu w jeden klik.",
+			"about": [
+				"Synapse to homeserver Matrix open source: serwer czatu, który ludzie stawiają dla społeczności zamiast Discorda. Matrix działa jak poczta e-mail. Użytkownicy dostają adresy w rodzaju @anna:yourdomain, a mimo to mogą dołączać do pokoi i pisać do ludzi na matrix.org albo na dowolnym innym serwerze Matrix. Rozmawiają przez Element, FluffyChat lub inną aplikację Matrix: w przeglądarce, na komputerze i na telefonie. Pokoje mogą mieć szyfrowanie end-to-end, a mosty łączą je z innymi sieciami czatu.",
+				"Hostujesz Synapse u siebie, żeby trzymać konta i historię wiadomości na maszynie, którą kontrolujesz, pod własną domeną i bez opłaty za każdego użytkownika. Pasuje do rodziny, grupy przyjaciół albo małego zespołu. Haczyk: nazwa serwera, czyli domena w każdym adresie, jest ustawiana przy instalacji i nie można jej później zmienić, więc wybierz ją, zanim ktokolwiek się zarejestruje."
+			],
+			"faq": [
+				{
+					"q": "Czy Synapse jest darmowy i open source?",
+					"a": "Tak. Synapse jest darmowy na licencji GNU Affero General Public License w wersji 3 lub nowszej, a Element sprzedaje go także na licencji komercyjnej. Wsparcia Element udziela tylko osobom z płatną subskrypcją."
+				},
+				{
+					"q": "Czy Synapse to to samo co Element?",
+					"a": "Nie. Synapse to serwer, a Element to jedna z aplikacji, które się do niego logują; oba produkty tworzy firma Element. FluffyChat, Cinny, Nheko i inne aplikacje Matrix też działają z Synapse."
+				},
+				{
+					"q": "Czy Matrix Synapse to dobra alternatywa dla Discorda?",
+					"a": "Do czatu tekstowego tak. Osobom przechodzącym z Discorda matrix.org poleca Cinny, aplikację Matrix o znajomym układzie."
+				},
+				{
+					"q": "Czy Synapse można połączyć z WhatsAppem, Telegramem lub Discordem?",
+					"a": "Tak, przez mosty Matrix, zwane też bridge’ami: są dla WhatsAppa, Telegrama, Signala, Discorda, Slacka, IRC i wielu innych. Każdy most to osobny program, który Synapse rejestruje jako application service w ustawieniu app_service_config_files."
+				},
+				{
+					"q": "Jak ludzie zakładają konta na moim serwerze Synapse działającym na Pethost?",
+					"a": "Z tokenem rejestracji: szablon pozwala na rejestrację tylko z tokenem, czyli wartością REGISTRATION_TOKEN w .env, która nigdy nie wygasa i nie ma limitu użyć. Administratorem jest konto, które podasz przy wdrożeniu."
+				}
+			]
 		},
 		"pt": {
 			"description": "Seu próprio servidor Matrix: converse com qualquer pessoa no Matrix, pelo Element ou qualquer outro app",
-			"notes": "No Element (app.element.io) ou em qualquer app do Matrix, entre no servidor {host} com o usuário e a senha que você definiu: essa conta é a do administrador. Os nomes de usuário ficam em minúsculas. As outras pessoas criam a conta em {host} com o token de cadastro, REGISTRATION_TOKEN no .env do projeto. A senha do .env só é lida na primeira inicialização; troque-a no Element. O nome do servidor fica preso a este endereço para sempre, então dê ao projeto o endereço definitivo antes que alguém entre. Os outros servidores Matrix o encontram em {host}, porta 443."
+			"notes": "No Element (app.element.io) ou em qualquer app do Matrix, entre no servidor {host} com o usuário e a senha que você definiu: essa conta é a do administrador. Os nomes de usuário ficam em minúsculas. As outras pessoas criam a conta em {host} com o token de cadastro, REGISTRATION_TOKEN no .env do projeto. A senha do .env só é lida na primeira inicialização; troque-a no Element. O nome do servidor fica preso a este endereço para sempre, então dê ao projeto o endereço definitivo antes que alguém entre. Os outros servidores Matrix o encontram em {host}, porta 443.",
+			"sizing": "Synapse é leve para as salas de uma equipe, cerca de 300 MB, mas entrar em salas públicas grandes exige vários GB de memória.",
+			"summary": "Hospede o Synapse por conta própria: homeserver Matrix de código aberto e alternativa ao Discord e ao Slack. Seu servidor de chat em um clique.",
+			"about": [
+				"O Synapse é um homeserver Matrix de código aberto: o servidor de chat que as pessoas montam para uma comunidade no lugar do Discord. O Matrix funciona como o e-mail. Os usuários do seu servidor recebem endereços como @anna:yourdomain e, mesmo assim, podem entrar em salas e mandar mensagem para pessoas no matrix.org ou em qualquer outro servidor Matrix. Eles conversam pelo Element, pelo FluffyChat ou por outro app Matrix, na web, no desktop e no celular. As salas podem ter criptografia de ponta a ponta, e as bridges as conectam a outras redes de chat.",
+				"Você hospeda o Synapse por conta própria para manter contas e histórico de mensagens em uma máquina que você controla, sob o seu próprio domínio e sem cobrança por usuário. Serve para uma família, um grupo de amigos ou uma equipe pequena. O porém é o nome do servidor, o domínio de todo endereço: ele é definido na instalação e não pode ser mudado depois, então escolha o nome antes que qualquer pessoa se cadastre."
+			],
+			"faq": [
+				{
+					"q": "O Synapse é gratuito e de código aberto?",
+					"a": "Sim. O Synapse é gratuito sob a GNU Affero General Public License, versão 3 ou posterior, e a Element também o vende sob uma licença comercial. A Element só dá suporte a quem paga uma assinatura."
+				},
+				{
+					"q": "O Synapse é a mesma coisa que o Element?",
+					"a": "Não. O Synapse é o servidor, e o Element é um dos apps que entram nele; a empresa Element faz os dois. O FluffyChat, o Cinny, o Nheko e outros clientes Matrix também funcionam com o Synapse."
+				},
+				{
+					"q": "O Matrix Synapse é uma boa alternativa ao Discord?",
+					"a": "Para chat de texto, sim. O matrix.org sugere o Cinny, um app Matrix com um layout familiar, para quem vem do Discord."
+				},
+				{
+					"q": "O Synapse pode fazer bridge com WhatsApp, Telegram ou Discord?",
+					"a": "Sim, por meio das bridges do Matrix, que existem para WhatsApp, Telegram, Signal, Discord, Slack, IRC e muitos outros. Cada bridge é um programa separado que o Synapse registra como application service, na configuração app_service_config_files."
+				},
+				{
+					"q": "Como as pessoas se cadastram no meu servidor Synapse no Pethost?",
+					"a": "Com um token de cadastro: o template só permite o cadastro com ele, o valor REGISTRATION_TOKEN no .env, que nunca expira e não tem limite de usos. O admin é a conta que você informa no deploy."
+				}
+			]
 		},
 		"ru": {
 			"description": "Свой сервер Matrix: переписывайтесь с кем угодно в Matrix из Element или любого другого приложения",
-			"notes": "В Element (app.element.io) или любом приложении Matrix войдите на сервер {host} с именем пользователя и паролем, которые вы задали: этот аккаунт администратора. Имена пользователей пишутся строчными буквами. Остальные заводят аккаунты на {host} с токеном регистрации, REGISTRATION_TOKEN в .env проекта. Пароль из .env читается только при первом запуске; меняется он в Element. Имя сервера навсегда остаётся этим адресом, так что дайте проекту окончательный адрес до того, как кто-то зарегистрируется. Другие серверы Matrix находят его по адресу {host}, порт 443."
+			"notes": "В Element (app.element.io) или любом приложении Matrix войдите на сервер {host} с именем пользователя и паролем, которые вы задали: этот аккаунт администратора. Имена пользователей пишутся строчными буквами. Остальные заводят аккаунты на {host} с токеном регистрации, REGISTRATION_TOKEN в .env проекта. Пароль из .env читается только при первом запуске; меняется он в Element. Имя сервера навсегда остаётся этим адресом, так что дайте проекту окончательный адрес до того, как кто-то зарегистрируется. Другие серверы Matrix находят его по адресу {host}, порт 443.",
+			"sizing": "Synapse: для комнат команды небольшие требования, около 300 MB, но вход в большие публичные комнаты съедает гигабайты памяти.",
+			"summary": "Self-hosted Synapse — open source homeserver Matrix, альтернатива Discord и Slack. Свой чат-сервер в один клик.",
+			"about": [
+				"Synapse — это open source homeserver Matrix: чат-сервер, который люди поднимают для сообщества вместо Discord. Matrix работает как электронная почта. У пользователей вашего сервера адреса вроде @anna:yourdomain, но они все равно могут заходить в комнаты и писать людям на matrix.org или на любом другом сервере Matrix. Общаются они в Element, FluffyChat или другом приложении Matrix в вебе, на компьютере и на телефоне. Комнаты могут быть со сквозным шифрованием, а мосты соединяют их с другими чат-сетями.",
+				"Synapse хостят у себя, чтобы держать аккаунты и историю сообщений на машине, которую вы контролируете, под собственным доменом и без платы за каждого пользователя. Он подходит семье, компании друзей или небольшой команде. Но есть нюанс: имя сервера, то есть домен в каждом адресе, задается при установке и позже не меняется, поэтому выберите его до того, как кто-то зарегистрируется."
+			],
+			"faq": [
+				{
+					"q": "Synapse бесплатный и с открытым исходным кодом?",
+					"a": "Да. Synapse бесплатный, под лицензией GNU Affero General Public License версии 3 или новее, а Element продает его еще и по коммерческой лицензии. Поддержку Element оказывает только тем, кто платит за подписку."
+				},
+				{
+					"q": "Synapse — это то же самое, что Element?",
+					"a": "Нет. Synapse — это сервер, а Element — одно из приложений, которые подключаются к нему; и то и другое делает компания Element. FluffyChat, Cinny, Nheko и другие клиенты Matrix тоже работают с Synapse."
+				},
+				{
+					"q": "Matrix Synapse — хорошая альтернатива Discord?",
+					"a": "Для текстового чата да. Тем, кто переходит с Discord, matrix.org советует Cinny — приложение Matrix с привычным интерфейсом."
+				},
+				{
+					"q": "Можно ли соединить Synapse с WhatsApp, Telegram или Discord?",
+					"a": "Да, через мосты Matrix (bridges): они есть для WhatsApp, Telegram, Signal, Discord, Slack, IRC и многого другого. Каждый мост — отдельная программа, которую Synapse регистрирует как application service в настройке app_service_config_files."
+				},
+				{
+					"q": "Как люди регистрируются на моем сервере Synapse в Pethost?",
+					"a": "По токену регистрации: шаблон разрешает регистрацию только с ним, это значение REGISTRATION_TOKEN в .env, которое никогда не истекает и не ограничено числом использований. Администратором становится аккаунт, который вы указываете при деплое."
+				}
+			]
 		},
 		"uk": {
 			"description": "Власний сервер Matrix: листуйтеся з ким завгодно в Matrix з Element чи будь-якого іншого застосунку",
-			"notes": "В Element (app.element.io) чи будь-якому застосунку Matrix увійдіть на сервер {host} з іменем користувача й паролем, які ви вказали: цей акаунт адміністратора. Імена користувачів пишуться малими літерами. Інші створюють акаунти на {host} з токеном реєстрації, REGISTRATION_TOKEN у .env проєкту. Пароль із .env читається лише під час першого запуску; змінюють його в Element. Ім’я сервера назавжди лишається цією адресою, тож дайте проєкту остаточну адресу, перш ніж хтось зареєструється. Інші сервери Matrix знаходять його за адресою {host}, порт 443."
+			"notes": "В Element (app.element.io) чи будь-якому застосунку Matrix увійдіть на сервер {host} з іменем користувача й паролем, які ви вказали: цей акаунт адміністратора. Імена користувачів пишуться малими літерами. Інші створюють акаунти на {host} з токеном реєстрації, REGISTRATION_TOKEN у .env проєкту. Пароль із .env читається лише під час першого запуску; змінюють його в Element. Ім’я сервера назавжди лишається цією адресою, тож дайте проєкту остаточну адресу, перш ніж хтось зареєструється. Інші сервери Matrix знаходять його за адресою {host}, порт 443.",
+			"sizing": "Synapse має скромні вимоги для кімнат команди, близько 300 MB, але приєднання до великих публічних кімнат бере гігабайти пам’яті.",
+			"summary": "Self-hosted Synapse — homeserver Matrix з відкритим кодом, альтернатива Discord і Slack. Власний чат-сервер в один клік.",
+			"about": [
+				"Synapse — це homeserver Matrix з відкритим кодом: чат-сервер, який люди хостять для спільноти замість Discord. Matrix працює як електронна пошта. У користувачів вашого сервера адреси на кшталт @anna:yourdomain, але вони однаково можуть заходити в кімнати й писати людям на matrix.org чи на будь-якому іншому сервері Matrix. Спілкуються вони в Element, FluffyChat чи іншому застосунку Matrix у вебі, на комп’ютері й на телефоні. Кімнати можуть мати наскрізне шифрування, а мости з’єднують їх з іншими чат-мережами.",
+				"Synapse хостять у себе, щоб тримати акаунти та історію повідомлень на машині, яку ви контролюєте, під власним доменом і без плати за кожного користувача. Він підходить родині, компанії друзів або невеликій команді. Але є нюанс: ім’я сервера, тобто домен у кожній адресі, задається під час встановлення й пізніше не змінюється, тож виберіть його до того, як хтось зареєструється."
+			],
+			"faq": [
+				{
+					"q": "Synapse безкоштовний і з відкритим кодом?",
+					"a": "Так. Synapse безкоштовний, за ліцензією GNU Affero General Public License версії 3 або новішої, а Element продає його ще й за комерційною ліцензією. Підтримку Element надає лише тим, хто оплачує передплату."
+				},
+				{
+					"q": "Synapse — це те саме, що Element?",
+					"a": "Ні. Synapse — це сервер, а Element — один із застосунків, які до нього підключаються; і те, і те робить компанія Element. FluffyChat, Cinny, Nheko та інші клієнти Matrix теж працюють із Synapse."
+				},
+				{
+					"q": "Matrix Synapse — гарна альтернатива Discord?",
+					"a": "Для текстового чату так. Тим, хто переходить із Discord, matrix.org радить Cinny — застосунок Matrix зі звичним виглядом."
+				},
+				{
+					"q": "Чи можна поєднати Synapse з WhatsApp, Telegram або Discord?",
+					"a": "Так, через мости Matrix (bridges): вони є для WhatsApp, Telegram, Signal, Discord, Slack, IRC та багатьох інших. Кожен міст — окрема програма, яку Synapse реєструє як application service у налаштуванні app_service_config_files."
+				},
+				{
+					"q": "Як люди реєструються на моєму сервері Synapse в Pethost?",
+					"a": "За токеном реєстрації: шаблон дозволяє реєстрацію лише з ним, це значення REGISTRATION_TOKEN у .env, яке ніколи не спливає й не обмежене кількістю використань. Адміністратором стає акаунт, який ви вказуєте під час деплою."
+				}
+			]
 		}
 	}
 }

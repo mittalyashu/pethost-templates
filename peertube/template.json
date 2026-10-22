@@ -1,6 +1,13 @@
 {
 	"name": "PeerTube",
 	"emoji": "📺",
+	"category": "media",
+	"alternatives": [
+		"YouTube",
+		"Vimeo",
+		"Dailymotion"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "peertube",
 		"port": 9000
@@ -30,35 +37,259 @@
 	"texts": {
 		"en": {
 			"description": "Your own video platform in the fediverse: upload, stream and share videos",
-			"notes": "Sign in as root with the admin password you gave; PeerTube reads it only at the first start. Sign-ups are closed until you enable them in the admin’s configuration, under General. PeerTube sends no email until SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD and SMTP_FROM are in the project’s .env and the project restarts. Videos are tied to this address for good, so give the project its final address before you upload. Transcoding takes the machine’s CPU while it runs. Videos and the config are kept in /data and /config."
+			"notes": "Sign in as root with the admin password you gave; PeerTube reads it only at the first start. Sign-ups are closed until you enable them in the admin’s configuration, under General. PeerTube sends no email until SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD and SMTP_FROM are in the project’s .env and the project restarts. Videos are tied to this address for good, so give the project its final address before you upload. Transcoding takes the machine’s CPU while it runs. Videos and the config are kept in /data and /config.",
+			"sizing": "PeerTube is heavy: transcoding each upload takes every core for minutes, and an hour of video takes gigabytes.",
+			"summary": "PeerTube is an open-source, federated YouTube alternative for your videos and live streams. Self-host it on your own machine in one click.",
+			"about": [
+				"PeerTube is an open-source video platform, a federated alternative to YouTube that runs on your own server. You upload videos, sort them into channels and playlists, and go live from OBS or any RTMP software. Each instance speaks ActivityPub, so people follow your channels from Mastodon or by RSS, with no account on your site. Viewers share the load with each other over WebRTC, and friendly instances can cache each other's videos.",
+				"People self-host PeerTube to own their videos and their audience: no ads, no tracking, and moderation rules of their own. The admin decides who may sign up and how much each user may upload. It suits a creator, a school or a community that wants a video site of its own. The catch is transcoding: every upload is re-encoded, which takes CPU time, and each extra resolution you enable adds more work and disk."
+			],
+			"faq": [
+				{
+					"q": "Is PeerTube free and open source?",
+					"a": "Yes. PeerTube is free software under the AGPL-3.0 licence, developed by Framasoft, a French non-profit. Anyone can install it on a server and domain of their own."
+				},
+				{
+					"q": "Is PeerTube a good YouTube alternative?",
+					"a": "For hosting your own videos, yes: uploads, channels, playlists and live streams, with no ads or tracking. Framasoft says plainly it is not meant to replace YouTube; its audience comes through federation rather than one central site."
+				},
+				{
+					"q": "Can I import videos from YouTube to PeerTube?",
+					"a": "Yes, once the admin enables it. A video can be imported by its URL from sites youtube-dl supports, or from a torrent, and channel synchronization copies a YouTube, Dailymotion or Vimeo channel, then checks it hourly for new videos."
+				},
+				{
+					"q": "Does PeerTube have a mobile app?",
+					"a": "Yes. The official PeerTube app is on the App Store, Google Play and F-Droid. It browses videos across the federation, saves them to watch offline, and publishes and manages your own videos."
+				},
+				{
+					"q": "Can I change the domain of a PeerTube instance?",
+					"a": "Not officially. PeerTube's docs say it does not support changing its host, so the domain is final after the first start. Give the project its final address, your own domain or a name under yourname.pethost.app, before you upload."
+				}
+			]
 		},
 		"de": {
 			"description": "Deine eigene Videoplattform im Fediverse: Videos hochladen, streamen und teilen",
-			"notes": "Melde dich als root mit dem angegebenen Admin-Passwort an; PeerTube liest es nur beim ersten Start. Registrierungen sind geschlossen, bis du sie in der Konfiguration der Administration unter Allgemein aktivierst. PeerTube verschickt keine E-Mails, bis SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD und SMTP_FROM in der .env des Projekts stehen und das Projekt neu startet. Videos sind für immer an diese Adresse gebunden, also gib dem Projekt seine endgültige Adresse, bevor du hochlädst. Das Transkodieren belegt, solange es läuft, die CPU der Maschine. Videos und Konfiguration bleiben in /data und /config erhalten."
+			"notes": "Melde dich als root mit dem angegebenen Admin-Passwort an; PeerTube liest es nur beim ersten Start. Registrierungen sind geschlossen, bis du sie in der Konfiguration der Administration unter Allgemein aktivierst. PeerTube verschickt keine E-Mails, bis SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD und SMTP_FROM in der .env des Projekts stehen und das Projekt neu startet. Videos sind für immer an diese Adresse gebunden, also gib dem Projekt seine endgültige Adresse, bevor du hochlädst. Das Transkodieren belegt, solange es läuft, die CPU der Maschine. Videos und Konfiguration bleiben in /data und /config erhalten.",
+			"sizing": "PeerTube ist schwer: Das Transcodieren jedes Uploads beansprucht minutenlang alle Kerne, und eine Stunde Video braucht mehrere GB.",
+			"summary": "PeerTube selbst hosten: föderierte Open-Source-Alternative zu YouTube für deine Videos und Livestreams. Auf deiner eigenen Maschine, in einem Klick.",
+			"about": [
+				"PeerTube ist eine Open-Source-Videoplattform, eine föderierte Alternative zu YouTube, die auf deiner eigenen Maschine läuft. Du lädst Videos hoch, sortierst sie in Kanäle und Playlists und gehst mit OBS oder jeder RTMP-Software live. Jede Instanz spricht ActivityPub, deshalb folgen Leute deinen Kanälen von Mastodon aus oder per RSS, ohne Konto auf deiner Seite. Zuschauer teilen sich die Last über WebRTC gegenseitig auf, und befreundete Instanzen können die Videos der jeweils anderen zwischenspeichern.",
+				"Du hostest PeerTube selbst, damit deine Videos und dein Publikum dir gehören: keine Werbung, kein Tracking und eigene Moderationsregeln. Der Admin entscheidet, wer sich registrieren darf und wie viel jeder Nutzer hochladen darf. Das passt für Creator, Schulen und Communitys, die eine eigene Videoseite haben wollen. Der Haken ist die Transkodierung: Jeder Upload wird neu kodiert, das kostet CPU-Zeit, und jede zusätzliche Auflösung, die du aktivierst, macht mehr Arbeit und belegt mehr Platz auf der Disk."
+			],
+			"faq": [
+				{
+					"q": "Ist PeerTube kostenlos und Open Source?",
+					"a": "Ja. PeerTube ist freie Software unter der AGPL-3.0-Lizenz und wird von Framasoft entwickelt, einer französischen Non-Profit-Organisation. Jeder kann es auf einem eigenen Server und mit einer eigenen Domain installieren."
+				},
+				{
+					"q": "Ist PeerTube eine gute YouTube-Alternative?",
+					"a": "Um eigene Videos zu hosten, ja: Uploads, Kanäle, Playlists und Livestreams, ohne Werbung und Tracking. Framasoft sagt offen, dass PeerTube YouTube nicht ersetzen soll; sein Publikum kommt über die Föderation statt über eine zentrale Seite."
+				},
+				{
+					"q": "Kann ich Videos von YouTube zu PeerTube importieren?",
+					"a": "Ja, sobald der Admin das aktiviert hat. Ein Video lässt sich per URL von Seiten importieren, die youtube-dl unterstützt, oder aus einem Torrent, und die Kanalsynchronisierung kopiert einen YouTube-, Dailymotion- oder Vimeo-Kanal und prüft ihn danach stündlich auf neue Videos."
+				},
+				{
+					"q": "Hat PeerTube eine App fürs Handy?",
+					"a": "Ja. Die offizielle PeerTube-App gibt es im App Store, bei Google Play und auf F-Droid. Sie durchsucht Videos über die ganze Föderation hinweg, speichert sie zum Offline-Ansehen und veröffentlicht und verwaltet deine eigenen Videos."
+				},
+				{
+					"q": "Kann ich die Domain einer PeerTube-Instanz ändern?",
+					"a": "Offiziell nicht. Laut der Dokumentation von PeerTube wird das Ändern des Hosts nicht unterstützt, die Domain ist also nach dem ersten Start endgültig. Gib dem Projekt vor dem Hochladen seine endgültige Adresse, deine eigene Domain oder einen Namen unter deinname.pethost.app."
+				}
+			]
 		},
 		"es": {
 			"description": "Tu propia plataforma de vídeo en el fediverso: sube, transmite y comparte vídeos",
-			"notes": "Entra como root con la contraseña de administrador que indicaste; PeerTube solo la lee en el primer arranque. Los registros están cerrados hasta que los actives en la configuración de administración, en General. PeerTube no envía correos hasta que SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD y SMTP_FROM estén en el .env del proyecto y el proyecto se reinicie. Los vídeos quedan ligados a esta dirección para siempre, así que da al proyecto su dirección definitiva antes de subir nada. La transcodificación ocupa la CPU de la máquina mientras dura. Los vídeos y la configuración se conservan en /data y /config."
+			"notes": "Entra como root con la contraseña de administrador que indicaste; PeerTube solo la lee en el primer arranque. Los registros están cerrados hasta que los actives en la configuración de administración, en General. PeerTube no envía correos hasta que SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD y SMTP_FROM estén en el .env del proyecto y el proyecto se reinicie. Los vídeos quedan ligados a esta dirección para siempre, así que da al proyecto su dirección definitiva antes de subir nada. La transcodificación ocupa la CPU de la máquina mientras dura. Los vídeos y la configuración se conservan en /data y /config.",
+			"sizing": "PeerTube es pesado: transcodificar cada subida ocupa todos los núcleos durante minutos, y una hora de video ocupa varios GB.",
+			"summary": "Autoaloja PeerTube, la alternativa federada y de código abierto a YouTube para tus vídeos y transmisiones en vivo. En tu máquina, en un clic.",
+			"about": [
+				"PeerTube es una plataforma de vídeo de código abierto, una alternativa federada a YouTube que funciona en tu propia máquina. Subes vídeos, los organizas en canales y listas de reproducción, y transmites en vivo desde OBS o cualquier software RTMP. Cada instancia habla ActivityPub, así que la gente sigue tus canales desde Mastodon o por RSS, sin cuenta en tu sitio. Los espectadores se reparten la carga entre ellos mediante WebRTC, y las instancias amigas pueden guardar en caché los vídeos de las demás.",
+				"Autoalojas PeerTube para ser dueño de tus vídeos y de tu audiencia: sin anuncios, sin rastreo y con tus propias reglas de moderación. El administrador decide quién puede registrarse y cuánto puede subir cada usuario. Encaja con un creador, una escuela o una comunidad que quiere un sitio de vídeo propio. El inconveniente es la transcodificación: cada vídeo subido se recodifica, lo que consume tiempo de CPU, y cada resolución adicional que actives suma más trabajo y más disco."
+			],
+			"faq": [
+				{
+					"q": "¿PeerTube es gratis y de código abierto?",
+					"a": "Sí. PeerTube es software libre con licencia AGPL-3.0, desarrollado por Framasoft, una organización francesa sin ánimo de lucro. Cualquiera puede instalarlo en un servidor y un dominio propios."
+				},
+				{
+					"q": "¿PeerTube es una buena alternativa a YouTube?",
+					"a": "Para alojar tus propios vídeos, sí: subidas, canales, listas de reproducción y transmisiones en vivo, sin anuncios ni rastreo. Framasoft dice con claridad que no pretende reemplazar a YouTube; su audiencia llega por la federación y no por un único sitio central."
+				},
+				{
+					"q": "¿Puedo importar vídeos de YouTube a PeerTube?",
+					"a": "Sí, cuando el administrador lo activa. Se puede importar un vídeo por su URL desde los sitios que admite youtube-dl, o desde un torrent, y la sincronización de canales copia un canal de YouTube, Dailymotion o Vimeo y después revisa cada hora si hay vídeos nuevos."
+				},
+				{
+					"q": "¿PeerTube tiene aplicación móvil?",
+					"a": "Sí. La aplicación oficial de PeerTube está en App Store, Google Play y F-Droid. Explora vídeos de toda la federación, los guarda para verlos sin conexión y publica y administra tus propios vídeos."
+				},
+				{
+					"q": "¿Puedo cambiar el dominio de una instancia de PeerTube?",
+					"a": "Oficialmente no. La documentación de PeerTube dice que no admite cambiar su host, así que el dominio es definitivo tras el primer arranque. Dale al proyecto su dirección definitiva, tu propio dominio o un nombre bajo tunombre.pethost.app, antes de subir nada."
+				}
+			]
 		},
 		"fr": {
 			"description": "Votre propre plateforme vidéo dans le fédivers : publiez, diffusez et partagez des vidéos",
-			"notes": "Connectez-vous en tant que root avec le mot de passe administrateur indiqué ; PeerTube ne le lit qu’au premier démarrage. Les inscriptions sont fermées tant que vous ne les activez pas dans la configuration de l’administration, sous Général. PeerTube n’envoie aucun e-mail tant que SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD et SMTP_FROM ne sont pas dans le .env du projet et que le projet n’a pas redémarré. Les vidéos restent liées à cette adresse pour de bon : donnez au projet son adresse définitive avant d’en publier. Le transcodage occupe le CPU de la machine pendant qu’il tourne. Les vidéos et la configuration sont conservées dans /data et /config."
+			"notes": "Connectez-vous en tant que root avec le mot de passe administrateur indiqué ; PeerTube ne le lit qu’au premier démarrage. Les inscriptions sont fermées tant que vous ne les activez pas dans la configuration de l’administration, sous Général. PeerTube n’envoie aucun e-mail tant que SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD et SMTP_FROM ne sont pas dans le .env du projet et que le projet n’a pas redémarré. Les vidéos restent liées à cette adresse pour de bon : donnez au projet son adresse définitive avant d’en publier. Le transcodage occupe le CPU de la machine pendant qu’il tourne. Les vidéos et la configuration sont conservées dans /data et /config.",
+			"sizing": "PeerTube est lourd : le transcodage de chaque envoi prend tous les cœurs pendant des minutes, et une heure de vidéo prend des GB.",
+			"summary": "Auto-hébergez PeerTube, l’alternative fédérée et open source à YouTube pour vos vidéos et vos diffusions en direct. Sur votre machine, en un clic.",
+			"about": [
+				"PeerTube est une plateforme vidéo open source, une alternative fédérée à YouTube qui tourne sur votre propre machine. Vous envoyez des vidéos, vous les rangez dans des chaînes et des listes de lecture, et vous passez en direct depuis OBS ou n’importe quel logiciel RTMP. Chaque instance parle ActivityPub : on suit vos chaînes depuis Mastodon ou par RSS, sans compte sur votre site. Les spectateurs se partagent la charge entre eux via WebRTC, et les instances amies peuvent mettre en cache les vidéos les unes des autres.",
+				"Vous auto-hébergez PeerTube pour rester maître de vos vidéos et de votre audience : ni publicité ni pistage, et des règles de modération à vous. L’administrateur décide qui peut s’inscrire et combien chaque utilisateur peut envoyer. Cela convient à un créateur, une école ou une communauté qui veut son propre site de vidéos. Le revers, c’est le transcodage : chaque vidéo envoyée est réencodée, ce qui prend du temps de CPU, et chaque résolution supplémentaire que vous activez ajoute du travail et de l’espace disque."
+			],
+			"faq": [
+				{
+					"q": "PeerTube est-il gratuit et open source ?",
+					"a": "Oui. PeerTube est un logiciel libre sous licence AGPL-3.0, développé par Framasoft, une association française à but non lucratif. N’importe qui peut l’installer sur son propre serveur et son propre domaine."
+				},
+				{
+					"q": "PeerTube est-il une bonne alternative à YouTube ?",
+					"a": "Pour héberger vos propres vidéos, oui : envoi de vidéos, chaînes, listes de lecture et directs, sans publicité ni pistage. Framasoft dit clairement que PeerTube n’est pas fait pour remplacer YouTube ; son audience vient de la fédération plutôt que d’un site central unique."
+				},
+				{
+					"q": "Peut-on importer des vidéos de YouTube vers PeerTube ?",
+					"a": "Oui, une fois que l’administrateur l’a activé. Une vidéo peut être importée par son URL depuis les sites que youtube-dl prend en charge, ou depuis un torrent, et la synchronisation de chaînes copie une chaîne YouTube, Dailymotion ou Vimeo, puis vérifie toutes les heures s’il y a de nouvelles vidéos."
+				},
+				{
+					"q": "PeerTube a-t-il une application mobile ?",
+					"a": "Oui. L’application officielle de PeerTube est sur l’App Store, Google Play et F-Droid. Elle parcourt les vidéos de toute la fédération, les enregistre pour les regarder hors ligne, et permet de publier et de gérer vos propres vidéos."
+				},
+				{
+					"q": "Peut-on changer le domaine d’une instance PeerTube ?",
+					"a": "Pas officiellement. La documentation de PeerTube indique que le changement d’hôte n’est pas pris en charge : le domaine est donc définitif après le premier démarrage. Donnez au projet son adresse définitive, votre propre domaine ou un nom sous votrenom.pethost.app, avant d’envoyer quoi que ce soit."
+				}
+			]
 		},
 		"pl": {
 			"description": "Twoja własna platforma wideo w fediwersum: wgrywaj, streamuj i udostępniaj filmy",
-			"notes": "Zaloguj się jako root hasłem administratora, które podano; PeerTube czyta je tylko przy pierwszym starcie. Rejestracja jest zamknięta, dopóki nie włączysz jej w konfiguracji administracji, w sekcji Ogólne. PeerTube nie wysyła e-maili, dopóki SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD i SMTP_FROM nie trafią do pliku .env projektu, a projekt się nie zrestartuje. Filmy są na zawsze związane z tym adresem, więc nadaj projektowi docelowy adres, zanim cokolwiek wgrasz. Transkodowanie zajmuje CPU maszyny, dopóki trwa. Filmy i konfiguracja zostają w /data i /config."
+			"notes": "Zaloguj się jako root hasłem administratora, które podano; PeerTube czyta je tylko przy pierwszym starcie. Rejestracja jest zamknięta, dopóki nie włączysz jej w konfiguracji administracji, w sekcji Ogólne. PeerTube nie wysyła e-maili, dopóki SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD i SMTP_FROM nie trafią do pliku .env projektu, a projekt się nie zrestartuje. Filmy są na zawsze związane z tym adresem, więc nadaj projektowi docelowy adres, zanim cokolwiek wgrasz. Transkodowanie zajmuje CPU maszyny, dopóki trwa. Filmy i konfiguracja zostają w /data i /config.",
+			"sizing": "PeerTube ma duże wymagania: transkodowanie wgranego pliku zajmuje wszystkie rdzenie na minuty, a godzina wideo to gigabajty.",
+			"summary": "Hostuj u siebie PeerTube: sfederowana alternatywa open source dla YouTube’a do filmów i transmisji na żywo. Na własnej maszynie, w jeden klik.",
+			"about": [
+				"PeerTube to platforma wideo open source, sfederowana alternatywa dla YouTube’a, która działa na twojej własnej maszynie. Wgrywasz filmy, układasz je w kanały i playlisty, a transmisję na żywo uruchamiasz z OBS albo dowolnego programu RTMP. Każda instancja mówi protokołem ActivityPub, więc ludzie obserwują twoje kanały z Mastodona albo przez RSS, bez konta na twojej stronie. Widzowie dzielą się obciążeniem przez WebRTC, a zaprzyjaźnione instancje mogą nawzajem cache’ować swoje filmy.",
+				"Hostujesz PeerTube u siebie, żeby filmy i widownia należały do ciebie: bez reklam, bez śledzenia i z własnymi zasadami moderacji. Admin decyduje, kto może się zarejestrować i ile może wgrać każdy użytkownik. Pasuje do twórcy, szkoły albo społeczności, które chcą mieć własny serwis wideo. Haczyk to transkodowanie: każdy wgrany film jest kodowany od nowa, co zajmuje czas CPU, a każda dodatkowa rozdzielczość, którą włączysz, to więcej pracy i więcej miejsca na dysku."
+			],
+			"faq": [
+				{
+					"q": "Czy PeerTube jest darmowy i open source?",
+					"a": "Tak. PeerTube to wolne oprogramowanie na licencji AGPL-3.0, rozwijane przez Framasoft, francuską organizację non-profit. Każdy może zainstalować je na własnym serwerze i własnej domenie."
+				},
+				{
+					"q": "Czy PeerTube to dobra alternatywa dla YouTube’a?",
+					"a": "Do hostowania własnych filmów tak: wgrywanie, kanały, playlisty i transmisje na żywo, bez reklam i śledzenia. Framasoft mówi wprost, że PeerTube nie ma zastępować YouTube’a; widownia przychodzi tu przez federację, a nie przez jedną centralną stronę."
+				},
+				{
+					"q": "Czy można zaimportować filmy z YouTube’a do PeerTube?",
+					"a": "Tak, gdy admin to włączy. Film można zaimportować przez jego adres URL z serwisów obsługiwanych przez youtube-dl albo z torrenta, a synchronizacja kanałów kopiuje kanał z YouTube’a, Dailymotion lub Vimeo i potem co godzinę sprawdza, czy są nowe filmy."
+				},
+				{
+					"q": "Czy PeerTube ma aplikację mobilną?",
+					"a": "Tak. Oficjalna aplikacja PeerTube jest w App Store, Google Play i F-Droid. Przegląda filmy z całej federacji, zapisuje je do oglądania offline oraz publikuje twoje własne filmy i zarządza nimi."
+				},
+				{
+					"q": "Czy można zmienić domenę instancji PeerTube?",
+					"a": "Oficjalnie nie. Dokumentacja PeerTube mówi, że zmiana hosta nie jest obsługiwana, więc domena jest ostateczna po pierwszym starcie. Nadaj projektowi docelowy adres, własną domenę albo nazwę pod twojanazwa.pethost.app, zanim cokolwiek wgrasz."
+				}
+			]
 		},
 		"pt": {
 			"description": "Sua própria plataforma de vídeo no fediverso: envie, transmita e compartilhe vídeos",
-			"notes": "Entre como root com a senha de administrador que você informou; o PeerTube só a lê na primeira inicialização. Os cadastros ficam fechados até você ativá-los na configuração da administração, em Geral. O PeerTube não envia e-mails até que SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD e SMTP_FROM estejam no .env do projeto e o projeto reinicie. Os vídeos ficam ligados a este endereço para sempre, então dê ao projeto o endereço definitivo antes de enviar qualquer um. A transcodificação ocupa a CPU da máquina enquanto roda. Os vídeos e a configuração ficam guardados em /data e /config."
+			"notes": "Entre como root com a senha de administrador que você informou; o PeerTube só a lê na primeira inicialização. Os cadastros ficam fechados até você ativá-los na configuração da administração, em Geral. O PeerTube não envia e-mails até que SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD e SMTP_FROM estejam no .env do projeto e o projeto reinicie. Os vídeos ficam ligados a este endereço para sempre, então dê ao projeto o endereço definitivo antes de enviar qualquer um. A transcodificação ocupa a CPU da máquina enquanto roda. Os vídeos e a configuração ficam guardados em /data e /config.",
+			"sizing": "PeerTube é pesado: transcodificar cada upload usa todos os núcleos por minutos, e uma hora de vídeo ocupa vários GB.",
+			"summary": "Auto-hospede o PeerTube, a alternativa federada e de código aberto ao YouTube para seus vídeos e transmissões ao vivo. Na sua máquina, em um clique.",
+			"about": [
+				"O PeerTube é uma plataforma de vídeo de código aberto, uma alternativa federada ao YouTube que roda na sua própria máquina. Você envia vídeos, os organiza em canais e playlists e entra ao vivo pelo OBS ou por qualquer software de RTMP. Cada instância fala ActivityPub, então as pessoas seguem seus canais pelo Mastodon ou por RSS, sem conta no seu site. Os espectadores dividem a carga entre si por WebRTC, e instâncias amigas podem guardar em cache os vídeos umas das outras.",
+				"Você auto-hospeda o PeerTube para ser dono dos seus vídeos e da sua audiência: sem anúncios, sem rastreamento e com regras de moderação próprias. O administrador decide quem pode se cadastrar e quanto cada usuário pode enviar. Serve para um criador, uma escola ou uma comunidade que quer um site de vídeo só seu. O porém é a transcodificação: todo vídeo enviado é recodificado, o que consome tempo de CPU, e cada resolução extra que você ativa acrescenta mais trabalho e mais disco."
+			],
+			"faq": [
+				{
+					"q": "O PeerTube é gratuito e de código aberto?",
+					"a": "Sim. O PeerTube é software livre sob a licença AGPL-3.0, desenvolvido pela Framasoft, uma organização francesa sem fins lucrativos. Qualquer pessoa pode instalá-lo em um servidor e em um domínio próprios."
+				},
+				{
+					"q": "O PeerTube é uma boa alternativa ao YouTube?",
+					"a": "Para hospedar seus próprios vídeos, sim: envios, canais, playlists e transmissões ao vivo, sem anúncios nem rastreamento. A Framasoft diz com todas as letras que ele não foi feito para substituir o YouTube; a audiência chega pela federação, e não por um site central."
+				},
+				{
+					"q": "Dá para importar vídeos do YouTube para o PeerTube?",
+					"a": "Dá, depois que o administrador ativa isso. Um vídeo pode ser importado pela URL, de sites que o youtube-dl suporta, ou de um torrent, e a sincronização de canais copia um canal do YouTube, do Dailymotion ou do Vimeo e depois verifica a cada hora se há vídeos novos."
+				},
+				{
+					"q": "O PeerTube tem aplicativo para celular?",
+					"a": "Tem. O aplicativo oficial do PeerTube está na App Store, no Google Play e no F-Droid. Ele navega pelos vídeos de toda a federação, salva vídeos para assistir offline e publica e gerencia os seus próprios vídeos."
+				},
+				{
+					"q": "Dá para mudar o domínio de uma instância do PeerTube?",
+					"a": "Oficialmente, não. A documentação do PeerTube diz que ele não suporta a troca do host, então o domínio é definitivo depois da primeira inicialização. Dê ao projeto o endereço definitivo, seu próprio domínio ou um nome em seunome.pethost.app, antes de enviar qualquer vídeo."
+				}
+			]
 		},
 		"ru": {
 			"description": "Своя видеоплатформа в федиверсе: загружайте, транслируйте и делитесь видео",
-			"notes": "Войдите как root с паролем администратора, который вы указали; PeerTube читает его только при первом запуске. Регистрация закрыта, пока вы не включите её в конфигурации администрирования, в разделе «Общие». PeerTube не отправляет писем, пока SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD и SMTP_FROM не появятся в .env проекта и проект не перезапустится. Видео навсегда привязаны к этому адресу, так что дайте проекту окончательный адрес до первых загрузок. Перекодирование занимает CPU машины, пока идёт. Видео и конфигурация хранятся в /data и /config."
+			"notes": "Войдите как root с паролем администратора, который вы указали; PeerTube читает его только при первом запуске. Регистрация закрыта, пока вы не включите её в конфигурации администрирования, в разделе «Общие». PeerTube не отправляет писем, пока SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD и SMTP_FROM не появятся в .env проекта и проект не перезапустится. Видео навсегда привязаны к этому адресу, так что дайте проекту окончательный адрес до первых загрузок. Перекодирование занимает CPU машины, пока идёт. Видео и конфигурация хранятся в /data и /config.",
+			"sizing": "PeerTube: высокие требования — перекодирование каждой загрузки на минуты занимает все ядра, а час видео — гигабайты.",
+			"summary": "Self-hosted PeerTube — федеративная open source альтернатива YouTube для ваших видео и трансляций. Деплой на вашей машине в один клик.",
+			"about": [
+				"PeerTube — это open source видеоплатформа, федеративная альтернатива YouTube, которая работает на вашей собственной машине. Вы загружаете видео, раскладываете их по каналам и плейлистам и выходите в эфир из OBS или любой программы с поддержкой RTMP. Каждый инстанс говорит на ActivityPub, поэтому на ваши каналы подписываются из Mastodon или по RSS, без аккаунта на вашем сайте. Зрители делят нагрузку друг с другом через WebRTC, а дружественные инстансы могут кэшировать видео друг друга.",
+				"PeerTube хостят у себя, чтобы видео и аудитория принадлежали вам: без рекламы, без слежки и со своими правилами модерации. Администратор решает, кто может зарегистрироваться и сколько может загрузить каждый пользователь. Подходит автору, школе или сообществу, которым нужен собственный видеосайт. Но есть нюанс: перекодирование. Каждое загруженное видео перекодируется, на это уходит процессорное время, а каждое дополнительное разрешение, которое вы включите, добавляет работы и занимает больше места на диске."
+			],
+			"faq": [
+				{
+					"q": "PeerTube бесплатный и с открытым кодом?",
+					"a": "Да. PeerTube — свободное ПО под лицензией AGPL-3.0, его разрабатывает Framasoft, французская некоммерческая организация. Установить его на собственный сервер и домен может любой желающий."
+				},
+				{
+					"q": "PeerTube — хорошая альтернатива YouTube?",
+					"a": "Для хостинга собственных видео — да: загрузка, каналы, плейлисты и трансляции, без рекламы и слежки. Framasoft прямо говорит, что PeerTube не задуман как замена YouTube: аудитория приходит через федерацию, а не на один центральный сайт."
+				},
+				{
+					"q": "Можно ли импортировать видео с YouTube в PeerTube?",
+					"a": "Да, когда администратор это включит. Видео можно импортировать по URL с сайтов, которые поддерживает youtube-dl, или из торрента, а синхронизация каналов копирует канал с YouTube, Dailymotion или Vimeo и затем раз в час проверяет, нет ли новых видео."
+				},
+				{
+					"q": "Есть ли у PeerTube мобильное приложение?",
+					"a": "Да. Официальное приложение PeerTube есть в App Store, Google Play и F-Droid. Оно показывает видео со всей федерации, сохраняет их для просмотра офлайн и позволяет публиковать свои видео и управлять ими."
+				},
+				{
+					"q": "Можно ли сменить домен у инстанса PeerTube?",
+					"a": "Официально нет. В документации PeerTube сказано, что смена хоста не поддерживается, поэтому после первого запуска домен окончательный. Дайте проекту окончательный адрес — свой домен или имя под yourname.pethost.app — до загрузки видео."
+				}
+			]
 		},
 		"uk": {
 			"description": "Своя відеоплатформа у федиверсі: завантажуйте, транслюйте й діліться відео",
-			"notes": "Увійдіть як root із паролем адміністратора, який ви вказали; PeerTube читає його лише під час першого запуску. Реєстрацію закрито, доки ви не ввімкнете її в конфігурації адміністрування, у розділі «Загальні». PeerTube не надсилає листів, доки SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD і SMTP_FROM не з’являться в .env проєкту і проєкт не перезапуститься. Відео назавжди прив’язані до цієї адреси, тож дайте проєкту остаточну адресу до перших завантажень. Перекодування займає CPU машини, поки триває. Відео та конфігурація зберігаються в /data і /config."
+			"notes": "Увійдіть як root із паролем адміністратора, який ви вказали; PeerTube читає його лише під час першого запуску. Реєстрацію закрито, доки ви не ввімкнете її в конфігурації адміністрування, у розділі «Загальні». PeerTube не надсилає листів, доки SMTP_HOSTNAME, SMTP_USERNAME, SMTP_PASSWORD і SMTP_FROM не з’являться в .env проєкту і проєкт не перезапуститься. Відео назавжди прив’язані до цієї адреси, тож дайте проєкту остаточну адресу до перших завантажень. Перекодування займає CPU машини, поки триває. Відео та конфігурація зберігаються в /data і /config.",
+			"sizing": "PeerTube має високі вимоги: перекодування кожного завантаженого відео забирає всі ядра на хвилини, а година відео — гігабайти.",
+			"summary": "Self-hosted PeerTube — федеративна альтернатива YouTube з відкритим кодом для ваших відео й трансляцій. Деплой на вашій машині в один клік.",
+			"about": [
+				"PeerTube — це відеоплатформа з відкритим кодом, федеративна альтернатива YouTube, яка працює на вашій власній машині. Ви завантажуєте відео, розкладаєте їх по каналах і плейлистах та виходите в ефір з OBS або будь-якої програми з підтримкою RTMP. Кожен інстанс розмовляє мовою ActivityPub, тож на ваші канали підписуються з Mastodon або через RSS, без акаунта на вашому сайті. Глядачі ділять навантаження між собою через WebRTC, а дружні інстанси можуть кешувати відео одне одного.",
+				"PeerTube хостять у себе, щоб відео і аудиторія належали вам: без реклами, без стеження та зі своїми правилами модерації. Адміністратор вирішує, хто може зареєструватися й скільки може завантажити кожен користувач. Підходить автору, школі чи спільноті, яким потрібен власний відеосайт. Але є нюанс: перекодування. Кожне завантажене відео перекодовується, на це йде процесорний час, а кожна додаткова роздільна здатність, яку ви ввімкнете, додає роботи й займає більше місця на диску."
+			],
+			"faq": [
+				{
+					"q": "PeerTube безплатний і з відкритим кодом?",
+					"a": "Так. PeerTube — вільне програмне забезпечення за ліцензією AGPL-3.0, його розробляє Framasoft, французька неприбуткова організація. Встановити його на власний сервер і домен може будь-хто."
+				},
+				{
+					"q": "PeerTube — хороша альтернатива YouTube?",
+					"a": "Для хостингу власних відео — так: завантаження, канали, плейлисти й трансляції, без реклами та стеження. Framasoft прямо каже, що PeerTube не задуманий як заміна YouTube: аудиторія приходить через федерацію, а не на один центральний сайт."
+				},
+				{
+					"q": "Чи можна імпортувати відео з YouTube у PeerTube?",
+					"a": "Так, коли адміністратор це ввімкне. Відео можна імпортувати за URL із сайтів, які підтримує youtube-dl, або з торрента, а синхронізація каналів копіює канал із YouTube, Dailymotion чи Vimeo й потім щогодини перевіряє, чи немає нових відео."
+				},
+				{
+					"q": "Чи є в PeerTube мобільний застосунок?",
+					"a": "Так. Офіційний застосунок PeerTube є в App Store, Google Play і F-Droid. Він показує відео з усієї федерації, зберігає їх для перегляду офлайн, а ще дає публікувати власні відео й керувати ними."
+				},
+				{
+					"q": "Чи можна змінити домен інстансу PeerTube?",
+					"a": "Офіційно ні. У документації PeerTube сказано, що зміна хоста не підтримується, тому після першого запуску домен остаточний. Дайте проєкту остаточну адресу — власний домен або ім’я під yourname.pethost.app — до завантаження відео."
+				}
+			]
 		}
 	}
 }

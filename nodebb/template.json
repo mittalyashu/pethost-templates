@@ -1,6 +1,12 @@
 {
 	"name": "NodeBB",
 	"emoji": "🗣️",
+	"category": "community",
+	"alternatives": [
+		"Discourse",
+		"XenForo"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "nodebb",
 		"port": 4567
@@ -18,35 +24,259 @@
 	"texts": {
 		"en": {
 			"description": "A forum for your community",
-			"notes": "Sign in as admin with the password you gave; the first start builds the forum and takes a few minutes. Anyone may register: who can join is set under Admin > Settings > Users. Email, password resets included, works once an SMTP server is set under Admin > Settings > Email."
+			"notes": "Sign in as admin with the password you gave; the first start builds the forum and takes a few minutes. Anyone may register: who can join is set under Admin > Settings > Users. Email, password resets included, works once an SMTP server is set under Admin > Settings > Email.",
+			"sizing": "NodeBB is moderate: about half a gigabyte with Redis, which keeps every post in memory, and uploads grow the disk.",
+			"summary": "NodeBB is open-source forum software with live updates and fediverse support. Self-host this Discourse alternative on your own machine in one click.",
+			"about": [
+				"NodeBB is open-source forum software, a self-hosted alternative to Discourse for a community of your own. It keeps the classic shape of categories, topics and replies, but new posts and notifications appear live, with no page reload. Members write in Markdown, mention each other with @, follow tags and send each other chat messages. A theme changes the look, and plugins add the rest, from single sign-on to spam filters.",
+				"People run NodeBB themselves to keep a community's posts and members on their own server, under the GPL-3.0 licence and with no price per member. It suits a club, a product's users or an open-source project that wants threads people can find again, rather than a chat that scrolls away. The catch: a new plugin or theme takes effect only after the forum rebuilds and restarts."
+			],
+			"faq": [
+				{
+					"q": "Is NodeBB free and open source?",
+					"a": "Yes. NodeBB is licensed under GPL-3.0 and its code is on GitHub. Its makers also sell hosted forums, and a sublicense for anyone who needs to use it in a non-free product."
+				},
+				{
+					"q": "Does NodeBB work with Mastodon and the fediverse?",
+					"a": "Yes, since version 4.0. NodeBB speaks ActivityPub, so people on Mastodon and other fediverse apps can follow a forum's categories and users and reply to its topics. New forums have it on, under Federation in the admin panel."
+				},
+				{
+					"q": "Does NodeBB have a mobile app?",
+					"a": "It installs like one. A NodeBB forum is a Progressive Web App that members can add to their phone's home screen, and its bundled Web Push plugin sends notifications to those who turn them on in their profile."
+				},
+				{
+					"q": "How do permissions work in NodeBB?",
+					"a": "Privileges are set for groups or single users, globally and per category: who can find a category, read its topics, post, reply, upload or moderate. A private staff area or a read-only announcements board is a few ticked boxes."
+				},
+				{
+					"q": "How do I set up email for NodeBB?",
+					"a": "In the admin panel, open Settings > Email, tick Enable SMTP Transport, then pick a known service or enter your mail server's host, port and login. Until then the forum sends no email, not even password resets."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Forum für deine Community",
-			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast; der erste Start baut das Forum auf und dauert einige Minuten. Alle dürfen sich registrieren: Wer beitreten darf, legst du unter „Admin > Settings > Users“ fest. E-Mails, auch das Zurücksetzen von Passwörtern, funktionieren, sobald unter „Admin > Settings > Email“ ein SMTP-Server eingetragen ist."
+			"notes": "Melde dich als admin mit dem Passwort an, das du festgelegt hast; der erste Start baut das Forum auf und dauert einige Minuten. Alle dürfen sich registrieren: Wer beitreten darf, legst du unter „Admin > Settings > Users“ fest. E-Mails, auch das Zurücksetzen von Passwörtern, funktionieren, sobald unter „Admin > Settings > Email“ ein SMTP-Server eingetragen ist.",
+			"sizing": "NodeBB ist mittelschwer: etwa ein halbes GB mit Redis, das jeden Beitrag im RAM hält, und Uploads lassen die Disk wachsen.",
+			"summary": "NodeBB selbst hosten: Open-Source-Forum mit Live-Updates und Fediverse-Anbindung. Discourse-Alternative auf deiner eigenen Maschine, in einem Klick.",
+			"about": [
+				"NodeBB ist eine Open-Source-Forensoftware, eine selbst gehostete Alternative zu Discourse für eine eigene Community. Sie behält die klassische Form aus Kategorien, Themen und Antworten, aber neue Beiträge und Benachrichtigungen erscheinen live, ohne dass die Seite neu geladen wird. Mitglieder schreiben in Markdown, erwähnen sich gegenseitig mit @, folgen Tags und schicken sich Chat-Nachrichten. Ein Theme ändert das Aussehen, und Plugins liefern den Rest, von Single Sign-on bis zu Spamfiltern.",
+				"Du hostest NodeBB selbst, um die Beiträge und Mitglieder einer Community auf einer eigenen Maschine zu halten, unter der GPL-3.0-Lizenz und ohne Gebühr pro Mitglied. Es passt zu einem Verein, zu Leuten, die ein Produkt nutzen, oder zu einem Open-Source-Projekt, das Threads will, die man wiederfindet, statt eines Chats, der wegscrollt. Der Haken: Ein neues Plugin oder Theme wirkt erst, wenn das Forum neu gebaut und neu gestartet wird."
+			],
+			"faq": [
+				{
+					"q": "Ist NodeBB kostenlos und Open Source?",
+					"a": "Ja. NodeBB steht unter der GPL-3.0, und der Code liegt auf GitHub. Die Entwickler verkaufen außerdem gehostete Foren und eine Sublizenz für alle, die es in einem nicht freien Produkt verwenden müssen."
+				},
+				{
+					"q": "Funktioniert NodeBB mit Mastodon und dem Fediverse?",
+					"a": "Ja, seit Version 4.0. NodeBB spricht ActivityPub, daher können Leute auf Mastodon und anderen Fediverse-Apps den Kategorien und Profilen eines Forums folgen und auf dessen Themen antworten. Neue Foren haben es eingeschaltet, unter „Federation“ im Admin-Panel."
+				},
+				{
+					"q": "Hat NodeBB eine mobile App?",
+					"a": "Es lässt sich wie eine installieren: Ein NodeBB-Forum ist eine Progressive Web App, die Mitglieder zum Startbildschirm ihres Smartphones hinzufügen können, und das mitgelieferte Web-Push-Plugin schickt Benachrichtigungen an alle, die sie in ihrem Profil einschalten."
+				},
+				{
+					"q": "Wie funktionieren Berechtigungen in NodeBB?",
+					"a": "Die Privilegien legst du für Gruppen oder einzelne Personen fest, global und pro Kategorie: wer eine Kategorie finden, ihre Themen lesen, Beiträge schreiben, antworten, hochladen oder moderieren darf. Ein privater Bereich für das Team oder ein Ankündigungsbereich nur zum Lesen sind ein paar angehakte Kästchen."
+				},
+				{
+					"q": "Wie richte ich E-Mail für NodeBB ein?",
+					"a": "Öffne im Admin-Panel „Settings > Email“, setze den Haken bei „Enable SMTP Transport“ und wähle dann einen bekannten Service oder gib Host, Port und Zugangsdaten deines Mailservers ein. Bis dahin verschickt das Forum keine E-Mails, nicht einmal zum Zurücksetzen von Passwörtern."
+				}
+			]
 		},
 		"es": {
 			"description": "Un foro para tu comunidad",
-			"notes": "Inicia sesión como admin con la contraseña que indicaste; el primer inicio construye el foro y tarda unos minutos. Cualquiera puede registrarse: quién puede unirse se define en Admin > Settings > Users. El correo, incluidos los restablecimientos de contraseña, funciona cuando se define un servidor SMTP en Admin > Settings > Email."
+			"notes": "Inicia sesión como admin con la contraseña que indicaste; el primer inicio construye el foro y tarda unos minutos. Cualquiera puede registrarse: quién puede unirse se define en Admin > Settings > Users. El correo, incluidos los restablecimientos de contraseña, funciona cuando se define un servidor SMTP en Admin > Settings > Email.",
+			"sizing": "NodeBB es moderado: cerca de medio gigabyte con Redis, que guarda cada publicación en memoria; las subidas hacen crecer el disco.",
+			"summary": "Autoaloja NodeBB: foros de código abierto con actualizaciones en tiempo real y compatibles con el fediverso. Alternativa a Discourse, en un clic.",
+			"about": [
+				"NodeBB es un software de foros de código abierto, una alternativa autoalojada a Discourse para una comunidad propia. Conserva la forma clásica de categorías, temas y respuestas, pero las publicaciones nuevas y las notificaciones aparecen en tiempo real, sin recargar la página. Los miembros escriben en Markdown, se mencionan con @, siguen etiquetas y se envían mensajes de chat. Un tema visual cambia el aspecto, y los plugins agregan el resto, desde el inicio de sesión único hasta los filtros de spam.",
+				"La gente autoaloja NodeBB para tener las publicaciones y los miembros de una comunidad en una máquina propia, con licencia GPL-3.0 y sin un precio por miembro. Encaja con un club, con quienes usan un producto o con un proyecto de código abierto que quiere hilos que la gente pueda volver a encontrar, y no un chat que se pierde al hacer scroll. El inconveniente: un plugin o un tema visual nuevo solo surte efecto cuando el foro se reconstruye y se reinicia."
+			],
+			"faq": [
+				{
+					"q": "¿NodeBB es gratis y de código abierto?",
+					"a": "Sí. NodeBB tiene licencia GPL-3.0 y su código está en GitHub. Sus creadores también venden foros alojados y una sublicencia para quienes necesitan usarlo en un producto que no es libre."
+				},
+				{
+					"q": "¿NodeBB funciona con Mastodon y el fediverso?",
+					"a": "Sí, desde la versión 4.0. NodeBB usa ActivityPub, así que quienes están en Mastodon y en otras apps del fediverso pueden seguir las categorías y los usuarios de un foro y responder a sus temas. Los foros nuevos lo traen activado, en “Federation”, dentro del panel de administración."
+				},
+				{
+					"q": "¿NodeBB tiene una app móvil?",
+					"a": "Se instala como una: un foro NodeBB es una Progressive Web App que los miembros pueden agregar a la pantalla de inicio del teléfono, y su plugin Web Push incluido envía notificaciones a quienes las activan en su perfil."
+				},
+				{
+					"q": "¿Cómo funcionan los permisos en NodeBB?",
+					"a": "Los privilegios se asignan a grupos o a usuarios concretos, de forma global y por categoría: quién puede encontrar una categoría, leer sus temas, publicar, responder, subir archivos o moderar. Un área privada para el staff o un tablón de anuncios de solo lectura son unas casillas marcadas."
+				},
+				{
+					"q": "¿Cómo configuro el correo en NodeBB?",
+					"a": "En el panel de administración, abre “Settings > Email”, marca “Enable SMTP Transport” y elige un servicio conocido o escribe el host, el puerto y las credenciales de tu servidor de correo. Hasta entonces el foro no envía correos, ni siquiera los de restablecimiento de contraseña."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un forum pour votre communauté",
-			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi ; le premier démarrage construit le forum et prend quelques minutes. N’importe qui peut s’inscrire : qui peut rejoindre le forum se règle dans Admin > Settings > Users. Les e-mails, réinitialisations de mot de passe comprises, fonctionnent dès qu’un serveur SMTP est défini dans Admin > Settings > Email."
+			"notes": "Connectez-vous avec le nom d’utilisateur admin et le mot de passe que vous avez choisi ; le premier démarrage construit le forum et prend quelques minutes. N’importe qui peut s’inscrire : qui peut rejoindre le forum se règle dans Admin > Settings > Users. Les e-mails, réinitialisations de mot de passe comprises, fonctionnent dès qu’un serveur SMTP est défini dans Admin > Settings > Email.",
+			"sizing": "NodeBB est modéré : environ 0,5 GB avec Redis, qui garde chaque message en mémoire, et les fichiers envoyés grossissent le disque.",
+			"summary": "Auto-hébergez NodeBB, le logiciel de forum open source aux mises à jour en direct et compatible avec le fédivers. Une alternative à Discourse, en un clic.",
+			"about": [
+				"NodeBB est un logiciel de forum open source, une alternative auto-hébergée à Discourse pour une communauté à vous. Il garde la forme classique des catégories, des sujets et des réponses, mais les nouveaux messages et les notifications apparaissent en direct, sans recharger la page. Les membres écrivent en Markdown, se mentionnent avec @, suivent des tags et s’envoient des messages de chat. Un thème change l’apparence, et les plugins apportent le reste, de l’authentification unique aux filtres anti-spam.",
+				"Vous auto-hébergez NodeBB pour garder les messages et les membres d’une communauté sur une machine à vous, sous licence GPL-3.0 et sans frais par membre. Il convient à un club, aux utilisateurs d’un produit ou à un projet open source qui veut des fils de discussion que l’on retrouve, plutôt qu’un chat qui défile et disparaît. Le revers : un nouveau plugin ou thème ne prend effet qu’une fois le forum reconstruit et redémarré."
+			],
+			"faq": [
+				{
+					"q": "NodeBB est-il gratuit et open source ?",
+					"a": "Oui. NodeBB est publié sous licence GPL-3.0 et son code est sur GitHub. Ses créateurs vendent aussi des forums hébergés, ainsi qu’une sous-licence pour qui doit l’utiliser dans un produit non libre."
+				},
+				{
+					"q": "NodeBB fonctionne-t-il avec Mastodon et le fédivers ?",
+					"a": "Oui, depuis la version 4.0. NodeBB parle ActivityPub, si bien que les personnes sur Mastodon et sur d’autres applications du fédivers peuvent suivre les catégories et les utilisateurs d’un forum et répondre à ses sujets. Les nouveaux forums l’ont activé, sous « Federation » dans l’interface d’administration."
+				},
+				{
+					"q": "NodeBB a-t-il une application mobile ?",
+					"a": "Il s’installe comme une application : un forum NodeBB est une Progressive Web App que les membres peuvent ajouter à l’écran d’accueil de leur téléphone, et son plugin Web Push, fourni d’office, envoie des notifications aux membres qui les activent dans leur profil."
+				},
+				{
+					"q": "Comment fonctionnent les permissions dans NodeBB ?",
+					"a": "Les privilèges se règlent pour des groupes ou des utilisateurs, globalement et par catégorie : qui peut trouver une catégorie, lire ses sujets, publier, répondre, envoyer des fichiers ou modérer. Un espace privé pour l’équipe ou un tableau d’annonces en lecture seule se règle en quelques cases cochées."
+				},
+				{
+					"q": "Comment configurer l’e-mail pour NodeBB ?",
+					"a": "Dans l’interface d’administration, ouvrez « Settings > Email », cochez « Enable SMTP Transport », puis choisissez un service connu ou saisissez l’hôte, le port et l’identifiant de votre serveur de messagerie. Tant que ce n’est pas fait, le forum n’envoie aucun e-mail, pas même les réinitialisations de mot de passe."
+				}
+			]
 		},
 		"pl": {
 			"description": "Forum dla twojej społeczności",
-			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu; pierwsze uruchomienie buduje forum i trwa kilka minut. Zarejestrować się może każdy: kto może dołączyć, ustawisz w Admin > Settings > Users. E-maile, w tym resetowanie haseł, zadziałają, gdy w Admin > Settings > Email ustawisz serwer SMTP."
+			"notes": "Zaloguj się jako admin z hasłem podanym przy tworzeniu projektu; pierwsze uruchomienie buduje forum i trwa kilka minut. Zarejestrować się może każdy: kto może dołączyć, ustawisz w Admin > Settings > Users. E-maile, w tym resetowanie haseł, zadziałają, gdy w Admin > Settings > Email ustawisz serwer SMTP.",
+			"sizing": "NodeBB ma średnie wymagania: około 0,5 GB z Redisem, który trzyma każdy post w pamięci, a wgrane pliki zajmują coraz więcej dysku.",
+			"summary": "Hostuj NodeBB u siebie: forum open source z aktualizacjami na żywo i obsługą fediwersum. Alternatywa dla Discourse na własnej maszynie, w jeden klik.",
+			"about": [
+				"NodeBB to oprogramowanie forum open source, hostowana u siebie alternatywa dla Discourse, przeznaczona dla własnej społeczności. Zachowuje klasyczny układ kategorii, tematów i odpowiedzi, ale nowe posty i powiadomienia pojawiają się na żywo, bez przeładowania strony. Członkowie piszą w Markdown, wzmiankują się nawzajem przez @, obserwują tagi i wysyłają sobie wiadomości na czacie. Motyw zmienia wygląd, a pluginy dodają resztę, od logowania jednokrotnego po filtry spamu.",
+				"NodeBB hostuje się u siebie, żeby posty i członków społeczności trzymać na własnej maszynie, na licencji GPL-3.0 i bez opłaty za każdego członka. Pasuje do klubu, użytkowników jakiegoś produktu albo projektu open source, który chce wątków łatwych do odnalezienia, a nie czatu, który się przewija i ginie. Haczyk: nowy plugin albo motyw działa dopiero po tym, jak forum się przebuduje i zrestartuje."
+			],
+			"faq": [
+				{
+					"q": "Czy NodeBB jest darmowy i open source?",
+					"a": "Tak. NodeBB ma licencję GPL-3.0, a jego kod jest na GitHubie. Twórcy sprzedają też hostowane fora oraz sublicencję dla osób, które muszą używać go w produkcie, który nie jest wolnym oprogramowaniem."
+				},
+				{
+					"q": "Czy NodeBB działa z Mastodonem i fediwersum?",
+					"a": "Tak, od wersji 4.0. NodeBB obsługuje ActivityPub, więc osoby z Mastodona i innych aplikacji fediwersum mogą obserwować kategorie i użytkowników forum oraz odpowiadać w jego tematach. Nowe fora mają to włączone, w panelu administracyjnym w sekcji „Federation”."
+				},
+				{
+					"q": "Czy NodeBB ma aplikację mobilną?",
+					"a": "Instaluje się jak aplikacja: forum NodeBB jest Progressive Web App, którą członkowie mogą dodać do ekranu głównego telefonu, a dołączony plugin Web Push wysyła powiadomienia tym, którzy włączą je w swoim profilu."
+				},
+				{
+					"q": "Jak działają uprawnienia w NodeBB?",
+					"a": "Uprawnienia ustawia się dla grup albo pojedynczych użytkowników, globalnie i dla każdej kategorii: kto może znaleźć kategorię, czytać jej tematy, pisać, odpowiadać, wgrywać pliki albo moderować. Prywatny obszar dla zespołu albo tablica ogłoszeń tylko do czytania to kilka zaznaczonych pól."
+				},
+				{
+					"q": "Jak skonfigurować e-mail w NodeBB?",
+					"a": "W panelu administracyjnym otwórz „Settings > Email”, zaznacz „Enable SMTP Transport”, a potem wybierz znaną usługę albo podaj host, port i login swojego serwera poczty. Dopóki tego nie zrobisz, forum nie wysyła żadnych e-maili, nawet do resetowania haseł."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um fórum para a sua comunidade",
-			"notes": "Entre como admin com a senha que você definiu; na primeira vez, o app monta o fórum e leva alguns minutos para iniciar. Qualquer pessoa pode se cadastrar: quem pode entrar é definido em Admin > Settings > Users. O e-mail, inclusive a redefinição de senha, funciona depois que um servidor SMTP é definido em Admin > Settings > Email."
+			"notes": "Entre como admin com a senha que você definiu; na primeira vez, o app monta o fórum e leva alguns minutos para iniciar. Qualquer pessoa pode se cadastrar: quem pode entrar é definido em Admin > Settings > Users. O e-mail, inclusive a redefinição de senha, funciona depois que um servidor SMTP é definido em Admin > Settings > Email.",
+			"sizing": "NodeBB é moderado: cerca de meio gigabyte com o Redis, que guarda todos os posts na memória, e os uploads fazem o disco crescer.",
+			"summary": "Auto-hospede o NodeBB: software de fórum de código aberto com atualizações ao vivo e suporte ao fediverso, alternativa ao Discourse. Em um clique.",
+			"about": [
+				"O NodeBB é um software de fórum de código aberto, uma alternativa auto-hospedada ao Discourse para uma comunidade própria. Ele mantém o formato clássico de categorias, tópicos e respostas, mas as postagens novas e as notificações aparecem ao vivo, sem recarregar a página. Os membros escrevem em Markdown, se mencionam com @, seguem tags e trocam mensagens de chat. Um tema muda o visual, e os plugins acrescentam o resto, de login único a filtros de spam.",
+				"Você auto-hospeda o NodeBB para manter as postagens e os membros de uma comunidade em uma máquina própria, sob a licença GPL-3.0 e sem preço por membro. Ele serve a um clube, a quem usa um produto ou a um projeto de código aberto que quer discussões que as pessoas consigam reencontrar, e não um chat que rola para longe. O porém: um plugin ou tema novo só passa a valer depois que o fórum refaz o build e reinicia."
+			],
+			"faq": [
+				{
+					"q": "O NodeBB é gratuito e de código aberto?",
+					"a": "Sim. O NodeBB é licenciado sob a GPL-3.0 e o código dele está no GitHub. Os criadores também vendem fóruns hospedados e uma sublicença para quem precisa usá-lo em um produto não livre."
+				},
+				{
+					"q": "O NodeBB funciona com o Mastodon e o fediverso?",
+					"a": "Sim, desde a versão 4.0. O NodeBB fala ActivityPub, então quem está no Mastodon e em outros apps do fediverso pode seguir as categorias e os usuários de um fórum e responder aos tópicos dele. Os fóruns novos já vêm com isso ativado, em “Federation”, no painel de administração."
+				},
+				{
+					"q": "O NodeBB tem app para celular?",
+					"a": "Ele se instala como um app: um fórum NodeBB é um Progressive Web App que os membros podem adicionar à tela inicial do celular, e o plugin Web Push, que vem incluído, envia notificações a quem as ativa no perfil."
+				},
+				{
+					"q": "Como funcionam as permissões no NodeBB?",
+					"a": "Os privilégios são definidos para grupos ou para usuários individuais, de forma global e por categoria: quem pode encontrar uma categoria, ler os tópicos dela, postar, responder, enviar arquivos ou moderar. Uma área privada para a equipe ou um quadro de avisos só de leitura se resolve com algumas caixas marcadas."
+				},
+				{
+					"q": "Como configuro o e-mail no NodeBB?",
+					"a": "No painel de administração, abra “Settings > Email”, marque “Enable SMTP Transport” e escolha um serviço conhecido ou informe o host, a porta e o login do seu servidor de e-mail. Até lá, o fórum não envia e-mail nenhum, nem mesmo a redefinição de senha."
+				}
+			]
 		},
 		"ru": {
 			"description": "Форум для вашего сообщества",
-			"notes": "Войдите как admin с паролем, который вы задали; первый запуск собирает форум и занимает несколько минут. Зарегистрироваться может любой: кто может присоединиться, задается в Admin > Settings > Users. Почта, в том числе сброс паролей, заработает, когда в Admin > Settings > Email будет указан SMTP-сервер."
+			"notes": "Войдите как admin с паролем, который вы задали; первый запуск собирает форум и занимает несколько минут. Зарегистрироваться может любой: кто может присоединиться, задается в Admin > Settings > Users. Почта, в том числе сброс паролей, заработает, когда в Admin > Settings > Email будет указан SMTP-сервер.",
+			"sizing": "NodeBB: умеренные требования — около 500 MB вместе с Redis, который держит каждый пост в памяти, а загрузки растят диск.",
+			"summary": "Self-hosted NodeBB — open source форум с обновлениями в реальном времени и поддержкой федиверса. Альтернатива Discourse на вашей машине, в один клик.",
+			"about": [
+				"NodeBB — это open source движок форума, self-hosted альтернатива Discourse для собственного сообщества. Он сохраняет классическую форму из категорий, тем и ответов, но новые сообщения и уведомления появляются в реальном времени, без перезагрузки страницы. Участники пишут в Markdown, упоминают друг друга через @, подписываются на теги и пишут друг другу в чате. Тема оформления меняет внешний вид, а плагины добавляют все остальное, от единого входа до спам-фильтров.",
+				"NodeBB хостят у себя, чтобы держать сообщения и участников сообщества на собственной машине, под лицензией GPL-3.0 и без платы за каждого участника. Он подойдет клубу, пользователям какого-нибудь продукта или open source проекту, которому нужны обсуждения, которые потом можно найти, а не чат, где все пролистывается и теряется. Подвох: новый плагин или тема оформления начинает работать только после того, как форум пересоберется и перезапустится."
+			],
+			"faq": [
+				{
+					"q": "NodeBB бесплатный и с открытым кодом?",
+					"a": "Да. NodeBB распространяется под лицензией GPL-3.0, а его код лежит на GitHub. Его авторы также продают хостинг форумов и сублицензию для тех, кому нужно использовать его в несвободном продукте."
+				},
+				{
+					"q": "Работает ли NodeBB с Mastodon и федиверсом?",
+					"a": "Да, начиная с версии 4.0. NodeBB говорит на ActivityPub, поэтому люди из Mastodon и других приложений федиверса могут подписываться на категории и пользователей форума и отвечать в его темах. В новых форумах это включено, в панели администратора в разделе «Federation»."
+				},
+				{
+					"q": "Есть ли у NodeBB мобильное приложение?",
+					"a": "Он устанавливается как приложение: форум NodeBB — это Progressive Web App, которое участники могут добавить на главный экран телефона, а входящий в комплект плагин Web Push шлет уведомления тем, кто включил их в своем профиле."
+				},
+				{
+					"q": "Как работают права доступа в NodeBB?",
+					"a": "Привилегии задаются для групп или отдельных пользователей, глобально и по категориям: кто может найти категорию, читать ее темы, писать, отвечать, загружать файлы или модерировать. Закрытый раздел для команды или доска объявлений только для чтения — это несколько отмеченных галочек."
+				},
+				{
+					"q": "Как настроить почту для NodeBB?",
+					"a": "В панели администратора откройте «Settings > Email», отметьте «Enable SMTP Transport», затем выберите известный сервис или укажите хост, порт и логин вашего почтового сервера. Пока этого не сделано, форум не отправляет никакой почты, даже писем для сброса пароля."
+				}
+			]
 		},
 		"uk": {
 			"description": "Форум для вашої спільноти",
-			"notes": "Увійдіть як admin із паролем, який ви вказали; перший запуск збирає форум і триває кілька хвилин. Зареєструватися може будь-хто: хто може долучитися, задають в Admin > Settings > Users. Пошта, зокрема скидання паролів, запрацює, коли в Admin > Settings > Email буде вказано SMTP-сервер."
+			"notes": "Увійдіть як admin із паролем, який ви вказали; перший запуск збирає форум і триває кілька хвилин. Зареєструватися може будь-хто: хто може долучитися, задають в Admin > Settings > Users. Пошта, зокрема скидання паролів, запрацює, коли в Admin > Settings > Email буде вказано SMTP-сервер.",
+			"sizing": "NodeBB має помірні вимоги: близько 0,5 GB з Redis, який тримає кожен допис у пам’яті, а диск росте від завантажених файлів.",
+			"summary": "Self-hosted NodeBB — форум із відкритим кодом, оновленнями в реальному часі та підтримкою федіверсу. Альтернатива Discourse на вашій машині, в один клік.",
+			"about": [
+				"NodeBB — це рушій форуму з відкритим кодом, self-hosted альтернатива Discourse для власної спільноти. Він зберігає класичну форму з категорій, тем і відповідей, але нові дописи та сповіщення з’являються в реальному часі, без перезавантаження сторінки. Учасники пишуть у Markdown, згадують одне одного через @, підписуються на теги й надсилають одне одному повідомлення в чаті. Тема оформлення змінює вигляд, а плагіни додають решту, від єдиного входу до спам-фільтрів.",
+				"NodeBB хостять у себе, щоб тримати дописи й учасників спільноти на власній машині, за ліцензією GPL-3.0 і без плати за кожного учасника. Він підійде клубу, користувачам якогось продукту або проєкту з відкритим кодом, якому потрібні обговорення, які згодом можна знайти, а не чат, що прокручується й зникає. Підводний камінь: новий плагін чи тема оформлення починає діяти лише після того, як форум буде перезібрано й перезапущено."
+			],
+			"faq": [
+				{
+					"q": "NodeBB безплатний і з відкритим кодом?",
+					"a": "Так. NodeBB поширюється за ліцензією GPL-3.0, а його код лежить на GitHub. Його автори також продають хостинг форумів і субліцензію для тих, кому потрібно використовувати його в невільному продукті."
+				},
+				{
+					"q": "Чи працює NodeBB з Mastodon і федіверсом?",
+					"a": "Так, починаючи з версії 4.0. NodeBB працює з ActivityPub, тож люди з Mastodon та інших застосунків федіверсу можуть підписуватися на категорії та користувачів форуму й відповідати в його темах. У нових форумах це ввімкнено, у розділі «Federation» панелі адміністратора."
+				},
+				{
+					"q": "Чи є в NodeBB мобільний застосунок?",
+					"a": "Він установлюється як застосунок: форум NodeBB — це Progressive Web App, який учасники можуть додати на головний екран телефона, а вбудований плагін Web Push надсилає сповіщення тим, хто ввімкнув їх у своєму профілі."
+				},
+				{
+					"q": "Як працюють дозволи в NodeBB?",
+					"a": "Привілеї задають для груп або окремих користувачів, глобально й для кожної категорії: хто може знайти категорію, читати її теми, писати, відповідати, завантажувати файли чи модерувати. Закритий розділ для команди або дошка оголошень лише для читання — це кілька поставлених галочок."
+				},
+				{
+					"q": "Як налаштувати пошту для NodeBB?",
+					"a": "У панелі адміністратора відкрийте «Settings > Email», позначте «Enable SMTP Transport», а потім виберіть відомий сервіс або вкажіть хост, порт і логін вашого поштового сервера. Доки цього не зроблено, форум не надсилає жодних листів, навіть для скидання пароля."
+				}
+			]
 		}
 	}
 }

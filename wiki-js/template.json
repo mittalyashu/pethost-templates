@@ -1,6 +1,12 @@
 {
 	"name": "Wiki.js",
 	"emoji": "🦋",
+	"category": "notes",
+	"alternatives": [
+		"Confluence",
+		"GitBook"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "wiki",
 		"port": 3000
@@ -26,35 +32,259 @@
 	"texts": {
 		"en": {
 			"description": "A wiki for a team or a project: pages in Markdown or a visual editor, search, permissions and sign-in providers",
-			"notes": "Sign in with the email and the admin password you gave: Wiki.js is set up with them before it answers, so nobody else gets its setup page. Pages are created from the home page; users, groups and sign-in providers are under Administration."
+			"notes": "Sign in with the email and the admin password you gave: Wiki.js is set up with them before it answers, so nobody else gets its setup page. Pages are created from the home page; users, groups and sign-in providers are under Administration.",
+			"sizing": "Wiki.js is light: about 300 MB with Postgres, and thousands of pages with their uploads take a few gigabytes.",
+			"summary": "Wiki.js is an open-source wiki with Markdown and visual editors, page history and Git sync. Self-host this Confluence alternative in one click.",
+			"about": [
+				"Wiki.js is an open-source wiki for team and project documentation, the kind people run in place of Confluence. Developers write pages in Markdown with a live preview, while others use the visual editor and never see syntax. Every change is tracked: two versions of a page can be compared, an older one restored, and even a deleted page brought back. Groups and page rules decide who may read or edit which paths.",
+				"Teams self-host Wiki.js to keep their docs on their own server, with no price per user. Its standout trait is Git sync: each page can be written to a Git repository as a file, and edits made there come back into the wiki. The catch: development has moved to Wiki.js 3.0, still a beta its README marks not for production, so the stable 2.5 line gets maintenance releases."
+			],
+			"faq": [
+				{
+					"q": "Is Wiki.js free and open source?",
+					"a": "Yes. Wiki.js is free software under the AGPL-3.0 licence, with its full source on GitHub. Its development is paid for by donations from community backers."
+				},
+				{
+					"q": "Does Wiki.js support LDAP and SSO?",
+					"a": "Yes. Wiki.js signs people in with LDAP or Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub and more, several at once, and an admin can make two-factor authentication mandatory for everyone."
+				},
+				{
+					"q": "Which databases does Wiki.js support?",
+					"a": "PostgreSQL is the one its docs recommend, and the only one the next major version will support. Wiki.js 2.5 also runs on MySQL, MariaDB, MS SQL Server and SQLite, though SQLite is not recommended for production."
+				},
+				{
+					"q": "Can a Wiki.js wiki be private?",
+					"a": "Yes. Visitors without an account see only what the Guests group allows, so a wiki can be public, private or a mix, and new users get no access until an admin or self-registration puts them in a group."
+				},
+				{
+					"q": "Does Wiki.js have an API?",
+					"a": "Yes. Wiki.js has a GraphQL API at /graphql that can read and change everything in the wiki, called with tokens made under API Access in the Administration Area."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Wiki für ein Team oder ein Projekt: Seiten in Markdown oder einem visuellen Editor, Suche, Berechtigungen und Anmeldeanbieter",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Wiki.js wird damit eingerichtet, bevor es antwortet, sodass niemand sonst die Einrichtungsseite bekommt. Seiten legst du von der Startseite aus an; Benutzer, Gruppen und Anmeldeanbieter sind unter Administration."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an: Wiki.js wird damit eingerichtet, bevor es antwortet, sodass niemand sonst die Einrichtungsseite bekommt. Seiten legst du von der Startseite aus an; Benutzer, Gruppen und Anmeldeanbieter sind unter Administration.",
+			"sizing": "Wiki.js ist leicht: etwa 300 MB mit Postgres, und Tausende Seiten samt Uploads brauchen ein paar GB.",
+			"summary": "Wiki.js selbst hosten: Open-Source-Wiki mit Markdown- und visuellem Editor, Seitenverlauf und Git-Sync. Confluence-Alternative in einem Klick.",
+			"about": [
+				"Wiki.js ist ein Open-Source-Wiki für die Dokumentation von Teams und Projekten, das viele anstelle von Confluence betreiben. Entwickler schreiben Seiten in Markdown mit Live-Vorschau, alle anderen nutzen den visuellen Editor und sehen nie Syntax. Jede Änderung wird festgehalten: Zwei Versionen einer Seite lassen sich vergleichen, eine ältere wiederherstellen, und sogar eine gelöschte Seite kommt zurück. Gruppen und Seitenregeln legen fest, wer welche Pfade lesen oder bearbeiten darf.",
+				"Teams hosten Wiki.js selbst, um ihre Doku auf dem eigenen Server zu behalten, ohne Preis pro Nutzer. Sein Markenzeichen ist der Git-Sync: Jede Seite kann als Datei in ein Git-Repository geschrieben werden, und Änderungen, die dort gemacht werden, kommen ins Wiki zurück. Der Haken: Die Entwicklung ist zu Wiki.js 3.0 gewandert, noch eine Beta, die laut ihrer README nicht für den Produktivbetrieb gedacht ist, deshalb bekommt die stabile 2.5er-Reihe Wartungs-Releases."
+			],
+			"faq": [
+				{
+					"q": "Ist Wiki.js kostenlos und Open Source?",
+					"a": "Ja. Wiki.js ist freie Software unter der AGPL-3.0-Lizenz, der vollständige Quellcode liegt auf GitHub. Die Entwicklung wird durch Spenden von Unterstützern aus der Community finanziert."
+				},
+				{
+					"q": "Unterstützt Wiki.js LDAP und SSO?",
+					"a": "Ja. Wiki.js meldet Nutzer per LDAP oder Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub und mehr an, auch mehrere gleichzeitig, und ein Admin kann die Zwei-Faktor-Authentifizierung für alle verpflichtend machen."
+				},
+				{
+					"q": "Welche Datenbanken unterstützt Wiki.js?",
+					"a": "PostgreSQL ist die Datenbank, die die Doku empfiehlt, und die einzige, die die nächste Hauptversion unterstützen wird. Wiki.js 2.5 läuft auch mit MySQL, MariaDB, MS SQL Server und SQLite, wobei SQLite für den Produktivbetrieb nicht empfohlen wird."
+				},
+				{
+					"q": "Kann ein Wiki.js-Wiki privat sein?",
+					"a": "Ja. Besucher ohne Konto sehen nur, was die Gruppe „Guests“ erlaubt, ein Wiki kann also öffentlich, privat oder gemischt sein, und neue Nutzer bekommen keinen Zugriff, bis ein Admin oder die Selbstregistrierung sie einer Gruppe zuweist."
+				},
+				{
+					"q": "Hat Wiki.js eine API?",
+					"a": "Ja. Wiki.js hat eine GraphQL-API unter /graphql, die alles im Wiki lesen und ändern kann. Aufgerufen wird sie mit Tokens, die unter „API Access“ im „Administration Area“ erstellt werden."
+				}
+			]
 		},
 		"es": {
 			"description": "Una wiki para un equipo o un proyecto: páginas en Markdown o con un editor visual, búsqueda, permisos y proveedores de inicio de sesión",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste: Wiki.js se configura con ellos antes de responder, así que nadie más ve su página de instalación. Las páginas se crean desde la página de inicio; usuarios, grupos y proveedores de inicio de sesión están en Administration."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste: Wiki.js se configura con ellos antes de responder, así que nadie más ve su página de instalación. Las páginas se crean desde la página de inicio; usuarios, grupos y proveedores de inicio de sesión están en Administration.",
+			"sizing": "Wiki.js es ligero: unos 300 MB con Postgres, y miles de páginas con sus archivos subidos ocupan unos pocos GB.",
+			"summary": "Autoaloja Wiki.js en un clic: wiki de código abierto con editor Markdown y visual, historial de páginas y sincronización con Git. Alternativa a Confluence.",
+			"about": [
+				"Wiki.js es una wiki de código abierto para la documentación de equipos y proyectos, de las que se usan en lugar de Confluence. Los desarrolladores escriben las páginas en Markdown con vista previa en tiempo real, y el resto usa el editor visual y nunca ve la sintaxis. Cada cambio queda registrado: se pueden comparar dos versiones de una página, restaurar una anterior e incluso recuperar una página eliminada. Los grupos y las reglas de página deciden quién puede leer o editar qué rutas.",
+				"Los equipos autoalojan Wiki.js para mantener su documentación en su propio servidor, sin pagar por usuario. Lo que lo distingue es la sincronización con Git: cada página se puede escribir en un repositorio de Git como un archivo, y las ediciones hechas allí vuelven a la wiki. El inconveniente: el desarrollo se movió a Wiki.js 3.0, todavía una beta que su README marca como no apta para producción, así que la línea estable 2.5 recibe versiones de mantenimiento."
+			],
+			"faq": [
+				{
+					"q": "¿Wiki.js es gratis y de código abierto?",
+					"a": "Sí. Wiki.js es software libre bajo la licencia AGPL-3.0, con todo su código fuente en GitHub. Su desarrollo se financia con donaciones de patrocinadores de la comunidad."
+				},
+				{
+					"q": "¿Wiki.js admite LDAP y SSO?",
+					"a": "Sí. Wiki.js permite iniciar sesión con LDAP o Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub y más, varios a la vez, y un administrador puede hacer obligatoria la autenticación en dos pasos para todos."
+				},
+				{
+					"q": "¿Qué bases de datos admite Wiki.js?",
+					"a": "PostgreSQL es la que recomienda su documentación y la única que admitirá la próxima versión mayor. Wiki.js 2.5 también funciona con MySQL, MariaDB, MS SQL Server y SQLite, aunque SQLite no se recomienda para producción."
+				},
+				{
+					"q": "¿Puede una wiki de Wiki.js ser privada?",
+					"a": "Sí. Los visitantes sin cuenta solo ven lo que permite el grupo “Guests”, así que una wiki puede ser pública, privada o mixta, y los usuarios nuevos no tienen acceso hasta que un administrador o el autorregistro los coloca en un grupo."
+				},
+				{
+					"q": "¿Wiki.js tiene una API?",
+					"a": "Sí. Wiki.js tiene una API GraphQL en /graphql que puede leer y modificar todo lo que hay en la wiki, y se llama con tokens creados en “API Access” del “Administration Area”."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un wiki pour une équipe ou un projet : pages en Markdown ou avec un éditeur visuel, recherche, permissions et fournisseurs de connexion",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : Wiki.js est configuré avec eux avant de répondre, donc personne d’autre ne voit sa page d’installation. Les pages se créent depuis l’accueil ; utilisateurs, groupes et fournisseurs de connexion sont dans Administration."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués : Wiki.js est configuré avec eux avant de répondre, donc personne d’autre ne voit sa page d’installation. Les pages se créent depuis l’accueil ; utilisateurs, groupes et fournisseurs de connexion sont dans Administration.",
+			"sizing": "Wiki.js est léger : environ 300 MB avec Postgres, et des milliers de pages avec leurs fichiers envoyés prennent quelques GB.",
+			"summary": "Auto-hébergez Wiki.js en un clic : wiki open source avec Markdown, éditeur visuel, historique des pages et synchronisation Git. Alternative à Confluence.",
+			"about": [
+				"Wiki.js est un wiki open source pour la documentation d’une équipe ou d’un projet, de ceux que l’on installe à la place de Confluence. Les développeurs écrivent les pages en Markdown avec un aperçu en direct, tandis que les autres utilisent l’éditeur visuel sans jamais voir la syntaxe. Chaque modification est suivie : on peut comparer deux versions d’une page, en restaurer une plus ancienne, et même récupérer une page supprimée. Des groupes et des règles de page décident qui peut lire ou modifier quels chemins.",
+				"Les équipes auto-hébergent Wiki.js pour garder leur documentation sur leur propre serveur, sans prix par utilisateur. Son atout : la synchronisation Git, qui permet d’écrire chaque page comme un fichier dans un dépôt Git et ramène dans le wiki les modifications faites là-bas. Le revers : le développement est passé à Wiki.js 3.0, encore une bêta que son README déconseille en production, si bien que la branche stable 2.5 reçoit des versions de maintenance."
+			],
+			"faq": [
+				{
+					"q": "Wiki.js est-il gratuit et open source ?",
+					"a": "Oui. Wiki.js est un logiciel libre sous licence AGPL-3.0, avec tout son code source sur GitHub. Son développement est financé par les dons de soutiens de la communauté."
+				},
+				{
+					"q": "Wiki.js prend-il en charge LDAP et le SSO ?",
+					"a": "Oui. Wiki.js connecte les utilisateurs par LDAP ou Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub et d’autres, plusieurs à la fois, et un administrateur peut rendre l’authentification à deux facteurs obligatoire pour tout le monde."
+				},
+				{
+					"q": "Quelles bases de données Wiki.js prend-il en charge ?",
+					"a": "PostgreSQL est celle que recommande sa documentation, et la seule que la prochaine version majeure prendra en charge. Wiki.js 2.5 fonctionne aussi avec MySQL, MariaDB, MS SQL Server et SQLite, mais SQLite n’est pas recommandé en production."
+				},
+				{
+					"q": "Un wiki Wiki.js peut-il être privé ?",
+					"a": "Oui. Les visiteurs sans compte ne voient que ce que le groupe « Guests » autorise, un wiki peut donc être public, privé ou un mélange des deux, et les nouveaux utilisateurs n’ont aucun accès tant qu’un administrateur ou l’auto-inscription ne les place pas dans un groupe."
+				},
+				{
+					"q": "Wiki.js a-t-il une API ?",
+					"a": "Oui. Wiki.js a une API GraphQL à l’adresse /graphql, qui peut lire et modifier tout le contenu du wiki, et qui s’appelle avec des tokens créés dans « API Access » de l’« Administration Area »."
+				}
+			]
 		},
 		"pl": {
 			"description": "Wiki dla zespołu albo projektu: strony w Markdownie lub w edytorze wizualnym, wyszukiwanie, uprawnienia i dostawcy logowania",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: Wiki.js jest nimi skonfigurowane, zanim zacznie odpowiadać, więc nikt inny nie dostanie strony instalacji. Strony tworzy się ze strony głównej; użytkownicy, grupy i dostawcy logowania są w Administration."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano: Wiki.js jest nimi skonfigurowane, zanim zacznie odpowiadać, więc nikt inny nie dostanie strony instalacji. Strony tworzy się ze strony głównej; użytkownicy, grupy i dostawcy logowania są w Administration.",
+			"sizing": "Wiki.js ma małe wymagania: około 300 MB z Postgresem, a tysiące stron z wgranymi plikami zajmują kilka GB.",
+			"summary": "Hostuj Wiki.js u siebie w jeden klik: wiki open source z Markdownem, edytorem wizualnym, historią i synchronizacją z Gitem. Alternatywa dla Confluence.",
+			"about": [
+				"Wiki.js to wiki open source do dokumentacji zespołu i projektu, takie, które ludzie stawiają zamiast Confluence. Programiści piszą strony w Markdownie z podglądem na żywo, a pozostali korzystają z edytora wizualnego i nigdy nie widzą składni. Każda zmiana jest zapisywana: można porównać dwie wersje strony, przywrócić starszą, a nawet odzyskać usuniętą stronę. Grupy i reguły stron decydują, kto może czytać lub edytować które ścieżki.",
+				"Zespoły hostują Wiki.js u siebie, żeby trzymać dokumentację na własnym serwerze, bez opłaty za użytkownika. Wiki.js wyróżnia się synchronizacją z Gitem: każda strona może być zapisywana w repozytorium Git jako plik, a zmiany zrobione tam wracają do wiki. Haczyk: rozwój przeniósł się do Wiki.js 3.0, wciąż wersji beta, której README nie zaleca do produkcji, więc stabilna linia 2.5 dostaje wydania utrzymaniowe."
+			],
+			"faq": [
+				{
+					"q": "Czy Wiki.js jest darmowe i open source?",
+					"a": "Tak. Wiki.js to wolne oprogramowanie na licencji AGPL-3.0, z całym kodem źródłowym na GitHubie. Jego rozwój jest finansowany z darowizn osób ze społeczności, które go wspierają."
+				},
+				{
+					"q": "Czy Wiki.js obsługuje LDAP i SSO?",
+					"a": "Tak. Wiki.js loguje użytkowników przez LDAP lub Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub i inne, kilka naraz, a administrator może wymusić uwierzytelnianie dwuskładnikowe dla wszystkich."
+				},
+				{
+					"q": "Jakie bazy danych obsługuje Wiki.js?",
+					"a": "PostgreSQL to baza, którą poleca dokumentacja, i jedyna, którą będzie obsługiwać następna wersja główna. Wiki.js 2.5 działa też na MySQL, MariaDB, MS SQL Server i SQLite, choć SQLite nie jest zalecane na produkcję."
+				},
+				{
+					"q": "Czy dostęp do wiki w Wiki.js może być prywatny?",
+					"a": "Tak. Odwiedzający bez konta widzą tylko to, na co pozwala grupa „Guests”, więc dostęp do wiki może być publiczny, prywatny albo mieszany, a nowi użytkownicy nie mają dostępu, dopóki administrator albo samodzielna rejestracja nie doda ich do grupy."
+				},
+				{
+					"q": "Czy Wiki.js ma API?",
+					"a": "Tak. Wiki.js ma API GraphQL pod adresem /graphql, które może odczytywać i zmieniać wszystko w wiki. Wywołuje się je tokenami tworzonymi w „API Access” w „Administration Area”."
+				}
+			]
 		},
 		"pt": {
 			"description": "Uma wiki para uma equipe ou um projeto: páginas em Markdown ou num editor visual, busca, permissões e provedores de login",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou: o Wiki.js é configurado com eles antes de responder, então ninguém mais vê a página de instalação. As páginas são criadas a partir da página inicial; usuários, grupos e provedores de login ficam em Administration."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou: o Wiki.js é configurado com eles antes de responder, então ninguém mais vê a página de instalação. As páginas são criadas a partir da página inicial; usuários, grupos e provedores de login ficam em Administration.",
+			"sizing": "Wiki.js é leve: cerca de 300 MB com o Postgres, e milhares de páginas com seus uploads ocupam alguns GB.",
+			"summary": "Auto-hospede o Wiki.js em um clique: wiki de código aberto com Markdown, editor visual, histórico e sincronização com Git. Alternativa ao Confluence.",
+			"about": [
+				"O Wiki.js é uma wiki de código aberto para a documentação de equipes e projetos, do tipo que as pessoas usam no lugar do Confluence. Desenvolvedores escrevem as páginas em Markdown com pré-visualização em tempo real, e os demais usam o editor visual e nunca veem a sintaxe. Cada alteração fica registrada: duas versões de uma página podem ser comparadas, uma mais antiga pode ser restaurada e até uma página excluída pode ser recuperada. Grupos e regras de página definem quem pode ler ou editar quais caminhos.",
+				"Equipes hospedam o Wiki.js por conta própria para manter a documentação no próprio servidor, sem preço por usuário. O que mais se destaca é a sincronização com Git: cada página pode ser gravada em um repositório Git como um arquivo, e as edições feitas lá voltam para a wiki. O porém: o desenvolvimento passou para o Wiki.js 3.0, ainda uma beta que o README dele marca como não indicada para produção, então a linha estável 2.5 recebe versões de manutenção."
+			],
+			"faq": [
+				{
+					"q": "O Wiki.js é gratuito e de código aberto?",
+					"a": "Sim. O Wiki.js é software livre sob a licença AGPL-3.0, com todo o código-fonte no GitHub. O desenvolvimento é financiado por doações de apoiadores da comunidade."
+				},
+				{
+					"q": "O Wiki.js suporta LDAP e SSO?",
+					"a": "Sim. O Wiki.js autentica as pessoas por LDAP ou Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub e outros, vários ao mesmo tempo, e um administrador pode tornar a autenticação em dois fatores obrigatória para todos."
+				},
+				{
+					"q": "Quais bancos de dados o Wiki.js suporta?",
+					"a": "O PostgreSQL é o que a documentação recomenda e o único que a próxima versão principal vai suportar. O Wiki.js 2.5 também roda em MySQL, MariaDB, MS SQL Server e SQLite, embora o SQLite não seja recomendado para produção."
+				},
+				{
+					"q": "Uma wiki do Wiki.js pode ser privada?",
+					"a": "Sim. Visitantes sem conta veem só o que o grupo “Guests” permite, então uma wiki pode ser pública, privada ou mista, e usuários novos não têm acesso até que um administrador ou o autocadastro os coloque em um grupo."
+				},
+				{
+					"q": "O Wiki.js tem uma API?",
+					"a": "Sim. O Wiki.js tem uma API GraphQL em /graphql que pode ler e alterar tudo na wiki, chamada com tokens criados em “API Access” na “Administration Area”."
+				}
+			]
 		},
 		"ru": {
 			"description": "Вики для команды или проекта: страницы в Markdown или визуальном редакторе, поиск, права доступа и провайдеры входа",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали: Wiki.js настраивается с ними до того, как начнёт отвечать, поэтому страницу установки больше никто не получит. Страницы создаются с главной; пользователи, группы и провайдеры входа — в Administration."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали: Wiki.js настраивается с ними до того, как начнёт отвечать, поэтому страницу установки больше никто не получит. Страницы создаются с главной; пользователи, группы и провайдеры входа — в Administration.",
+			"sizing": "Wiki.js: небольшие требования — около 300 MB вместе с Postgres, а тысячи страниц с загрузками занимают несколько GB.",
+			"summary": "Self-hosted Wiki.js в один клик: open source вики с Markdown и визуальным редактором, историей страниц и синхронизацией с Git. Альтернатива Confluence.",
+			"about": [
+				"Wiki.js — это open source вики для документации команд и проектов, которую ставят вместо Confluence. Разработчики пишут страницы в Markdown с предпросмотром в реальном времени, а остальные пользуются визуальным редактором и синтаксиса не видят. Каждое изменение фиксируется: две версии страницы можно сравнить, старую восстановить, а удаленную страницу даже вернуть. Группы и правила страниц решают, кто может читать или редактировать какие пути.",
+				"Wiki.js хостят у себя, чтобы хранить документацию на собственном сервере и не платить за каждого пользователя. Главная особенность — синхронизация с Git: каждую страницу можно записывать в Git-репозиторий как файл, а правки, сделанные там, возвращаются в вики. Но есть нюанс: разработка перешла на Wiki.js 3.0, это пока бета, которую README проекта помечает как непригодную для продакшена, поэтому стабильная ветка 2.5 получает релизы поддержки."
+			],
+			"faq": [
+				{
+					"q": "Wiki.js бесплатный и с открытым исходным кодом?",
+					"a": "Да. Wiki.js — свободное ПО под лицензией AGPL-3.0, весь исходный код лежит на GitHub. Разработка финансируется пожертвованиями участников сообщества, которые поддерживают проект."
+				},
+				{
+					"q": "Wiki.js поддерживает LDAP и SSO?",
+					"a": "Да. Wiki.js пускает пользователей через LDAP или Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub и другие провайдеры, причем сразу несколько, а администратор может сделать двухфакторную аутентификацию обязательной для всех."
+				},
+				{
+					"q": "Какие базы данных поддерживает Wiki.js?",
+					"a": "Документация рекомендует PostgreSQL, и только его будет поддерживать следующая мажорная версия. Wiki.js 2.5 работает также с MySQL, MariaDB, MS SQL Server и SQLite, хотя SQLite для продакшена не рекомендуется."
+				},
+				{
+					"q": "Можно ли сделать вики на Wiki.js закрытой?",
+					"a": "Да. Посетители без аккаунта видят только то, что разрешает группа «Guests», поэтому вики может быть открытой, закрытой или смешанной, а новые пользователи не получают доступа, пока администратор или саморегистрация не добавит их в группу."
+				},
+				{
+					"q": "Есть ли у Wiki.js API?",
+					"a": "Да. У Wiki.js есть GraphQL API по адресу /graphql: через него можно читать и менять все в вики. К нему обращаются с токенами, созданными в «API Access» в «Administration Area»."
+				}
+			]
 		},
 		"uk": {
 			"description": "Вікі для команди чи проєкту: сторінки в Markdown або у візуальному редакторі, пошук, права доступу й провайдери входу",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: Wiki.js налаштовується з ними до того, як почне відповідати, тож сторінку встановлення більше ніхто не отримає. Сторінки створюються з головної; користувачі, групи й провайдери входу — в Administration."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали: Wiki.js налаштовується з ними до того, як почне відповідати, тож сторінку встановлення більше ніхто не отримає. Сторінки створюються з головної; користувачі, групи й провайдери входу — в Administration.",
+			"sizing": "Wiki.js має скромні вимоги: близько 300 MB з Postgres, а тисячі сторінок із завантаженими файлами займають кілька GB.",
+			"summary": "Self-hosted Wiki.js в один клік: вікі з відкритим кодом, Markdown і візуальний редактор, історія сторінок, синхронізація з Git. Альтернатива Confluence.",
+			"about": [
+				"Wiki.js — це вікі з відкритим кодом для документації команд і проєктів, яку ставлять замість Confluence. Розробники пишуть сторінки в Markdown із попереднім переглядом у реальному часі, а решта користується візуальним редактором і синтаксису не бачить. Кожна зміна фіксується: дві версії сторінки можна порівняти, стару відновити, а навіть видалену сторінку повернути. Групи й правила сторінок вирішують, хто може читати чи редагувати які шляхи.",
+				"Wiki.js хостять у себе, щоб зберігати документацію на власному сервері й не платити за кожного користувача. Головна особливість — синхронізація з Git: кожну сторінку можна записувати в Git-репозиторій як файл, а правки, зроблені там, повертаються у вікі. Але є нюанс: розробка перейшла на Wiki.js 3.0, це поки бета, яку README проєкту позначає як непридатну для продакшену, тож стабільна гілка 2.5 отримує релізи підтримки."
+			],
+			"faq": [
+				{
+					"q": "Чи Wiki.js безкоштовний і з відкритим кодом?",
+					"a": "Так. Wiki.js — вільне програмне забезпечення за ліцензією AGPL-3.0, весь вихідний код лежить на GitHub. Розробку фінансують пожертвами учасників спільноти, які підтримують проєкт."
+				},
+				{
+					"q": "Чи підтримує Wiki.js LDAP і SSO?",
+					"a": "Так. Wiki.js впускає користувачів через LDAP або Active Directory, SAML 2.0, OpenID Connect, Okta, Azure AD, Keycloak, Google, GitHub та інші, причому одразу кілька, а адміністратор може зробити двофакторну автентифікацію обов’язковою для всіх."
+				},
+				{
+					"q": "Які бази даних підтримує Wiki.js?",
+					"a": "Документація радить PostgreSQL, і лише її підтримуватиме наступна мажорна версія. Wiki.js 2.5 працює також із MySQL, MariaDB, MS SQL Server і SQLite, хоча SQLite для продакшену не рекомендовано."
+				},
+				{
+					"q": "Чи можна зробити вікі на Wiki.js закритою?",
+					"a": "Так. Відвідувачі без акаунта бачать лише те, що дозволяє група «Guests», тож вікі може бути відкритою, закритою або змішаною, а нові користувачі не мають доступу, доки адміністратор або саморєстрація не додасть їх до групи."
+				},
+				{
+					"q": "Чи є в Wiki.js API?",
+					"a": "Так. У Wiki.js є GraphQL API за адресою /graphql: через нього можна читати й змінювати все у вікі. До нього звертаються з токенами, створеними в «API Access» в «Administration Area»."
+				}
+			]
 		}
 	}
 }

@@ -1,6 +1,13 @@
 {
 	"name": "Mealie",
 	"emoji": "🍲",
+	"category": "productivity",
+	"alternatives": [
+		"Paprika",
+		"Plan to Eat",
+		"Copy Me That"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "mealie",
 		"port": 9000
@@ -14,35 +21,259 @@
 	"texts": {
 		"en": {
 			"description": "A recipe manager and meal planner",
-			"notes": "Sign in with changeme@example.com and MyPassword; the wizard that opens asks for your own email and password. Do it right away: until then that login is open to whoever has the address."
+			"notes": "Sign in with changeme@example.com and MyPassword; the wizard that opens asks for your own email and password. Do it right away: until then that login is open to whoever has the address.",
+			"sizing": "Mealie is light: about 300 MB of memory, and hundreds of recipes with their photos take a gigabyte or two.",
+			"summary": "Mealie is an open-source recipe manager, meal planner and shopping list, a Paprika alternative. Self-host it in one click.",
+			"about": [
+				"Mealie is an open-source recipe manager and meal planner, one you run yourself in place of Paprika. Paste a link and its scraper pulls the ingredients and steps from hundreds of cooking sites. The meal planner lays out breakfast, lunch, dinner and snacks on a calendar, and it can pick random recipes within rules you set, such as fish on Fridays. A recipe's ingredients go onto a shopping list sorted into the sections of your supermarket.",
+				"A self-hosted Mealie keeps a family's recipes on a server you control. Households in one group share the recipe collection but keep their own meal plans and shopping lists. Its API and webhooks send meal plan data to tools like Home Assistant, which can remind you to take dinner out of the freezer. The catch: email invitations and password resets need an SMTP service, and a few sites block the scraper."
+			],
+			"faq": [
+				{
+					"q": "Is Mealie free and open source?",
+					"a": "Yes. Mealie is open source under the AGPL-3.0 licence, with its code on GitHub at mealie-recipes/mealie. The app itself costs nothing; you pay only for the server it runs on."
+				},
+				{
+					"q": "Can Mealie import recipes from Paprika?",
+					"a": "Yes. Export your recipes from Paprika, change the file's extension to .zip and upload it on the Recipe Data Migrations page, which shows once advanced features are on in your profile. Tandoor and Plan to Eat exports work too."
+				},
+				{
+					"q": "Does Mealie have a mobile app?",
+					"a": "Mealie is a web app that you install to your phone's home screen from the browser. On Android, sharing a recipe page to the installed app opens Mealie's import with the link filled in."
+				},
+				{
+					"q": "Does Mealie support multiple users?",
+					"a": "Yes. An admin creates accounts or sends invitation links and sets what each user may do, such as invite others, manage a household or edit shared foods and tags. Sign-in through LDAP or OpenID Connect works too."
+				},
+				{
+					"q": "Does Mealie work with OpenAI or Ollama?",
+					"a": "Yes, once you add a provider in the group settings: OpenAI or any OpenAI-compatible API, such as a self-hosted Ollama. Import with AI then builds recipes from photos, pasted text or links, and an AI parser splits ingredient lines."
+				}
+			]
 		},
 		"de": {
 			"description": "Eine Rezeptverwaltung mit Essensplaner",
-			"notes": "Melde dich mit changeme@example.com und MyPassword an; der Assistent, der sich dann öffnet, fragt nach deiner eigenen E-Mail-Adresse und deinem eigenen Passwort. Mach das gleich: Bis dahin steht dieser Zugang allen offen, die die Adresse haben."
+			"notes": "Melde dich mit changeme@example.com und MyPassword an; der Assistent, der sich dann öffnet, fragt nach deiner eigenen E-Mail-Adresse und deinem eigenen Passwort. Mach das gleich: Bis dahin steht dieser Zugang allen offen, die die Adresse haben.",
+			"sizing": "Mealie ist leicht: etwa 300 MB RAM, und Hunderte Rezepte samt Fotos brauchen ein bis zwei GB.",
+			"summary": "Mealie selbst hosten: Open-Source-Rezeptverwaltung mit Essensplaner und Einkaufsliste, eine Alternative zu Paprika. In einem Klick.",
+			"about": [
+				"Mealie ist eine Open-Source-Rezeptverwaltung mit Essensplaner, die du statt Paprika selbst betreibst. Füg einen Link ein, und der Scraper von Mealie holt die Zutaten und Schritte von Hunderten Kochseiten. Der Essensplaner legt Frühstück, Mittagessen, Abendessen und Snacks in einem Kalender an und kann zufällige Rezepte nach Regeln auswählen, die du festlegst, zum Beispiel Fisch am Freitag. Die Zutaten eines Rezepts landen auf einer Einkaufsliste, die nach den Abteilungen deines Supermarkts sortiert ist.",
+				"Wenn du Mealie selbst hostest, liegen die Rezepte deiner Familie auf einer Maschine, die du kontrollierst. Haushalte in einer Gruppe teilen sich die Rezeptsammlung, behalten aber ihre eigenen Essenspläne und Einkaufslisten. Über die API und Webhooks gehen Essensplan-Daten an Tools wie Home Assistant, das dich daran erinnern kann, das Abendessen aus dem Gefrierfach zu nehmen. Der Haken: Einladungen per E-Mail und das Zurücksetzen von Passwörtern brauchen einen SMTP-Server, und ein paar Seiten blockieren den Scraper."
+			],
+			"faq": [
+				{
+					"q": "Ist Mealie kostenlos und Open Source?",
+					"a": "Ja. Mealie ist Open Source unter der Lizenz AGPL-3.0, der Code liegt auf GitHub unter mealie-recipes/mealie. Die App selbst kostet nichts; du zahlst nur für die Maschine, auf der sie läuft."
+				},
+				{
+					"q": "Kann Mealie Rezepte aus Paprika importieren?",
+					"a": "Ja. Exportiere deine Rezepte aus Paprika, ändere die Dateiendung in .zip und lade die Datei auf der Seite „Recipe Data Migrations“ hoch, die erscheint, sobald in deinem Profil die erweiterten Funktionen eingeschaltet sind. Auch Exporte aus Tandoor und Plan to Eat funktionieren."
+				},
+				{
+					"q": "Hat Mealie eine Mobile-App?",
+					"a": "Mealie ist eine Web-App, die du im Browser auf den Startbildschirm deines Handys installierst. Wenn du auf Android eine Rezeptseite mit der installierten App teilst, öffnet sich der Import von Mealie mit bereits eingetragenem Link."
+				},
+				{
+					"q": "Kann man Mealie mit mehreren Personen nutzen?",
+					"a": "Ja. Ein Admin legt Konten an oder verschickt Einladungslinks und bestimmt, was die einzelnen Personen dürfen, zum Beispiel andere einladen, einen Haushalt verwalten oder gemeinsame Lebensmittel und Tags bearbeiten. Die Anmeldung über LDAP oder OpenID Connect funktioniert ebenfalls."
+				},
+				{
+					"q": "Funktioniert Mealie mit OpenAI oder Ollama?",
+					"a": "Ja, sobald du in den Gruppeneinstellungen einen Anbieter hinzufügst: OpenAI oder eine beliebige OpenAI-kompatible API, etwa ein selbst gehostetes Ollama. „Import with AI“ erstellt dann Rezepte aus Fotos, eingefügtem Text oder Links, und ein KI-Parser zerlegt Zutatenzeilen."
+				}
+			]
 		},
 		"es": {
 			"description": "Un administrador de recetas y planificador de comidas",
-			"notes": "Inicia sesión con changeme@example.com y MyPassword; el asistente que se abre te pide tu propio correo y tu propia contraseña. Hazlo enseguida: hasta entonces ese acceso está abierto para cualquiera que tenga la dirección."
+			"notes": "Inicia sesión con changeme@example.com y MyPassword; el asistente que se abre te pide tu propio correo y tu propia contraseña. Hazlo enseguida: hasta entonces ese acceso está abierto para cualquiera que tenga la dirección.",
+			"sizing": "Mealie es ligero: unos 300 MB de memoria, y cientos de recetas con sus fotos ocupan uno o dos GB.",
+			"summary": "Autoaloja Mealie en un clic: administrador de recetas de código abierto con planificador de comidas y lista de compras, alternativa a Paprika.",
+			"about": [
+				"Mealie es un administrador de recetas y planificador de comidas de código abierto que ejecutas tú mismo en lugar de Paprika. Pega un enlace y el scraper de Mealie extrae los ingredientes y los pasos de cientos de sitios de cocina. El planificador de comidas distribuye el desayuno, el almuerzo, la cena y los snacks en un calendario, y puede elegir recetas al azar según las reglas que definas, como pescado los viernes. Los ingredientes de una receta pasan a una lista de compras ordenada por las secciones de tu supermercado.",
+				"Al autoalojar Mealie, las recetas de una familia quedan en una máquina que controlas. Los hogares de un mismo grupo comparten la colección de recetas, pero cada uno conserva sus propios planes de comidas y listas de compras. Su API y sus webhooks envían los datos del plan de comidas a herramientas como Home Assistant, que puede recordarte sacar la cena del congelador. El inconveniente: las invitaciones por correo y los restablecimientos de contraseña necesitan un servidor SMTP, y algunos sitios bloquean el scraper."
+			],
+			"faq": [
+				{
+					"q": "¿Mealie es gratis y de código abierto?",
+					"a": "Sí. Mealie es de código abierto bajo la licencia AGPL-3.0, y su código está en GitHub, en mealie-recipes/mealie. La app en sí no cuesta nada: solo pagas por la máquina en la que se ejecuta."
+				},
+				{
+					"q": "¿Mealie puede importar recetas de Paprika?",
+					"a": "Sí. Exporta tus recetas desde Paprika, cambia la extensión del archivo a .zip y súbelo en la página “Recipe Data Migrations”, que aparece cuando activas las funciones avanzadas en tu perfil. También funcionan las exportaciones de Tandoor y Plan to Eat."
+				},
+				{
+					"q": "¿Mealie tiene app móvil?",
+					"a": "Mealie es una app web que instalas en la pantalla de inicio del teléfono desde el navegador. En Android, al compartir una página de receta con la app instalada, se abre la importación de Mealie con el enlace ya escrito."
+				},
+				{
+					"q": "¿Mealie admite varios usuarios?",
+					"a": "Sí. Un administrador crea cuentas o envía enlaces de invitación y define qué puede hacer cada usuario, por ejemplo invitar a otros, administrar un hogar o editar los alimentos y las etiquetas compartidos. El inicio de sesión mediante LDAP u OpenID Connect también funciona."
+				},
+				{
+					"q": "¿Mealie funciona con OpenAI u Ollama?",
+					"a": "Sí, cuando agregas un proveedor en los ajustes del grupo: OpenAI o cualquier API compatible con OpenAI, como un Ollama autoalojado. “Import with AI” crea entonces recetas a partir de fotos, texto pegado o enlaces, y un analizador con IA separa las líneas de ingredientes."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un gestionnaire de recettes et planificateur de repas",
-			"notes": "Connectez-vous avec changeme@example.com et MyPassword ; l’assistant qui s’ouvre vous demande votre propre e-mail et votre propre mot de passe. Faites-le tout de suite : d’ici là, quiconque connaît l’adresse peut se connecter avec ces identifiants."
+			"notes": "Connectez-vous avec changeme@example.com et MyPassword ; l’assistant qui s’ouvre vous demande votre propre e-mail et votre propre mot de passe. Faites-le tout de suite : d’ici là, quiconque connaît l’adresse peut se connecter avec ces identifiants.",
+			"sizing": "Mealie est léger : environ 300 MB de mémoire, et des centaines de recettes avec leurs photos prennent un ou deux GB.",
+			"summary": "Auto-hébergez Mealie en un clic : gestionnaire de recettes open source avec planificateur de repas et liste de courses, alternative à Paprika.",
+			"about": [
+				"Mealie est un gestionnaire de recettes et planificateur de repas open source, que vous hébergez vous-même à la place de Paprika. Collez un lien et le scraper de Mealie extrait les ingrédients et les étapes de centaines de sites de cuisine. Le planificateur de repas répartit petit-déjeuner, déjeuner, dîner et collations dans un calendrier, et il peut choisir des recettes au hasard selon les règles que vous fixez, comme du poisson le vendredi. Les ingrédients d’une recette passent sur une liste de courses triée selon les rayons de votre supermarché.",
+				"Auto-hébergé, Mealie garde les recettes d’une famille sur une machine que vous contrôlez. Les foyers d’un même groupe partagent la collection de recettes, mais gardent chacun leurs propres plans de repas et listes de courses. Son API et ses webhooks transmettent les données du plan de repas à des outils comme Home Assistant, qui peut vous rappeler de sortir le dîner du congélateur. Le revers : les invitations par e-mail et les réinitialisations de mot de passe demandent un serveur SMTP, et quelques sites bloquent le scraper."
+			],
+			"faq": [
+				{
+					"q": "Mealie est-il gratuit et open source ?",
+					"a": "Oui. Mealie est open source sous licence AGPL-3.0, et son code est sur GitHub, dans mealie-recipes/mealie. L’application elle-même ne coûte rien : vous ne payez que la machine sur laquelle elle tourne."
+				},
+				{
+					"q": "Mealie peut-il importer des recettes depuis Paprika ?",
+					"a": "Oui. Exportez vos recettes depuis Paprika, remplacez l’extension du fichier par .zip et envoyez-le sur la page « Recipe Data Migrations », qui apparaît une fois les fonctions avancées activées dans votre profil. Les exports de Tandoor et de Plan to Eat fonctionnent aussi."
+				},
+				{
+					"q": "Mealie a-t-il une application mobile ?",
+					"a": "Mealie est une application web que vous installez depuis le navigateur sur l’écran d’accueil de votre téléphone. Sous Android, partager une page de recette vers l’application installée ouvre l’import de Mealie avec le lien déjà rempli."
+				},
+				{
+					"q": "Mealie gère-t-il plusieurs utilisateurs ?",
+					"a": "Oui. Un administrateur crée des comptes ou envoie des liens d’invitation et définit ce que chaque utilisateur peut faire, par exemple inviter d’autres personnes, gérer un foyer ou modifier les aliments et les tags partagés. La connexion via LDAP ou OpenID Connect fonctionne aussi."
+				},
+				{
+					"q": "Mealie fonctionne-t-il avec OpenAI ou Ollama ?",
+					"a": "Oui, dès que vous ajoutez un fournisseur dans les paramètres du groupe : OpenAI ou n’importe quelle API compatible OpenAI, comme un Ollama auto-hébergé. « Import with AI » crée alors des recettes à partir de photos, de texte collé ou de liens, et un analyseur IA découpe les lignes d’ingrédients."
+				}
+			]
 		},
 		"pl": {
 			"description": "Menedżer przepisów i planer posiłków",
-			"notes": "Zaloguj się danymi changeme@example.com i MyPassword; kreator, który się otworzy, zapyta o twój własny e-mail i hasło. Zrób to od razu: do tego czasu tymi danymi zaloguje się każdy, kto zna adres."
+			"notes": "Zaloguj się danymi changeme@example.com i MyPassword; kreator, który się otworzy, zapyta o twój własny e-mail i hasło. Zrób to od razu: do tego czasu tymi danymi zaloguje się każdy, kto zna adres.",
+			"sizing": "Mealie ma małe wymagania: około 300 MB pamięci, a setki przepisów ze zdjęciami zajmują 1–2 GB.",
+			"summary": "Hostuj Mealie u siebie w jeden klik: menedżer przepisów open source z planerem posiłków i listą zakupów, alternatywa dla aplikacji Paprika.",
+			"about": [
+				"Mealie to menedżer przepisów i planer posiłków open source, który uruchamiasz u siebie zamiast aplikacji Paprika. Wklej link, a scraper Mealie pobierze składniki i kroki z setek stron kulinarnych. Planer posiłków rozkłada śniadanie, obiad, kolację i przekąski w kalendarzu i potrafi losować przepisy według ustalonych przez ciebie zasad, na przykład ryba w piątki. Składniki przepisu trafiają na listę zakupów posortowaną według działów twojego supermarketu.",
+				"Gdy hostujesz Mealie u siebie, przepisy rodziny leżą na maszynie, którą kontrolujesz. Gospodarstwa domowe w jednej grupie dzielą kolekcję przepisów, ale mają własne plany posiłków i listy zakupów. API i webhooki przekazują dane planu posiłków do narzędzi takich jak Home Assistant, który może przypomnieć, żeby wyjąć kolację z zamrażarki. Haczyk: zaproszenia e-mailem i resety haseł wymagają serwera SMTP, a kilka stron blokuje scraper."
+			],
+			"faq": [
+				{
+					"q": "Czy Mealie jest darmowe i open source?",
+					"a": "Tak. Mealie jest open source na licencji AGPL-3.0, a jego kod leży na GitHubie w mealie-recipes/mealie. Sama aplikacja nic nie kosztuje; płacisz tylko za maszynę, na której działa."
+				},
+				{
+					"q": "Czy Mealie zaimportuje przepisy z aplikacji Paprika?",
+					"a": "Tak. Wyeksportuj przepisy z aplikacji Paprika, zmień rozszerzenie pliku na .zip i wgraj go na stronie „Recipe Data Migrations”, która pojawia się po włączeniu funkcji zaawansowanych w twoim profilu. Eksporty z Tandoor i Plan to Eat też działają."
+				},
+				{
+					"q": "Czy Mealie ma aplikację mobilną?",
+					"a": "Mealie to aplikacja webowa, którą instalujesz z przeglądarki na ekranie głównym telefonu. Na Androidzie po udostępnieniu strony z przepisem zainstalowanej aplikacji otwiera się import Mealie z już wpisanym linkiem."
+				},
+				{
+					"q": "Czy Mealie obsługuje wielu użytkowników?",
+					"a": "Tak. Administrator tworzy konta albo wysyła linki z zaproszeniem i ustala, co może robić każdy użytkownik, na przykład zapraszać innych, zarządzać gospodarstwem domowym albo edytować wspólne produkty i tagi. Logowanie przez LDAP lub OpenID Connect też działa."
+				},
+				{
+					"q": "Czy Mealie współpracuje z OpenAI lub Ollama?",
+					"a": "Tak, gdy dodasz dostawcę w ustawieniach grupy: OpenAI albo dowolne API zgodne z OpenAI, na przykład Ollama hostowana u siebie. „Import with AI” tworzy wtedy przepisy ze zdjęć, wklejonego tekstu albo linków, a parser AI dzieli linie ze składnikami."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um gerenciador de receitas e planejador de refeições",
-			"notes": "Entre com changeme@example.com e MyPassword; o assistente que se abre pede o seu próprio e-mail e a sua própria senha. Faça isso logo: até lá, esse login fica aberto para quem tiver o endereço."
+			"notes": "Entre com changeme@example.com e MyPassword; o assistente que se abre pede o seu próprio e-mail e a sua própria senha. Faça isso logo: até lá, esse login fica aberto para quem tiver o endereço.",
+			"sizing": "Mealie é leve: cerca de 300 MB de memória, e centenas de receitas com suas fotos ocupam um ou dois GB.",
+			"summary": "Auto-hospede o Mealie em um clique: gerenciador de receitas de código aberto com planejador de refeições e lista de compras, alternativa ao Paprika.",
+			"about": [
+				"O Mealie é um gerenciador de receitas e planejador de refeições de código aberto, que você roda por conta própria no lugar do Paprika. Cole um link e o scraper do Mealie extrai os ingredientes e os passos de centenas de sites de culinária. O planejador de refeições distribui café da manhã, almoço, jantar e lanches em um calendário, e pode escolher receitas aleatórias dentro de regras que você define, como peixe às sextas. Os ingredientes de uma receita vão para uma lista de compras organizada pelas seções do seu supermercado.",
+				"Com o Mealie auto-hospedado, as receitas de uma família ficam em uma máquina que você controla. Os domicílios de um mesmo grupo compartilham a coleção de receitas, mas cada um mantém seus próprios planos de refeições e listas de compras. A API e os webhooks dele enviam os dados do plano de refeições para ferramentas como o Home Assistant, que pode lembrar você de tirar o jantar do freezer. O porém: os convites por e-mail e as redefinições de senha precisam de um servidor SMTP, e alguns sites bloqueiam o scraper."
+			],
+			"faq": [
+				{
+					"q": "O Mealie é gratuito e de código aberto?",
+					"a": "Sim. O Mealie é de código aberto sob a licença AGPL-3.0, e o código dele está no GitHub, em mealie-recipes/mealie. O app em si não custa nada: você paga só pela máquina em que ele roda."
+				},
+				{
+					"q": "O Mealie importa receitas do Paprika?",
+					"a": "Sim. Exporte suas receitas do Paprika, troque a extensão do arquivo para .zip e envie na página “Recipe Data Migrations”, que aparece depois que os recursos avançados são ativados no seu perfil. As exportações do Tandoor e do Plan to Eat também funcionam."
+				},
+				{
+					"q": "O Mealie tem app para celular?",
+					"a": "O Mealie é um app web que você instala na tela inicial do celular, pelo navegador. No Android, compartilhar uma página de receita com o app instalado abre a importação do Mealie com o link já preenchido."
+				},
+				{
+					"q": "O Mealie suporta vários usuários?",
+					"a": "Sim. Um administrador cria contas ou envia links de convite e define o que cada usuário pode fazer, como convidar outras pessoas, gerenciar um domicílio ou editar alimentos e tags compartilhados. O login por LDAP ou OpenID Connect também funciona."
+				},
+				{
+					"q": "O Mealie funciona com OpenAI ou Ollama?",
+					"a": "Sim, depois que você adiciona um provedor nas configurações do grupo: OpenAI ou qualquer API compatível com a OpenAI, como um Ollama auto-hospedado. O “Import with AI” então cria receitas a partir de fotos, texto colado ou links, e um parser de IA separa as linhas de ingredientes."
+				}
+			]
 		},
 		"ru": {
 			"description": "Менеджер рецептов и планировщик питания",
-			"notes": "Войдите с changeme@example.com и MyPassword; откроется мастер настройки и попросит задать свои email и пароль. Сделайте это сразу: до тех пор с этим логином может войти любой, кто знает адрес."
+			"notes": "Войдите с changeme@example.com и MyPassword; откроется мастер настройки и попросит задать свои email и пароль. Сделайте это сразу: до тех пор с этим логином может войти любой, кто знает адрес.",
+			"sizing": "Mealie: небольшие требования — около 300 MB памяти, а сотни рецептов с фото занимают один-два GB.",
+			"summary": "Self-hosted Mealie — open source менеджер рецептов с планировщиком питания и списком покупок, альтернатива Paprika. Запуск в один клик.",
+			"about": [
+				"Mealie — это open source менеджер рецептов и планировщик питания, который вы запускаете сами вместо Paprika. Вставьте ссылку, и скрейпер Mealie соберет ингредиенты и шаги с сотен кулинарных сайтов. Планировщик питания раскладывает завтрак, обед, ужин и перекусы по календарю и умеет выбирать случайные рецепты по заданным вами правилам, например рыбу по пятницам. Ингредиенты рецепта попадают в список покупок, отсортированный по отделам вашего супермаркета.",
+				"Self-hosted Mealie хранит рецепты семьи на машине, которую вы контролируете. Домохозяйства из одной группы делят общую коллекцию рецептов, но ведут свои планы питания и списки покупок. Его API и вебхуки передают данные плана питания в такие инструменты, как Home Assistant, который может напомнить достать ужин из морозилки. Но есть нюанс: приглашения по почте и сброс паролей требуют SMTP-сервера, а несколько сайтов блокируют скрейпер."
+			],
+			"faq": [
+				{
+					"q": "Mealie бесплатный и с открытым кодом?",
+					"a": "Да. Mealie — программа с открытым кодом под лицензией AGPL-3.0, ее код лежит на GitHub в репозитории mealie-recipes/mealie. Само приложение ничего не стоит: вы платите только за машину, на которой оно работает."
+				},
+				{
+					"q": "Может ли Mealie импортировать рецепты из Paprika?",
+					"a": "Да. Экспортируйте рецепты из Paprika, смените расширение файла на .zip и загрузите его на странице «Recipe Data Migrations», которая появляется, когда в профиле включены расширенные функции. Экспорт из Tandoor и Plan to Eat тоже работает."
+				},
+				{
+					"q": "Есть ли у Mealie мобильное приложение?",
+					"a": "Mealie — веб-приложение, которое вы устанавливаете из браузера на главный экран телефона. На Android, если поделиться страницей рецепта с установленным приложением, откроется импорт Mealie с уже подставленной ссылкой."
+				},
+				{
+					"q": "Поддерживает ли Mealie нескольких пользователей?",
+					"a": "Да. Администратор создает аккаунты или отправляет ссылки-приглашения и задает, что может делать каждый пользователь, например приглашать других, управлять домохозяйством или редактировать общие продукты и теги. Вход через LDAP или OpenID Connect тоже работает."
+				},
+				{
+					"q": "Работает ли Mealie с OpenAI или Ollama?",
+					"a": "Да, после того как вы добавите провайдера в настройках группы: OpenAI или любой OpenAI-совместимый API, например Ollama, который вы хостите у себя. «Import with AI» после этого создает рецепты по фото, вставленному тексту или ссылкам, а ИИ-парсер разбивает строки с ингредиентами."
+				}
+			]
 		},
 		"uk": {
 			"description": "Менеджер рецептів і планувальник харчування",
-			"notes": "Увійдіть із логіном changeme@example.com і паролем MyPassword; майстер, що відкриється, попросить вказати власну пошту й пароль. Зробіть це одразу: доти з цим логіном може увійти кожен, хто знає адресу."
+			"notes": "Увійдіть із логіном changeme@example.com і паролем MyPassword; майстер, що відкриється, попросить вказати власну пошту й пароль. Зробіть це одразу: доти з цим логіном може увійти кожен, хто знає адресу.",
+			"sizing": "Mealie має скромні вимоги: близько 300 MB пам’яті, а сотні рецептів із фото займають 1–2 GB.",
+			"summary": "Self-hosted Mealie — менеджер рецептів із відкритим кодом, планувальником харчування й списком покупок, альтернатива Paprika. В один клік.",
+			"about": [
+				"Mealie — це менеджер рецептів і планувальник харчування з відкритим кодом, який ви запускаєте самі замість Paprika. Вставте посилання, і скрейпер Mealie збере інгредієнти та кроки із сотень кулінарних сайтів. Планувальник харчування розкладає сніданок, обід, вечерю та перекуси по календарю й уміє обирати випадкові рецепти за заданими вами правилами, наприклад рибу по п’ятницях. Інгредієнти рецепта потрапляють до списку покупок, відсортованого за відділами вашого супермаркету.",
+				"Self-hosted Mealie зберігає рецепти родини на машині, яку ви контролюєте. Домогосподарства з однієї групи ділять спільну колекцію рецептів, але ведуть власні плани харчування та списки покупок. Його API та вебхуки передають дані плану харчування в інструменти на кшталт Home Assistant, який може нагадати дістати вечерю з морозилки. Але є нюанс: запрошення поштою та скидання паролів потребують SMTP-сервера, а кілька сайтів блокують скрейпер."
+			],
+			"faq": [
+				{
+					"q": "Mealie безкоштовний і з відкритим кодом?",
+					"a": "Так. Mealie — програма з відкритим кодом під ліцензією AGPL-3.0, її код лежить на GitHub у репозиторії mealie-recipes/mealie. Сам застосунок нічого не коштує: ви платите лише за машину, на якій він працює."
+				},
+				{
+					"q": "Чи може Mealie імпортувати рецепти з Paprika?",
+					"a": "Так. Експортуйте рецепти з Paprika, змініть розширення файлу на .zip і завантажте його на сторінці «Recipe Data Migrations», яка з’являється, коли у профілі ввімкнено розширені функції. Експорт із Tandoor і Plan to Eat теж працює."
+				},
+				{
+					"q": "Чи є в Mealie мобільний застосунок?",
+					"a": "Mealie — вебзастосунок, який ви встановлюєте з браузера на головний екран телефона. На Android, коли ви ділитеся сторінкою рецепта зі встановленим застосунком, відкривається імпорт Mealie з уже підставленим посиланням."
+				},
+				{
+					"q": "Чи підтримує Mealie кількох користувачів?",
+					"a": "Так. Адміністратор створює акаунти або надсилає запрошення за посиланням і задає, що може робити кожен користувач, наприклад запрошувати інших, керувати домогосподарством або редагувати спільні продукти й теги. Вхід через LDAP або OpenID Connect теж працює."
+				},
+				{
+					"q": "Чи працює Mealie з OpenAI або Ollama?",
+					"a": "Так, після того як ви додасте провайдера в налаштуваннях групи: OpenAI або будь-який OpenAI-сумісний API, наприклад Ollama, який ви хостите в себе. «Import with AI» тоді створює рецепти за фото, вставленим текстом або посиланнями, а ШІ-парсер розбиває рядки з інгредієнтами."
+				}
+			]
 		}
 	}
 }

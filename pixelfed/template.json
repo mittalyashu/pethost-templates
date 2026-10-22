@@ -1,6 +1,11 @@
 {
 	"name": "Pixelfed",
 	"emoji": "📷",
+	"category": "community",
+	"alternatives": [
+		"Instagram"
+	],
+	"plan": "grow",
 	"route": {
 		"service": "pixelfed",
 		"port": 8080
@@ -38,35 +43,259 @@
 	"texts": {
 		"en": {
 			"description": "Photo sharing without ads or algorithms, an Instagram alternative that federates with Mastodon",
-			"notes": "Sign in with the email and the admin password you gave. Sign-ups are closed: open them in the admin dashboard, or make accounts there. The address can’t change later, as other servers know the accounts by it."
+			"notes": "Sign in with the email and the admin password you gave. Sign-ups are closed: open them in the admin dashboard, or make accounts there. The address can’t change later, as other servers know the accounts by it.",
+			"sizing": "Pixelfed is moderate: about 1.5 GB across web, queue and database, and your photos and cached ones grow the disk.",
+			"summary": "Pixelfed is open-source photo sharing for the fediverse, a decentralized Instagram alternative. Self-host it with Docker Compose in one click.",
+			"about": [
+				"Pixelfed is an open-source photo sharing platform, a decentralized alternative to Instagram. You post a single photo or an album, apply filters, write captions and reply in threaded comments. Collections gather posts into groups, a portfolio page shows your best work, and a post can be public, unlisted or for followers only. Pixelfed speaks ActivityPub, so you can follow and comment on people from Mastodon and other Pixelfed servers without a second account.",
+				"People self-host it to keep their photos and their community on a server they run. The admin sets the rules: whether sign-ups are open, the largest upload, how many fit in an album (four by default). One catch comes with federation: other servers know your accounts by your server's address, so choose the domain before you invite anyone."
+			],
+			"faq": [
+				{
+					"q": "Is Pixelfed free and open source?",
+					"a": "Yes. Pixelfed is free software under the GNU AGPL v3, and its code is on GitHub. Sponsors support its development through Patreon, Open Collective and Liberapay."
+				},
+				{
+					"q": "What is the difference between Pixelfed and Instagram?",
+					"a": "Pixelfed has no ads, and its feeds are chronological, with no algorithm limiting who sees a post. It is not one company's site: many independent servers run it, and their accounts follow each other."
+				},
+				{
+					"q": "Can I import my Instagram photos into Pixelfed?",
+					"a": "Yes. Download your information from Instagram's Accounts Center in JSON format, then follow the steps on the Import page of Pixelfed's settings. Photos, videos, captions and hashtags come across, up to 1,000 posts per account by default."
+				},
+				{
+					"q": "Is there a Pixelfed app for iPhone and Android?",
+					"a": "Yes. Pixelfed has official apps for iOS and Android, and its site lists third-party clients such as Pixelix, Pixeldroid and Impressia. The web version also works in a phone's browser."
+				},
+				{
+					"q": "How do I add users to my Pixelfed server?",
+					"a": "This template starts with sign-ups closed and you as the only admin. Open them in the admin dashboard's settings, or create invite links there for the people you choose."
+				}
+			]
 		},
 		"de": {
 			"description": "Fotos teilen ohne Werbung und Algorithmen, eine Instagram-Alternative, die mit Mastodon föderiert",
-			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an. Registrierungen sind geschlossen: Öffne sie im Admin-Dashboard oder leg dort Konten an. Die Adresse lässt sich später nicht ändern, da andere Server die Konten unter ihr kennen."
+			"notes": "Melde dich mit der angegebenen E-Mail und dem Admin-Passwort an. Registrierungen sind geschlossen: Öffne sie im Admin-Dashboard oder leg dort Konten an. Die Adresse lässt sich später nicht ändern, da andere Server die Konten unter ihr kennen.",
+			"sizing": "Pixelfed ist mittelschwer: etwa 1,5 GB über Web, Queue und Datenbank, und eigene wie gecachte Fotos lassen die Disk wachsen.",
+			"summary": "Pixelfed selbst hosten: Open-Source-Fotoplattform für das Fediverse, eine dezentrale Instagram-Alternative. Mit Docker Compose in einem Klick.",
+			"about": [
+				"Pixelfed ist eine Open-Source-Plattform zum Teilen von Fotos, eine dezentrale Alternative zu Instagram. Du postest ein einzelnes Foto oder ein Album, wendest Filter an, schreibst Bildunterschriften und antwortest in verschachtelten Kommentaren. Collections fassen Beiträge zu Gruppen zusammen, eine Portfolio-Seite zeigt deine besten Arbeiten, und ein Beitrag kann öffentlich, nicht gelistet oder nur für Follower sein. Pixelfed spricht ActivityPub, deshalb kannst du Leuten von Mastodon und anderen Pixelfed-Servern folgen und sie kommentieren, ohne ein zweites Konto.",
+				"Du hostest Pixelfed selbst, damit deine Fotos und deine Community auf einem Server liegen, den du selbst betreibst. Der Admin legt die Regeln fest: ob Registrierungen offen sind, wie groß ein Upload höchstens sein darf und wie viele Fotos in ein Album passen (standardmäßig vier). Mit der Föderation kommt ein Haken: Andere Server kennen deine Konten über die Adresse deines Servers, wähle die Domain also, bevor du jemanden einlädst."
+			],
+			"faq": [
+				{
+					"q": "Ist Pixelfed kostenlos und Open Source?",
+					"a": "Ja. Pixelfed ist freie Software unter der GNU AGPL v3, und der Code liegt auf GitHub. Sponsoren unterstützen die Entwicklung über Patreon, Open Collective und Liberapay."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen Pixelfed und Instagram?",
+					"a": "Pixelfed hat keine Werbung, und die Feeds sind chronologisch, ohne Algorithmus, der begrenzt, wer einen Beitrag sieht. Es ist nicht die Seite einer einzelnen Firma: Viele unabhängige Server betreiben es, und ihre Konten folgen einander."
+				},
+				{
+					"q": "Kann ich meine Instagram-Fotos in Pixelfed importieren?",
+					"a": "Ja. Lade deine Informationen im Accounts Center von Instagram im JSON-Format herunter und folge dann den Schritten auf der Seite „Import“ in den Einstellungen von Pixelfed. Fotos, Videos, Bildunterschriften und Hashtags kommen mit, standardmäßig bis zu 1.000 Beiträge pro Konto."
+				},
+				{
+					"q": "Gibt es eine Pixelfed-App für iPhone und Android?",
+					"a": "Ja. Pixelfed hat offizielle Apps für iOS und Android, und auf der Website stehen Clients von Drittanbietern wie Pixelix, Pixeldroid und Impressia. Die Webversion läuft auch im Browser eines Handys."
+				},
+				{
+					"q": "Wie füge ich Nutzer zu meinem Pixelfed-Server hinzu?",
+					"a": "Diese Vorlage startet mit geschlossenen Registrierungen und dir als einzigem Admin. Öffne sie in den Einstellungen des Admin-Dashboards oder erstelle dort Einladungslinks für die Leute, die du auswählst."
+				}
+			]
 		},
 		"es": {
 			"description": "Comparte fotos sin anuncios ni algoritmos, una alternativa a Instagram que se federa con Mastodon",
-			"notes": "Entra con el correo y la contraseña de administrador que indicaste. Los registros están cerrados: ábrelos en el panel de administración o crea allí las cuentas. La dirección no se puede cambiar después, porque los demás servidores conocen las cuentas por ella."
+			"notes": "Entra con el correo y la contraseña de administrador que indicaste. Los registros están cerrados: ábrelos en el panel de administración o crea allí las cuentas. La dirección no se puede cambiar después, porque los demás servidores conocen las cuentas por ella.",
+			"sizing": "Pixelfed es moderado: unos 1,5 GB entre web, cola y base de datos, y tus fotos y las que guarda en caché hacen crecer el disco.",
+			"summary": "Autoaloja Pixelfed: fotos de código abierto para el fediverso, una alternativa descentralizada a Instagram. Con Docker Compose, en un clic.",
+			"about": [
+				"Pixelfed es una plataforma de código abierto para compartir fotos, una alternativa descentralizada a Instagram. Publicas una sola foto o un álbum, aplicas filtros, escribes descripciones y respondes en comentarios con hilos. Las Collections reúnen publicaciones en grupos, una página Portfolio muestra tu mejor trabajo y una publicación puede ser pública, no listada o solo para seguidores. Pixelfed habla ActivityPub, así que puedes seguir y comentar a gente de Mastodon y de otros servidores de Pixelfed sin una segunda cuenta.",
+				"Autoalojas Pixelfed para tener tus fotos y tu comunidad en un servidor que administras tú. El administrador pone las reglas: si los registros están abiertos, el tamaño máximo de una subida y cuántas fotos caben en un álbum (cuatro de forma predeterminada). La federación trae un inconveniente: los demás servidores conocen tus cuentas por la dirección de tu servidor, así que elige el dominio antes de invitar a nadie."
+			],
+			"faq": [
+				{
+					"q": "¿Pixelfed es gratis y de código abierto?",
+					"a": "Sí. Pixelfed es software libre con licencia GNU AGPL v3 y su código está en GitHub. Sus patrocinadores apoyan el desarrollo a través de Patreon, Open Collective y Liberapay."
+				},
+				{
+					"q": "¿Qué diferencia hay entre Pixelfed e Instagram?",
+					"a": "Pixelfed no tiene anuncios y sus feeds son cronológicos, sin un algoritmo que limite quién ve una publicación. No es el sitio de una sola empresa: lo ejecutan muchos servidores independientes y sus cuentas se siguen entre sí."
+				},
+				{
+					"q": "¿Puedo importar mis fotos de Instagram a Pixelfed?",
+					"a": "Sí. Descarga tu información desde el Accounts Center de Instagram en formato JSON y sigue los pasos de la página Import de los ajustes de Pixelfed. Se importan fotos, vídeos, descripciones y hashtags, hasta 1000 publicaciones por cuenta de forma predeterminada."
+				},
+				{
+					"q": "¿Hay una aplicación de Pixelfed para iPhone y Android?",
+					"a": "Sí. Pixelfed tiene aplicaciones oficiales para iOS y Android, y su sitio enumera clientes de terceros como Pixelix, Pixeldroid e Impressia. La versión web también funciona en el navegador del teléfono."
+				},
+				{
+					"q": "¿Cómo agrego usuarios a mi servidor de Pixelfed?",
+					"a": "Esta plantilla arranca con los registros cerrados y contigo como único administrador. Ábrelos en los ajustes del panel de administración o crea allí enlaces de invitación para las personas que elijas."
+				}
+			]
 		},
 		"fr": {
 			"description": "Partage de photos sans publicités ni algorithmes, une alternative à Instagram fédérée avec Mastodon",
-			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Les inscriptions sont fermées : ouvrez-les dans le tableau de bord d’administration, ou créez-y les comptes. L’adresse ne peut plus changer ensuite, car les autres serveurs connaissent les comptes par elle."
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Les inscriptions sont fermées : ouvrez-les dans le tableau de bord d’administration, ou créez-y les comptes. L’adresse ne peut plus changer ensuite, car les autres serveurs connaissent les comptes par elle.",
+			"sizing": "Pixelfed est modéré : environ 1,5 GB sur web, file d’attente et base ; vos photos et celles en cache grossissent le disque.",
+			"summary": "Auto-hébergez Pixelfed, le partage de photos open source du fédivers, une alternative décentralisée à Instagram. Avec Docker Compose, en un clic.",
+			"about": [
+				"Pixelfed est une plateforme open source de partage de photos, une alternative décentralisée à Instagram. Vous publiez une photo seule ou un album, appliquez des filtres, rédigez des légendes et répondez dans des commentaires en fils de discussion. Les Collections rassemblent les publications en groupes, une page Portfolio met en avant vos plus belles réalisations, et une publication peut être publique, non répertoriée ou réservée aux abonnés. Pixelfed parle ActivityPub : vous pouvez suivre et commenter des personnes de Mastodon et d’autres serveurs Pixelfed sans second compte.",
+				"Vous auto-hébergez Pixelfed pour garder vos photos et votre communauté sur un serveur que vous gérez vous-même. L’administrateur fixe les règles : inscriptions ouvertes ou non, taille maximale d’un envoi, nombre de photos par album (quatre par défaut). La fédération a un revers : les autres serveurs connaissent vos comptes par l’adresse de votre serveur, alors choisissez le domaine avant d’inviter qui que ce soit."
+			],
+			"faq": [
+				{
+					"q": "Pixelfed est-il gratuit et open source ?",
+					"a": "Oui. Pixelfed est un logiciel libre sous licence GNU AGPL v3, et son code est sur GitHub. Des sponsors soutiennent son développement via Patreon, Open Collective et Liberapay."
+				},
+				{
+					"q": "Quelle est la différence entre Pixelfed et Instagram ?",
+					"a": "Pixelfed n’a pas de publicité, et ses fils sont chronologiques, sans algorithme qui limite qui voit une publication. Ce n’est pas le site d’une seule entreprise : de nombreux serveurs indépendants le font tourner, et leurs comptes se suivent entre eux."
+				},
+				{
+					"q": "Peut-on importer ses photos Instagram dans Pixelfed ?",
+					"a": "Oui. Téléchargez vos informations depuis l’Accounts Center d’Instagram au format JSON, puis suivez les étapes de la page « Import » des paramètres de Pixelfed. Les photos, vidéos, légendes et hashtags passent, jusqu’à 1 000 publications par compte par défaut."
+				},
+				{
+					"q": "Existe-t-il une application Pixelfed pour iPhone et Android ?",
+					"a": "Oui. Pixelfed a des applications officielles pour iOS et Android, et son site recense des clients tiers comme Pixelix, Pixeldroid et Impressia. La version web fonctionne aussi dans le navigateur d’un téléphone."
+				},
+				{
+					"q": "Comment ajouter des utilisateurs à mon serveur Pixelfed ?",
+					"a": "Ce template démarre avec les inscriptions fermées et vous comme seul administrateur. Ouvrez-les dans les paramètres du tableau de bord d’administration, ou créez-y des liens d’invitation pour les personnes de votre choix."
+				}
+			]
 		},
 		"pl": {
 			"description": "Udostępnianie zdjęć bez reklam i algorytmów, alternatywa dla Instagrama federująca się z Mastodonem",
-			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano. Rejestracja jest zamknięta: otwórz ją w panelu administratora albo załóż tam konta. Adresu nie da się później zmienić, bo inne serwery znają konta po nim."
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora, które podano. Rejestracja jest zamknięta: otwórz ją w panelu administratora albo załóż tam konta. Adresu nie da się później zmienić, bo inne serwery znają konta po nim.",
+			"sizing": "Pixelfed ma średnie wymagania: około 1,5 GB w webie, kolejce i bazie, a twoje zdjęcia i te w cache zajmują coraz więcej dysku.",
+			"summary": "Hostuj Pixelfed u siebie: zdecentralizowana alternatywa dla Instagrama o otwartym kodzie, do zdjęć we fediwersum. Z Docker Compose w jeden klik.",
+			"about": [
+				"Pixelfed to platforma do udostępniania zdjęć o otwartym kodzie, zdecentralizowana alternatywa dla Instagrama. Wrzucasz pojedyncze zdjęcie albo album, nakładasz filtry, piszesz opisy i odpowiadasz w wątkach komentarzy. Collections zbierają wpisy w grupy, strona Portfolio pokazuje twoje najlepsze prace, a wpis może być publiczny, niewidoczny na listach publicznych albo tylko dla obserwujących. Pixelfed mówi protokołem ActivityPub, więc możesz obserwować i komentować osoby z Mastodona oraz innych serwerów Pixelfed bez drugiego konta.",
+				"Pixelfed hostuje się u siebie, żeby zdjęcia i społeczność trzymać na serwerze, który samemu się prowadzi. Admin ustala zasady: czy rejestracja jest otwarta, jaki może być maksymalny rozmiar wgrywanego pliku i ile zdjęć mieści się w albumie (domyślnie cztery). Federacja ma swój haczyk: inne serwery znają twoje konta po adresie twojego serwera, więc wybierz domenę, zanim kogokolwiek zaprosisz."
+			],
+			"faq": [
+				{
+					"q": "Czy Pixelfed jest darmowy i open source?",
+					"a": "Tak. Pixelfed to wolne oprogramowanie na licencji GNU AGPL v3, a jego kod jest na GitHubie. Sponsorzy wspierają jego rozwój przez Patreon, Open Collective i Liberapay."
+				},
+				{
+					"q": "Czym Pixelfed różni się od Instagrama?",
+					"a": "Pixelfed nie ma reklam, a jego osie czasu są chronologiczne, bez algorytmu ograniczającego, kto zobaczy wpis. To nie serwis jednej firmy: działa na nim wiele niezależnych serwerów, a ich konta nawzajem się obserwują."
+				},
+				{
+					"q": "Czy mogę zaimportować zdjęcia z Instagrama do Pixelfed?",
+					"a": "Tak. Pobierz swoje informacje z Accounts Center na Instagramie w formacie JSON, a potem wykonaj kroki na stronie „Import” w ustawieniach Pixelfeda. Zdjęcia, filmy, opisy i hashtagi przechodzą, domyślnie do 1000 wpisów na konto."
+				},
+				{
+					"q": "Czy jest aplikacja Pixelfed na iPhone’a i Androida?",
+					"a": "Tak. Pixelfed ma oficjalne aplikacje na iOS i Androida, a jego strona wymienia klienty innych twórców, takie jak Pixelix, Pixeldroid i Impressia. Wersja webowa działa też w przeglądarce telefonu."
+				},
+				{
+					"q": "Jak dodać użytkowników do mojego serwera Pixelfed?",
+					"a": "Ten szablon startuje z zamkniętą rejestracją i tobą jako jedynym adminem. Otwórz ją w ustawieniach panelu administratora albo utwórz tam linki z zaproszeniem dla wybranych osób."
+				}
+			]
 		},
 		"pt": {
 			"description": "Compartilhamento de fotos sem anúncios nem algoritmos, uma alternativa ao Instagram que federa com o Mastodon",
-			"notes": "Entre com o e-mail e a senha de administrador que você informou. Os cadastros estão fechados: abra-os no painel de administração ou crie as contas lá. O endereço não pode mudar depois, pois os outros servidores conhecem as contas por ele."
+			"notes": "Entre com o e-mail e a senha de administrador que você informou. Os cadastros estão fechados: abra-os no painel de administração ou crie as contas lá. O endereço não pode mudar depois, pois os outros servidores conhecem as contas por ele.",
+			"sizing": "Pixelfed é moderado: cerca de 1,5 GB entre web, fila e banco de dados, e suas fotos e as guardadas em cache fazem o disco crescer.",
+			"summary": "Auto-hospede o Pixelfed, compartilhamento de fotos open source no fediverso e alternativa descentralizada ao Instagram. Com Docker Compose, em um clique.",
+			"about": [
+				"O Pixelfed é uma plataforma open source de compartilhamento de fotos, uma alternativa descentralizada ao Instagram. Você publica uma foto avulsa ou um álbum, aplica filtros, escreve legendas e responde em comentários encadeados. As Collections reúnem posts em grupos, uma página Portfolio mostra seus melhores trabalhos, e um post pode ser público, não listado ou só para seguidores. O Pixelfed fala ActivityPub, então você pode seguir e comentar pessoas do Mastodon e de outros servidores Pixelfed sem uma segunda conta.",
+				"Você auto-hospeda o Pixelfed para manter suas fotos e sua comunidade em um servidor que você mesmo administra. O administrador define as regras: se os cadastros ficam abertos, o maior upload permitido e quantas fotos cabem em um álbum (quatro por padrão). A federação traz um porém: os outros servidores conhecem suas contas pelo endereço do seu servidor, então escolha o domínio antes de convidar alguém."
+			],
+			"faq": [
+				{
+					"q": "O Pixelfed é gratuito e open source?",
+					"a": "Sim. O Pixelfed é software livre sob a licença GNU AGPL v3, e o código dele está no GitHub. Patrocinadores apoiam o desenvolvimento pelo Patreon, pelo Open Collective e pelo Liberapay."
+				},
+				{
+					"q": "Qual é a diferença entre o Pixelfed e o Instagram?",
+					"a": "O Pixelfed não tem anúncios, e os feeds são cronológicos, sem algoritmo limitando quem vê um post. Não é o site de uma empresa só: muitos servidores independentes o rodam, e as contas deles seguem umas às outras."
+				},
+				{
+					"q": "Dá para importar minhas fotos do Instagram para o Pixelfed?",
+					"a": "Dá. Baixe suas informações no Accounts Center do Instagram em formato JSON e siga os passos da página Import nas configurações do Pixelfed. Fotos, vídeos, legendas e hashtags vêm junto, até 1.000 posts por conta por padrão."
+				},
+				{
+					"q": "Existe app do Pixelfed para iPhone e Android?",
+					"a": "Existe. O Pixelfed tem apps oficiais para iOS e Android, e o site dele lista clientes de terceiros, como Pixelix, Pixeldroid e Impressia. A versão web também funciona no navegador do celular."
+				},
+				{
+					"q": "Como adiciono usuários ao meu servidor Pixelfed?",
+					"a": "Este template começa com os cadastros fechados e você como único administrador. Abra-os nas configurações do painel de administração ou crie links de convite lá para as pessoas que você escolher."
+				}
+			]
 		},
 		"ru": {
 			"description": "Обмен фотографиями без рекламы и алгоритмов — альтернатива Instagram, которая федерируется с Mastodon",
-			"notes": "Войдите с почтой и паролем администратора, которые вы указали. Регистрация закрыта: откройте её в панели администратора или создайте там аккаунты. Адрес потом не сменить: другие серверы знают аккаунты по нему."
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали. Регистрация закрыта: откройте её в панели администратора или создайте там аккаунты. Адрес потом не сменить: другие серверы знают аккаунты по нему.",
+			"sizing": "Pixelfed: умеренные требования — около 1,5 GB на веб, очередь и базу, а ваши фото и кешированные чужие растят диск.",
+			"summary": "Self-hosted Pixelfed — децентрализованная альтернатива Instagram с открытым кодом для обмена фото в федиверсе. Деплой через Docker Compose в один клик.",
+			"about": [
+				"Pixelfed — это платформа для обмена фотографиями с открытым кодом, децентрализованная альтернатива Instagram. Вы публикуете одно фото или альбом, накладываете фильтры, пишете подписи и отвечаете во вложенных комментариях. Collections собирают посты в группы, страница Portfolio показывает ваши лучшие работы, а пост может быть публичным, скрытым из общих лент или только для подписчиков. Pixelfed работает по ActivityPub, поэтому вы можете подписываться на людей из Mastodon и с других серверов Pixelfed и комментировать их без второго аккаунта.",
+				"Pixelfed хостят у себя, чтобы фото и сообщество жили на сервере, которым вы управляете сами. Администратор задает правила: открыта ли регистрация, какой самый большой файл можно загрузить и сколько фото помещается в альбом (по умолчанию четыре). У федерации есть подвох: другие серверы знают ваши аккаунты по адресу вашего сервера, поэтому выберите домен, прежде чем кого-то приглашать."
+			],
+			"faq": [
+				{
+					"q": "Pixelfed бесплатный и с открытым кодом?",
+					"a": "Да. Pixelfed — свободное ПО под лицензией GNU AGPL v3, его код лежит на GitHub. Разработку поддерживают спонсоры через Patreon, Open Collective и Liberapay."
+				},
+				{
+					"q": "Чем Pixelfed отличается от Instagram?",
+					"a": "В Pixelfed нет рекламы, а ленты хронологические, без алгоритма, который решает, кто увидит пост. Это не сайт одной компании: его запускают многие независимые серверы, и их аккаунты подписываются друг на друга."
+				},
+				{
+					"q": "Можно ли импортировать фото из Instagram в Pixelfed?",
+					"a": "Да. Скачайте свои данные из Accounts Center в Instagram в формате JSON, затем выполните шаги на странице «Import» в настройках Pixelfed. Фото, видео, подписи и хештеги переносятся, по умолчанию до 1 000 постов на аккаунт."
+				},
+				{
+					"q": "Есть ли приложение Pixelfed для iPhone и Android?",
+					"a": "Да. У Pixelfed есть официальные приложения для iOS и Android, а на его сайте перечислены сторонние клиенты, например Pixelix, Pixeldroid и Impressia. Веб-версия также работает в браузере телефона."
+				},
+				{
+					"q": "Как добавить пользователей на мой сервер Pixelfed?",
+					"a": "Этот шаблон запускается с закрытой регистрацией и вами как единственным администратором. Откройте ее в настройках панели администратора или создайте там ссылки-приглашения для выбранных людей."
+				}
+			]
 		},
 		"uk": {
 			"description": "Обмін фотографіями без реклами й алгоритмів — альтернатива Instagram, яка федерується з Mastodon",
-			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали. Реєстрацію закрито: відкрийте її в панелі адміністратора або створіть там акаунти. Адресу потім не змінити: інші сервери знають акаунти за нею."
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали. Реєстрацію закрито: відкрийте її в панелі адміністратора або створіть там акаунти. Адресу потім не змінити: інші сервери знають акаунти за нею.",
+			"sizing": "Pixelfed має помірні вимоги: близько 1,5 GB на веб, чергу й базу, а ваші фото та фото в кеші дедалі більше заповнюють диск.",
+			"summary": "Self-hosted Pixelfed — децентралізована альтернатива Instagram з відкритим кодом для обміну фото у федиверсі. Деплой через Docker Compose в один клік.",
+			"about": [
+				"Pixelfed — це платформа для обміну фотографіями з відкритим кодом, децентралізована альтернатива Instagram. Ви публікуєте одне фото або альбом, накладаєте фільтри, пишете підписи й відповідаєте у вкладених коментарях. Collections збирають дописи в групи, сторінка Portfolio показує ваші найкращі роботи, а допис може бути публічним, прихованим із публічних стрічок або лише для підписників. Pixelfed працює за ActivityPub, тож ви можете підписуватися на людей із Mastodon та інших серверів Pixelfed і коментувати їх без другого акаунта.",
+				"Pixelfed хостять у себе, щоб фото й спільнота жили на сервері, яким ви керуєте самі. Адміністратор задає правила: чи відкрита реєстрація, який найбільший файл можна завантажити і скільки фото вміщається в альбом (типово чотири). У федерації є підвох: інші сервери знають ваші акаунти за адресою вашого сервера, тож оберіть домен, перш ніж когось запрошувати."
+			],
+			"faq": [
+				{
+					"q": "Pixelfed безплатний і з відкритим кодом?",
+					"a": "Так. Pixelfed — вільне програмне забезпечення за ліцензією GNU AGPL v3, його код лежить на GitHub. Розробку підтримують спонсори через Patreon, Open Collective і Liberapay."
+				},
+				{
+					"q": "Чим Pixelfed відрізняється від Instagram?",
+					"a": "У Pixelfed немає реклами, а стрічки хронологічні, без алгоритму, який вирішує, хто побачить допис. Це не сайт однієї компанії: його запускають багато незалежних серверів, і їхні акаунти підписуються одні на одних."
+				},
+				{
+					"q": "Чи можна імпортувати фото з Instagram у Pixelfed?",
+					"a": "Так. Завантажте свої дані з Accounts Center в Instagram у форматі JSON, а тоді виконайте кроки на сторінці «Import» в налаштуваннях Pixelfed. Фото, відео, підписи й хештеги переносяться, типово до 1 000 дописів на акаунт."
+				},
+				{
+					"q": "Чи є застосунок Pixelfed для iPhone і Android?",
+					"a": "Так. У Pixelfed є офіційні застосунки для iOS і Android, а на його сайті перелічено сторонні клієнти, як-от Pixelix, Pixeldroid та Impressia. Веб-версія також працює в браузері телефона."
+				},
+				{
+					"q": "Як додати користувачів на мій сервер Pixelfed?",
+					"a": "Цей шаблон запускається із закритою реєстрацією та вами як єдиним адміністратором. Відкрийте її в налаштуваннях панелі адміністратора або створіть там посилання-запрошення для обраних людей."
+				}
+			]
 		}
 	}
 }

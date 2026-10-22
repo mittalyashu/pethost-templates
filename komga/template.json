@@ -1,6 +1,9 @@
 {
 	"name": "Komga",
 	"emoji": "📚",
+	"category": "media",
+	"alternatives": [],
+	"plan": "starter",
 	"route": {
 		"service": "komga",
 		"port": 25600
@@ -9,35 +12,259 @@
 	"texts": {
 		"en": {
 			"description": "A server and web reader for your comics, manga and ebooks",
-			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address. Books go into /data in the komga service: upload files in its Files tab or copy folders over SFTP, then add a library in Komga with /data as its root folder. Reader apps that speak OPDS connect to https://{host}/opds/v1.2/catalog."
+			"notes": "Open the address and create the admin account on the first page. Do it right away: until then the page is open to whoever has the address. Books go into /data in the komga service: upload files in its Files tab or copy folders over SFTP, then add a library in Komga with /data as its root folder. Reader apps that speak OPDS connect to https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga is moderate: a Java server of about half a gigabyte; the disk is your comics and books.",
+			"summary": "Komga is an open-source media server for comics, manga, magazines and ebooks. Self-host it on your own machine in one click and read on any device.",
+			"about": [
+				"Komga is an open-source media server for comics, manga, magazines and ebooks. You point it at folders of files, and it sorts them into libraries and series, reads the metadata embedded in them and lets you build collections and read lists. Books open in its web reader, which has several reading modes and works on phones, tablets and desktops, or in any app that speaks OPDS. It syncs with Kobo eReaders and KOReader.",
+				"People self-host Komga to keep the collection they already own in one place and pick up any book where they left off, on any device. One server can serve a household: each user sees only the libraries you give them, and age or label restrictions hide the rest. The catch: Komga organizes files, it does not find or download them, so the books are yours to bring."
+			],
+			"faq": [
+				{
+					"q": "Is Komga free and open source?",
+					"a": "Yes. Komga is open source under the MIT license, free to use and modify, and its code is on GitHub at gotson/komga."
+				},
+				{
+					"q": "What file formats does Komga support?",
+					"a": "Komga reads CBZ and CBR comic archives, PDF files and EPUB ebooks. Archives compressed with 7z are not supported: extract them and compress them again as zip."
+				},
+				{
+					"q": "Is there a Komga app for iPhone or Android?",
+					"a": "Yes, from third parties: Mihon and Komelia on Android, and Paperback, Panels and Komic on iOS. Komelia also runs on Windows and Linux."
+				},
+				{
+					"q": "Does Komga work with Kobo e-readers?",
+					"a": "Yes. With Kobo Sync, a Kobo eReader gets its EPUB books and read progress from Komga instead of Kobo's servers, converted to KEPUB on download. The user needs the KOBO_SYNC and FILE_DOWNLOAD roles and an API key."
+				},
+				{
+					"q": "What is the default Komga username and password?",
+					"a": "There is none. The first time you open Komga, it asks you to create a user account with an email and a password, and you sign in with those from then on."
+				}
+			]
 		},
 		"de": {
 			"description": "Ein Server und Web-Reader für deine Comics, Mangas und E-Books",
-			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Bücher kommen nach /data im Service komga: Lade Dateien in dessen Tab „Dateien“ hoch oder kopier Ordner per SFTP, dann leg in Komga eine Bibliothek mit /data als Stammordner an. Reader-Apps mit OPDS verbinden sich mit https://{host}/opds/v1.2/catalog."
+			"notes": "Öffne die Adresse und erstell auf der ersten Seite das Admin-Konto. Mach das gleich: Bis dahin steht die Seite allen offen, die die Adresse haben. Bücher kommen nach /data im Service komga: Lade Dateien in dessen Tab „Dateien“ hoch oder kopier Ordner per SFTP, dann leg in Komga eine Bibliothek mit /data als Stammordner an. Reader-Apps mit OPDS verbinden sich mit https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga ist mittelschwer: ein Java-Server mit etwa einem halben GB; die Disk füllen deine Comics und Bücher.",
+			"summary": "Komga selbst hosten: Open-Source-Medienserver für Comics, Mangas, Magazine und E-Books. In einem Klick auf deiner Maschine, lesbar auf jedem Gerät.",
+			"about": [
+				"Komga ist ein Open-Source-Medienserver für Comics, Mangas, Magazine und E-Books. Du zeigst ihm Ordner mit Dateien, und er sortiert sie in Bibliotheken und Serien, liest die eingebetteten Metadaten aus und lässt dich Sammlungen und Leselisten anlegen. Die Bücher öffnen sich im Web-Reader, der mehrere Lesemodi hat und auf Smartphones, Tablets und Desktops läuft, oder in jeder App, die OPDS spricht. Komga synchronisiert sich mit Kobo-eReadern und mit KOReader.",
+				"Du hostest Komga selbst, um die Sammlung, die du schon besitzt, an einem Ort zu halten und jedes Buch auf jedem Gerät dort weiterzulesen, wo du aufgehört hast. Ein Server kann einen ganzen Haushalt versorgen: Jeder Nutzer sieht nur die Bibliotheken, die du ihm gibst, und Alters- oder Label-Beschränkungen blenden den Rest aus. Der Haken: Komga ordnet Dateien, es findet oder lädt sie nicht herunter, die Bücher musst du also selbst mitbringen."
+			],
+			"faq": [
+				{
+					"q": "Ist Komga kostenlos und Open Source?",
+					"a": "Ja. Komga ist Open Source unter der MIT-Lizenz, frei nutzbar und veränderbar, und der Code liegt auf GitHub unter gotson/komga."
+				},
+				{
+					"q": "Welche Dateiformate unterstützt Komga?",
+					"a": "Komga liest Comic-Archive im Format CBZ und CBR, PDF-Dateien und EPUB-E-Books. Mit 7z komprimierte Archive werden nicht unterstützt: Entpack sie und komprimier sie neu als zip."
+				},
+				{
+					"q": "Gibt es eine Komga-App für iPhone oder Android?",
+					"a": "Ja, von Drittanbietern: Mihon und Komelia unter Android sowie Paperback, Panels und Komic unter iOS. Komelia läuft auch unter Windows und Linux."
+				},
+				{
+					"q": "Funktioniert Komga mit Kobo-eReadern?",
+					"a": "Ja. Mit Kobo Sync bekommt ein Kobo eReader seine EPUB-Bücher und den Lesefortschritt von Komga statt von den Servern von Kobo, beim Download in KEPUB umgewandelt. Der Nutzer braucht die Rollen KOBO_SYNC und FILE_DOWNLOAD sowie einen API-Key."
+				},
+				{
+					"q": "Was ist der Standard-Login von Komga?",
+					"a": "Es gibt keinen. Beim ersten Öffnen von Komga legst du ein Benutzerkonto mit E-Mail und Passwort an, und mit diesen meldest du dich ab dann an."
+				}
+			]
 		},
 		"es": {
 			"description": "Un servidor y lector web para tus cómics, manga y libros electrónicos",
-			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Los libros van en /data, en el servicio komga: sube archivos en su pestaña Archivos o copia carpetas por SFTP, y luego crea en Komga una biblioteca con /data como carpeta raíz. Las apps de lectura con OPDS se conectan a https://{host}/opds/v1.2/catalog."
+			"notes": "Abre la dirección y crea la cuenta de administrador en la primera página. Hazlo enseguida: hasta entonces la página está abierta para cualquiera que tenga la dirección. Los libros van en /data, en el servicio komga: sube archivos en su pestaña Archivos o copia carpetas por SFTP, y luego crea en Komga una biblioteca con /data como carpeta raíz. Las apps de lectura con OPDS se conectan a https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga es moderado: un servidor Java de cerca de medio gigabyte; el disco son tus cómics y libros.",
+			"summary": "Autoaloja Komga, servidor de código abierto para cómics, manga, revistas y libros electrónicos. En tu máquina, en un clic, y lee en cualquier dispositivo.",
+			"about": [
+				"Komga es un servidor multimedia de código abierto para cómics, manga, revistas y libros electrónicos. Le indicas carpetas con archivos y los ordena en bibliotecas y series, lee los metadatos incrustados y te deja crear colecciones y listas de lectura. Los libros se abren en su lector web, que tiene varios modos de lectura y funciona en móviles, tablets y equipos de escritorio, o en cualquier app compatible con OPDS. Se sincroniza con los eReaders Kobo y con KOReader.",
+				"Autoalojas Komga para tener en un solo lugar la colección que ya posees y retomar cualquier libro donde lo dejaste, en cualquier dispositivo. Un servidor puede atender a todo un hogar: cada usuario ve solo las bibliotecas que le das, y las restricciones por edad o por etiqueta ocultan el resto. El inconveniente: Komga organiza archivos, no los busca ni los descarga, así que los libros los pones tú."
+			],
+			"faq": [
+				{
+					"q": "¿Komga es gratis y de código abierto?",
+					"a": "Sí. Komga es de código abierto con licencia MIT, gratis para usar y modificar, y su código está en GitHub, en gotson/komga."
+				},
+				{
+					"q": "¿Qué formatos de archivo admite Komga?",
+					"a": "Komga lee archivos de cómics CBZ y CBR, archivos PDF y libros electrónicos EPUB. Los archivos comprimidos con 7z no se admiten: extráelos y vuelve a comprimirlos como zip."
+				},
+				{
+					"q": "¿Hay una app de Komga para iPhone o Android?",
+					"a": "Sí, de terceros: Mihon y Komelia en Android, y Paperback, Panels y Komic en iOS. Komelia también funciona en Windows y Linux."
+				},
+				{
+					"q": "¿Komga funciona con lectores Kobo?",
+					"a": "Sí. Con Kobo Sync, un eReader Kobo recibe sus libros EPUB y su progreso de lectura de Komga en lugar de los servidores de Kobo, convertidos a KEPUB al descargarlos. El usuario necesita los roles KOBO_SYNC y FILE_DOWNLOAD y una clave de API."
+				},
+				{
+					"q": "¿Cuál es el usuario y la contraseña por defecto de Komga?",
+					"a": "No hay ninguno. La primera vez que abres Komga, te pide crear una cuenta de usuario con un correo y una contraseña, y a partir de entonces inicias sesión con ellos."
+				}
+			]
 		},
 		"fr": {
 			"description": "Un serveur et une liseuse web pour vos BD, mangas et livres numériques",
-			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les livres vont dans /data, dans le service komga : envoyez des fichiers depuis son onglet Fichiers ou copiez des dossiers en SFTP, puis créez dans Komga une bibliothèque avec /data comme dossier racine. Les applications de lecture compatibles OPDS se connectent à https://{host}/opds/v1.2/catalog."
+			"notes": "Ouvrez l’adresse et créez le compte administrateur sur la première page. Faites-le tout de suite : d’ici là, la page est ouverte à quiconque connaît l’adresse. Les livres vont dans /data, dans le service komga : envoyez des fichiers depuis son onglet Fichiers ou copiez des dossiers en SFTP, puis créez dans Komga une bibliothèque avec /data comme dossier racine. Les applications de lecture compatibles OPDS se connectent à https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga est modéré : un serveur Java d’environ 0,5 GB ; le disque, ce sont vos comics et vos livres.",
+			"summary": "Auto-hébergez Komga, le serveur open source pour BD, mangas, magazines et livres numériques. Sur votre machine, en un clic, à lire sur tous vos appareils.",
+			"about": [
+				"Komga est un serveur multimédia open source pour BD, mangas, magazines et livres numériques. Vous lui indiquez des dossiers de fichiers : il les range en bibliothèques et en séries, lit les métadonnées qu’ils contiennent et vous laisse créer des collections et des listes de lecture. Les livres s’ouvrent dans sa liseuse web, qui propose plusieurs modes de lecture et fonctionne sur téléphone, tablette et ordinateur, ou dans n’importe quelle application compatible OPDS. Il se synchronise avec les liseuses Kobo et avec KOReader.",
+				"Vous auto-hébergez Komga pour garder au même endroit la collection que vous possédez déjà et reprendre n’importe quel livre là où vous l’aviez laissé, sur n’importe quel appareil. Un seul serveur peut servir tout un foyer : chaque utilisateur ne voit que les bibliothèques que vous lui donnez, et des restrictions d’âge ou d’étiquette masquent le reste. Le revers : Komga range les fichiers, il ne les trouve pas et ne les télécharge pas, c’est donc à vous d’apporter les livres."
+			],
+			"faq": [
+				{
+					"q": "Komga est-il gratuit et open source ?",
+					"a": "Oui. Komga est open source sous licence MIT, libre d’utilisation et de modification, et son code est sur GitHub, à gotson/komga."
+				},
+				{
+					"q": "Quels formats de fichiers Komga prend-il en charge ?",
+					"a": "Komga lit les archives de BD CBZ et CBR, les fichiers PDF et les livres numériques EPUB. Les archives compressées en 7z ne sont pas prises en charge : extrayez-les et recompressez-les en zip."
+				},
+				{
+					"q": "Existe-t-il une application Komga pour iPhone ou Android ?",
+					"a": "Oui, chez des tiers : Mihon et Komelia sur Android, Paperback, Panels et Komic sur iOS. Komelia fonctionne aussi sur Windows et Linux."
+				},
+				{
+					"q": "Komga fonctionne-t-il avec les liseuses Kobo ?",
+					"a": "Oui. Avec Kobo Sync, une liseuse Kobo reçoit ses livres EPUB et sa progression de lecture depuis Komga plutôt que depuis les serveurs de Kobo, convertis en KEPUB au téléchargement. L’utilisateur a besoin des rôles KOBO_SYNC et FILE_DOWNLOAD et d’une clé d’API."
+				},
+				{
+					"q": "Quels sont l’identifiant et le mot de passe par défaut de Komga ?",
+					"a": "Il n’y en a pas. À la première ouverture de Komga, il vous demande de créer un compte utilisateur avec un e-mail et un mot de passe, et vous vous connectez ensuite avec ceux-ci."
+				}
+			]
 		},
 		"pl": {
 			"description": "Serwer i czytnik w przeglądarce dla twoich komiksów, mang i e-booków",
-			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Książki trafiają do /data w usłudze komga: wgraj pliki w jej zakładce Pliki albo skopiuj katalogi przez SFTP, a potem dodaj w Komga bibliotekę z /data jako katalogiem głównym. Czytniki obsługujące OPDS łączą się z https://{host}/opds/v1.2/catalog."
+			"notes": "Otwórz adres projektu i na pierwszej stronie załóż konto administratora. Zrób to od razu: do tego czasu strona jest otwarta dla każdego, kto zna adres. Książki trafiają do /data w usłudze komga: wgraj pliki w jej zakładce Pliki albo skopiuj katalogi przez SFTP, a potem dodaj w Komga bibliotekę z /data jako katalogiem głównym. Czytniki obsługujące OPDS łączą się z https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga ma średnie wymagania: to serwer w Javie, około 0,5 GB; dysk to twoje komiksy i książki.",
+			"summary": "Hostuj u siebie Komgę: serwer open source dla komiksów, mang, magazynów i e-booków. Na własnej maszynie, w jeden klik, do czytania na każdym urządzeniu.",
+			"about": [
+				"Komga to serwer mediów open source dla komiksów, mang, magazynów i e-booków. Wskazujesz mu foldery z plikami, a on układa je w biblioteki i serie, czyta zapisane w nich metadane i pozwala tworzyć kolekcje oraz listy czytania. Książki otwierają się w jego czytniku w przeglądarce, który ma kilka trybów czytania i działa na telefonach, tabletach i komputerach, albo w dowolnej aplikacji obsługującej OPDS. Synchronizuje się z czytnikami Kobo i z KOReaderem.",
+				"Komgę hostujesz u siebie, żeby trzymać w jednym miejscu kolekcję, którą już masz, i czytać dalej każdą książkę od miejsca, w którym skończyło się czytanie, na dowolnym urządzeniu. Jeden serwer obsłuży wszystkich domowników: każdy użytkownik widzi tylko biblioteki, które mu przydzielisz, a ograniczenia wiekowe lub oparte na etykietach ukrywają resztę. Haczyk: Komga porządkuje pliki, ale ich nie szuka ani nie pobiera, więc książki zapewniasz ty."
+			],
+			"faq": [
+				{
+					"q": "Czy Komga jest darmowa i open source?",
+					"a": "Tak. Komga jest open source na licencji MIT, można jej używać i ją modyfikować za darmo, a kod leży na GitHubie w gotson/komga."
+				},
+				{
+					"q": "Jakie formaty plików obsługuje Komga?",
+					"a": "Komga czyta archiwa komiksów CBZ i CBR, pliki PDF i e-booki EPUB. Archiwa skompresowane 7z nie są obsługiwane: rozpakuj je i spakuj ponownie jako zip."
+				},
+				{
+					"q": "Czy jest aplikacja Komga na iPhone’a albo Androida?",
+					"a": "Tak, od zewnętrznych autorów: Mihon i Komelia na Androida oraz Paperback, Panels i Komic na iOS. Komelia działa też w systemach Windows i Linux."
+				},
+				{
+					"q": "Czy Komga działa z czytnikami Kobo?",
+					"a": "Tak. Dzięki Kobo Sync czytnik Kobo dostaje książki EPUB i postęp czytania od Komgi zamiast z serwerów Kobo, a przy pobieraniu książki są konwertowane do KEPUB. Użytkownik potrzebuje ról KOBO_SYNC i FILE_DOWNLOAD oraz klucza API."
+				},
+				{
+					"q": "Jaki jest domyślny login i hasło do Komgi?",
+					"a": "Nie ma domyślnego loginu ani hasła. Przy pierwszym otwarciu Komga prosi o założenie konta użytkownika z adresem e-mail i hasłem, i od tej pory logujesz się właśnie nimi."
+				}
+			]
 		},
 		"pt": {
 			"description": "Um servidor e leitor web para seus quadrinhos, mangás e e-books",
-			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os livros vão em /data, no serviço komga: envie arquivos pela aba Arquivos dele ou copie pastas por SFTP e depois crie no Komga uma biblioteca com /data como pasta raiz. Os apps de leitura com OPDS se conectam a https://{host}/opds/v1.2/catalog."
+			"notes": "Abra o endereço e crie a conta de administrador na primeira página. Faça isso logo: até lá, a página fica aberta para quem tiver o endereço. Os livros vão em /data, no serviço komga: envie arquivos pela aba Arquivos dele ou copie pastas por SFTP e depois crie no Komga uma biblioteca com /data como pasta raiz. Os apps de leitura com OPDS se conectam a https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga é moderado: um servidor Java de cerca de meio gigabyte; o disco são os seus quadrinhos e livros.",
+			"summary": "Auto-hospede o Komga, servidor de código aberto para quadrinhos, mangás, revistas e e-books. Em um clique, na sua máquina, e leia em qualquer dispositivo.",
+			"about": [
+				"O Komga é um servidor de mídia de código aberto para quadrinhos, mangás, revistas e e-books. Você aponta pastas de arquivos para ele, e ele as organiza em bibliotecas e séries, lê os metadados embutidos e deixa você montar coleções e listas de leitura. Os livros abrem no leitor web, que tem vários modos de leitura e funciona em celulares, tablets e computadores, ou em qualquer app compatível com OPDS. Ele sincroniza com e-readers Kobo e com o KOReader.",
+				"Você auto-hospeda o Komga para manter em um só lugar a coleção que você já tem e retomar qualquer livro de onde parou, em qualquer dispositivo. Um servidor pode atender a casa toda: cada usuário vê só as bibliotecas que você der a ele, e restrições por idade ou por rótulo escondem o resto. O porém: o Komga organiza arquivos, não os encontra nem os baixa, então os livros ficam por sua conta."
+			],
+			"faq": [
+				{
+					"q": "O Komga é gratuito e de código aberto?",
+					"a": "Sim. O Komga é de código aberto, sob a licença MIT, de uso e modificação livres, e o código está no GitHub, em gotson/komga."
+				},
+				{
+					"q": "Quais formatos de arquivo o Komga suporta?",
+					"a": "O Komga lê arquivos de quadrinhos CBZ e CBR, arquivos PDF e e-books EPUB. Arquivos compactados em 7z não são suportados: extraia-os e compacte de novo como zip."
+				},
+				{
+					"q": "Existe app do Komga para iPhone ou Android?",
+					"a": "Sim, de terceiros: Mihon e Komelia no Android, e Paperback, Panels e Komic no iOS. O Komelia também roda no Windows e no Linux."
+				},
+				{
+					"q": "O Komga funciona com e-readers Kobo?",
+					"a": "Sim. Com o Kobo Sync, um e-reader Kobo recebe do Komga seus livros EPUB e o progresso de leitura, em vez de recebê-los dos servidores da Kobo, e eles são convertidos para KEPUB no download. O usuário precisa das funções KOBO_SYNC e FILE_DOWNLOAD e de uma chave de API."
+				},
+				{
+					"q": "Qual é o usuário e a senha padrão do Komga?",
+					"a": "Não há nenhum. Na primeira vez que você abre o Komga, ele pede para criar uma conta de usuário com e-mail e senha, e depois você entra com esses dados."
+				}
+			]
 		},
 		"ru": {
 			"description": "Сервер и веб-читалка для ваших комиксов, манги и электронных книг",
-			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Книги лежат в /data в сервисе komga: загрузите файлы на его вкладке «Файлы» или скопируйте папки по SFTP, затем добавьте в Komga библиотеку с корневой папкой /data. Читалки с поддержкой OPDS подключаются к https://{host}/opds/v1.2/catalog."
+			"notes": "Откройте адрес и создайте аккаунт администратора на первой странице. Сделайте это сразу: до тех пор страница открыта любому, кто знает адрес. Книги лежат в /data в сервисе komga: загрузите файлы на его вкладке «Файлы» или скопируйте папки по SFTP, затем добавьте в Komga библиотеку с корневой папкой /data. Читалки с поддержкой OPDS подключаются к https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga: умеренные требования — сервер на Java, около 500 MB; диск занимают ваши комиксы и книги.",
+			"summary": "Self-hosted Komga — open source медиасервер для комиксов, манги, журналов и электронных книг. На своей машине в один клик, читайте на любом устройстве.",
+			"about": [
+				"Komga — это open source медиасервер для комиксов, манги, журналов и электронных книг. Вы указываете ему папки с файлами, а он раскладывает их по библиотекам и сериям, читает встроенные метаданные и позволяет собирать коллекции и списки чтения. Книги открываются в его веб-читалке, у которой есть несколько режимов чтения и которая работает на телефонах, планшетах и компьютерах, или в любом приложении с поддержкой OPDS. Синхронизируется с читалками Kobo и с KOReader.",
+				"Komga хостят у себя, чтобы держать в одном месте коллекцию, которая уже есть, и продолжать любую книгу с того места, где остановились, на любом устройстве. Один сервер может обслуживать всю семью: каждый пользователь видит только те библиотеки, которые вы ему дали, а ограничения по возрасту или меткам скрывают остальное. Но есть нюанс: Komga упорядочивает файлы, а не ищет и не скачивает их, так что книги вы приносите сами."
+			],
+			"faq": [
+				{
+					"q": "Komga бесплатный и с открытым кодом?",
+					"a": "Да. Komga — программа с открытым кодом под лицензией MIT, ее можно бесплатно использовать и изменять, а код лежит на GitHub: gotson/komga."
+				},
+				{
+					"q": "Какие форматы файлов поддерживает Komga?",
+					"a": "Komga читает архивы комиксов CBZ и CBR, файлы PDF и электронные книги EPUB. Архивы, сжатые в 7z, не поддерживаются: распакуйте их и заново сожмите в zip."
+				},
+				{
+					"q": "Есть ли приложение Komga для iPhone или Android?",
+					"a": "Да, от сторонних авторов: Mihon и Komelia на Android, Paperback, Panels и Komic на iOS. Komelia работает еще на Windows и Linux."
+				},
+				{
+					"q": "Работает ли Komga с читалками Kobo?",
+					"a": "Да. С Kobo Sync читалка Kobo получает книги EPUB и прогресс чтения из Komga, а не с серверов Kobo, а при скачивании книги конвертируются в KEPUB. Пользователю нужны роли KOBO_SYNC и FILE_DOWNLOAD и API-ключ."
+				},
+				{
+					"q": "Какой логин и пароль по умолчанию у Komga?",
+					"a": "Никакого. При первом открытии Komga предлагает создать аккаунт пользователя с почтой и паролем, и дальше вы входите с ними."
+				}
+			]
 		},
 		"uk": {
 			"description": "Сервер і веб-читалка для ваших коміксів, манґи та електронних книжок",
-			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Книжки лежать у /data у сервісі komga: завантажте файли на його вкладці «Файли» або скопіюйте папки через SFTP, потім додайте в Komga бібліотеку з кореневою папкою /data. Читалки з підтримкою OPDS підключаються до https://{host}/opds/v1.2/catalog."
+			"notes": "Відкрийте адресу і створіть акаунт адміністратора на першій сторінці. Зробіть це одразу: доти сторінка відкрита кожному, хто знає адресу. Книжки лежать у /data у сервісі komga: завантажте файли на його вкладці «Файли» або скопіюйте папки через SFTP, потім додайте в Komga бібліотеку з кореневою папкою /data. Читалки з підтримкою OPDS підключаються до https://{host}/opds/v1.2/catalog.",
+			"sizing": "Komga має помірні вимоги: це Java-сервер, що займає близько 0,5 GB; диск — це ваші комікси й книги.",
+			"summary": "Self-hosted Komga — open source медіасервер для коміксів, манґи, журналів і електронних книжок. На своїй машині в один клік, читайте на всіх пристроях.",
+			"about": [
+				"Komga — це медіасервер із відкритим кодом для коміксів, манґи, журналів і електронних книжок. Ви вказуєте йому папки з файлами, а він розкладає їх по бібліотеках і серіях, читає вбудовані метадані та дозволяє збирати колекції й списки читання. Книжки відкриваються в його веб-читалці, яка має кілька режимів читання й працює на телефонах, планшетах і комп’ютерах, або в будь-якому застосунку з підтримкою OPDS. Синхронізується з читалками Kobo і з KOReader.",
+				"Komga хостять у себе, щоб тримати в одному місці колекцію, яка вже є, і продовжувати будь-яку книжку з того місця, де зупинилися, на будь-якому пристрої. Один сервер може обслуговувати всю родину: кожен користувач бачить лише ті бібліотеки, які ви йому дали, а обмеження за віком або мітками приховують решту. Але є нюанс: Komga впорядковує файли, а не шукає й не завантажує їх, тож книжки ви приносите самі."
+			],
+			"faq": [
+				{
+					"q": "Komga безплатний і з відкритим кодом?",
+					"a": "Так. Komga — програма з відкритим кодом за ліцензією MIT, її можна безплатно використовувати й змінювати, а код лежить на GitHub: gotson/komga."
+				},
+				{
+					"q": "Які формати файлів підтримує Komga?",
+					"a": "Komga читає архіви коміксів CBZ і CBR, файли PDF та електронні книжки EPUB. Архіви, стиснуті в 7z, не підтримуються: розпакуйте їх і стисніть заново як zip."
+				},
+				{
+					"q": "Чи є застосунок Komga для iPhone або Android?",
+					"a": "Так, від сторонніх авторів: Mihon і Komelia на Android, Paperback, Panels і Komic на iOS. Komelia працює ще й на Windows та Linux."
+				},
+				{
+					"q": "Чи працює Komga з читалками Kobo?",
+					"a": "Так. З Kobo Sync читалка Kobo отримує книжки EPUB і прогрес читання з Komga, а не із серверів Kobo, а під час завантаження книжки конвертуються в KEPUB. Користувачу потрібні ролі KOBO_SYNC і FILE_DOWNLOAD та API-ключ."
+				},
+				{
+					"q": "Який логін і пароль за замовчуванням у Komga?",
+					"a": "Жодного. Під час першого відкриття Komga пропонує створити акаунт користувача з поштою та паролем, і далі ви входите з ними."
+				}
+			]
 		}
 	}
 }

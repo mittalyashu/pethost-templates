@@ -1,6 +1,12 @@
 {
 	"name": "PDFMathTranslate",
 	"emoji": "📄",
+	"category": "files",
+	"alternatives": [
+		"DeepL",
+		"Google Translate"
+	],
+	"plan": "starter",
 	"route": {
 		"service": "pdf2zh",
 		"port": 7860
@@ -14,35 +20,259 @@
 	"texts": {
 		"en": {
 			"description": "Translates scientific PDFs and keeps their formulas, charts and layout",
-			"notes": "Sign in as admin with the admin password you gave; it must have no comma. Pick Bing as the service to translate with no key: Google's free service often refuses a server's address. For DeepL, OpenAI and the others, enter a key on the page."
+			"notes": "Sign in as admin with the admin password you gave; it must have no comma. Pick Bing as the service to translate with no key: Google's free service often refuses a server's address. For DeepL, OpenAI and the others, enter a key on the page.",
+			"sizing": "PDFMathTranslate is moderate: about 650 MB at rest, and its layout model takes more memory and CPU on each paper.",
+			"summary": "PDFMathTranslate translates research papers in PDF and leaves their equations and figures in place. Self-host this DeepL alternative in one click.",
+			"about": [
+				"PDFMathTranslate is an open-source PDF translator for scientific papers, an alternative to putting them through DeepL. A layout model marks the formulas, figures and tables on each page; they stay as they are, and only the text around them is translated and set back in place. Upload a file or paste a link, such as an arXiv PDF, and you get two downloads: the translation alone, and a dual PDF where each original page is followed by its translation.",
+				"People self-host it so a lab or a reading group has a page of its own, with its own API keys, instead of sharing the public demo and its limited computing resources. It is AGPL-3.0, and its paper was accepted at EMNLP 2025. The catch: running PDFMathTranslate yourself does not keep a paper to yourself. Its text still goes to the translation service you pick, unless that is a model you run, such as one in Ollama."
+			],
+			"faq": [
+				{
+					"q": "Is PDFMathTranslate free?",
+					"a": "Yes. PDFMathTranslate is open source under the AGPL-3.0 licence. Only the translation service can cost money: DeepL's API or an OpenAI model bills your own account with them."
+				},
+				{
+					"q": "Which translation services does PDFMathTranslate support?",
+					"a": "Google and Bing work with no key; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent and more take yours. Any OpenAI-compatible API and local models through Ollama or Xinference work too."
+				},
+				{
+					"q": "What is the difference between PDFMathTranslate and PDFMathTranslate-next?",
+					"a": "PDFMathTranslate is the original project and its stable line, pdf2zh 1.x. PDFMathTranslate-next carries version 2.0, with more translation-quality fixes; the original's README calls it a fork meant for development, not for community contributions."
+				},
+				{
+					"q": "What languages does PDFMathTranslate support?",
+					"a": "Its web page translates between ten languages: English, Simplified and Traditional Chinese, French, German, Italian, Japanese, Korean, Russian and Spanish. The pdf2zh command line takes other language codes with -li and -lo, where the chosen service supports them."
+				},
+				{
+					"q": "Can I put PDFMathTranslate behind a login?",
+					"a": "Yes. Started with --authorized and a file of users, one name and password per line separated by a comma, its web page asks for a login. This template turns that on for one user, admin, with the password you choose."
+				}
+			]
 		},
 		"de": {
 			"description": "Übersetzt wissenschaftliche PDFs und behält Formeln, Diagramme und Layout",
-			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an; es darf kein Komma enthalten. Wähle Bing als Dienst, um ohne Schlüssel zu übersetzen: Googles kostenloser Dienst weist die Adresse eines Servers oft ab. Für DeepL, OpenAI und die anderen gib auf der Seite einen Schlüssel ein."
+			"notes": "Melde dich als admin mit dem angegebenen Admin-Passwort an; es darf kein Komma enthalten. Wähle Bing als Dienst, um ohne Schlüssel zu übersetzen: Googles kostenloser Dienst weist die Adresse eines Servers oft ab. Für DeepL, OpenAI und die anderen gib auf der Seite einen Schlüssel ein.",
+			"sizing": "PDFMathTranslate ist mittelschwer: etwa 650 MB im Leerlauf, und sein Layout-Modell braucht für jedes Paper mehr RAM und CPU.",
+			"summary": "PDFMathTranslate übersetzt wissenschaftliche Paper als PDF und lässt Formeln und Abbildungen stehen. DeepL-Alternative selbst hosten, mit einem Klick.",
+			"about": [
+				"PDFMathTranslate ist ein Open-Source-PDF-Übersetzer für wissenschaftliche Paper, eine Alternative dazu, sie durch DeepL laufen zu lassen. Ein Layout-Modell markiert auf jeder Seite die Formeln, Abbildungen und Tabellen; sie bleiben, wie sie sind, und nur der Text drumherum wird übersetzt und wieder an seinen Platz gesetzt. Du lädst eine Datei hoch oder fügst einen Link ein, zum Beispiel zu einem arXiv-PDF, und bekommst zwei Downloads: die Übersetzung allein und ein Dual-PDF, in dem auf jede Originalseite ihre Übersetzung folgt.",
+				"Du hostest PDFMathTranslate selbst, damit ein Labor oder ein Lesekreis eine eigene Seite mit eigenen API-Keys hat, statt sich die öffentliche Demo mit ihrer begrenzten Rechenleistung zu teilen. Es steht unter der AGPL-3.0, und sein Paper wurde auf der EMNLP 2025 angenommen. Der Haken: Wenn du PDFMathTranslate selbst betreibst, bleibt ein Paper deshalb noch nicht bei dir. Sein Text geht trotzdem an den Übersetzungsdienst, den du wählst, es sei denn, das ist ein Modell, das du selbst betreibst, etwa eines in Ollama."
+			],
+			"faq": [
+				{
+					"q": "Ist PDFMathTranslate kostenlos?",
+					"a": "Ja. PDFMathTranslate ist Open Source unter der AGPL-3.0-Lizenz. Nur der Übersetzungsdienst kann Geld kosten: Die API von DeepL oder ein OpenAI-Modell wird über dein eigenes Konto bei ihnen abgerechnet."
+				},
+				{
+					"q": "Welche Übersetzungsdienste unterstützt PDFMathTranslate?",
+					"a": "Google und Bing funktionieren ohne Key; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent und weitere nehmen deinen. Auch jede OpenAI-kompatible API sowie lokale Modelle über Ollama oder Xinference funktionieren."
+				},
+				{
+					"q": "Was ist der Unterschied zwischen PDFMathTranslate und PDFMathTranslate-next?",
+					"a": "PDFMathTranslate ist das ursprüngliche Projekt und sein stabiler Zweig, pdf2zh 1.x. PDFMathTranslate-next trägt die Version 2.0, mit weiteren Verbesserungen der Übersetzungsqualität; die README des Originals nennt es einen Fork, der für die Entwicklung gedacht ist, nicht für Beiträge aus der Community."
+				},
+				{
+					"q": "Welche Sprachen unterstützt PDFMathTranslate?",
+					"a": "Die Webseite übersetzt zwischen zehn Sprachen: Englisch, Chinesisch (vereinfacht und traditionell), Französisch, Deutsch, Italienisch, Japanisch, Koreanisch, Russisch und Spanisch. Das Kommandozeilen-Tool pdf2zh nimmt mit -li und -lo weitere Sprachcodes, soweit der gewählte Dienst sie unterstützt."
+				},
+				{
+					"q": "Kann ich PDFMathTranslate hinter einen Login setzen?",
+					"a": "Ja. Wird es mit --authorized und einer Datei mit Benutzern gestartet (pro Zeile ein Name und ein Passwort, durch ein Komma getrennt), fragt die Webseite nach einem Login. Diese Vorlage schaltet das für einen Benutzer ein, admin, mit dem Passwort, das du wählst."
+				}
+			]
 		},
 		"es": {
 			"description": "Traduce PDF científicos y conserva sus fórmulas, gráficos y maquetación",
-			"notes": "Entra como admin con la contraseña de administrador que indicaste; no debe llevar comas. Elige Bing como servicio para traducir sin clave: el servicio gratuito de Google suele rechazar la dirección de un servidor. Para DeepL, OpenAI y los demás, introduce una clave en la página."
+			"notes": "Entra como admin con la contraseña de administrador que indicaste; no debe llevar comas. Elige Bing como servicio para traducir sin clave: el servicio gratuito de Google suele rechazar la dirección de un servidor. Para DeepL, OpenAI y los demás, introduce una clave en la página.",
+			"sizing": "PDFMathTranslate es moderado: unos 650 MB en reposo, y su modelo de layout usa más memoria y CPU en cada paper.",
+			"summary": "PDFMathTranslate traduce artículos científicos en PDF y deja sus ecuaciones y figuras en su sitio. Autoaloja esta alternativa a DeepL en un clic.",
+			"about": [
+				"PDFMathTranslate es un traductor de PDF de código abierto para artículos científicos, una alternativa a pasarlos por DeepL. Un modelo de maquetación marca las fórmulas, figuras y tablas de cada página; se quedan tal cual, y solo se traduce el texto que las rodea, que se coloca de nuevo en su sitio. Subes un archivo o pegas un enlace, por ejemplo un PDF de arXiv, y obtienes dos descargas: solo la traducción y un PDF dual en el que cada página original va seguida de su traducción.",
+				"Quienes autoalojan PDFMathTranslate lo hacen para que un laboratorio o un grupo de lectura tenga una página propia, con sus propias claves de API, en lugar de compartir la demo pública y sus recursos de cómputo limitados. Tiene licencia AGPL-3.0 y su artículo se aceptó en EMNLP 2025. El inconveniente: alojar PDFMathTranslate tú mismo no hace que un artículo quede en privado. Su texto sigue yendo al servicio de traducción que elijas, salvo que sea un modelo que ejecutas tú, como uno en Ollama."
+			],
+			"faq": [
+				{
+					"q": "¿PDFMathTranslate es gratis?",
+					"a": "Sí. PDFMathTranslate es de código abierto con licencia AGPL-3.0. Lo único que puede costar dinero es el servicio de traducción: la API de DeepL o un modelo de OpenAI se factura a tu propia cuenta con ellos."
+				},
+				{
+					"q": "¿Qué servicios de traducción admite PDFMathTranslate?",
+					"a": "Google y Bing funcionan sin clave; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent y más aceptan la tuya. También funcionan cualquier API compatible con OpenAI y los modelos locales con Ollama o Xinference."
+				},
+				{
+					"q": "¿Qué diferencia hay entre PDFMathTranslate y PDFMathTranslate-next?",
+					"a": "PDFMathTranslate es el proyecto original y su línea estable, pdf2zh 1.x. PDFMathTranslate-next lleva la versión 2.0, con más correcciones de calidad de traducción; el README del original lo describe como un fork pensado para el desarrollo, no para contribuciones de la comunidad."
+				},
+				{
+					"q": "¿Qué idiomas admite PDFMathTranslate?",
+					"a": "Su página web traduce entre diez idiomas: inglés, chino simplificado y tradicional, francés, alemán, italiano, japonés, coreano, ruso y español. La línea de comandos pdf2zh acepta otros códigos de idioma con -li y -lo, siempre que el servicio elegido los admita."
+				},
+				{
+					"q": "¿Puedo poner PDFMathTranslate detrás de un inicio de sesión?",
+					"a": "Sí. Si se inicia con --authorized y un archivo de usuarios, con un nombre y una contraseña por línea separados por una coma, su página web pide iniciar sesión. Esta plantilla lo activa para un usuario, admin, con la contraseña que elijas."
+				}
+			]
 		},
 		"fr": {
 			"description": "Traduit les PDF scientifiques en gardant leurs formules, graphiques et mise en page",
-			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué ; il ne doit pas contenir de virgule. Choisissez Bing comme service pour traduire sans clé : le service gratuit de Google refuse souvent l’adresse d’un serveur. Pour DeepL, OpenAI et les autres, saisissez une clé sur la page."
+			"notes": "Connectez-vous en tant qu’admin avec le mot de passe administrateur indiqué ; il ne doit pas contenir de virgule. Choisissez Bing comme service pour traduire sans clé : le service gratuit de Google refuse souvent l’adresse d’un serveur. Pour DeepL, OpenAI et les autres, saisissez une clé sur la page.",
+			"sizing": "PDFMathTranslate est modéré : environ 650 MB au repos, et son modèle de mise en page prend plus de mémoire et de CPU par article.",
+			"summary": "PDFMathTranslate traduit les articles scientifiques en PDF et laisse équations et figures en place. Auto-hébergez cette alternative à DeepL en un clic.",
+			"about": [
+				"PDFMathTranslate est un traducteur de PDF open source pour les articles scientifiques, une alternative à leur passage par DeepL. Un modèle de mise en page repère les formules, figures et tableaux de chaque page ; ils restent tels quels, et seul le texte autour est traduit puis remis à sa place. Vous envoyez un fichier ou collez un lien, par exemple un PDF d’arXiv, et vous obtenez deux téléchargements : la traduction seule, et un PDF dual où chaque page d’origine est suivie de sa traduction.",
+				"On auto-héberge PDFMathTranslate pour qu’un laboratoire ou un groupe de lecture ait sa propre page, avec ses propres clés d’API, plutôt que de partager la démo publique et ses ressources de calcul limitées. Il est sous licence AGPL-3.0, et son article a été accepté à l’EMNLP 2025. Le revers : héberger PDFMathTranslate vous-même ne garde pas un article pour vous. Son texte part quand même vers le service de traduction que vous choisissez, sauf si c’est un modèle que vous faites tourner vous-même, comme un modèle dans Ollama."
+			],
+			"faq": [
+				{
+					"q": "PDFMathTranslate est-il gratuit ?",
+					"a": "Oui. PDFMathTranslate est open source, sous licence AGPL-3.0. Seul le service de traduction peut coûter de l’argent : l’API de DeepL ou un modèle d’OpenAI est facturé sur votre propre compte chez eux."
+				},
+				{
+					"q": "Quels services de traduction PDFMathTranslate prend-il en charge ?",
+					"a": "Google et Bing fonctionnent sans clé ; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent et d’autres prennent la vôtre. Toute API compatible OpenAI et les modèles locaux via Ollama ou Xinference fonctionnent aussi."
+				},
+				{
+					"q": "Quelle différence entre PDFMathTranslate et PDFMathTranslate-next ?",
+					"a": "PDFMathTranslate est le projet d’origine et sa branche stable, pdf2zh 1.x. PDFMathTranslate-next porte la version 2.0, avec davantage de correctifs de qualité de traduction ; le README du projet d’origine le décrit comme un fork destiné au développement, pas aux contributions de la communauté."
+				},
+				{
+					"q": "Quelles langues PDFMathTranslate prend-il en charge ?",
+					"a": "Sa page web traduit entre dix langues : anglais, chinois simplifié et traditionnel, français, allemand, italien, japonais, coréen, russe et espagnol. La ligne de commande pdf2zh accepte d’autres codes de langue avec -li et -lo, tant que le service choisi les prend en charge."
+				},
+				{
+					"q": "Puis-je mettre PDFMathTranslate derrière une page de connexion ?",
+					"a": "Oui. Lancé avec --authorized et un fichier d’utilisateurs (un nom et un mot de passe par ligne, séparés par une virgule), PDFMathTranslate demande une connexion sur sa page web. Ce template l’active pour un utilisateur, admin, avec le mot de passe que vous choisissez."
+				}
+			]
 		},
 		"pl": {
 			"description": "Tłumaczy naukowe pliki PDF, zachowując wzory, wykresy i układ",
-			"notes": "Zaloguj się jako admin hasłem administratora, które podano; nie może zawierać przecinka. Wybierz Bing jako usługę, by tłumaczyć bez klucza: darmowa usługa Google często odrzuca adres serwera. Dla DeepL, OpenAI i innych wpisz klucz na stronie."
+			"notes": "Zaloguj się jako admin hasłem administratora, które podano; nie może zawierać przecinka. Wybierz Bing jako usługę, by tłumaczyć bez klucza: darmowa usługa Google często odrzuca adres serwera. Dla DeepL, OpenAI i innych wpisz klucz na stronie.",
+			"sizing": "PDFMathTranslate ma średnie wymagania: około 650 MB w spoczynku, a model układu zużywa przy każdym artykule więcej pamięci i CPU.",
+			"summary": "PDFMathTranslate tłumaczy artykuły naukowe w PDF i zostawia równania oraz rysunki na miejscu. Hostuj u siebie tę alternatywę dla DeepL jednym kliknięciem.",
+			"about": [
+				"PDFMathTranslate to tłumacz plików PDF typu open source do artykułów naukowych, alternatywa dla przepuszczania ich przez DeepL. Model układu strony zaznacza na każdej stronie wzory, rysunki i tabele; zostają takie, jakie są, a tłumaczony jest tylko otaczający je tekst, który wraca na swoje miejsce. Wgrywasz plik albo wklejasz link, na przykład do PDF-a z arXiv, i dostajesz dwa pliki do pobrania: samo tłumaczenie oraz PDF typu dual, w którym po każdej oryginalnej stronie następuje jej tłumaczenie.",
+				"PDFMathTranslate hostuje się u siebie, żeby laboratorium albo grupa czytelnicza miała własną stronę z własnymi kluczami API, zamiast dzielić publiczne demo i jego ograniczone zasoby obliczeniowe. Ma licencję AGPL-3.0, a jego artykuł przyjęto na EMNLP 2025. Haczyk: samodzielne uruchomienie PDFMathTranslate nie sprawia, że artykuł zostaje tylko u ciebie. Jego tekst nadal trafia do wybranej przez ciebie usługi tłumaczenia, chyba że jest to model, który sam uruchamiasz, na przykład w Ollamie."
+			],
+			"faq": [
+				{
+					"q": "Czy PDFMathTranslate jest darmowy?",
+					"a": "Tak. PDFMathTranslate jest open source na licencji AGPL-3.0. Płatna może być tylko usługa tłumaczenia: API DeepL albo model OpenAI rozlicza się na twoim własnym koncie u nich."
+				},
+				{
+					"q": "Jakie usługi tłumaczenia obsługuje PDFMathTranslate?",
+					"a": "Google i Bing działają bez klucza; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent i inne przyjmują twój. Działa też każde API zgodne z OpenAI oraz modele lokalne przez Ollamę lub Xinference."
+				},
+				{
+					"q": "Czym różni się PDFMathTranslate od PDFMathTranslate-next?",
+					"a": "PDFMathTranslate to oryginalny projekt i jego stabilna linia, pdf2zh 1.x. PDFMathTranslate-next to wersja 2.0, z dalszymi poprawkami jakości tłumaczenia; README oryginału nazywa go forkiem przeznaczonym do rozwoju, a nie do wkładu społeczności."
+				},
+				{
+					"q": "Jakie języki obsługuje PDFMathTranslate?",
+					"a": "Jego strona internetowa tłumaczy między dziesięcioma językami: angielskim, chińskim uproszczonym i tradycyjnym, francuskim, niemieckim, włoskim, japońskim, koreańskim, rosyjskim i hiszpańskim. Narzędzie wiersza poleceń pdf2zh przyjmuje inne kody języków w opcjach -li i -lo, o ile wybrana usługa je obsługuje."
+				},
+				{
+					"q": "Czy PDFMathTranslate można zabezpieczyć logowaniem?",
+					"a": "Tak. Gdy uruchomisz go z opcją --authorized i plikiem z użytkownikami (w każdym wierszu nazwa i hasło oddzielone przecinkiem), jego strona internetowa prosi o zalogowanie. Ten szablon włącza to dla jednego użytkownika, admin, z hasłem, które wybierzesz."
+				}
+			]
 		},
 		"pt": {
 			"description": "Traduz PDFs científicos mantendo fórmulas, gráficos e diagramação",
-			"notes": "Entre como admin com a senha de administrador que você informou; ela não pode ter vírgula. Escolha Bing como serviço para traduzir sem chave: o serviço gratuito do Google costuma recusar o endereço de um servidor. Para DeepL, OpenAI e os outros, informe uma chave na página."
+			"notes": "Entre como admin com a senha de administrador que você informou; ela não pode ter vírgula. Escolha Bing como serviço para traduzir sem chave: o serviço gratuito do Google costuma recusar o endereço de um servidor. Para DeepL, OpenAI e os outros, informe uma chave na página.",
+			"sizing": "PDFMathTranslate é moderado: cerca de 650 MB em repouso, e o modelo de layout usa mais memória e CPU a cada paper.",
+			"summary": "O PDFMathTranslate traduz artigos científicos em PDF e deixa equações e figuras no lugar. Auto-hospede esta alternativa ao DeepL em um clique.",
+			"about": [
+				"O PDFMathTranslate é um tradutor de PDF de código aberto para artigos científicos, uma alternativa a passá-los pelo DeepL. Um modelo de diagramação marca as fórmulas, figuras e tabelas de cada página; elas ficam como estão, e só o texto ao redor é traduzido e colocado de volta no lugar. Você envia um arquivo ou cola um link, como um PDF do arXiv, e recebe dois downloads: só a tradução e um PDF dual, em que cada página original é seguida pela sua tradução.",
+				"Você hospeda o PDFMathTranslate por conta própria para que um laboratório ou um grupo de leitura tenha uma página só sua, com suas próprias chaves de API, em vez de compartilhar a demo pública e seus recursos de computação limitados. Ele usa a licença AGPL-3.0, e o artigo dele foi aceito no EMNLP 2025. O porém: rodar o PDFMathTranslate você mesmo não faz um artigo ficar só com você. O texto dele continua indo para o serviço de tradução que você escolher, a menos que seja um modelo que você mesmo roda, como um no Ollama."
+			],
+			"faq": [
+				{
+					"q": "O PDFMathTranslate é gratuito?",
+					"a": "Sim. O PDFMathTranslate é de código aberto, sob a licença AGPL-3.0. Só o serviço de tradução pode custar dinheiro: a API do DeepL ou um modelo da OpenAI é cobrado da sua própria conta nesses serviços."
+				},
+				{
+					"q": "Quais serviços de tradução o PDFMathTranslate suporta?",
+					"a": "Google e Bing funcionam sem chave; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent e outros aceitam a sua. Qualquer API compatível com a OpenAI e modelos locais pelo Ollama ou pelo Xinference também funcionam."
+				},
+				{
+					"q": "Qual é a diferença entre o PDFMathTranslate e o PDFMathTranslate-next?",
+					"a": "O PDFMathTranslate é o projeto original e a sua linha estável, o pdf2zh 1.x. O PDFMathTranslate-next traz a versão 2.0, com mais correções de qualidade de tradução; o README do original o chama de fork pensado para o desenvolvimento, não para contribuições da comunidade."
+				},
+				{
+					"q": "Quais idiomas o PDFMathTranslate suporta?",
+					"a": "A página web dele traduz entre dez idiomas: inglês, chinês simplificado e tradicional, francês, alemão, italiano, japonês, coreano, russo e espanhol. A linha de comando pdf2zh aceita outros códigos de idioma com -li e -lo, desde que o serviço escolhido os suporte."
+				},
+				{
+					"q": "Posso colocar o PDFMathTranslate atrás de um login?",
+					"a": "Sim. Quando iniciado com --authorized e um arquivo de usuários (um nome e uma senha por linha, separados por vírgula), a página web dele pede login. Este template liga isso para um usuário, admin, com a senha que você escolher."
+				}
+			]
 		},
 		"ru": {
 			"description": "Переводит научные PDF, сохраняя формулы, графики и вёрстку",
-			"notes": "Войдите как admin с паролем администратора, который вы указали; в нём не должно быть запятой. Чтобы переводить без ключа, выберите сервис Bing: бесплатный Google часто отказывает адресу сервера. Для DeepL, OpenAI и других введите ключ на странице."
+			"notes": "Войдите как admin с паролем администратора, который вы указали; в нём не должно быть запятой. Чтобы переводить без ключа, выберите сервис Bing: бесплатный Google часто отказывает адресу сервера. Для DeepL, OpenAI и других введите ключ на странице.",
+			"sizing": "PDFMathTranslate: умеренные требования — около 650 MB в простое, а модель разметки берет больше памяти и CPU на каждую статью.",
+			"summary": "PDFMathTranslate переводит научные статьи в PDF и оставляет уравнения и рисунки на месте. Self-hosted альтернатива DeepL: запуск в один клик.",
+			"about": [
+				"PDFMathTranslate — это open source переводчик PDF для научных статей, альтернатива тому, чтобы пропускать их через DeepL. Модель анализа верстки отмечает на каждой странице формулы, рисунки и таблицы; они остаются как есть, а переводится только текст вокруг них, который затем возвращается на место. Вы загружаете файл или вставляете ссылку, например на PDF с arXiv, и получаете два файла для скачивания: только перевод и dual PDF, где за каждой исходной страницей идет ее перевод.",
+				"PDFMathTranslate хостят у себя, чтобы у лаборатории или группы, где вместе читают статьи, была своя страница с собственными API-ключами, а не общая публичная демо-версия с ограниченными вычислительными ресурсами. Лицензия AGPL-3.0, а научная статья проекта принята на EMNLP 2025. Но есть нюанс: запуск PDFMathTranslate у себя не оставляет статью только у вас. Ее текст все равно уходит в выбранный вами сервис перевода, если только это не модель, которую вы запускаете сами, например в Ollama."
+			],
+			"faq": [
+				{
+					"q": "PDFMathTranslate бесплатный?",
+					"a": "Да. PDFMathTranslate — open source под лицензией AGPL-3.0. Платным может быть только сервис перевода: API DeepL или модель OpenAI тарифицируются на вашем собственном аккаунте у этих сервисов."
+				},
+				{
+					"q": "Какие сервисы перевода поддерживает PDFMathTranslate?",
+					"a": "Google и Bing работают без ключа; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent и другие принимают ваш ключ. Работают и любые API, совместимые с OpenAI, и локальные модели через Ollama или Xinference."
+				},
+				{
+					"q": "Чем PDFMathTranslate отличается от PDFMathTranslate-next?",
+					"a": "PDFMathTranslate — оригинальный проект и его стабильная линейка, pdf2zh 1.x. В PDFMathTranslate-next версия 2.0 и больше исправлений качества перевода; в README оригинала его называют форком, предназначенным для разработки, а не для вкладов сообщества."
+				},
+				{
+					"q": "Какие языки поддерживает PDFMathTranslate?",
+					"a": "Его веб-страница переводит между десятью языками: английским, упрощенным и традиционным китайским, французским, немецким, итальянским, японским, корейским, русским и испанским. Командная строка pdf2zh принимает и другие коды языков через -li и -lo, если выбранный сервис их поддерживает."
+				},
+				{
+					"q": "Можно ли закрыть PDFMathTranslate входом по логину и паролю?",
+					"a": "Да. Если запустить его с --authorized и файлом пользователей (в каждой строке имя и пароль через запятую), веб-страница запросит вход. Этот шаблон включает это для одного пользователя, admin, с паролем, который вы выберете."
+				}
+			]
 		},
 		"uk": {
 			"description": "Перекладає наукові PDF, зберігаючи формули, графіки й верстку",
-			"notes": "Увійдіть як admin з паролем адміністратора, який ви вказали; у ньому не має бути коми. Щоб перекладати без ключа, виберіть сервіс Bing: безкоштовний Google часто відмовляє адресі сервера. Для DeepL, OpenAI та інших введіть ключ на сторінці."
+			"notes": "Увійдіть як admin з паролем адміністратора, який ви вказали; у ньому не має бути коми. Щоб перекладати без ключа, виберіть сервіс Bing: безкоштовний Google часто відмовляє адресі сервера. Для DeepL, OpenAI та інших введіть ключ на сторінці.",
+			"sizing": "PDFMathTranslate має помірні вимоги: близько 650 MB без навантаження, а модель розмітки на кожну статтю бере більше пам’яті й CPU.",
+			"summary": "PDFMathTranslate перекладає наукові статті в PDF і залишає рівняння та рисунки на місці. Self-hosted альтернатива DeepL: запуск в один клік.",
+			"about": [
+				"PDFMathTranslate — це перекладач PDF із відкритим кодом для наукових статей, альтернатива тому, щоб пропускати їх через DeepL. Модель аналізу верстки позначає на кожній сторінці формули, рисунки й таблиці; вони лишаються як є, а перекладається тільки текст навколо них, який повертається на місце. Ви завантажуєте файл або вставляєте посилання, наприклад на PDF з arXiv, і отримуєте два файли для звантаження: окремо переклад та dual PDF, у якому за кожною оригінальною сторінкою йде її переклад.",
+				"PDFMathTranslate хостять у себе, щоб лабораторія чи група, де разом читають статті, мала власну сторінку зі своїми API-ключами, а не ділила публічне демо з його обмеженими обчислювальними ресурсами. Ліцензія AGPL-3.0, а наукова стаття проєкту прийнята на EMNLP 2025. Але є нюанс: запуск PDFMathTranslate у себе не залишає статтю лише у вас. Її текст усе одно йде до вибраного вами сервісу перекладу, хіба що це модель, яку ви запускаєте самі, наприклад в Ollama."
+			],
+			"faq": [
+				{
+					"q": "Чи PDFMathTranslate безкоштовний?",
+					"a": "Так. PDFMathTranslate має відкритий код за ліцензією AGPL-3.0. Платним може бути лише сервіс перекладу: API DeepL або модель OpenAI тарифікуються на вашому власному акаунті в цих сервісів."
+				},
+				{
+					"q": "Які сервіси перекладу підтримує PDFMathTranslate?",
+					"a": "Google і Bing працюють без ключа; DeepL, OpenAI, Azure OpenAI, Gemini, DeepSeek, Grok, Groq, Zhipu, Tencent та інші приймають ваш ключ. Також працюють будь-які API, сумісні з OpenAI, і локальні моделі через Ollama або Xinference."
+				},
+				{
+					"q": "Чим PDFMathTranslate відрізняється від PDFMathTranslate-next?",
+					"a": "PDFMathTranslate — оригінальний проєкт і його стабільна лінійка, pdf2zh 1.x. У PDFMathTranslate-next версія 2.0 і більше виправлень якості перекладу; у README оригіналу його називають форком, призначеним для розробки, а не для внесків спільноти."
+				},
+				{
+					"q": "Які мови підтримує PDFMathTranslate?",
+					"a": "Його вебсторінка перекладає між десятьма мовами: англійською, спрощеною й традиційною китайською, французькою, німецькою, італійською, японською, корейською, російською та іспанською. Командний рядок pdf2zh приймає й інші коди мов через -li та -lo, якщо вибраний сервіс їх підтримує."
+				},
+				{
+					"q": "Чи можна закрити PDFMathTranslate входом за логіном і паролем?",
+					"a": "Так. Якщо запустити його з --authorized і файлом користувачів (у кожному рядку ім’я та пароль через кому), вебсторінка запитає вхід. Цей шаблон вмикає це для одного користувача, admin, із паролем, який ви виберете."
+				}
+			]
 		}
 	}
 }
