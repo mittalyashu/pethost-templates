@@ -1,0 +1,39 @@
+services:
+  node-red:
+    image: nodered/node-red:5
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ:-UTC}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    # The editor would be open to anyone with the address. Node-RED starts with the settings of
+    # /data/settings.js, which are yours to edit, and with the username and password of the
+    # project's .env as its only sign-in, unless settings.js sets adminAuth itself.
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - |
+        # The first start: settings.js to edit, and no flow, where the image's would warn of a
+        # missing volume, which the project has.
+        if [ ! -f /data/settings.js ]; then
+          cp node_modules/node-red/settings.js /data/settings.js
+          rm -f /data/flows.json
+        fi
+        cat > /tmp/settings.js <<'END'
+        const { createHash, timingSafeEqual } = require("node:crypto");
+        const settings = require("/data/settings.js");
+        const digest = (text) => createHash("sha256").update(String(text)).digest();
+        const user = (username) => (username === process.env.ADMIN_USERNAME ? { username, permissions: "*" } : null);
+        settings.adminAuth ??= {
+          type: "credentials",
+          users: async (username) => user(username),
+          authenticate: async (username, password) =>
+            timingSafeEqual(digest(password), digest(process.env.ADMIN_PASSWORD)) ? user(username) : null
+        };
+        module.exports = settings;
+        END
+        exec ./entrypoint.sh --settings /tmp/settings.js
+    volumes:
+      - data:/data
+
+volumes:
+  data:

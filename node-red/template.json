@@ -1,0 +1,282 @@
+{
+	"name": "Node-RED",
+	"emoji": "🔴",
+	"category": "automation",
+	"alternatives": [
+		"Zapier",
+		"IFTTT"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "node-red",
+		"port": 1880
+	},
+	"variables": [
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Low-code flows that wire together APIs, devices and online services",
+			"notes": "Sign in with the username and password you gave: the editor is closed to everyone else. Install more nodes with Manage palette in the main menu, and press Deploy to run a flow. An HTTP In node answers at https://{host} followed by its path, open to anyone. Other settings, and more users with adminAuth, go into /data/settings.js in the node-red service; restart the project after editing it. Set TZ in the project’s .env, such as TZ=Europe/Berlin, for schedules in your time zone.",
+			"sizing": "Node-RED is light: about 100 MB of memory; flows take kilobytes, and the nodes you install a few megabytes each.",
+			"summary": "Node-RED is a low-code tool that wires APIs, devices and services into flows in the browser. Self-host this open-source automation editor in one click.",
+			"about": [
+				"Node-RED is an open-source, low-code programming tool for event-driven applications, often run in place of Zapier or IFTTT. In its editor in the browser you drag nodes onto a canvas and wire them into flows: a message comes in from an HTTP request, an MQTT topic, a webhook or a timer, passes through nodes that change, filter or route it, and goes out to a database, an API or a chat. A Function node runs your own JavaScript where no node fits, and the community library has more than 6,000 nodes to install from the editor.",
+				"Node-RED was started at IBM in 2013 and is now a project of the OpenJS Foundation. People use it for home automation, often beside Home Assistant, for IoT and industrial data, and as glue between web services, and they self-host it to run their automations around the clock with no price per run. This template opens the editor only to the username and password given. The catch: the routes of HTTP In nodes are public, so an endpoint that should be private needs httpNodeAuth in settings.js or a check of its own."
+			],
+			"faq": [
+				{
+					"q": "Is Node-RED free?",
+					"a": "Yes. Node-RED is open source under the Apache 2.0 license and costs nothing, whatever the number of flows or messages. It is a project of the OpenJS Foundation."
+				},
+				{
+					"q": "How do I install more nodes in Node-RED?",
+					"a": "Open the main menu, choose Manage palette and search its Install tab, which lists the nodes of the community library. Installed nodes are kept in the data volume, so they stay through restarts and new deploys."
+				},
+				{
+					"q": "Can Node-RED work with Home Assistant?",
+					"a": "Yes. The node-red-contrib-home-assistant-websocket nodes talk to Home Assistant through its WebSocket and REST APIs, to react to its events and call its services. Your Home Assistant must be reachable from the server Node-RED runs on."
+				},
+				{
+					"q": "How do I build a dashboard in Node-RED?",
+					"a": "Install @flowfuse/node-red-dashboard with Manage palette: its nodes draw buttons, charts and forms on a page that Node-RED serves. The older node-red-dashboard has been deprecated since June 2024."
+				},
+				{
+					"q": "How do I protect the HTTP endpoints of my flows?",
+					"a": "The editor asks for a sign-in, but the routes of HTTP In nodes answer anyone. Set httpNodeAuth with a user and a bcrypt hash in /data/settings.js to put one password on all of them, or check a token in the flow itself."
+				}
+			]
+		},
+		"de": {
+			"description": "Low-Code-Flows, die APIs, Geräte und Onlinedienste miteinander verbinden",
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Allen anderen bleibt der Editor verschlossen. Weitere Nodes installierst du über „Palette verwalten“ im Hauptmenü, und mit „Übernahme (deploy)“ bringst du einen Flow zum Laufen. Ein HTTP-In-Node antwortet unter https://{host}, gefolgt von seinem Pfad, und ist für alle offen. Andere Einstellungen und weitere Benutzer per adminAuth kommen in /data/settings.js im Service node-red; starte das Projekt nach dem Bearbeiten neu. Setz TZ in der .env des Projekts, etwa TZ=Europe/Berlin, damit Zeitpläne in deiner Zeitzone laufen.",
+			"sizing": "Node-RED ist leicht: etwa 100 MB RAM; Flows brauchen ein paar KB, die installierten Nodes je ein paar MB.",
+			"summary": "Node-RED selbst hosten: der Open-Source-Editor für Low-Code-Automatisierung, der APIs, Geräte und Dienste im Browser zu Flows verbindet. Mit einem Klick.",
+			"about": [
+				"Node-RED ist ein Open-Source-Tool zur Low-Code-Programmierung ereignisgesteuerter Anwendungen, oft im Einsatz statt Zapier oder IFTTT. In seinem Editor im Browser ziehst du Nodes auf eine Arbeitsfläche und verbindest sie zu Flows: Eine Nachricht kommt von einem HTTP-Request, einem MQTT-Topic, einem Webhook oder einem Timer, läuft durch Nodes, die sie ändern, filtern oder weiterleiten, und geht an eine Datenbank, eine API oder einen Chat. Wo kein Node passt, führt ein Function-Node dein eigenes JavaScript aus, und die Community-Bibliothek bietet mehr als 6.000 Nodes, die du direkt im Editor installierst.",
+				"Node-RED entstand 2013 bei IBM und ist heute ein Projekt der OpenJS Foundation. Genutzt wird es für die Heimautomatisierung, oft neben Home Assistant, für IoT- und Industriedaten und als Bindeglied zwischen Webdiensten, und viele hosten es selbst, damit ihre Automatisierungen rund um die Uhr laufen, ohne Kosten pro Ausführung. Diese Vorlage öffnet den Editor nur für den angegebenen Benutzernamen mit Passwort. Der Haken: Die Routen von HTTP-In-Nodes sind öffentlich, ein Endpunkt, der privat bleiben soll, braucht also httpNodeAuth in settings.js oder eine eigene Prüfung."
+			],
+			"faq": [
+				{
+					"q": "Ist Node-RED kostenlos?",
+					"a": "Ja. Node-RED ist Open Source unter der Apache-2.0-Lizenz und kostet nichts, unabhängig von der Zahl der Flows oder Nachrichten. Es ist ein Projekt der OpenJS Foundation."
+				},
+				{
+					"q": "Wie installiere ich weitere Nodes in Node-RED?",
+					"a": "Öffne das Hauptmenü, wähl „Palette verwalten“ und such im Tab „Installation“, der die Nodes der Community-Bibliothek auflistet. Installierte Nodes liegen im Daten-Volume und überstehen so Neustarts und neue Deploys."
+				},
+				{
+					"q": "Funktioniert Node-RED mit Home Assistant?",
+					"a": "Ja. Die Nodes aus node-red-contrib-home-assistant-websocket sprechen über die WebSocket- und REST-APIs mit Home Assistant, reagieren auf dessen Ereignisse und rufen dessen Dienste auf. Dein Home Assistant muss von der Maschine aus erreichbar sein, auf der Node-RED läuft."
+				},
+				{
+					"q": "Wie erstelle ich ein Dashboard in Node-RED?",
+					"a": "Installiere @flowfuse/node-red-dashboard über „Palette verwalten“: Die Nodes des Pakets zeichnen Buttons, Diagramme und Formulare auf eine Seite, die Node-RED ausliefert. Das ältere node-red-dashboard gilt seit Juni 2024 als veraltet."
+				},
+				{
+					"q": "Wie sichere ich die HTTP-Endpunkte meiner Flows ab?",
+					"a": "Der Editor von Node-RED verlangt eine Anmeldung, die Routen von HTTP-In-Nodes antworten aber allen. Setz httpNodeAuth mit einem Benutzer und einem bcrypt-Hash in /data/settings.js, um alle mit einem gemeinsamen Passwort zu schützen, oder prüf im Flow selbst ein Token."
+				}
+			]
+		},
+		"es": {
+			"description": "Flujos low-code que conectan APIs, dispositivos y servicios en línea",
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: el editor no está abierto a nadie más. Instala más nodos con “Administrar paleta”, en el menú principal, y pulsa “Instanciar” para ejecutar un flujo. Un nodo HTTP In responde en https://{host} seguido de su path, abierto a cualquiera. El resto de la configuración, y más usuarios con adminAuth, van en /data/settings.js, en el servicio node-red; reinicia el proyecto después de editarlo. Define TZ en el .env del proyecto, por ejemplo TZ=Europe/Berlin, para que las tareas programadas sigan tu zona horaria.",
+			"sizing": "Node-RED es ligero: unos 100 MB de memoria; los flujos ocupan kilobytes, y los nodos que instales, unos pocos megabytes cada uno.",
+			"summary": "Node-RED une APIs, dispositivos y servicios en flujos low-code desde el navegador. Autoaloja este editor de automatización de código abierto en un clic.",
+			"about": [
+				"Node-RED es una herramienta de programación low-code y de código abierto para aplicaciones orientadas a eventos, que a menudo se usa en lugar de Zapier o IFTTT. En su editor, en el navegador, arrastras nodos a un lienzo y los conectas en flujos: un mensaje entra desde una petición HTTP, un topic MQTT, un webhook o un temporizador, pasa por nodos que lo modifican, lo filtran o lo enrutan, y sale hacia una base de datos, una API o un chat. Un nodo Function ejecuta tu propio JavaScript donde ningún nodo sirve, y la biblioteca de la comunidad tiene más de 6000 nodos que se instalan desde el editor.",
+				"Node-RED nació en IBM en 2013 y hoy es un proyecto de la OpenJS Foundation. Se usa para domótica, a menudo junto a Home Assistant, para datos de IoT e industriales y como pegamento entre servicios web, y quienes lo autoalojan lo hacen para ejecutar sus automatizaciones las 24 horas sin pagar por cada ejecución. Esta plantilla solo deja entrar en el editor con el nombre de usuario y la contraseña indicados. El inconveniente: las rutas de los nodos HTTP In son públicas, así que un endpoint que deba ser privado necesita httpNodeAuth en settings.js o una comprobación propia."
+			],
+			"faq": [
+				{
+					"q": "¿Node-RED es gratis?",
+					"a": "Sí. Node-RED es de código abierto bajo la licencia Apache 2.0 y no cuesta nada, sea cual sea el número de flujos o de mensajes. Es un proyecto de la OpenJS Foundation."
+				},
+				{
+					"q": "¿Cómo instalo más nodos en Node-RED?",
+					"a": "Abre el menú principal, elige “Administrar paleta” y busca en su pestaña Instalar, que lista los nodos de la biblioteca de la comunidad. Los nodos instalados se guardan en el volumen data, así que se conservan entre reinicios y nuevos despliegues."
+				},
+				{
+					"q": "¿Node-RED funciona con Home Assistant?",
+					"a": "Sí. Los nodos de node-red-contrib-home-assistant-websocket se comunican con Home Assistant mediante sus APIs WebSocket y REST, para reaccionar a sus eventos y llamar a sus servicios. Tu Home Assistant tiene que ser accesible desde la máquina en la que se ejecuta Node-RED."
+				},
+				{
+					"q": "¿Cómo creo un dashboard en Node-RED?",
+					"a": "Instala @flowfuse/node-red-dashboard con “Administrar paleta”: sus nodos dibujan botones, gráficos y formularios en una página que sirve Node-RED. El antiguo node-red-dashboard está obsoleto desde junio de 2024."
+				},
+				{
+					"q": "¿Cómo protejo los endpoints HTTP de mis flujos?",
+					"a": "El editor pide iniciar sesión, pero las rutas de los nodos HTTP In responden a cualquiera. Define httpNodeAuth con un usuario y un hash bcrypt en /data/settings.js para poner una misma contraseña a todas, o comprueba un token en el propio flujo."
+				}
+			]
+		},
+		"fr": {
+			"description": "Des flux low-code qui relient API, appareils et services en ligne",
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : l’éditeur est fermé à tous les autres. Installez d’autres nœuds avec « Gérer la palette » dans le menu principal, et cliquez sur Déployer pour lancer un flux. Un nœud HTTP In répond à https://{host} suivi de son chemin, ouvert à tous. Les autres réglages, dont des utilisateurs supplémentaires avec adminAuth, vont dans /data/settings.js, dans le service node-red ; redémarrez le projet après l’avoir modifié. Pour des planifications dans votre fuseau horaire, définissez TZ dans le .env du projet, par exemple TZ=Europe/Berlin.",
+			"sizing": "Node-RED est léger : environ 100 MB de mémoire ; les flux pèsent quelques KB, et chaque nœud installé quelques MB.",
+			"summary": "Node-RED, outil low-code, relie API, appareils et services en flux dans le navigateur. Auto-hébergez cet éditeur d’automatisation open source en un clic.",
+			"about": [
+				"Node-RED est un outil de programmation low-code et open source pour les applications événementielles, souvent utilisé à la place de Zapier ou d’IFTTT. Dans son éditeur web, vous glissez des nœuds sur un canevas et les reliez en flux : un message arrive d’une requête HTTP, d’un topic MQTT, d’un webhook ou d’un minuteur, traverse des nœuds qui le modifient, le filtrent ou l’aiguillent, puis repart vers une base de données, une API ou une messagerie. Un nœud Function exécute votre propre JavaScript là où aucun nœud ne convient, et la bibliothèque de la communauté compte plus de 6 000 nœuds à installer depuis l’éditeur.",
+				"Node-RED est né chez IBM en 2013 et c’est aujourd’hui un projet de l’OpenJS Foundation. On s’en sert pour la domotique, souvent à côté de Home Assistant, pour l’IoT et les données industrielles, et pour faire le lien entre des services web ; on l’auto-héberge pour faire tourner ses automatisations jour et nuit, sans prix par exécution. Ce template n’ouvre l’éditeur qu’avec le nom d’utilisateur et le mot de passe indiqués. Le revers : les routes des nœuds HTTP In sont publiques, donc un endpoint qui doit rester privé a besoin de httpNodeAuth dans settings.js ou de sa propre vérification."
+			],
+			"faq": [
+				{
+					"q": "Node-RED est-il gratuit ?",
+					"a": "Oui. Node-RED est open source sous licence Apache 2.0 et ne coûte rien, quel que soit le nombre de flux ou de messages. C’est un projet de l’OpenJS Foundation."
+				},
+				{
+					"q": "Comment installer de nouveaux nœuds dans Node-RED ?",
+					"a": "Ouvrez le menu principal, choisissez « Gérer la palette » et cherchez dans son onglet Installer, qui liste les nœuds de la bibliothèque de la communauté. Les nœuds installés sont conservés dans le volume data : ils restent après les redémarrages et les nouveaux déploiements."
+				},
+				{
+					"q": "Node-RED fonctionne-t-il avec Home Assistant ?",
+					"a": "Oui. Les nœuds node-red-contrib-home-assistant-websocket dialoguent avec Home Assistant par ses API WebSocket et REST, pour réagir à ses événements et appeler ses services. Votre Home Assistant doit être joignable depuis la machine où tourne Node-RED."
+				},
+				{
+					"q": "Comment créer un dashboard avec Node-RED ?",
+					"a": "Installez @flowfuse/node-red-dashboard avec « Gérer la palette » : ses nœuds dessinent des boutons, des graphiques et des formulaires sur une page que sert Node-RED. L’ancien node-red-dashboard est obsolète depuis juin 2024."
+				},
+				{
+					"q": "Comment protéger les endpoints HTTP de mes flux Node-RED ?",
+					"a": "L’éditeur demande une connexion, mais les routes des nœuds HTTP In répondent à tout le monde. Définissez httpNodeAuth avec un utilisateur et un hash bcrypt dans /data/settings.js pour les protéger toutes par un même mot de passe, ou vérifiez un token dans le flux lui-même."
+				}
+			]
+		},
+		"pl": {
+			"description": "Przepływy low-code, które łączą API, urządzenia i usługi online",
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: dla wszystkich innych edytor jest zamknięty. Dodatkowe węzły instaluj przez Manage palette w menu głównym, a żeby uruchomić przepływ, naciśnij Deploy. Węzeł HTTP In odpowiada pod adresem https://{host} z dopisaną swoją ścieżką i jest dostępny dla każdego. Pozostałe ustawienia, a także kolejni użytkownicy w adminAuth, trafiają do /data/settings.js w usłudze node-red; po edycji tego pliku zrestartuj projekt. Żeby harmonogramy działały w twojej strefie czasowej, ustaw TZ w pliku .env projektu, na przykład TZ=Europe/Berlin.",
+			"sizing": "Node-RED ma małe wymagania: około 100 MB pamięci; przepływy zajmują kilobajty, a instalowane węzły po kilka megabajtów każdy.",
+			"summary": "Node-RED łączy API, urządzenia i usługi w przepływy low-code w przeglądarce. Hostuj u siebie ten edytor automatyzacji open source jednym kliknięciem.",
+			"about": [
+				"Node-RED to narzędzie open source do programowania low-code aplikacji sterowanych zdarzeniami, często używane zamiast Zapiera albo IFTTT. W jego edytorze w przeglądarce przeciągasz węzły na kanwę i łączysz je w przepływy: wiadomość przychodzi z żądania HTTP, tematu MQTT, webhooka albo timera, przechodzi przez węzły, które ją zmieniają, filtrują albo kierują dalej, i trafia do bazy danych, API albo czatu. Węzeł Function uruchamia twój własny JavaScript tam, gdzie żaden węzeł nie pasuje, a biblioteka społeczności ma ponad 6000 węzłów do zainstalowania prosto z edytora.",
+				"Node-RED powstał w IBM w 2013 roku, a dziś jest projektem OpenJS Foundation. Używa się go do automatyki domowej, często obok Home Assistanta, do danych z IoT i przemysłu oraz jako spoiwa między usługami webowymi, a hostuje u siebie, żeby automatyzacje działały całą dobę bez opłat za każde uruchomienie. Ten szablon otwiera edytor tylko dla podanej nazwy użytkownika i hasła. Haczyk: trasy węzłów HTTP In są publiczne, więc endpoint, który ma być prywatny, wymaga httpNodeAuth w settings.js albo własnej weryfikacji."
+			],
+			"faq": [
+				{
+					"q": "Czy Node-RED jest darmowy?",
+					"a": "Tak. Node-RED to open source na licencji Apache 2.0 i nic nie kosztuje, bez względu na liczbę przepływów czy wiadomości. Jest projektem OpenJS Foundation."
+				},
+				{
+					"q": "Jak zainstalować nowe węzły w Node-RED?",
+					"a": "Otwórz menu główne, wybierz Manage palette i szukaj w zakładce Install, która pokazuje węzły z biblioteki społeczności. Zainstalowane węzły są przechowywane w wolumenie data, więc przetrwają restarty i kolejne wdrożenia."
+				},
+				{
+					"q": "Czy Node-RED współpracuje z Home Assistantem?",
+					"a": "Tak. Węzły node-red-contrib-home-assistant-websocket komunikują się z Home Assistantem przez jego API WebSocket i REST, żeby reagować na jego zdarzenia i wywoływać jego usługi. Twój Home Assistant musi być osiągalny z maszyny, na której działa Node-RED."
+				},
+				{
+					"q": "Jak zrobić dashboard w Node-RED?",
+					"a": "Zainstaluj @flowfuse/node-red-dashboard przez Manage palette: jego węzły rysują przyciski, wykresy i formularze na stronie, którą udostępnia Node-RED. Starszy node-red-dashboard jest oznaczony jako przestarzały od czerwca 2024 roku."
+				},
+				{
+					"q": "Jak zabezpieczyć endpointy HTTP w przepływach Node-RED?",
+					"a": "Edytor wymaga logowania, ale trasy węzłów HTTP In odpowiadają każdemu. Ustaw httpNodeAuth z użytkownikiem i hashem bcrypt w /data/settings.js, żeby objąć je wszystkie jednym hasłem, albo sprawdzaj token w samym przepływie."
+				}
+			]
+		},
+		"pt": {
+			"description": "Fluxos low-code que conectam APIs, dispositivos e serviços online",
+			"notes": "Entre com o usuário e a senha que você informou: o editor fica fechado para todos os outros. Instale mais nós com Gerenciar paleta, no menu principal, e clique no botão implementar para rodar um fluxo. Um nó HTTP In responde em https://{host} seguido do caminho dele, aberto a qualquer pessoa. Outras configurações, e mais usuários com adminAuth, vão em /data/settings.js, no serviço node-red; reinicie o projeto depois de editar o arquivo. Defina TZ no .env do projeto, por exemplo TZ=Europe/Berlin, para que os agendamentos sigam o seu fuso horário.",
+			"sizing": "Node-RED é leve: cerca de 100 MB de memória; os fluxos ocupam kilobytes, e os nós que você instala, alguns megabytes cada.",
+			"summary": "O Node-RED é uma ferramenta de automação low-code e open source que liga APIs, dispositivos e serviços em fluxos no navegador. Auto-hospede em um clique.",
+			"about": [
+				"O Node-RED é uma ferramenta de programação low-code e de código aberto para aplicações orientadas a eventos, muitas vezes usada no lugar do Zapier ou do IFTTT. No editor, que roda no navegador, você arrasta nós para o canvas e os liga em fluxos: uma mensagem chega de uma requisição HTTP, de um tópico MQTT, de um webhook ou de um timer, passa por nós que a alteram, filtram ou encaminham e sai para um banco de dados, uma API ou um chat. Um nó Function roda o seu próprio JavaScript quando nenhum nó serve, e a biblioteca da comunidade tem mais de 6.000 nós para instalar a partir do editor.",
+				"O Node-RED nasceu na IBM em 2013 e hoje é um projeto da OpenJS Foundation. As pessoas o usam para automação residencial, muitas vezes junto com o Home Assistant, para IoT e dados industriais e como cola entre serviços web, e o auto-hospedam para rodar suas automações 24 horas por dia, sem preço por execução. Este template abre o editor apenas para o usuário e a senha informados. O porém: as rotas dos nós HTTP In são públicas, então um endpoint que deveria ser privado precisa de httpNodeAuth no settings.js ou de uma verificação própria."
+			],
+			"faq": [
+				{
+					"q": "O Node-RED é gratuito?",
+					"a": "Sim. O Node-RED é de código aberto sob a licença Apache 2.0 e não custa nada, seja qual for o número de fluxos ou de mensagens. Ele é um projeto da OpenJS Foundation."
+				},
+				{
+					"q": "Como instalo mais nós no Node-RED?",
+					"a": "Abra o menu principal, escolha Gerenciar paleta e busque na aba Instalar, que lista os nós da biblioteca da comunidade. Os nós instalados ficam guardados no volume data, então sobrevivem a reinícios e a novos deploys."
+				},
+				{
+					"q": "O Node-RED funciona com o Home Assistant?",
+					"a": "Sim. Os nós node-red-contrib-home-assistant-websocket falam com o Home Assistant pelas APIs WebSocket e REST dele, para reagir aos eventos e chamar os serviços do Home Assistant. O seu Home Assistant precisa estar acessível a partir da máquina em que o Node-RED roda."
+				},
+				{
+					"q": "Como criar um dashboard no Node-RED?",
+					"a": "Instale o @flowfuse/node-red-dashboard com Gerenciar paleta: os nós dele desenham botões, gráficos e formulários em uma página servida pelo Node-RED. O node-red-dashboard, mais antigo, está descontinuado desde junho de 2024."
+				},
+				{
+					"q": "Como proteger os endpoints HTTP dos meus fluxos no Node-RED?",
+					"a": "O editor do Node-RED pede login, mas as rotas dos nós HTTP In respondem a qualquer pessoa. Defina httpNodeAuth com um usuário e um hash bcrypt em /data/settings.js para proteger todas elas com uma única senha, ou verifique um token no próprio fluxo."
+				}
+			]
+		},
+		"ru": {
+			"description": "Low-code потоки, которые связывают API, устройства и онлайн-сервисы",
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: для всех остальных редактор закрыт. Новые узлы устанавливаются через «Управление палитрой» в главном меню, а чтобы запустить поток, нажмите «Развернуть». Узел HTTP In отвечает по адресу https://{host}, за которым следует его путь, и доступен любому. Другие настройки, в том числе дополнительные пользователи в adminAuth, задаются в /data/settings.js в сервисе node-red; после правки перезапустите проект. Чтобы расписания шли по вашему часовому поясу, задайте TZ в .env проекта, например TZ=Europe/Berlin.",
+			"sizing": "Node-RED: небольшие требования — около 100 MB памяти; потоки занимают килобайты, а каждый установленный узел — несколько мегабайт.",
+			"summary": "Node-RED — low-code инструмент, соединяющий API, устройства и сервисы в потоки в браузере. Self-hosted open source редактор автоматизаций в один клик.",
+			"about": [
+				"Node-RED — инструмент с открытым кодом для low-code программирования событийно-ориентированных приложений. Его часто запускают вместо Zapier или IFTTT. В его редакторе в браузере вы перетаскиваете узлы на рабочую область и соединяете их в потоки: сообщение приходит из HTTP-запроса, топика MQTT, вебхука или таймера, проходит через узлы, которые меняют, фильтруют или направляют его дальше, и уходит в базу данных, API или чат. Узел Function выполняет ваш собственный JavaScript там, где не подходит ни один узел, а в библиотеке сообщества больше 6000 узлов, которые устанавливаются прямо из редактора.",
+				"Node-RED появился в IBM в 2013 году, а сейчас это проект OpenJS Foundation. Его используют для умного дома, часто вместе с Home Assistant, для IoT и промышленных данных и как связующее звено между веб-сервисами, а хостят у себя, чтобы автоматизации работали круглосуточно и без платы за каждый запуск. Этот шаблон пускает в редактор только с заданными именем пользователя и паролем. Подвох: маршруты узлов HTTP In публичны, поэтому эндпоинту, который должен быть закрытым, нужен httpNodeAuth в settings.js или собственная проверка."
+			],
+			"faq": [
+				{
+					"q": "Node-RED бесплатный?",
+					"a": "Да. Node-RED распространяется с открытым кодом под лицензией Apache 2.0 и ничего не стоит, сколько бы ни было потоков или сообщений. Это проект OpenJS Foundation."
+				},
+				{
+					"q": "Как установить новые узлы в Node-RED?",
+					"a": "Откройте главное меню, выберите «Управление палитрой» и воспользуйтесь поиском на вкладке «Установить», где перечислены узлы библиотеки сообщества. Установленные узлы хранятся в томе data, поэтому переживают перезапуски и новые деплои."
+				},
+				{
+					"q": "Работает ли Node-RED с Home Assistant?",
+					"a": "Да. Узлы node-red-contrib-home-assistant-websocket общаются с Home Assistant через его WebSocket и REST API: реагируют на его события и вызывают его сервисы. Ваш Home Assistant должен быть доступен с сервера, на котором работает Node-RED."
+				},
+				{
+					"q": "Как сделать дашборд в Node-RED?",
+					"a": "Установите @flowfuse/node-red-dashboard через «Управление палитрой»: его узлы рисуют кнопки, графики и формы на странице, которую отдает Node-RED. Старый node-red-dashboard с июня 2024 года считается устаревшим."
+				},
+				{
+					"q": "Как защитить HTTP-эндпоинты потоков в Node-RED?",
+					"a": "Редактор Node-RED требует входа, а вот маршруты узлов HTTP In отвечают кому угодно. Чтобы закрыть их все одним паролем, задайте httpNodeAuth с пользователем и bcrypt-хешем в /data/settings.js или проверяйте токен в самом потоке."
+				}
+			]
+		},
+		"uk": {
+			"description": "Low-code потоки, що з’єднують API, пристрої та онлайн-сервіси",
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: для всіх інших редактор закритий. Додаткові вузли встановлюйте через «Manage palette» у головному меню, а щоб запустити потік, натисніть «Deploy». Вузол HTTP In відповідає за адресою https://{host}, до якої додано його шлях, і відкритий для всіх. Інші налаштування, як і додаткові користувачі через adminAuth, записуються в /data/settings.js у сервісі node-red; після змін перезапустіть проєкт. Щоб розклади йшли за вашим часовим поясом, задайте TZ у .env проєкту, наприклад TZ=Europe/Berlin.",
+			"sizing": "Node-RED має скромні вимоги: близько 100 MB пам’яті; потоки займають кілобайти, а кожен установлений вузол — кілька мегабайтів.",
+			"summary": "Node-RED — low-code інструмент, що з’єднує API, пристрої й сервіси в потоки в браузері. Self-hosted редактор автоматизацій із відкритим кодом в один клік.",
+			"about": [
+				"Node-RED — low-code інструмент програмування з відкритим кодом для подієво-орієнтованих застосунків, який часто запускають замість Zapier або IFTTT. У його редакторі в браузері ви перетягуєте вузли на полотно й з’єднуєте їх у потоки: повідомлення надходить з HTTP-запиту, топіка MQTT, вебхука чи таймера, проходить крізь вузли, які змінюють, фільтрують або маршрутизують його, і йде далі в базу даних, API чи чат. Вузол Function виконує ваш власний JavaScript там, де жоден вузол не підходить, а бібліотека спільноти налічує понад 6 000 вузлів, які можна встановити просто з редактора.",
+				"Node-RED створили в IBM 2013 року, а тепер це проєкт OpenJS Foundation. Його використовують для домашньої автоматизації, часто поруч із Home Assistant, для IoT і промислових даних та як сполучну ланку між вебсервісами. Його хостять у себе, щоб автоматизації працювали цілодобово без плати за кожен запуск. Цей шаблон пускає в редактор лише з указаними іменем користувача й паролем. Підводний камінь: маршрути вузлів HTTP In публічні, тож ендпоінту, який має бути приватним, потрібен httpNodeAuth у settings.js або власна перевірка."
+			],
+			"faq": [
+				{
+					"q": "Node-RED безкоштовний?",
+					"a": "Так. Node-RED має відкритий код за ліцензією Apache 2.0 і нічого не коштує, хоч би скільки було потоків чи повідомлень. Це проєкт OpenJS Foundation."
+				},
+				{
+					"q": "Як установити додаткові вузли в Node-RED?",
+					"a": "У Node-RED відкрийте головне меню, оберіть «Manage palette» і шукайте на вкладці «Install», де перелічено вузли бібліотеки спільноти. Установлені вузли зберігаються в томі data, тож нікуди не зникають після перезапусків і нових деплоїв."
+				},
+				{
+					"q": "Чи працює Node-RED із Home Assistant?",
+					"a": "Так. Вузли node-red-contrib-home-assistant-websocket спілкуються з Home Assistant через його WebSocket і REST API, щоб реагувати на його події та викликати його сервіси. Ваш Home Assistant має бути доступний із машини, на якій працює Node-RED."
+				},
+				{
+					"q": "Як зробити дашборд у Node-RED?",
+					"a": "Установіть @flowfuse/node-red-dashboard через «Manage palette»: його вузли малюють кнопки, графіки й форми на сторінці, яку віддає Node-RED. Старий node-red-dashboard з червня 2024 року вважається застарілим."
+				},
+				{
+					"q": "Як захистити HTTP-ендпоінти потоків у Node-RED?",
+					"a": "Редактор Node-RED вимагає входу, а маршрути вузлів HTTP In відповідають будь-кому. Щоб закрити їх усі одним паролем, задайте httpNodeAuth із користувачем і хешем bcrypt у /data/settings.js або перевіряйте токен у самому потоці."
+				}
+			]
+		}
+	}
+}
