@@ -1,0 +1,290 @@
+{
+	"name": "Miniflux",
+	"emoji": "📰",
+	"category": "reading",
+	"alternatives": [
+		"Feedly",
+		"Inoreader"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "miniflux",
+		"port": 8080
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "POSTGRES_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "A minimalist, fast feed reader for RSS, Atom and JSON feeds",
+			"notes": "Sign in with the username and password you gave: Miniflux makes that administrator at its first start, and there is no sign-up. Add feeds with Add feed, or import an OPML file with Import on the Feeds page. Phone apps sync once you choose a username and password for the Fever or Google Reader API in Settings → Integrations; the administrator adds other accounts in Settings → Users.",
+			"sizing": "Miniflux is very light: about 60 MB of memory with Postgres, and it removes read articles after 60 days and unread ones after 180, starred ones kept.",
+			"summary": "Miniflux is a minimalist, open-source RSS and Atom feed reader written in Go. A Feedly alternative you self-host with Postgres in one click.",
+			"about": [
+				"Miniflux is a minimalist, opinionated feed reader that people run in place of Feedly or Inoreader. It follows RSS, Atom and JSON feeds, imports and exports OPML, and shows what is new in a plain, fast interface with keyboard shortcuts. For a site that sends only a summary, it fetches the original article and keeps its content, with scraper rules for the hard cases. Filters with regular expressions keep or drop articles, and podcasts and YouTube videos play inside it.",
+				"People self-host Miniflux to keep their subscriptions and reading on a server of their own, without ads or trackers: it strips tracking pixels and the tracking parameters of links. It is written in Go and runs on PostgreSQL only, and this template runs both, with the administrator made from the fields. The catch: there is no official mobile app, so phones use its responsive web page or a third-party app over the Fever or Google Reader API."
+			],
+			"faq": [
+				{
+					"q": "Is Miniflux free and open source?",
+					"a": "Yes. Miniflux is open source under the Apache 2.0 license, and running it yourself costs only the server. Its author also runs a hosted Miniflux for $15 a year, on the same code."
+				},
+				{
+					"q": "Which apps work with Miniflux?",
+					"a": "Apps that speak the Google Reader or Fever API, such as Reeder Classic and NetNewsWire on iOS and macOS, Capy Reader on Android and RSS Guard on desktops; others, such as FluxNews, use Miniflux’s own API. Turn the APIs on with a username and password in Settings → Integrations."
+				},
+				{
+					"q": "How do I move my feeds from Feedly to Miniflux?",
+					"a": "Export your feeds from Feedly as an OPML file, then import it with Import on Miniflux’s Feeds page. Miniflux imports OPML from a file or a URL, and exports your feeds the same way."
+				},
+				{
+					"q": "Can Miniflux show the full article instead of a summary?",
+					"a": "Yes. For a feed that sends only summaries, turn on Fetch original content in the feed’s settings, and Miniflux downloads each article and keeps its main text. Scraper Rules, written as CSS selectors, handle the sites it reads wrong."
+				},
+				{
+					"q": "Does Miniflux support multiple users?",
+					"a": "Yes. The administrator adds accounts in Settings → Users, and each user has their own feeds, categories and settings. There is no public sign-up page."
+				}
+			]
+		},
+		"de": {
+			"description": "Ein minimalistischer, schneller Feedreader für RSS-, Atom- und JSON-Feeds",
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Miniflux legt dieses Admin-Konto beim ersten Start an, und eine Registrierung gibt es nicht. Neue Feeds abonnierst du mit „Abonnement hinzufügen“, oder du importierst eine OPML-Datei mit „Importieren“ auf der Seite „Abonnements“. Apps auf dem Handy synchronisieren sich, sobald du unter „Einstellungen“ → „Dienste“ einen Benutzernamen und ein Passwort für die Fever- oder Google-Reader-API festlegst; weitere Konten legt der Admin unter „Einstellungen“ → „Benutzer“ an.",
+			"sizing": "Miniflux ist sehr leicht: etwa 60 MB RAM mit Postgres, und es löscht gelesene Artikel nach 60 Tagen und ungelesene nach 180; Artikel mit Stern behält es.",
+			"summary": "Miniflux selbst hosten: der minimalistische Open-Source-Feedreader in Go für RSS und Atom. Eine Feedly-Alternative mit Postgres, mit einem Klick.",
+			"about": [
+				"Miniflux ist ein minimalistischer, eigenwilliger Feedreader, den Leute statt Feedly oder Inoreader betreiben. Er folgt RSS-, Atom- und JSON-Feeds, importiert und exportiert OPML und zeigt Neues in einer schlichten, schnellen Oberfläche mit Tastenkürzeln. Schickt eine Website nur eine Zusammenfassung, holt er den Originalartikel und behält dessen Inhalt, mit Extraktionsregeln für die schwierigen Fälle. Filter mit regulären Ausdrücken behalten oder verwerfen Artikel, und Podcasts und YouTube-Videos spielt er direkt ab.",
+				"Viele hosten Miniflux selbst, um Abonnements und Leseverlauf auf einem eigenen Server zu behalten, ohne Werbung und Tracker: Der Reader entfernt Tracking-Pixel und die Tracking-Parameter aus Links. Miniflux ist in Go geschrieben und läuft nur mit PostgreSQL, und diese Vorlage betreibt beides, mit dem Admin aus den Feldern. Der Haken: Es gibt keine offizielle App fürs Handy, also nutzen Handys die responsive Weboberfläche oder eine App von Drittanbietern über die Fever- oder Google-Reader-API."
+			],
+			"faq": [
+				{
+					"q": "Ist Miniflux kostenlos und Open Source?",
+					"a": "Ja. Miniflux ist Open Source unter der Apache-2.0-Lizenz, und selbst betrieben kostet es nur die Maschine. Der Autor von Miniflux bietet außerdem ein gehostetes Miniflux für 15 $ im Jahr an, mit demselben Code."
+				},
+				{
+					"q": "Welche Apps funktionieren mit Miniflux?",
+					"a": "Apps, die die Google-Reader- oder Fever-API sprechen, etwa Reeder Classic und NetNewsWire auf iOS und macOS, Capy Reader auf Android und RSS Guard auf dem Desktop; andere wie FluxNews nutzen die eigene API von Miniflux. Die APIs schaltest du unter „Einstellungen“ → „Dienste“ mit einem Benutzernamen und einem Passwort ein."
+				},
+				{
+					"q": "Wie ziehe ich meine Feeds von Feedly zu Miniflux um?",
+					"a": "Exportiere deine Feeds aus Feedly als OPML-Datei und importiere sie dann mit „Importieren“ auf der Seite „Abonnements“ von Miniflux. Miniflux importiert OPML aus einer Datei oder von einer URL und exportiert deine Feeds auf dieselbe Weise."
+				},
+				{
+					"q": "Kann Miniflux den vollständigen Artikel statt einer Zusammenfassung anzeigen?",
+					"a": "Ja. Bei einem Feed, der nur Zusammenfassungen schickt, schalte in den Einstellungen des Feeds „Originalinhalt herunterladen“ ein, dann lädt Miniflux jeden Artikel herunter und behält den Haupttext. Für Websites, die Miniflux falsch liest, gibt es „Extraktionsregeln“, geschrieben als CSS-Selektoren."
+				},
+				{
+					"q": "Unterstützt Miniflux mehrere Benutzer?",
+					"a": "Ja. In Miniflux legt der Admin Konten unter „Einstellungen“ → „Benutzer“ an, und jedes Konto hat eigene Feeds, Kategorien und Einstellungen. Eine öffentliche Registrierungsseite gibt es nicht."
+				}
+			]
+		},
+		"es": {
+			"description": "Un lector de feeds minimalista y rápido para feeds RSS, Atom y JSON",
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: Miniflux crea ese administrador en su primer arranque, y nadie puede registrarse por su cuenta. Agrega feeds con “Agregar fuente”, o importa un archivo OPML con “Importar” en la página Fuentes. Las apps del teléfono se sincronizan cuando eliges un nombre de usuario y una contraseña para la API de Fever o de Google Reader en Configuración → Integraciones; el administrador agrega otras cuentas en Configuración → Usuarios.",
+			"sizing": "Miniflux es muy ligero: unos 60 MB de memoria con Postgres, y elimina los artículos leídos a los 60 días y los no leídos a los 180, aunque conserva los favoritos.",
+			"summary": "Miniflux es un lector de feeds RSS y Atom minimalista y de código abierto, escrito en Go. Una alternativa a Feedly que autoalojas con Postgres en un clic.",
+			"about": [
+				"Miniflux es un lector de feeds minimalista y con criterio propio que la gente usa en lugar de Feedly o Inoreader. Sigue feeds RSS, Atom y JSON, importa y exporta OPML, y muestra lo nuevo en una interfaz sencilla y rápida, con atajos de teclado. Para un sitio que solo envía un resumen, descarga el artículo original y guarda su contenido, con reglas de extracción para los casos difíciles. Los filtros con expresiones regulares conservan o descartan artículos, y los podcasts y los videos de YouTube se reproducen dentro de él.",
+				"La gente autoaloja Miniflux para tener sus suscripciones y su lectura en un servidor propio, sin anuncios ni rastreadores: elimina los píxeles de seguimiento y los parámetros de seguimiento de los enlaces. Está escrito en Go y solo funciona con PostgreSQL, y esta plantilla ejecuta los dos, con el administrador que indicas en los campos. El inconveniente: no hay app móvil oficial, así que en los teléfonos se usa su página web adaptable o una app de terceros mediante la API de Fever o de Google Reader."
+			],
+			"faq": [
+				{
+					"q": "¿Miniflux es gratis y de código abierto?",
+					"a": "Sí. Miniflux es de código abierto bajo la licencia Apache 2.0, y ejecutarlo tú mismo solo cuesta la máquina. Su autor también ofrece un Miniflux alojado por 15 USD al año, con el mismo código."
+				},
+				{
+					"q": "¿Qué apps funcionan con Miniflux?",
+					"a": "Las apps compatibles con la API de Google Reader o de Fever, como Reeder Classic y NetNewsWire en iOS y macOS, Capy Reader en Android y RSS Guard en equipos de escritorio; otras, como FluxNews, usan la API propia de Miniflux. Activa esas APIs con un nombre de usuario y una contraseña en Configuración → Integraciones."
+				},
+				{
+					"q": "¿Cómo paso mis feeds de Feedly a Miniflux?",
+					"a": "Exporta tus feeds de Feedly como archivo OPML y luego impórtalo con “Importar” en la página Fuentes de Miniflux. Miniflux importa OPML desde un archivo o una URL, y exporta tus feeds de la misma forma."
+				},
+				{
+					"q": "¿Miniflux puede mostrar el artículo completo en lugar de un resumen?",
+					"a": "Sí. Para un feed que solo envía resúmenes, activa “Obtener rastreador original” en la configuración del feed, y Miniflux descarga cada artículo y guarda su texto principal. Las “Reglas de extracción de información”, escritas como selectores CSS, resuelven los sitios que lee mal."
+				},
+				{
+					"q": "¿Miniflux admite varios usuarios?",
+					"a": "Sí. El administrador agrega cuentas en Configuración → Usuarios, y cada usuario tiene sus propios feeds y categorías y su propia configuración. No hay una página de registro pública."
+				}
+			]
+		},
+		"fr": {
+			"description": "Un lecteur de flux minimaliste et rapide pour les flux RSS, Atom et JSON",
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : Miniflux crée cet administrateur à son premier démarrage, et il n’y a pas d’inscription. Ajoutez des flux avec « Ajouter un abonnement », ou importez un fichier OPML avec Import, sur la page Abonnements. Les applications pour téléphone se synchronisent une fois que vous avez choisi un nom d’utilisateur et un mot de passe pour l’API Fever ou Google Reader dans Réglages → Intégrations ; l’administrateur ajoute d’autres comptes dans Réglages → Utilisateurs.",
+			"sizing": "Miniflux est très léger : environ 60 MB de mémoire avec Postgres, et il supprime les articles lus après 60 jours et les non lus après 180, sauf les favoris.",
+			"summary": "Miniflux est un lecteur de flux RSS et Atom minimaliste et open source, écrit en Go. Une alternative à Feedly à auto-héberger avec Postgres, en un clic.",
+			"about": [
+				"Miniflux est un lecteur de flux minimaliste et aux partis pris assumés, que l’on fait tourner à la place de Feedly ou d’Inoreader. Il suit les flux RSS, Atom et JSON, importe et exporte l’OPML, et affiche les nouveautés dans une interface sobre et rapide, avec des raccourcis clavier. Pour un site qui n’envoie qu’un résumé, il récupère l’article original et en garde le contenu, avec des règles d’extraction pour les cas difficiles. Des filtres à base d’expressions régulières gardent ou écartent des articles, et les podcasts et les vidéos YouTube se lisent directement dans Miniflux.",
+				"Vous auto-hébergez Miniflux pour garder vos abonnements et vos lectures sur un serveur à vous, sans publicités ni traqueurs : il retire les pixels espions et les paramètres de suivi des liens. Il est écrit en Go et ne fonctionne qu’avec PostgreSQL, et ce template fait tourner les deux, avec l’administrateur créé à partir des champs. Le revers : il n’y a pas d’application mobile officielle, donc les téléphones passent par sa page web adaptée aux mobiles ou par une application tierce, via l’API Fever ou Google Reader."
+			],
+			"faq": [
+				{
+					"q": "Miniflux est-il gratuit et open source ?",
+					"a": "Oui. Miniflux est open source sous licence Apache 2.0, et le faire tourner vous-même ne coûte que la machine. Son auteur propose aussi un Miniflux hébergé à 15 $ par an, sur le même code."
+				},
+				{
+					"q": "Quelles applications fonctionnent avec Miniflux ?",
+					"a": "Les applications qui parlent l’API Google Reader ou Fever, comme Reeder Classic et NetNewsWire sur iOS et macOS, Capy Reader sur Android et RSS Guard sur ordinateur ; d’autres, comme FluxNews, utilisent l’API propre à Miniflux. Activez les API avec un nom d’utilisateur et un mot de passe dans Réglages → Intégrations."
+				},
+				{
+					"q": "Comment migrer mes flux de Feedly vers Miniflux ?",
+					"a": "Exportez vos flux depuis Feedly dans un fichier OPML, puis importez-le avec Import, sur la page Abonnements de Miniflux. Miniflux importe l’OPML depuis un fichier ou une URL, et exporte vos flux de la même façon."
+				},
+				{
+					"q": "Miniflux peut-il afficher l’article complet au lieu du résumé ?",
+					"a": "Oui. Pour un flux qui n’envoie que des résumés, activez « Récupérer le contenu original » dans les réglages du flux, et Miniflux télécharge chaque article et en garde le texte principal. Les « Règles pour récupérer le contenu original », écrites en sélecteurs CSS, traitent les sites qu’il lit mal."
+				},
+				{
+					"q": "Miniflux gère-t-il plusieurs utilisateurs ?",
+					"a": "Oui. L’administrateur ajoute des comptes dans Réglages → Utilisateurs, et chaque utilisateur a ses propres flux, catégories et réglages. Il n’y a pas de page d’inscription publique."
+				}
+			]
+		},
+		"pl": {
+			"description": "Minimalistyczny, szybki czytnik kanałów RSS, Atom i JSON",
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: Miniflux tworzy z nich administratora przy pierwszym uruchomieniu i nie ma rejestracji. Na stronie Kanały dodasz kanały przez Dodaj kanał albo zaimportujesz plik OPML przez Importuj. Aplikacje na telefon zsynchronizują się, gdy ustawisz nazwę użytkownika i hasło dla API Fever albo Google Reader na stronie Ustawienia → Usługi; administrator dodaje kolejne konta na stronie Ustawienia → Użytkownicy.",
+			"sizing": "Miniflux ma bardzo małe wymagania: około 60 MB pamięci razem z Postgresem, a przeczytane artykuły usuwa po 60 dniach, nieprzeczytane po 180, a oznaczone gwiazdką zostawia.",
+			"summary": "Miniflux to minimalistyczny czytnik RSS i Atom open source, napisany w Go. Alternatywa dla Feedly, hostowana u siebie z Postgresem, jednym kliknięciem.",
+			"about": [
+				"Miniflux to minimalistyczny czytnik kanałów, który robi rzeczy po swojemu, uruchamiany zamiast Feedly albo Inoreadera. Śledzi kanały RSS, Atom i JSON, importuje i eksportuje OPML, a nowości pokazuje w prostym, szybkim interfejsie ze skrótami klawiszowymi. Gdy strona wysyła tylko streszczenie, pobiera oryginalny artykuł i zachowuje jego treść, a na trudne przypadki ma reguły ekstrakcji. Filtry z wyrażeniami regularnymi zostawiają albo odrzucają artykuły, a podcasty i filmy z YouTube’a można odtwarzać w nim samym.",
+				"Miniflux hostuje się u siebie, żeby subskrypcje i lekturę trzymać na własnym serwerze, bez reklam i trackerów: usuwa piksele śledzące i parametry śledzące z linków. Jest napisany w Go i działa wyłącznie na PostgreSQL, a ten szablon uruchamia jedno i drugie, z administratorem utworzonym z pól formularza. Haczyk: nie ma oficjalnej aplikacji mobilnej, więc na telefonie zostaje responsywna strona webowa albo aplikacja innego autora przez API Fever lub Google Reader."
+			],
+			"faq": [
+				{
+					"q": "Czy Miniflux jest darmowy i open source?",
+					"a": "Tak. Miniflux to open source na licencji Apache 2.0, a uruchomienie go u siebie kosztuje tylko maszynę. Jego autor oferuje też hostowaną wersję Miniflux za 15 $ rocznie, na tym samym kodzie."
+				},
+				{
+					"q": "Jakie aplikacje działają z Miniflux?",
+					"a": "Aplikacje obsługujące API Google Reader albo Fever, takie jak Reeder Classic i NetNewsWire na iOS i macOS, Capy Reader na Androidzie i RSS Guard na komputerach; inne, jak FluxNews, używają własnego API Miniflux. Włącz te API, ustawiając nazwę użytkownika i hasło na stronie Ustawienia → Usługi."
+				},
+				{
+					"q": "Jak przenieść kanały z Feedly do Miniflux?",
+					"a": "Wyeksportuj kanały z Feedly do pliku OPML, a potem zaimportuj go przez Importuj na stronie Kanały w Miniflux. Miniflux importuje OPML z pliku albo z adresu URL i tak samo eksportuje twoje kanały."
+				},
+				{
+					"q": "Czy Miniflux może pokazać pełny artykuł zamiast streszczenia?",
+					"a": "Tak. Dla kanału, który wysyła tylko streszczenia, włącz Pobierz oryginalną treść w ustawieniach kanału, a Miniflux pobierze każdy artykuł i zachowa jego główny tekst. Reguły ekstrakcji, zapisane jako selektory CSS, radzą sobie ze stronami, które czyta źle."
+				},
+				{
+					"q": "Czy Miniflux obsługuje wielu użytkowników?",
+					"a": "Tak. Administrator dodaje konta na stronie Ustawienia → Użytkownicy, a każdy użytkownik ma własne kanały, kategorie i ustawienia. Publicznej strony rejestracji nie ma."
+				}
+			]
+		},
+		"pt": {
+			"description": "Um leitor de feeds minimalista e rápido para feeds RSS, Atom e JSON",
+			"notes": "Entre com o usuário e a senha que você informou: o Miniflux cria esse administrador na primeira inicialização, e não há cadastro. Adicione feeds com Adicionar inscrição ou importe um arquivo OPML com Importar, na página Fontes. Os apps de celular sincronizam depois que você escolhe um usuário e uma senha para a API Fever ou Google Reader em Configurações → Integrações; o administrador adiciona outras contas em Configurações → Usuários.",
+			"sizing": "Miniflux é muito leve: cerca de 60 MB de memória com o Postgres, e ele remove os artigos lidos depois de 60 dias e os não lidos depois de 180, mantendo os favoritos.",
+			"summary": "O Miniflux é um leitor de feeds RSS e Atom minimalista e open source, escrito em Go. Alternativa ao Feedly para auto-hospedar com Postgres em um clique.",
+			"about": [
+				"O Miniflux é um leitor de feeds minimalista e opinativo que as pessoas usam no lugar do Feedly ou do Inoreader. Ele segue feeds RSS, Atom e JSON, importa e exporta OPML e mostra as novidades numa interface simples e rápida, com atalhos de teclado. Para um site que envia só um resumo, ele busca o artigo original e guarda o conteúdo, com regras do scraper para os casos difíceis. Filtros com expressões regulares mantêm ou descartam artigos, e podcasts e vídeos do YouTube tocam dentro dele.",
+				"As pessoas auto-hospedam o Miniflux para manter suas assinaturas e leituras num servidor próprio, sem anúncios nem rastreadores: ele remove os pixels de rastreamento e os parâmetros de rastreamento dos links. Ele é escrito em Go e só roda com PostgreSQL, e este template roda os dois, com o administrador criado a partir dos campos. O porém: não há app oficial para celular, então no celular se usa a página web responsiva dele ou um app de terceiros pela API Fever ou Google Reader."
+			],
+			"faq": [
+				{
+					"q": "O Miniflux é gratuito e de código aberto?",
+					"a": "Sim. O Miniflux é de código aberto sob a licença Apache 2.0, e rodá-lo você mesmo custa só a máquina. O autor também mantém um Miniflux hospedado por US$ 15 por ano, com o mesmo código."
+				},
+				{
+					"q": "Quais apps funcionam com o Miniflux?",
+					"a": "Funcionam os apps que falam a API Google Reader ou Fever, como o Reeder Classic e o NetNewsWire no iOS e no macOS, o Capy Reader no Android e o RSS Guard no desktop; outros, como o FluxNews, usam a API própria do Miniflux. Ative as APIs com um usuário e uma senha em Configurações → Integrações."
+				},
+				{
+					"q": "Como migrar meus feeds do Feedly para o Miniflux?",
+					"a": "Exporte seus feeds do Feedly como arquivo OPML e depois importe-o com Importar, na página Fontes do Miniflux. O Miniflux importa OPML de um arquivo ou de uma URL e exporta seus feeds da mesma forma."
+				},
+				{
+					"q": "O Miniflux pode mostrar o artigo completo em vez do resumo?",
+					"a": "Sim. Para um feed que envia só resumos, ative Obter conteúdo original nas configurações do feed, e o Miniflux baixa cada artigo e guarda o texto principal dele. As Regras do scraper, escritas como seletores CSS, resolvem os sites que ele lê errado."
+				},
+				{
+					"q": "O Miniflux suporta vários usuários?",
+					"a": "Sim. O administrador do Miniflux adiciona contas em Configurações → Usuários, e cada usuário tem seus próprios feeds, categorias e configurações. Não há página pública de cadastro."
+				}
+			]
+		},
+		"ru": {
+			"description": "Минималистичная и быстрая читалка лент RSS, Atom и JSON",
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: Miniflux создает этого администратора при первом запуске, а регистрации нет. Ленты добавляются через «Добавить подписку», а файл OPML импортируется через «Импорт» на странице «Подписки». Приложения на телефоне начнут синхронизироваться, когда вы зададите имя пользователя и пароль для Fever API или Google Reader API в разделе «Настройки» → «Интеграции»; другие аккаунты администратор добавляет в разделе «Настройки» → «Пользователи».",
+			"sizing": "Miniflux: совсем небольшие требования — около 60 MB памяти вместе с Postgres, а прочитанные статьи он удаляет через 60 дней, непрочитанные — через 180, статьи в избранном остаются.",
+			"summary": "Miniflux — минималистичная open source читалка лент RSS и Atom, написанная на Go. Self-hosted альтернатива Feedly с Postgres в один клик.",
+			"about": [
+				"Miniflux — минималистичная и бескомпромиссная читалка лент, которую запускают вместо Feedly или Inoreader. Она следит за лентами RSS, Atom и JSON, импортирует и экспортирует OPML и показывает новое в простом быстром интерфейсе с горячими клавишами. Если сайт отдает в ленте только анонс, Miniflux скачивает оригинальную статью и сохраняет ее содержимое, а для сложных случаев есть правила сборщика. Фильтры на регулярных выражениях оставляют или отбрасывают статьи, а подкасты и видео с YouTube воспроизводятся прямо в Miniflux.",
+				"Miniflux хостят у себя, чтобы подписки и чтение оставались на собственном сервере, без рекламы и трекеров: он вырезает следящие пиксели и параметры отслеживания из ссылок. Он написан на Go и работает только с PostgreSQL; этот шаблон запускает оба и создает администратора по данным, которые вы указали в полях. Подвох: официального мобильного приложения нет, поэтому на телефонах пользуются адаптивной веб-страницей или сторонним приложением через Fever API или Google Reader API."
+			],
+			"faq": [
+				{
+					"q": "Miniflux бесплатный и с открытым кодом?",
+					"a": "Да. Miniflux распространяется с открытым кодом под лицензией Apache 2.0, и если запускать его самому, платить придется только за сервер. Его автор также предлагает облачный Miniflux за 15 $ в год на том же коде."
+				},
+				{
+					"q": "Какие приложения работают с Miniflux?",
+					"a": "Приложения, которые поддерживают Google Reader API или Fever API, например Reeder Classic и NetNewsWire на iOS и macOS, Capy Reader на Android и RSS Guard на компьютерах; другие, например FluxNews, используют собственный API Miniflux. API включаются с именем пользователя и паролем в разделе «Настройки» → «Интеграции»."
+				},
+				{
+					"q": "Как перенести подписки из Feedly в Miniflux?",
+					"a": "Экспортируйте ленты из Feedly в файл OPML, затем импортируйте его через «Импорт» на странице «Подписки» в Miniflux. Miniflux импортирует OPML из файла или по URL и так же экспортирует ваши ленты."
+				},
+				{
+					"q": "Может ли Miniflux показывать полную статью вместо анонса?",
+					"a": "Да. Для ленты, которая присылает только анонсы, включите «Извлечь оригинальное содержимое» в настройках ленты, и Miniflux будет скачивать каждую статью и сохранять ее основной текст. «Правила сборщика», записанные как CSS-селекторы, справляются с сайтами, которые он разбирает неправильно."
+				},
+				{
+					"q": "Поддерживает ли Miniflux нескольких пользователей?",
+					"a": "Да. Администратор добавляет аккаунты в разделе «Настройки» → «Пользователи», и у каждого пользователя свои ленты, категории и настройки. Публичной страницы регистрации в Miniflux нет."
+				}
+			]
+		},
+		"uk": {
+			"description": "Мінімалістична й швидка читалка стрічок RSS, Atom і JSON",
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: Miniflux створює цього адміністратора під час першого запуску, а реєстрації немає. Додавайте стрічки через «Додати підписку» або імпортуйте файл OPML через «Імпорт» на сторінці «Стрічки». Застосунки на телефоні синхронізуються, щойно ви задасте ім’я користувача й пароль для Fever або Google Reader API у розділі «Налаштування → Інтеграції»; інші акаунти адміністратор додає в розділі «Налаштування → Користувачі».",
+			"sizing": "Miniflux має дуже скромні вимоги: близько 60 MB пам’яті разом із Postgres, а прочитані статті він видаляє через 60 днів, непрочитані — через 180, крім позначених зірочкою.",
+			"summary": "Miniflux — мінімалістична читалка стрічок RSS і Atom із відкритим кодом, написана на Go. Self-hosted альтернатива Feedly з Postgres в один клік.",
+			"about": [
+				"Miniflux — мінімалістична читалка стрічок зі своїм чітким баченням, яку запускають замість Feedly або Inoreader. Miniflux стежить за стрічками RSS, Atom і JSON, імпортує й експортує OPML і показує нове в простому швидкому інтерфейсі з гарячими клавішами. Якщо сайт надсилає лише анонс, він завантажує оригінальну статтю й зберігає її вміст, а для складних випадків є правила Scraper. Фільтри з регулярними виразами залишають або відкидають статті, а подкасти й відео з YouTube відтворюються просто в ньому.",
+				"Miniflux хостять у себе, щоб підписки й читання лишалися на власному сервері, без реклами та трекерів: він вирізає пікселі відстеження й трекінгові параметри з посилань. Miniflux написаний на Go й працює лише з PostgreSQL; цей шаблон запускає обидва, а адміністратора створює з полів. Підводний камінь: офіційного мобільного застосунку немає, тож на телефонах користуються його адаптивною вебсторінкою або стороннім застосунком через Fever чи Google Reader API."
+			],
+			"faq": [
+				{
+					"q": "Miniflux безкоштовний і з відкритим кодом?",
+					"a": "Так. Miniflux має відкритий код за ліцензією Apache 2.0, і якщо запускати його самому, платити доведеться лише за машину. Його автор також тримає хмарний Miniflux за 15 $ на рік на тому самому коді."
+				},
+				{
+					"q": "Які застосунки працюють із Miniflux?",
+					"a": "З Miniflux працюють застосунки, що підтримують Google Reader або Fever API, як-от Reeder Classic і NetNewsWire на iOS і macOS, Capy Reader на Android та RSS Guard на комп’ютерах; інші, як-от FluxNews, використовують власний API Miniflux. Ці API вмикаються в розділі «Налаштування → Інтеграції», де ви задаєте для них ім’я користувача й пароль."
+				},
+				{
+					"q": "Як перенести стрічки з Feedly в Miniflux?",
+					"a": "Експортуйте стрічки з Feedly у файл OPML, а потім імпортуйте його через «Імпорт» на сторінці «Стрічки» в Miniflux. Miniflux імпортує OPML із файлу або за URL і так само експортує ваші стрічки."
+				},
+				{
+					"q": "Чи може Miniflux показувати повну статтю замість анонсу?",
+					"a": "Так. Для стрічки, яка надсилає лише анонси, увімкніть «Завантажувати оригінальний вміст» у налаштуваннях стрічки, і Miniflux завантажуватиме кожну статтю та зберігатиме її основний текст. «Правила Scraper», записані як CSS-селектори, допомагають із сайтами, які він читає неправильно."
+				},
+				{
+					"q": "Чи підтримує Miniflux кількох користувачів?",
+					"a": "Так. Адміністратор Miniflux додає акаунти в розділі «Налаштування → Користувачі», і кожен користувач має власні стрічки, категорії та налаштування. Публічної сторінки реєстрації немає."
+				}
+			]
+		}
+	}
+}
