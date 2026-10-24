@@ -1,0 +1,279 @@
+{
+	"name": "Trilium Notes",
+	"emoji": "🗒️",
+	"category": "notes",
+	"alternatives": [
+		"Notion",
+		"Evernote",
+		"Obsidian"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "trilium",
+		"port": 8080
+	},
+	"variables": [
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "password"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "A hierarchical knowledge base for large collections of personal notes",
+			"notes": "Sign in with the password you gave: Trilium is set up with it before it answers, so nobody else gets its setup. It is the only account, and the password also encrypts protected notes; change it under Options → Password & Auth. The desktop app syncs with this server: in its setup, choose Connect to an existing server and give https://{host} and the password.",
+			"sizing": "Trilium is light: about 100 MB of memory; its database grows with your notes and attachments, and its own daily, weekly and monthly backups sit beside it.",
+			"summary": "Trilium Notes is an open-source knowledge base for large personal notes, with a note tree, sync and encryption. Self-host it in one click.",
+			"about": [
+				"Trilium Notes is a free, open-source note-taking app built for large personal knowledge bases, an alternative to Notion, Evernote and Obsidian for people who want their notes on their own server. Notes form a tree as deep as you like, and one note can sit in several places at once. Besides rich text with tables, images and math, a note can be code, an Excalidraw canvas, a mind map, a geo map or a relation map, and attributes and scripts turn notes into small tools. Every note keeps its revisions, and full-text search finds it again.",
+				"The server is almost the same app in the browser, with a touch-friendly view for phones, and the desktop apps for Windows, macOS and Linux sync with it. Protected notes are encrypted with your password, a note can be shared publicly by a link, and a web clipper saves pages from the browser. This template makes a new, empty knowledge base with the password given before Trilium answers anyone. The catch: Trilium is for one person, with one password and no accounts for others, and it has no official mobile app."
+			],
+			"faq": [
+				{
+					"q": "Is Trilium Notes free?",
+					"a": "Yes. Trilium is open source under the AGPL-3.0 license and has no paid tier: its server, desktop apps and sync are all free."
+				},
+				{
+					"q": "What is TriliumNext?",
+					"a": "The community project that carried Trilium on. Trilium’s original developer, Zadam, handed it the Trilium repository, and it now publishes the app as Trilium Notes again. A database from the original Trilium opens in it without special steps."
+				},
+				{
+					"q": "Trilium vs Obsidian: which one to choose?",
+					"a": "Obsidian keeps Markdown files in a folder on each device, is closed source and sells its sync. Trilium keeps notes in a database on your server, is open source and syncs its desktop apps with your server for free. Obsidian’s strengths are plugins and plain files; Trilium’s are the note tree, cloning and its many note types."
+				},
+				{
+					"q": "Is there a Trilium app for phones?",
+					"a": "There is no official one. The server has a mobile interface for phone browsers, and community apps exist: TriliumDroid and Pocket Trilium for Android, and Trinote for iOS."
+				},
+				{
+					"q": "Can I import my notes from Evernote or Markdown?",
+					"a": "Yes. Trilium imports Evernote’s ENEX exports and Markdown files, and exports notes as Markdown or HTML, so your notes can leave as easily as they came."
+				}
+			]
+		},
+		"de": {
+			"description": "Eine hierarchische Wissensdatenbank für große Sammlungen persönlicher Notizen",
+			"notes": "Melde dich mit dem Passwort an, das du festgelegt hast: Trilium wird damit eingerichtet, bevor es antwortet, sodass niemand sonst an die Einrichtung kommt. Es gibt nur dieses eine Konto, und das Passwort verschlüsselt auch geschützte Notizen; ändere es unter „Optionen“ → „Passwort & Authentifizierung“. Die Desktop-App synchronisiert sich mit diesem Server: Wähl bei ihrer Einrichtung „Mit bestehendem Server verbinden“ und gib https://{host} und das Passwort ein.",
+			"sizing": "Trilium ist leicht: etwa 100 MB RAM; die Datenbank wächst mit deinen Notizen und Anhängen, und daneben liegen die eigenen täglichen, wöchentlichen und monatlichen Backups von Trilium.",
+			"summary": "Trilium Notes selbst hosten: Open-Source-Wissensdatenbank für große persönliche Notizsammlungen, mit Notizbaum, Sync und Verschlüsselung. Mit einem Klick.",
+			"about": [
+				"Trilium Notes ist eine kostenlose Open-Source-Notiz-App für große persönliche Wissensdatenbanken, eine Alternative zu Notion, Evernote und Obsidian für alle, die ihre Notizen auf dem eigenen Server haben wollen. Notizen bilden einen Baum, so tief du willst, und eine Notiz kann an mehreren Stellen zugleich stehen. Neben formatiertem Text mit Tabellen, Bildern und Formeln kann eine Notiz Code sein, eine Excalidraw-Zeichenfläche, eine Mindmap, eine Landkarte oder eine Beziehungskarte, und Attribute und Skripte machen aus Notizen kleine Tools. Jede Notiz behält ihre früheren Versionen, und die Volltextsuche findet sie wieder.",
+				"Der Trilium-Server bietet fast dieselbe App im Browser, mit einer für Touch optimierten Ansicht für Handys, und die Desktop-Apps für Windows, macOS und Linux synchronisieren sich mit ihm. Geschützte Notizen werden mit deinem Passwort verschlüsselt, eine Notiz lässt sich per Link öffentlich teilen, und ein Web Clipper speichert Seiten aus dem Browser. Diese Vorlage legt mit dem angegebenen Passwort eine neue, leere Wissensdatenbank an, bevor Trilium überhaupt jemandem antwortet. Der Haken: Trilium ist für eine Person gedacht, mit einem Passwort und ohne Konten für andere, und es gibt keine offizielle App fürs Handy."
+			],
+			"faq": [
+				{
+					"q": "Ist Trilium Notes kostenlos?",
+					"a": "Ja. Trilium ist Open Source unter der AGPL-3.0-Lizenz und hat keinen kostenpflichtigen Tarif: Server, Desktop-Apps und Synchronisierung sind alle kostenlos."
+				},
+				{
+					"q": "Was ist TriliumNext?",
+					"a": "TriliumNext ist das Community-Projekt, das Trilium weitergeführt hat. Zadam, der ursprüngliche Entwickler von Trilium, hat ihm das Trilium-Repository übergeben, und heute veröffentlicht es die App wieder unter dem Namen Trilium Notes. Eine Datenbank aus dem ursprünglichen Trilium öffnet sich darin ohne besondere Schritte."
+				},
+				{
+					"q": "Trilium vs. Obsidian: Welches soll ich nehmen?",
+					"a": "Obsidian speichert Markdown-Dateien in einem Ordner auf jedem Gerät, ist Closed Source und verkauft seine Synchronisierung. Trilium speichert Notizen in einer Datenbank auf deinem Server, ist Open Source und synchronisiert seine Desktop-Apps kostenlos mit deinem Server. Die Stärken von Obsidian sind Plugins und einfache Dateien, die von Trilium der Notizbaum, das Klonen und die vielen Notiztypen."
+				},
+				{
+					"q": "Gibt es eine Trilium-App fürs Handy?",
+					"a": "Eine offizielle Trilium-App fürs Handy gibt es nicht. Der Server hat eine mobile Oberfläche für den Browser auf dem Handy, und es gibt Community-Apps: TriliumDroid und Pocket Trilium für Android sowie Trinote für iOS."
+				},
+				{
+					"q": "Kann ich meine Notizen aus Evernote oder Markdown in Trilium importieren?",
+					"a": "Ja. Trilium importiert ENEX-Exporte aus Evernote und Markdown-Dateien und exportiert Notizen als Markdown oder HTML, sodass deine Notizen Trilium genauso leicht wieder verlassen, wie sie hineingekommen sind."
+				}
+			]
+		},
+		"es": {
+			"description": "Una base de conocimiento jerárquica para grandes colecciones de notas personales",
+			"notes": "Inicia sesión con la contraseña que indicaste: Trilium se configura con ella antes de responder, así que nadie más llega a su configuración inicial. Es la única cuenta, y la contraseña también cifra las notas protegidas; cámbiala en Opciones → Contraseña. La app de escritorio se sincroniza con este servidor: en su configuración inicial, elige “Conectar a un servidor existente” e indica https://{host} y la contraseña.",
+			"sizing": "Trilium es ligero: unos 100 MB de memoria; su base de datos crece con tus notas y adjuntos, y sus propios backups diarios, semanales y mensuales se guardan junto a ella.",
+			"summary": "Autoaloja Trilium Notes, la base de conocimiento de código abierto para muchas notas personales, con árbol de notas, sincronización y cifrado. En un clic.",
+			"about": [
+				"Trilium Notes es una app de notas gratuita y de código abierto pensada para grandes bases de conocimiento personales, una alternativa a Notion, Evernote y Obsidian para quienes quieren sus notas en un servidor propio. Las notas forman un árbol tan profundo como quieras, y una misma nota puede estar en varios lugares a la vez. Además de texto enriquecido con tablas, imágenes y fórmulas matemáticas, una nota puede ser código, un lienzo de Excalidraw, un mapa mental, un mapa geográfico o un mapa de relaciones, y los atributos y los scripts convierten las notas en pequeñas herramientas. Cada nota conserva sus revisiones, y la búsqueda de texto completo permite volver a encontrarla.",
+				"El servidor es casi la misma app en el navegador, con una vista táctil para teléfonos, y las apps de escritorio para Windows, macOS y Linux se sincronizan con él. Las notas protegidas se cifran con tu contraseña, una nota se puede compartir públicamente mediante un enlace y un web clipper guarda páginas desde el navegador. Esta plantilla crea una base de conocimiento nueva y vacía con la contraseña indicada antes de que Trilium responda a nadie. El inconveniente: Trilium es para una sola persona, con una sola contraseña y sin cuentas para otros, y no tiene app móvil oficial."
+			],
+			"faq": [
+				{
+					"q": "¿Trilium Notes es gratis?",
+					"a": "Sí. Trilium es de código abierto bajo la licencia AGPL-3.0 y no tiene versión de pago: su servidor, sus apps de escritorio y la sincronización son gratis."
+				},
+				{
+					"q": "¿Qué es TriliumNext?",
+					"a": "Es el proyecto de la comunidad que continuó Trilium. El desarrollador original de Trilium, Zadam, le cedió el repositorio de Trilium, y ahora el proyecto publica la app de nuevo como Trilium Notes. Una base de datos del Trilium original se abre en ella sin pasos especiales."
+				},
+				{
+					"q": "Trilium frente a Obsidian: ¿cuál elegir?",
+					"a": "Obsidian guarda archivos Markdown en una carpeta de cada dispositivo, es de código cerrado y cobra por su sincronización. Trilium guarda las notas en una base de datos en tu máquina, es de código abierto y sincroniza gratis sus apps de escritorio con tu servidor de Trilium. Los puntos fuertes de Obsidian son los plugins y los archivos de texto simples; los de Trilium, el árbol de notas, la clonación de notas y sus muchos tipos de nota."
+				},
+				{
+					"q": "¿Hay una app de Trilium para teléfonos?",
+					"a": "No hay ninguna oficial. El servidor tiene una interfaz móvil para los navegadores de los teléfonos, y existen apps de la comunidad: TriliumDroid y Pocket Trilium para Android, y Trinote para iOS."
+				},
+				{
+					"q": "¿Puedo importar mis notas de Evernote o de Markdown a Trilium?",
+					"a": "Sí. Trilium importa las exportaciones ENEX de Evernote y los archivos Markdown, y exporta las notas como Markdown o HTML, así que tus notas pueden salir con la misma facilidad con la que entraron."
+				}
+			]
+		},
+		"fr": {
+			"description": "Une base de connaissances hiérarchique pour de grandes collections de notes personnelles",
+			"notes": "Connectez-vous avec le mot de passe que vous avez choisi : Trilium est configuré avec lui avant de répondre, donc personne d’autre n’accède à sa configuration initiale. C’est le seul compte, et ce mot de passe chiffre aussi les notes protégées ; changez-le dans Paramètres → Mot de passe et authentification. L’application de bureau se synchronise avec ce serveur : dans sa configuration, choisissez « Se connecter à un serveur existant » et indiquez https://{host} et le mot de passe.",
+			"sizing": "Trilium est léger : environ 100 MB de mémoire ; sa base de données grossit avec vos notes et vos pièces jointes, et ses propres sauvegardes quotidiennes, hebdomadaires et mensuelles sont rangées à côté.",
+			"summary": "Trilium Notes, base de connaissances personnelle open source pour de nombreuses notes : arborescence, synchro, chiffrement. Auto-hébergez-la en un clic.",
+			"about": [
+				"Trilium Notes est une application de prise de notes gratuite et open source, conçue pour les grandes bases de connaissances personnelles : une alternative à Notion, Evernote et Obsidian pour qui veut garder ses notes sur son propre serveur. Les notes forment une arborescence aussi profonde que vous le voulez, et une même note peut se trouver à plusieurs endroits à la fois. En plus du texte enrichi avec tableaux, images et formules mathématiques, une note peut être du code, un canevas Excalidraw, une carte mentale, une carte géographique ou une carte de relations, et des attributs et des scripts transforment des notes en petits outils. Chaque note garde ses révisions, et la recherche plein texte la retrouve.",
+				"Le serveur offre presque la même application dans le navigateur, avec une vue tactile pour les téléphones, et les applications de bureau pour Windows, macOS et Linux se synchronisent avec lui. Les notes protégées sont chiffrées avec votre mot de passe, une note peut être partagée publiquement par un lien, et un web clipper enregistre des pages depuis le navigateur. Ce template crée une base de connaissances neuve et vide, avec le mot de passe indiqué, avant que Trilium ne réponde à qui que ce soit. Le revers : Trilium est fait pour une seule personne, avec un seul mot de passe et aucun compte pour d’autres, et il n’a pas d’application mobile officielle."
+			],
+			"faq": [
+				{
+					"q": "Trilium Notes est-il gratuit ?",
+					"a": "Oui. Trilium est open source sous licence AGPL-3.0 et n’a pas de version payante : son serveur, ses applications de bureau et sa synchronisation sont tous gratuits."
+				},
+				{
+					"q": "Qu’est-ce que TriliumNext ?",
+					"a": "C’est le projet communautaire qui a pris la suite de Trilium. Zadam, le développeur d’origine, lui a confié le dépôt de Trilium, et TriliumNext publie de nouveau l’application sous le nom Trilium Notes. Une base de données du Trilium d’origine s’y ouvre sans manipulation particulière."
+				},
+				{
+					"q": "Trilium ou Obsidian : lequel choisir ?",
+					"a": "Obsidian garde des fichiers Markdown dans un dossier sur chaque appareil, n’est pas open source et vend sa synchronisation. Trilium garde les notes dans une base de données sur votre serveur, est open source et synchronise gratuitement ses applications de bureau avec votre serveur. Les points forts d’Obsidian sont ses plugins et ses simples fichiers ; ceux de Trilium, l’arborescence de notes, le clonage et ses nombreux types de notes."
+				},
+				{
+					"q": "Existe-t-il une application mobile Trilium ?",
+					"a": "Il n’existe pas d’application mobile officielle. Le serveur a une interface mobile pour les navigateurs des téléphones, et il existe des applications de la communauté : TriliumDroid et Pocket Trilium pour Android, et Trinote pour iOS."
+				},
+				{
+					"q": "Puis-je importer mes notes depuis Evernote ou des fichiers Markdown ?",
+					"a": "Oui. Trilium importe les exports ENEX d’Evernote et les fichiers Markdown, et exporte les notes en Markdown ou en HTML : vos notes peuvent repartir aussi facilement qu’elles sont arrivées."
+				}
+			]
+		},
+		"pl": {
+			"description": "Hierarchiczna baza wiedzy na duże zbiory osobistych notatek",
+			"notes": "Zaloguj się hasłem podanym przy tworzeniu projektu: Trilium zostaje nim skonfigurowany, zanim zacznie odpowiadać, więc nikt inny nie zobaczy jego ekranu konfiguracji. To jedyne konto, a hasło szyfruje też chronione notatki; zmienisz je w sekcji Opcje → Hasło. Aplikacja desktopowa synchronizuje się z tym serwerem: przy jej konfiguracji wybierz Connect to an existing server i podaj https://{host} oraz hasło.",
+			"sizing": "Trilium ma małe wymagania: około 100 MB pamięci; jego baza danych rośnie razem z notatkami i załącznikami, a obok niej leżą jego własne backupy: dzienne, tygodniowe i miesięczne.",
+			"summary": "Trilium Notes to osobista baza wiedzy open source na duże zbiory notatek: drzewo, synchronizacja, szyfrowanie. Hostuj ją u siebie jednym kliknięciem.",
+			"about": [
+				"Trilium Notes to darmowa aplikacja open source do notatek, stworzona z myślą o dużych osobistych bazach wiedzy, alternatywa dla Notion, Evernote i Obsidiana dla tych, którzy chcą mieć notatki na własnym serwerze. Notatki tworzą drzewo o dowolnej głębokości, a jedna notatka może być w kilku miejscach naraz. Poza tekstem sformatowanym z tabelami, obrazami i wzorami matematycznymi notatka może być kodem, kanwą Excalidraw, mapą myśli, mapą geograficzną albo mapą relacji, a atrybuty i skrypty zmieniają notatki w małe narzędzia. Każda notatka ma historię wersji, a wyszukiwanie pełnotekstowe pozwala ją znowu znaleźć.",
+				"Serwer to niemal ta sama aplikacja w przeglądarce, z widokiem przystosowanym do dotyku na telefony, a aplikacje desktopowe na Windows, macOS i Linuksa synchronizują się z nim. Chronione notatki są szyfrowane twoim hasłem, notatkę można udostępnić publicznie przez link, a web clipper zapisuje strony z przeglądarki. Ten szablon tworzy nową, pustą bazę wiedzy z podanym hasłem, zanim Trilium odpowie komukolwiek. Haczyk: Trilium jest dla jednej osoby, z jednym hasłem i bez kont dla innych, i nie ma oficjalnej aplikacji mobilnej."
+			],
+			"faq": [
+				{
+					"q": "Czy Trilium Notes jest darmowy?",
+					"a": "Tak. Trilium to open source na licencji AGPL-3.0 bez płatnej wersji: serwer, aplikacje desktopowe i synchronizacja są w całości darmowe."
+				},
+				{
+					"q": "Czym jest TriliumNext?",
+					"a": "To projekt społeczności, który przejął rozwój Trilium. Pierwotny autor Trilium, Zadam, przekazał mu repozytorium Trilium, a projekt znów wydaje aplikację pod nazwą Trilium Notes. Baza danych z oryginalnego Trilium otwiera się w nim bez dodatkowych kroków."
+				},
+				{
+					"q": "Trilium czy Obsidian: co wybrać?",
+					"a": "Obsidian trzyma pliki Markdown w katalogu na każdym urządzeniu, ma zamknięty kod i sprzedaje synchronizację. Trilium trzyma notatki w bazie danych na twoim serwerze, jest open source i za darmo synchronizuje z nim aplikacje desktopowe. Mocne strony Obsidiana to pluginy i zwykłe pliki, a Trilium – drzewo notatek, klonowanie i wiele typów notatek."
+				},
+				{
+					"q": "Czy jest aplikacja Trilium na telefon?",
+					"a": "Oficjalnej nie ma. Serwer ma interfejs mobilny dla przeglądarek w telefonach, są też aplikacje społeczności: TriliumDroid i Pocket Trilium na Androida oraz Trinote na iOS."
+				},
+				{
+					"q": "Czy mogę zaimportować notatki z Evernote albo plików Markdown?",
+					"a": "Tak. Trilium importuje eksporty ENEX z Evernote i pliki Markdown, a eksportuje notatki jako Markdown albo HTML, więc twoje notatki wyjdą z niego równie łatwo, jak do niego trafiły."
+				}
+			]
+		},
+		"pt": {
+			"description": "Uma base de conhecimento hierárquica para grandes coleções de notas pessoais",
+			"notes": "Entre com a senha que você informou: o Trilium é configurado com ela antes de responder, então ninguém mais vê a configuração inicial dele. Essa é a única conta, e a senha também criptografa as notas protegidas; troque-a em Opções → Senha. O app de desktop sincroniza com este servidor: na configuração inicial do app, escolha Conectar a um servidor existente e informe https://{host} e a senha.",
+			"sizing": "Trilium é leve: cerca de 100 MB de memória; o banco de dados cresce com suas notas e anexos, e os backups diários, semanais e mensais do próprio Trilium ficam ao lado dele.",
+			"summary": "O Trilium Notes é uma base de conhecimento open source para muitas notas pessoais, em árvore, com sincronização e criptografia. Auto-hospede em um clique.",
+			"about": [
+				"O Trilium Notes é um app de notas gratuito e de código aberto feito para grandes bases de conhecimento pessoais, uma alternativa ao Notion, ao Evernote e ao Obsidian para quem quer as notas no próprio servidor. As notas formam uma árvore tão profunda quanto você quiser, e uma mesma nota pode ficar em vários lugares ao mesmo tempo. Além de texto formatado com tabelas, imagens e fórmulas matemáticas, uma nota pode ser código, um canvas do Excalidraw, um mapa mental, um mapa geográfico ou um mapa de relações, e atributos e scripts transformam notas em pequenas ferramentas. Cada nota guarda as próprias revisões, e a busca por texto completo a encontra de novo.",
+				"O servidor é quase o mesmo app, no navegador, com uma visualização pensada para o toque no celular, e os apps de desktop para Windows, macOS e Linux sincronizam com ele. As notas protegidas são criptografadas com a sua senha, uma nota pode ser compartilhada publicamente por um link, e um web clipper salva páginas a partir do navegador. Este template cria uma base de conhecimento nova e vazia com a senha informada antes de o Trilium responder a qualquer pessoa. O porém: o Trilium é para uma pessoa só, com uma senha e sem contas para outras pessoas, e não tem app oficial para celular."
+			],
+			"faq": [
+				{
+					"q": "O Trilium Notes é gratuito?",
+					"a": "Sim. O Trilium é de código aberto sob a licença AGPL-3.0 e não tem plano pago: o servidor, os apps de desktop e a sincronização são todos gratuitos."
+				},
+				{
+					"q": "O que é o TriliumNext?",
+					"a": "O TriliumNext é o projeto da comunidade que deu continuidade ao Trilium. O desenvolvedor original do Trilium, Zadam, entregou a ele o repositório do Trilium, e hoje o projeto publica o app de novo com o nome Trilium Notes. Um banco de dados do Trilium original abre nele sem nenhum passo especial."
+				},
+				{
+					"q": "Trilium ou Obsidian: qual escolher?",
+					"a": "O Obsidian guarda arquivos Markdown em uma pasta em cada dispositivo, tem código fechado e vende a própria sincronização. O Trilium guarda as notas em um banco de dados no seu servidor, é de código aberto e sincroniza os apps de desktop com o seu servidor de graça. Os pontos fortes do Obsidian são os plugins e os arquivos comuns; os do Trilium são a árvore de notas, a clonagem de notas e os muitos tipos de nota."
+				},
+				{
+					"q": "Existe app do Trilium para celular?",
+					"a": "Não existe um app oficial. O servidor do Trilium tem uma interface móvel para o navegador do celular, e há apps da comunidade: TriliumDroid e Pocket Trilium para Android e Trinote para iOS."
+				},
+				{
+					"q": "Dá para importar minhas notas do Evernote ou em Markdown para o Trilium?",
+					"a": "Sim. O Trilium importa as exportações ENEX do Evernote e arquivos Markdown, e exporta notas em Markdown ou HTML, então suas notas saem tão facilmente quanto entraram."
+				}
+			]
+		},
+		"ru": {
+			"description": "Иерархическая база знаний для больших коллекций личных заметок",
+			"notes": "Войдите с паролем, который вы задали: Trilium настроен с ним еще до того, как начинает отвечать, поэтому его первоначальную настройку никто другой не пройдет. Это единственный аккаунт, и тот же пароль шифрует защищенные заметки; сменить его можно в разделе «Опции» → «Пароль и аутентификация». Десктопное приложение синхронизируется с этим сервером: при его настройке выберите «Подключиться к существующему серверу» и укажите https://{host} и пароль.",
+			"sizing": "Trilium: небольшие требования — около 100 MB памяти; его база данных растет вместе с заметками и вложениями, а рядом с ней лежат его собственные ежедневные, еженедельные и ежемесячные бэкапы.",
+			"summary": "Trilium Notes — open source база знаний для больших коллекций личных заметок: дерево заметок, синхронизация и шифрование. Self-hosted в один клик.",
+			"about": [
+				"Trilium Notes — бесплатное приложение для заметок с открытым кодом, созданное для больших личных баз знаний, альтернатива Notion, Evernote и Obsidian для тех, кто хочет хранить заметки на своем сервере. Заметки складываются в дерево любой глубины, а одна заметка может находиться сразу в нескольких местах. Кроме форматированного текста с таблицами, картинками и формулами, заметка может быть кодом, холстом Excalidraw, ментальной картой, географической картой или картой связей, а атрибуты и скрипты превращают заметки в небольшие инструменты. Каждая заметка хранит историю версий, а полнотекстовый поиск поможет найти ее снова.",
+				"Сервер Trilium — почти то же приложение, только в браузере, с интерфейсом для телефонов, удобным для сенсорного экрана, а десктопные приложения для Windows, macOS и Linux синхронизируются с ним. Защищенные заметки шифруются вашим паролем, заметкой можно публично поделиться по ссылке, а веб-клиппер сохраняет страницы из браузера. Этот шаблон создает новую пустую базу знаний с заданным паролем еще до того, как Trilium ответит кому-либо. Подвох: Trilium рассчитан на одного человека, с одним паролем и без аккаунтов для других, и официального мобильного приложения у него нет."
+			],
+			"faq": [
+				{
+					"q": "Trilium Notes бесплатный?",
+					"a": "Да. Trilium распространяется с открытым кодом под лицензией AGPL-3.0, и платной версии у него нет: сервер, десктопные приложения и синхронизация бесплатны."
+				},
+				{
+					"q": "Что такое TriliumNext?",
+					"a": "TriliumNext — проект сообщества, который продолжил развивать Trilium. Автор оригинального Trilium, Zadam, передал ему репозиторий Trilium, и теперь проект снова выпускает приложение под названием Trilium Notes. База данных из оригинального Trilium открывается в нем без дополнительных шагов."
+				},
+				{
+					"q": "Trilium или Obsidian: что выбрать?",
+					"a": "Obsidian хранит файлы Markdown в папке на каждом устройстве, его код закрыт, а синхронизацию он продает. Trilium хранит заметки в базе данных на вашем сервере, его код открыт, а его десктопные приложения бесплатно синхронизируются с вашим сервером. Сильные стороны Obsidian — плагины и обычные файлы, у Trilium — дерево заметок, клонирование и множество типов заметок."
+				},
+				{
+					"q": "Есть ли приложение Trilium для телефона?",
+					"a": "Официального приложения у Trilium нет. Его сервер отдает мобильный интерфейс для браузера на телефоне, а еще есть приложения от сообщества: TriliumDroid и Pocket Trilium для Android и Trinote для iOS."
+				},
+				{
+					"q": "Можно ли импортировать заметки в Trilium из Evernote или Markdown?",
+					"a": "Да. Trilium импортирует экспорт Evernote в формате ENEX и файлы Markdown, а экспортирует заметки в Markdown или HTML, так что заметки уйдут из него так же легко, как пришли."
+				}
+			]
+		},
+		"uk": {
+			"description": "Ієрархічна база знань для великих колекцій особистих нотаток",
+			"notes": "Увійдіть із паролем, який ви вказали: Trilium налаштовується з ним ще до того, як почне відповідати, тож його початкове налаштування більше нікому не дістанеться. Це єдиний акаунт, а пароль ще й шифрує захищені нотатки; змінюють його в розділі «Параметри → Пароль». Десктопний застосунок синхронізується з цим сервером: під час його налаштування оберіть «Connect to an existing server» і вкажіть https://{host} та пароль.",
+			"sizing": "Trilium має скромні вимоги: близько 100 MB пам’яті; його база даних росте разом із нотатками й вкладеннями, а поруч із нею лежать його власні щоденні, щотижневі й щомісячні бекапи.",
+			"summary": "Trilium Notes — база знань із відкритим кодом для великих особистих нотаток: дерево нотаток, синхронізація й шифрування. Запустіть у себе в один клік.",
+			"about": [
+				"Trilium Notes — безкоштовний застосунок для нотаток із відкритим кодом, створений для великих особистих баз знань, альтернатива Notion, Evernote та Obsidian для тих, хто хоче тримати нотатки на власному сервері. Нотатки утворюють дерево будь-якої глибини, а одна нотатка може бути в кількох місцях одночасно. Окрім форматованого тексту з таблицями, зображеннями й математичними формулами, нотатка може бути кодом, полотном Excalidraw, картою думок, географічною картою або картою зв’язків, а атрибути й скрипти перетворюють нотатки на невеликі інструменти. Кожна нотатка зберігає історію своїх версій, а повнотекстовий пошук допоможе знову її знайти.",
+				"Сервер Trilium — це майже той самий застосунок у браузері, з адаптованим під дотик інтерфейсом для телефонів, а десктопні застосунки для Windows, macOS і Linux синхронізуються з ним. Захищені нотатки шифруються вашим паролем, нотаткою можна публічно поділитися за посиланням, а вебкліпер зберігає сторінки з браузера. Цей шаблон створює нову, порожню базу знань із вказаним паролем ще до того, як Trilium комусь відповість. Підводний камінь: Trilium розрахований на одну людину, з одним паролем і без акаунтів для інших, а офіційного мобільного застосунку в нього немає."
+			],
+			"faq": [
+				{
+					"q": "Trilium Notes безкоштовний?",
+					"a": "Так. Trilium поширюється з відкритим кодом за ліцензією AGPL-3.0, і платної версії в нього немає: сервер, десктопні застосунки й синхронізація — усе безкоштовне."
+				},
+				{
+					"q": "Що таке TriliumNext?",
+					"a": "TriliumNext — проєкт спільноти, який продовжив розвиток Trilium. Початковий розробник Trilium, Zadam, передав йому репозиторій Trilium, і тепер проєкт знову випускає застосунок під назвою Trilium Notes. База даних з оригінального Trilium відкривається в ньому без жодних особливих кроків."
+				},
+				{
+					"q": "Trilium чи Obsidian: що обрати?",
+					"a": "Obsidian зберігає файли Markdown у папці на кожному пристрої, має закритий код і продає синхронізацію. Trilium зберігає нотатки в базі даних на вашому сервері, має відкритий код і безкоштовно синхронізує свої десктопні застосунки з вашим сервером. Сильні сторони Obsidian — плагіни й звичайні файли, а Trilium — дерево нотаток, клонування та численні типи нотаток."
+				},
+				{
+					"q": "Чи є застосунок Trilium для телефона?",
+					"a": "Офіційного застосунку Trilium для телефонів немає. Сервер має мобільний інтерфейс для браузерів на телефонах, а ще є застосунки від спільноти: TriliumDroid і Pocket Trilium для Android та Trinote для iOS."
+				},
+				{
+					"q": "Чи можна імпортувати в Trilium нотатки з Evernote або Markdown?",
+					"a": "Так. Trilium імпортує експорт Evernote у форматі ENEX і файли Markdown, а експортує нотатки в Markdown або HTML, тож ваші нотатки так само легко можна забрати, як і перенести."
+				}
+			]
+		}
+	}
+}
