@@ -1,0 +1,290 @@
+{
+	"name": "Grafana",
+	"emoji": "📈",
+	"category": "monitoring",
+	"alternatives": [
+		"Datadog",
+		"New Relic"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "grafana",
+		"port": 3000
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "SECRET_KEY",
+			"secret": 32
+		},
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Dashboards and alerts over your metrics, logs and databases",
+			"notes": "Sign in with the username and password you gave: Grafana makes that administrator at its first start, and sign-up is closed. Add a data source under Connections, then build a dashboard on it. The password in .env is read only once: change it in your profile. Other Grafana settings go into the project’s .env as GF_<SECTION>_<KEY>, such as GF_SMTP_ENABLED=true for email alerts; deploy again after.",
+			"sizing": "Grafana is moderate: about 300 MB of memory, and its own disk holds only dashboards and settings, since the data stays where Grafana queries it.",
+			"summary": "Grafana is open-source dashboards and alerting over Prometheus, PostgreSQL, Loki and more. A Datadog alternative you self-host in one click.",
+			"about": [
+				"Grafana is the open-source tool for querying, visualizing and alerting on data wherever it is stored, and a common alternative to Datadog. It comes with data sources for Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor and Google Cloud Monitoring, and more arrive as plugins. A dashboard holds panels such as time series, gauges, tables and logs, and alert rules watch the same queries and notify you by email, Slack, Telegram, Discord, PagerDuty, a webhook and more.",
+				"People self-host Grafana to see their servers, apps, sensors or business data in one place, with no price per user or per dashboard. This template runs Grafana’s open-source edition with its SQLite database in a volume, its administrator made from the fields and sign-up closed. The catch: Grafana stores no metrics itself. It needs something to read, such as a Prometheus that scrapes your servers or the PostgreSQL database of your app."
+			],
+			"faq": [
+				{
+					"q": "Is Grafana free?",
+					"a": "Yes. Grafana’s open-source edition is under the AGPLv3 license, with no limit on users or dashboards when you run it yourself. Grafana Labs also sells Grafana Cloud and an Enterprise edition."
+				},
+				{
+					"q": "Does Grafana store my data?",
+					"a": "No. Grafana queries its data sources each time a panel is drawn, and keeps only its dashboards, users, alert rules and settings in its own database. The metrics, logs and rows stay in Prometheus, Loki, PostgreSQL or wherever they are."
+				},
+				{
+					"q": "Grafana vs Datadog: what is the difference?",
+					"a": "Datadog is a hosted service that collects metrics, logs and traces with its own agent and is priced by usage. Grafana draws and alerts on data that lives elsewhere, so self-hosted it costs only the server, and you choose the stores it reads."
+				},
+				{
+					"q": "How do I reset the Grafana admin password?",
+					"a": "Open a terminal in the grafana service and run grafana cli admin reset-admin-password followed by the new password. The ADMIN_PASSWORD in .env is used only at the first start, so changing it there does nothing."
+				},
+				{
+					"q": "Can Grafana send alerts?",
+					"a": "Yes. Grafana Alerting evaluates rules on the queries of your data sources and notifies contact points: email, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, a webhook and more. Email needs an SMTP server, set with the GF_SMTP_ settings in the project’s .env."
+				}
+			]
+		},
+		"de": {
+			"description": "Dashboards und Alerts für deine Metriken, Logs und Datenbanken",
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Grafana legt dieses Admin-Konto beim ersten Start an, und die Registrierung ist geschlossen. Füg unter „Verbindungen“ eine Datenquelle hinzu und bau dann ein Dashboard darauf. Das Passwort aus der .env wird nur einmal gelesen: Ändere es in deinem Profil. Weitere Einstellungen von Grafana kommen als GF_<SECTION>_<KEY> in die .env des Projekts, etwa GF_SMTP_ENABLED=true für E-Mail-Alerts; deploy danach neu.",
+			"sizing": "Grafana ist mittelschwer: etwa 300 MB RAM, und auf seiner eigenen Disk liegen nur Dashboards und Einstellungen, denn die Daten bleiben dort, wo Grafana sie abfragt.",
+			"summary": "Grafana selbst hosten: Open-Source-Dashboards und Alerts für Prometheus, PostgreSQL, Loki und mehr. Eine Alternative zu Datadog, mit einem Klick.",
+			"about": [
+				"Grafana ist das Open-Source-Tool, mit dem du Daten abfragst, visualisierst und Alerts darauf setzt, wo auch immer sie gespeichert sind, und eine verbreitete Alternative zu Datadog. Es bringt Datenquellen für Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor und Google Cloud Monitoring mit, weitere kommen als Plugins dazu. Ein Dashboard enthält Panels wie Zeitreihen, Gauges, Tabellen und Logs, und Alert-Regeln überwachen dieselben Abfragen und benachrichtigen dich per E-Mail, Slack, Telegram, Discord, PagerDuty, Webhook und mehr.",
+				"Viele hosten Grafana selbst, um ihre Server, Apps, Sensoren oder Geschäftsdaten an einem Ort zu sehen, ohne Kosten pro Benutzer oder Dashboard. Diese Vorlage betreibt die Open-Source-Edition von Grafana mit ihrer SQLite-Datenbank in einem Volume, legt den Admin aus den Feldern an und schließt die Registrierung. Der Haken: Grafana speichert selbst keine Metriken. Es braucht etwas zum Lesen, etwa eine Prometheus-Instanz, die deine Server scrapt, oder die PostgreSQL-Datenbank deiner App."
+			],
+			"faq": [
+				{
+					"q": "Ist Grafana kostenlos?",
+					"a": "Ja. Die Open-Source-Edition von Grafana steht unter der AGPLv3-Lizenz und hat kein Limit bei Benutzern oder Dashboards, wenn du sie selbst betreibst. Grafana Labs verkauft außerdem Grafana Cloud und eine Enterprise-Edition."
+				},
+				{
+					"q": "Speichert Grafana meine Daten?",
+					"a": "Nein. Grafana fragt seine Datenquellen jedes Mal ab, wenn ein Panel gezeichnet wird, und speichert in der eigenen Datenbank nur Dashboards, Benutzer, Alert-Regeln und Einstellungen. Metriken, Logs und Zeilen bleiben in Prometheus, Loki, PostgreSQL oder wo auch immer sie liegen."
+				},
+				{
+					"q": "Grafana vs. Datadog: Was ist der Unterschied?",
+					"a": "Datadog ist ein gehosteter Dienst, der Metriken, Logs und Traces mit einem eigenen Agenten sammelt und nach Nutzung abgerechnet wird. Grafana visualisiert Daten, die anderswo liegen, und setzt Alerts darauf. Selbst gehostet kostet es daher nur die Maschine, und du wählst die Datenspeicher, die es liest."
+				},
+				{
+					"q": "Wie setze ich das Admin-Passwort von Grafana zurück?",
+					"a": "Öffne ein Terminal im Service grafana und führ grafana cli admin reset-admin-password aus, gefolgt vom neuen Passwort. Das ADMIN_PASSWORD in der .env gilt nur beim ersten Start, eine Änderung dort bewirkt also nichts."
+				},
+				{
+					"q": "Kann Grafana Alerts verschicken?",
+					"a": "Ja. Grafana Alerting (im Menü „Meldungen“) wertet Regeln über die Abfragen deiner Datenquellen aus und benachrichtigt Kontaktpunkte: E-Mail, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, einen Webhook und mehr. Für E-Mail braucht es einen SMTP-Server, den du mit den Einstellungen GF_SMTP_ in der .env des Projekts festlegst."
+				}
+			]
+		},
+		"es": {
+			"description": "Paneles de control y alertas sobre tus métricas, logs y bases de datos",
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: Grafana crea ese administrador en su primer arranque, y el registro está cerrado. Agrega un origen de datos en Conexiones y luego crea un panel de control con él. La contraseña de .env se lee una sola vez: cámbiala en tu perfil. El resto de la configuración de Grafana va en el .env del proyecto como GF_<SECTION>_<KEY>, por ejemplo GF_SMTP_ENABLED=true para las alertas por correo; después, vuelve a desplegar.",
+			"sizing": "Grafana es moderado: unos 300 MB de memoria, y su propio disco solo guarda paneles de control y configuración, ya que los datos se quedan donde Grafana los consulta.",
+			"summary": "Grafana ofrece paneles de control y alertas de código abierto sobre Prometheus, PostgreSQL, Loki y más. Alternativa a Datadog que autoalojas en un clic.",
+			"about": [
+				"Grafana es la herramienta de código abierto para consultar y visualizar datos, estén donde estén, y crear alertas sobre ellos. Es una alternativa habitual a Datadog. Trae orígenes de datos para Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor y Google Cloud Monitoring, y se le agregan más como plugins. Un panel de control contiene paneles como series temporales, medidores, tablas y logs, y las reglas de alerta vigilan esas mismas consultas y te avisan por correo, Slack, Telegram, Discord, PagerDuty, un webhook y más.",
+				"La gente autoaloja Grafana para ver sus servidores, apps, sensores o datos de negocio en un solo lugar, sin precio por usuario ni por panel de control. Esta plantilla ejecuta la edición de código abierto de Grafana con su base de datos SQLite en un volumen, el administrador que indicas en los campos y el registro cerrado. El inconveniente: Grafana no almacena métricas por sí mismo. Necesita algo que leer, como un Prometheus que recoja las métricas de tus servidores o la base de datos PostgreSQL de tu app."
+			],
+			"faq": [
+				{
+					"q": "¿Grafana es gratis?",
+					"a": "Sí. La edición de código abierto de Grafana tiene licencia AGPLv3, sin límite de usuarios ni de paneles de control cuando la ejecutas tú mismo. Grafana Labs también vende Grafana Cloud y una edición Enterprise."
+				},
+				{
+					"q": "¿Grafana guarda mis datos?",
+					"a": "No. Grafana consulta sus orígenes de datos cada vez que dibuja un panel, y en su propia base de datos solo guarda sus paneles de control, usuarios, reglas de alerta y configuración. Las métricas, los logs y las filas se quedan en Prometheus, Loki, PostgreSQL o dondequiera que estén."
+				},
+				{
+					"q": "Grafana frente a Datadog: ¿cuál es la diferencia?",
+					"a": "Datadog es un servicio alojado que recoge métricas, logs y trazas con su propio agente y cobra según el uso. Grafana dibuja datos que viven en otro lugar y crea alertas sobre ellos, así que, autoalojado, solo cuesta la máquina, y tú eliges los almacenes de datos que lee."
+				},
+				{
+					"q": "¿Cómo restablezco la contraseña de administrador de Grafana?",
+					"a": "Abre un shell en el servicio grafana y ejecuta grafana cli admin reset-admin-password seguido de la contraseña nueva. La variable ADMIN_PASSWORD de .env solo se usa en el primer arranque, así que cambiarla ahí no tiene ningún efecto."
+				},
+				{
+					"q": "¿Grafana puede enviar alertas?",
+					"a": "Sí. Grafana Alerting evalúa reglas sobre las consultas de tus orígenes de datos y avisa a los puntos de contacto: correo, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, un webhook y más. El correo necesita un servidor SMTP, que se configura con los ajustes GF_SMTP_ en el .env del proyecto."
+				}
+			]
+		},
+		"fr": {
+			"description": "Tableaux de bord et alertes sur vos métriques, vos logs et vos bases de données",
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : Grafana crée cet administrateur à son premier démarrage, et l’inscription est fermée. Ajoutez une source de données dans Connexions, puis créez un tableau de bord qui l’utilise. Le mot de passe du .env n’est lu qu’une seule fois : changez-le dans votre profil. Les autres paramètres de Grafana vont dans le .env du projet sous la forme GF_<SECTION>_<KEY>, par exemple GF_SMTP_ENABLED=true pour les alertes par e-mail ; redéployez ensuite.",
+			"sizing": "Grafana est modéré : environ 300 MB de mémoire, et son propre disque ne contient que les tableaux de bord et les paramètres, car les données restent là où Grafana les interroge.",
+			"summary": "Grafana : tableaux de bord et alertes open source sur Prometheus, PostgreSQL, Loki et bien d’autres. Une alternative à Datadog à auto-héberger en un clic.",
+			"about": [
+				"Grafana est l’outil open source pour interroger et visualiser des données, où qu’elles soient stockées, et déclencher des alertes dessus ; c’est une alternative courante à Datadog. Il est livré avec des sources de données pour Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor et Google Cloud Monitoring, et d’autres s’ajoutent sous forme de plugins. Un tableau de bord réunit des panneaux, comme des séries temporelles, des jauges, des tableaux et des logs, et des règles d’alerte surveillent les mêmes requêtes et vous préviennent par e-mail, Slack, Telegram, Discord, PagerDuty, webhook et bien d’autres canaux.",
+				"Vous auto-hébergez Grafana pour voir vos serveurs, vos applications, vos capteurs ou vos données métier au même endroit, sans prix par utilisateur ni par tableau de bord. Ce template fait tourner l’édition open source de Grafana, avec sa base SQLite dans un volume, son administrateur créé à partir des champs et l’inscription fermée. Le revers : Grafana ne stocke lui-même aucune métrique. Il lui faut quelque chose à lire, comme un Prometheus qui collecte les métriques de vos serveurs ou la base PostgreSQL de votre application."
+			],
+			"faq": [
+				{
+					"q": "Grafana est-il gratuit ?",
+					"a": "Oui. L’édition open source de Grafana est sous licence AGPLv3, sans limite d’utilisateurs ni de tableaux de bord quand vous la faites tourner vous-même. Grafana Labs vend aussi Grafana Cloud et une édition Enterprise."
+				},
+				{
+					"q": "Grafana stocke-t-il mes données ?",
+					"a": "Non. Grafana interroge ses sources de données chaque fois qu’un panneau s’affiche, et ne garde dans sa propre base que ses tableaux de bord, ses utilisateurs, ses règles d’alerte et ses paramètres. Les métriques, les logs et les lignes restent dans Prometheus, Loki, PostgreSQL ou ailleurs, là où ils se trouvent."
+				},
+				{
+					"q": "Grafana ou Datadog : quelle différence ?",
+					"a": "Datadog est un service hébergé qui collecte métriques, logs et traces avec son propre agent, et se facture à l’usage. Grafana affiche des données stockées ailleurs et déclenche des alertes dessus : auto-hébergé, il ne coûte que la machine, et vous choisissez les bases qu’il lit."
+				},
+				{
+					"q": "Comment réinitialiser le mot de passe admin de Grafana ?",
+					"a": "Ouvrez un terminal dans le service grafana et lancez grafana cli admin reset-admin-password suivi du nouveau mot de passe. La variable ADMIN_PASSWORD du .env ne sert qu’au premier démarrage : la modifier là n’a aucun effet."
+				},
+				{
+					"q": "Grafana peut-il envoyer des alertes ?",
+					"a": "Oui. Grafana Alerting évalue des règles sur les requêtes de vos sources de données et prévient des points de contact : e-mail, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, webhook et bien d’autres. L’e-mail demande un serveur SMTP, défini avec les paramètres GF_SMTP_ dans le .env du projet."
+				}
+			]
+		},
+		"pl": {
+			"description": "Dashboardy i alerty dla twoich metryk, logów i baz danych",
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: Grafana tworzy z nich administratora przy pierwszym uruchomieniu, a rejestracja jest zamknięta. Dodaj źródło danych w Połączeniach, a potem zbuduj na nim dashboard. Hasło z .env jest odczytywane tylko raz: zmienisz je w swoim profilu. Pozostałe ustawienia Grafany wpisz do pliku .env projektu jako GF_<SECTION>_<KEY>, na przykład GF_SMTP_ENABLED=true dla alertów e-mailowych; potem wdróż ponownie.",
+			"sizing": "Grafana ma umiarkowane wymagania: około 300 MB pamięci, a na jej własnym dysku są tylko dashboardy i ustawienia, bo dane zostają tam, skąd Grafana je odpytuje.",
+			"summary": "Grafana to dashboardy i alerty open source dla Prometheusa, PostgreSQL, Loki i innych. Alternatywa dla Datadoga do hostowania u siebie jednym kliknięciem.",
+			"about": [
+				"Grafana to narzędzie open source, które odpytuje i wizualizuje dane, gdziekolwiek są przechowywane, i wysyła na ich podstawie alerty. To popularna alternatywa dla Datadoga. Ma wbudowane źródła danych: Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor i Google Cloud Monitoring, a kolejne dochodzą jako pluginy. Dashboard składa się z paneli, takich jak szeregi czasowe, wskaźniki, tabele i logi, a reguły alertów obserwują te same zapytania i powiadamiają cię e-mailem albo przez Slack, Telegram, Discord, PagerDuty, webhook i nie tylko.",
+				"Grafanę hostuje się u siebie, żeby widzieć swoje serwery, aplikacje, czujniki albo dane biznesowe w jednym miejscu, bez opłat za użytkownika czy dashboard. Ten szablon uruchamia edycję open source Grafany z bazą SQLite w wolumenie, administratorem utworzonym z pól formularza i zamkniętą rejestracją. Haczyk: Grafana sama nie przechowuje żadnych metryk. Potrzebuje czegoś do czytania, na przykład Prometheusa, który zbiera metryki z twoich serwerów, albo bazy PostgreSQL twojej aplikacji."
+			],
+			"faq": [
+				{
+					"q": "Czy Grafana jest darmowa?",
+					"a": "Tak. Edycja open source Grafany jest na licencji AGPLv3, bez limitu użytkowników ani dashboardów, gdy uruchamiasz ją u siebie. Grafana Labs sprzedaje też Grafana Cloud i edycję Enterprise."
+				},
+				{
+					"q": "Czy Grafana przechowuje moje dane?",
+					"a": "Nie. Grafana odpytuje swoje źródła danych przy każdym rysowaniu panelu, a we własnej bazie trzyma tylko dashboardy, użytkowników, reguły alertów i ustawienia. Metryki, logi i wiersze zostają w Prometheusie, Loki, PostgreSQL albo tam, gdzie akurat są."
+				},
+				{
+					"q": "Grafana czy Datadog: jaka jest różnica?",
+					"a": "Datadog to usługa hostowana, która zbiera metryki, logi i trace’y własnym agentem, a cena zależy od zużycia. Grafana rysuje dane przechowywane gdzie indziej i wysyła na ich podstawie alerty, więc hostowana u siebie kosztuje tylko maszynę, a to ty wybierasz, z jakich magazynów danych czyta."
+				},
+				{
+					"q": "Jak zresetować hasło administratora w Grafanie?",
+					"a": "Otwórz terminal w usłudze grafana i uruchom grafana cli admin reset-admin-password z nowym hasłem na końcu. ADMIN_PASSWORD z .env jest używane tylko przy pierwszym uruchomieniu, więc zmiana go tam nic nie da."
+				},
+				{
+					"q": "Czy Grafana może wysyłać alerty?",
+					"a": "Tak. Moduł Alerty ocenia reguły oparte na zapytaniach do twoich źródeł danych i powiadamia punkty kontaktowe: e-mail, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, webhook i inne. E-mail wymaga serwera SMTP, ustawianego zmiennymi GF_SMTP_ w pliku .env projektu."
+				}
+			]
+		},
+		"pt": {
+			"description": "Dashboards e alertas sobre suas métricas, logs e bancos de dados",
+			"notes": "Entre com o usuário e a senha que você informou: o Grafana cria esse administrador na primeira inicialização, e o cadastro está fechado. Adicione uma fonte de dados em Conexões e depois monte um dashboard sobre ela. A senha do .env só é lida uma vez: troque-a no seu perfil. As outras configurações do Grafana vão no .env do projeto como GF_<SECTION>_<KEY>, por exemplo GF_SMTP_ENABLED=true para alertas por e-mail; depois, faça o deploy de novo.",
+			"sizing": "Grafana é moderado: cerca de 300 MB de memória, e o disco dele guarda só dashboards e configurações, já que os dados ficam onde o Grafana os consulta.",
+			"summary": "O Grafana reúne dashboards e alertas de código aberto sobre Prometheus, PostgreSQL, Loki e mais. Alternativa ao Datadog para auto-hospedar em um clique.",
+			"about": [
+				"O Grafana é a ferramenta de código aberto para consultar, visualizar e gerar alertas sobre dados onde quer que eles estejam guardados, e uma alternativa comum ao Datadog. Ele já vem com fontes de dados para Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor e Google Cloud Monitoring, e outras chegam como plugins. Um dashboard reúne painéis como séries temporais, medidores, tabelas e logs, e as regras de alerta vigiam as mesmas consultas e avisam você por e-mail, Slack, Telegram, Discord, PagerDuty, webhook e mais.",
+				"As pessoas auto-hospedam o Grafana para ver seus servidores, apps, sensores ou dados de negócio em um só lugar, sem preço por usuário nem por dashboard. Este template roda a edição de código aberto do Grafana com o banco de dados SQLite dele em um volume, o administrador criado a partir dos campos e o cadastro fechado. O porém: o Grafana não guarda métricas. Ele precisa de algo para ler, como um Prometheus que coleta as métricas dos seus servidores ou o banco PostgreSQL do seu app."
+			],
+			"faq": [
+				{
+					"q": "O Grafana é gratuito?",
+					"a": "Sim. A edição de código aberto do Grafana usa a licença AGPLv3, sem limite de usuários ou de dashboards quando você mesmo a roda. A Grafana Labs também vende o Grafana Cloud e uma edição Enterprise."
+				},
+				{
+					"q": "O Grafana guarda os meus dados?",
+					"a": "Não. O Grafana consulta as fontes de dados toda vez que um painel é desenhado e guarda no próprio banco só os dashboards, os usuários, as regras de alerta e as configurações. As métricas, os logs e as linhas continuam no Prometheus, no Loki, no PostgreSQL ou onde quer que estejam."
+				},
+				{
+					"q": "Grafana ou Datadog: qual é a diferença?",
+					"a": "O Datadog é um serviço hospedado que coleta métricas, logs e traces com um agente próprio e cobra pelo uso. O Grafana desenha e alerta sobre dados que ficam em outro lugar, então, auto-hospedado, custa só a máquina, e é você quem escolhe de onde ele lê os dados."
+				},
+				{
+					"q": "Como redefinir a senha de admin do Grafana?",
+					"a": "Abra um terminal no serviço grafana e rode grafana cli admin reset-admin-password seguido da nova senha. O ADMIN_PASSWORD do .env só é usado na primeira inicialização, então alterá-lo lá não faz nada."
+				},
+				{
+					"q": "O Grafana envia alertas?",
+					"a": "Sim. Em Alertas, o Grafana avalia regras sobre as consultas das suas fontes de dados e notifica pontos de contato: e-mail, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, webhook e mais. O e-mail precisa de um servidor SMTP, definido com as configurações GF_SMTP_ no .env do projeto."
+				}
+			]
+		},
+		"ru": {
+			"description": "Дашборды и оповещения по вашим метрикам, логам и базам данных",
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: Grafana создает этого администратора при первом запуске, а регистрация закрыта. Добавьте источник данных в разделе «Подключения», затем постройте на нем дашборд. Пароль из .env читается только один раз: меняйте его в своем профиле. Остальные настройки Grafana задаются в .env проекта в виде GF_<SECTION>_<KEY>, например GF_SMTP_ENABLED=true для оповещений по почте; после этого задеплойте проект заново.",
+			"sizing": "Grafana: умеренные требования — около 300 MB памяти, а на ее собственном диске лежат только дашборды и настройки, ведь данные остаются там, откуда Grafana их запрашивает.",
+			"summary": "Grafana — open source дашборды и оповещения поверх Prometheus, PostgreSQL, Loki и других источников. Self-hosted альтернатива Datadog в один клик.",
+			"about": [
+				"Grafana — инструмент с открытым кодом для запросов к данным, их визуализации и оповещений по ним, где бы данные ни хранились, и частая альтернатива Datadog. Из коробки в ней есть источники данных для Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor и Google Cloud Monitoring, а остальные добавляются плагинами. На дашборде собраны панели, например временные ряды, индикаторы, таблицы и логи, а правила оповещения следят за теми же запросами и уведомляют вас по почте, в Slack, Telegram, Discord, PagerDuty, через вебхук и не только.",
+				"Grafana хостят у себя, чтобы видеть серверы, приложения, датчики или бизнес-данные в одном месте и без платы за каждого пользователя или дашборд. Этот шаблон запускает open source редакцию Grafana с базой SQLite в томе, администратором, которого вы указали в полях, и закрытой регистрацией. Подвох: сама Grafana метрик не хранит. Ей нужен источник, откуда читать, например Prometheus, который собирает метрики с ваших серверов, или база PostgreSQL вашего приложения."
+			],
+			"faq": [
+				{
+					"q": "Grafana бесплатная?",
+					"a": "Да. Open source редакция Grafana распространяется под лицензией AGPLv3, и если вы запускаете ее сами, число пользователей и дашбордов не ограничено. Grafana Labs также продает Grafana Cloud и редакцию Enterprise."
+				},
+				{
+					"q": "Хранит ли Grafana мои данные?",
+					"a": "Нет. Grafana запрашивает источники данных каждый раз, когда рисует панель, а в своей базе хранит только дашборды, пользователей, правила оповещения и настройки. Метрики, логи и строки остаются в Prometheus, Loki, PostgreSQL или там, где они лежат."
+				},
+				{
+					"q": "Grafana или Datadog: в чем разница?",
+					"a": "Datadog — облачный сервис, который собирает метрики, логи и трейсы своим агентом, а платят за него по объему использования. Grafana строит графики и оповещения по данным, которые хранятся в других местах, поэтому у себя она обходится лишь в стоимость сервера, а хранилища, которые она читает, вы выбираете сами."
+				},
+				{
+					"q": "Как сбросить пароль администратора Grafana?",
+					"a": "Откройте терминал в сервисе grafana и выполните grafana cli admin reset-admin-password, добавив в конце новый пароль. ADMIN_PASSWORD в .env используется только при первом запуске, поэтому менять его там бесполезно."
+				},
+				{
+					"q": "Умеет ли Grafana отправлять оповещения?",
+					"a": "Да. Grafana Alerting проверяет правила по запросам к вашим источникам данных и уведомляет точки контакта: почту, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, вебхук и другие. Для почты нужен SMTP-сервер, который задается настройками GF_SMTP_ в .env проекта."
+				}
+			]
+		},
+		"uk": {
+			"description": "Дашборди й сповіщення для ваших метрик, логів і баз даних",
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: Grafana створює цього адміністратора під час першого запуску, а реєстрацію закрито. Додайте джерело даних у розділі «Connections», а потім побудуйте на ньому дашборд. Пароль із .env читається лише раз: змінюйте його у своєму профілі. Інші налаштування Grafana задають у .env проєкту як GF_<SECTION>_<KEY>, наприклад GF_SMTP_ENABLED=true для сповіщень поштою; після цього задеплойте ще раз.",
+			"sizing": "Grafana має помірні вимоги: близько 300 MB пам’яті, а на її власному диску лежать лише дашборди й налаштування, бо дані лишаються там, де Grafana їх запитує.",
+			"summary": "Grafana — дашборди й сповіщення з відкритим кодом для Prometheus, PostgreSQL, Loki та інших. Self-hosted альтернатива Datadog в один клік.",
+			"about": [
+				"Grafana — інструмент із відкритим кодом для запитів, візуалізації та сповіщень за даними, хоч би де вони зберігалися, і поширена альтернатива Datadog. У неї є вбудовані джерела даних для Prometheus, Loki, InfluxDB, Graphite, Elasticsearch, PostgreSQL, MySQL, Microsoft SQL Server, CloudWatch, Azure Monitor і Google Cloud Monitoring, а інші додаються плагінами. Дашборд складається з панелей, як-от часових рядів, шкал, таблиць і логів, а правила сповіщень стежать за тими самими запитами й надсилають вам сповіщення поштою, у Slack, Telegram, Discord, PagerDuty, вебхуком тощо.",
+				"Grafana хостять у себе, щоб бачити свої сервери, застосунки, датчики чи бізнес-дані в одному місці, без плати за кожного користувача чи дашборд. Цей шаблон запускає редакцію Grafana з відкритим кодом: її база SQLite лежить у томі, адміністратора створено з полів, а реєстрацію закрито. Підводний камінь: Grafana сама не зберігає жодних метрик. Їй потрібне джерело, яке можна читати, як-от Prometheus, що збирає метрики з ваших серверів, або база даних PostgreSQL вашого застосунку."
+			],
+			"faq": [
+				{
+					"q": "Grafana безкоштовна?",
+					"a": "Так. Редакція Grafana з відкритим кодом поширюється за ліцензією AGPLv3 і не обмежує кількості користувачів чи дашбордів, коли ви запускаєте її самі. Grafana Labs також продає Grafana Cloud і редакцію Enterprise."
+				},
+				{
+					"q": "Чи зберігає Grafana мої дані?",
+					"a": "Ні. Grafana запитує свої джерела даних щоразу, коли малює панель, а у власній базі даних зберігає лише дашборди, користувачів, правила сповіщень і налаштування. Метрики, логи й рядки лишаються в Prometheus, Loki, PostgreSQL чи там, де вони лежать."
+				},
+				{
+					"q": "Grafana чи Datadog: у чому різниця?",
+					"a": "Datadog — хмарний сервіс, який збирає метрики, логи й трейси власним агентом і бере плату за використання. Grafana будує графіки й надсилає сповіщення за даними, що зберігаються деінде, тож, якщо хостити її самому, ви платите лише за машину, а сховища, які вона читає, обираєте самі."
+				},
+				{
+					"q": "Як скинути пароль адміністратора Grafana?",
+					"a": "Відкрийте термінал у сервісі grafana і виконайте grafana cli admin reset-admin-password, дописавши після нього новий пароль. Змінна ADMIN_PASSWORD у .env використовується лише під час першого запуску, тож міняти її там марно."
+				},
+				{
+					"q": "Чи може Grafana надсилати сповіщення?",
+					"a": "Так. Grafana Alerting перевіряє правила за запитами до ваших джерел даних і надсилає сповіщення в точки контакту (contact points): пошту, Slack, Telegram, Discord, Microsoft Teams, PagerDuty, вебхук тощо. Для пошти потрібен SMTP-сервер, який задають налаштуваннями GF_SMTP_ у .env проєкту."
+				}
+			]
+		}
+	}
+}

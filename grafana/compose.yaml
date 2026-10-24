@@ -1,0 +1,21 @@
+services:
+  grafana:
+    image: grafana/grafana:13.2
+    restart: unless-stopped
+    # Any setting of Grafana can be added to the project's .env as GF_<SECTION>_<KEY>, such as
+    # GF_SMTP_ENABLED=true and GF_SMTP_HOST for email alerts.
+    env_file: .env
+    environment:
+      GF_SERVER_ROOT_URL: ${URL}
+      # The administrator is made from these at the first start, before Grafana answers anyone;
+      # later the password is changed in Grafana, not here.
+      GF_SECURITY_ADMIN_USER: ${ADMIN_USERNAME}
+      GF_SECURITY_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      # Encrypts the data sources' passwords and tokens: the stock key is public.
+      GF_SECURITY_SECRET_KEY: ${SECRET_KEY}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - data:/var/lib/grafana
+
+volumes:
+  data:
