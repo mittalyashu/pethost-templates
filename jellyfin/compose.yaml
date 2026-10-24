@@ -1,0 +1,59 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:12
+    restart: unless-stopped
+    environment:
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    # A new server's startup wizard is open to whoever comes first. So until the wizard is done,
+    # Jellyfin runs on port 8097, which nobody reaches: there it is given the administrator from
+    # the fields and a library for each folder of /media, and only then answers on 8096.
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -e
+        config=/config/config
+        if ! grep -qs '<IsStartupWizardCompleted>true<' "$$config/system.xml"; then
+          mkdir -p "$$config" /media/movies /media/shows /media/music
+          if [ -f "$$config/network.xml" ]; then
+            sed -i 's|<InternalHttpPort>[0-9]*<|<InternalHttpPort>8097<|' "$$config/network.xml"
+          else
+            printf '<?xml version="1.0" encoding="utf-8"?>\n<NetworkConfiguration>\n  <InternalHttpPort>8097</InternalHttpPort>\n</NetworkConfiguration>\n' > "$$config/network.xml"
+          fi
+          /jellyfin/jellyfin &
+          setup=$$!
+          api() { curl -fsS -H 'Content-Type: application/json' "$$@"; }
+          # 401: an administrator with a password exists already, from a first start cut short,
+          # and Jellyfin has marked its wizard done by itself.
+          until wizard=$$(curl -sS -o /dev/null -w '%{http_code}' http://127.0.0.1:8097/Startup/Configuration) &&
+            { [ "$$wizard" = 200 ] || [ "$$wizard" = 401 ]; }; do sleep 2; done
+          if [ "$$wizard" = 200 ]; then
+            api -d '{"ServerName":"Jellyfin","UICulture":"en-US","MetadataCountryCode":"US","PreferredMetadataLanguage":"en"}' http://127.0.0.1:8097/Startup/Configuration
+            library() {
+              api http://127.0.0.1:8097/Library/VirtualFolders | grep -q "\"Name\":\"$$1\"" ||
+                api -d '{"LibraryOptions":{"EnableRealtimeMonitor":true}}' "http://127.0.0.1:8097/Library/VirtualFolders?name=$$1&collectionType=$$2&paths=/media/$$3"
+            }
+            library Movies movies movies
+            library Shows tvshows shows
+            library Music music music
+            api -o /dev/null http://127.0.0.1:8097/Startup/User
+            json() { printf '%s' "$$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
+            api -d "{\"Name\":\"$$(json "$$ADMIN_USERNAME")\",\"Password\":\"$$(json "$$ADMIN_PASSWORD")\"}" http://127.0.0.1:8097/Startup/User
+            api -d '{"EnableRemoteAccess":true,"EnableAutomaticPortMapping":false}' http://127.0.0.1:8097/Startup/RemoteAccess
+            api -X POST http://127.0.0.1:8097/Startup/Complete
+          fi
+          kill $$setup
+          wait $$setup || true
+          sed -i 's|<InternalHttpPort>8097<|<InternalHttpPort>8096<|' "$$config/network.xml"
+        fi
+        exec /jellyfin/jellyfin
+    volumes:
+      - config:/config
+      - cache:/cache
+      # Writable, so that films, shows and music can be copied in over SFTP.
+      - media:/media
+
+volumes:
+  config:
+  cache:
+  media:

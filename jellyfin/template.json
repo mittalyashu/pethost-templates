@@ -1,0 +1,282 @@
+{
+	"name": "Jellyfin",
+	"emoji": "🎬",
+	"category": "media",
+	"alternatives": [
+		"Plex",
+		"Emby"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "jellyfin",
+		"port": 8096
+	},
+	"variables": [
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "A media server that streams your films, shows and music to any device",
+			"notes": "Sign in with the username and password you gave: Jellyfin is set up with them before it answers, so nobody else gets its setup wizard. Films go into /media/movies, shows into /media/shows and music into /media/music in the jellyfin service: upload them in its Files tab or copy folders over SFTP. The first files of a library appear after Scan All Libraries in the Dashboard; later ones are found by themselves. Apps on phones and TVs connect to https://{host}.",
+			"sizing": "Jellyfin takes about 250 MB of memory at rest and the disk is your library; transcoding a video runs on the CPU and is heavy.",
+			"summary": "Jellyfin is a free media server for your films, shows and music, a self-hosted Plex alternative. Run it on your own machine in one click.",
+			"about": [
+				"Jellyfin is a free, open-source media server that people run in place of Plex or Emby. It sorts the films, shows and music you own into libraries with posters, descriptions and cast from online metadata, and streams them to a browser, phones, tablets and TVs. Official apps exist for Android, iOS, Android TV and Fire TV, Roku, LG and Samsung TVs, Xbox and Kodi, and Jellyfin Media Player runs on desktops. Each person gets an account of their own, with their own watch progress and parental controls.",
+				"People self-host Jellyfin to watch their own media from anywhere with no account at a company and no subscription: it has no premium tier, no tracking and no central servers. This template sets it up with the administrator from the fields and three libraries, Movies, Shows and Music, over the folders of a media volume. The catch is transcoding. When a device cannot play a file as it is, Jellyfin converts it on the fly, here on the CPU, which is heavy, so files your devices play directly, such as H.264 video in MP4, are the light ones."
+			],
+			"faq": [
+				{
+					"q": "Is Jellyfin really free?",
+					"a": "Yes. Jellyfin is free software under the GNU GPL, and its server and official apps cost nothing, with no premium tier or paid features. It is built by volunteers."
+				},
+				{
+					"q": "Jellyfin vs Plex: what is the difference?",
+					"a": "Both stream your own media to your devices. Plex’s server is closed source, its accounts go through plex.tv, and since April 2025 watching your media away from home needs a Plex Pass or a Remote Watch Pass. Jellyfin is open source, needs no outside account and charges for nothing."
+				},
+				{
+					"q": "Which devices can play from Jellyfin?",
+					"a": "Any modern browser, and the official apps for Android, iOS, Android TV and Fire TV, Roku, LG webOS, Samsung Tizen and Xbox. Jellyfin Media Player runs on Windows, macOS and Linux, and the JellyCon add-on brings Jellyfin into Kodi."
+				},
+				{
+					"q": "How should I name my films and shows for Jellyfin?",
+					"a": "Give each film a folder named by its title and year, such as Big Buck Bunny (2008), with the video inside under the same name. A show gets a folder of its own with Season 01, Season 02 and so on inside, and episodes named like Show Name S01E01.mkv. Jellyfin then finds the right posters and descriptions."
+				},
+				{
+					"q": "Does Jellyfin need a GPU?",
+					"a": "No. A GPU only speeds up transcoding, the conversion a device needs when it cannot play a file as it is; without one, Jellyfin transcodes on the CPU. HDR video is the hard case: Jellyfin’s docs say no modern consumer CPU tone-maps it in real time. Files your devices play as they are need no transcoding at all."
+				}
+			]
+		},
+		"de": {
+			"description": "Ein Medienserver, der deine Filme, Serien und Musik auf jedes Gerät streamt",
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Jellyfin wird damit eingerichtet, bevor es antwortet, sodass niemand sonst an den Einrichtungsassistenten kommt. Filme kommen nach /media/movies, Serien nach /media/shows und Musik nach /media/music im Service jellyfin: Lade sie in dessen Tab „Dateien“ hoch oder kopier Ordner per SFTP. Die ersten Dateien einer Bibliothek erscheinen nach „Alle Bibliotheken scannen“ in der „Übersicht“; spätere findet Jellyfin von selbst. Apps auf Handys und Fernsehern verbinden sich mit https://{host}.",
+			"sizing": "Jellyfin braucht im Leerlauf etwa 250 MB RAM, und die Disk ist deine Bibliothek; das Transcodieren eines Videos läuft auf der CPU und ist rechenintensiv.",
+			"summary": "Jellyfin selbst hosten: kostenloser Medienserver für deine Filme, Serien und Musik, eine Plex-Alternative. Auf deiner eigenen Maschine, mit einem Klick.",
+			"about": [
+				"Jellyfin ist ein kostenloser Open-Source-Medienserver, den Leute statt Plex oder Emby betreiben. Er sortiert die Filme, Serien und Musik, die du besitzt, in Bibliotheken mit Postern, Beschreibungen und Besetzung aus Online-Metadaten und streamt sie an Browser, Handys, Tablets und Fernseher. Offizielle Apps gibt es für Android, iOS, Android TV und Fire TV, Roku, Fernseher von LG und Samsung, Xbox und Kodi, und Jellyfin Media Player läuft auf Desktop-Rechnern. Jede Person bekommt ein eigenes Konto mit eigenem Wiedergabefortschritt und eigener Kindersicherung.",
+				"Viele hosten Jellyfin selbst, um ihre eigenen Medien von überall zu schauen, ohne Konto bei einem Unternehmen und ohne Abo: Es gibt keine Premium-Stufe, kein Tracking und keine zentralen Server. Diese Vorlage richtet Jellyfin mit dem Admin aus den Feldern ein, dazu drei Bibliotheken, Movies, Shows und Music, die auf die Ordner eines Medien-Volumes zeigen. Der Haken ist das Transcodieren. Kann ein Gerät eine Datei nicht so abspielen, wie sie ist, wandelt Jellyfin sie beim Abspielen um, hier auf der CPU, und das ist rechenintensiv. Leicht sind daher Dateien, die deine Geräte direkt abspielen, etwa H.264-Video in MP4."
+			],
+			"faq": [
+				{
+					"q": "Ist Jellyfin wirklich kostenlos?",
+					"a": "Ja. Jellyfin ist freie Software unter der GNU GPL, und der Server und die offiziellen Apps kosten nichts: Es gibt weder eine Premium-Stufe noch kostenpflichtige Funktionen. Entwickelt wird Jellyfin von Freiwilligen."
+				},
+				{
+					"q": "Jellyfin vs. Plex: Was ist der Unterschied?",
+					"a": "Jellyfin und Plex streamen beide deine eigenen Medien auf deine Geräte. Der Server von Plex ist Closed Source, die Konten laufen über plex.tv, und seit April 2025 brauchst du einen Plex Pass oder einen Remote Watch Pass, um deine Medien von unterwegs zu schauen. Jellyfin ist Open Source, braucht kein externes Konto und verlangt für nichts Geld."
+				},
+				{
+					"q": "Auf welchen Geräten kann ich Jellyfin schauen?",
+					"a": "In jedem modernen Browser und mit den offiziellen Apps für Android, iOS, Android TV und Fire TV, Roku, LG webOS, Samsung Tizen und Xbox. Jellyfin Media Player läuft unter Windows, macOS und Linux, und das Add-on JellyCon bringt Jellyfin in Kodi."
+				},
+				{
+					"q": "Wie benenne ich Filme und Serien für Jellyfin?",
+					"a": "Gib jedem Film einen Ordner mit Titel und Jahr, etwa Big Buck Bunny (2008), und leg das Video unter demselben Namen hinein. Eine Serie bekommt einen eigenen Ordner mit Season 01, Season 02 und so weiter darin, und die Folgen heißen etwa Show Name S01E01.mkv. Dann findet Jellyfin die richtigen Poster und Beschreibungen."
+				},
+				{
+					"q": "Braucht Jellyfin eine Grafikkarte?",
+					"a": "Nein. Eine GPU beschleunigt nur das Transcodieren, also die Umwandlung, die ein Gerät braucht, wenn es eine Datei nicht so abspielen kann, wie sie ist; ohne GPU transcodiert Jellyfin auf der CPU. Schwierig ist HDR-Video: Laut der Doku von Jellyfin schafft keine aktuelle Consumer-CPU das Tone-Mapping in Echtzeit. Dateien, die deine Geräte direkt abspielen, müssen gar nicht transcodiert werden."
+				}
+			]
+		},
+		"es": {
+			"description": "Un servidor multimedia que transmite tus películas, series y música a cualquier dispositivo",
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: Jellyfin se configura con ellos antes de responder, así que nadie más ve su asistente de configuración. Las películas van en /media/movies, las series en /media/shows y la música en /media/music, en el servicio jellyfin: sube los archivos en su pestaña Archivos o copia carpetas por SFTP. Los primeros archivos de una biblioteca aparecen cuando ejecutas “Escanear todas las bibliotecas” en el Panel de control; los siguientes, Jellyfin los encuentra solo. Las apps de teléfonos y televisores se conectan a https://{host}.",
+			"sizing": "Jellyfin usa unos 250 MB de memoria en reposo, y el disco es tu biblioteca; la transcodificación de un video se ejecuta en la CPU y es pesada.",
+			"summary": "Jellyfin es un servidor multimedia gratuito para tus películas, series y música, una alternativa autoalojada a Plex. En tu propia máquina, en un clic.",
+			"about": [
+				"Jellyfin es un servidor multimedia gratuito y de código abierto que la gente usa en lugar de Plex o Emby. Ordena en bibliotecas las películas, las series y la música que tienes, con pósteres, descripciones y reparto tomados de metadatos en línea, y los transmite a un navegador, a teléfonos, a tabletas y a televisores. Hay apps oficiales para Android, iOS, Android TV y Fire TV, Roku, televisores LG y Samsung, Xbox y Kodi, y Jellyfin Media Player funciona en equipos de escritorio. Cada persona tiene su propia cuenta, con su propio progreso de reproducción y su control parental.",
+				"Quienes autoalojan Jellyfin lo hacen para ver sus propios archivos multimedia desde cualquier lugar, sin una cuenta en ninguna empresa y sin suscripción: no tiene versión premium, ni rastreo, ni servidores centrales. Esta plantilla lo configura con el administrador que indicas en los campos y tres bibliotecas, Movies, Shows y Music, sobre las carpetas del volumen media. El inconveniente es la transcodificación. Cuando un dispositivo no puede reproducir un archivo tal cual, Jellyfin lo convierte sobre la marcha, aquí en la CPU, lo que resulta pesado; por eso los archivos que tus dispositivos reproducen directamente, como el video H.264 en MP4, son los ligeros."
+			],
+			"faq": [
+				{
+					"q": "¿Jellyfin es realmente gratis?",
+					"a": "Sí. Jellyfin es software libre bajo la licencia GNU GPL, y su servidor y sus apps oficiales no cuestan nada, sin versión premium ni funciones de pago. Lo desarrollan voluntarios."
+				},
+				{
+					"q": "Jellyfin frente a Plex: ¿cuál es la diferencia?",
+					"a": "Los dos transmiten tus propios archivos multimedia a tus dispositivos. El servidor de Plex es de código cerrado, sus cuentas pasan por plex.tv y, desde abril de 2025, ver tus archivos fuera de casa requiere un Plex Pass o un Remote Watch Pass. Jellyfin es de código abierto, no necesita ninguna cuenta externa y no cobra por nada."
+				},
+				{
+					"q": "¿En qué dispositivos se puede ver Jellyfin?",
+					"a": "Jellyfin se puede ver en cualquier navegador moderno y en las apps oficiales para Android, iOS, Android TV y Fire TV, Roku, LG webOS, Samsung Tizen y Xbox. Jellyfin Media Player funciona en Windows, macOS y Linux, y el add-on JellyCon lleva Jellyfin a Kodi."
+				},
+				{
+					"q": "¿Cómo debo nombrar mis películas y series para Jellyfin?",
+					"a": "Dale a cada película una carpeta con su título y su año por nombre, por ejemplo Big Buck Bunny (2008), y dentro, el video con ese mismo nombre. Cada serie lleva su propia carpeta, con las carpetas Season 01, Season 02 y así sucesivamente dentro, y los episodios llevan nombres como Show Name S01E01.mkv. Así Jellyfin encuentra los pósteres y las descripciones correctos."
+				},
+				{
+					"q": "¿Jellyfin necesita una GPU?",
+					"a": "No. Una GPU solo acelera la transcodificación, la conversión que necesita un dispositivo cuando no puede reproducir un archivo tal cual; sin ella, Jellyfin transcodifica en la CPU. El video HDR es el caso difícil: según la documentación de Jellyfin, ninguna CPU de consumo moderna hace su mapeo de tonos en tiempo real. Los archivos que tus dispositivos reproducen tal cual no necesitan ninguna transcodificación."
+				}
+			]
+		},
+		"fr": {
+			"description": "Un serveur multimédia qui diffuse vos films, séries et musique sur tous vos appareils",
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : Jellyfin est configuré avec eux avant de répondre, donc personne d’autre n’accède à son assistant de configuration. Les films vont dans /media/movies, les séries dans /media/shows et la musique dans /media/music, dans le service jellyfin : envoyez-les depuis son onglet Fichiers ou copiez des dossiers en SFTP. Les premiers fichiers d’une médiathèque apparaissent après « Actualiser toutes les médiathèques », dans le Tableau de bord ; Jellyfin trouve ensuite tout seul les suivants. Les applications pour téléphones et téléviseurs se connectent à https://{host}.",
+			"sizing": "Jellyfin prend environ 250 MB de mémoire au repos, et le disque, c’est votre médiathèque ; le transcodage d’une vidéo tourne sur le CPU et il est gourmand.",
+			"summary": "Jellyfin est un serveur multimédia gratuit pour vos films, séries et musique, une alternative à Plex auto-hébergée. Sur votre propre machine, en un clic.",
+			"about": [
+				"Jellyfin est un serveur multimédia gratuit et open source, que l’on fait tourner à la place de Plex ou d’Emby. Il range les films, séries et musiques que vous possédez dans des médiathèques, avec affiches, résumés et distribution tirés de métadonnées en ligne, et les diffuse vers un navigateur, des téléphones, des tablettes et des téléviseurs. Des applications officielles existent pour Android, iOS, Android TV et Fire TV, Roku, les téléviseurs LG et Samsung, Xbox et Kodi, et Jellyfin Media Player tourne sur ordinateur. Chaque personne a son propre compte, avec sa progression de lecture et son contrôle parental.",
+				"Vous auto-hébergez Jellyfin pour regarder vos propres médias de n’importe où, sans compte chez une entreprise ni abonnement : il n’a ni version premium, ni pistage, ni serveurs centraux. Ce template le configure avec l’administrateur créé à partir des champs et trois médiathèques, Movies, Shows et Music, sur les dossiers d’un volume de médias. Le revers, c’est le transcodage. Quand un appareil ne peut pas lire un fichier tel quel, Jellyfin le convertit à la volée, ici sur le CPU, ce qui est gourmand : les fichiers que vos appareils lisent directement, comme la vidéo H.264 en MP4, sont donc les plus légers."
+			],
+			"faq": [
+				{
+					"q": "Jellyfin est-il vraiment gratuit ?",
+					"a": "Oui. Jellyfin est un logiciel libre sous licence GNU GPL : son serveur et ses applications officielles ne coûtent rien, sans version premium ni fonctions payantes. Il est développé par des bénévoles."
+				},
+				{
+					"q": "Jellyfin ou Plex : quelle différence ?",
+					"a": "Les deux diffusent vos propres médias vers vos appareils. Le serveur de Plex n’est pas open source, ses comptes passent par plex.tv et, depuis avril 2025, regarder vos médias hors de chez vous demande un Plex Pass ou un Remote Watch Pass. Jellyfin est open source, ne demande aucun compte extérieur et ne fait rien payer."
+				},
+				{
+					"q": "Quels appareils sont compatibles avec Jellyfin ?",
+					"a": "Tout navigateur récent, ainsi que les applications officielles pour Android, iOS, Android TV et Fire TV, Roku, LG webOS, Samsung Tizen et Xbox. Jellyfin Media Player tourne sous Windows, macOS et Linux, et l’extension JellyCon intègre Jellyfin à Kodi."
+				},
+				{
+					"q": "Comment nommer mes films et séries pour Jellyfin ?",
+					"a": "Donnez à chaque film un dossier portant son titre et son année, comme Big Buck Bunny (2008), avec à l’intérieur la vidéo sous le même nom. Une série a son propre dossier, avec Season 01, Season 02 et ainsi de suite à l’intérieur, et des épisodes nommés comme Show Name S01E01.mkv. Jellyfin trouve alors les bonnes affiches et les bons résumés."
+				},
+				{
+					"q": "Jellyfin a-t-il besoin d’un GPU ?",
+					"a": "Non. Un GPU ne fait qu’accélérer le transcodage, la conversion dont un appareil a besoin quand il ne peut pas lire un fichier tel quel ; sans GPU, Jellyfin transcode sur le CPU. La vidéo HDR est le cas difficile : selon la documentation de Jellyfin, aucun CPU grand public récent n’en fait le mappage tonal en temps réel. Les fichiers que vos appareils lisent tels quels ne demandent aucun transcodage."
+				}
+			]
+		},
+		"pl": {
+			"description": "Serwer multimedialny, który streamuje twoje filmy, seriale i muzykę na każde urządzenie",
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: Jellyfin zostaje z nimi skonfigurowany, zanim zacznie odpowiadać, więc nikt inny nie trafi do jego kreatora konfiguracji. Filmy trafiają do /media/movies, seriale do /media/shows, a muzyka do /media/music w usłudze jellyfin: wgraj je w jej zakładce Pliki albo skopiuj katalogi przez SFTP. Pierwsze pliki w bibliotece pojawią się po kliknięciu Skanuj biblioteki w Kokpicie, a kolejne Jellyfin znajdzie sam. Aplikacje na telefony i telewizory łączą się z https://{host}.",
+			"sizing": "Jellyfin bez obciążenia zajmuje około 250 MB pamięci, a dysk to twoja biblioteka; transkodowanie wideo odbywa się na CPU i jest bardzo wymagające.",
+			"summary": "Jellyfin to darmowy serwer multimedialny na filmy, seriale i muzykę, alternatywa dla Plexa. Hostuj go u siebie, na własnej maszynie, jednym kliknięciem.",
+			"about": [
+				"Jellyfin to darmowy serwer multimedialny open source, który ludzie uruchamiają zamiast Plexa albo Emby. Układa filmy, seriale i muzykę, które masz, w biblioteki z plakatami, opisami i obsadą z metadanych pobieranych z sieci, a potem streamuje je do przeglądarki, na telefony, tablety i telewizory. Oficjalne aplikacje są na Androida, iOS, Android TV i Fire TV, Roku, telewizory LG i Samsung, Xboksa i Kodi, a Jellyfin Media Player działa na komputerach. Każda osoba dostaje własne konto, z własnym postępem oglądania i kontrolą rodzicielską.",
+				"Jellyfina hostuje się u siebie, żeby oglądać własne zbiory z każdego miejsca, bez konta w jakiejkolwiek firmie i bez abonamentu: nie ma płatnej wersji premium, śledzenia ani centralnych serwerów. Ten szablon konfiguruje go z administratorem podanym w polach formularza i trzema bibliotekami, Movies, Shows i Music, w katalogach wolumenu media. Haczyk to transkodowanie. Gdy urządzenie nie potrafi odtworzyć pliku takim, jaki jest, Jellyfin konwertuje go w locie, tutaj na CPU, co jest ciężką pracą, więc lekkie są pliki, które twoje urządzenia odtwarzają bezpośrednio, takie jak wideo H.264 w MP4."
+			],
+			"faq": [
+				{
+					"q": "Czy Jellyfin jest naprawdę darmowy?",
+					"a": "Tak. Jellyfin to wolne oprogramowanie na licencji GNU GPL, a jego serwer i oficjalne aplikacje nic nie kosztują: nie ma wersji premium ani płatnych funkcji. Tworzą go wolontariusze."
+				},
+				{
+					"q": "Jellyfin czy Plex: jaka jest różnica?",
+					"a": "Oba streamują twoje własne zbiory na twoje urządzenia. Serwer Plexa ma zamknięty kod, jego konta działają przez plex.tv, a od kwietnia 2025 oglądanie własnych zbiorów poza domem wymaga Plex Pass albo Remote Watch Pass. Jellyfin jest open source, nie wymaga zewnętrznego konta i za nic nie pobiera opłat."
+				},
+				{
+					"q": "Na jakich urządzeniach można oglądać Jellyfin?",
+					"a": "W każdej nowoczesnej przeglądarce i w oficjalnych aplikacjach na Androida, iOS, Android TV i Fire TV, Roku, LG webOS, Samsung Tizen i Xboksa. Jellyfin Media Player działa na Windowsie, macOS i Linuksie, a dodatek JellyCon wprowadza Jellyfina do Kodi."
+				},
+				{
+					"q": "Jak nazywać pliki filmów i seriali w Jellyfin?",
+					"a": "Każdy film dostaje katalog nazwany tytułem i rokiem, na przykład Big Buck Bunny (2008), a w nim wideo pod tą samą nazwą. Serial dostaje własny katalog, a w nim Season 01, Season 02 i tak dalej, z odcinkami nazwanymi jak Show Name S01E01.mkv. Wtedy Jellyfin znajduje właściwe plakaty i opisy."
+				},
+				{
+					"q": "Czy Jellyfin potrzebuje karty graficznej?",
+					"a": "Nie. GPU tylko przyspiesza transkodowanie, czyli konwersję potrzebną urządzeniu, które nie potrafi odtworzyć pliku takim, jaki jest; bez GPU Jellyfin transkoduje na CPU. Trudny przypadek to wideo HDR: według dokumentacji Jellyfina żaden współczesny procesor konsumencki nie wykonuje dla niego mapowania tonów w czasie rzeczywistym. Pliki, które twoje urządzenia odtwarzają bez zmian, w ogóle nie wymagają transkodowania."
+				}
+			]
+		},
+		"pt": {
+			"description": "Um servidor de mídia que faz streaming dos seus filmes, séries e músicas para qualquer dispositivo",
+			"notes": "Entre com o usuário e a senha que você informou: o Jellyfin é configurado com eles antes de responder, então ninguém mais vê o assistente de configuração dele. Os filmes vão em /media/movies, as séries em /media/shows e as músicas em /media/music, no serviço jellyfin: envie os arquivos pela aba Arquivos dele ou copie pastas por SFTP. Os primeiros arquivos de uma biblioteca aparecem depois que você clica em Rastrear Todas as Bibliotecas, no Painel; os próximos, o Jellyfin encontra sozinho. Os apps de celular e de TV se conectam a https://{host}.",
+			"sizing": "Jellyfin ocupa cerca de 250 MB de memória quando está ocioso, e o disco é a sua biblioteca; transcodificar um vídeo roda na CPU e pesa.",
+			"summary": "O Jellyfin é um servidor de mídia gratuito para seus filmes, séries e músicas, uma alternativa auto-hospedada ao Plex. Rode na sua máquina em um clique.",
+			"about": [
+				"O Jellyfin é um servidor de mídia gratuito e de código aberto que as pessoas rodam no lugar do Plex ou do Emby. Ele organiza os filmes, as séries e as músicas que você tem em bibliotecas, com pôsteres, sinopses e elenco tirados de metadados online, e faz streaming deles para o navegador, celulares, tablets e TVs. Há apps oficiais para Android, iOS, Android TV e Fire TV, Roku, TVs LG e Samsung, Xbox e Kodi, e o Jellyfin Media Player roda no computador. Cada pessoa tem sua própria conta, que guarda até onde ela assistiu e tem o próprio controle parental.",
+				"As pessoas auto-hospedam o Jellyfin para assistir à própria mídia de qualquer lugar, sem conta em empresa nenhuma e sem assinatura: ele não tem plano premium, rastreamento nem servidores centrais. Este template já o configura com o administrador que você informa nos campos e com três bibliotecas, Movies, Shows e Music, sobre as pastas de um volume de mídia. O porém é a transcodificação. Quando um dispositivo não consegue reproduzir um arquivo como ele está, o Jellyfin o converte na hora, aqui na CPU, o que pesa; por isso, os arquivos que seus dispositivos reproduzem direto, como vídeo H.264 em MP4, são os leves."
+			],
+			"faq": [
+				{
+					"q": "O Jellyfin é mesmo gratuito?",
+					"a": "Sim. O Jellyfin é software livre sob a GNU GPL, e o servidor e os apps oficiais dele não custam nada, sem plano premium nem recursos pagos. Ele é feito por voluntários."
+				},
+				{
+					"q": "Jellyfin ou Plex: qual é a diferença?",
+					"a": "Os dois fazem streaming da sua própria mídia para os seus dispositivos. O servidor do Plex tem código fechado, as contas dele passam pelo plex.tv e, desde abril de 2025, assistir à sua mídia fora de casa exige um Plex Pass ou um Remote Watch Pass. O Jellyfin é de código aberto, não precisa de conta externa e não cobra por nada."
+				},
+				{
+					"q": "Em quais dispositivos dá para usar o Jellyfin?",
+					"a": "Em qualquer navegador moderno e nos apps oficiais para Android, iOS, Android TV e Fire TV, Roku, LG webOS, Samsung Tizen e Xbox. O Jellyfin Media Player roda no Windows, no macOS e no Linux, e o add-on JellyCon leva o Jellyfin para o Kodi."
+				},
+				{
+					"q": "Como nomear filmes e séries para o Jellyfin?",
+					"a": "Dê a cada filme uma pasta com o título e o ano, como Big Buck Bunny (2008), e, dentro dela, o vídeo com o mesmo nome. Cada série ganha uma pasta própria com Season 01, Season 02 e assim por diante dentro, e episódios com nomes como Show Name S01E01.mkv. Assim o Jellyfin encontra os pôsteres e as sinopses certos."
+				},
+				{
+					"q": "O Jellyfin precisa de GPU?",
+					"a": "Não. A GPU só acelera a transcodificação, a conversão de que um dispositivo precisa quando não consegue reproduzir um arquivo como ele está; sem GPU, o Jellyfin transcodifica na CPU. O caso difícil é o vídeo HDR: a documentação do Jellyfin diz que nenhuma CPU doméstica atual faz o tone mapping dele em tempo real. Arquivos que seus dispositivos reproduzem como estão não precisam de transcodificação nenhuma."
+				}
+			]
+		},
+		"ru": {
+			"description": "Медиасервер, который стримит ваши фильмы, сериалы и музыку на любое устройство",
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: Jellyfin настроен с ними еще до того, как начинает отвечать, поэтому никто другой не попадет в его мастер настройки. Фильмы кладите в /media/movies, сериалы — в /media/shows, а музыку — в /media/music в сервисе jellyfin: загрузите их на его вкладке «Файлы» или скопируйте папки по SFTP. Первые файлы медиатеки появятся, когда вы нажмете «Сканировать все медиатеки» в разделе «Панель управления», а следующие Jellyfin найдет сам. Приложения на телефонах и телевизорах подключаются к https://{host}.",
+			"sizing": "Jellyfin в простое расходует около 250 MB памяти, а диск занимает ваша медиатека; транскодирование видео идет на CPU и сильно его нагружает.",
+			"summary": "Jellyfin — бесплатный медиасервер для ваших фильмов, сериалов и музыки, self-hosted альтернатива Plex. Запустите его на своей машине в один клик.",
+			"about": [
+				"Jellyfin — бесплатный медиасервер с открытым кодом, который запускают вместо Plex или Emby. Он раскладывает ваши фильмы, сериалы и музыку по медиатекам, подтягивая из интернета постеры, описания и актерский состав, и стримит их в браузер, на телефоны, планшеты и телевизоры. Есть официальные приложения для Android, iOS, Android TV и Fire TV, Roku, телевизоров LG и Samsung, Xbox и Kodi, а на компьютерах работает Jellyfin Media Player. У каждого человека свой аккаунт со своим прогрессом просмотра и родительским контролем.",
+				"Jellyfin хостят у себя, чтобы смотреть свои медиафайлы откуда угодно без аккаунта у какой-либо компании и без подписки: у него нет премиум-версии, слежки и центральных серверов. Этот шаблон настраивает его с администратором, которого вы указали в полях, и тремя медиатеками (Movies, Shows и Music) в папках тома media. Подвох — транскодирование. Когда устройство не может воспроизвести файл как есть, Jellyfin перекодирует его на лету, здесь на CPU, а это тяжелая нагрузка, поэтому легкими остаются файлы, которые ваши устройства воспроизводят напрямую, например видео H.264 в MP4."
+			],
+			"faq": [
+				{
+					"q": "Jellyfin действительно бесплатный?",
+					"a": "Да. Jellyfin — свободное ПО под лицензией GNU GPL: его сервер и официальные приложения ничего не стоят, а премиум-версии и платных функций нет. Его разрабатывают волонтеры."
+				},
+				{
+					"q": "Jellyfin или Plex: в чем разница?",
+					"a": "И Jellyfin, и Plex стримят ваши собственные медиафайлы на ваши устройства. У Plex сервер с закрытым кодом, аккаунты работают через plex.tv, а с апреля 2025 года, чтобы смотреть свои медиафайлы вне дома, нужен Plex Pass или Remote Watch Pass. У Jellyfin открытый код, сторонний аккаунт ему не нужен, и он ни за что не берет денег."
+				},
+				{
+					"q": "Какие устройства поддерживает Jellyfin?",
+					"a": "Любой современный браузер, а также официальные приложения для Android, iOS, Android TV и Fire TV, Roku, LG webOS, Samsung Tizen и Xbox. Jellyfin Media Player работает на Windows, macOS и Linux, а дополнение JellyCon встраивает Jellyfin в Kodi."
+				},
+				{
+					"q": "Как называть фильмы и сериалы для Jellyfin?",
+					"a": "Положите каждый фильм в папку с его названием и годом, например Big Buck Bunny (2008), а видео внутри назовите так же. Для сериала заведите отдельную папку, внутри нее Season 01, Season 02 и так далее, а серии называйте вроде Show Name S01E01.mkv. Тогда Jellyfin найдет правильные постеры и описания."
+				},
+				{
+					"q": "Нужна ли для Jellyfin видеокарта?",
+					"a": "Нет. Видеокарта (GPU) только ускоряет транскодирование, то есть перекодирование, которое нужно устройству, когда оно не может воспроизвести файл как есть; без нее Jellyfin транскодирует на CPU. Сложный случай — HDR-видео: в документации Jellyfin сказано, что ни один современный потребительский CPU не делает для него тон-маппинг в реальном времени. Файлы, которые ваши устройства воспроизводят как есть, транскодировать вообще не нужно."
+				}
+			]
+		},
+		"uk": {
+			"description": "Медіасервер, що стрімить ваші фільми, серіали й музику на будь-який пристрій",
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: Jellyfin налаштовується з ними ще до того, як почне відповідати, тож його майстер налаштування більше нікому не дістанеться. Фільми лежать у /media/movies, серіали — у /media/shows, а музика — у /media/music у сервісі jellyfin: завантажте їх на його вкладці «Файли» або скопіюйте папки через SFTP. Перші файли медіатеки з’являються, коли ви натиснете «Сканувати всі медіатеки» в «Панелі керування»; наступні Jellyfin знаходить сам. Застосунки на телефонах і телевізорах підключаються до https://{host}.",
+			"sizing": "Без навантаження Jellyfin займає близько 250 MB пам’яті, а диск — це ваша медіатека; транскодування відео виконується на CPU й дуже його навантажує.",
+			"summary": "Jellyfin — безкоштовний медіасервер для ваших фільмів, серіалів і музики, self-hosted альтернатива Plex. Запустіть його на власній машині в один клік.",
+			"about": [
+				"Jellyfin — безкоштовний медіасервер із відкритим кодом, який запускають замість Plex або Emby. Він розкладає фільми, серіали й музику, які у вас є, по медіатеках із постерами, описами та акторським складом з онлайн-метаданих і стрімить їх у браузер, на телефони, планшети й телевізори. Офіційні застосунки є для Android, iOS, Android TV і Fire TV, Roku, телевізорів LG і Samsung, Xbox і Kodi, а на комп’ютерах працює Jellyfin Media Player. Кожна людина отримує власний акаунт зі своїм прогресом перегляду й батьківським контролем.",
+				"Jellyfin хостять у себе, щоб дивитися власні медіа звідусіль без акаунта в жодній компанії й без передплати: у нього немає ні преміум-версії, ні стеження, ні центральних серверів. Цей шаблон налаштовує його з адміністратором, указаним у полях, і трьома медіатеками, Movies, Shows і Music, у папках тому media. Підводний камінь — транскодування. Коли пристрій не може відтворити файл як є, Jellyfin перетворює його на льоту, тут — на CPU, а це важка робота, тож легкими будуть файли, які ваші пристрої відтворюють напряму, як-от відео H.264 в MP4."
+			],
+			"faq": [
+				{
+					"q": "Jellyfin справді безкоштовний?",
+					"a": "Так. Jellyfin — вільне програмне забезпечення за ліцензією GNU GPL, а його сервер і офіційні застосунки нічого не коштують: немає ні преміум-версії, ні платних функцій. Його розробляють волонтери."
+				},
+				{
+					"q": "Jellyfin чи Plex: у чому різниця?",
+					"a": "І Jellyfin, і Plex стрімлять ваші власні медіа на ваші пристрої. Сервер Plex має закритий код, його акаунти працюють через plex.tv, а з квітня 2025 року, щоб дивитися свої медіа поза домом, потрібен Plex Pass або Remote Watch Pass. Jellyfin має відкритий код, не потребує стороннього акаунта й ні за що не бере грошей."
+				},
+				{
+					"q": "На яких пристроях можна дивитися Jellyfin?",
+					"a": "Jellyfin можна дивитися в будь-якому сучасному браузері та в офіційних застосунках для Android, iOS, Android TV і Fire TV, Roku, LG webOS, Samsung Tizen і Xbox. Jellyfin Media Player працює на Windows, macOS і Linux, а доповнення JellyCon додає Jellyfin у Kodi."
+				},
+				{
+					"q": "Як правильно називати фільми й серіали для Jellyfin?",
+					"a": "Дайте кожному фільму папку з назвою та роком, як-от Big Buck Bunny (2008), а відео в ній назвіть так само. Серіал отримує власну папку, а в ній — Season 01, Season 02 і так далі, серії ж називаються на кшталт Show Name S01E01.mkv. Тоді Jellyfin знаходить правильні постери й описи."
+				},
+				{
+					"q": "Чи потрібна відеокарта для Jellyfin?",
+					"a": "Ні. Відеокарта (GPU) лише пришвидшує транскодування — перетворення, яке потрібне пристрою, що не може відтворити файл як є; без неї Jellyfin транскодує на CPU. Складний випадок — відео HDR: за документацією Jellyfin, жоден сучасний споживчий CPU не виконує для нього тональне відображення (tone mapping) у реальному часі. Файли, які ваші пристрої відтворюють як є, транскодування не потребують узагалі."
+				}
+			]
+		}
+	}
+}
