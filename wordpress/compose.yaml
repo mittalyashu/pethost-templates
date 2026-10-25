@@ -12,11 +12,40 @@ services:
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
     # PHP's own upload limit is 2 MB, too little for a photo or a theme, and the image has no
     # variable for it: the limit is written, then the image's own entrypoint starts as it would.
+    #
+    # The image has no WP-CLI either. An image of our own would have to follow each release of
+    # WordPress's, and one built at the deploy would fail it whenever GitHub does. So the release
+    # named here is downloaded at the container's start, beside PHP and outside the site's files,
+    # and kept only if it has the SHA-512 WP-CLI published for it. A restart downloads nothing,
+    # and a failed download leaves `wp` out until the next start: WordPress starts all the same.
+    #
+    # `wp` runs WP-CLI as www-data, who owns the site's files, so that a plugin it installs is
+    # one WordPress can update, with no --allow-root. runuser keeps the environment, which
+    # wp-config.php reads the database's address and password from, as a login with `su -`
+    # would not. WP-CLI keeps its cache in its user's home, /var/www, which is root's: its
+    # folder there is made www-data's.
     entrypoint:
       - sh
       - -c
       - |
         printf 'upload_max_filesize = 64M\npost_max_size = 64M\n' > /usr/local/etc/php/conf.d/uploads.ini
+        phar=/usr/local/lib/wp-cli.phar
+        sha512=be928f6b8ca1e8dfb9d2f4b75a13aa4aee0896f8a9a0a1c45cd5d2c98605e6172e6d014dda2e27f88c98befc16c040cbb2bd1bfa121510ea5cdf5f6a30fe8832
+        if ! echo "$$sha512  $$phar" | sha512sum -c --status 2>/dev/null; then
+          rm -f $$phar /usr/local/bin/wp
+          curl -fsSL --connect-timeout 10 --max-time 60 -o $$phar.part https://github.com/wp-cli/wp-cli/releases/download/v2.12.0/wp-cli-2.12.0.phar
+          echo "$$sha512  $$phar.part" | sha512sum -c --status 2>/dev/null && mv $$phar.part $$phar
+          rm -f $$phar.part
+        fi
+        if [ -f $$phar ]; then
+          printf '%s\n' '#!/bin/sh' \
+            '[ "$$(id -u)" = 0 ] && exec runuser -u www-data -- "$$0" "$$@"' \
+            'exec php /usr/local/lib/wp-cli.phar --path=/var/www/html "$$@"' > /usr/local/bin/wp
+          chmod 755 /usr/local/bin/wp
+          install -d -o www-data -g www-data /var/www/.wp-cli
+        else
+          echo 'WP-CLI 2.12.0 could not be downloaded and checked: wp is left out until the next start' >&2
+        fi
         exec docker-entrypoint.sh apache2-foreground
     volumes:
       - wordpress:/var/www/html

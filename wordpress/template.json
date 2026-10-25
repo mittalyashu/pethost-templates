@@ -30,7 +30,8 @@
 			"summary": "WordPress is the open-source website builder and blogging platform people run instead of Wix. Self-host it with Docker in one click.",
 			"about": [
 				"WordPress is an open-source website builder and blogging platform that people run in place of Wix. Posts and pages are built from blocks in the block editor. With a block theme, the Site Editor reworks the header, the footer and every template from the same blocks, without code. Plugins add what the core leaves out, such as a WooCommerce store. Each user gets a role, from Administrator and Editor down to Contributor, who can write posts but not publish them.",
-				"People self-host WordPress for the freedom its GPL license gives: install any theme or plugin, change its code, and keep the files and the database on a server of their own. It suits a blog, a portfolio, a company site or a small shop. The catch: the official Docker image cannot send email, so password resets and notifications need an SMTP plugin and a mail service."
+				"People self-host WordPress for the freedom its GPL license gives: install any theme or plugin, change its code, and keep the files and the database in their own hands. It suits a blog, a portfolio, a company site or a small shop. The catch: the official Docker image cannot send email, so password resets and notifications need an SMTP plugin and a mail service.",
+				"This template runs the official WordPress image with MariaDB and adds WP-CLI, WordPress's command line: the wp command is ready in the wordpress service's shell, over SSH or in the panel's web terminal. It runs as www-data, who owns the site's files, so wp plugin install or wp user list need no --allow-root and leave no file root owns."
 			],
 			"faq": [
 				{
@@ -52,6 +53,10 @@
 				{
 					"q": "How do I increase the WordPress upload limit in Docker?",
 					"a": "Put upload_max_filesize and post_max_size in an .ini file in PHP's conf.d folder: the official image keeps PHP's 2 MB default and has no variable for it. This template already sets both to 64 MB."
+				},
+				{
+					"q": "How do I use WP-CLI with WordPress in Docker?",
+					"a": "The official WordPress image has no WP-CLI, so this template adds it. Open a shell in the wordpress service, over SSH or in the panel's web terminal, and run wp, such as wp plugin list: it runs as www-data against the site's database, with no --allow-root. The image has no MySQL client, so wp db export and wp db import do not run there: mariadb-dump in the db service's shell makes a dump."
 				}
 			]
 		},
@@ -62,7 +67,8 @@
 			"summary": "WordPress mit Docker in einem Klick selbst hosten: der Open-Source-Baukasten für Websites und Blogs, den viele statt Wix betreiben.",
 			"about": [
 				"WordPress ist ein Open-Source-Baukasten für Websites und Blogs, den viele statt Wix betreiben. Beiträge und Seiten entstehen im Block-Editor aus Blöcken. Mit einem Block-Theme gestaltet der Site Editor Header, Footer und jedes Template aus denselben Blöcken um, ganz ohne Code. Plugins ergänzen, was der Kern weglässt, etwa einen WooCommerce-Shop. Jedes Konto bekommt eine Rolle, von Administrator und Editor bis hin zum Contributor, der Beiträge schreiben, aber nicht veröffentlichen darf.",
-				"Viele hosten WordPress wegen der Freiheit, die die GPL-Lizenz gibt, selbst: ein beliebiges Theme oder Plugin installieren, den Code ändern und die Dateien und die Datenbank auf einem eigenen Server behalten. Es passt zu einem Blog, einem Portfolio, einer Firmenwebsite oder einem kleinen Shop. Der Haken: Das offizielle Docker-Image kann keine E-Mails senden, für Passwort-Resets und Benachrichtigungen brauchst du also ein SMTP-Plugin und einen Mail-Service."
+				"Viele hosten WordPress wegen der Freiheit, die die GPL-Lizenz gibt, selbst: ein beliebiges Theme oder Plugin installieren, den Code ändern und die Dateien und die Datenbank selbst in der Hand behalten. Es passt zu einem Blog, einem Portfolio, einer Firmenwebsite oder einem kleinen Shop. Der Haken: Das offizielle Docker-Image kann keine E-Mails senden, für Passwort-Resets und Benachrichtigungen brauchst du also ein SMTP-Plugin und einen Mail-Service.",
+				"Diese Vorlage betreibt das offizielle WordPress-Image mit MariaDB und bringt WP-CLI mit, die Kommandozeile von WordPress: Der Befehl wp ist in der Shell des Service wordpress gleich da, per SSH oder im Web-Terminal des Panels. Er läuft als www-data, dem die Dateien der Website gehören, deshalb brauchen wp plugin install oder wp user list kein --allow-root und hinterlassen keine Datei, die root gehört."
 			],
 			"faq": [
 				{
@@ -84,6 +90,10 @@
 				{
 					"q": "Wie erhöhe ich das Upload-Limit von WordPress in Docker?",
 					"a": "Trag upload_max_filesize und post_max_size in eine .ini-Datei im conf.d-Ordner von PHP ein: Das offizielle Image behält den PHP-Standard von 2 MB und hat dafür keine Variable. Diese Vorlage setzt beides schon auf 64 MB."
+				},
+				{
+					"q": "Wie nutze ich WP-CLI mit WordPress in Docker?",
+					"a": "Im offiziellen WordPress-Image fehlt WP-CLI, deshalb bringt diese Vorlage es mit. Öffne eine Shell im Service wordpress, per SSH oder im Web-Terminal des Panels, und führ wp aus, etwa wp plugin list: Der Befehl läuft als www-data mit der Datenbank der Website, ohne --allow-root. Im Image fehlt ein MySQL-Client, deshalb laufen wp db export und wp db import dort nicht: Einen Dump macht mariadb-dump in der Shell des Service db."
 				}
 			]
 		},
@@ -94,7 +104,8 @@
 			"summary": "Autoaloja WordPress con Docker en un clic: el creador de sitios web y blogs de código abierto que se usa en lugar de Wix.",
 			"about": [
 				"WordPress es un creador de sitios web de código abierto y una plataforma de blogs que mucha gente usa en lugar de Wix. Las entradas y las páginas se arman con bloques en el editor de bloques. Con un tema de bloques, el Site Editor rehace el encabezado, el pie de página y cada plantilla con esos mismos bloques, sin código. Los plugins agregan lo que el núcleo no trae, como una tienda con WooCommerce. Cada usuario tiene un rol, desde Administrator y Editor hasta Contributor, que puede escribir entradas pero no publicarlas.",
-				"Quienes autoalojan WordPress lo hacen por la libertad que da su licencia GPL: instalar cualquier tema o plugin, cambiar su código y mantener los archivos y la base de datos en un servidor propio. Sirve para un blog, un portafolio, el sitio de una empresa o una tienda pequeña. El inconveniente: la imagen oficial de Docker no puede enviar correos, así que los restablecimientos de contraseña y las notificaciones necesitan un plugin SMTP y un servicio de correo."
+				"Quienes autoalojan WordPress lo hacen por la libertad que da su licencia GPL: instalar cualquier tema o plugin, cambiar su código y mantener los archivos y la base de datos bajo su control. Sirve para un blog, un portafolio, el sitio de una empresa o una tienda pequeña. El inconveniente: la imagen oficial de Docker no puede enviar correos, así que los restablecimientos de contraseña y las notificaciones necesitan un plugin SMTP y un servicio de correo.",
+				"Esta plantilla usa la imagen oficial de WordPress con MariaDB y le agrega WP-CLI, la línea de comandos de WordPress: el comando wp ya está en el shell del servicio wordpress, al que llegas desde el panel, con su Terminal web, o por SSH. Se ejecuta como www-data, el dueño de los archivos del sitio, así que wp plugin install o wp user list no necesitan --allow-root ni dejan archivos de root."
 			],
 			"faq": [
 				{
@@ -116,6 +127,10 @@
 				{
 					"q": "¿Cómo aumento el límite de subida de archivos de WordPress en Docker?",
 					"a": "Pon upload_max_filesize y post_max_size en un archivo .ini de la carpeta conf.d de PHP: la imagen oficial conserva el valor predeterminado de PHP, 2 MB, y no tiene una variable para esto. Esta plantilla ya fija ambos en 64 MB."
+				},
+				{
+					"q": "¿Cómo uso WP-CLI con WordPress en Docker?",
+					"a": "La imagen oficial de WordPress no trae WP-CLI, así que esta plantilla se lo agrega. Abre un shell en el servicio wordpress, desde el panel con su Terminal web o por SSH, y ejecuta wp, por ejemplo wp plugin list: se ejecuta como www-data con la base de datos del sitio, sin --allow-root. La imagen no tiene cliente de MySQL, así que wp db export y wp db import no funcionan ahí: un dump se hace con mariadb-dump en el shell del servicio db."
 				}
 			]
 		},
@@ -126,7 +141,8 @@
 			"summary": "Auto-hébergez WordPress avec Docker en un clic : le créateur de sites et de blogs open source que beaucoup utilisent à la place de Wix.",
 			"about": [
 				"WordPress est un créateur de sites web open source et une plateforme de blog que beaucoup utilisent à la place de Wix. Les articles et les pages se composent de blocs dans l’éditeur de blocs. Avec un thème de blocs, le Site Editor refait l’en-tête, le pied de page et chaque modèle à partir des mêmes blocs, sans code. Les plugins ajoutent ce que le noyau laisse de côté, comme une boutique WooCommerce. Chaque utilisateur reçoit un rôle, d’Administrator et d’Editor jusqu’à Contributor, qui peut écrire des articles mais pas les publier.",
-				"Vous auto-hébergez WordPress pour la liberté qu’offre sa licence GPL : vous installez n’importe quel thème ou plugin, vous modifiez son code et vous gardez les fichiers et la base de données sur un serveur à vous. Il convient à un blog, un portfolio, un site d’entreprise ou une petite boutique. Le revers : l’image Docker officielle ne sait pas envoyer d’e-mails, donc les réinitialisations de mot de passe et les notifications demandent un plugin SMTP et un service de messagerie."
+				"Vous auto-hébergez WordPress pour la liberté qu’offre sa licence GPL : vous installez n’importe quel thème ou plugin, vous modifiez son code et vous gardez la main sur les fichiers et la base de données. Il convient à un blog, un portfolio, un site d’entreprise ou une petite boutique. Le revers : l’image Docker officielle ne sait pas envoyer d’e-mails, donc les réinitialisations de mot de passe et les notifications demandent un plugin SMTP et un service de messagerie.",
+				"Ce template fait tourner l’image officielle de WordPress avec MariaDB et y ajoute WP-CLI, la ligne de commande de WordPress : la commande wp est prête dans le shell du service wordpress, en SSH ou depuis le terminal web de la console. Elle tourne en tant que www-data, à qui appartiennent les fichiers du site : wp plugin install ou wp user list n’ont donc pas besoin de --allow-root et ne laissent aucun fichier à root."
 			],
 			"faq": [
 				{
@@ -148,6 +164,10 @@
 				{
 					"q": "Comment augmenter la limite d’envoi de fichiers de WordPress dans Docker ?",
 					"a": "Placez upload_max_filesize et post_max_size dans un fichier .ini du dossier conf.d de PHP : l’image officielle garde la valeur par défaut de PHP, 2 MB, et n’a pas de variable pour cela. Ce template définit déjà les deux à 64 MB."
+				},
+				{
+					"q": "Comment utiliser WP-CLI avec WordPress dans Docker ?",
+					"a": "L’image officielle de WordPress n’a pas WP-CLI, ce template l’ajoute donc. Ouvrez un shell dans le service wordpress, en SSH ou depuis le terminal web de la console, et lancez wp, par exemple wp plugin list : la commande tourne en tant que www-data, avec la base de données du site, sans --allow-root. L’image n’a pas de client MySQL, donc wp db export et wp db import n’y fonctionnent pas : un dump se fait avec mariadb-dump dans le shell du service db."
 				}
 			]
 		},
@@ -158,7 +178,8 @@
 			"summary": "Hostuj WordPress u siebie w Dockerze jednym kliknięciem: kreator stron i blogów open source, którego używa się zamiast Wix.",
 			"about": [
 				"WordPress to kreator stron i platforma blogowa open source, której ludzie używają zamiast Wix. Wpisy i strony składa się z bloków w edytorze blokowym. W motywie blokowym Site Editor przebudowuje nagłówek, stopkę i każdy szablon z tych samych bloków, bez kodu. Pluginy dodają to, czego rdzeń nie ma, na przykład sklep WooCommerce. Każdy użytkownik ma rolę, od Administrator i Editor po Contributor, który może pisać wpisy, ale ich nie publikować.",
-				"WordPress hostuje się u siebie ze względu na wolność, jaką daje licencja GPL: można zainstalować dowolny motyw lub plugin, zmienić jego kod i trzymać pliki oraz bazę danych na własnym serwerze. Pasuje do bloga, portfolio, strony firmowej albo małego sklepu. Haczyk: oficjalny obraz Dockera nie wysyła e-maili, więc resetowanie haseł i powiadomienia wymagają pluginu SMTP i usługi pocztowej."
+				"WordPress hostuje się u siebie ze względu na wolność, jaką daje licencja GPL: można zainstalować dowolny motyw lub plugin, zmienić jego kod i trzymać pliki oraz bazę danych pod własną kontrolą. Pasuje do bloga, portfolio, strony firmowej albo małego sklepu. Haczyk: oficjalny obraz Dockera nie wysyła e-maili, więc resetowanie haseł i powiadomienia wymagają pluginu SMTP i usługi pocztowej.",
+				"Ten szablon uruchamia oficjalny obraz WordPressa z MariaDB i dodaje WP-CLI, wiersz poleceń WordPressa: polecenie wp jest od razu dostępne w powłoce usługi wordpress, przez SSH albo w terminalu webowym w panelu. Działa jako www-data, właściciel plików strony, więc wp plugin install czy wp user list nie potrzebują --allow-root i nie zostawiają żadnego pliku należącego do roota."
 			],
 			"faq": [
 				{
@@ -180,6 +201,10 @@
 				{
 					"q": "Jak zwiększyć limit wgrywania plików w WordPressie w Dockerze?",
 					"a": "Wpisz upload_max_filesize i post_max_size do pliku .ini w katalogu conf.d PHP: oficjalny obraz zostawia domyślne 2 MB z PHP i nie ma na to zmiennej. Ten szablon ustawia już oba na 64 MB."
+				},
+				{
+					"q": "Jak używać WP-CLI z WordPressem w Dockerze?",
+					"a": "Oficjalny obraz WordPressa nie ma WP-CLI, więc ten szablon je dodaje. Otwórz powłokę w usłudze wordpress, przez SSH albo w terminalu webowym w panelu, i uruchom wp, na przykład wp plugin list: polecenie działa jako www-data na bazie danych strony, bez --allow-root. W obrazie nie ma klienta MySQL, więc wp db export i wp db import tam nie działają: dump zrobisz poleceniem mariadb-dump w powłoce usługi db."
 				}
 			]
 		},
@@ -190,7 +215,8 @@
 			"summary": "Hospede o WordPress por conta própria com Docker em um clique: o criador de sites e blogs de código aberto que muita gente usa no lugar do Wix.",
 			"about": [
 				"O WordPress é um criador de sites e uma plataforma de blogs de código aberto que muita gente usa no lugar do Wix. Posts e páginas são montados com blocos no editor de blocos. Com um tema de blocos, o Site Editor refaz o cabeçalho, o rodapé e cada template a partir dos mesmos blocos, sem código. Plugins acrescentam o que o core não traz, como uma loja com WooCommerce. Cada usuário recebe uma função, de Administrator e Editor até Contributor, que pode escrever posts, mas não publicá-los.",
-				"Você hospeda o WordPress por conta própria pela liberdade que a licença GPL dá: instalar qualquer tema ou plugin, alterar o código e manter os arquivos e o banco de dados em um servidor seu. Serve para um blog, um portfólio, um site de empresa ou uma loja pequena. O porém: a imagem oficial do Docker não consegue enviar e-mails, então redefinições de senha e notificações precisam de um plugin SMTP e de um serviço de e-mail."
+				"Você hospeda o WordPress por conta própria pela liberdade que a licença GPL dá: instalar qualquer tema ou plugin, alterar o código e manter os arquivos e o banco de dados sob o seu controle. Serve para um blog, um portfólio, um site de empresa ou uma loja pequena. O porém: a imagem oficial do Docker não consegue enviar e-mails, então redefinições de senha e notificações precisam de um plugin SMTP e de um serviço de e-mail.",
+				"Este template roda a imagem oficial do WordPress com o MariaDB e acrescenta o WP-CLI, a linha de comando do WordPress: o comando wp já está no shell do serviço wordpress, pelo terminal web do painel ou por SSH. Ele roda como www-data, o dono dos arquivos do site, então wp plugin install ou wp user list não precisam de --allow-root e não deixam nenhum arquivo do root."
 			],
 			"faq": [
 				{
@@ -212,6 +238,10 @@
 				{
 					"q": "Como aumentar o limite de upload do WordPress no Docker?",
 					"a": "Coloque upload_max_filesize e post_max_size em um arquivo .ini na pasta conf.d do PHP: a imagem oficial mantém o padrão de 2 MB do PHP e não tem uma variável para isso. Este template já define os dois como 64 MB."
+				},
+				{
+					"q": "Como usar o WP-CLI com o WordPress no Docker?",
+					"a": "A imagem oficial do WordPress não traz o WP-CLI, então este template o acrescenta. Abra um shell no serviço wordpress, pelo terminal web do painel ou por SSH, e rode wp, por exemplo wp plugin list: ele roda como www-data com o banco de dados do site, sem --allow-root. A imagem não tem cliente MySQL, então wp db export e wp db import não rodam ali: um dump sai do mariadb-dump no shell do serviço db."
 				}
 			]
 		},
@@ -222,7 +252,8 @@
 			"summary": "Self-hosted WordPress через Docker в один клик: open source конструктор сайтов и блогов, которым пользуются вместо Wix.",
 			"about": [
 				"WordPress — это open source конструктор сайтов и платформа для блогов, которой пользуются вместо Wix. Записи и страницы собираются из блоков в блочном редакторе. С блочной темой Site Editor переделывает шапку, подвал и каждый шаблон из тех же блоков, без кода. Плагины добавляют то, чего нет в ядре, например магазин на WooCommerce. У каждого пользователя есть роль, от Administrator и Editor до Contributor, который может писать записи, но не публиковать их.",
-				"WordPress хостят у себя ради свободы, которую дает лицензия GPL: ставить любые темы и плагины, менять код и держать файлы и базу данных на собственном сервере. Он подходит для блога, портфолио, сайта компании или небольшого магазина. Но есть нюанс: официальный образ Docker не умеет отправлять почту, поэтому сбросу пароля и уведомлениям нужны SMTP-плагин и почтовый сервис."
+				"WordPress хостят у себя ради свободы, которую дает лицензия GPL: ставить любые темы и плагины, менять код и держать файлы и базу данных под своим контролем. Он подходит для блога, портфолио, сайта компании или небольшого магазина. Но есть нюанс: официальный образ Docker не умеет отправлять почту, поэтому сбросу пароля и уведомлениям нужны SMTP-плагин и почтовый сервис.",
+				"Этот шаблон запускает официальный образ WordPress с MariaDB и добавляет WP-CLI, командную строку WordPress: команда wp сразу доступна в шелле сервиса wordpress, из веб-терминала панели или по SSH. Она работает от имени www-data, владельца файлов сайта, поэтому wp plugin install или wp user list не требуют --allow-root и не оставляют файлов, принадлежащих root."
 			],
 			"faq": [
 				{
@@ -244,6 +275,10 @@
 				{
 					"q": "Как увеличить лимит загрузки файлов в WordPress в Docker?",
 					"a": "Пропишите upload_max_filesize и post_max_size в .ini-файле в папке conf.d у PHP: официальный образ оставляет значение PHP по умолчанию, 2 MB, и переменной для этого у него нет. В этом шаблоне оба уже заданы равными 64 MB."
+				},
+				{
+					"q": "Как пользоваться WP-CLI с WordPress в Docker?",
+					"a": "В официальном образе WordPress нет WP-CLI, поэтому этот шаблон его добавляет. Откройте шелл в сервисе wordpress, из веб-терминала панели или по SSH, и запустите wp, например wp plugin list: команда работает от имени www-data с базой данных сайта, без --allow-root. В образе нет клиента MySQL, поэтому wp db export и wp db import там не работают: дамп делает mariadb-dump в шелле сервиса db."
 				}
 			]
 		},
@@ -254,7 +289,8 @@
 			"summary": "Self-hosted WordPress через Docker в один клік: конструктор сайтів і блогів з відкритим кодом, яким користуються замість Wix.",
 			"about": [
 				"WordPress — це конструктор сайтів і платформа для блогів з відкритим кодом, якою користуються замість Wix. Записи й сторінки збираються з блоків у блоковому редакторі. З блоковою темою Site Editor переробляє шапку, підвал і кожен шаблон із тих самих блоків, без коду. Плагіни додають те, чого немає в ядрі, наприклад магазин на WooCommerce. Кожен користувач має роль, від Administrator і Editor до Contributor, який може писати записи, але не публікувати їх.",
-				"WordPress хостять у себе заради свободи, яку дає ліцензія GPL: ставити будь-які теми й плагіни, змінювати код і тримати файли та базу даних на власному сервері. Він підходить для блогу, портфоліо, сайту компанії чи невеликого магазину. Але є нюанс: офіційний образ Docker не вміє надсилати пошту, тому скиданню пароля й сповіщенням потрібні SMTP-плагін і поштовий сервіс."
+				"WordPress хостять у себе заради свободи, яку дає ліцензія GPL: ставити будь-які теми й плагіни, змінювати код і тримати файли та базу даних під власним контролем. Він підходить для блогу, портфоліо, сайту компанії чи невеликого магазину. Але є нюанс: офіційний образ Docker не вміє надсилати пошту, тому скиданню пароля й сповіщенням потрібні SMTP-плагін і поштовий сервіс.",
+				"Цей шаблон запускає офіційний образ WordPress з MariaDB і додає WP-CLI, командний рядок WordPress: команда wp одразу доступна в оболонці сервісу wordpress, з вебтерміналу панелі або через SSH. Вона працює від імені www-data, власника файлів сайту, тому wp plugin install чи wp user list не потребують --allow-root і не лишають файлів, що належать root."
 			],
 			"faq": [
 				{
@@ -276,6 +312,10 @@
 				{
 					"q": "Як збільшити ліміт завантаження файлів у WordPress у Docker?",
 					"a": "Пропишіть upload_max_filesize і post_max_size у .ini-файлі в каталозі conf.d PHP: офіційний образ лишає типове значення PHP, 2 MB, і змінної для цього в нього немає. У цьому шаблоні обидва вже задано 64 MB."
+				},
+				{
+					"q": "Як користуватися WP-CLI з WordPress у Docker?",
+					"a": "В офіційному образі WordPress немає WP-CLI, тому цей шаблон його додає. Відкрийте оболонку в сервісі wordpress, з вебтерміналу панелі або через SSH, і запустіть wp, наприклад wp plugin list: команда працює від імені www-data з базою даних сайту, без --allow-root. В образі немає клієнта MySQL, тому wp db export і wp db import там не працюють: дамп робить mariadb-dump в оболонці сервісу db."
 				}
 			]
 		}
