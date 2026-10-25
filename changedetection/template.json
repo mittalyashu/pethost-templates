@@ -1,0 +1,290 @@
+{
+	"name": "changedetection.io",
+	"emoji": "🔔",
+	"category": "monitoring",
+	"alternatives": [
+		"Visualping",
+		"Distill.io"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "changedetection",
+		"port": 5000
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "password"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Watches web pages and tells you when they change: prices, restocks, news",
+			"notes": "Sign in with the password you gave: changedetection.io asks for it from its first start. Paste a page’s address into the box at the top and press Watch; open Edit to choose how often it is checked and which part of the page counts. Add where alerts go (email, Telegram, Discord, Slack, ntfy and more, as Apprise URLs) under Settings → Notifications. The password is ADMIN_PASSWORD in the project’s .env: change it there.",
+			"sizing": "changedetection.io is light: about 60 MB of memory, and each watch keeps a compressed copy of the page each time it changes, so its data grows by kilobytes a check that finds a change.",
+			"summary": "Self-host changedetection.io, the open-source website change monitor: price drops, restocks and page edits, with alerts to email, Telegram or Discord.",
+			"about": [
+				"changedetection.io watches web pages and tells you when they change. People use it for price drops and products back in stock, job openings, government notices, release notes and documents that change without a word, in place of Visualping or Distill.io. Each watch checks its page on a schedule, every three hours unless you set another, and shows what changed word by word, line by line or character by character.",
+				"It can watch only the part of a page that matters, picked by a CSS selector, XPath or, for JSON, JSONPath or jq, and trigger on a text, ignore another, or follow a product’s price and stock. It reads PDF files too. Alerts go to more than 85 services through Apprise, such as email, Telegram, Discord, Slack and ntfy, and every change is also in an RSS feed.",
+				"This template runs changedetection.io with its plain, fast fetcher, its data in a volume and the password you give from the first start, so its page is never open to anyone. It fetches pages as they are sent: the Visual Selector, Browser Steps and pages whose text is drawn by JavaScript need a Chrome fetcher, which the template leaves out to stay light."
+			],
+			"faq": [
+				{
+					"q": "Is changedetection.io free?",
+					"a": "Yes. changedetection.io is open source under the Apache 2.0 license, and running it yourself costs only the server. Its makers also sell a hosted version for $8.99 a month, with Chrome and proxies included."
+				},
+				{
+					"q": "How do I get alerts on Telegram, Discord or email?",
+					"a": "Add a notification URL under Settings → Notifications: changedetection.io sends through Apprise, which knows more than 85 services, written as URLs such as tgram://, discord:// or mailto://. A watch can have its own URLs too, in its Notifications tab."
+				},
+				{
+					"q": "Can changedetection.io track prices and restocks?",
+					"a": "Yes. Choose Re-stock & Price detection when you add a product page: it reads the price and stock from the page’s data and alerts you when the price goes under or over a limit, changes by a share you set, or the product is back in stock."
+				},
+				{
+					"q": "Why does a page come through empty or without its content?",
+					"a": "Some pages draw their text with JavaScript after they load, and this template fetches pages as the server sends them. Watch the site’s RSS feed, JSON API or a page that holds the text instead, or add a Chrome fetcher such as sockpuppetbrowser to the compose file and point PLAYWRIGHT_DRIVER_URL at it."
+				},
+				{
+					"q": "How do I watch only one part of a page?",
+					"a": "In the watch’s Edit page, under Filters & Triggers, give a CSS selector or an XPath for the part you care about, and lines of text to ignore. Only changes inside it count, so a clock or an advert elsewhere on the page sets nothing off."
+				}
+			]
+		},
+		"de": {
+			"description": "Überwacht Webseiten und sagt dir, wenn sie sich ändern: Preise, Verfügbarkeit, Neuigkeiten",
+			"notes": "Melde dich mit dem Passwort an, das du festgelegt hast: Schon ab dem ersten Start fragt changedetection.io danach. Füg die Adresse einer Seite oben in das Feld ein und klick auf „Überwachen“; unter „Bearbeiten“ wählst du, wie oft sie geprüft wird und welcher Teil der Seite zählt. Wohin Benachrichtigungen gehen (E-Mail, Telegram, Discord, Slack, ntfy und mehr, als Apprise-URLs), legst du unter „Settings“ → „Benachrichtigungen“ fest. Das Passwort steht als ADMIN_PASSWORD in der .env des Projekts: Ändere es dort.",
+			"sizing": "changedetection.io ist leicht: etwa 60 MB RAM, und jede Überwachung speichert bei jeder Änderung eine komprimierte Kopie der Seite, sodass die Daten mit jedem Check, der eine Änderung findet, um einige Kilobyte wachsen.",
+			"summary": "changedetection.io selbst hosten: Webseiten auf Änderungen überwachen, Open Source. Preise, Lagerbestand, Inhalte, Alerts per E-Mail, Telegram, Discord.",
+			"about": [
+				"changedetection.io überwacht Webseiten und sagt dir, wenn sie sich ändern. Viele nutzen es statt Visualping oder Distill.io: für Preissenkungen und Produkte, die wieder lieferbar sind, für Stellenangebote, Bekanntmachungen von Behörden, Release Notes und Dokumente, die sich stillschweigend ändern. Jede Überwachung prüft ihre Seite nach Zeitplan, alle drei Stunden, wenn du nichts anderes einstellst, und zeigt, was sich geändert hat: Wort für Wort, Zeile für Zeile oder Zeichen für Zeichen.",
+				"Es kann nur den Teil einer Seite überwachen, auf den es ankommt, ausgewählt per CSS-Selektor, XPath oder bei JSON per JSONPath oder jq, bei einem Text auslösen, einen anderen ignorieren oder Preis und Lagerbestand eines Produkts verfolgen. Auch PDF-Dateien liest es. Benachrichtigungen gehen über Apprise an mehr als 85 Dienste, etwa E-Mail, Telegram, Discord, Slack und ntfy, und jede Änderung steht außerdem in einem RSS-Feed.",
+				"Diese Vorlage betreibt changedetection.io mit seinem einfachen, schnellen Fetcher, den Daten in einem Volume und dem Passwort, das du festlegst, ab dem ersten Start, sodass die Seite nie allen offensteht. Seiten holt es so, wie der Server sie schickt: Die „Visuelle Filterauswahl“, die „Browserschritte“ und Seiten, deren Text erst JavaScript zeichnet, brauchen einen Chrome-Fetcher, den die Vorlage weglässt, um leicht zu bleiben."
+			],
+			"faq": [
+				{
+					"q": "Ist changedetection.io kostenlos?",
+					"a": "Ja. changedetection.io ist Open Source unter der Apache-2.0-Lizenz, und selbst betrieben kostet es nur die Maschine. Das Team dahinter verkauft außerdem eine gehostete Version für 8,99 $ im Monat, mit Chrome und Proxys inklusive."
+				},
+				{
+					"q": "Wie bekomme ich Benachrichtigungen per Telegram, Discord oder E-Mail?",
+					"a": "Füg unter „Settings“ → „Benachrichtigungen“ eine Benachrichtigungs-URL hinzu. Der Versand läuft über Apprise, das mehr als 85 Dienste kennt, jeweils als URL geschrieben, etwa tgram://, discord:// oder mailto://. Eine Überwachung kann auch eigene URLs haben, in ihrem Tab „Benachrichtigungen“."
+				},
+				{
+					"q": "Kann changedetection.io Preise und Lagerbestände verfolgen?",
+					"a": "Ja. Wähl beim Hinzufügen einer Produktseite „Wiederauffüllung und Preiserkennung“: Dann liest changedetection.io Preis und Lagerbestand aus den Daten der Seite und benachrichtigt dich, wenn der Preis eine Grenze unter- oder überschreitet, sich um einen Prozentsatz ändert, den du festlegst, oder das Produkt wieder lieferbar ist."
+				},
+				{
+					"q": "Warum kommt eine Seite leer oder ohne ihren Inhalt an?",
+					"a": "Manche Seiten zeichnen ihren Text erst nach dem Laden mit JavaScript, und diese Vorlage holt Seiten so, wie der Server sie schickt. Überwache stattdessen den RSS-Feed der Website, ihre JSON-API oder eine Seite, die den Text enthält, oder füg der Compose-Datei einen Chrome-Fetcher wie sockpuppetbrowser hinzu und lass PLAYWRIGHT_DRIVER_URL darauf zeigen."
+				},
+				{
+					"q": "Wie überwache ich nur einen Teil einer Seite?",
+					"a": "Gib auf der Seite „Bearbeiten“ der Überwachung unter „Filter und Trigger“ einen CSS-Selektor oder einen XPath für den Teil an, der dich interessiert, und Textzeilen, die ignoriert werden sollen. Nur Änderungen darin zählen, eine Uhr oder Werbung an anderer Stelle der Seite löst also nichts aus."
+				}
+			]
+		},
+		"es": {
+			"description": "Un monitor de páginas web que te avisa cuando cambian: precios, disponibilidad, noticias",
+			"notes": "Inicia sesión con la contraseña que indicaste: changedetection.io la pide desde su primer arranque. Pega la dirección de una página en el cuadro de arriba y pulsa “Monitor”; abre “Editar” para elegir cada cuánto se revisa y qué parte de la página cuenta. Indica adónde van las alertas (correo, Telegram, Discord, Slack, ntfy y más, como URLs de Apprise) en Settings → Notificaciones. La contraseña es ADMIN_PASSWORD en el .env del proyecto: cámbiala ahí.",
+			"sizing": "changedetection.io es ligero: unos 60 MB de memoria, y cada monitor guarda una copia comprimida de la página cada vez que cambia, así que sus datos crecen unos kilobytes por cada revisión que encuentra un cambio.",
+			"summary": "Autoaloja changedetection.io: monitor de cambios web de código abierto para precios, reposiciones y ediciones, con alertas por correo, Telegram o Discord.",
+			"about": [
+				"changedetection.io vigila páginas web y te avisa cuando cambian. La gente lo usa en lugar de Visualping o Distill.io para bajadas de precio y productos que vuelven a estar disponibles, ofertas de empleo, avisos oficiales, notas de versión y documentos que cambian en silencio. Cada monitor revisa su página según un horario, cada tres horas salvo que indiques otro, y muestra qué cambió palabra por palabra, línea por línea o carácter por carácter.",
+				"Puede vigilar solo la parte de una página que importa, elegida con un selector CSS, XPath o, para JSON, JSONPath o jq, y activarse con un texto, ignorar otro o seguir el precio y la disponibilidad de un producto. Los archivos PDF también se pueden vigilar. Las alertas llegan a más de 85 servicios mediante Apprise, como correo, Telegram, Discord, Slack y ntfy, y cada cambio aparece también en un feed RSS.",
+				"Esta plantilla ejecuta changedetection.io con su método de descarga simple y rápido, sus datos en un volumen y la contraseña que indicas desde el primer arranque, así que su página nunca queda abierta a cualquiera. changedetection.io descarga las páginas tal como se envían: el Selector de filtro visual, los Pasos del navegador y las páginas cuyo texto dibuja JavaScript necesitan descargar las páginas con Chrome, algo que la plantilla deja fuera para seguir siendo ligera."
+			],
+			"faq": [
+				{
+					"q": "¿changedetection.io es gratis?",
+					"a": "Sí. changedetection.io es de código abierto bajo la licencia Apache 2.0, y ejecutarlo tú mismo solo cuesta la máquina. Sus creadores también venden una versión alojada por 8,99 USD al mes, con Chrome y proxies incluidos."
+				},
+				{
+					"q": "¿Cómo recibo alertas en Telegram, Discord o por correo?",
+					"a": "Agrega una URL de notificación en Settings → Notificaciones: changedetection.io envía a través de Apprise, que conoce más de 85 servicios, escritos como URLs del tipo tgram://, discord:// o mailto://. Un monitor también puede tener sus propias URLs, en su pestaña Notificaciones."
+				},
+				{
+					"q": "¿changedetection.io puede seguir precios y reposiciones?",
+					"a": "Sí. Elige “Reabastecimiento y detección de precios” al agregar la página de un producto: changedetection.io lee el precio y la disponibilidad de los datos de la página y te avisa cuando el precio baja o sube de un límite, cambia en un porcentaje que tú fijas o el producto vuelve a estar disponible."
+				},
+				{
+					"q": "¿Por qué una página llega vacía o sin su contenido?",
+					"a": "Algunas páginas dibujan su texto con JavaScript después de cargarse, y esta plantilla descarga las páginas tal como las envía el servidor. Vigila en su lugar el feed RSS del sitio, su API JSON o una página que contenga el texto, o agrega al archivo compose un navegador Chrome que descargue las páginas, como sockpuppetbrowser, y apunta PLAYWRIGHT_DRIVER_URL hacia él."
+				},
+				{
+					"q": "¿Cómo vigilo solo una parte de una página?",
+					"a": "En la página Editar del monitor, en la pestaña Filtros y activadores, indica un selector CSS o un XPath para la parte que te interesa, y las líneas de texto que se deben ignorar. Solo cuentan los cambios dentro de ella, así que un reloj o un anuncio en otro lugar de la página no dispara nada."
+				}
+			]
+		},
+		"fr": {
+			"description": "Surveille des pages web et vous prévient quand elles changent : prix, retours en stock, actualités",
+			"notes": "Connectez-vous avec le mot de passe que vous avez choisi : changedetection.io le demande dès son premier démarrage. Collez l’adresse d’une page dans le champ en haut et cliquez sur « Moniteur » ; ouvrez « Modifier » pour choisir la fréquence des vérifications et la partie de la page qui compte. Indiquez où partent les alertes (e-mail, Telegram, Discord, Slack, ntfy et d’autres, sous forme d’URL Apprise) dans Settings → Notifications. Le mot de passe est ADMIN_PASSWORD dans le .env du projet : changez-le dans ce fichier.",
+			"sizing": "changedetection.io est léger : environ 60 MB de mémoire, et chaque moniteur garde une copie compressée de la page à chaque changement, donc ses données grossissent de quelques kilo-octets par vérification qui trouve un changement.",
+			"summary": "Auto-hébergez changedetection.io, l’outil open source qui surveille les sites web : prix, stocks, modifications, alertes par e-mail, Telegram ou Discord.",
+			"about": [
+				"changedetection.io surveille des pages web et vous prévient quand elles changent. On l’utilise à la place de Visualping ou de Distill.io pour les baisses de prix et les produits de retour en stock, les offres d’emploi, les avis officiels, les notes de version et les documents qui changent sans prévenir. Chaque moniteur vérifie sa page selon un calendrier, toutes les trois heures sauf si vous en choisissez un autre, et montre ce qui a changé mot par mot, ligne par ligne ou caractère par caractère.",
+				"Il peut ne surveiller que la partie d’une page qui compte, choisie par un sélecteur CSS, XPath ou, pour du JSON, JSONPath ou jq, et se déclencher sur un texte, en ignorer un autre ou suivre le prix et le stock d’un produit. Il lit aussi les fichiers PDF. Les alertes partent vers plus de 85 services via Apprise, comme l’e-mail, Telegram, Discord, Slack et ntfy, et chaque changement figure aussi dans un flux RSS.",
+				"Ce template fait tourner changedetection.io avec son mode de récupération simple et rapide, ses données dans un volume et le mot de passe que vous indiquez dès le premier démarrage, donc sa page n’est jamais ouverte à tous. Il récupère les pages telles qu’elles sont envoyées : le Sélecteur de filtre visuel, les Étapes du navigateur et les pages dont le texte est dessiné par JavaScript demandent un navigateur Chrome pour récupérer les pages, que le template laisse de côté pour rester léger."
+			],
+			"faq": [
+				{
+					"q": "changedetection.io est-il gratuit ?",
+					"a": "Oui. changedetection.io est open source sous licence Apache 2.0, et le faire tourner vous-même ne coûte que la machine. Ses créateurs vendent aussi une version hébergée à 8,99 $ par mois, avec Chrome et des proxys inclus."
+				},
+				{
+					"q": "Comment recevoir les alertes sur Telegram, Discord ou par e-mail ?",
+					"a": "Ajoutez une URL de notification dans Settings → Notifications : changedetection.io envoie via Apprise, qui connaît plus de 85 services, écrits sous forme d’URL comme tgram://, discord:// ou mailto://. Un moniteur peut aussi avoir ses propres URL, dans son onglet Notifications."
+				},
+				{
+					"q": "changedetection.io peut-il suivre les prix et les retours en stock ?",
+					"a": "Oui. Choisissez « Détection de réapprovisionnement et de prix » quand vous ajoutez une page produit : changedetection.io lit le prix et le stock dans les données de la page et vous alerte quand le prix passe sous un seuil ou au-dessus, change d’un pourcentage que vous fixez, ou que le produit est de retour en stock."
+				},
+				{
+					"q": "Pourquoi une page arrive-t-elle vide ou sans son contenu ?",
+					"a": "Certaines pages dessinent leur texte avec JavaScript après leur chargement, et ce template récupère les pages telles que le serveur les envoie. Surveillez plutôt le flux RSS du site, son API JSON ou une page qui contient le texte, ou ajoutez au fichier compose un navigateur Chrome pour récupérer les pages, comme sockpuppetbrowser, et faites pointer PLAYWRIGHT_DRIVER_URL vers lui."
+				},
+				{
+					"q": "Comment surveiller une seule partie d’une page ?",
+					"a": "Dans la page Modifier du moniteur, sous Filtres et déclencheurs, indiquez un sélecteur CSS ou un XPath pour la partie qui vous intéresse, et des lignes de texte à ignorer. Seuls les changements à l’intérieur comptent, donc une horloge ou une publicité ailleurs sur la page ne déclenche rien."
+				}
+			]
+		},
+		"pl": {
+			"description": "Obserwuje strony internetowe i daje znać, gdy się zmienią: ceny, ponowna dostępność, nowości",
+			"notes": "Zaloguj się hasłem podanym przy tworzeniu projektu: changedetection.io pyta o nie od pierwszego uruchomienia. Wklej adres strony w pole na górze i naciśnij „Obserwacja”; otwórz „Edytuj”, żeby wybrać, jak często strona jest sprawdzana i która jej część się liczy. To, dokąd trafiają alerty (e-mail, Telegram, Discord, Slack, ntfy i inne, jako adresy URL Apprise), ustawisz na stronie Ustawienia → Powiadomienia. Hasło to ADMIN_PASSWORD w pliku .env projektu: zmień je tam.",
+			"sizing": "changedetection.io ma małe wymagania: około 60 MB pamięci, a każda obserwacja przy każdej zmianie zapisuje skompresowaną kopię strony, więc jej dane rosną o kilka kilobajtów z każdym sprawdzeniem, które znajdzie zmianę.",
+			"summary": "Hostuj changedetection.io u siebie: monitoring zmian na stronach WWW open source. Spadki cen, ponowna dostępność, edycje, alerty e-mail, Telegram, Discord.",
+			"about": [
+				"changedetection.io obserwuje strony internetowe i daje znać, gdy się zmienią. Ludzie używają go zamiast Visualping albo Distill.io do śledzenia spadków cen i powrotu produktów do sprzedaży, ofert pracy, komunikatów urzędów, informacji o wydaniach i dokumentów, które zmieniają się bez słowa. Każda obserwacja sprawdza swoją stronę według harmonogramu, co trzy godziny, chyba że ustawisz inaczej, i pokazuje, co się zmieniło: słowo po słowie, linia po linii albo znak po znaku.",
+				"Może obserwować tylko tę część strony, która się liczy, wybraną selektorem CSS, XPath albo, dla JSON-a, JSONPath lub jq, a także reagować na dany tekst, ignorować inny albo śledzić cenę i dostępność produktu. Czyta też pliki PDF. Alerty trafiają przez Apprise do ponad 85 usług, takich jak e-mail, Telegram, Discord, Slack i ntfy, a każda zmiana pojawia się też w kanale RSS.",
+				"Ten szablon uruchamia changedetection.io z jego prostym, szybkim mechanizmem pobierania, danymi na wolumenie i hasłem, które podajesz, od pierwszego uruchomienia, więc jego strona nigdy nie jest otwarta dla wszystkich. changedetection.io pobiera strony tak, jak zostały wysłane: „Wizualny selektor filtrów”, „Kroki w przeglądarce” i strony, których tekst rysuje JavaScript, wymagają pobierania przez Chrome, które ten szablon pomija, żeby pozostać lekkim."
+			],
+			"faq": [
+				{
+					"q": "Czy changedetection.io jest darmowy?",
+					"a": "Tak. changedetection.io to open source na licencji Apache 2.0, a uruchomienie go u siebie kosztuje tylko maszynę. Jego twórcy sprzedają też wersję hostowaną za 8,99 $ miesięcznie, z Chrome’em i proxy w cenie."
+				},
+				{
+					"q": "Jak dostawać alerty na Telegramie, Discordzie albo e-mailem?",
+					"a": "Dodaj URL powiadomień na stronie Ustawienia → Powiadomienia: changedetection.io wysyła je przez Apprise, który obsługuje ponad 85 usług, zapisywanych jako adresy URL, takie jak tgram://, discord:// czy mailto://. Obserwacja może też mieć własne adresy, w swojej zakładce Powiadomienia."
+				},
+				{
+					"q": "Czy changedetection.io śledzi ceny i ponowną dostępność?",
+					"a": "Tak. Przy dodawaniu strony produktu wybierz „Wykrywanie uzupełnienia zapasów i zmian cen”: changedetection.io odczyta cenę i stan magazynowy z danych strony i powiadomi cię, gdy cena spadnie poniżej progu lub wzrośnie powyżej niego, zmieni się o ustalony przez ciebie procent albo produkt znów będzie dostępny."
+				},
+				{
+					"q": "Dlaczego strona przychodzi pusta albo bez treści?",
+					"a": "Niektóre strony rysują tekst JavaScriptem już po załadowaniu, a ten szablon pobiera strony tak, jak wysyła je serwer. Obserwuj zamiast tego kanał RSS witryny, jej API JSON albo stronę, która zawiera ten tekst, albo dodaj do pliku compose przeglądarkę Chrome do pobierania stron, taką jak sockpuppetbrowser, i ustaw PLAYWRIGHT_DRIVER_URL tak, żeby na nią wskazywał."
+				},
+				{
+					"q": "Jak obserwować tylko część strony?",
+					"a": "Na stronie „Edytuj” obserwacji, w zakładce Filtry i wyzwalacze, podaj selektor CSS albo XPath części, która cię interesuje, i linie tekstu do zignorowania. Liczą się tylko zmiany w jej obrębie, więc zegar albo reklama w innym miejscu strony niczego nie uruchomią."
+				}
+			]
+		},
+		"pt": {
+			"description": "Monitora páginas web e avisa quando elas mudam: preços, reposição de estoque, notícias",
+			"notes": "Entre com a senha que você informou: o changedetection.io pede a senha desde a primeira inicialização. Cole o endereço de uma página na caixa do topo e clique em “Monitoramento”; abra “Editar” para escolher com que frequência ela é verificada e qual parte da página conta. Adicione para onde vão os alertas (e-mail, Telegram, Discord, Slack, ntfy e outros, como URLs do Apprise) em Settings → Notificações. A senha é ADMIN_PASSWORD no .env do projeto: troque-a lá.",
+			"sizing": "changedetection.io é leve: cerca de 60 MB de memória, e cada monitoramento guarda uma cópia compactada da página a cada mudança, então os dados crescem alguns kilobytes a cada verificação que encontra uma mudança.",
+			"summary": "Auto-hospede o changedetection.io: monitor open source de mudanças em sites, para preços, estoque e edições, com alertas por e-mail, Telegram ou Discord.",
+			"about": [
+				"O changedetection.io monitora páginas web e avisa quando elas mudam. As pessoas o usam no lugar do Visualping ou do Distill.io para quedas de preço e produtos de volta ao estoque, vagas de emprego, avisos do governo, notas de versão e documentos que mudam sem aviso. Cada monitoramento verifica sua página num horário definido, a cada três horas se você não escolher outro intervalo, e mostra o que mudou palavra por palavra, linha por linha ou caractere por caractere.",
+				"Ele pode monitorar só a parte da página que importa, escolhida por um seletor CSS, XPath ou, para JSON, JSONPath ou jq, e disparar com um texto, ignorar outro ou acompanhar o preço e o estoque de um produto. Também lê arquivos PDF. Os alertas vão para mais de 85 serviços pelo Apprise, como e-mail, Telegram, Discord, Slack e ntfy, e cada mudança também aparece num feed RSS.",
+				"Este template roda o changedetection.io com o método de busca simples e rápido dele, os dados num volume e a senha que você informa desde a primeira inicialização, então a página dele nunca fica aberta para qualquer um. Ele busca as páginas como elas são enviadas: o Seletor de Filtro Visual, os Passos do Navegador e as páginas cujo texto é desenhado por JavaScript precisam de um navegador Chrome para buscar as páginas, que o template deixa de fora para continuar leve."
+			],
+			"faq": [
+				{
+					"q": "O changedetection.io é gratuito?",
+					"a": "Sim. O changedetection.io é de código aberto sob a licença Apache 2.0, e rodá-lo você mesmo custa só a máquina. Os criadores também vendem uma versão hospedada por US$ 8,99 por mês, com Chrome e proxies incluídos."
+				},
+				{
+					"q": "Como recebo alertas no Telegram, no Discord ou por e-mail?",
+					"a": "Adicione uma URL de notificação em Settings → Notificações: o changedetection.io envia pelo Apprise, que conhece mais de 85 serviços, escritos como URLs do tipo tgram://, discord:// ou mailto://. Um monitoramento também pode ter as próprias URLs, na aba Notificações dele."
+				},
+				{
+					"q": "O changedetection.io acompanha preços e reposição de estoque?",
+					"a": "Sim. Escolha “Detecção de Estoque e Preço” ao adicionar a página de um produto: o changedetection.io lê o preço e o estoque nos dados da página e avisa quando o preço fica abaixo ou acima de um limite, muda numa porcentagem que você define ou o produto volta ao estoque."
+				},
+				{
+					"q": "Por que uma página chega vazia ou sem o conteúdo?",
+					"a": "Algumas páginas desenham o texto com JavaScript depois de carregar, e este template busca as páginas como o servidor as envia. Em vez disso, monitore o feed RSS do site, a API JSON dele ou uma página que contenha o texto, ou adicione ao arquivo compose um navegador Chrome para buscar as páginas, como o sockpuppetbrowser, e aponte PLAYWRIGHT_DRIVER_URL para ele."
+				},
+				{
+					"q": "Como monitorar só uma parte de uma página?",
+					"a": "Na página Editar do monitoramento, em Filtros e Gatilhos, informe um seletor CSS ou um XPath para a parte que interessa, e linhas de texto a ignorar. Só contam as mudanças dentro dela, então um relógio ou um anúncio em outro lugar da página não dispara nada."
+				}
+			]
+		},
+		"ru": {
+			"description": "Следит за веб-страницами и сообщает, когда они меняются: цены, наличие товаров, новости",
+			"notes": "Войдите с паролем, который вы задали: changedetection.io спрашивает его с первого запуска. Вставьте адрес страницы в поле наверху и нажмите «Смотреть»; откройте «Редактировать», чтобы выбрать, как часто ее проверять и какая часть страницы имеет значение. Куда уходят оповещения (почта, Telegram, Discord, Slack, ntfy и другие, в виде URL Apprise), задается в разделе «Settings» → «Уведомления». Пароль — ADMIN_PASSWORD в .env проекта: меняйте его там.",
+			"sizing": "changedetection.io: небольшие требования — около 60 MB памяти, а каждое отслеживание при каждом изменении сохраняет сжатую копию страницы, так что его данные растут на несколько килобайт за каждую проверку, которая нашла изменение.",
+			"summary": "Self-hosted changedetection.io: open source мониторинг изменений на сайтах — цены, наличие, правки страниц, оповещения в почту, Telegram или Discord.",
+			"about": [
+				"changedetection.io следит за веб-страницами и сообщает, когда они меняются. Его используют вместо Visualping или Distill.io, чтобы ловить снижение цен и возвращение товаров в продажу, вакансии, объявления госорганов, заметки о релизах и документы, которые меняются без предупреждения. Каждое отслеживание проверяет свою страницу по расписанию, раз в три часа, если не задать другой интервал, и показывает изменения по словам, по строкам или по символам.",
+				"Он может следить только за нужной частью страницы, выбранной CSS-селектором, XPath или, для JSON, JSONPath или jq, срабатывать на один текст, игнорировать другой или отслеживать цену и наличие товара. PDF-файлы он тоже читает. Оповещения уходят более чем в 85 сервисов через Apprise, например в почту, Telegram, Discord, Slack и ntfy, а каждое изменение попадает еще и в RSS-ленту.",
+				"Этот шаблон запускает changedetection.io с его простым и быстрым способом загрузки страниц, данными в томе и паролем, который вы задаете, с первого запуска, так что его страница никогда не бывает открыта для всех. Он загружает страницы в том виде, в каком их отдает сервер: «Выбор визуального фильтра», «Шаги браузера» и страницы, текст которых рисует JavaScript, требуют загрузки через Chrome, а шаблон обходится без нее, чтобы оставаться легким."
+			],
+			"faq": [
+				{
+					"q": "changedetection.io бесплатный?",
+					"a": "Да. changedetection.io распространяется с открытым кодом под лицензией Apache 2.0, и если запускать его самому, платить придется только за машину. Его авторы также продают облачную версию за 8,99 $ в месяц, с Chrome и прокси в комплекте."
+				},
+				{
+					"q": "Как получать оповещения в Telegram, Discord или на почту?",
+					"a": "Добавьте URL уведомлений в разделе «Settings» → «Уведомления»: changedetection.io отправляет их через Apprise, который знает более 85 сервисов, записанных в виде URL, например tgram://, discord:// или mailto://. У отслеживания могут быть и свои URL, на его вкладке «Уведомления»."
+				},
+				{
+					"q": "Может ли changedetection.io следить за ценами и наличием?",
+					"a": "Да. При добавлении страницы товара выберите «Пополнение запасов и определение цен»: changedetection.io берет цену и наличие из данных страницы и оповещает вас, когда цена опускается ниже порога или поднимается выше, меняется на заданный вами процент или товар снова появляется в наличии."
+				},
+				{
+					"q": "Почему страница приходит пустой или без содержимого?",
+					"a": "Некоторые страницы рисуют текст с помощью JavaScript уже после загрузки, а этот шаблон загружает страницы в том виде, в каком их отдает сервер. Следите вместо этого за RSS-лентой сайта, его JSON API или страницей, где этот текст есть, или добавьте в compose-файл браузер Chrome для загрузки страниц, например sockpuppetbrowser, и направьте на него PLAYWRIGHT_DRIVER_URL."
+				},
+				{
+					"q": "Как следить только за частью страницы?",
+					"a": "На странице «Редактировать» отслеживания, на вкладке «Фильтры и триггеры», укажите CSS-селектор или XPath нужной части и строки текста, которые надо игнорировать. Учитываются только изменения внутри нее, так что часы или реклама в другом месте страницы ничего не запустят."
+				}
+			]
+		},
+		"uk": {
+			"description": "Стежить за вебсторінками й повідомляє, коли вони змінюються: ціни, наявність товарів, новини",
+			"notes": "Увійдіть із паролем, який ви вказали: changedetection.io питає його від першого запуску. Вставте адресу сторінки в поле вгорі й натисніть «Завдання»; відкрийте «Редагувати», щоб обрати, як часто її перевіряти й яка частина сторінки має значення. Куди йдуть сповіщення (пошта, Telegram, Discord, Slack, ntfy та інші, у вигляді URL Apprise), задають у розділі «Settings → Сповіщення». Пароль — ADMIN_PASSWORD у .env проєкту: змінюйте його там.",
+			"sizing": "changedetection.io має скромні вимоги: близько 60 MB пам’яті, а кожне завдання під час кожної зміни зберігає стиснуту копію сторінки, тож його дані ростуть на кілька кілобайтів за кожну перевірку, яка знайшла зміну.",
+			"summary": "Self-hosted changedetection.io: моніторинг змін на сайтах із відкритим кодом — ціни, наявність, правки сторінок, сповіщення в пошту, Telegram чи Discord.",
+			"about": [
+				"changedetection.io стежить за вебсторінками й повідомляє, коли вони змінюються. Його використовують замість Visualping або Distill.io, щоб ловити зниження цін і повернення товарів у продаж, вакансії, оголошення держорганів, примітки до релізів і документи, які змінюються без попередження. Кожне завдання перевіряє свою сторінку за розкладом, раз на три години, якщо не задати інший інтервал, і показує зміни по словах, по рядках або по символах.",
+				"Він може стежити лише за потрібною частиною сторінки, вибраною CSS-селектором, XPath або, для JSON, JSONPath чи jq, спрацьовувати на один текст, ігнорувати інший або відстежувати ціну й наявність товару. PDF-файли він теж читає. Сповіщення йдуть до понад 85 сервісів через Apprise, як-от пошта, Telegram, Discord, Slack і ntfy, а кожна зміна потрапляє ще й у RSS-стрічку.",
+				"Цей шаблон запускає changedetection.io з його простим і швидким способом отримання сторінок, даними в томі й паролем, який ви вказуєте, від першого запуску, тож його сторінка ніколи не буває відкритою для всіх. Він отримує сторінки в тому вигляді, у якому їх віддає сервер: «Візуальний селектор фільтра», «Кроки браузера» і сторінки, текст яких малює JavaScript, потребують отримання через Chrome, а шаблон обходиться без нього, щоб лишатися легким."
+			],
+			"faq": [
+				{
+					"q": "changedetection.io безкоштовний?",
+					"a": "Так. changedetection.io має відкритий код за ліцензією Apache 2.0, і якщо запускати його самому, платити доведеться лише за машину. Його автори також продають хмарну версію за 8,99 $ на місяць, із Chrome і проксі в комплекті."
+				},
+				{
+					"q": "Як отримувати сповіщення в Telegram, Discord або на пошту?",
+					"a": "Додайте URL сповіщень у розділі «Settings → Сповіщення»: changedetection.io надсилає їх через Apprise, який знає понад 85 сервісів, записаних у вигляді URL, як-от tgram://, discord:// або mailto://. Завдання може мати й власні URL, на своїй вкладці «Сповіщення»."
+				},
+				{
+					"q": "Чи може changedetection.io стежити за цінами й наявністю?",
+					"a": "Так. Під час додавання сторінки товару оберіть «Виявлення поповнення та ціни»: changedetection.io бере ціну й наявність із даних сторінки та сповіщає вас, коли ціна опускається нижче порогу чи піднімається вище, змінюється на заданий вами відсоток або товар знову з’являється в наявності."
+				},
+				{
+					"q": "Чому сторінка приходить порожньою або без вмісту?",
+					"a": "Деякі сторінки малюють текст за допомогою JavaScript уже після завантаження, а цей шаблон отримує сторінки в тому вигляді, у якому їх віддає сервер. Стежте натомість за RSS-стрічкою сайту, його JSON API або сторінкою, де цей текст є, або додайте в compose-файл браузер Chrome для отримання сторінок, як-от sockpuppetbrowser, і спрямуйте на нього PLAYWRIGHT_DRIVER_URL."
+				},
+				{
+					"q": "Як стежити лише за частиною сторінки?",
+					"a": "На сторінці «Редагувати» завдання, на вкладці «Фільтри та Тригери», вкажіть CSS-селектор або XPath потрібної частини й рядки тексту, які треба ігнорувати. Враховуються лише зміни всередині неї, тож годинник чи реклама в іншому місці сторінки нічого не запустять."
+				}
+			]
+		}
+	}
+}

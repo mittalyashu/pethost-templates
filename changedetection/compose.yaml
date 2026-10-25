@@ -1,0 +1,30 @@
+services:
+  changedetection:
+    image: dgtlmoon/changedetection.io:0.60
+    restart: unless-stopped
+    environment:
+      BASE_URL: ${URL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      # The sites watched do not see this address as the referrer of each check.
+      HIDE_REFERER: "true"
+    # changedetection.io has one password and none at first, so its page would be open to anyone
+    # until it is set. SALTED_PASS gives it the password from the first start, salted and hashed as
+    # changedetection.io stores one; its settings cannot remove it.
+    command:
+      - sh
+      - -c
+      - |
+        SALTED_PASS=$$(python3 -c '
+        import base64, hashlib, os
+        salt = os.urandom(32)
+        key = hashlib.pbkdf2_hmac("sha256", os.environ["ADMIN_PASSWORD"].encode(), salt, 100000)
+        print(base64.b64encode(salt + key).decode())
+        ') || exit 1
+        export SALTED_PASS
+        unset ADMIN_PASSWORD
+        exec python ./changedetection.py -d /datastore
+    volumes:
+      - datastore:/datastore
+
+volumes:
+  datastore:
