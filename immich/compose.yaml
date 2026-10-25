@@ -1,0 +1,113 @@
+services:
+  immich-server:
+    image: ghcr.io/immich-app/immich-server:v3
+    restart: unless-stopped
+    environment:
+      DB_HOSTNAME: database
+      DB_USERNAME: postgres
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE_NAME: immich
+      REDIS_HOSTNAME: redis
+      TZ: ${TZ:-Etc/UTC}
+      URL: ${URL}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    # A new Immich makes whoever opens it first its administrator. So its first start runs it on
+    # port 2284, which nobody reaches, signs the administrator up there with the email and password
+    # given, and sets the address shared links use; only then does Immich answer on 2283.
+    command:
+      - |
+        set -e
+        if [ ! -f /data/.pethost-admin ]; then
+          # In a process group of its own, so that its workers stop with it.
+          IMMICH_PORT=2284 setsid start.sh &
+          setup=$$!
+          SETUP_PID=$$setup node -e '
+            const base = "http://127.0.0.1:2284/api";
+            const { URL: url, ADMIN_EMAIL: email, ADMIN_PASSWORD: password } = process.env;
+            const json = { "content-type": "application/json" };
+            const call = async (path, options) => {
+              const response = await fetch(base + path, options);
+              if (!response.ok) throw new Error(path + ": " + response.status + " " + (await response.text()));
+              return response.json();
+            };
+            const setUp = async () => {
+              const { isInitialized } = await call("/server/config");
+              if (isInitialized) return;
+              const name = email.split("@")[0];
+              await call("/auth/admin-sign-up", { method: "POST", headers: json, body: JSON.stringify({ email, password, name }) });
+              const { accessToken } = await call("/auth/login", { method: "POST", headers: json, body: JSON.stringify({ email, password }) });
+              const headers = { ...json, authorization: "Bearer " + accessToken };
+              const config = await call("/system-config", { headers });
+              config.server.externalDomain = url;
+              await call("/system-config", { method: "PUT", headers, body: JSON.stringify(config) });
+            };
+            (async () => {
+              let failure;
+              for (let i = 0; i < 300; i++) {
+                // Immich stops if it cannot start: the container starts again and so does this.
+                try {
+                  process.kill(Number(process.env.SETUP_PID), 0);
+                } catch {
+                  process.exit(1);
+                }
+                try {
+                  return await setUp();
+                } catch (error) {
+                  failure = error;
+                  await new Promise((done) => setTimeout(done, 1000));
+                }
+              }
+              console.error(failure);
+              process.exit(1);
+            })();
+          '
+          kill -- -$$setup
+          wait $$setup || true
+          while kill -0 -- -$$setup 2>/dev/null; do sleep 1; done
+          touch /data/.pethost-admin
+        fi
+        unset ADMIN_PASSWORD
+        exec start.sh
+    volumes:
+      - library:/data
+    depends_on:
+      redis:
+        condition: service_started
+      database:
+        condition: service_healthy
+    # Its first start makes the database and the administrator before it answers on 2283.
+    healthcheck:
+      test: ["CMD-SHELL", "immich-healthcheck"]
+      interval: 30s
+      start_period: 10m
+      start_interval: 5s
+
+  immich-machine-learning:
+    image: ghcr.io/immich-app/immich-machine-learning:v3
+    restart: unless-stopped
+    volumes:
+      - model-cache:/cache
+
+  redis:
+    image: valkey/valkey:9
+    restart: unless-stopped
+    healthcheck:
+      test: redis-cli ping | grep -q PONG || exit 1
+
+  database:
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: immich
+      POSTGRES_INITDB_ARGS: --data-checksums
+    shm_size: 128mb
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  library:
+  db:
+  model-cache:

@@ -1,0 +1,298 @@
+{
+	"name": "Immich",
+	"emoji": "🖼️",
+	"category": "media",
+	"alternatives": [
+		"Google Photos",
+		"iCloud Photos"
+	],
+	"plan": "grow",
+	"route": {
+		"service": "immich-server",
+		"port": 2283
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "DB_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "ADMIN_EMAIL",
+			"ask": "email"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Your photos and videos, backed up from your phone, with smart search, faces and albums",
+			"notes": "Sign in with the email and password you gave: Immich made that administrator before it answered anyone, so nobody else gets its setup, and there is no sign-up. A short onboarding asks for a theme, a language and how files are named. On your phone, install the Immich app, give https://{host} as its Server Endpoint URL, sign in and turn on Backup. Add people in Administration → Users. Smart search, faces and text in photos come from machine learning, which downloads its models at the first upload. Set TZ in the project’s .env, such as TZ=Europe/Berlin, for dates in your time zone.",
+			"sizing": "Immich takes about 1.5 GB of memory at rest with its database and machine learning, about 2.5 GB while it works through new photos, and more at the first upload, while it downloads its models; the disk is your library plus its thumbnails and videos.",
+			"summary": "Self-host Immich, the open-source Google Photos alternative: phone backup, timeline, albums, face recognition and smart search, set up in one click.",
+			"about": [
+				"Immich is a self-hosted photo and video library that people run in place of Google Photos or iCloud Photos. Its apps for iPhone and Android back up the camera roll in the background, and the web page and the apps show everything on one timeline, with albums, favourites, an archive, a map of where each photo was taken and memories of the same day in earlier years.",
+				"Machine learning that runs within Immich, with no cloud service, finds the people in your photos and groups their faces, reads text in images, and powers smart search, which finds a photo from words such as “dog on a beach”. Immich keeps RAW files, Live Photos and motion photos, shares albums or links with anyone, and lets a partner see your library. Each person on the server has an account of their own.",
+				"This template runs Immich’s server, its machine learning, Valkey and its PostgreSQL with the vector extensions it needs, its library in a volume. The administrator is made from the email and password you give before Immich answers anyone, and shared links get the project’s address. Immich asks for 6 GB of memory and 2 cores at least, so it fits Grow; your photos take the disk, so watch its size as the library grows."
+			],
+			"faq": [
+				{
+					"q": "Is Immich free?",
+					"a": "Yes. Immich is open source under the AGPL-3.0 license, and its makers say all its features are free forever, with nothing behind a paywall. You can buy it for yourself or for a server to support the project, which unlocks nothing more."
+				},
+				{
+					"q": "How do I back up my phone’s photos to Immich?",
+					"a": "Install the Immich app from the App Store or Google Play, give your Immich’s address as its Server Endpoint URL, sign in, and turn on Backup for the albums you choose. It uploads new photos and videos in the background, and skips what is already there."
+				},
+				{
+					"q": "Does Immich recognise faces?",
+					"a": "Yes. Its machine learning, which runs within Immich and sends your photos nowhere, detects faces in each photo and groups them into People, which you name. It also reads text in images, and its smart search finds photos by what is in them."
+				},
+				{
+					"q": "How much memory and disk does Immich need?",
+					"a": "Immich asks for 6 GB of memory and 2 cores at least, and here takes about 1.5 GB at rest, about 2.5 GB while machine learning works through new photos, and more at the first upload, while it downloads its models. The disk holds your originals plus thumbnails and transcoded videos, so plan for more than the library’s own size."
+				},
+				{
+					"q": "Is Immich safe for my only copy of my photos?",
+					"a": "Immich itself says to keep a 3-2-1 backup of photos you care about: three copies, on two kinds of storage, one of them elsewhere. Pethost backs up the project’s volumes every night, and Immich also dumps its database by itself; keep the originals somewhere else too."
+				}
+			]
+		},
+		"de": {
+			"description": "Deine Fotos und Videos, vom Handy gesichert, mit intelligenter Suche, Gesichtserkennung und Alben",
+			"notes": "Melde dich mit der E-Mail-Adresse und dem Passwort an, die du angegeben hast: Immich hat damit den Admin angelegt, bevor es irgendwem geantwortet hat, sodass niemand sonst an die Einrichtung kommt, und eine Registrierung gibt es nicht. Ein kurzer „Einstieg“ fragt nach Theme, Sprache und danach, wie Dateien benannt werden. Installier auf dem Handy die Immich-App, gib https://{host} als „Server-URL“ an, melde dich an und schalte die „Sicherung“ ein. Weitere Personen legst du unter „Verwaltung“ → „Benutzer“ an. Intelligente Suche, Gesichter und Text in Fotos liefert das Machine Learning, das seine Modelle beim ersten Upload herunterlädt. Setz TZ in der .env des Projekts, etwa TZ=Europe/Berlin, damit Datumsangaben in deiner Zeitzone stehen.",
+			"sizing": "Immich braucht mit Datenbank und Machine Learning im Ruhezustand etwa 1,5 GB RAM, etwa 2,5 GB, während es neue Fotos verarbeitet, und mehr beim ersten Upload, wenn es seine Modelle herunterlädt; die Disk ist deine Bibliothek plus deren Vorschaubilder und Videos.",
+			"summary": "Immich selbst hosten: Open-Source-Alternative zu Google Photos. Handy-Backup, Zeitleiste, Alben, Gesichtserkennung, intelligente Suche. In einem Klick.",
+			"about": [
+				"Immich ist eine selbst gehostete Foto- und Videobibliothek, die viele statt Google Photos oder iCloud Photos betreiben. Die Apps für iPhone und Android sichern die Kamerarolle im Hintergrund, und die Weboberfläche und die Apps zeigen alles auf einer Zeitleiste, mit Alben, Favoriten, einem Archiv, einer Karte, die zeigt, wo jedes Foto aufgenommen wurde, und Erinnerungen an denselben Tag in früheren Jahren.",
+				"Machine Learning, das in Immich selbst läuft und nichts an einen Cloud-Dienst schickt, findet die Personen auf deinen Fotos und gruppiert ihre Gesichter, liest Text in Bildern und steckt hinter der intelligenten Suche, die ein Foto anhand von Wörtern wie „Hund am Strand“ findet. Immich bewahrt RAW-Dateien, Live Photos und bewegte Fotos auf, teilt Alben oder Links, mit wem du willst, und lässt per „Partner-Sharing“ eine weitere Person deine Bibliothek sehen. Jede Person auf dem Server hat ein eigenes Konto.",
+				"Diese Vorlage betreibt den Server von Immich, sein Machine Learning, Valkey und sein PostgreSQL mit den nötigen Vektorerweiterungen, die Bibliothek in einem Volume. Der Admin wird aus der E-Mail-Adresse und dem Passwort angelegt, die du angibst, bevor Immich irgendwem antwortet, und geteilte Links bekommen die Adresse des Projekts. Immich verlangt mindestens 6 GB RAM und 2 Kerne und passt damit in den Tarif Grow; deine Fotos belegen die Disk, behalte also im Blick, wie voll sie wird, während die Bibliothek wächst."
+			],
+			"faq": [
+				{
+					"q": "Ist Immich kostenlos?",
+					"a": "Ja. Immich ist Open Source unter der AGPL-3.0-Lizenz, und laut dem Team dahinter sind alle Funktionen für immer kostenlos, ohne Paywall. Du kannst Immich für dich oder für einen Server kaufen, um das Projekt zu unterstützen, schaltest damit aber nichts weiter frei."
+				},
+				{
+					"q": "Wie sichere ich die Fotos von meinem Handy in Immich?",
+					"a": "Installier die Immich-App aus dem App Store oder von Google Play, gib die Adresse deines Immich als „Server-URL“ an, melde dich an und schalte die „Sicherung“ für die Alben ein, die du auswählst. Die App lädt neue Fotos und Videos im Hintergrund hoch und überspringt, was schon da ist."
+				},
+				{
+					"q": "Erkennt Immich Gesichter?",
+					"a": "Ja. Das Machine Learning, das in Immich selbst läuft und deine Fotos nirgendwohin schickt, erkennt die Gesichter auf jedem Foto und gruppiert sie unter „Personen“, denen du Namen gibst. Es liest auch Text in Bildern, und die intelligente Suche findet Fotos anhand dessen, was darauf zu sehen ist."
+				},
+				{
+					"q": "Wie viel RAM und Disk braucht Immich?",
+					"a": "Immich verlangt mindestens 6 GB RAM und 2 Kerne und braucht hier im Ruhezustand etwa 1,5 GB, etwa 2,5 GB, während das Machine Learning neue Fotos verarbeitet, und mehr beim ersten Upload, wenn es seine Modelle herunterlädt. Auf der Disk liegen deine Originale plus Vorschaubilder und transcodierte Videos, plan also mehr Platz ein, als die Bibliothek selbst groß ist."
+				},
+				{
+					"q": "Ist Immich sicher genug für die einzige Kopie meiner Fotos?",
+					"a": "Immich selbst rät zu einem 3-2-1-Backup für Fotos, die dir wichtig sind: drei Kopien auf zwei Arten von Datenträgern, eine davon an einem anderen Ort. Pethost sichert die Volumes des Projekts jede Nacht, und Immich erstellt zusätzlich selbst Dumps seiner Datenbank; bewahr die Originale trotzdem auch woanders auf."
+				}
+			]
+		},
+		"es": {
+			"description": "Tus fotos y videos, con backup desde tu teléfono, búsqueda inteligente, reconocimiento facial y álbumes",
+			"notes": "Inicia sesión con el correo y la contraseña que indicaste: Immich creó ese administrador antes de responder a nadie, así que nadie más llega a su configuración, y no hay forma de registrarse. Una breve configuración inicial pide un tema, un idioma y cómo se nombran los archivos. En tu teléfono, instala la app de Immich, indica https://{host} como su “Enlace del punto de acceso (endpoint) del servidor”, inicia sesión y activa la “Copia de seguridad”. Agrega personas en Administración → Usuarios. La búsqueda inteligente, los rostros y el texto de las fotos vienen del machine learning, que descarga sus modelos con la primera subida. Define TZ en el .env del proyecto, por ejemplo TZ=Europe/Berlin, para ver las fechas en tu zona horaria.",
+			"sizing": "Immich usa unos 1,5 GB de memoria en reposo con su base de datos y el machine learning, unos 2,5 GB mientras procesa fotos nuevas y más en la primera subida, cuando descarga sus modelos; el disco es tu biblioteca más sus miniaturas y videos.",
+			"summary": "Autoaloja Immich, la alternativa de código abierto a Google Photos: backup del teléfono, cronología, álbumes, reconocimiento facial y búsqueda inteligente.",
+			"about": [
+				"Immich es una biblioteca de fotos y videos autoalojada que la gente usa en lugar de Google Photos o iCloud Photos. Sus apps para iPhone y Android hacen backup de la galería del teléfono en segundo plano, y la página web y las apps lo muestran todo en una sola cronología, con álbumes, favoritos, el “Archivo”, un mapa de dónde se tomó cada foto y “Recuerdos” del mismo día en años anteriores.",
+				"El machine learning, que funciona dentro de Immich sin enviar nada a un servicio en la nube, encuentra a las personas de tus fotos y agrupa sus rostros, lee el texto de las imágenes y hace posible la búsqueda inteligente, que encuentra una foto a partir de palabras como “perro en una playa”. Immich conserva archivos RAW, Live Photos y fotos en movimiento, comparte álbumes o enlaces con quien quieras y, con “Compartir con compañeros”, deja que otra persona vea tu biblioteca. Cada persona del servidor tiene su propia cuenta.",
+				"Esta plantilla ejecuta el servidor de Immich, su machine learning, Valkey y su PostgreSQL con las extensiones vectoriales que necesita, con su biblioteca en un volumen. El administrador se crea con el correo y la contraseña que indicas antes de que Immich responda a nadie, y los enlaces compartidos llevan la dirección del proyecto. Immich pide al menos 6 GB de memoria y 2 núcleos, por lo que cabe en el plan Grow; tus fotos ocupan el disco, así que vigila cuánto ocupa a medida que crece la biblioteca."
+			],
+			"faq": [
+				{
+					"q": "¿Immich es gratis?",
+					"a": "Sí. Immich es de código abierto bajo la licencia AGPL-3.0, y sus creadores dicen que todas sus funciones son gratis para siempre, sin nada detrás de un muro de pago. Para apoyar el proyecto, puedes comprarlo para ti o para un servidor, y eso no desbloquea nada más."
+				},
+				{
+					"q": "¿Cómo hago backup de las fotos de mi teléfono en Immich?",
+					"a": "Instala la app de Immich desde la App Store o Google Play, indica la dirección de tu Immich como su “Enlace del punto de acceso (endpoint) del servidor”, inicia sesión y activa la “Copia de seguridad” para los álbumes que elijas. La app sube las fotos y los videos nuevos en segundo plano, y se salta lo que ya está allí."
+				},
+				{
+					"q": "¿Immich reconoce rostros?",
+					"a": "Sí. Su machine learning, que funciona dentro de Immich y no envía tus fotos a ningún sitio, detecta los rostros de cada foto y los agrupa en “Personas”, a las que tú pones nombre. También lee el texto de las imágenes, y su búsqueda inteligente encuentra fotos por lo que aparece en ellas."
+				},
+				{
+					"q": "¿Cuánta memoria y disco necesita Immich?",
+					"a": "Immich pide al menos 6 GB de memoria y 2 núcleos, y aquí usa unos 1,5 GB en reposo, unos 2,5 GB mientras el machine learning procesa fotos nuevas y más en la primera subida, cuando descarga sus modelos. El disco guarda tus originales más las miniaturas y los videos transcodificados, así que calcula más espacio que el tamaño de la propia biblioteca."
+				},
+				{
+					"q": "¿Immich es seguro para la única copia de mis fotos?",
+					"a": "El propio Immich recomienda un backup 3-2-1 de las fotos que te importan: tres copias, en dos tipos de almacenamiento, una de ellas en otro lugar. Pethost hace un backup cada noche de los volúmenes del proyecto, e Immich además hace dumps de su base de datos por sí solo; guarda también los originales en otra parte."
+				}
+			]
+		},
+		"fr": {
+			"description": "Vos photos et vidéos, sauvegardées depuis votre téléphone, avec recherche intelligente, visages et albums",
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe que vous avez indiqués : Immich a créé cet administrateur avant de répondre à qui que ce soit, donc personne d’autre n’accède à sa configuration, et il n’y a pas d’inscription. Un court parcours d’accueil demande un thème, une langue et la façon dont les fichiers sont nommés. Sur votre téléphone, installez l’application Immich, indiquez https://{host} comme « URL du point d’accès au serveur », connectez-vous et activez la « Sauvegarde ». Ajoutez des personnes dans Administration → Utilisateurs. La recherche intelligente, les visages et le texte des photos viennent de l’apprentissage automatique, qui télécharge ses modèles au premier envoi. Définissez TZ dans le .env du projet, par exemple TZ=Europe/Berlin, pour avoir les dates dans votre fuseau horaire.",
+			"sizing": "Immich prend environ 1,5 GB de mémoire au repos avec sa base de données et l’apprentissage automatique, environ 2,5 GB pendant qu’il traite de nouvelles photos, et davantage au premier envoi, quand il télécharge ses modèles ; le disque, c’est votre bibliothèque plus ses miniatures et ses vidéos.",
+			"summary": "Auto-hébergez Immich, l’alternative open source à Google Photos : sauvegarde mobile, chronologie, albums, reconnaissance faciale et recherche intelligente.",
+			"about": [
+				"Immich est une bibliothèque de photos et de vidéos auto-hébergée, que l’on fait tourner à la place de Google Photos ou d’iCloud Photos. Ses applications pour iPhone et Android sauvegardent la pellicule en arrière-plan, et la page web comme les applications montrent tout sur une seule chronologie, avec des albums, des favoris, une archive, une carte de l’endroit où chaque photo a été prise et des souvenirs du même jour les années précédentes.",
+				"L’apprentissage automatique, qui tourne dans Immich sans rien envoyer à un service cloud, trouve les personnes sur vos photos et regroupe leurs visages, lit le texte dans les images et fait marcher la recherche intelligente, qui retrouve une photo à partir de mots comme « chien sur une plage ». Immich conserve les fichiers RAW, les Live Photos et les photos animées, partage des albums ou des liens avec qui vous voulez et, avec le « Partage avec les partenaires », laisse une autre personne voir votre bibliothèque. Chaque personne sur le serveur a son propre compte.",
+				"Ce template fait tourner le serveur d’Immich, son apprentissage automatique, Valkey et son PostgreSQL avec les extensions vectorielles qu’il lui faut, sa bibliothèque dans un volume. L’administrateur est créé à partir de l’e-mail et du mot de passe que vous indiquez avant qu’Immich ne réponde à qui que ce soit, et les liens partagés prennent l’adresse du projet. Immich demande au moins 6 GB de mémoire et 2 cœurs, il tient donc dans l’offre Grow ; vos photos occupent le disque, alors surveillez sa taille à mesure que la bibliothèque grandit."
+			],
+			"faq": [
+				{
+					"q": "Immich est-il gratuit ?",
+					"a": "Oui. Immich est open source sous licence AGPL-3.0, et ses créateurs disent que toutes ses fonctions sont gratuites pour toujours, sans rien derrière un paywall. Pour soutenir le projet, vous pouvez l’acheter pour vous ou pour un serveur, ce qui ne débloque rien de plus."
+				},
+				{
+					"q": "Comment sauvegarder les photos de mon téléphone dans Immich ?",
+					"a": "Installez l’application Immich depuis l’App Store ou Google Play, indiquez l’adresse de votre Immich comme « URL du point d’accès au serveur », connectez-vous et activez la « Sauvegarde » pour les albums que vous choisissez. L’application envoie les nouvelles photos et vidéos en arrière-plan, et ignore ce qui s’y trouve déjà."
+				},
+				{
+					"q": "Immich reconnaît-il les visages ?",
+					"a": "Oui. Son apprentissage automatique, qui tourne dans Immich et n’envoie vos photos nulle part, détecte les visages sur chaque photo et les regroupe dans « Personnes », où vous leur donnez un nom. Il lit aussi le texte dans les images, et sa recherche intelligente trouve des photos d’après ce qu’elles montrent."
+				},
+				{
+					"q": "De combien de mémoire et de disque Immich a-t-il besoin ?",
+					"a": "Immich demande au moins 6 GB de mémoire et 2 cœurs, et prend ici environ 1,5 GB au repos, environ 2,5 GB pendant que l’apprentissage automatique traite de nouvelles photos, et davantage au premier envoi, quand il télécharge ses modèles. Le disque contient vos originaux plus les miniatures et les vidéos transcodées : prévoyez donc plus que la taille de la bibliothèque elle-même."
+				},
+				{
+					"q": "Immich est-il sûr pour l’unique copie de mes photos ?",
+					"a": "Immich lui-même conseille une sauvegarde 3-2-1 des photos auxquelles vous tenez : trois copies, sur deux types de support, dont une ailleurs. Pethost sauvegarde les volumes du projet chaque nuit, et Immich fait aussi lui-même des dumps de sa base de données ; gardez quand même les originaux à un autre endroit."
+				}
+			]
+		},
+		"pl": {
+			"description": "Twoje zdjęcia i filmy, z backupem prosto z telefonu, inteligentnym wyszukiwaniem, rozpoznawaniem twarzy i albumami",
+			"notes": "Zaloguj się e-mailem i hasłem podanymi przy tworzeniu projektu: Immich utworzył tego administratora, zanim komukolwiek odpowiedział, więc nikt inny nie trafi do jego konfiguracji, a rejestracji nie ma. Krótka konfiguracja początkowa pyta o motyw, język i sposób nazywania plików. Na telefonie zainstaluj aplikację Immich, podaj https://{host} jako „URL Serwera”, zaloguj się i włącz kopię zapasową. Kolejne osoby dodasz na stronie Administracja → Użytkownicy. Inteligentne wyszukiwanie, twarze i tekst na zdjęciach zapewnia uczenie maszynowe, które pobiera swoje modele przy pierwszym wgraniu. Ustaw TZ w pliku .env projektu, na przykład TZ=Europe/Berlin, żeby daty były w twojej strefie czasowej.",
+			"sizing": "Immich w spoczynku zajmuje razem z bazą danych i uczeniem maszynowym około 1,5 GB pamięci, podczas przetwarzania nowych zdjęć około 2,5 GB, a przy pierwszym wgraniu, gdy pobiera swoje modele, jeszcze więcej; dysk to twoja biblioteka plus jej miniatury i filmy.",
+			"summary": "Hostuj Immich u siebie: alternatywa open source dla Google Photos. Backup z telefonu, oś czasu, albumy, rozpoznawanie twarzy i inteligentne wyszukiwanie.",
+			"about": [
+				"Immich to hostowana u siebie biblioteka zdjęć i filmów, której ludzie używają zamiast Google Photos albo iCloud Photos. Jego aplikacje na iPhone’a i Androida robią w tle backup zdjęć z aparatu, a strona internetowa i aplikacje pokazują wszystko na jednej osi czasu, z albumami, ulubionymi, archiwum, mapą miejsc, w których zrobiono każde zdjęcie, i wspomnieniami z tego samego dnia w poprzednich latach.",
+				"Uczenie maszynowe, które działa w samym Immich i niczego nie wysyła do usług w chmurze, znajduje osoby na zdjęciach i grupuje ich twarze, czyta tekst na obrazach i napędza inteligentne wyszukiwanie, które znajduje zdjęcie po słowach takich jak „pies na plaży”. Immich przechowuje pliki RAW, Live Photos i zdjęcia ruchome, udostępnia albumy albo linki komu chcesz, a dzięki funkcji „Dzielenie z partnerami” druga osoba może oglądać twoją bibliotekę. Każda osoba na serwerze ma własne konto.",
+				"Ten szablon uruchamia serwer Immich, jego uczenie maszynowe, Valkey i jego PostgreSQL z potrzebnymi rozszerzeniami wektorowymi, a bibliotekę trzyma na wolumenie. Administrator powstaje z e-maila i hasła, które podajesz, zanim Immich komukolwiek odpowie, a udostępnione linki dostają adres projektu. Immich wymaga co najmniej 6 GB pamięci i 2 rdzeni, dlatego mieści się w planie Grow; zdjęcia zajmują dysk, więc pilnuj, ile zostało na nim miejsca, gdy biblioteka rośnie."
+			],
+			"faq": [
+				{
+					"q": "Czy Immich jest darmowy?",
+					"a": "Tak. Immich to open source na licencji AGPL-3.0, a jego twórcy mówią, że wszystkie funkcje są darmowe na zawsze i nic nie jest ukryte za paywallem. Możesz go kupić dla siebie albo dla serwera, żeby wesprzeć projekt, ale niczego więcej to nie odblokowuje."
+				},
+				{
+					"q": "Jak zrobić backup zdjęć z telefonu do Immich?",
+					"a": "Zainstaluj aplikację Immich z App Store albo Google Play, podaj adres swojego Immich jako „URL Serwera”, zaloguj się i włącz kopię zapasową dla wybranych albumów. Aplikacja wgrywa nowe zdjęcia i filmy w tle i pomija to, co już jest na serwerze."
+				},
+				{
+					"q": "Czy Immich rozpoznaje twarze?",
+					"a": "Tak. Jego uczenie maszynowe, które działa w samym Immich i nigdzie nie wysyła twoich zdjęć, wykrywa twarze na każdym zdjęciu i grupuje je w zakładce „Osoby”, gdzie nadajesz im imiona. Czyta też tekst na obrazach, a inteligentne wyszukiwanie znajduje zdjęcia po tym, co na nich jest."
+				},
+				{
+					"q": "Ile pamięci i miejsca na dysku potrzebuje Immich?",
+					"a": "Immich wymaga co najmniej 6 GB pamięci i 2 rdzeni, a tutaj zajmuje około 1,5 GB w spoczynku, około 2,5 GB, gdy uczenie maszynowe przetwarza nowe zdjęcia, a przy pierwszym wgraniu, gdy pobiera swoje modele, jeszcze więcej. Na dysku są oryginały plus miniatury i transkodowane filmy, więc zaplanuj więcej miejsca, niż zajmuje sama biblioteka."
+				},
+				{
+					"q": "Czy Immich jest bezpieczny dla jedynej kopii moich zdjęć?",
+					"a": "Sam Immich zaleca backup 3-2-1 zdjęć, na których ci zależy: trzy kopie na dwóch rodzajach nośników, w tym jedna w innym miejscu. Pethost robi backup wolumenów projektu co noc, a Immich sam robi też dumpy swojej bazy danych; trzymaj oryginały również gdzie indziej."
+				}
+			]
+		},
+		"pt": {
+			"description": "Suas fotos e vídeos, com backup do celular, busca inteligente, reconhecimento de rostos e álbuns",
+			"notes": "Entre com o e-mail e a senha que você informou: o Immich criou esse administrador antes de responder a qualquer pessoa, então ninguém mais chega à configuração dele, e não há cadastro. Uma configuração inicial rápida pede um tema, um idioma e como os arquivos são nomeados. No celular, instale o app do Immich, informe https://{host} como “URL do servidor”, entre e ative o “Backup”. Adicione pessoas em Administração → Usuários. A busca inteligente, os rostos e o texto nas fotos vêm do aprendizado de máquina, que baixa os modelos dele no primeiro upload. Defina o TZ no .env do projeto, por exemplo TZ=Europe/Berlin, para ver as datas no seu fuso horário.",
+			"sizing": "O Immich ocupa cerca de 1,5 GB de memória em repouso com o banco de dados e o aprendizado de máquina, cerca de 2,5 GB enquanto processa fotos novas e mais no primeiro upload, quando baixa os modelos; o disco é a sua biblioteca mais as miniaturas e os vídeos dela.",
+			"summary": "Auto-hospede o Immich, a alternativa open source ao Google Photos: backup do celular, linha do tempo, álbuns, reconhecimento facial e busca inteligente.",
+			"about": [
+				"O Immich é uma biblioteca de fotos e vídeos auto-hospedada que as pessoas usam no lugar do Google Photos ou do iCloud Photos. Os apps para iPhone e Android fazem backup das fotos da câmera em segundo plano, e a página web e os apps mostram tudo numa só linha do tempo, com álbuns, favoritos, fotos arquivadas, um mapa de onde cada foto foi tirada e memórias do mesmo dia em anos anteriores.",
+				"O aprendizado de máquina, que roda dentro do Immich sem mandar nada para um serviço na nuvem, encontra as pessoas nas suas fotos e agrupa os rostos delas, lê texto em imagens e faz funcionar a busca inteligente, que encontra uma foto a partir de palavras como “cachorro na praia”. O Immich guarda arquivos RAW, Live Photos e fotos com movimento, compartilha álbuns ou links com qualquer pessoa e, pelo “Compartilhamento com Parceiro”, deixa outra pessoa ver a sua biblioteca. Cada pessoa no servidor tem a própria conta.",
+				"Este template roda o servidor do Immich, o aprendizado de máquina dele, o Valkey e o PostgreSQL dele com as extensões vetoriais de que precisa, com a biblioteca num volume. O administrador é criado com o e-mail e a senha que você informa antes de o Immich responder a qualquer pessoa, e os links compartilhados recebem o endereço do projeto. O Immich pede pelo menos 6 GB de memória e 2 núcleos, então cabe no plano Grow; suas fotos ocupam o disco, por isso acompanhe o tamanho dele conforme a biblioteca cresce."
+			],
+			"faq": [
+				{
+					"q": "O Immich é gratuito?",
+					"a": "Sim. O Immich é de código aberto sob a licença AGPL-3.0, e os criadores dizem que todos os recursos são gratuitos para sempre, sem nada atrás de paywall. Para apoiar o projeto, você pode comprá-lo para uso próprio ou para um servidor, o que não libera nada a mais."
+				},
+				{
+					"q": "Como faço backup das fotos do celular no Immich?",
+					"a": "Instale o app do Immich pela App Store ou pelo Google Play, informe o endereço do seu Immich como “URL do servidor”, entre e ative o “Backup” para os álbuns que escolher. O app envia fotos e vídeos novos em segundo plano e pula o que já está lá."
+				},
+				{
+					"q": "O Immich reconhece rostos?",
+					"a": "Sim. O aprendizado de máquina dele, que roda dentro do Immich e não manda suas fotos para lugar nenhum, detecta os rostos em cada foto e os agrupa em “Pessoas”, que você nomeia. Ele também lê texto em imagens, e a busca inteligente encontra fotos pelo que aparece nelas."
+				},
+				{
+					"q": "De quanta memória e disco o Immich precisa?",
+					"a": "O Immich pede pelo menos 6 GB de memória e 2 núcleos, e aqui ocupa cerca de 1,5 GB em repouso, cerca de 2,5 GB enquanto o aprendizado de máquina processa fotos novas e mais no primeiro upload, quando baixa os modelos. O disco guarda seus originais mais as miniaturas e os vídeos transcodificados, então conte com mais espaço que o tamanho da própria biblioteca."
+				},
+				{
+					"q": "O Immich é seguro para a única cópia das minhas fotos?",
+					"a": "O próprio Immich recomenda manter um backup 3-2-1 das fotos que importam para você: três cópias, em dois tipos de armazenamento, uma delas em outro lugar. O Pethost faz backup dos volumes do projeto toda noite, e o Immich também faz dumps do próprio banco de dados sozinho; mantenha os originais em mais algum lugar também."
+				}
+			]
+		},
+		"ru": {
+			"description": "Ваши фото и видео с бэкапом с телефона, умным поиском, распознаванием лиц и альбомами",
+			"notes": "Войдите с почтой и паролем, которые вы указали: Immich создал этого администратора еще до того, как начал кому-либо отвечать, поэтому никто другой не попадет в его настройку, а регистрации нет. Затем короткое «Начало работы» предложит выбрать тему, язык и то, как называть файлы. На телефоне установите приложение Immich, укажите https://{host} как «URL-адрес сервера», войдите и включите «Резервное копирование». Других людей добавьте в разделе «Управление сервером» → «Пользователи». Умный поиск, лица и текст на фото дает машинное обучение, которое скачивает свои модели при первой загрузке. Задайте TZ в .env проекта, например TZ=Europe/Berlin, чтобы даты были в вашем часовом поясе.",
+			"sizing": "Immich в простое расходует около 1,5 GB памяти вместе с базой данных и машинным обучением, около 2,5 GB, пока обрабатывает новые фото, и больше при первой загрузке, когда скачивает свои модели; диск занимает ваша библиотека плюс ее миниатюры и видео.",
+			"summary": "Self-hosted Immich в один клик: open source альтернатива Google Photos — бэкап с телефона, хронология, альбомы, распознавание лиц и умный поиск.",
+			"about": [
+				"Immich — self-hosted библиотека фото и видео, которую запускают вместо Google Photos или iCloud Photos. Его приложения для iPhone и Android в фоне делают бэкап фотопленки, а веб-интерфейс и приложения показывают все на одной временной шкале, с альбомами, избранным, архивом, картой мест, где снято каждое фото, и воспоминаниями о том же дне в прошлые годы.",
+				"Машинное обучение, которое работает внутри Immich и ничего не отправляет в облачные сервисы, находит людей на фото и группирует их лица, читает текст на изображениях и работает в умном поиске, который находит фото по словам вроде «собака на пляже». Immich хранит RAW-файлы, Live Photos и фото с движением, делится альбомами или ссылками с кем угодно и дает партнеру доступ к вашей библиотеке. У каждого человека на сервере свой аккаунт.",
+				"Этот шаблон запускает сервер Immich, его машинное обучение, Valkey и его PostgreSQL с нужными ему векторными расширениями, а библиотеку хранит в томе. Администратор создается из почты и пароля, которые вы указываете, еще до того, как Immich начнет кому-либо отвечать, а публичные ссылки получают адрес проекта. Immich требует минимум 6 GB памяти и 2 ядра, поэтому подходит для тарифа Grow; диск занимают ваши фото, так что следите за его заполнением по мере роста библиотеки."
+			],
+			"faq": [
+				{
+					"q": "Immich бесплатный?",
+					"a": "Да. Immich распространяется с открытым кодом под лицензией AGPL-3.0, и его авторы говорят, что все функции бесплатны навсегда и ничего не спрятано за пейволлом. Купить его можно для себя или для сервера, чтобы поддержать проект, но ничего дополнительно это не открывает."
+				},
+				{
+					"q": "Как сделать бэкап фото с телефона в Immich?",
+					"a": "Установите приложение Immich из App Store или Google Play, укажите адрес вашего Immich как «URL-адрес сервера», войдите и включите «Резервное копирование» для выбранных альбомов. Приложение загружает новые фото и видео в фоне и пропускает то, что уже есть на сервере."
+				},
+				{
+					"q": "Распознает ли Immich лица?",
+					"a": "Да. Его машинное обучение, которое работает внутри Immich и никуда не отправляет ваши фото, находит лица на каждом фото и группирует их в разделе «Люди», где вы даете им имена. Оно также читает текст на изображениях, а умный поиск находит фото по тому, что на них изображено."
+				},
+				{
+					"q": "Сколько памяти и места на диске нужно Immich?",
+					"a": "Immich требует минимум 6 GB памяти и 2 ядра, а здесь занимает около 1,5 GB в простое, около 2,5 GB, пока машинное обучение обрабатывает новые фото, и больше при первой загрузке, когда скачивает свои модели. На диске лежат ваши оригиналы плюс миниатюры и перекодированные видео, так что закладывайте больше места, чем занимает сама библиотека."
+				},
+				{
+					"q": "Безопасно ли хранить в Immich единственную копию фото?",
+					"a": "Сам Immich советует держать для важных фото бэкап по схеме 3-2-1: три копии на двух типах носителей, одна из них в другом месте. Pethost каждую ночь делает бэкап томов проекта, а Immich еще и сам делает дампы своей базы данных; храните оригиналы где-нибудь еще."
+				}
+			]
+		},
+		"uk": {
+			"description": "Ваші фото й відео з бекапом із телефона, розумним пошуком, розпізнаванням облич і альбомами",
+			"notes": "Увійдіть з електронною поштою й паролем, які ви вказали: Immich створив цього адміністратора ще до того, як почав будь-кому відповідати, тож його налаштування більше нікому не дістанеться, а реєстрації немає. Коротке початкове налаштування запитає тему оформлення, мову й те, як називати файли. На телефоні встановіть застосунок Immich, укажіть https://{host} у полі «Адреса сервера», увійдіть і ввімкніть «Резервне копіювання». Інших людей додайте в розділі «Адміністрування → Користувачі». Розумний пошук, обличчя й текст на фото дає машинне навчання, яке звантажує свої моделі під час першого завантаження фото. Задайте TZ у .env проєкту, наприклад TZ=Europe/Berlin, щоб дати були у вашому часовому поясі.",
+			"sizing": "Immich у спокої займає близько 1,5 GB пам’яті разом із базою даних і машинним навчанням, близько 2,5 GB, поки обробляє нові фото, і більше під час першого завантаження, коли звантажує свої моделі; диск — це ваша бібліотека плюс її мініатюри й відео.",
+			"summary": "Self-hosted Immich в один клік: альтернатива Google Photos із відкритим кодом — бекап телефона, хронологія, альбоми, розпізнавання облич і розумний пошук.",
+			"about": [
+				"Immich — self-hosted бібліотека фото й відео, яку запускають замість Google Photos або iCloud Photos. Його застосунки для iPhone і Android у фоні роблять бекап фотоплівки, а вебсторінка й застосунки показують усе в одній хронології, з альбомами, вибраним, архівом, мапою місць, де зроблено кожне фото, і спогадами про той самий день у минулі роки.",
+				"Машинне навчання, яке працює всередині Immich і нічого не надсилає до хмарних сервісів, знаходить людей на фото й групує їхні обличчя, читає текст на зображеннях і працює в розумному пошуку, який знаходить фото за словами на кшталт «собака на пляжі». Immich зберігає RAW-файли, Live Photos і фото з рухом, ділиться альбомами чи посиланнями з ким завгодно, а через «Спільний доступ із партнерами» показує вашу бібліотеку іншій людині. Кожна людина на сервері має власний акаунт.",
+				"Цей шаблон запускає сервер Immich, його машинне навчання, Valkey і його PostgreSQL з потрібними йому векторними розширеннями, а бібліотеку тримає в томі. Адміністратор створюється з пошти й пароля, які ви вказуєте, ще до того, як Immich почне будь-кому відповідати, а спільні посилання отримують адресу проєкту. Immich потребує щонайменше 6 GB пам’яті й 2 ядра, тому вміщується в тариф Grow; диск займають ваші фото, тож стежте за його заповненням, поки бібліотека росте."
+			],
+			"faq": [
+				{
+					"q": "Immich безкоштовний?",
+					"a": "Так. Immich має відкритий код за ліцензією AGPL-3.0, і його автори кажуть, що всі функції безкоштовні назавжди й нічого не сховано за пейволом. Купити його можна для себе або для сервера, щоб підтримати проєкт, але нічого додаткового це не відкриває."
+				},
+				{
+					"q": "Як зробити бекап фото з телефона в Immich?",
+					"a": "Установіть застосунок Immich з App Store або Google Play, укажіть адресу свого Immich у полі «Адреса сервера», увійдіть і ввімкніть «Резервне копіювання» для вибраних альбомів. Застосунок завантажує нові фото й відео у фоні та пропускає те, що вже є на сервері."
+				},
+				{
+					"q": "Чи розпізнає Immich обличчя?",
+					"a": "Так. Його машинне навчання, яке працює всередині Immich і нікуди не надсилає ваші фото, знаходить обличчя на кожному фото й групує їх у розділі «Люди», де ви даєте їм імена. Воно також читає текст на зображеннях, а розумний пошук знаходить фото за тим, що на них є."
+				},
+				{
+					"q": "Скільки пам’яті й диска потрібно Immich?",
+					"a": "Immich потребує щонайменше 6 GB пам’яті й 2 ядра, а тут займає близько 1,5 GB у спокої, близько 2,5 GB, поки машинне навчання обробляє нові фото, і більше під час першого завантаження, коли звантажує свої моделі. На диску лежать ваші оригінали плюс мініатюри й перекодовані відео, тож закладайте більше місця, ніж займає сама бібліотека."
+				},
+				{
+					"q": "Чи можна довірити Immich єдину копію своїх фото?",
+					"a": "Сам Immich радить тримати для важливих фото бекап за схемою 3-2-1: три копії на двох типах носіїв, одна з них в іншому місці. Pethost щоночі робить бекап томів проєкту, а Immich ще й сам робить дампи своєї бази даних; зберігайте оригінали ще десь."
+				}
+			]
+		}
+	}
+}
