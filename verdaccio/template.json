@@ -1,0 +1,263 @@
+{
+	"name": "Verdaccio",
+	"emoji": "📦",
+	"category": "developer-tools",
+	"alternatives": [
+		"npm Teams",
+		"GitHub Packages",
+		"JFrog Artifactory"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "verdaccio",
+		"port": 4873
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "A private npm registry for your own packages, which also caches npm’s",
+			"notes": "Sign in with the username and password you gave: they are the registry’s only account, and nobody signs up. On your computer, run npm login --registry https://{host}/ and publish with npm publish --registry https://{host}/; put registry=https://{host}/ in a project’s .npmrc to install through it, and public packages come from npmjs and are kept here. The web page at the address lists the packages once you sign in. The password is ADMIN_PASSWORD in the project’s .env: change it there. To let others sign up with npm adduser, raise max_users in the config in compose.yaml and deploy again.",
+			"sizing": "Verdaccio is light: about 100 MB of memory; its disk holds your packages and the public ones installed through it, a few megabytes each.",
+			"summary": "Self-host Verdaccio, the lightweight open-source private npm registry: publish your own packages and cache npmjs, with npm, yarn and pnpm.",
+			"about": [
+				"Verdaccio is a lightweight private npm registry, which teams and solo developers run in place of npm’s paid private packages, GitHub Packages or JFrog Artifactory. You publish packages to it with npm publish, and install them with npm, yarn or pnpm as from npmjs. It needs no database: packages and their metadata are files on its disk.",
+				"It is also a proxy of the public registry: a package it does not hold comes from npmjs through its uplink and is kept, so later installs come from Verdaccio, not from npmjs, and a scope such as @yourname can stay private while everything else comes from npm. Its web page shows each package’s readme, versions and dependencies.",
+				"This template runs Verdaccio with its storage in a volume and one account, the username and password you give, written into its htpasswd file at every start. Sign-up is off, and packages, your own and npm’s, are read and installed only by a user who signed in, so the registry is no open mirror for strangers."
+			],
+			"faq": [
+				{
+					"q": "Is Verdaccio free?",
+					"a": "Yes. Verdaccio is open source under the MIT license, with no paid edition, and running it yourself costs only the server."
+				},
+				{
+					"q": "How do I publish a package to Verdaccio?",
+					"a": "Run npm login --registry https://your-address/ with your username and password, then npm publish --registry https://your-address/ in the package’s folder. Setting publishConfig.registry in package.json or registry in .npmrc saves typing the address each time."
+				},
+				{
+					"q": "Can Verdaccio install public packages too?",
+					"a": "Yes. A package that is not on Verdaccio is fetched from npmjs through its uplink and cached, so you can point npm, yarn or pnpm at Verdaccio alone and get both your packages and public ones. In this template, installing needs a signed-in user too."
+				},
+				{
+					"q": "Does Verdaccio work with yarn and pnpm?",
+					"a": "Yes. Verdaccio speaks the npm registry’s protocol, so npm, yarn and pnpm publish to it and install from it once their registry setting points at its address and they have its token."
+				}
+			]
+		},
+		"de": {
+			"description": "Eine private npm-Registry für deine eigenen Pakete, die auch die von npm cacht",
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Das ist das einzige Konto der Registry, und niemand kann sich registrieren. Führ auf deinem Computer npm login --registry https://{host}/ aus und veröffentliche mit npm publish --registry https://{host}/; trag registry=https://{host}/ in die .npmrc eines Projekts ein, um darüber zu installieren: Öffentliche Pakete kommen dann von npmjs und werden hier aufbewahrt. Die Webseite unter der Adresse listet die Pakete auf, sobald du angemeldet bist. Das Passwort steht als ADMIN_PASSWORD in der .env des Projekts: Ändere es dort. Damit sich andere mit npm adduser registrieren können, erhöh max_users in der Konfiguration in der compose.yaml und deploy neu.",
+			"sizing": "Verdaccio ist leicht: etwa 100 MB RAM; auf der Disk liegen deine Pakete und die öffentlichen, die darüber installiert wurden, je ein paar Megabyte.",
+			"summary": "Verdaccio selbst hosten: die leichte Open-Source-Registry für private npm-Pakete. Veröffentliche eigene Pakete und cache npmjs, mit npm, yarn und pnpm.",
+			"about": [
+				"Verdaccio ist eine leichte private npm-Registry, die Teams ebenso wie Leute, die allein entwickeln, statt der kostenpflichtigen privaten Pakete von npm, GitHub Packages oder JFrog Artifactory betreiben. Du veröffentlichst Pakete darauf mit npm publish und installierst sie mit npm, yarn oder pnpm wie von npmjs. Eine Datenbank braucht Verdaccio nicht: Pakete und ihre Metadaten sind Dateien auf seiner Disk.",
+				"Außerdem ist Verdaccio ein Proxy für die öffentliche Registry: Ein Paket, das es nicht hat, kommt über seinen Uplink von npmjs und wird aufbewahrt, sodass spätere Installationen von Verdaccio statt von npmjs kommen, und ein Scope wie @deinname kann privat bleiben, während alles andere von npm kommt. Die Weboberfläche zeigt für jedes Paket das Readme, die Versionen und die Abhängigkeiten.",
+				"Diese Vorlage betreibt Verdaccio mit dem Speicher in einem Volume und einem einzigen Konto aus dem Benutzernamen und dem Passwort, die du festlegst und die bei jedem Start in die htpasswd-Datei geschrieben werden. Die Registrierung ist aus, und Pakete, deine eigenen wie die von npm, kann nur lesen und installieren, wer angemeldet ist, sodass die Registry kein offener Mirror für Fremde ist."
+			],
+			"faq": [
+				{
+					"q": "Ist Verdaccio kostenlos?",
+					"a": "Ja. Verdaccio ist Open Source unter der MIT-Lizenz, ohne kostenpflichtige Edition, und selbst betrieben kostet es nur die Maschine."
+				},
+				{
+					"q": "Wie veröffentliche ich ein Paket in Verdaccio?",
+					"a": "Führ npm login --registry https://deine-adresse/ mit deinem Benutzernamen und Passwort aus, dann npm publish --registry https://deine-adresse/ im Ordner des Pakets. Wenn du publishConfig.registry in der package.json oder registry in der .npmrc setzt, musst du die Adresse nicht jedes Mal tippen."
+				},
+				{
+					"q": "Kann Verdaccio auch öffentliche Pakete installieren?",
+					"a": "Ja. Ein Paket, das nicht in Verdaccio liegt, wird über den Uplink von npmjs geholt und gecacht, sodass du npm, yarn oder pnpm allein auf Verdaccio zeigen lassen kannst und sowohl deine Pakete als auch öffentliche bekommst. In dieser Vorlage muss man auch zum Installieren angemeldet sein."
+				},
+				{
+					"q": "Funktioniert Verdaccio mit yarn und pnpm?",
+					"a": "Ja. Verdaccio spricht das Protokoll der npm-Registry, also veröffentlichen npm, yarn und pnpm darauf und installieren davon, sobald ihre Registry-Einstellung auf seine Adresse zeigt und sie sein Token haben."
+				}
+			]
+		},
+		"es": {
+			"description": "Un registro npm privado para tus propios paquetes, que también guarda en caché los de npm",
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: son la única cuenta del registro, y nadie puede crear otra. En tu equipo, ejecuta npm login --registry https://{host}/ y publica con npm publish --registry https://{host}/; pon registry=https://{host}/ en el .npmrc de un proyecto para instalar a través de él, y los paquetes públicos vendrán de npmjs y se guardarán aquí. La página web de la dirección lista los paquetes una vez que inicias sesión. La contraseña es ADMIN_PASSWORD en el .env del proyecto: cámbiala ahí. Para que otros puedan crear su cuenta con npm adduser, sube max_users en la configuración de compose.yaml y vuelve a desplegar.",
+			"sizing": "Verdaccio es ligero: unos 100 MB de memoria; su disco guarda tus paquetes y los públicos instalados a través de él, de unos pocos megabytes cada uno.",
+			"summary": "Autoaloja Verdaccio, el registro npm privado, ligero y de código abierto: publica tus propios paquetes y guarda npmjs en caché, con npm, yarn y pnpm.",
+			"about": [
+				"Verdaccio es un registro npm privado y ligero que equipos y desarrolladores independientes usan en lugar de los paquetes privados de pago de npm, GitHub Packages o JFrog Artifactory. Publicas paquetes en él con npm publish y los instalas con npm, yarn o pnpm como si vinieran de npmjs. No necesita base de datos: los paquetes y sus metadatos son archivos en su disco.",
+				"También es un proxy del registro público: un paquete que no tiene llega de npmjs a través de su uplink y se guarda, así que las instalaciones siguientes salen de Verdaccio y no de npmjs, y un scope como @tunombre puede seguir siendo privado mientras todo lo demás viene de npm. Su página web muestra el readme, las versiones y las dependencias de cada paquete.",
+				"Esta plantilla ejecuta Verdaccio con su almacenamiento en un volumen y una sola cuenta, el nombre de usuario y la contraseña que indicas, que se escriben en su archivo htpasswd en cada arranque. No se pueden crear cuentas nuevas, y los paquetes, tanto los tuyos como los de npm, solo los lee e instala un usuario que inició sesión, así que el registro no es un espejo abierto para extraños."
+			],
+			"faq": [
+				{
+					"q": "¿Verdaccio es gratis?",
+					"a": "Sí. Verdaccio es de código abierto bajo la licencia MIT, sin edición de pago, y ejecutarlo tú mismo solo cuesta la máquina."
+				},
+				{
+					"q": "¿Cómo publico un paquete en Verdaccio?",
+					"a": "Ejecuta npm login --registry https://tu-direccion/ con tu nombre de usuario y contraseña, y luego npm publish --registry https://tu-direccion/ en la carpeta del paquete. Si defines publishConfig.registry en package.json o registry en .npmrc, no tienes que escribir la dirección cada vez."
+				},
+				{
+					"q": "¿Verdaccio también puede instalar paquetes públicos?",
+					"a": "Sí. Un paquete que no está en Verdaccio se descarga de npmjs a través de su uplink y se guarda en caché, así que puedes apuntar npm, yarn o pnpm solo a Verdaccio y obtener tanto tus paquetes como los públicos. En esta plantilla, instalar también requiere un usuario con sesión iniciada."
+				},
+				{
+					"q": "¿Verdaccio funciona con yarn y pnpm?",
+					"a": "Sí. Verdaccio habla el protocolo del registro de npm, así que npm, yarn y pnpm publican en él e instalan desde él en cuanto su ajuste de registro apunta a su dirección y tienen su token."
+				}
+			]
+		},
+		"fr": {
+			"description": "Un registre npm privé pour vos propres paquets, qui met aussi en cache ceux de npm",
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : c’est le seul compte du registre, et personne ne peut s’inscrire. Sur votre ordinateur, lancez npm login --registry https://{host}/ et publiez avec npm publish --registry https://{host}/ ; mettez registry=https://{host}/ dans le .npmrc d’un projet pour installer via le registre : les paquets publics viennent alors de npmjs et sont gardés ici. La page web à l’adresse liste les paquets une fois que vous êtes connecté. Le mot de passe est ADMIN_PASSWORD dans le .env du projet : changez-le dans ce fichier. Pour que d’autres puissent s’inscrire avec npm adduser, augmentez max_users dans la configuration de compose.yaml et redéployez.",
+			"sizing": "Verdaccio est léger : environ 100 MB de mémoire ; son disque contient vos paquets et les paquets publics installés par son intermédiaire, quelques mégaoctets chacun.",
+			"summary": "Auto-hébergez Verdaccio, le registre npm privé, léger et open source : publiez vos propres paquets et mettez npmjs en cache, avec npm, yarn et pnpm.",
+			"about": [
+				"Verdaccio est un registre npm privé et léger, que les équipes comme les développeurs solo font tourner à la place des paquets privés payants de npm, de GitHub Packages ou de JFrog Artifactory. Vous y publiez des paquets avec npm publish, et vous les installez avec npm, yarn ou pnpm comme depuis npmjs. Il n’a besoin d’aucune base de données : les paquets et leurs métadonnées sont des fichiers sur son disque.",
+				"C’est aussi un proxy du registre public : un paquet qu’il n’a pas vient de npmjs par son uplink et est conservé, donc les installations suivantes viennent de Verdaccio et non de npmjs, et un scope comme @votrenom peut rester privé pendant que tout le reste vient de npm. Sa page web montre le readme, les versions et les dépendances de chaque paquet.",
+				"Ce template fait tourner Verdaccio avec son stockage dans un volume et un seul compte, le nom d’utilisateur et le mot de passe que vous indiquez, écrits dans son fichier htpasswd à chaque démarrage. L’inscription est désactivée, et les paquets, les vôtres comme ceux de npm, ne sont lus et installés que par un utilisateur connecté, donc le registre n’est pas un miroir ouvert aux inconnus."
+			],
+			"faq": [
+				{
+					"q": "Verdaccio est-il gratuit ?",
+					"a": "Oui. Verdaccio est open source sous licence MIT, sans édition payante, et le faire tourner vous-même ne coûte que la machine."
+				},
+				{
+					"q": "Comment publier un paquet sur Verdaccio ?",
+					"a": "Lancez npm login --registry https://votre-adresse/ avec votre nom d’utilisateur et votre mot de passe, puis npm publish --registry https://votre-adresse/ dans le dossier du paquet. Définir publishConfig.registry dans package.json ou registry dans .npmrc évite de taper l’adresse à chaque fois."
+				},
+				{
+					"q": "Verdaccio peut-il aussi installer des paquets publics ?",
+					"a": "Oui. Un paquet absent de Verdaccio est récupéré depuis npmjs par son uplink et mis en cache, donc vous pouvez faire pointer npm, yarn ou pnpm vers Verdaccio seul et obtenir à la fois vos paquets et les paquets publics. Dans ce template, l’installation demande aussi un utilisateur connecté."
+				},
+				{
+					"q": "Verdaccio fonctionne-t-il avec yarn et pnpm ?",
+					"a": "Oui. Verdaccio parle le protocole du registre npm, donc npm, yarn et pnpm y publient et y installent dès que leur réglage de registre pointe vers son adresse et qu’ils ont son token."
+				}
+			]
+		},
+		"pl": {
+			"description": "Prywatny rejestr npm na twoje własne pakiety, który przechowuje też w cache pakiety z npm",
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: to jedyne konto w rejestrze i nikt nie może się zarejestrować. Na swoim komputerze uruchom npm login --registry https://{host}/ i publikuj przez npm publish --registry https://{host}/; wpisz registry=https://{host}/ do pliku .npmrc w swoim projekcie, żeby instalować przez rejestr, a pakiety publiczne przyjdą z npmjs i zostaną tu zachowane. Strona pod tym adresem pokazuje listę pakietów, gdy się zalogujesz. Hasło to ADMIN_PASSWORD w pliku .env projektu: zmień je tam. Żeby inni mogli zakładać konta przez npm adduser, zwiększ max_users w konfiguracji w compose.yaml i wdróż ponownie.",
+			"sizing": "Verdaccio ma małe wymagania: około 100 MB pamięci; na dysku trzyma twoje pakiety i pakiety publiczne zainstalowane przez niego, po kilka megabajtów każdy.",
+			"summary": "Hostuj Verdaccio u siebie: lekki prywatny rejestr npm open source. Publikuj własne pakiety i trzymaj npmjs w cache, z npm, yarn i pnpm.",
+			"about": [
+				"Verdaccio to lekki prywatny rejestr npm, który zespoły i programiści działający w pojedynkę uruchamiają zamiast płatnych prywatnych pakietów npm, GitHub Packages albo JFrog Artifactory. Publikujesz w nim pakiety przez npm publish i instalujesz je przez npm, yarn albo pnpm tak samo jak z npmjs. Nie potrzebuje bazy danych: pakiety i ich metadane to pliki na jego dysku.",
+				"To także proxy publicznego rejestru: pakiet, którego nie ma, przychodzi z npmjs przez jego uplink i zostaje zachowany, więc kolejne instalacje idą z Verdaccio, a nie z npmjs, a scope taki jak @twojanazwa może zostać prywatny, podczas gdy cała reszta przychodzi z npm. Jego strona pokazuje readme, wersje i zależności każdego pakietu.",
+				"Ten szablon uruchamia Verdaccio z magazynem na wolumenie i jednym kontem z nazwy użytkownika i hasła, które podajesz, zapisywanym do pliku htpasswd przy każdym starcie. Rejestracja jest wyłączona, a pakiety, zarówno twoje, jak i te z npm, może czytać i instalować tylko zalogowany użytkownik, więc rejestr nie jest otwartym mirrorem dla obcych."
+			],
+			"faq": [
+				{
+					"q": "Czy Verdaccio jest darmowy?",
+					"a": "Tak. Verdaccio to open source na licencji MIT, bez płatnej edycji, a uruchomienie go u siebie kosztuje tylko maszynę."
+				},
+				{
+					"q": "Jak opublikować pakiet w Verdaccio?",
+					"a": "Uruchom npm login --registry https://twoj-adres/ ze swoją nazwą użytkownika i hasłem, a potem npm publish --registry https://twoj-adres/ w katalogu pakietu. Ustawienie publishConfig.registry w package.json albo registry w .npmrc oszczędza wpisywania adresu za każdym razem."
+				},
+				{
+					"q": "Czy Verdaccio zainstaluje też pakiety publiczne?",
+					"a": "Tak. Pakiet, którego nie ma w Verdaccio, jest pobierany z npmjs przez jego uplink i trafia do cache, więc możesz skierować npm, yarn albo pnpm wyłącznie na Verdaccio i dostać zarówno swoje pakiety, jak i publiczne. W tym szablonie instalowanie też wymaga zalogowanego użytkownika."
+				},
+				{
+					"q": "Czy Verdaccio działa z yarn i pnpm?",
+					"a": "Tak. Verdaccio mówi protokołem rejestru npm, więc npm, yarn i pnpm publikują do niego i instalują z niego, gdy tylko ich ustawienie rejestru wskazuje na jego adres i mają jego token."
+				}
+			]
+		},
+		"pt": {
+			"description": "Um registry npm privado para os seus próprios pacotes, que também faz cache dos pacotes do npm",
+			"notes": "Entre com o usuário e a senha que você informou: eles são a única conta do registry, e ninguém consegue se cadastrar. No seu computador, rode npm login --registry https://{host}/ e publique com npm publish --registry https://{host}/; coloque registry=https://{host}/ no .npmrc de um projeto para instalar por ele, e os pacotes públicos vêm do npmjs e ficam guardados aqui. A página web no endereço lista os pacotes depois que você entra. A senha é ADMIN_PASSWORD no .env do projeto: troque-a lá. Para deixar outras pessoas se cadastrarem com npm adduser, aumente max_users na configuração dentro do compose.yaml e faça o deploy de novo.",
+			"sizing": "Verdaccio é leve: cerca de 100 MB de memória; o disco guarda seus pacotes e os públicos instalados por ele, alguns megabytes cada.",
+			"summary": "Auto-hospede o Verdaccio, o registry npm privado, leve e open source: publique seus próprios pacotes e faça cache do npmjs, com npm, yarn e pnpm.",
+			"about": [
+				"O Verdaccio é um registry npm privado e leve, que equipes e desenvolvedores solo rodam no lugar dos pacotes privados pagos do npm, do GitHub Packages ou do JFrog Artifactory. Você publica pacotes nele com npm publish e instala com npm, yarn ou pnpm como se fosse do npmjs. Ele não precisa de banco de dados: os pacotes e seus metadados são arquivos no disco dele.",
+				"Ele também é um proxy do registry público: um pacote que ele não tem vem do npmjs pelo uplink e fica guardado, então as próximas instalações saem do Verdaccio, não do npmjs, e um escopo como @seunome pode continuar privado enquanto todo o resto vem do npm. A página web dele mostra o readme, as versões e as dependências de cada pacote.",
+				"Este template roda o Verdaccio com o armazenamento num volume e uma única conta, com o usuário e a senha que você informa, gravados no arquivo htpasswd dele a cada inicialização. O cadastro está desativado, e os pacotes, os seus e os do npm, só podem ser lidos e instalados por um usuário que entrou, então o registry não é um espelho aberto para estranhos."
+			],
+			"faq": [
+				{
+					"q": "O Verdaccio é gratuito?",
+					"a": "Sim. O Verdaccio é de código aberto sob a licença MIT, sem edição paga, e rodá-lo você mesmo custa só a máquina."
+				},
+				{
+					"q": "Como publico um pacote no Verdaccio?",
+					"a": "Rode npm login --registry https://seu-endereco/ com seu usuário e sua senha, e depois npm publish --registry https://seu-endereco/ na pasta do pacote. Definir publishConfig.registry no package.json ou registry no .npmrc evita digitar o endereço toda vez."
+				},
+				{
+					"q": "O Verdaccio também instala pacotes públicos?",
+					"a": "Sim. Um pacote que não está no Verdaccio é buscado no npmjs pelo uplink e guardado em cache, então você pode apontar o npm, o yarn ou o pnpm só para o Verdaccio e ter tanto os seus pacotes quanto os públicos. Neste template, instalar também exige um usuário que entrou."
+				},
+				{
+					"q": "O Verdaccio funciona com yarn e pnpm?",
+					"a": "Sim. O Verdaccio fala o protocolo do registry do npm, então npm, yarn e pnpm publicam nele e instalam a partir dele assim que a configuração de registry aponta para o endereço do Verdaccio e eles têm o token dele."
+				}
+			]
+		},
+		"ru": {
+			"description": "Приватный npm-реестр для ваших собственных пакетов, который заодно кеширует пакеты из npm",
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: это единственный аккаунт реестра, и зарегистрироваться в нем нельзя. На своем компьютере выполните npm login --registry https://{host}/ и публикуйте через npm publish --registry https://{host}/; пропишите registry=https://{host}/ в .npmrc своего проекта, чтобы устанавливать пакеты через этот реестр, — тогда публичные пакеты придут из npmjs и сохранятся здесь. Веб-страница по этому адресу показывает список пакетов, когда вы вошли. Пароль — ADMIN_PASSWORD в .env проекта: меняйте его там. Чтобы другие могли регистрироваться через npm adduser, увеличьте max_users в конфиге в compose.yaml и задеплойте проект заново.",
+			"sizing": "Verdaccio: небольшие требования — около 100 MB памяти; на диске лежат ваши пакеты и публичные пакеты, установленные через него, по несколько мегабайт каждый.",
+			"summary": "Self-hosted Verdaccio: легкий open source приватный npm-реестр. Публикуйте свои пакеты и кешируйте npmjs, работает с npm, yarn и pnpm.",
+			"about": [
+				"Verdaccio — легкий приватный npm-реестр, который команды и разработчики-одиночки запускают вместо платных приватных пакетов npm, GitHub Packages или JFrog Artifactory. Вы публикуете в него пакеты через npm publish и устанавливаете их через npm, yarn или pnpm так же, как из npmjs. База данных ему не нужна: пакеты и их метаданные — это файлы на его диске.",
+				"Еще он работает как прокси публичного реестра: пакет, которого у него нет, приходит из npmjs через его uplink и сохраняется, так что следующие установки идут из Verdaccio, а не из npmjs, а скоуп вроде @yourname может оставаться приватным, пока все остальное приходит из npm. Его веб-страница показывает readme, версии и зависимости каждого пакета.",
+				"Этот шаблон запускает Verdaccio с хранилищем в томе и одним аккаунтом — именем пользователя и паролем, которые вы задаете; они записываются в его файл htpasswd при каждом запуске. Регистрация выключена, а пакеты, и ваши, и из npm, читать и устанавливать может только вошедший пользователь, так что реестр не станет открытым зеркалом для посторонних."
+			],
+			"faq": [
+				{
+					"q": "Verdaccio бесплатный?",
+					"a": "Да. Verdaccio распространяется с открытым кодом под лицензией MIT, платной редакции у него нет, и если запускать его самому, платить придется только за машину."
+				},
+				{
+					"q": "Как опубликовать пакет в Verdaccio?",
+					"a": "Выполните npm login --registry https://your-address/ со своим именем пользователя и паролем, затем npm publish --registry https://your-address/ в папке пакета. Если задать publishConfig.registry в package.json или registry в .npmrc, адрес не придется набирать каждый раз."
+				},
+				{
+					"q": "Может ли Verdaccio устанавливать и публичные пакеты?",
+					"a": "Да. Пакет, которого нет в Verdaccio, скачивается из npmjs через его uplink и кешируется, так что npm, yarn или pnpm можно направить только на Verdaccio и получать и свои пакеты, и публичные. В этом шаблоне для установки тоже нужно войти."
+				},
+				{
+					"q": "Работает ли Verdaccio с yarn и pnpm?",
+					"a": "Да. Verdaccio говорит на протоколе npm-реестра, поэтому npm, yarn и pnpm публикуют в него и устанавливают из него, как только в их настройке реестра указан его адрес и у них есть его токен."
+				}
+			]
+		},
+		"uk": {
+			"description": "Приватний npm-реєстр для ваших власних пакетів, який заодно кешує пакети з npm",
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: це єдиний акаунт реєстру, і зареєструватися в ньому не можна. На своєму комп’ютері виконайте npm login --registry https://{host}/ і публікуйте через npm publish --registry https://{host}/; пропишіть registry=https://{host}/ у .npmrc свого проєкту, щоб встановлювати пакети через цей реєстр, — тоді публічні пакети прийдуть із npmjs і збережуться тут. Вебсторінка за цією адресою показує список пакетів, коли ви ввійшли. Пароль — ADMIN_PASSWORD у .env проєкту: змінюйте його там. Щоб інші могли реєструватися через npm adduser, збільште max_users у конфігурації в compose.yaml і задеплойте ще раз.",
+			"sizing": "Verdaccio має скромні вимоги: близько 100 MB пам’яті; на диску лежать ваші пакети й публічні пакети, встановлені через нього, по кілька мегабайтів кожен.",
+			"summary": "Self-hosted Verdaccio: легкий приватний npm-реєстр із відкритим кодом. Публікуйте свої пакети й кешуйте npmjs, працює з npm, yarn і pnpm.",
+			"about": [
+				"Verdaccio — легкий приватний npm-реєстр, який команди й розробники-одинаки запускають замість платних приватних пакетів npm, GitHub Packages або JFrog Artifactory. Ви публікуєте в нього пакети через npm publish і встановлюєте їх через npm, yarn або pnpm так само, як із npmjs. База даних йому не потрібна: пакети та їхні метадані — це файли на його диску.",
+				"А ще він працює як проксі публічного реєстру: пакет, якого в нього немає, приходить із npmjs через його uplink і зберігається, тож наступні встановлення йдуть із Verdaccio, а не з npmjs, а скоуп на кшталт @yourname може лишатися приватним, поки все інше приходить із npm. Його вебсторінка показує readme, версії й залежності кожного пакета.",
+				"Цей шаблон запускає Verdaccio зі сховищем у томі й одним акаунтом — іменем користувача й паролем, які ви вказуєте; вони записуються в його файл htpasswd під час кожного запуску. Реєстрацію вимкнено, а пакети, і ваші, і з npm, читати й встановлювати може лише користувач, який увійшов, тож реєстр не стане відкритим дзеркалом для сторонніх."
+			],
+			"faq": [
+				{
+					"q": "Verdaccio безкоштовний?",
+					"a": "Так. Verdaccio має відкритий код за ліцензією MIT, платної редакції в нього немає, і якщо запускати його самому, платити доведеться лише за машину."
+				},
+				{
+					"q": "Як опублікувати пакет у Verdaccio?",
+					"a": "Виконайте npm login --registry https://your-address/ зі своїм іменем користувача й паролем, потім npm publish --registry https://your-address/ у каталозі пакета. Якщо задати publishConfig.registry у package.json або registry у .npmrc, адресу не доведеться набирати щоразу."
+				},
+				{
+					"q": "Чи може Verdaccio встановлювати й публічні пакети?",
+					"a": "Так. Пакет, якого немає у Verdaccio, стягується з npmjs через його uplink і кешується, тож npm, yarn або pnpm можна спрямувати лише на Verdaccio й отримувати і свої пакети, і публічні. У цьому шаблоні для встановлення теж треба ввійти."
+				},
+				{
+					"q": "Чи працює Verdaccio з yarn і pnpm?",
+					"a": "Так. Verdaccio розмовляє протоколом npm-реєстру, тому npm, yarn і pnpm публікують у нього й встановлюють із нього, щойно в їхньому налаштуванні реєстру вказано його адресу і в них є його токен."
+				}
+			]
+		}
+	}
+}

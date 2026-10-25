@@ -1,0 +1,71 @@
+services:
+  verdaccio:
+    image: verdaccio/verdaccio:6
+    restart: unless-stopped
+    environment:
+      VERDACCIO_PUBLIC_URL: ${URL}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    # The administrator's line of the htpasswd file is written from the username and password
+    # given at every start, so its password is the one in the project's .env; the other lines,
+    # users the administrator added, stay as they are.
+    command:
+      - /bin/sh
+      - -c
+      - |
+        node -e '
+          const fs = require("node:fs");
+          const bcrypt = require("/usr/local/lib/node_modules/verdaccio/node_modules/bcryptjs");
+          const file = "/verdaccio/storage/htpasswd";
+          const { ADMIN_USERNAME: name, ADMIN_PASSWORD: password } = process.env;
+          const lines = fs.existsSync(file) ? fs.readFileSync(file, "utf8").split("\n") : [];
+          const others = lines.filter((line) => line && !line.startsWith(name + ":"));
+          fs.writeFileSync(file, [...others, name + ":" + bcrypt.hashSync(password, 10)].join("\n") + "\n", { mode: 0o600 });
+        ' || exit 1
+        unset ADMIN_PASSWORD
+        exec verdaccio --config /verdaccio/conf/config.yaml --listen http://0.0.0.0:4873
+    configs:
+      - source: config
+        target: /verdaccio/conf/config.yaml
+    volumes:
+      - storage:/verdaccio/storage
+
+configs:
+  config:
+    content: |
+      storage: /verdaccio/storage/data
+      plugins: /verdaccio/plugins
+      web:
+        title: Verdaccio
+      auth:
+        htpasswd:
+          file: /verdaccio/storage/htpasswd
+          # Nobody signs up with npm adduser: users are lines of the file, which the administrator adds.
+          max_users: -1
+      uplinks:
+        npmjs:
+          url: https://registry.npmjs.org/
+      # Only users who signed in install or publish, so the registry is no open mirror of npm.
+      packages:
+        '@*/*':
+          access: $$authenticated
+          publish: $$authenticated
+          unpublish: $$authenticated
+          proxy: npmjs
+        '**':
+          access: $$authenticated
+          publish: $$authenticated
+          unpublish: $$authenticated
+          proxy: npmjs
+      server:
+        keepAliveTimeout: 60
+      middlewares:
+        audit:
+          enabled: true
+      log:
+        type: stdout
+        format: pretty
+        level: http
+
+volumes:
+  storage:
