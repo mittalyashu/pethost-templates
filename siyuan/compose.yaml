@@ -1,0 +1,14 @@
+services:
+  siyuan:
+    image: b3log/siyuan:v3.8.8
+    restart: unless-stopped
+    command: ["serve", "--workspace=/siyuan/workspace/"]
+    environment:
+      # The lock screen's code: SiYuan shows nothing of the workspace to anyone without it.
+      SIYUAN_ACCESS_AUTH_CODE: ${ACCESS_CODE}
+      TZ: ${TZ:-UTC}
+    volumes:
+      - workspace:/siyuan/workspace
+
+volumes:
+  workspace:

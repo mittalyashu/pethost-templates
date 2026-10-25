@@ -1,0 +1,255 @@
+{
+	"name": "SiYuan",
+	"emoji": "📝",
+	"category": "notes",
+	"alternatives": [
+		"Notion",
+		"Obsidian",
+		"Logseq"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "siyuan",
+		"port": 6806
+	},
+	"variables": [
+		{
+			"name": "ACCESS_CODE",
+			"ask": "password"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "A private knowledge base of blocks: notes, outlines, two-way links and databases",
+			"notes": "Open the address and unlock SiYuan with the password you gave, its lock screen password: nothing of the workspace shows without it, and Remember me keeps a browser unlocked for 30 days. Your first notebook, My Notebook, is open: type / in a document for headings, lists, tables, databases and more, and (( to link a block. The password is ACCESS_CODE in the project’s .env: change it there. Set TZ there too, such as TZ=Europe/Berlin, for dates in your time zone.",
+			"sizing": "SiYuan is light: about 50 MB of memory at rest, more while it indexes; its workspace starts at about 40 MB and grows with your notes and attachments.",
+			"summary": "Self-host SiYuan, the open-source note app of blocks, two-way links, Markdown and databases: a Notion and Obsidian alternative you open in a browser.",
+			"about": [
+				"SiYuan is a privacy-first knowledge base that people use in place of Notion, Obsidian or Logseq. Everything in it is a block, a paragraph, a heading or a list item, and any block can be referenced, embedded or linked from another, with backlinks shown both ways. It writes Markdown as you see it, with outlines, block zoom-in, math, diagrams, charts and Gantt charts, and holds documents of a million words.",
+				"Beyond notes it has databases in table view, flashcards with spaced repetition, PDF annotation linked to your notes, templates, SQL queries embedded in a page, an AI assistant through the OpenAI API, and a marketplace of themes and plugins. It exports standard Markdown, and SiYuan’s own desktop and phone apps keep a workspace of their own.",
+				"This template runs SiYuan’s server in Docker, with its workspace in a volume and the lock screen password you give, so it shows nothing to anyone without it. You use it in a browser on any device. On a server, SiYuan does not connect the desktop or phone apps, and it does not export to PDF, Word or HTML or import Markdown files."
+			],
+			"faq": [
+				{
+					"q": "Is SiYuan free?",
+					"a": "Yes. SiYuan is open source under the AGPL-3.0 license, and most of its features are free, for commercial use too. A one-time PRO purchase adds sync and backup through your own S3 or WebDAV storage, and a subscription adds SiYuan’s own cloud sync."
+				},
+				{
+					"q": "Can the SiYuan desktop or phone app sync with this server?",
+					"a": "No. A SiYuan served from Docker is used in a browser, and the apps cannot open it as a workspace. The apps sync with each other through SiYuan’s cloud or your own S3 or WebDAV storage, which are paid features."
+				},
+				{
+					"q": "How is SiYuan different from Obsidian?",
+					"a": "Obsidian keeps each note as a Markdown file and links notes; SiYuan keeps a structured workspace in which every block can be referenced and embedded, with databases and flashcards built in. SiYuan can serve itself to a browser, as here, and it exports your notes as standard Markdown."
+				},
+				{
+					"q": "How do I keep strangers out of my SiYuan?",
+					"a": "This template gives SiYuan the lock screen password from the first start: the page asks for it before it shows anything, and its API refuses every call without it. Remember me keeps a browser unlocked for 30 days."
+				}
+			]
+		},
+		"de": {
+			"description": "Eine private Wissensdatenbank aus Blöcken: Notizen, Gliederungen, bidirektionale Links und Datenbanken",
+			"notes": "Öffne die Adresse und entsperr SiYuan mit dem Passwort, das du festgelegt hast, dem „Bildschirmsperrpasswort“: Ohne es zeigt SiYuan nichts vom Arbeitsbereich, und mit „Erinnere dich 30 Tage an mich“ bleibt ein Browser so lange entsperrt. Dein erstes Notizbuch, „My Notebook“, ist geöffnet: Tipp in einem Dokument / für Überschriften, Listen, Tabellen, Datenbanken und mehr und ((, um einen Block zu verlinken. Das Passwort steht als ACCESS_CODE in der .env des Projekts: Ändere es dort. Setz dort auch TZ, etwa TZ=Europe/Berlin, damit Datumsangaben in deiner Zeitzone stehen.",
+			"sizing": "SiYuan ist leicht: etwa 50 MB RAM im Ruhezustand, mehr beim Indexieren; der Arbeitsbereich beginnt bei etwa 40 MB und wächst mit deinen Notizen und Anhängen.",
+			"summary": "SiYuan selbst hosten: Open-Source-Notiz-App mit Blöcken, bidirektionalen Links, Markdown und Datenbanken. Alternative zu Notion und Obsidian im Browser.",
+			"about": [
+				"SiYuan ist eine Wissensdatenbank, bei der die Privatsphäre an erster Stelle steht und die viele statt Notion, Obsidian oder Logseq nutzen. Alles darin ist ein Block, ob Absatz, Überschrift oder Listenpunkt, und jeder Block lässt sich von einem anderen aus referenzieren, einbetten oder verlinken, mit Backlinks in beide Richtungen. Markdown schreibst du so, wie du es siehst, mit Gliederungen, Block-Zoom, Formeln, Diagrammen, Charts und Gantt-Diagrammen, und ein Dokument darf eine Million Wörter lang sein.",
+				"Über Notizen hinaus bietet SiYuan Datenbanken in der Tabellenansicht, Lernkarten mit Spaced Repetition, PDF-Anmerkungen, die mit deinen Notizen verknüpft sind, Vorlagen, in eine Seite eingebettete SQL-Abfragen, einen KI-Assistenten über die OpenAI-API und einen Marktplatz für Themes und Plugins. Es exportiert Standard-Markdown, und die eigenen Desktop- und Handy-Apps von SiYuan führen jeweils einen eigenen Arbeitsbereich.",
+				"Diese Vorlage betreibt den Server von SiYuan in Docker, mit dem Arbeitsbereich in einem Volume und dem Bildschirmsperrpasswort, das du festlegst, sodass SiYuan ohne dieses Passwort niemandem etwas zeigt. Du nutzt es im Browser auf jedem Gerät. Auf einem Server verbindet SiYuan keine Desktop- oder Handy-Apps, und es exportiert nicht nach PDF, Word oder HTML und importiert keine Markdown-Dateien."
+			],
+			"faq": [
+				{
+					"q": "Ist SiYuan kostenlos?",
+					"a": "Ja. SiYuan ist Open Source unter der AGPL-3.0-Lizenz, und die meisten Funktionen sind kostenlos, auch für die kommerzielle Nutzung. Ein einmaliger PRO-Kauf bringt Sync und Backup über deinen eigenen S3- oder WebDAV-Speicher, ein Abo die Cloud-Synchronisierung von SiYuan selbst."
+				},
+				{
+					"q": "Kann sich die Desktop- oder Handy-App von SiYuan mit diesem Server synchronisieren?",
+					"a": "Nein. Ein SiYuan aus Docker wird im Browser genutzt, und die Apps können es nicht als Arbeitsbereich öffnen. Die Apps synchronisieren sich untereinander über die Cloud von SiYuan oder deinen eigenen S3- oder WebDAV-Speicher, und das sind kostenpflichtige Funktionen."
+				},
+				{
+					"q": "Was unterscheidet SiYuan von Obsidian?",
+					"a": "Obsidian speichert jede Notiz als Markdown-Datei und verlinkt Notizen; SiYuan führt einen strukturierten Arbeitsbereich, in dem sich jeder Block referenzieren und einbetten lässt, mit eingebauten Datenbanken und Lernkarten. SiYuan kann sich selbst im Browser bereitstellen, wie hier, und exportiert deine Notizen als Standard-Markdown."
+				},
+				{
+					"q": "Wie halte ich Fremde von meinem SiYuan fern?",
+					"a": "Diese Vorlage gibt SiYuan das Bildschirmsperrpasswort ab dem ersten Start: Die Seite fragt danach, bevor sie irgendetwas zeigt, und die API lehnt ohne das Passwort jeden Aufruf ab. Mit „Erinnere dich 30 Tage an mich“ bleibt ein Browser so lange entsperrt."
+				}
+			]
+		},
+		"es": {
+			"description": "Una base de conocimiento privada hecha de bloques: notas, esquemas, enlaces bidireccionales y bases de datos",
+			"notes": "Abre la dirección y desbloquea SiYuan con la contraseña que indicaste, su “Contraseña de bloqueo de pantalla”: sin ella no se ve nada del espacio de trabajo, y “Recuérdame durante 30 días” mantiene un navegador desbloqueado durante ese tiempo. Tu primer cuaderno, My Notebook, está abierto: escribe / en un documento para títulos, listas, tablas, bases de datos y más, y (( para enlazar un bloque. La contraseña es ACCESS_CODE en el .env del proyecto: cámbiala ahí. Define ahí también TZ, por ejemplo TZ=Europe/Berlin, para ver las fechas en tu zona horaria.",
+			"sizing": "SiYuan es ligero: unos 50 MB de memoria en reposo, más mientras indexa; su espacio de trabajo empieza en unos 40 MB y crece con tus notas y adjuntos.",
+			"summary": "Autoaloja SiYuan, la app de notas de código abierto con bloques, enlaces bidireccionales, Markdown y bases de datos: alternativa a Notion y Obsidian.",
+			"about": [
+				"SiYuan es una base de conocimiento centrada en la privacidad que la gente usa en lugar de Notion, Obsidian o Logseq. Todo en ella es un bloque, sea un párrafo, un título o un elemento de lista, y cualquier bloque se puede referenciar, incrustar o enlazar desde otro, con los enlaces visibles en ambos sentidos. En SiYuan escribes Markdown y lo ves ya con formato, con esquemas, zoom en bloques, fórmulas matemáticas, diagramas, gráficos y diagramas de Gantt, y un documento puede tener un millón de palabras.",
+				"Además de notas, tiene bases de datos en vista de tabla, flashcards con repetición espaciada, anotaciones de PDF enlazadas a tus notas, plantillas, consultas SQL incrustadas en una página, un asistente de IA mediante la API de OpenAI y un mercado de temas y plugins. SiYuan exporta Markdown estándar, y sus propias apps de escritorio y de teléfono mantienen cada una su propio espacio de trabajo.",
+				"Esta plantilla ejecuta el servidor de SiYuan en Docker, con su espacio de trabajo en un volumen y la contraseña de bloqueo de pantalla que indicas, así que no muestra nada a nadie sin ella. Lo usas en el navegador desde cualquier dispositivo. En un servidor, SiYuan no conecta las apps de escritorio ni de teléfono, y no exporta a PDF, Word ni HTML ni importa archivos Markdown."
+			],
+			"faq": [
+				{
+					"q": "¿SiYuan es gratis?",
+					"a": "Sí. SiYuan es de código abierto bajo la licencia AGPL-3.0, y la mayoría de sus funciones son gratis, también para uso comercial. Una compra única de PRO agrega sincronización y backup a través de tu propio almacenamiento S3 o WebDAV, y una suscripción agrega la sincronización en la nube de SiYuan."
+				},
+				{
+					"q": "¿La app de escritorio o de teléfono de SiYuan se puede sincronizar con este servidor?",
+					"a": "No. Un SiYuan servido desde Docker se usa en el navegador, y las apps no pueden abrirlo como espacio de trabajo. Las apps se sincronizan entre sí a través de la nube de SiYuan o de tu propio almacenamiento S3 o WebDAV, que son funciones de pago."
+				},
+				{
+					"q": "¿En qué se diferencia SiYuan de Obsidian?",
+					"a": "Obsidian guarda cada nota como un archivo Markdown y enlaza notas; SiYuan mantiene un espacio de trabajo estructurado en el que cada bloque se puede referenciar e incrustar, con bases de datos y flashcards integradas. SiYuan puede servirse a sí mismo en un navegador, como aquí, y exporta tus notas como Markdown estándar."
+				},
+				{
+					"q": "¿Cómo evito que extraños entren en mi SiYuan?",
+					"a": "Esta plantilla le da a SiYuan la contraseña de bloqueo de pantalla desde el primer arranque: la página la pide antes de mostrar nada, y su API rechaza cualquier llamada sin ella. “Recuérdame durante 30 días” mantiene un navegador desbloqueado durante ese tiempo."
+				}
+			]
+		},
+		"fr": {
+			"description": "Une base de connaissances privée faite de blocs : notes, plans, liens bidirectionnels et bases de données",
+			"notes": "Ouvrez l’adresse et déverrouillez SiYuan avec le mot de passe que vous avez choisi, son « Mot de passe de verrouillage d’écran » : sans lui, rien de l’espace de travail ne s’affiche, et « Souviens-toi de moi pendant 30 jours » garde un navigateur déverrouillé pendant cette durée. Votre premier carnet, My Notebook, est ouvert : tapez / dans un document pour des titres, des listes, des tableaux, des bases de données et plus encore, et (( pour lier un bloc. Le mot de passe est ACCESS_CODE dans le .env du projet : changez-le dans ce fichier. Définissez-y aussi TZ, par exemple TZ=Europe/Berlin, pour avoir les dates dans votre fuseau horaire.",
+			"sizing": "SiYuan est léger : environ 50 MB de mémoire au repos, plus pendant l’indexation ; son espace de travail démarre à environ 40 MB et grossit avec vos notes et vos pièces jointes.",
+			"summary": "Auto-hébergez SiYuan, la prise de notes open source en blocs avec liens bidirectionnels, Markdown et bases de données : alternative à Notion et Obsidian.",
+			"about": [
+				"SiYuan est une base de connaissances qui place la confidentialité en premier, utilisée à la place de Notion, d’Obsidian ou de Logseq. Tout y est un bloc, qu’il s’agisse d’un paragraphe, d’un titre ou d’un élément de liste, et n’importe quel bloc peut être référencé, intégré ou lié depuis un autre, avec des backlinks affichés dans les deux sens. On y écrit le Markdown tel qu’il s’affiche, avec des plans, le zoom sur un bloc, des formules mathématiques, des diagrammes, des graphiques et des diagrammes de Gantt, et un document peut compter un million de mots.",
+				"Au-delà des notes, SiYuan propose des bases de données en vue tableau, des cartes flash avec répétition espacée, l’annotation de PDF liée à vos notes, des modèles de documents, des requêtes SQL intégrées à une page, un assistant IA via l’API d’OpenAI et un marché de thèmes et de plugins. Il exporte en Markdown standard, et les applications de bureau et mobiles de SiYuan gardent chacune leur propre espace de travail.",
+				"Ce template fait tourner le serveur de SiYuan dans Docker, avec son espace de travail dans un volume et le mot de passe de verrouillage d’écran que vous indiquez, donc SiYuan ne montre rien à qui n’a pas ce mot de passe. Vous l’utilisez dans un navigateur, sur n’importe quel appareil. Sur un serveur, SiYuan ne connecte pas les applications de bureau ou mobiles, n’exporte pas en PDF, Word ou HTML et n’importe pas de fichiers Markdown."
+			],
+			"faq": [
+				{
+					"q": "SiYuan est-il gratuit ?",
+					"a": "Oui. SiYuan est open source sous licence AGPL-3.0, et la plupart de ses fonctions sont gratuites, y compris pour un usage commercial. Un achat unique de PRO ajoute la synchronisation et la sauvegarde via votre propre stockage S3 ou WebDAV, et un abonnement ajoute la synchronisation dans le cloud de SiYuan."
+				},
+				{
+					"q": "L’application de bureau ou mobile de SiYuan peut-elle se synchroniser avec ce serveur ?",
+					"a": "Non. Un SiYuan servi depuis Docker s’utilise dans un navigateur, et les applications ne peuvent pas l’ouvrir comme espace de travail. Les applications se synchronisent entre elles via le cloud de SiYuan ou votre propre stockage S3 ou WebDAV, qui sont des fonctions payantes."
+				},
+				{
+					"q": "En quoi SiYuan diffère-t-il d’Obsidian ?",
+					"a": "Obsidian garde chaque note dans un fichier Markdown et relie les notes entre elles ; SiYuan tient un espace de travail structuré où chaque bloc peut être référencé et intégré, avec bases de données et cartes flash incluses. SiYuan peut servir lui-même ses pages à un navigateur, comme ici, et exporte vos notes en Markdown standard."
+				},
+				{
+					"q": "Comment empêcher les inconnus d’entrer dans mon SiYuan ?",
+					"a": "Ce template donne à SiYuan le mot de passe de verrouillage d’écran dès le premier démarrage : la page le demande avant d’afficher quoi que ce soit, et son API refuse tout appel sans lui. « Souviens-toi de moi pendant 30 jours » garde un navigateur déverrouillé pendant cette durée."
+				}
+			]
+		},
+		"pl": {
+			"description": "Prywatna baza wiedzy z bloków: notatki, konspekty, linki dwukierunkowe i bazy danych",
+			"notes": "Otwórz adres i odblokuj SiYuan hasłem podanym przy tworzeniu projektu (w SiYuan to „Hasło blokady ekranu”): bez niego nic z obszaru roboczego się nie pokaże, a „Zapamiętaj mnie na 30 dni” zostawia przeglądarkę odblokowaną na ten czas. Twój pierwszy notatnik, My Notebook, jest otwarty: wpisz / w dokumencie, żeby wstawić nagłówki, listy, tabele, bazy danych i więcej, oraz ((, żeby podlinkować blok. Hasło to ACCESS_CODE w pliku .env projektu: zmień je tam. Ustaw tam też TZ, na przykład TZ=Europe/Berlin, żeby daty były w twojej strefie czasowej.",
+			"sizing": "SiYuan ma małe wymagania: około 50 MB pamięci w spoczynku, więcej podczas indeksowania; obszar roboczy zaczyna od około 40 MB i rośnie razem z notatkami i załącznikami.",
+			"summary": "Hostuj SiYuan u siebie: notatki open source z blokami, linkami dwukierunkowymi, Markdownem i bazami danych. Alternatywa dla Notion i Obsidiana.",
+			"about": [
+				"SiYuan to baza wiedzy, w której prywatność jest na pierwszym miejscu, używana zamiast Notion, Obsidiana albo Logseqa. Wszystko w niej jest blokiem: akapit, nagłówek czy element listy, a do każdego bloku można się odwołać z innego, osadzić go albo podlinkować, z linkami zwrotnymi widocznymi w obie strony. Markdown pisze się w nim od razu tak, jak wygląda, z konspektami, przybliżaniem bloków, wzorami matematycznymi, diagramami, wykresami i wykresami Gantta, a dokument może mieć milion słów.",
+				"Poza notatkami ma bazy danych w widoku tabeli, fiszki z powtórkami w odstępach, adnotacje PDF powiązane z notatkami, szablony, zapytania SQL osadzone na stronie, asystenta AI przez API OpenAI oraz rynek motywów i pluginów. Eksportuje standardowy Markdown, a własne aplikacje SiYuan na komputer i telefon mają każda swój osobny obszar roboczy.",
+				"Ten szablon uruchamia serwer SiYuan w Dockerze, z obszarem roboczym na wolumenie i hasłem blokady ekranu, które podajesz, więc bez tego hasła SiYuan nikomu niczego nie pokaże. Używasz go w przeglądarce na dowolnym urządzeniu. Na serwerze SiYuan nie łączy się z aplikacjami na komputer ani telefon, nie eksportuje do PDF, Worda ani HTML i nie importuje plików Markdown."
+			],
+			"faq": [
+				{
+					"q": "Czy SiYuan jest darmowy?",
+					"a": "Tak. SiYuan to open source na licencji AGPL-3.0, a większość funkcji jest darmowa, także do użytku komercyjnego. Jednorazowy zakup PRO dodaje synchronizację i backup przez twój własny magazyn S3 albo WebDAV, a subskrypcja dodaje synchronizację przez chmurę SiYuan."
+				},
+				{
+					"q": "Czy aplikacja SiYuan na komputer albo telefon zsynchronizuje się z tym serwerem?",
+					"a": "Nie. SiYuan uruchomiony z Dockera działa w przeglądarce, a aplikacje nie mogą go otworzyć jako obszaru roboczego. Aplikacje synchronizują się między sobą przez chmurę SiYuan albo twój własny magazyn S3 lub WebDAV, a to są funkcje płatne."
+				},
+				{
+					"q": "Czym SiYuan różni się od Obsidiana?",
+					"a": "Obsidian trzyma każdą notatkę jako plik Markdown i łączy notatki linkami; SiYuan prowadzi uporządkowany obszar roboczy, w którym do każdego bloku można się odwołać i osadzić go gdzie indziej, z wbudowanymi bazami danych i fiszkami. SiYuan potrafi sam udostępnić się przeglądarce, jak tutaj, i eksportuje notatki jako standardowy Markdown."
+				},
+				{
+					"q": "Jak nie wpuścić obcych do mojego SiYuan?",
+					"a": "Ten szablon daje SiYuan hasło blokady ekranu od pierwszego uruchomienia: strona prosi o nie, zanim cokolwiek pokaże, a API SiYuan odrzuca bez niego każde wywołanie. „Zapamiętaj mnie na 30 dni” zostawia przeglądarkę odblokowaną na ten czas."
+				}
+			]
+		},
+		"pt": {
+			"description": "Uma base de conhecimento privada feita de blocos: notas, tópicos, links bidirecionais e bancos de dados",
+			"notes": "Abra o endereço e desbloqueie o SiYuan com a senha que você informou, a “Senha de bloqueio de tela” dele: sem ela, nada do espaço de trabalho aparece, e “Lembre-se de mim por 30 dias” mantém um navegador desbloqueado por esse tempo. Seu primeiro caderno, My Notebook, já está aberto: digite / num documento para títulos, listas, tabelas, bancos de dados e mais, e (( para linkar um bloco. A senha é ACCESS_CODE no .env do projeto: troque-a lá. Defina lá também o TZ, por exemplo TZ=Europe/Berlin, para ver as datas no seu fuso horário.",
+			"sizing": "SiYuan é leve: cerca de 50 MB de memória em repouso, mais enquanto indexa; o espaço de trabalho começa em cerca de 40 MB e cresce com suas notas e anexos.",
+			"summary": "Auto-hospede o SiYuan, o app de notas open source em blocos, com links bidirecionais, Markdown e bancos de dados: alternativa ao Notion e ao Obsidian.",
+			"about": [
+				"O SiYuan é uma base de conhecimento que põe a privacidade em primeiro lugar, usada no lugar do Notion, do Obsidian ou do Logseq. Tudo nele é um bloco, seja um parágrafo, um título ou um item de lista, e qualquer bloco pode ser referenciado, incorporado ou linkado a partir de outro, com backlinks mostrados nos dois sentidos. Você escreve Markdown e já vê o resultado formatado, com tópicos, zoom em blocos, fórmulas matemáticas, diagramas, gráficos e gráficos de Gantt, e um documento pode ter um milhão de palavras.",
+				"Além de notas, ele tem bancos de dados em visualização de tabela, flashcards com repetição espaçada, anotações em PDF ligadas às suas notas, templates de documento, consultas SQL incorporadas numa página, um assistente de IA pela API da OpenAI e um mercado de temas e plugins. Ele exporta Markdown padrão, e os próprios apps de desktop e de celular do SiYuan mantêm cada um seu próprio espaço de trabalho.",
+				"Este template roda o servidor do SiYuan no Docker, com o espaço de trabalho num volume e a senha de bloqueio de tela que você informa, então o SiYuan não mostra nada a ninguém sem ela. Você usa o SiYuan no navegador, em qualquer dispositivo. Num servidor, o SiYuan não conecta os apps de desktop ou de celular, não exporta para PDF, Word ou HTML e não importa arquivos Markdown."
+			],
+			"faq": [
+				{
+					"q": "O SiYuan é gratuito?",
+					"a": "Sim. O SiYuan é de código aberto sob a licença AGPL-3.0, e a maioria dos recursos é gratuita, inclusive para uso comercial. Uma compra única do PRO adiciona sincronização e backup pelo seu próprio armazenamento S3 ou WebDAV, e uma assinatura adiciona a sincronização na nuvem do próprio SiYuan."
+				},
+				{
+					"q": "O app de desktop ou de celular do SiYuan sincroniza com este servidor?",
+					"a": "Não. Um SiYuan servido pelo Docker é usado no navegador, e os apps não conseguem abri-lo como espaço de trabalho. Os apps sincronizam entre si pela nuvem do SiYuan ou pelo seu próprio armazenamento S3 ou WebDAV, que são recursos pagos."
+				},
+				{
+					"q": "Qual a diferença entre o SiYuan e o Obsidian?",
+					"a": "O Obsidian guarda cada nota como um arquivo Markdown e liga as notas; o SiYuan mantém um espaço de trabalho estruturado em que cada bloco pode ser referenciado e incorporado, com bancos de dados e flashcards embutidos. O SiYuan consegue servir a si mesmo num navegador, como aqui, e exporta suas notas como Markdown padrão."
+				},
+				{
+					"q": "Como manter estranhos fora do meu SiYuan?",
+					"a": "Este template dá ao SiYuan a senha de bloqueio de tela desde a primeira inicialização: a página pede a senha antes de mostrar qualquer coisa, e a API do SiYuan recusa toda chamada sem ela. “Lembre-se de mim por 30 dias” mantém um navegador desbloqueado por esse tempo."
+				}
+			]
+		},
+		"ru": {
+			"description": "Приватная база знаний из блоков: заметки, иерархические списки, двусторонние ссылки и базы данных",
+			"notes": "Откройте адрес и разблокируйте SiYuan паролем, который вы задали, — это его «Пароль блокировки экрана»: без него ничего из рабочего пространства не видно, а «Запомнить меня на 30 дней» оставляет браузер разблокированным на этот срок. Ваш первый блокнот, My Notebook, уже открыт: наберите / в документе, чтобы вставить заголовки, списки, таблицы, базы данных и многое другое, и ((, чтобы сослаться на блок. Пароль — ACCESS_CODE в .env проекта: меняйте его там. Там же задайте TZ, например TZ=Europe/Berlin, чтобы даты были в вашем часовом поясе.",
+			"sizing": "SiYuan: небольшие требования — около 50 MB памяти в покое, больше во время индексации; рабочее пространство начинается примерно с 40 MB и растет вместе с заметками и вложениями.",
+			"summary": "Self-hosted SiYuan: open source заметки из блоков с двусторонними ссылками, Markdown и базами данных. Альтернатива Notion и Obsidian в браузере.",
+			"about": [
+				"SiYuan — база знаний, в которой приватность на первом месте; ее используют вместо Notion, Obsidian или Logseq. Все в ней — блоки: абзац, заголовок или пункт списка, и на любой блок можно сослаться из другого, встроить его или поставить на него ссылку, а обратные ссылки видны в обе стороны. Markdown в ней пишется сразу в готовом виде, с иерархическими списками, фокусом на блоке, формулами, диаграммами, графиками и диаграммами Ганта, а документ может вместить миллион слов.",
+				"Кроме заметок в ней есть базы данных в виде таблиц, флеш-карточки с интервальным повторением, аннотации к PDF, связанные с заметками, шаблоны, SQL-запросы, встроенные в страницу, ИИ-ассистент через OpenAI API и магазин тем и плагинов. SiYuan экспортирует стандартный Markdown, а его собственные десктопные и мобильные приложения ведут каждое свое рабочее пространство.",
+				"Этот шаблон запускает сервер SiYuan в Docker, с рабочим пространством в томе и паролем блокировки экрана, который вы задаете, так что без этого пароля SiYuan никому ничего не покажет. Работать с ним можно в браузере на любом устройстве. На сервере SiYuan не подключает десктопные и мобильные приложения, не экспортирует в PDF, Word или HTML и не импортирует файлы Markdown."
+			],
+			"faq": [
+				{
+					"q": "SiYuan бесплатный?",
+					"a": "Да. SiYuan распространяется с открытым кодом под лицензией AGPL-3.0, и большинство функций бесплатны, в том числе для коммерческого использования. Разовая покупка PRO добавляет синхронизацию и бэкапы через ваше собственное хранилище S3 или WebDAV, а подписка — облачную синхронизацию самого SiYuan."
+				},
+				{
+					"q": "Может ли десктопное или мобильное приложение SiYuan синхронизироваться с этим сервером?",
+					"a": "Нет. SiYuan, запущенный из Docker, работает в браузере, и приложения не могут открыть его как рабочее пространство. Приложения синхронизируются между собой через облако SiYuan или ваше собственное хранилище S3 или WebDAV, и это платные функции."
+				},
+				{
+					"q": "Чем SiYuan отличается от Obsidian?",
+					"a": "Obsidian хранит каждую заметку в файле Markdown и связывает заметки ссылками; SiYuan ведет структурированное рабочее пространство, где на любой блок можно сослаться и встроить его в другое место, а базы данных и флеш-карточки в нем уже есть. SiYuan умеет сам отдавать себя в браузер, как здесь, и экспортирует заметки в стандартный Markdown."
+				},
+				{
+					"q": "Как не пустить посторонних в мой SiYuan?",
+					"a": "Этот шаблон задает SiYuan пароль блокировки экрана с первого запуска: страница спрашивает его, прежде чем что-либо показать, а API SiYuan отклоняет без него любой вызов. «Запомнить меня на 30 дней» оставляет браузер разблокированным на этот срок."
+				}
+			]
+		},
+		"uk": {
+			"description": "Приватна база знань із блоків: нотатки, ієрархічні списки, двобічні посилання й бази даних",
+			"notes": "Відкрийте адресу й розблокуйте SiYuan паролем, який ви вказали, — це його «Код авторизації доступу»: без нього нічого з робочого простору не видно, а «Запам’ятати мене на 30 днів» лишає браузер розблокованим на цей строк. Ваш перший нотатник, My Notebook, уже відкритий: наберіть / у документі, щоб вставити заголовки, списки, таблиці, бази даних і багато іншого, та ((, щоб послатися на блок. Пароль — ACCESS_CODE у .env проєкту: змінюйте його там. Там само задайте TZ, наприклад TZ=Europe/Berlin, щоб дати були у вашому часовому поясі.",
+			"sizing": "SiYuan має скромні вимоги: близько 50 MB пам’яті в спокої, більше під час індексування; робочий простір починається приблизно з 40 MB і росте разом із нотатками й вкладеннями.",
+			"summary": "Self-hosted SiYuan: нотатки з блоків із відкритим кодом, двобічні посилання, Markdown і бази даних. Альтернатива Notion і Obsidian у браузері.",
+			"about": [
+				"SiYuan — база знань, у якій приватність на першому місці; її використовують замість Notion, Obsidian або Logseq. Усе в ній — блоки: абзац, заголовок чи пункт списку, і на будь-який блок можна послатися з іншого, вбудувати його або поставити на нього посилання, а зворотні посилання видно в обидва боки. Markdown у ній пишеться одразу в готовому вигляді, з ієрархічними списками, фокусом на блоці, формулами, діаграмами, графіками й діаграмами Ганта, а документ може вмістити мільйон слів.",
+				"Окрім нотаток, у ній є бази даних у вигляді таблиць, картки з інтервальним повторенням, анотації до PDF, пов’язані з нотатками, шаблони, SQL-запити, вбудовані в сторінку, ШІ-асистент через OpenAI API і маркетплейс тем і плагінів. SiYuan експортує стандартний Markdown, а його власні десктопні й мобільні застосунки ведуть кожен свій робочий простір.",
+				"Цей шаблон запускає сервер SiYuan у Docker, з робочим простором у томі й кодом авторизації доступу, який ви вказуєте, тож без цього коду SiYuan нікому нічого не покаже. Працювати з ним можна в браузері на будь-якому пристрої. На сервері SiYuan не підключає десктопні й мобільні застосунки, не експортує в PDF, Word чи HTML і не імпортує файли Markdown."
+			],
+			"faq": [
+				{
+					"q": "SiYuan безкоштовний?",
+					"a": "Так. SiYuan поширюється з відкритим кодом за ліцензією AGPL-3.0, і більшість функцій безкоштовні, зокрема для комерційного використання. Разова покупка PRO додає синхронізацію й бекапи через ваше власне сховище S3 або WebDAV, а передплата — хмарну синхронізацію самого SiYuan."
+				},
+				{
+					"q": "Чи може десктопний або мобільний застосунок SiYuan синхронізуватися з цим сервером?",
+					"a": "Ні. SiYuan, запущений із Docker, працює в браузері, і застосунки не можуть відкрити його як робочий простір. Застосунки синхронізуються між собою через хмару SiYuan або ваше власне сховище S3 чи WebDAV, і це платні функції."
+				},
+				{
+					"q": "Чим SiYuan відрізняється від Obsidian?",
+					"a": "Obsidian зберігає кожну нотатку у файлі Markdown і пов’язує нотатки посиланнями; SiYuan веде структурований робочий простір, де на будь-який блок можна послатися й вбудувати його деінде, а бази даних і картки в ньому вже є. SiYuan уміє сам віддавати себе в браузер, як тут, і експортує нотатки в стандартний Markdown."
+				},
+				{
+					"q": "Як не пустити сторонніх у мій SiYuan?",
+					"a": "Цей шаблон задає SiYuan код авторизації доступу від першого запуску: сторінка питає його, перш ніж щось показати, а API SiYuan відхиляє без нього будь-який виклик. «Запам’ятати мене на 30 днів» лишає браузер розблокованим на цей строк."
+				}
+			]
+		}
+	}
+}
