@@ -1,0 +1,122 @@
+services:
+  glance:
+    image: glanceapp/glance:v0.8.7
+    restart: unless-stopped
+    environment:
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    # The dashboard is /app/config/glance.yml, yours to edit: Glance reloads it when it is saved.
+    # Its first start writes it from the one below and makes the key that signs sessions. Glance
+    # puts ${VARIABLES} into the file as text before it reads it, so the password goes in as its
+    # bcrypt hash, made at every start from the project's .env.
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -e
+        cd /app/config
+        [ -f .secret-key ] || (umask 077 && /app/glance secret:make > .secret-key)
+        [ -f glance.yml ] || cat /etc/glance/glance.yml > glance.yml
+        GLANCE_SECRET_KEY="$$(cat .secret-key)"
+        GLANCE_PASSWORD_HASH="$$(/app/glance password:hash "$$ADMIN_PASSWORD")" || {
+          echo "$$GLANCE_PASSWORD_HASH" >&2
+          exit 1
+        }
+        export GLANCE_SECRET_KEY GLANCE_PASSWORD_HASH
+        unset ADMIN_PASSWORD
+        exec /app/glance --config /app/config/glance.yml
+    configs:
+      - source: glance
+        target: /etc/glance/glance.yml
+    volumes:
+      - config:/app/config
+
+configs:
+  glance:
+    content: |
+      server:
+        # Requests come through the proxy: failed sign-ins are counted by the client's own address.
+        proxied: true
+
+      auth:
+        secret-key: $${GLANCE_SECRET_KEY}
+        users:
+          "$${ADMIN_USERNAME}":
+            password-hash: $${GLANCE_PASSWORD_HASH}
+
+      pages:
+        - name: Home
+          columns:
+            - size: small
+              widgets:
+                - type: calendar
+                  first-day-of-week: monday
+
+                - type: rss
+                  limit: 10
+                  collapse-after: 3
+                  cache: 12h
+                  feeds:
+                    - url: https://selfh.st/rss/
+                      title: selfh.st
+                      limit: 4
+                    - url: https://ciechanow.ski/atom.xml
+                    - url: https://www.joshwcomeau.com/rss.xml
+                      title: Josh Comeau
+                    - url: https://samwho.dev/rss.xml
+                    - url: https://ishadeed.com/feed.xml
+                      title: Ahmad Shadeed
+
+            - size: full
+              widgets:
+                - type: group
+                  widgets:
+                    - type: hacker-news
+                    - type: lobsters
+
+                - type: videos
+                  channels:
+                    - UCXuqSBlHAE6Xw-yeJA0Tunw # Linus Tech Tips
+                    - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+                    - UCsBjURrPoezykLs9EqgamOA # Fireship
+                    - UCBJycsmduvYEL83R_U4JriQ # Marques Brownlee
+                    - UCHnyfMqiRRG1u-2MsSQLbXA # Veritasium
+
+                - type: group
+                  widgets:
+                    - type: reddit
+                      subreddit: technology
+                      show-thumbnails: true
+                    - type: reddit
+                      subreddit: selfhosted
+                      show-thumbnails: true
+
+            - size: small
+              widgets:
+                - type: weather
+                  location: London, United Kingdom
+                  units: metric
+                  hour-format: 24h
+
+                - type: markets
+                  markets:
+                    - symbol: SPY
+                      name: S&P 500
+                    - symbol: BTC-USD
+                      name: Bitcoin
+                    - symbol: NVDA
+                      name: NVIDIA
+                    - symbol: AAPL
+                      name: Apple
+                    - symbol: MSFT
+                      name: Microsoft
+
+                - type: releases
+                  cache: 1d
+                  repositories:
+                    - glanceapp/glance
+                    - go-gitea/gitea
+                    - immich-app/immich
+                    - syncthing/syncthing
+
+volumes:
+  config:

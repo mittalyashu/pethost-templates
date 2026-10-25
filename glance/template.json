@@ -1,0 +1,258 @@
+{
+	"name": "Glance",
+	"emoji": "🗞️",
+	"category": "reading",
+	"alternatives": [
+		"Netvibes",
+		"Feedly"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "glance",
+		"port": 8080
+	},
+	"variables": [
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "A fast, light dashboard of your feeds, news, weather, markets and more",
+			"notes": "Sign in with the username and password you gave: the dashboard and its API are closed to everyone else. It starts with a sample page of feeds, Hacker News, Reddit, YouTube channels, weather and markets. Make it yours in /app/config/glance.yml in the glance service, with vi in its Shell tab: Glance reloads the page when the file is saved, and a mistake leaves the last good page up. The password is ADMIN_PASSWORD in the project’s .env: change it there.",
+			"sizing": "Glance is very light: about 20 MB of memory, and it keeps nothing on disk but its config file.",
+			"summary": "Self-host Glance, the light open-source dashboard of RSS feeds, Reddit, Hacker News, YouTube, weather and markets, behind a sign-in, in one YAML file.",
+			"about": [
+				"Glance is a self-hosted dashboard that puts what you read and check every day on one page: RSS feeds, subreddits, Hacker News and Lobsters, YouTube and Twitch channels, weather, market prices, a calendar, new releases of GitHub repositories and the status of your sites. People use it as a browser start page, in place of Netvibes or a feed reader such as Feedly, and on the phone, where the page fits the screen.",
+				"Everything is written in one YAML file: as many pages as you like, each in columns of widgets, with themes, custom CSS, and widgets of your own that read any JSON API. Glance is a single Go program of less than 20 MB, takes a few tens of megabytes of memory and loads a page in about a second.",
+				"This template runs Glance with its config in a volume, starting from a sample page, and with a sign-in by the username and password you give, so the dashboard is closed to strangers. The password goes into the config as a bcrypt hash, and failed sign-ins are counted by each visitor’s own address."
+			],
+			"faq": [
+				{
+					"q": "Is Glance free?",
+					"a": "Yes. Glance is open source under the AGPL-3.0 license, with no paid edition, and running it yourself costs only the server."
+				},
+				{
+					"q": "How do I add a widget or a page to Glance?",
+					"a": "Edit glance.yml: each page has columns, and each column a list of widgets, each with a type, such as rss, reddit, weather or videos, and its options. Glance reloads the page as soon as the file is saved, and if the file has a mistake it keeps showing the last good one."
+				},
+				{
+					"q": "Can Glance show my own services or APIs?",
+					"a": "Yes. The monitor widget shows whether your sites answer, and the custom-api widget reads any JSON API and draws it with a template you write. Community widgets add many services this way."
+				},
+				{
+					"q": "Does Glance work on a phone?",
+					"a": "Yes. Its page is made for small screens too, and you can add it to the home screen. Sign in once and the session lasts 14 days."
+				}
+			]
+		},
+		"de": {
+			"description": "Ein schnelles, leichtes Dashboard für deine Feeds, News, das Wetter, Börsenkurse und mehr",
+			"notes": "Melde dich mit dem Benutzernamen und dem Passwort an, die du festgelegt hast: Allen anderen bleiben das Dashboard und seine API verschlossen. Es startet mit einer Beispielseite aus Feeds, Hacker News, Reddit, YouTube-Kanälen, Wetter und Börsenkursen. Pass sie in /app/config/glance.yml im Service glance an, mit vi in dessen Tab „Shell“: Glance lädt die Seite neu, sobald die Datei gespeichert ist, und bei einem Fehler bleibt die letzte funktionierende Seite stehen. Das Passwort steht als ADMIN_PASSWORD in der .env des Projekts: Ändere es dort.",
+			"sizing": "Glance ist sehr leicht: etwa 20 MB RAM, und auf der Disk liegt nur seine Konfigurationsdatei.",
+			"summary": "Glance selbst hosten: leichtes Open-Source-Dashboard für RSS-Feeds, Reddit, Hacker News, YouTube, Wetter und Börse, mit Anmeldung, in einer YAML-Datei.",
+			"about": [
+				"Glance ist ein selbst gehostetes Dashboard, das alles, was du täglich liest und prüfst, auf eine Seite bringt: RSS-Feeds, Subreddits, Hacker News und Lobsters, YouTube- und Twitch-Kanäle, Wetter, Börsenkurse, einen Kalender, neue Releases von GitHub-Repositorys und den Status deiner Websites. Viele nutzen es als Startseite im Browser, statt Netvibes oder eines Feedreaders wie Feedly, und auf dem Handy, wo sich die Seite dem Bildschirm anpasst.",
+				"Alles steht in einer YAML-Datei: so viele Seiten, wie du willst, jede in Spalten aus Widgets, mit Themes, eigenem CSS und eigenen Widgets, die jede beliebige JSON-API lesen. Glance ist ein einzelnes Go-Programm von weniger als 20 MB, braucht ein paar Dutzend Megabyte RAM und lädt eine Seite in etwa einer Sekunde.",
+				"Diese Vorlage betreibt Glance mit der Konfiguration in einem Volume, ausgehend von einer Beispielseite, und mit einer Anmeldung per Benutzername und Passwort, die du festlegst, sodass das Dashboard für Fremde verschlossen bleibt. Das Passwort kommt als bcrypt-Hash in die Konfiguration, und fehlgeschlagene Anmeldungen zählt Glance getrennt nach der IP-Adresse, von der sie kommen."
+			],
+			"faq": [
+				{
+					"q": "Ist Glance kostenlos?",
+					"a": "Ja. Glance ist Open Source unter der AGPL-3.0-Lizenz, ohne kostenpflichtige Edition, und selbst betrieben kostet es nur die Maschine."
+				},
+				{
+					"q": "Wie füge ich Glance ein Widget oder eine Seite hinzu?",
+					"a": "Bearbeite die glance.yml: Jede Seite hat Spalten und jede Spalte eine Liste von Widgets, jedes mit einem Typ wie rss, reddit, weather oder videos und seinen Optionen. Glance lädt die Seite neu, sobald die Datei gespeichert ist, und enthält die Datei einen Fehler, zeigt es weiter die letzte funktionierende."
+				},
+				{
+					"q": "Kann Glance meine eigenen Dienste oder APIs anzeigen?",
+					"a": "Ja. Das Widget monitor zeigt, ob deine Websites antworten, und das Widget custom-api liest jede beliebige JSON-API und stellt sie mit einer Vorlage dar, die du schreibst. Community-Widgets binden auf diese Weise viele Dienste an."
+				},
+				{
+					"q": "Funktioniert Glance auf dem Handy?",
+					"a": "Ja. Die Seite ist auch für kleine Bildschirme gemacht, und du kannst sie zum Startbildschirm hinzufügen. Melde dich einmal an, und die Sitzung hält 14 Tage."
+				}
+			]
+		},
+		"es": {
+			"description": "Un panel rápido y ligero con tus feeds, noticias, el clima, los mercados y más",
+			"notes": "Inicia sesión con el nombre de usuario y la contraseña que indicaste: el panel y su API están cerrados para todos los demás. Glance viene con una página de ejemplo que reúne feeds, Hacker News, Reddit, canales de YouTube, el clima y los mercados. Hazla tuya en /app/config/glance.yml, en el servicio glance, con vi en su pestaña Shell: Glance recarga la página cuando se guarda el archivo, y si hay un error, se queda en pantalla la última página que funcionaba. La contraseña es ADMIN_PASSWORD en el .env del proyecto: cámbiala ahí.",
+			"sizing": "Glance es muy ligero: unos 20 MB de memoria, y no guarda nada en disco salvo su archivo de configuración.",
+			"summary": "Autoaloja Glance, panel ligero de código abierto con feeds RSS, Reddit, Hacker News, YouTube, clima y mercados, con inicio de sesión, en un archivo YAML.",
+			"about": [
+				"Glance es un panel autoalojado que reúne en una página lo que lees y consultas cada día: feeds RSS, subreddits, Hacker News y Lobsters, canales de YouTube y Twitch, el clima, precios de mercado, un calendario, nuevas versiones de repositorios de GitHub y el estado de tus sitios. La gente lo usa como página de inicio del navegador, en lugar de Netvibes o de un lector de feeds como Feedly, y en el teléfono, donde la página se ajusta a la pantalla.",
+				"Todo se escribe en un archivo YAML: tantas páginas como quieras, cada una en columnas de widgets, con temas, CSS propio y widgets tuyos que leen cualquier API JSON. Glance es un solo programa en Go de menos de 20 MB, usa unas pocas decenas de megabytes de memoria y carga una página en más o menos un segundo.",
+				"Esta plantilla ejecuta Glance con su configuración en un volumen, a partir de una página de ejemplo, y protegido por un inicio de sesión con el nombre de usuario y la contraseña que indicas, así que el panel está cerrado para extraños. La contraseña va en la configuración como hash bcrypt, y los inicios de sesión fallidos se cuentan por la dirección IP de cada visitante."
+			],
+			"faq": [
+				{
+					"q": "¿Glance es gratis?",
+					"a": "Sí. Glance es de código abierto bajo la licencia AGPL-3.0, sin edición de pago, y ejecutarlo tú mismo solo cuesta la máquina."
+				},
+				{
+					"q": "¿Cómo agrego un widget o una página a Glance?",
+					"a": "Edita glance.yml: cada página tiene columnas, y cada columna una lista de widgets, cada uno con un tipo, como rss, reddit, weather o videos, y sus opciones. Glance recarga la página en cuanto se guarda el archivo, y si el archivo tiene un error, sigue mostrando la última versión que funcionaba."
+				},
+				{
+					"q": "¿Glance puede mostrar mis propios servicios o APIs?",
+					"a": "Sí. El widget monitor muestra si tus sitios responden, y el widget custom-api lee cualquier API JSON y la dibuja con una plantilla que tú escribes. Los widgets de la comunidad agregan así muchos servicios."
+				},
+				{
+					"q": "¿Glance funciona en el teléfono?",
+					"a": "Sí. Su página está hecha también para pantallas pequeñas, y puedes agregarla a la pantalla de inicio. Inicias sesión una vez y la sesión dura 14 días."
+				}
+			]
+		},
+		"fr": {
+			"description": "Un tableau de bord rapide et léger pour vos flux, les actualités, la météo, les marchés et plus encore",
+			"notes": "Connectez-vous avec le nom d’utilisateur et le mot de passe que vous avez choisis : le tableau de bord et son API sont fermés à tous les autres. Il démarre avec une page d’exemple : flux, Hacker News, Reddit, chaînes YouTube, météo et marchés. Personnalisez-la dans /app/config/glance.yml, dans le service glance, avec vi dans son onglet Shell : Glance recharge la page quand le fichier est enregistré, et une erreur laisse affichée la dernière page valide. Le mot de passe est ADMIN_PASSWORD dans le .env du projet : changez-le dans ce fichier.",
+			"sizing": "Glance est très léger : environ 20 MB de mémoire, et il ne garde rien sur le disque à part son fichier de configuration.",
+			"summary": "Auto-hébergez Glance, tableau de bord open source léger pour flux RSS, Reddit, Hacker News, YouTube, météo et marchés, avec connexion, en un fichier YAML.",
+			"about": [
+				"Glance est un tableau de bord auto-hébergé qui réunit sur une seule page ce que vous lisez et consultez chaque jour : flux RSS, subreddits, Hacker News et Lobsters, chaînes YouTube et Twitch, météo, cours de la bourse, un calendrier, les nouvelles versions de dépôts GitHub et l’état de vos sites. On l’utilise comme page d’accueil du navigateur, à la place de Netvibes ou d’un lecteur de flux comme Feedly, et sur téléphone, où la page s’adapte à l’écran.",
+				"Tout s’écrit dans un seul fichier YAML : autant de pages que vous voulez, chacune en colonnes de widgets, avec des thèmes, du CSS personnalisé et vos propres widgets qui lisent n’importe quelle API JSON. Glance est un seul programme Go de moins de 20 MB, prend quelques dizaines de mégaoctets de mémoire et charge une page en une seconde environ.",
+				"Ce template fait tourner Glance avec sa configuration dans un volume, en partant d’une page d’exemple, et protégé par une connexion avec le nom d’utilisateur et le mot de passe que vous indiquez, donc le tableau de bord est fermé aux inconnus. Le mot de passe est enregistré dans la configuration sous forme de hash bcrypt, et les connexions échouées sont comptées par l’adresse IP propre à chaque visiteur."
+			],
+			"faq": [
+				{
+					"q": "Glance est-il gratuit ?",
+					"a": "Oui. Glance est open source sous licence AGPL-3.0, sans édition payante, et le faire tourner vous-même ne coûte que la machine."
+				},
+				{
+					"q": "Comment ajouter un widget ou une page à Glance ?",
+					"a": "Modifiez glance.yml : chaque page a des colonnes, et chaque colonne une liste de widgets, chacun avec un type, comme rss, reddit, weather ou videos, et ses options. Glance recharge la page dès que le fichier est enregistré, et si le fichier contient une erreur, il continue d’afficher la dernière version valide."
+				},
+				{
+					"q": "Glance peut-il afficher mes propres services ou API ?",
+					"a": "Oui. Le widget monitor montre si vos sites répondent, et le widget custom-api lit n’importe quelle API JSON et l’affiche avec un modèle que vous écrivez. Les widgets de la communauté ajoutent ainsi de nombreux services."
+				},
+				{
+					"q": "Glance fonctionne-t-il sur téléphone ?",
+					"a": "Oui. Sa page est aussi faite pour les petits écrans, et vous pouvez l’ajouter à l’écran d’accueil. Connectez-vous une fois, et la session dure 14 jours."
+				}
+			]
+		},
+		"pl": {
+			"description": "Szybki, lekki dashboard z twoimi kanałami RSS, newsami, pogodą, notowaniami i nie tylko",
+			"notes": "Zaloguj się nazwą użytkownika i hasłem podanymi przy tworzeniu projektu: dla wszystkich innych dashboard i jego API są zamknięte. Na start dostajesz przykładową stronę z kanałami RSS, Hacker News, Redditem, kanałami YouTube, pogodą i notowaniami giełdowymi. Dopasuj ją do siebie w /app/config/glance.yml w usłudze glance, edytując plik przez vi w jej zakładce Powłoka: Glance przeładowuje stronę po zapisaniu pliku, a przy błędzie zostaje ostatnia poprawna wersja. Hasło to ADMIN_PASSWORD w pliku .env projektu: zmień je tam.",
+			"sizing": "Glance ma bardzo małe wymagania: około 20 MB pamięci, a na dysku nie trzyma nic poza swoim plikiem konfiguracyjnym.",
+			"summary": "Hostuj Glance u siebie: lekki dashboard open source z kanałami RSS, Redditem, Hacker News, YouTube, pogodą i giełdą, za logowaniem, w jednym pliku YAML.",
+			"about": [
+				"Glance to dashboard hostowany u siebie, który zbiera na jednej stronie to, co codziennie czytasz i sprawdzasz: kanały RSS, subreddity, Hacker News i Lobsters, kanały YouTube i Twitch, pogodę, notowania giełdowe, kalendarz, nowe wydania repozytoriów na GitHubie i stan twoich stron. Ludzie używają go jako strony startowej w przeglądarce, zamiast Netvibes albo czytnika kanałów, takiego jak Feedly, i na telefonie, gdzie strona dopasowuje się do ekranu.",
+				"Wszystko zapisuje się w jednym pliku YAML: tyle stron, ile chcesz, każda w kolumnach widżetów, z motywami, własnym CSS i własnymi widżetami, które czytają dowolne API JSON. Glance to pojedynczy program w Go o rozmiarze poniżej 20 MB, zajmuje kilkadziesiąt megabajtów pamięci i ładuje stronę w mniej więcej sekundę.",
+				"Ten szablon uruchamia Glance z konfiguracją na wolumenie, zaczynając od przykładowej strony, i z logowaniem nazwą użytkownika i hasłem, które podajesz, więc dashboard jest zamknięty dla obcych. Hasło trafia do konfiguracji jako hash bcrypt, a nieudane logowania są liczone osobno dla adresu IP każdego odwiedzającego."
+			],
+			"faq": [
+				{
+					"q": "Czy Glance jest darmowy?",
+					"a": "Tak. Glance to open source na licencji AGPL-3.0, bez płatnej edycji, a uruchomienie go u siebie kosztuje tylko maszynę."
+				},
+				{
+					"q": "Jak dodać widżet albo stronę w Glance?",
+					"a": "Edytuj glance.yml: każda strona ma kolumny, a każda kolumna listę widżetów, każdy z typem, takim jak rss, reddit, weather albo videos, i swoimi opcjami. Glance przeładowuje stronę, gdy tylko plik zostanie zapisany, a jeśli w pliku jest błąd, dalej pokazuje ostatnią poprawną wersję."
+				},
+				{
+					"q": "Czy Glance pokaże moje własne usługi albo API?",
+					"a": "Tak. Widżet monitor pokazuje, czy twoje strony odpowiadają, a widżet custom-api czyta dowolne API JSON i rysuje je według szablonu, który sam piszesz. Widżety społeczności dodają w ten sposób wiele usług."
+				},
+				{
+					"q": "Czy Glance działa na telefonie?",
+					"a": "Tak. Jego strona jest zrobiona także z myślą o małych ekranach i możesz dodać ją do ekranu głównego. Zaloguj się raz, a sesja wytrzyma 14 dni."
+				}
+			]
+		},
+		"pt": {
+			"description": "Um dashboard rápido e leve com seus feeds, notícias, clima, mercados e mais",
+			"notes": "Entre com o usuário e a senha que você informou: o dashboard e a API dele ficam fechados para todos os outros. Ele já vem com uma página de exemplo que reúne feeds, Hacker News, Reddit, canais do YouTube, clima e mercados. Deixe a página do seu jeito em /app/config/glance.yml, no serviço glance, com o vi na aba Shell dele: o Glance recarrega a página quando o arquivo é salvo, e um erro mantém na tela a última página que funcionava. A senha é ADMIN_PASSWORD no .env do projeto: troque-a lá.",
+			"sizing": "Glance é muito leve: cerca de 20 MB de memória, e não guarda nada em disco além do arquivo de configuração.",
+			"summary": "Auto-hospede o Glance, o dashboard leve e open source de feeds RSS, Reddit, Hacker News, YouTube, clima e mercados, com login, num único arquivo YAML.",
+			"about": [
+				"O Glance é um dashboard auto-hospedado que reúne numa página o que você lê e confere todo dia: feeds RSS, subreddits, Hacker News e Lobsters, canais do YouTube e da Twitch, clima, cotações do mercado, um calendário, novos releases de repositórios do GitHub e o status dos seus sites. As pessoas o usam como página inicial do navegador, no lugar do Netvibes ou de um leitor de feeds como o Feedly, e no celular, onde a página se ajusta à tela.",
+				"Tudo fica escrito num único arquivo YAML: quantas páginas você quiser, cada uma em colunas de widgets, com temas, CSS próprio e widgets seus que leem qualquer API JSON. O Glance é um único programa em Go de menos de 20 MB, usa algumas dezenas de megabytes de memória e carrega uma página em cerca de um segundo.",
+				"Este template roda o Glance com a configuração num volume, começando por uma página de exemplo, e com login pelo usuário e pela senha que você informa, então o dashboard fica fechado para estranhos. A senha vai para a configuração como hash bcrypt, e as tentativas de login que falham são contadas pelo endereço IP de cada visitante."
+			],
+			"faq": [
+				{
+					"q": "O Glance é gratuito?",
+					"a": "Sim. O Glance é de código aberto sob a licença AGPL-3.0, sem edição paga, e rodá-lo você mesmo custa só a máquina."
+				},
+				{
+					"q": "Como adiciono um widget ou uma página ao Glance?",
+					"a": "Edite o glance.yml: cada página tem colunas, e cada coluna uma lista de widgets, cada um com um tipo, como rss, reddit, weather ou videos, e suas opções. O Glance recarrega a página assim que o arquivo é salvo, e se o arquivo tiver um erro, continua mostrando a última versão que funcionava."
+				},
+				{
+					"q": "O Glance consegue mostrar meus próprios serviços ou APIs?",
+					"a": "Sim. O widget monitor mostra se seus sites respondem, e o widget custom-api lê qualquer API JSON e a desenha com um template que você escreve. Widgets da comunidade adicionam muitos serviços desse jeito."
+				},
+				{
+					"q": "O Glance funciona no celular?",
+					"a": "Sim. A página dele também é feita para telas pequenas, e você pode adicioná-la à tela inicial. Entre uma vez e a sessão dura 14 dias."
+				}
+			]
+		},
+		"ru": {
+			"description": "Быстрый и легкий дашборд с вашими лентами, новостями, погодой, котировками и не только",
+			"notes": "Войдите с именем пользователя и паролем, которые вы задали: для всех остальных дашборд и его API закрыты. Для начала в нем есть страница-пример с лентами, Hacker News, Reddit, каналами YouTube, погодой и котировками. Настройте ее под себя в /app/config/glance.yml в сервисе glance, через vi на его вкладке «Шелл»: Glance перезагружает страницу, когда файл сохранен, а при ошибке остается последняя рабочая версия. Пароль — ADMIN_PASSWORD в .env проекта: меняйте его там.",
+			"sizing": "Glance: совсем небольшие требования — около 20 MB памяти, а на диске он не хранит ничего, кроме своего конфига.",
+			"summary": "Self-hosted Glance: легкий open source дашборд с RSS-лентами, Reddit, Hacker News, YouTube, погодой и котировками, со входом по паролю, в одном YAML-файле.",
+			"about": [
+				"Glance — self-hosted дашборд, который собирает на одной странице то, что вы каждый день читаете и проверяете: RSS-ленты, сабреддиты, Hacker News и Lobsters, каналы YouTube и Twitch, погоду, биржевые котировки, календарь, новые релизы репозиториев GitHub и состояние ваших сайтов. Его используют как стартовую страницу браузера вместо Netvibes или читалки лент вроде Feedly, а еще на телефоне, где страница подстраивается под экран.",
+				"Все пишется в одном YAML-файле: сколько угодно страниц, каждая из колонок с виджетами, с темами, своим CSS и собственными виджетами, которые читают любой JSON API. Glance — одна программа на Go размером меньше 20 MB, занимает несколько десятков мегабайт памяти и загружает страницу примерно за секунду.",
+				"Этот шаблон запускает Glance с конфигом в томе, начиная с примера страницы, и со входом по имени пользователя и паролю, которые вы задаете, так что дашборд закрыт для посторонних. Пароль попадает в конфиг в виде bcrypt-хеша, а неудачные попытки входа считаются по собственному IP-адресу каждого посетителя."
+			],
+			"faq": [
+				{
+					"q": "Glance бесплатный?",
+					"a": "Да. Glance распространяется с открытым кодом под лицензией AGPL-3.0, платной редакции у него нет, и если запускать его самому, платить придется только за машину."
+				},
+				{
+					"q": "Как добавить в Glance виджет или страницу?",
+					"a": "Отредактируйте glance.yml: у каждой страницы есть колонки, у каждой колонки — список виджетов, и у каждого виджета — тип, например rss, reddit, weather или videos, и свои параметры. Glance перезагружает страницу, как только файл сохранен, а если в файле ошибка, продолжает показывать последнюю рабочую версию."
+				},
+				{
+					"q": "Может ли Glance показывать мои собственные сервисы или API?",
+					"a": "Да. Виджет monitor показывает, отвечают ли ваши сайты, а виджет custom-api читает любой JSON API и отображает его по шаблону, который вы пишете сами. Виджеты от сообщества так добавляют поддержку многих сервисов."
+				},
+				{
+					"q": "Работает ли Glance на телефоне?",
+					"a": "Да. Его страница рассчитана и на маленькие экраны, и ее можно добавить на главный экран. Войдите один раз, и сессия продлится 14 дней."
+				}
+			]
+		},
+		"uk": {
+			"description": "Швидкий і легкий дашборд із вашими стрічками, новинами, погодою, котируваннями та іншим",
+			"notes": "Увійдіть з іменем користувача й паролем, які ви вказали: для всіх інших дашборд і його API закриті. Для початку в ньому є сторінка-приклад зі стрічками, Hacker News, Reddit, каналами YouTube, погодою й котируваннями. Налаштуйте її під себе в /app/config/glance.yml у сервісі glance, через vi на його вкладці «Оболонка»: Glance перезавантажує сторінку, щойно файл збережено, а якщо у файлі помилка, лишається остання робоча сторінка. Пароль — ADMIN_PASSWORD у .env проєкту: змінюйте його там.",
+			"sizing": "Glance має дуже скромні вимоги: близько 20 MB пам’яті, а на диску він не зберігає нічого, крім свого конфігураційного файлу.",
+			"summary": "Self-hosted Glance: легкий дашборд із відкритим кодом — RSS, Reddit, Hacker News, YouTube, погода й котирування, вхід за паролем, усе в одному YAML-файлі.",
+			"about": [
+				"Glance — self-hosted дашборд, який збирає на одній сторінці те, що ви щодня читаєте й перевіряєте: RSS-стрічки, сабреддити, Hacker News і Lobsters, канали YouTube і Twitch, погоду, біржові котирування, календар, нові релізи репозиторіїв GitHub і стан ваших сайтів. Його використовують як стартову сторінку браузера замість Netvibes чи читалки стрічок на кшталт Feedly, а ще на телефоні, де сторінка підлаштовується під екран.",
+				"Усе пишеться в одному YAML-файлі: скільки завгодно сторінок, кожна з колонок із віджетами, з темами, власним CSS і своїми віджетами, які читають будь-який JSON API. Glance — одна програма на Go розміром менше 20 MB, займає кілька десятків мегабайтів пам’яті й завантажує сторінку приблизно за секунду.",
+				"Цей шаблон запускає Glance з конфігурацією в томі, починаючи з прикладу сторінки, і зі входом за іменем користувача й паролем, які ви вказуєте, тож дашборд закритий для сторонніх. Пароль потрапляє в конфігурацію у вигляді bcrypt-хешу, а невдалі спроби входу рахуються за власною IP-адресою кожного відвідувача."
+			],
+			"faq": [
+				{
+					"q": "Glance безкоштовний?",
+					"a": "Так. Glance має відкритий код за ліцензією AGPL-3.0, платної редакції в нього немає, і якщо запускати його самому, платити доведеться лише за машину."
+				},
+				{
+					"q": "Як додати в Glance віджет або сторінку?",
+					"a": "Відредагуйте glance.yml: кожна сторінка має колонки, кожна колонка — список віджетів, а кожен віджет — тип, як-от rss, reddit, weather або videos, і свої параметри. Glance перезавантажує сторінку, щойно файл збережено, а якщо у файлі помилка, і далі показує останню робочу версію."
+				},
+				{
+					"q": "Чи може Glance показувати мої власні сервіси або API?",
+					"a": "Так. Віджет monitor показує, чи відповідають ваші сайти, а віджет custom-api читає будь-який JSON API і відображає його за шаблоном, який ви пишете самі. Віджети від спільноти так додають підтримку багатьох сервісів."
+				},
+				{
+					"q": "Чи працює Glance на телефоні?",
+					"a": "Так. Його сторінка розрахована й на малі екрани, і її можна додати на головний екран. Увійдіть один раз, і сесія триватиме 14 днів."
+				}
+			]
+		}
+	}
+}
