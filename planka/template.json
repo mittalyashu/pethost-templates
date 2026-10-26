@@ -1,0 +1,297 @@
+{
+	"name": "PLANKA",
+	"emoji": "📋",
+	"category": "productivity",
+	"alternatives": [
+		"Trello"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "planka",
+		"port": 1337
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "POSTGRES_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "SECRET_KEY",
+			"secret": 32
+		},
+		{
+			"name": "ADMIN_EMAIL",
+			"ask": "email"
+		},
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Kanban boards for projects and teams, updated for everyone in real time",
+			"notes": "Sign in with the email or username and the admin password you gave: PLANKA has no sign-up, so the administrator adds every account in Administration → Users. The first sign-in asks you to accept PLANKA’s End User Terms of Service, a template you can replace. Make a project with Create project, then a board in it. The admin password is set again from .env at every start: change it there.",
+			"sizing": "PLANKA is light: about 200 MB of memory with Postgres, and boards grow slowly; attachments take what their files take.",
+			"summary": "PLANKA is a self-hosted kanban board with real-time updates for projects and teams. A Trello alternative you run with Postgres in one click.",
+			"about": [
+				"PLANKA is a kanban board that teams and individuals run in place of Trello. Projects hold boards, boards hold lists, and cards carry labels, due dates, checklists, attachments, comments, custom fields and a stopwatch, with a Markdown editor. Every change shows for everyone on the board at once, and a board can be seen as kanban, a grid or a list. Notifications go out by email or through Apprise to over 100 services, and a REST API, API keys and webhooks connect it to other tools.",
+				"People self-host PLANKA to keep their projects on a machine they control. This template runs the free Community edition with PostgreSQL and makes the administrator from the fields, since PLANKA has no sign-up: the administrator adds every account, and board members are editors or viewers. The catch: the Community edition is under PLANKA’s Fair Use License, which allows personal and internal use but not selling access to it, and SSO, themes and the layout for phones and tablets are in the paid PLANKA Pro."
+			],
+			"faq": [
+				{
+					"q": "Is PLANKA free?",
+					"a": "The Community edition is free to self-host under PLANKA’s Fair Use License: for yourself, inside your own organization, and for friends and family, but not to host for others for money. PLANKA Pro, which adds SSO, more views, themes and phone support, costs €7.90 per user a month, or €7.20 billed yearly."
+				},
+				{
+					"q": "Can I import my Trello boards into PLANKA?",
+					"a": "Yes, one board at a time, from the JSON file Trello exports: its lists, cards and labels come over. Users and attachments do not, only one checklist per card does, and Trello’s export stops at 1,000 actions."
+				},
+				{
+					"q": "How do I add users to PLANKA?",
+					"a": "The administrator adds them in Administration → Users with Add user, giving each an email, a password and a role: admin, project owner or board user. There is no public sign-up, and a forgotten password is reset by the administrator."
+				},
+				{
+					"q": "Why does PLANKA ask me to accept terms?",
+					"a": "Every user accepts PLANKA’s End User Terms of Service at their first sign-in. The text it ships is a template: an administrator replaces it with Markdown files of their own in /app/terms/custom, and users are asked again when it changes."
+				},
+				{
+					"q": "Is there a PLANKA mobile app?",
+					"a": "Not an official one. The board opens in a phone’s browser, while the layout made for phones and tablets is part of PLANKA Pro."
+				}
+			]
+		},
+		"de": {
+			"description": "Kanban-Boards für Projekte und Teams, für alle in Echtzeit aktuell",
+			"notes": "Melde dich mit der E-Mail oder dem Benutzernamen und dem Admin-Passwort an, die du angegeben hast: PLANKA hat keine Registrierung, deshalb legt der Administrator jedes Konto unter „Verwaltung“ → „Benutzer“ an. Bei der ersten Anmeldung bittet PLANKA dich, die „Nutzungsbedingungen für Endbenutzer“ zu akzeptieren, eine Vorlage, die du ersetzen kannst. Leg mit „Projekt erstellen“ ein Projekt an und darin ein Board, das PLANKA „Arbeitsbereich“ nennt. Das Admin-Passwort wird bei jedem Start neu aus der .env gesetzt: Ändere es dort.",
+			"sizing": "PLANKA ist leicht: etwa 200 MB RAM mit Postgres, und Boards wachsen langsam; Anhänge belegen so viel, wie ihre Dateien groß sind.",
+			"summary": "PLANKA selbst hosten: das Kanban-Board mit Echtzeit-Updates für Projekte und Teams. Eine Trello-Alternative mit Postgres, mit einem Klick.",
+			"about": [
+				"PLANKA ist ein Kanban-Board, das Teams und Einzelne statt Trello betreiben. Projekte enthalten Boards, Boards enthalten Listen, und Karten tragen Labels, Fälligkeitsdaten, Checklisten, Anhänge, Kommentare, eigene Felder und eine Stoppuhr, dazu kommt ein Markdown-Editor. Jede Änderung sehen alle auf dem Board sofort, und ein Board lässt sich als Kanban, Raster oder Liste anzeigen. Benachrichtigungen gehen per E-Mail raus oder über Apprise an mehr als 100 Dienste, und eine REST-API, API-Schlüssel und Webhooks verbinden PLANKA mit anderen Tools.",
+				"Viele hosten PLANKA selbst, um ihre Projekte auf einer Maschine zu behalten, die sie selbst kontrollieren. Diese Vorlage betreibt die kostenlose Community Edition mit PostgreSQL und legt den Administrator aus den Feldern an, denn PLANKA hat keine Registrierung: Der Administrator legt jedes Konto an, und die Mitglieder eines Boards sind „Verwalter“ oder „Betrachter“. Der Haken: Die Community Edition steht unter der Fair Use License von PLANKA, die private und interne Nutzung erlaubt, aber nicht, den Zugang zu verkaufen, und SSO, Themes und das Layout für Handys und Tablets gehören zum kostenpflichtigen PLANKA Pro."
+			],
+			"faq": [
+				{
+					"q": "Ist PLANKA kostenlos?",
+					"a": "Die Community Edition darfst du unter der Fair Use License von PLANKA kostenlos selbst hosten: für dich selbst, in deiner eigenen Organisation und für Freunde und Familie, aber nicht, um sie gegen Geld für andere zu hosten. PLANKA Pro, das SSO, weitere Ansichten, Themes und die Unterstützung für Handys mitbringt, kostet 7,90 € pro Benutzer im Monat oder 7,20 € bei jährlicher Abrechnung."
+				},
+				{
+					"q": "Kann ich meine Trello-Boards in PLANKA importieren?",
+					"a": "Ja, ein Board nach dem anderen, aus der JSON-Datei, die Trello exportiert: Listen, Karten und Labels kommen mit. Benutzer und Anhänge nicht, pro Karte kommt nur eine Checkliste mit, und der Export von Trello endet bei 1.000 Aktionen."
+				},
+				{
+					"q": "Wie füge ich in PLANKA Benutzer hinzu?",
+					"a": "Der Administrator legt sie unter „Verwaltung“ → „Benutzer“ mit „Benutzer hinzufügen“ an und gibt jedem eine E-Mail, ein Passwort und eine Rolle: „Administrator“, „Projektleitung“ oder „Benutzer“. Eine öffentliche Registrierung gibt es nicht, und ein vergessenes Passwort setzt der Administrator zurück."
+				},
+				{
+					"q": "Warum soll ich in PLANKA Nutzungsbedingungen akzeptieren?",
+					"a": "Bei der ersten Anmeldung akzeptiert jeder Benutzer die „Nutzungsbedingungen für Endbenutzer“ von PLANKA. Der mitgelieferte Text ist eine Vorlage: Ein Administrator ersetzt ihn durch eigene Markdown-Dateien in /app/terms/custom, und wenn er sich ändert, werden die Benutzer erneut gefragt."
+				},
+				{
+					"q": "Gibt es eine App von PLANKA fürs Handy?",
+					"a": "Keine offizielle. Das Board öffnet sich im Browser des Handys, das Layout für Handys und Tablets gehört dagegen zu PLANKA Pro."
+				}
+			]
+		},
+		"es": {
+			"description": "Tableros kanban para proyectos y equipos, actualizados para todos en tiempo real",
+			"notes": "Inicia sesión con el correo o el nombre de usuario y la contraseña de administrador que indicaste: PLANKA no tiene registro abierto, así que el administrador agrega cada cuenta en Administración → Usuarios. El primer inicio de sesión te pide aceptar los Términos de servicio de PLANKA para usuarios finales, una plantilla que puedes reemplazar. Crea un proyecto con “Crear proyecto” y luego un tablero dentro de él. La contraseña de administrador se vuelve a fijar desde .env cada vez que PLANKA se inicia: cámbiala ahí.",
+			"sizing": "PLANKA es ligero: unos 200 MB de memoria con Postgres, y los tableros crecen despacio; los adjuntos ocupan lo que ocupan sus archivos.",
+			"summary": "PLANKA es un tablero kanban con actualizaciones en tiempo real para proyectos y equipos. Una alternativa a Trello que autoalojas con Postgres en un clic.",
+			"about": [
+				"PLANKA es un tablero kanban que equipos y particulares usan en lugar de Trello. Los proyectos contienen tableros, los tableros contienen listas, y las tarjetas llevan etiquetas, fechas de vencimiento, listas de tareas, adjuntos, comentarios, campos personalizados y un cronómetro, con un editor de Markdown. Cada cambio aparece al instante para todos los que están en el tablero, y un tablero se puede ver como kanban, cuadrícula o lista. Las notificaciones salen por correo o, a través de Apprise, a más de 100 servicios, y una API REST, claves de API y webhooks lo conectan con otras herramientas.",
+				"La gente autoaloja PLANKA para tener sus proyectos en una máquina que controla. Esta plantilla ejecuta la edición Community gratuita con PostgreSQL y crea el administrador con los datos de los campos, ya que PLANKA no tiene registro abierto: el administrador agrega cada cuenta, y los miembros de un tablero son editores u observadores. El inconveniente: la edición Community está bajo la Fair Use License de PLANKA, que permite el uso personal e interno pero no vender el acceso a ella, y el SSO, los temas y el diseño para teléfonos y tabletas están en PLANKA Pro, que es de pago."
+			],
+			"faq": [
+				{
+					"q": "¿PLANKA es gratis?",
+					"a": "La edición Community es gratis de autoalojar bajo la Fair Use License de PLANKA: para ti, dentro de tu propia organización y para amigos y familia, pero no para alojarla para terceros a cambio de dinero. PLANKA Pro, que agrega SSO, más vistas, temas y compatibilidad con teléfonos, cuesta 7,90 € por usuario al mes, o 7,20 € con facturación anual."
+				},
+				{
+					"q": "¿Puedo importar mis tableros de Trello a PLANKA?",
+					"a": "Sí, un tablero a la vez, desde el archivo JSON que exporta Trello: se importan sus listas, tarjetas y etiquetas. Los usuarios y los adjuntos no; de cada tarjeta solo se importa una lista de tareas, y la exportación de Trello se detiene en 1000 acciones."
+				},
+				{
+					"q": "¿Cómo agrego usuarios en PLANKA?",
+					"a": "El administrador los agrega en Administración → Usuarios con “Añadir usuario”, y le da a cada uno un correo, una contraseña y un rol: administrador, propietario del proyecto o usuario del tablero. No hay registro público, y una contraseña olvidada la restablece el administrador."
+				},
+				{
+					"q": "¿Por qué PLANKA me pide aceptar unos términos?",
+					"a": "Cada usuario acepta los Términos de servicio de PLANKA para usuarios finales en su primer inicio de sesión. El texto que trae es una plantilla: un administrador lo reemplaza con sus propios archivos Markdown en /app/terms/custom, y cuando cambia, se les vuelve a pedir a los usuarios que lo acepten."
+				},
+				{
+					"q": "¿Hay una app móvil de PLANKA?",
+					"a": "Oficial, no. El tablero se abre en el navegador del teléfono, mientras que el diseño pensado para teléfonos y tabletas es parte de PLANKA Pro."
+				}
+			]
+		},
+		"fr": {
+			"description": "Des tableaux kanban pour les projets et les équipes, mis à jour en temps réel pour tout le monde",
+			"notes": "Connectez-vous avec l’e-mail ou le nom d’utilisateur et le mot de passe administrateur indiqués : PLANKA n’a pas d’inscription, donc l’administrateur ajoute chaque compte dans Administration → Utilisateurs. À la première connexion, PLANKA vous demande d’accepter ses Conditions de service (End User Terms of Service), un texte type que vous pouvez remplacer. Créez un projet avec « Créer un projet », puis un tableau à l’intérieur. Le mot de passe administrateur est repris de .env à chaque démarrage : c’est là qu’il se change.",
+			"sizing": "PLANKA est léger : environ 200 MB de mémoire avec Postgres, et les tableaux grossissent lentement ; les pièces jointes prennent la place de leurs fichiers.",
+			"summary": "PLANKA est un tableau kanban auto-hébergé, mis à jour en temps réel, pour projets et équipes. Une alternative à Trello avec Postgres, en un clic.",
+			"about": [
+				"PLANKA est un tableau kanban que des équipes et des particuliers font tourner à la place de Trello. Les projets contiennent des tableaux, les tableaux des listes, et les cartes portent des étiquettes, des dates d’échéance, des listes de tâches, des pièces jointes, des commentaires, des champs personnalisés et un minuteur, avec un éditeur Markdown. Chaque modification apparaît aussitôt pour tous les membres du tableau, et un tableau s’affiche en kanban, en grille ou en liste. Les notifications partent par e-mail ou, via Apprise, vers plus de 100 services, et une API REST, des clés API et des webhooks le relient à d’autres outils.",
+				"On auto-héberge PLANKA pour garder ses projets sur une machine que l’on contrôle. Ce template fait tourner l’édition Community, gratuite, avec PostgreSQL, et crée l’administrateur à partir des champs, puisque PLANKA n’a pas d’inscription : l’administrateur ajoute chaque compte, et les membres d’un tableau ont le rôle Éditeur ou Spectateur. Le revers : l’édition Community est sous la Fair Use License de PLANKA, qui autorise l’usage personnel et interne mais pas la revente de son accès, et le SSO, les thèmes et l’affichage pour téléphones et tablettes font partie de PLANKA Pro, payant."
+			],
+			"faq": [
+				{
+					"q": "PLANKA est-il gratuit ?",
+					"a": "L’édition Community est gratuite à auto-héberger sous la Fair Use License de PLANKA : pour vous-même, au sein de votre propre organisation, et pour vos amis et votre famille, mais pas pour l’héberger pour d’autres contre rémunération. PLANKA Pro, qui ajoute le SSO, d’autres vues, les thèmes et la prise en charge des téléphones, coûte 7,90 € par utilisateur et par mois, ou 7,20 € en facturation annuelle."
+				},
+				{
+					"q": "Puis-je importer mes tableaux Trello dans PLANKA ?",
+					"a": "Oui, un tableau à la fois, à partir du fichier JSON qu’exporte Trello : ses listes, ses cartes et ses étiquettes sont reprises. Les utilisateurs et les pièces jointes ne le sont pas, une seule checklist par carte l’est, et l’export de Trello s’arrête à 1 000 actions."
+				},
+				{
+					"q": "Comment ajouter des utilisateurs dans PLANKA ?",
+					"a": "L’administrateur les ajoute dans Administration → Utilisateurs avec « Ajouter un utilisateur », en donnant à chacun un e-mail, un mot de passe et un rôle : Administrateur, Propriétaire de projet ou Utilisateur de tableau. Il n’y a pas d’inscription publique, et c’est l’administrateur qui réinitialise un mot de passe oublié."
+				},
+				{
+					"q": "Pourquoi PLANKA me demande-t-il d’accepter des conditions ?",
+					"a": "Chaque utilisateur accepte les Conditions de service de PLANKA (End User Terms of Service) à sa première connexion. Le texte fourni est un texte type : un administrateur le remplace par ses propres fichiers Markdown dans /app/terms/custom, et les utilisateurs doivent l’accepter de nouveau quand il change."
+				},
+				{
+					"q": "Existe-t-il une application mobile PLANKA ?",
+					"a": "Pas d’application officielle. Le tableau s’ouvre dans le navigateur d’un téléphone, mais l’affichage conçu pour les téléphones et les tablettes fait partie de PLANKA Pro."
+				}
+			]
+		},
+		"pl": {
+			"description": "Tablice kanban dla projektów i zespołów, aktualizowane u wszystkich w czasie rzeczywistym",
+			"notes": "Zaloguj się adresem e-mail lub nazwą użytkownika i hasłem administratora podanymi przy tworzeniu projektu: PLANKA nie ma rejestracji, więc każde konto dodaje administrator w sekcji Administracja → Użytkownicy. Przy pierwszym logowaniu PLANKA poprosi cię o zaakceptowanie Warunków korzystania z usługi, czyli szablonu, który możesz podmienić. Kliknij Utwórz projekt, a potem dodaj w projekcie tablicę. Hasło administratora jest ustawiane z .env przy każdym uruchomieniu: zmieniaj je właśnie tam.",
+			"sizing": "PLANKA ma małe wymagania: około 200 MB pamięci razem z Postgresem, a tablice rosną powoli; załączniki zajmują tyle miejsca, co ich pliki.",
+			"summary": "PLANKA to tablica kanban z aktualizacjami na żywo dla projektów i zespołów. Alternatywa dla Trello, hostowana u siebie z Postgresem jednym kliknięciem.",
+			"about": [
+				"PLANKA to tablica kanban, którą zespoły i pojedyncze osoby uruchamiają zamiast Trello. Projekty mieszczą tablice, tablice – listy, a karty mają oznaczenia, terminy, listy zadań, załączniki, komentarze, własne pola i stoper oraz edytor Markdown. Każda zmiana od razu pojawia się u wszystkich na tablicy, a tablicę można oglądać jako kanban, siatkę albo listę. Powiadomienia wychodzą e-mailem albo przez Apprise do ponad 100 usług, a REST API, klucze API i webhooki łączą ją z innymi narzędziami.",
+				"Hostując aplikację PLANKA u siebie, trzymasz projekty na maszynie, którą kontrolujesz. Ten szablon uruchamia darmową edycję Community z PostgreSQL i tworzy administratora z pól formularza, bo PLANKA nie ma rejestracji: każde konto dodaje administrator, a członkowie tablicy mają rolę Edytor albo Wyświetlający. Haczyk: edycja Community jest na licencji Fair Use License od twórców PLANKA, która pozwala na użytek osobisty i wewnętrzny, ale nie na sprzedawanie dostępu do aplikacji, a SSO, motywy i układ dla telefonów i tabletów są w płatnej wersji PLANKA Pro."
+			],
+			"faq": [
+				{
+					"q": "Czy PLANKA jest darmowa?",
+					"a": "Edycję Community można za darmo hostować u siebie na licencji Fair Use License od twórców PLANKA: dla siebie, w obrębie własnej organizacji oraz dla przyjaciół i rodziny, ale nie dla innych za pieniądze. PLANKA Pro, która dodaje SSO, więcej widoków, motywy i obsługę telefonów, kosztuje 7,90 € za użytkownika miesięcznie albo 7,20 € przy płatności rocznej."
+				},
+				{
+					"q": "Czy mogę zaimportować tablice z Trello do PLANKI?",
+					"a": "Tak, po jednej tablicy, z pliku JSON eksportowanego przez Trello: przechodzą jej listy, karty i oznaczenia. Użytkownicy i załączniki nie przechodzą, z każdej karty przechodzi tylko jedna lista zadań, a eksport z Trello obejmuje najwyżej 1000 akcji."
+				},
+				{
+					"q": "Jak dodać użytkowników do PLANKI?",
+					"a": "Administrator dodaje ich w sekcji Administracja → Użytkownicy przyciskiem Dodaj użytkownika i podaje każdemu e-mail, hasło i rolę: Administrator, Właściciel projektu albo Użytkownik tablicy. Publicznej rejestracji nie ma, a zapomniane hasło resetuje administrator."
+				},
+				{
+					"q": "Dlaczego PLANKA prosi mnie o akceptację warunków?",
+					"a": "Każdy użytkownik przy pierwszym logowaniu akceptuje Warunki korzystania z usługi. Tekst dołączony do PLANKI to szablon: administrator zastępuje go własnymi plikami Markdown w /app/terms/custom, a gdy tekst się zmieni, użytkownicy znów są proszeni o akceptację."
+				},
+				{
+					"q": "Czy PLANKA ma aplikację mobilną?",
+					"a": "Oficjalnej nie ma. Tablica otwiera się w przeglądarce telefonu, a układ przygotowany dla telefonów i tabletów jest częścią PLANKA Pro."
+				}
+			]
+		},
+		"pt": {
+			"description": "Quadros kanban para projetos e equipes, atualizados para todos em tempo real",
+			"notes": "Entre com o e-mail ou o usuário e a senha de administrador que você informou: o PLANKA não tem cadastro, então o administrador adiciona cada conta em Administração → Usuários. No primeiro login, o PLANKA pede que você aceite os Termos de serviço dele para o usuário final, um modelo que você pode substituir. Crie um projeto com Criar projeto e depois um quadro dentro dele. A senha de administrador volta a ser definida pelo .env a cada inicialização: altere-a lá.",
+			"sizing": "PLANKA é leve: cerca de 200 MB de memória com o Postgres, e os quadros crescem devagar; os anexos ocupam o que os arquivos deles ocupam.",
+			"summary": "O PLANKA é um quadro kanban auto-hospedado com atualizações em tempo real para projetos e equipes. Alternativa ao Trello com Postgres, em um clique.",
+			"about": [
+				"O PLANKA é um quadro kanban que equipes e pessoas usam no lugar do Trello. Projetos têm quadros, quadros têm listas, e os cartões levam rótulos, datas de vencimento, listas de tarefas, anexos, comentários, campos personalizados e um cronômetro, com editor de Markdown. Cada alteração aparece na hora para todos no quadro, e um quadro pode ser visto como kanban, grade ou lista. As notificações saem por e-mail ou, pelo Apprise, para mais de 100 serviços, e uma API REST, chaves API e webhooks o conectam a outras ferramentas.",
+				"Auto-hospedar o PLANKA mantém seus projetos em uma máquina que você controla. Este template roda a edição Community, gratuita, com PostgreSQL e cria o administrador a partir dos campos, já que o PLANKA não tem cadastro: o administrador adiciona cada conta, e os membros de um quadro são editores ou visualizadores. O porém: a edição Community está sob a Fair Use License do PLANKA, que permite uso pessoal e interno, mas não vender acesso a ela, e SSO, temas e o layout para celulares e tablets ficam no PLANKA Pro, pago."
+			],
+			"faq": [
+				{
+					"q": "O PLANKA é gratuito?",
+					"a": "A edição Community é gratuita para auto-hospedar sob a Fair Use License do PLANKA: para você, dentro da sua própria organização e para amigos e família, mas não para hospedar para outras pessoas em troca de dinheiro. O PLANKA Pro, que adiciona SSO, mais visualizações, temas e suporte a celulares, custa € 7,90 por usuário por mês, ou € 7,20 com cobrança anual."
+				},
+				{
+					"q": "Posso importar meus quadros do Trello para o PLANKA?",
+					"a": "Sim, um quadro por vez, a partir do arquivo JSON que o Trello exporta: as listas, os cartões e os rótulos vêm junto. Usuários e anexos não vêm, só uma lista de tarefas por cartão é trazida, e a exportação do Trello vai até 1.000 ações."
+				},
+				{
+					"q": "Como adiciono usuários ao PLANKA?",
+					"a": "O administrador os adiciona em Administração → Usuários com Adicionar usuário, informando para cada um e-mail, senha e função: Admin, Proprietário do projeto ou Usuário do quadro. Não há cadastro público, e uma senha esquecida é redefinida pelo administrador."
+				},
+				{
+					"q": "Por que o PLANKA pede que eu aceite termos?",
+					"a": "Todo usuário aceita os Termos de serviço do PLANKA para o usuário final no primeiro login. O texto que vem com ele é um modelo: um administrador o substitui por arquivos Markdown próprios em /app/terms/custom, e o PLANKA pede o aceite de novo quando ele muda."
+				},
+				{
+					"q": "Existe app do PLANKA para celular?",
+					"a": "Oficial, não. O quadro abre no navegador do celular, mas o layout feito para celulares e tablets faz parte do PLANKA Pro."
+				}
+			]
+		},
+		"ru": {
+			"description": "Канбан-доски для проектов и команд, которые обновляются у всех в реальном времени",
+			"notes": "Войдите с почтой или именем пользователя и паролем администратора, которые вы указали: регистрации в PLANKA нет, поэтому каждый аккаунт добавляет администратор в разделе «Администрирование» → «Пользователи». При первом входе нужно принять «Условия использования» PLANKA (End User Terms of Service) — это шаблон, который можно заменить. Создайте проект кнопкой «Создать проект», а в нем — доску. Пароль администратора задается заново из .env при каждом запуске: меняйте его там.",
+			"sizing": "PLANKA: небольшие требования — около 200 MB памяти вместе с Postgres, а доски растут медленно; вложения занимают столько, сколько весят их файлы.",
+			"summary": "Self-hosted PLANKA — канбан-доска с обновлениями в реальном времени для проектов и команд. Альтернатива Trello с Postgres в один клик.",
+			"about": [
+				"PLANKA — канбан-доска, которую команды и отдельные люди запускают вместо Trello. В проектах лежат доски, на досках — списки, а у карточек есть метки, сроки, чек-листы, вложения, комментарии, настраиваемые поля и секундомер, плюс редактор Markdown. Каждое изменение сразу появляется у всех участников доски, а саму доску можно показать как канбан, сетку или список. Уведомления уходят по почте или через Apprise в более чем 100 сервисов, а REST API, ключи API и веб-хуки связывают PLANKA с другими инструментами.",
+				"PLANKA хостят у себя, чтобы проекты оставались на машине, которую вы контролируете. Этот шаблон запускает бесплатную редакцию Community с PostgreSQL и создает администратора по данным из полей, потому что регистрации в PLANKA нет: каждый аккаунт добавляет администратор, а участники доски бывают редакторами или читателями. Подвох: редакция Community распространяется по лицензии Fair Use License от PLANKA, которая разрешает личное и внутреннее использование, но не продажу доступа к ней, а SSO, темы и интерфейс для телефонов и планшетов входят в платную PLANKA Pro."
+			],
+			"faq": [
+				{
+					"q": "PLANKA бесплатная?",
+					"a": "Редакцию Community можно бесплатно хостить у себя по лицензии Fair Use License от PLANKA: для себя, внутри своей организации, для друзей и семьи, но не хостить ее для других за деньги. PLANKA Pro, где добавлены SSO, больше видов доски, темы и интерфейс для телефонов, стоит 7,90 € за пользователя в месяц или 7,20 € при оплате за год."
+				},
+				{
+					"q": "Можно ли перенести доски из Trello в PLANKA?",
+					"a": "Да, по одной доске, из JSON-файла, который выгружает Trello: списки, карточки и метки переносятся. Пользователи и вложения — нет, из чек-листов карточки переносится только один, а экспорт Trello обрывается на 1000 действий."
+				},
+				{
+					"q": "Как добавить пользователей в PLANKA?",
+					"a": "Их добавляет администратор в разделе «Администрирование» → «Пользователи» кнопкой «Добавить пользователя» и указывает для каждого почту, пароль и роль: «Админ», «Владелец проекта» или «Пользователь доски». Публичной регистрации нет, а забытый пароль сбрасывает администратор."
+				},
+				{
+					"q": "Почему PLANKA просит принять условия?",
+					"a": "Каждый пользователь принимает «Условия использования» PLANKA (End User Terms of Service) при первом входе. Текст, который идет в комплекте, — шаблон: администратор заменяет его своими файлами Markdown в /app/terms/custom, и когда текст меняется, пользователей просят принять его снова."
+				},
+				{
+					"q": "Есть ли у PLANKA мобильное приложение?",
+					"a": "Официального нет. Доска открывается в браузере телефона, а интерфейс, сделанный для телефонов и планшетов, входит в PLANKA Pro."
+				}
+			]
+		},
+		"uk": {
+			"description": "Канбан-дошки для проєктів і команд, що оновлюються для всіх у реальному часі",
+			"notes": "Увійдіть із поштою або іменем користувача й паролем адміністратора, які ви вказали: реєстрації в PLANKA немає, тож кожен акаунт додає адміністратор у розділі «Адміністратор → Користувачі». Під час першого входу PLANKA попросить прийняти її умови використання для кінцевих користувачів (End User Terms of Service) — це шаблон, який можна замінити. Створіть проєкт кнопкою «Створити проект», а в ньому — дошку. Пароль адміністратора PLANKA бере з .env заново під час кожного запуску, тож змінюйте його там.",
+			"sizing": "PLANKA має скромні вимоги: близько 200 MB пам’яті разом із Postgres; дошки ростуть повільно, а вкладення займають стільки, скільки їхні файли.",
+			"summary": "PLANKA — self-hosted канбан-дошка для проєктів і команд з оновленнями в реальному часі. Альтернатива Trello з Postgres в один клік.",
+			"about": [
+				"PLANKA — канбан-дошка, яку команди й окремі люди запускають замість Trello. Проєкти містять дошки, дошки — списки, а картки мають мітки, крайні терміни, списки завдань, вкладення, коментарі, користувацькі поля й секундомір, і все це з редактором Markdown. Кожну зміну всі на дошці бачать одразу, а дошку можна показати як канбан, сітку або список. Сповіщення надходять поштою або через Apprise у понад 100 сервісів, а REST API, ключі API і вебхуки пов’язують PLANKA з іншими інструментами.",
+				"PLANKA хостять у себе, щоб проєкти лишалися на машині під їхнім контролем. Цей шаблон запускає безкоштовну редакцію Community з PostgreSQL і створює адміністратора з полів, бо реєстрації в PLANKA немає: кожен акаунт додає адміністратор, а учасники дошки бувають редакторами або переглядачами. Підводний камінь: редакція Community поширюється за ліцензією PLANKA Fair Use License, яка дозволяє особисте й внутрішнє використання, але не продаж доступу до неї, а SSO, теми оформлення й макет для телефонів і планшетів є лише в платній PLANKA Pro."
+			],
+			"faq": [
+				{
+					"q": "PLANKA безкоштовна?",
+					"a": "Редакцію Community можна безкоштовно хостити в себе за ліцензією PLANKA Fair Use License: для себе, усередині своєї організації, для друзів і родини, але не для інших за гроші. PLANKA Pro, де є SSO, більше видів відображення, теми оформлення й підтримка телефонів, коштує 7,90 € за користувача на місяць або 7,20 € з оплатою за рік."
+				},
+				{
+					"q": "Чи можна імпортувати дошки Trello в PLANKA?",
+					"a": "Так, по одній дошці, з JSON-файлу, який експортує Trello: списки, картки й мітки переносяться. Користувачі та вкладення — ні, з кожної картки переноситься лише один список завдань, а експорт Trello обривається на 1 000 дій."
+				},
+				{
+					"q": "Як додати користувачів у PLANKA?",
+					"a": "Їх додає адміністратор у розділі «Адміністратор → Користувачі» кнопкою «Додати користувача», задаючи кожному пошту, пароль і роль: «Адмін», «Власник проекту» або «Користувач форуму». Публічної реєстрації немає, а забутий пароль скидає адміністратор."
+				},
+				{
+					"q": "Чому PLANKA просить прийняти умови використання?",
+					"a": "Під час першого входу кожен користувач приймає умови використання PLANKA для кінцевих користувачів (End User Terms of Service). Текст, який постачається з PLANKA, — шаблон: адміністратор замінює його своїми файлами Markdown у /app/terms/custom, а коли текст змінюється, користувачів просять прийняти його знову."
+				},
+				{
+					"q": "Чи є мобільний застосунок PLANKA?",
+					"a": "Офіційного немає. Дошка відкривається в браузері телефона, а макет, зроблений для телефонів і планшетів, входить до PLANKA Pro."
+				}
+			]
+		}
+	}
+}

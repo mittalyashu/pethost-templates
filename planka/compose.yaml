@@ -1,0 +1,41 @@
+services:
+  planka:
+    image: ghcr.io/plankanban/planka:2.2.1
+    restart: unless-stopped
+    environment:
+      BASE_URL: ${URL}
+      DATABASE_URL: postgresql://planka:${POSTGRES_PASSWORD}@postgres/planka
+      SECRET_KEY: ${SECRET_KEY}
+      # Requests come through the proxy, which says the client's address and that it was HTTPS.
+      TRUST_PROXY: "true"
+      # PLANKA has no sign-up: this administrator is made at the first start, and its password is
+      # set again from ADMIN_PASSWORD at every start, so a new one in .env takes effect on restart.
+      DEFAULT_ADMIN_EMAIL: ${ADMIN_EMAIL}
+      DEFAULT_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DEFAULT_ADMIN_NAME: ${ADMIN_USERNAME}
+      DEFAULT_ADMIN_USERNAME: ${ADMIN_USERNAME}
+    volumes:
+      - data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: planka
+      POSTGRES_USER: planka
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U planka -d planka"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  data:
+  db:
