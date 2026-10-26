@@ -1,0 +1,72 @@
+services:
+  joomla:
+    image: joomla:6-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      JOOMLA_DB_HOST: db
+      JOOMLA_DB_NAME: joomla
+      JOOMLA_DB_USER: joomla
+      JOOMLA_DB_PASSWORD: ${DB_PASSWORD}
+      SITE_NAME: ${HOST}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    # A new Joomla opens its web installer to whoever comes first. So the image's entrypoint is
+    # run first only to copy Joomla into the volume and make the database, Joomla's own CLI
+    # installer then makes the site and its Super User from the fields, and Apache starts only
+    # once the site is installed: a refusal (Joomla takes a password of 12 characters at least)
+    # stops the start, says why in the logs, and is tried again at the next.
+    #
+    # PHP's own upload limit is 2 MB, too little for a photo, and the image has no variable for it.
+    entrypoint:
+      - sh
+      - -c
+      - |
+        set -e
+        printf 'upload_max_filesize = 64M\npost_max_size = 64M\n' > /usr/local/etc/php/conf.d/uploads.ini
+        /entrypoint.sh apache2 -v > /dev/null
+        if [ -e installation/joomla.php ]; then
+          php installation/joomla.php install --no-interaction \
+            --site-name="$$SITE_NAME" \
+            --admin-user="$$ADMIN_USERNAME" \
+            --admin-username="$$ADMIN_USERNAME" \
+            --admin-password="$$ADMIN_PASSWORD" \
+            --admin-email="$$ADMIN_EMAIL" \
+            --db-type=mysqli \
+            --db-host="$$JOOMLA_DB_HOST" \
+            --db-user="$$JOOMLA_DB_USER" \
+            --db-pass="$$JOOMLA_DB_PASSWORD" \
+            --db-name="$$JOOMLA_DB_NAME" \
+            --db-prefix=jos_ \
+            --db-encryption=0
+          rm -rf installation
+          chown -R www-data:www-data .
+          chmod 444 configuration.php
+        fi
+        exec /entrypoint.sh apache2-foreground
+    volumes:
+      - joomla:/var/www/html
+
+  db:
+    image: mariadb:11.8
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: joomla
+      MARIADB_USER: joomla
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+volumes:
+  joomla:
+  db:

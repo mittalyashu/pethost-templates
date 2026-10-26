@@ -1,0 +1,298 @@
+{
+	"name": "Joomla",
+	"emoji": "🌍",
+	"category": "websites",
+	"alternatives": [
+		"Wix",
+		"Squarespace"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "joomla",
+		"port": 80
+	},
+	"variables": [
+		{
+			"name": "HOST",
+			"from": "host"
+		},
+		{
+			"name": "DB_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "DB_ROOT_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "ADMIN_EMAIL",
+			"ask": "email"
+		},
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "The open-source CMS for websites, with several languages, access levels and thousands of extensions",
+			"notes": "Sign in at https://{host}/administrator with the username and admin password you gave: that Super User was made at the first start, so Joomla’s web installer was never open. Joomla wants a password of 12 characters at least: with a shorter one the site does not start and its log says so, until ADMIN_PASSWORD in .env is longer. Visitors cannot register until you turn on Allow User Registration in Users → Manage → Options.",
+			"sizing": "Joomla is light: about 170 MB of memory with MariaDB, and the site grows with the images and files you upload.",
+			"summary": "Joomla is the open-source CMS for websites, with multilingual content and access levels built in. Self-host Joomla 6 with MariaDB in one click.",
+			"about": [
+				"Joomla is a free and open-source content management system for websites of every kind, from a club’s pages to a company’s site in several languages. Articles are filed in categories and shown through menus and modules, and the core has the Cassiopeia template, a media manager, contacts with their forms, tags, smart search and search-engine-friendly addresses. A multilingual site needs no extension: each language gets its content and home page, and articles are linked to their translations. User groups and access levels decide who sees and edits what, and the Joomla Extensions Directory lists over 5,000 extensions.",
+				"This template runs Joomla 6 from the official image with MariaDB, and installs it at the first start from the fields, so the web installer is never open to a stranger. Joomla’s files are kept in a volume and update from the Administrator, and since Joomla 5.4 a site that Joomla’s update service can reach installs minor and patch releases by itself. The catch: a major version is upgraded by hand, once your extensions support it."
+			],
+			"faq": [
+				{
+					"q": "Is Joomla free?",
+					"a": "Yes. Joomla is free and open source under the GNU General Public License, version 2 or later. Volunteers make it, and the non-profit Open Source Matters governs the project."
+				},
+				{
+					"q": "Is Joomla still maintained?",
+					"a": "Yes. Joomla 6.2 came out on 13 October 2026, Joomla 6 gets bug fixes until 17 October 2028 and security fixes until 16 October 2029, and Joomla 6.3 is planned for April 2027."
+				},
+				{
+					"q": "How do I update Joomla?",
+					"a": "Back up first, then open System, choose Joomla under Update and click Start Update, or run php cli/joomla.php core:update in the joomla service’s shell. With automated updates, on for a new site that Joomla’s update service can reach, it installs minor and patch releases by itself."
+				},
+				{
+					"q": "How do I make a multilingual site in Joomla?",
+					"a": "With the core alone: install the languages, publish a content language for each, turn on the Language Filter plugin, make a home menu item per language, and link each article to its translations in its Associations tab."
+				},
+				{
+					"q": "Why does Joomla want a 12-character password?",
+					"a": "A new Joomla site asks for passwords of 12 characters at least, the Super User’s too. This template gives your admin password to Joomla’s installer, which refuses a shorter one: the site then starts once ADMIN_PASSWORD in .env is longer."
+				}
+			]
+		},
+		"de": {
+			"description": "Das Open-Source-CMS für Websites, mit mehreren Sprachen, Zugriffsebenen und Tausenden Erweiterungen",
+			"notes": "Melde dich unter https://{host}/administrator mit dem Benutzernamen und dem Admin-Passwort an, die du angegeben hast: Dieser Super Benutzer wurde beim ersten Start angelegt, der Web-Installer von Joomla war also nie offen. Joomla verlangt ein Passwort mit mindestens 12 Zeichen: Mit einem kürzeren startet die Website nicht, bis ADMIN_PASSWORD in der .env länger ist, und das Log sagt, warum. Registrieren kann sich erst jemand, wenn du unter „Benutzer“ → „Verwalten“ → „Optionen“ die „Benutzerregistrierung“ einschaltest.",
+			"sizing": "Joomla ist leicht: etwa 170 MB RAM mit MariaDB, und die Website wächst mit den Bildern und Dateien, die du hochlädst.",
+			"summary": "Joomla selbst hosten: das Open-Source-CMS für Websites, mit mehrsprachigen Inhalten und Zugriffsebenen ab Werk. Joomla 6 mit MariaDB, mit einem Klick.",
+			"about": [
+				"Joomla ist ein kostenloses Open-Source-Content-Management-System für Websites aller Art, von den Seiten eines Vereins bis zur mehrsprachigen Website eines Unternehmens. Beiträge werden in Kategorien abgelegt und über Menüs und Module angezeigt, und schon der Kern bringt das Template Cassiopeia, eine Medienverwaltung, Kontakte mit ihren Formularen, Schlagwörter, die Volltextsuche „Suchindex“ und suchmaschinenfreundliche URLs mit. Eine mehrsprachige Website braucht keine Erweiterung: Jede Sprache bekommt ihre Inhalte und ihre Startseite, und Beiträge werden mit ihren Übersetzungen verknüpft. Benutzergruppen und Zugriffsebenen regeln, wer was sieht und bearbeitet, und das Joomla Extensions Directory listet über 5.000 Erweiterungen.",
+				"Diese Vorlage betreibt Joomla 6 aus dem offiziellen Image mit MariaDB und installiert es beim ersten Start aus den Feldern, sodass der Web-Installer nie für Fremde offen steht. Die Dateien von Joomla liegen in einem Volume und werden im Administrator aktualisiert, und seit Joomla 5.4 installiert eine Website, die der Update-Dienst von Joomla erreicht, Minor- und Patch-Releases selbst. Der Haken: Auf eine neue Hauptversion stellst du von Hand um, sobald deine Erweiterungen sie unterstützen."
+			],
+			"faq": [
+				{
+					"q": "Ist Joomla kostenlos?",
+					"a": "Ja. Joomla ist kostenlos und Open Source unter der GNU General Public License, Version 2 oder neuer. Freiwillige entwickeln es, und die gemeinnützige Organisation Open Source Matters leitet das Projekt."
+				},
+				{
+					"q": "Wird Joomla noch gepflegt?",
+					"a": "Ja. Joomla 6.2 ist am 13. Oktober 2026 erschienen, Joomla 6 bekommt Bugfixes bis zum 17. Oktober 2028 und Sicherheitsupdates bis zum 16. Oktober 2029, und Joomla 6.3 ist für April 2027 geplant."
+				},
+				{
+					"q": "Wie aktualisiere ich Joomla?",
+					"a": "Mach zuerst ein Backup, dann öffne „System“, wähl unter „Updates“ den Eintrag „Joomla“ und klick auf „Update starten“, oder führ php cli/joomla.php core:update in der Shell des Service joomla aus. Die Option „Automatische Updates“ ist bei einer neuen Website, die der Update-Dienst von Joomla erreicht, eingeschaltet, und dann installiert Joomla Minor- und Patch-Releases selbst."
+				},
+				{
+					"q": "Wie baue ich mit Joomla eine mehrsprachige Website?",
+					"a": "Mit dem Kern allein: Installiere die Sprachen, veröffentliche für jede eine Inhaltssprache, schalte das Plugin „System – Sprachenfilter“ ein, leg pro Sprache einen Menüeintrag als Startseite an und verknüpfe jeden Beitrag im Tab „Verknüpfungen“ mit seinen Übersetzungen."
+				},
+				{
+					"q": "Warum verlangt Joomla ein Passwort mit 12 Zeichen?",
+					"a": "Eine neue Joomla-Website verlangt Passwörter mit mindestens 12 Zeichen, auch für den Super Benutzer. Diese Vorlage gibt dein Admin-Passwort an den Installer von Joomla weiter, der ein kürzeres ablehnt: Die Website startet dann, sobald ADMIN_PASSWORD in der .env länger ist."
+				}
+			]
+		},
+		"es": {
+			"description": "El CMS de código abierto para sitios web, con varios idiomas, niveles de acceso y miles de extensiones",
+			"notes": "Inicia sesión en https://{host}/administrator con el nombre de usuario y la contraseña de administrador que indicaste: ese Super Usuario se creó en el primer inicio, así que el instalador web de Joomla nunca estuvo abierto. Joomla pide una contraseña de 12 caracteres como mínimo: con una más corta, el sitio no se inicia, y su log lo indica, hasta que ADMIN_PASSWORD en .env sea más larga. Los visitantes no pueden registrarse hasta que actives “Permitir el registro de usuarios” en Usuarios → Gestionar → Opciones.",
+			"sizing": "Joomla es ligero: unos 170 MB de memoria con MariaDB, y el sitio crece con las imágenes y los archivos que subes.",
+			"summary": "Joomla es el CMS de código abierto para sitios web, con contenido multilingüe y niveles de acceso integrados. Autoaloja Joomla 6 con MariaDB en un clic.",
+			"about": [
+				"Joomla es un sistema de gestión de contenidos libre y de código abierto para sitios web de todo tipo, desde las páginas de un club hasta el sitio de una empresa en varios idiomas. Los artículos se ordenan en categorías y se muestran mediante menús y módulos, y el núcleo trae la plantilla Cassiopeia, un gestor multimedia, contactos con sus formularios, etiquetas, Búsqueda inteligente y URLs amigables. Un sitio multilingüe no necesita extensiones: cada idioma tiene su contenido y su página de inicio, y los artículos se asocian a sus traducciones. Los grupos de usuarios y los niveles de acceso deciden quién ve y edita qué, y el Directorio de extensiones de Joomla reúne más de 5000 extensiones.",
+				"Esta plantilla ejecuta Joomla 6 desde la imagen oficial con MariaDB, y lo instala en el primer inicio con los datos de los campos, así que el instalador web nunca queda abierto a un desconocido. Los archivos de Joomla se guardan en un volumen y se actualizan desde el Administrador, y desde Joomla 5.4 un sitio al que puede llegar el servicio de actualizaciones de Joomla instala por sí solo las versiones menores y de parche. El inconveniente: una versión mayor se actualiza a mano, una vez que tus extensiones la admiten."
+			],
+			"faq": [
+				{
+					"q": "¿Joomla es gratis?",
+					"a": "Sí. Joomla es gratuito y de código abierto bajo la GNU General Public License, versión 2 o posterior. Lo hacen voluntarios, y la organización sin fines de lucro Open Source Matters gobierna el proyecto."
+				},
+				{
+					"q": "¿Joomla sigue teniendo mantenimiento?",
+					"a": "Sí. Joomla 6.2 salió el 13 de octubre de 2026, Joomla 6 recibe correcciones de errores hasta el 17 de octubre de 2028 y de seguridad hasta el 16 de octubre de 2029, y Joomla 6.3 está previsto para abril de 2027."
+				},
+				{
+					"q": "¿Cómo actualizo Joomla?",
+					"a": "Haz un backup primero y luego abre Sistema, elige Joomla en Actualizar y haz clic en “Iniciar la actualización”, o ejecuta php cli/joomla.php core:update en el shell del servicio joomla. Con las actualizaciones automatizadas, activadas en un sitio nuevo al que puede llegar el servicio de actualizaciones de Joomla, el sitio instala por sí solo las versiones menores y de parche."
+				},
+				{
+					"q": "¿Cómo hago un sitio multilingüe en Joomla?",
+					"a": "Solo con el núcleo: instala los idiomas, publica un idioma de contenido para cada uno, activa el plugin “Sistema - Filtrar idiomas”, crea un elemento de menú de inicio por idioma y asocia cada artículo con sus traducciones en su pestaña Asociaciones."
+				},
+				{
+					"q": "¿Por qué Joomla pide una contraseña de 12 caracteres?",
+					"a": "Un sitio nuevo de Joomla pide contraseñas de 12 caracteres como mínimo, también la del Super Usuario. Esta plantilla le pasa tu contraseña de administrador al instalador de Joomla, que rechaza una más corta: el sitio se inicia en cuanto ADMIN_PASSWORD en .env es más larga."
+				}
+			]
+		},
+		"fr": {
+			"description": "Le CMS open source pour les sites web, avec plusieurs langues, des niveaux d’accès et des milliers d’extensions",
+			"notes": "Connectez-vous sur https://{host}/administrator avec le nom d’utilisateur et le mot de passe administrateur indiqués : ce Super Utilisateur a été créé au premier démarrage, donc l’installateur web de Joomla n’a jamais été ouvert. Joomla exige un mot de passe d’au moins 12 caractères : avec un mot de passe plus court, le site ne démarre pas et ses logs l’indiquent, jusqu’à ce que la variable ADMIN_PASSWORD de .env soit plus longue. Les visiteurs ne peuvent pas s’inscrire tant que vous n’avez pas activé « Autoriser l’inscription » dans Utilisateurs → Gestion → Paramètres.",
+			"sizing": "Joomla est léger : environ 170 MB de mémoire avec MariaDB, et le site grossit avec les images et les fichiers que vous envoyez.",
+			"summary": "Joomla est le CMS open source pour sites web, avec contenu multilingue et niveaux d’accès intégrés. Auto-hébergez Joomla 6 avec MariaDB en un clic.",
+			"about": [
+				"Joomla est un système de gestion de contenu gratuit et open source pour des sites de toutes sortes, des pages d’un club au site multilingue d’une entreprise. Les articles sont classés dans des catégories et affichés au moyen de menus et de modules, et le cœur comprend le template Cassiopeia, un gestionnaire de médias, des contacts avec leurs formulaires, des tags, la Recherche avancée et des URL en clair pour les moteurs de recherche. Un site multilingue ne demande aucune extension : chaque langue a son contenu et sa page d’accueil, et les articles sont associés à leurs traductions. Les groupes d’utilisateurs et les niveaux d’accès décident qui voit et modifie quoi, et l’annuaire des extensions de Joomla (Joomla Extensions Directory) en recense plus de 5 000.",
+				"Ce template fait tourner Joomla 6 depuis l’image officielle, avec MariaDB, et l’installe au premier démarrage à partir des champs, donc l’installateur web n’est jamais ouvert à un inconnu. Les fichiers de Joomla sont gardés dans un volume et se mettent à jour depuis l’administration, et depuis Joomla 5.4, un site que le service de mise à jour de Joomla peut joindre installe de lui-même les versions mineures et correctives. Le revers : le passage à une version majeure se fait à la main, une fois que vos extensions la prennent en charge."
+			],
+			"faq": [
+				{
+					"q": "Joomla est-il gratuit ?",
+					"a": "Oui. Joomla est gratuit et open source, sous licence GNU General Public License, version 2 ou ultérieure. Des bénévoles le développent, et l’organisation à but non lucratif Open Source Matters assure la gouvernance du projet."
+				},
+				{
+					"q": "Joomla est-il toujours maintenu ?",
+					"a": "Oui. Joomla 6.2 est sorti le 13 octobre 2026, Joomla 6 reçoit des corrections de bugs jusqu’au 17 octobre 2028 et des correctifs de sécurité jusqu’au 16 octobre 2029, et Joomla 6.3 est prévu pour avril 2027."
+				},
+				{
+					"q": "Comment mettre à jour Joomla ?",
+					"a": "Faites d’abord une sauvegarde, puis ouvrez Système, choisissez Joomla sous Mise à jour et cliquez sur « Appliquer la mise à jour », ou lancez php cli/joomla.php core:update dans le shell du service joomla. Avec les mises à jour automatisées, activées sur un nouveau site que le service de mise à jour de Joomla peut joindre, il installe de lui-même les versions mineures et correctives."
+				},
+				{
+					"q": "Comment faire un site multilingue avec Joomla ?",
+					"a": "Avec le cœur seul : installez les langues, publiez une langue de contenu pour chacune, activez le plugin « Système - Filtre de langue », créez un lien de menu d’accueil par langue, et associez chaque article à ses traductions dans son onglet Associations."
+				},
+				{
+					"q": "Pourquoi Joomla exige-t-il un mot de passe de 12 caractères ?",
+					"a": "Un nouveau site Joomla exige des mots de passe d’au moins 12 caractères, celui du Super Utilisateur compris. Ce template transmet votre mot de passe administrateur à l’installateur de Joomla, qui refuse un mot de passe plus court : le site démarre alors une fois que la variable ADMIN_PASSWORD de .env est plus longue."
+				}
+			]
+		},
+		"pl": {
+			"description": "CMS open source do stron internetowych, z wieloma językami, poziomami dostępu i tysiącami rozszerzeń",
+			"notes": "Zaloguj się pod adresem https://{host}/administrator nazwą użytkownika i hasłem administratora podanymi przy tworzeniu projektu: tego superużytkownika utworzono przy pierwszym uruchomieniu, więc instalator webowy Joomli nigdy nie był otwarty. Joomla wymaga hasła o długości co najmniej 12 znaków: z krótszym strona się nie uruchomi, dopóki ADMIN_PASSWORD w .env nie będzie dłuższe, a jej log poda przyczynę. Odwiedzający nie mogą się rejestrować, dopóki nie włączysz opcji Rejestruj nowych na stronie Użytkownicy → Konta użytkowników → Opcje.",
+			"sizing": "Joomla ma małe wymagania: około 170 MB pamięci razem z MariaDB, a strona rośnie wraz z wgrywanymi obrazami i plikami.",
+			"summary": "Joomla to CMS open source do stron internetowych z wbudowaną wielojęzycznością i poziomami dostępu. Hostuj Joomlę 6 z MariaDB u siebie jednym kliknięciem.",
+			"about": [
+				"Joomla to darmowy system zarządzania treścią open source do stron internetowych każdego rodzaju, od stron klubu po firmową witrynę w kilku językach. Artykuły są układane w kategoriach i pokazywane przez menu i moduły, a rdzeń ma szablon Cassiopeia, menedżer mediów, kontakty z formularzami, tagi, inteligentne wyszukiwanie i adresy przyjazne wyszukiwarkom. Strona wielojęzyczna nie wymaga rozszerzeń: każdy język ma własną treść i stronę startową, a artykuły są powiązane ze swoimi tłumaczeniami. Grupy użytkowników i poziomy dostępu decydują, kto co widzi i edytuje, a Katalog Rozszerzeń Joomla zawiera ponad 5000 rozszerzeń.",
+				"Ten szablon uruchamia Joomlę 6 z oficjalnego obrazu razem z MariaDB i instaluje ją przy pierwszym uruchomieniu z pól formularza, więc instalator webowy nigdy nie jest otwarty dla obcych. Pliki Joomli leżą w wolumenie i aktualizują się z zaplecza, a od Joomli 5.4 strona, do której dociera usługa automatycznych aktualizacji Joomli, sama instaluje wydania pomniejsze i poprawkowe. Haczyk: na nową wersję główną przechodzi się ręcznie, gdy twoje rozszerzenia już ją obsługują."
+			],
+			"faq": [
+				{
+					"q": "Czy Joomla jest darmowa?",
+					"a": "Tak. Joomla jest darmowa i open source na licencji GNU General Public License w wersji 2 lub nowszej. Tworzą ją wolontariusze, a projektem zarządza organizacja non-profit Open Source Matters."
+				},
+				{
+					"q": "Czy Joomla jest nadal wspierana?",
+					"a": "Tak. Joomla 6.2 ukazała się 13 października 2026, Joomla 6 dostaje poprawki błędów do 17 października 2028 i poprawki bezpieczeństwa do 16 października 2029, a Joomla 6.3 jest planowana na kwiecień 2027."
+				},
+				{
+					"q": "Jak zaktualizować Joomlę?",
+					"a": "Najpierw zrób backup, potem otwórz System, w sekcji Aktualizuj wybierz Joomla i kliknij Rozpocznij aktualizację albo uruchom php cli/joomla.php core:update w powłoce usługi joomla. Automatyczne aktualizacje, włączone domyślnie na nowej stronie, do której dociera usługa aktualizacji Joomli, same instalują wydania pomniejsze i poprawkowe."
+				},
+				{
+					"q": "Jak zrobić wielojęzyczną stronę w Joomli?",
+					"a": "Wystarczy sam rdzeń: zainstaluj języki, opublikuj dla każdego język treści, włącz dodatek System - Filtr języków, utwórz dla każdego języka pozycję menu strony startowej i powiąż każdy artykuł z jego tłumaczeniami w zakładce Powiązane."
+				},
+				{
+					"q": "Dlaczego Joomla wymaga hasła o długości 12 znaków?",
+					"a": "Nowa strona na Joomli wymaga haseł o długości co najmniej 12 znaków, także od superużytkownika. Ten szablon przekazuje twoje hasło administratora instalatorowi Joomli, który odrzuca krótsze: strona uruchomi się wtedy, gdy ADMIN_PASSWORD w .env będzie dłuższe."
+				}
+			]
+		},
+		"pt": {
+			"description": "O CMS de código aberto para sites, com vários idiomas, níveis de acesso e milhares de extensões",
+			"notes": "Entre em https://{host}/administrator com o usuário e a senha de administrador que você informou: esse Super Usuário foi criado na primeira inicialização, então o instalador web do Joomla nunca ficou aberto. O Joomla exige uma senha de pelo menos 12 caracteres: com uma mais curta, o site não inicia e o log dele diz isso, até que o valor de ADMIN_PASSWORD no .env seja mais longo. Os visitantes só conseguem se registrar depois que você ativar Permitir registro de usuário em Usuários → Gerenciar → Opções.",
+			"sizing": "Joomla é leve: cerca de 170 MB de memória com o MariaDB, e o site cresce com as imagens e os arquivos que você envia.",
+			"summary": "O Joomla é o CMS de código aberto para sites, com conteúdo multilíngue e níveis de acesso nativos. Auto-hospede o Joomla 6 com MariaDB em um clique.",
+			"about": [
+				"O Joomla é um sistema de gerenciamento de conteúdo gratuito e de código aberto para sites de todo tipo, das páginas de um clube ao site de uma empresa em vários idiomas. Os artigos ficam em categorias e aparecem por meio de menus e módulos, e o núcleo traz o template Cassiopeia, um gerenciador de mídia, contatos com seus formulários, tags, Busca Inteligente e URLs amigáveis para mecanismos de busca. Um site multilíngue não precisa de extensão: cada idioma ganha seu conteúdo e sua página inicial, e os artigos são associados às suas traduções. Grupos de usuários e níveis de acesso decidem quem vê e edita o quê, e o Diretório de Extensões do Joomla lista mais de 5.000 extensões.",
+				"Este template roda o Joomla 6 a partir da imagem oficial com o MariaDB e o instala na primeira inicialização a partir dos campos, então o instalador web nunca fica aberto para um estranho. Os arquivos do Joomla ficam em um volume e são atualizados no Administrador do site, e desde o Joomla 5.4 um site que o serviço de atualização do Joomla consegue acessar instala sozinho as versões menores e de correção. O porém: a atualização para uma nova versão principal é feita manualmente, depois que suas extensões a suportarem."
+			],
+			"faq": [
+				{
+					"q": "O Joomla é gratuito?",
+					"a": "Sim. O Joomla é gratuito e de código aberto sob a GNU General Public License, versão 2 ou posterior. Voluntários o desenvolvem, e a Open Source Matters, organização sem fins lucrativos, governa o projeto."
+				},
+				{
+					"q": "O Joomla ainda é mantido?",
+					"a": "Sim. O Joomla 6.2 saiu em 13 de outubro de 2026, o Joomla 6 recebe correções de bugs até 17 de outubro de 2028 e correções de segurança até 16 de outubro de 2029, e o Joomla 6.3 está previsto para abril de 2027."
+				},
+				{
+					"q": "Como atualizo o Joomla?",
+					"a": "Faça um backup antes, depois abra Sistema, escolha Joomla em Atualização e clique em Iniciar atualização, ou rode php cli/joomla.php core:update no shell do serviço joomla. Com as atualizações automáticas, que vêm ativadas num site novo que o serviço de atualização do Joomla consegue acessar, ele instala sozinho as versões menores e de correção."
+				},
+				{
+					"q": "Como faço um site multilíngue no Joomla?",
+					"a": "Só com o núcleo: instale os idiomas, publique um idioma de conteúdo para cada um, ative o plugin Filtro de Idioma, crie um item de menu de página inicial por idioma e associe cada artigo às traduções dele na aba Associações."
+				},
+				{
+					"q": "Por que o Joomla exige uma senha de 12 caracteres?",
+					"a": "Um site Joomla novo pede senhas de pelo menos 12 caracteres, inclusive a do Super Usuário. Este template passa a sua senha de administrador ao instalador do Joomla, que recusa uma mais curta: o site então só inicia quando o valor de ADMIN_PASSWORD no .env for mais longo."
+				}
+			]
+		},
+		"ru": {
+			"description": "CMS с открытым кодом для сайтов: несколько языков, уровни доступа и тысячи расширений",
+			"notes": "Войдите в панель управления по адресу https://{host}/administrator с именем пользователя и паролем администратора, которые вы указали: этот суперпользователь создан при первом запуске, поэтому веб-установщик Joomla ни разу не был открыт. Joomla требует пароль не короче 12 символов: с более коротким сайт не запускается и пишет об этом в лог, пока ADMIN_PASSWORD в .env не станет длиннее. Посетители не смогут зарегистрироваться, пока вы не включите «Разрешить регистрацию» в разделе «Пользователи» → «Управление» → «Настройки».",
+			"sizing": "Joomla: небольшие требования — около 170 MB памяти вместе с MariaDB, а сайт растет вместе с изображениями и файлами, которые вы загружаете.",
+			"summary": "Self-hosted Joomla — open source CMS для сайтов со встроенной мультиязычностью и уровнями доступа. Joomla 6 с MariaDB в один клик.",
+			"about": [
+				"Joomla — бесплатная система управления контентом с открытым кодом для любых сайтов, от страничек клуба до сайта компании на нескольких языках. Материалы раскладываются по категориям и выводятся через меню и модули, а в ядре есть шаблон Cassiopeia, медиа-менеджер, контакты с их формами, теги, умный поиск и адреса, удобные для поисковиков (ЧПУ). Многоязычному сайту не нужны расширения: у каждого языка свой контент и своя главная страница, а материалы связываются со своими переводами. Группы пользователей и уровни доступа определяют, кто что видит и редактирует, а в Каталоге расширений Joomla (Joomla Extensions Directory) больше 5000 расширений.",
+				"Этот шаблон запускает Joomla 6 из официального образа с MariaDB и устанавливает ее при первом запуске по данным из полей, так что веб-установщик никогда не бывает открыт для посторонних. Файлы Joomla лежат в томе и обновляются из панели управления, а начиная с Joomla 5.4 сайт, до которого может достучаться сервис обновлений Joomla, сам ставит минорные и патч-релизы. Подвох: на новую мажорную версию переходят вручную, когда ее поддержат ваши расширения."
+			],
+			"faq": [
+				{
+					"q": "Joomla бесплатная?",
+					"a": "Да. Joomla — бесплатное ПО с открытым кодом под лицензией GNU General Public License версии 2 или новее. Ее делают волонтеры, а управляет проектом некоммерческая организация Open Source Matters."
+				},
+				{
+					"q": "Joomla все еще поддерживается?",
+					"a": "Да. Joomla 6.2 вышла 13 октября 2026 года, Joomla 6 получает исправления ошибок до 17 октября 2028 года и исправления безопасности до 16 октября 2029 года, а Joomla 6.3 запланирована на апрель 2027 года."
+				},
+				{
+					"q": "Как обновить Joomla?",
+					"a": "Сначала сделайте бэкап, затем откройте «Система», выберите «Joomla» в блоке «Обновление» и нажмите «Обновить» или выполните php cli/joomla.php core:update в шелле сервиса joomla. Если включено «Автообновление» — а у нового сайта, до которого может достучаться сервис обновлений Joomla, оно включено, — Joomla сама ставит минорные и патч-релизы."
+				},
+				{
+					"q": "Как сделать многоязычный сайт на Joomla?",
+					"a": "Хватит одного ядра: установите языки, опубликуйте для каждого язык контента, включите плагин «Система - Фильтр языка», создайте для каждого языка пункт меню главной страницы и свяжите каждый материал с его переводами на вкладке «Связи»."
+				},
+				{
+					"q": "Почему Joomla требует пароль из 12 символов?",
+					"a": "Новый сайт на Joomla требует пароли не короче 12 символов, в том числе у суперпользователя. Этот шаблон передает ваш пароль администратора установщику Joomla, а тот отклоняет более короткий: тогда сайт запустится, как только ADMIN_PASSWORD в .env станет длиннее."
+				}
+			]
+		},
+		"uk": {
+			"description": "CMS із відкритим кодом для сайтів: кілька мов, рівні доступу й тисячі розширень",
+			"notes": "Увійдіть на https://{host}/administrator з іменем користувача й паролем адміністратора, які ви вказали: цього суперкористувача створено під час першого запуску, тож вебінсталятор Joomla ніколи не був відкритий. Joomla вимагає пароль щонайменше з 12 символів: з коротшим сайт не запуститься, доки ADMIN_PASSWORD у .env не стане довшим, і його лог про це скаже. Відвідувачі зможуть реєструватися, лише коли ви ввімкнете «Дозволити реєстрацію користувачам» у розділі «Користувачі → Користувачі → Параметри».",
+			"sizing": "Joomla має скромні вимоги: близько 170 MB пам’яті разом із MariaDB, а сайт росте із зображеннями й файлами, які ви завантажуєте.",
+			"summary": "Joomla — CMS для сайтів із відкритим кодом, із вбудованою багатомовністю й рівнями доступу. Self-hosted Joomla 6 із MariaDB в один клік.",
+			"about": [
+				"Joomla — безкоштовна система керування вмістом із відкритим кодом для будь-яких сайтів, від сторінок клубу до багатомовного сайту компанії. Статті розкладаються за категоріями й показуються через меню та модулі, а в ядрі є шаблон Cassiopeia, менеджер медіа, контакти з формами, теги, розумний пошук і дружні до пошукових систем адреси. Багатомовному сайту не потрібне розширення: кожна мова має свій вміст і головну сторінку, а статті пов’язуються зі своїми перекладами. Групи користувачів і рівні доступу визначають, хто що бачить і редагує, а в Joomla Extensions Directory понад 5 000 розширень.",
+				"Цей шаблон запускає Joomla 6 з офіційного образу разом із MariaDB і встановлює її під час першого запуску з полів, тож вебінсталятор ніколи не відкритий для сторонніх. Файли Joomla зберігаються в томі й оновлюються з адміністративної частини, а з Joomla 5.4 сайт, до якого може дістатися сервіс оновлень Joomla, сам встановлює мінорні й патч-релізи. Підводний камінь: на нову мажорну версію переходять вручну, коли її підтримуватимуть ваші розширення."
+			],
+			"faq": [
+				{
+					"q": "Joomla безкоштовна?",
+					"a": "Так. Joomla безкоштовна й має відкритий код за ліцензією GNU General Public License версії 2 або пізнішої. Її створюють волонтери, а керує проєктом неприбуткова організація Open Source Matters."
+				},
+				{
+					"q": "Чи підтримується Joomla досі?",
+					"a": "Так. Joomla 6.2 вийшла 13 жовтня 2026 року, Joomla 6 отримуватиме виправлення помилок до 17 жовтня 2028 року, а виправлення безпеки — до 16 жовтня 2029 року; Joomla 6.3 заплановано на квітень 2027 року."
+				},
+				{
+					"q": "Як оновити Joomla?",
+					"a": "Спершу зробіть бекап, потім відкрийте розділ «Система», у блоці «Оновлення» виберіть «Joomla» і натисніть «Почніть оновлення» або виконайте php cli/joomla.php core:update в оболонці сервісу joomla. Автоматичні оновлення ввімкнені на новому сайті, до якого може дістатися сервіс оновлень Joomla, і тоді вона сама встановлює мінорні й патч-релізи."
+				},
+				{
+					"q": "Як зробити багатомовний сайт на Joomla?",
+					"a": "Вистачить самого ядра: встановіть мови, опублікуйте для кожної мову вмісту, увімкніть плагін «Система. Багатомовність» (Language Filter), створіть пункт меню головної сторінки для кожної мови й пов’яжіть кожну статтю з її перекладами на вкладці «Асоціації»."
+				},
+				{
+					"q": "Чому Joomla вимагає пароль із 12 символів?",
+					"a": "Новий сайт Joomla вимагає паролі щонайменше з 12 символів, зокрема й для суперкористувача. Цей шаблон передає ваш пароль адміністратора інсталятору Joomla, який відхиляє коротший: тоді сайт запуститься, щойно ADMIN_PASSWORD у .env стане довшим."
+				}
+			]
+		}
+	}
+}
