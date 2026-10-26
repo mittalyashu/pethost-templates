@@ -1,0 +1,51 @@
+services:
+  excalidraw:
+    # Excalidraw publishes its image only as latest, built from its release branch, so the digest
+    # pins one build of it: that of 2026-05-06. The app is pages for the browser, which keeps the
+    # drawings: nothing of them is stored here.
+    image: excalidraw/excalidraw@sha256:f7ee194addd607bf831d2af0f0a34463dd4225e426cf35199ef0b12a803398e9
+    restart: unless-stopped
+    # The pages are built to collaborate through excalidraw.com's server, which refuses any other
+    # site's visitors: they are pointed at this address instead, whose /socket.io/ is the room.
+    # Excalidraw's docs say the image has no analytics, though its page loads Simple Analytics'
+    # script: the script is given no address.
+    entrypoint:
+      - sh
+      - -c
+      - |
+        cd /usr/share/nginx/html
+        sed -i 's#"https://oss-collab.excalidraw.com"#location.origin#g' assets/index-*.js
+        sed -i 's#https://scripts.simpleanalyticscdn.com/latest.js##' index.html
+        exec /docker-entrypoint.sh nginx -g 'daemon off;'
+    configs:
+      - source: nginx
+        target: /etc/nginx/conf.d/default.conf
+    # The image's own check asks localhost, which is ::1 first, where nginx listens only with the
+    # file it was packaged with.
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1"]
+    depends_on:
+      - room
+
+  # Excalidraw's collaboration server: it relays a session's changes, encrypted in the browsers
+  # with the key in the link's #, which never reaches it, and keeps nothing.
+  room:
+    image: excalidraw/excalidraw-room:sha-03ff435
+    restart: unless-stopped
+
+configs:
+  nginx:
+    content: |
+      server {
+        listen 80;
+        root /usr/share/nginx/html;
+
+        location /socket.io/ {
+          proxy_pass http://room;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $$http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_set_header Host $$host;
+          proxy_read_timeout 1h;
+        }
+      }

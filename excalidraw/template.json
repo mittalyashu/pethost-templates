@@ -1,0 +1,314 @@
+{
+	"name": "Excalidraw",
+	"emoji": "✏️",
+	"category": "productivity",
+	"alternatives": [
+		"Miro",
+		"FigJam",
+		"Lucidchart"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "excalidraw",
+		"port": 80
+	},
+	"variables": [],
+	"texts": {
+		"en": {
+			"description": "A whiteboard for hand-drawn diagrams and sketches, with live collaboration",
+			"notes": "Open the address and draw: Excalidraw has no accounts, so anyone with the address can use it. Each person’s drawings are kept in their browser, not on the server, so keep a copy with Save to... → Save to file. To draw together, press Share, then Start session, and send the link. Export to Link and the AI tools work only on excalidraw.com.",
+			"sizing": "Excalidraw is very light: about 40 MB of memory with its collaboration server, and it stores nothing, since the drawings are kept in the browsers.",
+			"summary": "Excalidraw is an open-source whiteboard for hand-drawn diagrams and sketches, with live collaboration. A Miro alternative to self-host in one click.",
+			"about": [
+				"Excalidraw is an open-source virtual whiteboard whose shapes, arrows and text look drawn by hand. People sketch architecture diagrams, flowcharts and wireframes on it, in meetings or for docs, where others would open Miro or Lucidchart. It has an infinite canvas, frames, images, a laser pointer and a dark mode. Mermaid to Excalidraw turns Mermaid code into shapes you can edit, and a drawing exports as a PNG or SVG image or saves as a .excalidraw file to open again. Public libraries of ready-made shapes, from cloud icons to UI kits, are added with a click.",
+				"This template runs Excalidraw’s own image together with its collaboration server, so several people can draw on one canvas at once. Share, then Start session, gives a link that holds the session’s key, and the browsers encrypt every change before it reaches the server. There are no accounts and the server stores no drawings: each person’s canvas stays in their browser, and the app keeps working offline once it has loaded. The template also leaves out the Simple Analytics script that the image’s page loads.",
+				"The catches: anyone who has the address can use it. Read-only links (Export to Link) and the AI tools, Text to diagram and Wireframe to code, work only on excalidraw.com, whose servers refuse other sites. A session’s scene and images are also saved, encrypted, in excalidraw.com’s Firebase, which is how its link opens it again later, and the pages load their fonts from Excalidraw’s CDN."
+			],
+			"faq": [
+				{
+					"q": "Is Excalidraw free and open source?",
+					"a": "Yes. Excalidraw is under the MIT license, with its code on GitHub. Excalidraw+, from the same team, is a hosted version at $6 per user a month that adds cloud storage, unlimited scenes and folders, access rights, presentations and comments."
+				},
+				{
+					"q": "Where does Excalidraw save my drawings?",
+					"a": "In your browser. Excalidraw saves the canvas as you draw, in the browser’s local storage, and nothing reaches the server. Another browser or device starts empty, and clearing the site’s data deletes the drawing, so keep what matters with Save to... → Save to file: Open loads the .excalidraw file again."
+				},
+				{
+					"q": "Can several people draw together on a self-hosted Excalidraw?",
+					"a": "Yes, with this template. Press Share, then Start session, and send the link: everyone who opens it draws on the same canvas and sees the others’ pointers. The session is end-to-end encrypted, its key in the part of the link after #, which a browser never sends to a server. Excalidraw’s Docker image cannot do it alone, so the template adds Excalidraw’s collaboration server and points the pages to it."
+				},
+				{
+					"q": "Why does Export to Link fail on a self-hosted Excalidraw?",
+					"a": "Read-only links are stored by excalidraw.com’s server, which takes them only from excalidraw.com, so here the button shows an error. Share a live session or the .excalidraw file instead."
+				},
+				{
+					"q": "Can Excalidraw turn Mermaid code into a diagram?",
+					"a": "Yes. More tools → Mermaid to Excalidraw takes Mermaid code and inserts it as shapes and arrows you can edit. Flowcharts, sequence, class and entity-relationship diagrams convert; other kinds come in as an image. It runs in the browser, unlike Text to diagram, the AI tool, which works only on excalidraw.com."
+				},
+				{
+					"q": "Does Excalidraw work offline?",
+					"a": "Yes. Once the page has loaded, its service worker keeps the app, so it opens and draws with no connection, and Chrome or Edge can install it as an app. A live session needs the connection."
+				}
+			]
+		},
+		"de": {
+			"description": "Whiteboard für handgezeichnete Diagramme und Skizzen, mit Live-Zusammenarbeit",
+			"notes": "Öffne die Adresse und zeichne los. Excalidraw hat keine Konten: Wer die Adresse hat, kann es nutzen. Die Zeichnungen bleiben im Browser der jeweiligen Person, nicht auf dem Server: Sichere dir also eine Kopie mit „Speichern als...“ → „Als Datei speichern“. Um gemeinsam zu zeichnen, klick auf „Teilen“, dann auf „Sitzung starten“, und schick den Link weiter. „Als Link exportieren“ und die KI-Tools funktionieren nur auf excalidraw.com.",
+			"sizing": "Excalidraw ist sehr leicht: etwa 40 MB RAM samt Kollaborationsserver, und es speichert nichts, da die Zeichnungen in den Browsern bleiben.",
+			"summary": "Excalidraw mit einem Klick selbst hosten: Open-Source-Whiteboard für handgezeichnete Diagramme und Skizzen mit Live-Zusammenarbeit. Eine Miro-Alternative.",
+			"about": [
+				"Excalidraw ist ein virtuelles Open-Source-Whiteboard, dessen Formen, Pfeile und Texte wie von Hand gezeichnet aussehen. Man skizziert darauf Architekturdiagramme, Flussdiagramme und Wireframes, in Meetings oder für die Dokumentation, wo andere Miro oder Lucidchart öffnen würden. Es hat eine unendliche Zeichenfläche, Rahmen, Bilder, einen Laserpointer und ein dunkles Design. „Mermaid zu Excalidraw“ macht aus Mermaid-Code Formen, die du bearbeiten kannst, und eine Zeichnung lässt sich als PNG- oder SVG-Bild exportieren oder als .excalidraw-Datei speichern, um sie später wieder zu öffnen. Öffentliche Bibliotheken mit fertigen Formen, von Cloud-Icons bis zu UI-Kits, fügst du mit einem Klick hinzu.",
+				"Diese Vorlage betreibt das eigene Image von Excalidraw zusammen mit seinem Kollaborationsserver, sodass mehrere Personen gleichzeitig auf einer Zeichenfläche zeichnen können. „Teilen“, dann „Sitzung starten“ liefert einen Link, der den Schlüssel der Sitzung enthält, und die Browser verschlüsseln jede Änderung, bevor sie den Server erreicht. Es gibt keine Konten, und der Server speichert keine Zeichnungen: Die Zeichenfläche jeder Person bleibt in deren Browser, und die App funktioniert offline weiter, sobald sie geladen ist. Außerdem lässt die Vorlage das Skript von Simple Analytics weg, das die Seite des Images lädt.",
+				"Die Haken: Wer die Adresse hat, kann es nutzen. Schreibgeschützte Links („Als Link exportieren“) und die KI-Tools „Text zu Diagramm“ und „Wireframe zu Code“ funktionieren nur auf excalidraw.com, dessen Server andere Websites abweisen. Szene und Bilder einer Sitzung werden außerdem verschlüsselt bei excalidraw.com in Firebase gespeichert, darüber öffnet ihr Link sie später wieder, und die Seiten laden ihre Schriften vom CDN von Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "Ist Excalidraw kostenlos und Open Source?",
+					"a": "Ja. Excalidraw steht unter der MIT-Lizenz, der Code liegt auf GitHub. Excalidraw+ vom selben Team ist eine gehostete Version für 6 $ pro Benutzer im Monat, die Cloud-Speicher, unbegrenzt viele Szenen und Ordner, Zugriffsrechte, Präsentationen und Kommentare mitbringt."
+				},
+				{
+					"q": "Wo speichert Excalidraw meine Zeichnungen?",
+					"a": "In deinem Browser. Excalidraw speichert die Zeichenfläche laufend, während du zeichnest, im lokalen Speicher des Browsers, und nichts davon erreicht den Server. Ein anderer Browser oder ein anderes Gerät startet leer, und löschst du die Daten der Website, ist die Zeichnung weg. Sichere also, was dir wichtig ist, mit „Speichern als...“ → „Als Datei speichern“: „Öffnen“ lädt die .excalidraw-Datei wieder."
+				},
+				{
+					"q": "Können mehrere Personen in einem selbst gehosteten Excalidraw gemeinsam zeichnen?",
+					"a": "Ja, mit dieser Vorlage. Klick auf „Teilen“, dann auf „Sitzung starten“, und schick den Link: Alle, die ihn öffnen, zeichnen auf derselben Zeichenfläche und sehen die Zeiger der anderen. Die Sitzung ist Ende-zu-Ende-verschlüsselt, ihr Schlüssel steht im Teil des Links nach dem #, den ein Browser nie an einen Server schickt. Das Docker-Image von Excalidraw schafft das allein nicht, deshalb fügt die Vorlage den Kollaborationsserver von Excalidraw hinzu und richtet die Seiten auf ihn aus."
+				},
+				{
+					"q": "Warum schlägt „Als Link exportieren“ in einem selbst gehosteten Excalidraw fehl?",
+					"a": "Schreibgeschützte Links speichert der Server von excalidraw.com, und der nimmt sie nur von excalidraw.com an, deshalb zeigt der Button hier einen Fehler. Teile stattdessen eine Live-Sitzung oder die .excalidraw-Datei."
+				},
+				{
+					"q": "Kann Excalidraw Mermaid-Code in ein Diagramm umwandeln?",
+					"a": "Ja. „Weitere Werkzeuge“ → „Mermaid zu Excalidraw“ nimmt Mermaid-Code und fügt ihn als Formen und Pfeile ein, die du bearbeiten kannst. Flussdiagramme sowie Sequenz-, Klassen- und Entity-Relationship-Diagramme werden umgewandelt, andere Arten als Bild eingefügt. Das läuft im Browser, anders als „Text zu Diagramm“, das KI-Tool, das nur auf excalidraw.com funktioniert."
+				},
+				{
+					"q": "Funktioniert Excalidraw offline?",
+					"a": "Ja. Sobald die Seite geladen ist, speichert ihr Service Worker die App, sodass sie sich auch ohne Verbindung öffnen lässt und du darin zeichnen kannst, und Chrome oder Edge können sie als App installieren. Eine Live-Sitzung braucht die Verbindung."
+				}
+			]
+		},
+		"es": {
+			"description": "Una pizarra para diagramas y bocetos dibujados a mano, con colaboración en tiempo real",
+			"notes": "Abre la dirección y dibuja: Excalidraw no tiene cuentas, así que cualquiera con la dirección puede usarlo. Los dibujos de cada persona quedan en su navegador, no en el servidor, así que guarda una copia con Guardar en... → Guardar en archivo. Para dibujar juntos, haz clic en “Compartir”, luego en “Iniciar sesión”, y envía el enlace. “Exportar a Link” y las herramientas de IA solo funcionan en excalidraw.com.",
+			"sizing": "Excalidraw es muy ligero: unos 40 MB de memoria con su servidor de colaboración, y no guarda nada, porque los dibujos quedan en los navegadores.",
+			"summary": "Excalidraw es una pizarra de código abierto para diagramas y bocetos a mano, colaborativa en tiempo real. Una alternativa a Miro que autoalojas en un clic.",
+			"about": [
+				"Excalidraw es una pizarra virtual de código abierto cuyas formas, flechas y textos parecen dibujados a mano. La gente esboza en ella diagramas de arquitectura, diagramas de flujo y wireframes, en reuniones o para la documentación, donde otros abrirían Miro o Lucidchart. Tiene un lienzo infinito, marcos, imágenes, puntero láser y modo oscuro. Mermaid a Excalidraw convierte código Mermaid en formas que puedes editar, y un dibujo se exporta como imagen PNG o SVG o se guarda como archivo .excalidraw para abrirlo de nuevo. Las bibliotecas públicas de formas listas para usar, desde iconos de nube hasta kits de UI, se agregan con un clic.",
+				"Esta plantilla ejecuta la propia imagen de Excalidraw junto con su servidor de colaboración, para que varias personas puedan dibujar a la vez en un mismo lienzo. “Compartir” y luego “Iniciar sesión” dan un enlace que contiene la clave de la sesión, y los navegadores cifran cada cambio antes de que llegue al servidor. No hay cuentas y el servidor no guarda ningún dibujo: el lienzo de cada persona se queda en su navegador, y la app sigue funcionando sin conexión una vez cargada. La plantilla también deja fuera el script de Simple Analytics que carga la página de la imagen.",
+				"Los inconvenientes: cualquiera que tenga la dirección puede usarlo. Los enlaces de solo lectura (“Exportar a Link”) y las herramientas de IA, “Texto a diagrama” y “Esquema a código”, solo funcionan en excalidraw.com, cuyos servidores rechazan otros sitios. La escena y las imágenes de una sesión también se guardan, cifradas, en el Firebase de excalidraw.com, que es lo que permite que su enlace la vuelva a abrir más tarde, y las páginas cargan sus fuentes desde el CDN de Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "¿Excalidraw es gratis y de código abierto?",
+					"a": "Sí. Excalidraw está bajo la licencia MIT, con su código en GitHub. Excalidraw+, del mismo equipo, es una versión alojada que cuesta 6 USD por usuario al mes y agrega almacenamiento en la nube, escenas y carpetas ilimitadas, permisos de acceso, presentaciones y comentarios."
+				},
+				{
+					"q": "¿Dónde guarda Excalidraw mis dibujos?",
+					"a": "En tu navegador. Excalidraw guarda el lienzo mientras dibujas, en el almacenamiento local del navegador, y nada llega al servidor. En otro navegador o dispositivo el lienzo empieza vacío, y al borrar los datos del sitio se elimina el dibujo, así que conserva lo importante con Guardar en... → Guardar en archivo: “Abrir” vuelve a cargar el archivo .excalidraw."
+				},
+				{
+					"q": "¿Varias personas pueden dibujar juntas en un Excalidraw autoalojado?",
+					"a": "Sí, con esta plantilla. Haz clic en “Compartir”, luego en “Iniciar sesión”, y envía el enlace: todos los que lo abran dibujan en el mismo lienzo y ven los punteros de los demás. La sesión está cifrada de extremo a extremo, con su clave en la parte del enlace que va después de #, que un navegador nunca envía a un servidor. La imagen de Docker de Excalidraw no puede hacerlo sola, así que la plantilla agrega el servidor de colaboración de Excalidraw y hace que las páginas apunten a él."
+				},
+				{
+					"q": "¿Por qué falla “Exportar a Link” en un Excalidraw autoalojado?",
+					"a": "Los enlaces de solo lectura los guarda el servidor de excalidraw.com, que solo los acepta desde excalidraw.com, así que aquí el botón muestra un error. En su lugar, comparte una sesión en tiempo real o el archivo .excalidraw."
+				},
+				{
+					"q": "¿Excalidraw puede convertir código Mermaid en un diagrama?",
+					"a": "Sí. Más herramientas → Mermaid a Excalidraw toma código Mermaid y lo inserta como formas y flechas que puedes editar. Se convierten los diagramas de flujo, de secuencia, de clases y de entidad-relación; los demás tipos entran como imagen. Funciona en el navegador, a diferencia de “Texto a diagrama”, la herramienta de IA, que solo funciona en excalidraw.com."
+				},
+				{
+					"q": "¿Excalidraw funciona sin conexión?",
+					"a": "Sí. Una vez cargada la página, su service worker guarda la app, así que se abre y se puede dibujar sin conexión, y Chrome o Edge pueden instalarla como app. Una sesión en tiempo real necesita la conexión."
+				}
+			]
+		},
+		"fr": {
+			"description": "Un tableau blanc pour des schémas et des croquis dessinés à la main, avec collaboration en direct",
+			"notes": "Ouvrez l’adresse et dessinez : Excalidraw n’a pas de comptes, donc toute personne qui a l’adresse peut s’en servir. Les dessins de chacun restent dans son navigateur, pas sur le serveur : gardez-en donc une copie avec « Enregistrer sous... » → « Enregistrer comme fichier ». Pour dessiner à plusieurs, cliquez sur « Partager », puis sur « Démarrer la session », et envoyez le lien. « Exporter comme lien » et les outils d’IA ne fonctionnent que sur excalidraw.com.",
+			"sizing": "Excalidraw est très léger : environ 40 MB de mémoire avec son serveur de collaboration, et il ne stocke rien, puisque les dessins restent dans les navigateurs.",
+			"summary": "Excalidraw est un tableau blanc open source pour schémas et croquis à main levée, à plusieurs en direct. Une alternative à Miro à auto-héberger en un clic.",
+			"about": [
+				"Excalidraw est un tableau blanc virtuel open source dont les formes, les flèches et le texte semblent dessinés à la main. On y esquisse des schémas d’architecture, des diagrammes de flux et des wireframes, en réunion ou pour une documentation, là où d’autres ouvriraient Miro ou Lucidchart. Il offre un canevas infini, des cadres, des images, un pointeur laser et un mode sombre. L’outil « De Mermaid à Excalidraw » transforme du code Mermaid en formes modifiables, et un dessin s’exporte en image PNG ou SVG, ou s’enregistre dans un fichier .excalidraw à rouvrir ensuite. Des bibliothèques publiques de formes toutes faites, des icônes cloud aux kits d’interface, s’ajoutent en un clic.",
+				"Ce template fait tourner l’image officielle d’Excalidraw avec son serveur de collaboration, pour que plusieurs personnes puissent dessiner en même temps sur un même canevas. Un clic sur « Partager », puis sur « Démarrer la session », donne un lien qui contient la clé de la session, et les navigateurs chiffrent chaque modification avant qu’elle n’atteigne le serveur. Il n’y a pas de comptes et le serveur ne stocke aucun dessin : le canevas de chacun reste dans son navigateur, et l’application continue de fonctionner hors ligne une fois chargée. Le template retire aussi le script Simple Analytics que charge la page de l’image.",
+				"Les revers : toute personne qui a l’adresse peut s’en servir. Les liens en lecture seule (« Exporter comme lien ») et les outils d’IA, « Texte vers diagramme » et « Modèle en fil de fer vers code », ne fonctionnent que sur excalidraw.com, dont les serveurs refusent les autres sites. La scène et les images d’une session sont aussi enregistrées, chiffrées, dans le Firebase d’excalidraw.com, ce qui permet à son lien de la rouvrir plus tard, et les pages chargent leurs polices depuis le CDN d’Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "Excalidraw est-il gratuit et open source ?",
+					"a": "Oui. Excalidraw est sous licence MIT, et son code est sur GitHub. Excalidraw+, de la même équipe, est une version hébergée à 6 $ par utilisateur et par mois, qui ajoute le stockage dans le cloud, un nombre illimité de scènes et de dossiers, des droits d’accès, des présentations et des commentaires."
+				},
+				{
+					"q": "Où Excalidraw enregistre-t-il mes dessins ?",
+					"a": "Dans votre navigateur. Excalidraw enregistre le canevas au fur et à mesure que vous dessinez, dans le stockage local du navigateur, et rien n’atteint le serveur. Dans un autre navigateur ou sur un autre appareil, le canevas est vide, et effacer les données du site supprime le dessin. Gardez donc ce qui compte avec « Enregistrer sous... » → « Enregistrer comme fichier » : « Ouvrir » recharge ensuite le fichier .excalidraw."
+				},
+				{
+					"q": "Plusieurs personnes peuvent-elles dessiner ensemble sur un Excalidraw auto-hébergé ?",
+					"a": "Oui, avec ce template. Cliquez sur « Partager », puis sur « Démarrer la session », et envoyez le lien : toute personne qui l’ouvre dessine sur le même canevas et voit les pointeurs des autres. La session est chiffrée de bout en bout, et sa clé se trouve dans la partie du lien qui suit le #, qu’un navigateur n’envoie jamais à un serveur. L’image Docker d’Excalidraw ne peut pas le faire seule : le template ajoute donc le serveur de collaboration d’Excalidraw et y fait pointer les pages."
+				},
+				{
+					"q": "Pourquoi « Exporter comme lien » échoue-t-il sur un Excalidraw auto-hébergé ?",
+					"a": "Les liens en lecture seule sont stockés par le serveur d’excalidraw.com, qui ne les accepte que depuis excalidraw.com : ici, le bouton affiche donc une erreur. Partagez plutôt une session en direct ou le fichier .excalidraw."
+				},
+				{
+					"q": "Excalidraw peut-il transformer du code Mermaid en diagramme ?",
+					"a": "Oui. « Plus d’outils » → « De Mermaid à Excalidraw » prend du code Mermaid et l’insère en formes et en flèches modifiables. Les diagrammes de flux, de séquence, de classes et entité-relation sont convertis ; les autres types arrivent sous forme d’image. La conversion se fait dans le navigateur, contrairement à « Texte vers diagramme », l’outil d’IA, qui ne fonctionne que sur excalidraw.com."
+				},
+				{
+					"q": "Excalidraw fonctionne-t-il hors ligne ?",
+					"a": "Oui. Une fois la page chargée, son service worker met l’application en cache : elle s’ouvre et permet de dessiner sans connexion, et Chrome ou Edge peuvent l’installer comme une application. Une session en direct a besoin de la connexion."
+				}
+			]
+		},
+		"pl": {
+			"description": "Tablica do diagramów i szkiców w stylu odręcznym, ze współpracą w czasie rzeczywistym",
+			"notes": "Otwórz adres projektu i rysuj: Excalidraw nie ma kont, więc każdy, kto zna adres, może z niego korzystać. Rysunki każdej osoby zostają w jej przeglądarce, a nie na serwerze, więc zachowaj kopię przez Zapisz jako... → Zapisz do pliku. Aby rysować razem, kliknij Udostępnij, a potem Rozpocznij sesję, i wyślij link. Przycisk Wygeneruj link i narzędzia AI działają tylko na excalidraw.com.",
+			"sizing": "Excalidraw ma bardzo małe wymagania: około 40 MB pamięci razem z serwerem współpracy i nic nie zapisuje, bo rysunki zostają w przeglądarkach.",
+			"summary": "Excalidraw to wirtualna tablica open source do odręcznych diagramów i szkiców, ze współpracą na żywo. Alternatywa dla Miro hostowana u siebie w jeden klik.",
+			"about": [
+				"Excalidraw to wirtualna tablica open source, na której kształty, strzałki i tekst wyglądają jak narysowane odręcznie. Na spotkaniach albo do dokumentacji szkicuje się na niej diagramy architektury, schematy blokowe i makiety – tam, gdzie inni otworzyliby Miro lub Lucidchart. Ma nieskończone płótno, ramki, obrazy, wskaźnik laserowy i ciemny motyw. Narzędzie Konwertuj diagram Mermaid do Excalidraw zamienia kod Mermaid w edytowalne kształty, a rysunek można wyeksportować jako obraz PNG lub SVG albo zapisać jako plik .excalidraw do ponownego otwarcia. Publiczne biblioteki gotowych kształtów, od ikon usług chmurowych po zestawy UI, dodaje się jednym kliknięciem.",
+				"Ten szablon uruchamia obraz od twórców Excalidraw razem z ich serwerem współpracy, więc kilka osób może rysować na jednym płótnie jednocześnie. Po kliknięciu Udostępnij, a potem Rozpocznij sesję, powstaje link z kluczem sesji, a przeglądarki szyfrują każdą zmianę, zanim trafi ona na serwer. Nie ma kont, a serwer nie przechowuje rysunków: płótno każdej osoby zostaje w jej przeglądarce, a raz załadowana aplikacja działa dalej offline. Szablon pomija też skrypt Simple Analytics, który wczytuje strona z tego obrazu.",
+				"Haczyki: każdy, kto zna adres, może z niego korzystać. Linki tylko do odczytu (Wygeneruj link) i narzędzia AI – Generuj diagram z opisu oraz Wireframe do kodu – działają tylko na excalidraw.com, którego serwery odrzucają żądania z innych stron. Scena i obrazy z sesji są też zapisywane, zaszyfrowane, w Firebase serwisu excalidraw.com, dzięki czemu link do sesji otwiera ją ponownie później, a strony ładują fonty z CDN Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "Czy Excalidraw jest darmowy i open source?",
+					"a": "Tak. Excalidraw ma licencję MIT, a jego kod jest na GitHubie. Excalidraw+ od tego samego zespołu to wersja hostowana, która kosztuje 6 $ za użytkownika miesięcznie i dodaje przechowywanie w chmurze, nieograniczoną liczbę scen i folderów, prawa dostępu, prezentacje i komentarze."
+				},
+				{
+					"q": "Gdzie Excalidraw zapisuje moje rysunki?",
+					"a": "W twojej przeglądarce. Excalidraw zapisuje płótno w trakcie rysowania, w pamięci lokalnej przeglądarki, i nic nie trafia na serwer. Inna przeglądarka lub inne urządzenie zaczyna od pustego płótna, a wyczyszczenie danych strony usuwa rysunek, więc to, co ważne, zachowuj przez Zapisz jako... → Zapisz do pliku: polecenie Otwórz wczyta plik .excalidraw ponownie."
+				},
+				{
+					"q": "Czy kilka osób może rysować razem w Excalidraw hostowanym u siebie?",
+					"a": "Tak, z tym szablonem. Kliknij Udostępnij, a potem Rozpocznij sesję, i wyślij link: każdy, kto go otworzy, rysuje na tym samym płótnie i widzi kursory pozostałych. Sesja jest szyfrowana end-to-end, a jej klucz znajduje się w części linku po #, której przeglądarka nigdy nie wysyła do serwera. Sam obraz Dockera Excalidraw tego nie potrafi, więc szablon dodaje serwer współpracy Excalidraw i ustawia strony tak, by się z nim łączyły."
+				},
+				{
+					"q": "Dlaczego przycisk Wygeneruj link nie działa w Excalidraw hostowanym u siebie?",
+					"a": "Linki tylko do odczytu przechowuje serwer excalidraw.com, który przyjmuje je wyłącznie z excalidraw.com, więc tutaj przycisk pokazuje błąd. Zamiast tego udostępnij sesję na żywo albo plik .excalidraw."
+				},
+				{
+					"q": "Czy Excalidraw potrafi zamienić kod Mermaid w diagram?",
+					"a": "Tak. Więcej narzędzi → Konwertuj diagram Mermaid do Excalidraw przyjmuje kod Mermaid i wstawia go jako kształty i strzałki, które można edytować. Konwertowane są schematy blokowe oraz diagramy sekwencji, klas i związków encji; inne rodzaje są wstawiane jako obraz. Działa to w przeglądarce, w odróżnieniu od narzędzia AI Generuj diagram z opisu, które działa tylko na excalidraw.com."
+				},
+				{
+					"q": "Czy Excalidraw działa offline?",
+					"a": "Tak. Gdy strona się załaduje, jej service worker przechowuje aplikację, dzięki czemu otwiera się ona i pozwala rysować bez połączenia, a Chrome lub Edge mogą zainstalować ją jako aplikację. Sesja na żywo potrzebuje połączenia."
+				}
+			]
+		},
+		"pt": {
+			"description": "Quadro branco para diagramas e esboços em estilo desenhado à mão, com colaboração ao vivo",
+			"notes": "Abra o endereço e desenhe: o Excalidraw não tem contas, então qualquer pessoa com o endereço pode usá-lo. Os desenhos de cada pessoa ficam no navegador dela, não no servidor, então guarde uma cópia com Salvar como... → Salvar em um arquivo. Para desenhar com outras pessoas, clique em Compartilhar, depois em Iniciar sessão, e envie o link. O botão Exportar link e as ferramentas de IA só funcionam no excalidraw.com.",
+			"sizing": "O Excalidraw é muito leve: cerca de 40 MB de memória com o servidor de colaboração, e não guarda nada, já que os desenhos ficam nos navegadores.",
+			"summary": "O Excalidraw é um quadro branco open source para diagramas e esboços à mão, com colaboração ao vivo. Alternativa ao Miro para auto-hospedar em um clique.",
+			"about": [
+				"O Excalidraw é um quadro branco virtual de código aberto em que formas, setas e textos parecem desenhados à mão. As pessoas esboçam nele diagramas de arquitetura, fluxogramas e wireframes, em reuniões ou para documentação, onde outros abririam o Miro ou o Lucidchart. Ele tem tela infinita, quadros, imagens, ponteiro de laser e modo escuro. A ferramenta Mermaid para Excalidraw transforma código Mermaid em formas editáveis, e um desenho é exportado como imagem PNG ou SVG ou salvo como arquivo .excalidraw para abrir de novo. Bibliotecas públicas de formas prontas, de ícones de nuvem a kits de UI, são adicionadas com um clique.",
+				"Este template roda a imagem do próprio Excalidraw junto com o servidor de colaboração dele, para que várias pessoas desenhem na mesma tela ao mesmo tempo. Clicar em Compartilhar e depois em Iniciar sessão gera um link que contém a chave da sessão, e os navegadores criptografam cada alteração antes que ela chegue ao servidor. Não há contas e o servidor não guarda desenhos: a tela de cada pessoa fica no navegador dela, e o app continua funcionando offline depois de carregado. O template também deixa de fora o script do Simple Analytics que a página da imagem carrega.",
+				"Os poréns: qualquer pessoa que tenha o endereço pode usá-lo. Os links de somente leitura (Exportar link) e as ferramentas de IA, Texto para diagrama e Wireframe para código, só funcionam no excalidraw.com, cujos servidores recusam outros sites. A cena e as imagens de uma sessão também ficam salvas, criptografadas, no Firebase do excalidraw.com, e é assim que o link dela a abre de novo mais tarde. E as páginas carregam as fontes do CDN do Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "O Excalidraw é gratuito e de código aberto?",
+					"a": "Sim. O Excalidraw está sob a licença MIT, com o código no GitHub. O Excalidraw+, da mesma equipe, é uma versão hospedada por US$ 6 por usuário por mês que adiciona armazenamento na nuvem, cenas e pastas ilimitadas, permissões de acesso, apresentações e comentários."
+				},
+				{
+					"q": "Onde o Excalidraw salva meus desenhos?",
+					"a": "No seu navegador. O Excalidraw salva a tela enquanto você desenha, no armazenamento local do navegador, e nada chega ao servidor. Outro navegador ou dispositivo começa vazio, e limpar os dados do site exclui o desenho, então guarde o que importa com Salvar como... → Salvar em um arquivo: a opção Abrir carrega o arquivo .excalidraw de novo."
+				},
+				{
+					"q": "Várias pessoas podem desenhar juntas em um Excalidraw auto-hospedado?",
+					"a": "Sim, com este template. Clique em Compartilhar, depois em Iniciar sessão, e envie o link: quem abrir o link desenha na mesma tela e vê os ponteiros dos outros. A sessão é criptografada de ponta a ponta, com a chave na parte do link depois do #, que um navegador nunca envia a um servidor. A imagem Docker do Excalidraw não faz isso sozinha, então o template adiciona o servidor de colaboração do Excalidraw e aponta as páginas para ele."
+				},
+				{
+					"q": "Por que o botão Exportar link falha em um Excalidraw auto-hospedado?",
+					"a": "Os links de somente leitura são guardados pelo servidor do excalidraw.com, que só os aceita do próprio excalidraw.com, então aqui o botão mostra um erro. Em vez disso, compartilhe uma sessão ao vivo ou o arquivo .excalidraw."
+				},
+				{
+					"q": "O Excalidraw consegue transformar código Mermaid em um diagrama?",
+					"a": "Sim. A opção Mais ferramentas → Mermaid para Excalidraw recebe código Mermaid e o insere como formas e setas que você pode editar. Fluxogramas e diagramas de sequência, de classes e de entidade-relacionamento são convertidos; outros tipos entram como imagem. A conversão roda no navegador, ao contrário da ferramenta de IA Texto para diagrama, que só funciona no excalidraw.com."
+				},
+				{
+					"q": "O Excalidraw funciona offline?",
+					"a": "Sim. Depois que a página carrega, o service worker dela guarda o app, então ele abre e você desenha sem conexão, e o Chrome ou o Edge podem instalá-lo como app. Uma sessão ao vivo precisa de conexão."
+				}
+			]
+		},
+		"ru": {
+			"description": "Доска для диаграмм и набросков в стиле рисунка от руки, с совместной работой в реальном времени",
+			"notes": "Откройте адрес и рисуйте: в Excalidraw нет аккаунтов, поэтому им может пользоваться любой, у кого есть адрес. Рисунки каждого человека хранятся в его браузере, а не на сервере, поэтому сохраняйте копию через «Сохранить как...» → «Сохранить в файл». Чтобы рисовать вместе, нажмите «Поделиться», затем «Начать сеанс» и отправьте ссылку. Функция «Экспорт в ссылку» и ИИ-инструменты работают только на excalidraw.com.",
+			"sizing": "Excalidraw: совсем небольшие требования — около 40 MB памяти вместе с сервером совместной работы, и ничего не хранится, ведь рисунки остаются в браузерах.",
+			"summary": "Self-hosted Excalidraw — open source доска для диаграмм и набросков в стиле рисунка от руки, с совместной работой онлайн. Альтернатива Miro в один клик.",
+			"about": [
+				"Excalidraw — виртуальная доска с открытым исходным кодом, на которой фигуры, стрелки и текст выглядят нарисованными от руки. На ней набрасывают схемы архитектуры, блок-схемы и вайрфреймы — на встречах или для документации, там, где другие открыли бы Miro или Lucidchart. В ней есть бесконечный холст, фреймы, изображения, лазерная указка и темная тема. Инструмент «Mermaid в Excalidraw» превращает код Mermaid в фигуры, которые можно редактировать, а рисунок можно экспортировать в изображение PNG или SVG или сохранить файлом .excalidraw, чтобы потом открыть снова. Публичные библиотеки готовых фигур, от иконок облачных сервисов до UI-китов, добавляются одним кликом.",
+				"Этот шаблон запускает собственный образ Excalidraw вместе с его сервером совместной работы, поэтому на одном холсте могут рисовать сразу несколько человек. Если нажать «Поделиться», а затем «Начать сеанс», появится ссылка, в которой хранится ключ сеанса, а браузеры шифруют каждое изменение до того, как оно попадет на сервер. Аккаунтов нет, и сервер не хранит рисунков: холст каждого остается в его браузере, а после загрузки приложение продолжает работать и офлайн. Кроме того, шаблон убирает скрипт Simple Analytics, который загружает страница из образа.",
+				"Но есть нюансы: Excalidraw может пользоваться любой, у кого есть адрес. Ссылки только для чтения («Экспорт в ссылку») и ИИ-инструменты «Текст в диаграмму» и «Каркас для кода» работают только на excalidraw.com: его серверы не принимают запросы с других сайтов. Кроме того, сцена и изображения сеанса сохраняются в зашифрованном виде в Firebase сайта excalidraw.com — поэтому ссылка на сеанс открывает его и позже, — а шрифты страницы загружаются с CDN Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "Excalidraw бесплатный и с открытым исходным кодом?",
+					"a": "Да. Excalidraw распространяется по лицензии MIT, а его код лежит на GitHub. Excalidraw+ от той же команды — версия на их хостинге за 6 $ в месяц за пользователя: она добавляет облачное хранилище, неограниченное число сцен и папок, права доступа, презентации и комментарии."
+				},
+				{
+					"q": "Где Excalidraw сохраняет мои рисунки?",
+					"a": "В вашем браузере. Excalidraw сохраняет холст по ходу рисования в локальное хранилище браузера, и на сервер ничего не попадает. В другом браузере или на другом устройстве холст будет пустым, а очистка данных сайта удалит рисунок, поэтому сохраняйте важное через «Сохранить как...» → «Сохранить в файл», а «Открыть» снова загрузит файл .excalidraw."
+				},
+				{
+					"q": "Могут ли несколько человек рисовать вместе в self-hosted Excalidraw?",
+					"a": "Да, с этим шаблоном. Нажмите «Поделиться», затем «Начать сеанс» и отправьте ссылку: все, кто ее откроет, рисуют на одном холсте и видят указатели друг друга. Сеанс защищен сквозным шифрованием, а его ключ хранится в части ссылки после #, которую браузер никогда не отправляет на сервер. Docker-образ Excalidraw сам этого не умеет, поэтому шаблон добавляет сервер совместной работы Excalidraw и указывает страницам его адрес."
+				},
+				{
+					"q": "Почему «Экспорт в ссылку» не работает в self-hosted Excalidraw?",
+					"a": "Ссылки только для чтения хранит сервер excalidraw.com, а он принимает их только с excalidraw.com, поэтому здесь кнопка показывает ошибку. Вместо этого поделитесь сеансом совместной работы или файлом .excalidraw."
+				},
+				{
+					"q": "Умеет ли Excalidraw превращать код Mermaid в диаграмму?",
+					"a": "Да. «Дополнительные инструменты» → «Mermaid в Excalidraw» принимает код Mermaid и вставляет его как фигуры и стрелки, которые можно редактировать. Конвертируются блок-схемы, диаграммы последовательности, диаграммы классов и ER-диаграммы, а остальные типы вставляются как изображение. Это работает прямо в браузере, в отличие от ИИ-инструмента «Текст в диаграмму», который доступен только на excalidraw.com."
+				},
+				{
+					"q": "Работает ли Excalidraw офлайн?",
+					"a": "Да. После загрузки страницы ее сервис-воркер сохраняет приложение, поэтому оно открывается и в нем можно рисовать без подключения к сети, а Chrome или Edge могут установить его как приложение. Для сеанса совместной работы подключение нужно."
+				}
+			]
+		},
+		"uk": {
+			"description": "Дошка для діаграм і ескізів від руки зі спільною роботою наживо",
+			"notes": "Відкрийте адресу й малюйте: акаунтів в Excalidraw немає, тож ним може користуватися будь-хто, у кого є адреса. Малюнки кожної людини зберігаються в її браузері, а не на сервері, тож зберігайте копію через «Зберегти як...» → «Зберегти до файлу». Щоб малювати разом, натисніть «Поділитися», потім «Почати сесію» й надішліть посилання. «Експортувати у посилання» та інструменти ШІ працюють лише на excalidraw.com.",
+			"sizing": "Excalidraw дуже легкий: близько 40 MB пам’яті разом із сервером спільної роботи, а даних він не зберігає зовсім, бо малюнки лишаються в браузерах.",
+			"summary": "Excalidraw — онлайн-дошка з відкритим кодом для діаграм і ескізів від руки зі спільною роботою наживо. Self-hosted альтернатива Miro в один клік.",
+			"about": [
+				"Excalidraw — віртуальна дошка з відкритим кодом, на якій фігури, стрілки й текст виглядають намальованими від руки. На ній накидають схеми архітектури, блок-схеми й вайрфрейми на зустрічах чи для документації — там, де інші відкрили б Miro або Lucidchart. У ній є нескінченне полотно, фрейми, зображення, лазерний вказівник і темна тема. «Mermaid у Excalidraw» перетворює код Mermaid на фігури, які можна редагувати, а малюнок експортується як зображення PNG або SVG чи зберігається у файл .excalidraw, щоб відкрити його знову. Публічні бібліотеки готових фігур, від іконок хмарних сервісів до UI-кітів, додаються одним кліком.",
+				"Цей шаблон запускає образ самого Excalidraw разом із його сервером спільної роботи, тож на одному полотні можуть малювати кілька людей одночасно. «Поділитися», а потім «Почати сесію» дають посилання, у якому міститься ключ сесії, а браузери шифрують кожну зміну, перш ніж вона дійде до сервера. Акаунтів немає, і сервер не зберігає малюнків: полотно кожної людини лишається в її браузері, а щойно застосунок завантажився, він працює й офлайн. Крім того, шаблон прибирає скрипт Simple Analytics, який завантажує сторінка з образу.",
+				"Підводні камені: користуватися ним може будь-хто, у кого є адреса. Посилання тільки для читання («Експортувати у посилання») та інструменти ШІ, «Діаграма з тексту» і «Перетворити у код», працюють лише на excalidraw.com: його сервери відмовляють іншим сайтам. Сцена й зображення сесії також зберігаються, зашифровані, у Firebase сайту excalidraw.com, завдяки чому посилання сесії згодом відкриває її знову, а шрифти сторінки завантажуються з CDN Excalidraw."
+			],
+			"faq": [
+				{
+					"q": "Чи Excalidraw безкоштовний і з відкритим кодом?",
+					"a": "Так. Excalidraw поширюється за ліцензією MIT, а його код лежить на GitHub. Excalidraw+ від тієї ж команди — це версія на їхньому хостингу за 6 $ на місяць за кожного користувача: вона додає хмарне сховище, необмежену кількість сцен і папок, права доступу, презентації та коментарі."
+				},
+				{
+					"q": "Де Excalidraw зберігає мої малюнки?",
+					"a": "У вашому браузері. Excalidraw зберігає полотно просто під час малювання, у локальному сховищі браузера, і на сервер нічого не потрапляє. В іншому браузері чи на іншому пристрої полотно буде порожнім, а очищення даних сайту видаляє малюнок, тож зберігайте важливе через «Зберегти як...» → «Зберегти до файлу»: «Відкрити» знову завантажує файл .excalidraw."
+				},
+				{
+					"q": "Чи можуть кілька людей малювати разом у self-hosted Excalidraw?",
+					"a": "Так, із цим шаблоном. Натисніть «Поділитися», потім «Почати сесію» й надішліть посилання: кожен, хто його відкриє, малює на тому самому полотні й бачить курсори інших. Сесія наскрізно зашифрована, а її ключ лежить у частині посилання після #, яку браузер ніколи не надсилає на сервер. Docker-образ Excalidraw сам цього не вміє, тож шаблон додає сервер спільної роботи Excalidraw і спрямовує на нього сторінки."
+				},
+				{
+					"q": "Чому «Експортувати у посилання» не спрацьовує в self-hosted Excalidraw?",
+					"a": "Посилання тільки для читання зберігає сервер excalidraw.com, а він приймає їх лише з excalidraw.com, тож тут кнопка показує помилку. Натомість поділіться сесією наживо або файлом .excalidraw."
+				},
+				{
+					"q": "Чи вміє Excalidraw перетворювати код Mermaid на діаграму?",
+					"a": "Так. «Інші інструменти» → «Mermaid у Excalidraw» бере код Mermaid і вставляє його як фігури й стрілки, які можна редагувати. Перетворюються блок-схеми, діаграми послідовностей і класів та ER-діаграми; решта видів вставляється як зображення. Це працює в браузері, на відміну від інструмента ШІ «Діаграма з тексту», який працює лише на excalidraw.com."
+				},
+				{
+					"q": "Чи працює Excalidraw офлайн?",
+					"a": "Так. Щойно сторінка завантажилася, її сервіс-воркер зберігає застосунок, тож той відкривається й дає малювати без з’єднання, а Chrome чи Edge можуть встановити його як застосунок. А от для сесії наживо з’єднання потрібне."
+				}
+			]
+		}
+	}
+}
