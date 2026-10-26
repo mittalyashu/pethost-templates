@@ -1,0 +1,15 @@
+services:
+  beszel:
+    image: henrygd/beszel:0.21
+    restart: unless-stopped
+    environment:
+      APP_URL: ${URL}
+      # A new hub offers whoever opens it first to make the first account: this one is made from
+      # the fields before the hub answers, so nobody else can.
+      USER_EMAIL: ${ADMIN_EMAIL}
+      USER_PASSWORD: ${ADMIN_PASSWORD}
+    volumes:
+      - data:/beszel_data
+
+volumes:
+  data:

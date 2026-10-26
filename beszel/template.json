@@ -1,0 +1,283 @@
+{
+	"name": "Beszel",
+	"emoji": "🖥️",
+	"category": "monitoring",
+	"alternatives": [],
+	"plan": "starter",
+	"route": {
+		"service": "beszel",
+		"port": 8090
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "ADMIN_EMAIL",
+			"ask": "email"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Lightweight server monitoring: CPU, memory, disk, network and Docker stats, with history and alerts",
+			"notes": "Sign in with the email and the admin password you gave. To watch a server, click Add System: it shows a docker-compose.yml for the agent, with the key and token it needs. Run that on the server, and the agent connects to this hub over WebSocket, with no port to open there. Alerts go out once you add a notification URL, such as Telegram’s or ntfy’s, in Settings → Notifications.",
+			"sizing": "Beszel’s hub is very light: about 20 MB of memory, and it keeps at most 30 days of history per system, so its data stays small.",
+			"summary": "Beszel is lightweight, open-source server monitoring with Docker stats, history and alerts. Self-host its hub in one click; agents connect over WebSocket.",
+			"about": [
+				"Beszel is a lightweight server monitoring platform in two parts: the hub, a web app built on PocketBase, which this template runs, and an agent on each machine you watch. Agents report CPU, memory, disk usage and I/O, network, load, temperatures, GPUs, S.M.A.R.T. health and systemd services, plus the CPU, memory and network of each Docker or Podman container. The hub draws their history and alerts you through Telegram, Discord, Slack, ntfy, email and other services when a system goes down or a value crosses its threshold.",
+				"People run Beszel to see every server, VPS and home lab box on one page without setting up Prometheus and Grafana. A hub at a public address suits agents behind a home router: an agent connects out to the hub over WebSocket with its token, so nothing has to be opened on the machine it watches. The hub’s first account is made from the fields, and an administrator can share systems with users who only read. The catch: history is kept for 30 days at most, and phone apps are third-party ones."
+			],
+			"faq": [
+				{
+					"q": "Is Beszel free?",
+					"a": "Yes. Beszel is open source under the MIT license, and its maker says no feature will be put behind a paywall. There is no paid or hosted edition."
+				},
+				{
+					"q": "Do I need to open a port on the servers Beszel monitors?",
+					"a": "No, when the agent connects to the hub over WebSocket: it only makes an outgoing connection, with its token. In the older SSH mode the hub connects to the agent on port 45876, which then has to be reachable."
+				},
+				{
+					"q": "How does Beszel monitor Docker containers?",
+					"a": "The agent reads the Docker socket, which the docker-compose.yml from Add System mounts read-only, or a socket proxy named in DOCKER_HOST. It then charts each container’s CPU, memory and network."
+				},
+				{
+					"q": "Is Beszel a replacement for Prometheus and Grafana?",
+					"a": "For keeping an eye on servers, yes: its maker built it to show CPU, memory and disk without setting up Prometheus and Grafana. Its charts are fixed and it keeps 30 days of history, so long-term custom dashboards remain Grafana’s job."
+				},
+				{
+					"q": "Is there a Beszel mobile app?",
+					"a": "Not an official one. Third-party apps such as Beszel Companion for iOS and Beszel Mobile for Android and iOS connect to a hub, and the web page works in a phone’s browser."
+				}
+			]
+		},
+		"de": {
+			"description": "Schlankes Server-Monitoring: CPU, RAM, Festplatte, Netzwerk und Docker-Statistiken, mit Verlauf und Alerts",
+			"notes": "Melde dich mit der E-Mail und dem Admin-Passwort an, die du angegeben hast. Um einen Server zu überwachen, klick auf „System hinzufügen“: Der Dialog zeigt eine docker-compose.yml für den Agenten, mit dem Schlüssel und dem Token, die er braucht. Starte sie auf dem Server, dann verbindet sich der Agent per WebSocket mit diesem Hub, ohne dass dort ein Port geöffnet werden muss. Alerts gehen raus, sobald du unter „Einstellungen“ → „Benachrichtigungen“ eine Benachrichtigungs-URL hinzufügst, etwa die von Telegram oder ntfy.",
+			"sizing": "Der Hub von Beszel ist sehr leicht: etwa 20 MB RAM, und er behält höchstens 30 Tage Verlauf pro System, sodass seine Daten klein bleiben.",
+			"summary": "Beszel selbst hosten: schlankes Open-Source-Server-Monitoring mit Docker-Statistiken, Verlauf und Alerts. Hub mit einem Klick, Agenten per WebSocket.",
+			"about": [
+				"Beszel ist eine schlanke Plattform für Server-Monitoring in zwei Teilen: dem Hub, einer Web-App auf Basis von PocketBase, die diese Vorlage betreibt, und einem Agenten auf jeder Maschine, die du überwachst. Die Agenten melden CPU, RAM, Festplattennutzung und -I/O, Netzwerk, Systemlast, Temperaturen, GPUs, S.M.A.R.T.-Zustand und systemd-Dienste, dazu CPU, RAM und Netzwerk jedes Docker- oder Podman-Containers. Der Hub zeigt ihren Verlauf in Diagrammen und benachrichtigt dich über Telegram, Discord, Slack, ntfy, E-Mail und andere Dienste, wenn ein System ausfällt oder ein Wert seinen Schwellenwert überschreitet.",
+				"Viele nutzen Beszel, um jeden Server, jeden VPS und jede Kiste im Homelab auf einer Seite zu sehen, ohne Prometheus und Grafana einzurichten. Ein Hub unter einer öffentlichen Adresse passt zu Agenten hinter einem Router zu Hause: Ein Agent baut mit seinem Token selbst eine WebSocket-Verbindung zum Hub auf, sodass auf der Maschine, die er überwacht, nichts geöffnet werden muss. Das erste Konto des Hubs entsteht aus den Feldern, und ein Administrator kann Systeme mit Benutzern teilen, die nur lesen dürfen. Der Haken: Der Verlauf bleibt höchstens 30 Tage erhalten, und Apps fürs Handy gibt es nur von Drittanbietern."
+			],
+			"faq": [
+				{
+					"q": "Ist Beszel kostenlos?",
+					"a": "Ja. Beszel ist Open Source unter der MIT-Lizenz, und sein Entwickler sagt, dass keine Funktion hinter einer Paywall landen wird. Eine kostenpflichtige oder gehostete Edition gibt es nicht."
+				},
+				{
+					"q": "Muss ich auf den Servern, die Beszel überwacht, einen Port öffnen?",
+					"a": "Nein, wenn sich der Agent per WebSocket mit dem Hub verbindet: Er baut mit seinem Token nur eine ausgehende Verbindung auf. Im älteren SSH-Modus verbindet sich dagegen der Hub mit dem Agenten auf Port 45876, der dann erreichbar sein muss."
+				},
+				{
+					"q": "Wie überwacht Beszel Docker-Container?",
+					"a": "Der Agent liest den Docker-Socket, den die docker-compose.yml aus „System hinzufügen“ schreibgeschützt mountet, oder einen Socket-Proxy, den DOCKER_HOST nennt. Beszel zeigt dann CPU, RAM und Netzwerk jedes Containers in Diagrammen."
+				},
+				{
+					"q": "Ersetzt Beszel Prometheus und Grafana?",
+					"a": "Um Server im Blick zu behalten, ja: Sein Entwickler hat es gebaut, um CPU, RAM und Festplatte zu zeigen, ohne Prometheus und Grafana einzurichten. Die Diagramme sind fest vorgegeben, und der Verlauf reicht 30 Tage zurück, langfristige eigene Dashboards bleiben also Sache von Grafana."
+				},
+				{
+					"q": "Gibt es eine App von Beszel fürs Handy?",
+					"a": "Keine offizielle. Apps von Drittanbietern wie Beszel Companion für iOS und Beszel Mobile für Android und iOS verbinden sich mit einem Hub, und die Weboberfläche funktioniert im Browser des Handys."
+				}
+			]
+		},
+		"es": {
+			"description": "Monitoreo ligero de servidores: CPU, memoria, disco, red y estadísticas de Docker, con historial y alertas",
+			"notes": "Inicia sesión con el correo y la contraseña de administrador que indicaste. Para vigilar un servidor, haz clic en “Agregar Sistema”: muestra un docker-compose.yml para el agente, con la clave y el token que necesita. Ejecútalo en ese servidor, y el agente se conecta a este hub por WebSocket, sin abrir ningún puerto allí. Las alertas salen en cuanto agregas una URL de notificación, como la de Telegram o la de ntfy, en Configuración → Notificaciones.",
+			"sizing": "El hub de Beszel es muy ligero: unos 20 MB de memoria, y guarda como máximo 30 días de historial por sistema, así que sus datos ocupan poco.",
+			"summary": "Beszel: monitoreo de servidores ligero y de código abierto con métricas de Docker, historial y alertas. Autoaloja su hub en un clic; agentes por WebSocket.",
+			"about": [
+				"Beszel es una plataforma ligera de monitoreo de servidores en dos partes: el hub, una app web construida sobre PocketBase, que es lo que ejecuta esta plantilla, y un agente en cada máquina que vigilas. Los agentes envían métricas de CPU, memoria, uso y E/S del disco, red, carga, temperaturas, GPU, salud S.M.A.R.T. y servicios de systemd, además de la CPU, la memoria y la red de cada contenedor de Docker o Podman. El hub muestra su historial en gráficas y te avisa por Telegram, Discord, Slack, ntfy, correo y otros servicios cuando un sistema se cae o un valor supera su umbral.",
+				"La gente usa Beszel para ver cada servidor, VPS y equipo de su home lab en una sola página, sin configurar Prometheus y Grafana. Un hub en una dirección pública les viene bien a los agentes que están detrás de un router doméstico: el agente inicia la conexión con el hub por WebSocket, con su token, así que no hay que abrir nada en la máquina que vigila. La primera cuenta del hub se crea con los datos de los campos, y un administrador puede compartir sistemas con usuarios de solo lectura. El inconveniente: el historial se conserva 30 días como máximo, y las apps para teléfonos son de terceros."
+			],
+			"faq": [
+				{
+					"q": "¿Beszel es gratis?",
+					"a": "Sí. Beszel es de código abierto bajo la licencia MIT, y su autor dice que ninguna función quedará detrás de un muro de pago. No hay edición de pago ni alojada."
+				},
+				{
+					"q": "¿Tengo que abrir un puerto en los servidores que monitorea Beszel?",
+					"a": "No, si el agente se conecta al hub por WebSocket: solo abre una conexión saliente, con su token. En el modo SSH, más antiguo, es el hub el que se conecta al agente en el puerto 45876, que entonces tiene que ser accesible."
+				},
+				{
+					"q": "¿Cómo monitorea Beszel los contenedores de Docker?",
+					"a": "El agente lee el socket de Docker, que el docker-compose.yml de “Agregar Sistema” monta en solo lectura, o un proxy de socket indicado en DOCKER_HOST. Luego muestra en gráficas la CPU, la memoria y la red de cada contenedor."
+				},
+				{
+					"q": "¿Beszel reemplaza a Prometheus y Grafana?",
+					"a": "Para vigilar servidores, sí: su autor lo creó para mostrar CPU, memoria y disco sin configurar Prometheus y Grafana. Sus gráficas son fijas y guarda 30 días de historial, así que los paneles personalizados a largo plazo siguen siendo cosa de Grafana."
+				},
+				{
+					"q": "¿Hay una app móvil de Beszel?",
+					"a": "Oficial, no. Apps de terceros como Beszel Companion para iOS y Beszel Mobile para Android e iOS se conectan a un hub, y la página web funciona en el navegador del teléfono."
+				}
+			]
+		},
+		"fr": {
+			"description": "Une surveillance légère des serveurs : CPU, mémoire, disque, réseau et statistiques Docker, avec historique et alertes",
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués. Pour surveiller un serveur, cliquez sur « Ajouter Système » : Beszel affiche un docker-compose.yml pour l’agent, avec la clé et le token dont il a besoin. Lancez-le sur ce serveur, et l’agent se connecte à ce hub en WebSocket, sans port à y ouvrir. Les alertes partent une fois que vous avez ajouté une URL de notification, comme celle de Telegram ou de ntfy, dans Paramètres → Notifications.",
+			"sizing": "Le hub de Beszel est très léger : environ 20 MB de mémoire, et il garde au plus 30 jours d’historique par système, donc ses données restent peu volumineuses.",
+			"summary": "Beszel est une surveillance de serveurs légère et open source : stats Docker, historique, alertes. Hub auto-hébergé en un clic, agents reliés en WebSocket.",
+			"about": [
+				"Beszel est une plateforme légère de surveillance de serveurs en deux parties : le hub, une application web bâtie sur PocketBase, que ce template fait tourner, et un agent sur chaque machine surveillée. Les agents remontent le CPU, la mémoire, l’occupation et les I/O des disques, le réseau, la charge, les températures, les GPU, l’état S.M.A.R.T. et les services systemd, ainsi que le CPU, la mémoire et le réseau de chaque conteneur Docker ou Podman. Le hub en trace l’historique et vous alerte par Telegram, Discord, Slack, ntfy, e-mail et d’autres services quand un système tombe ou qu’une valeur franchit son seuil.",
+				"On utilise Beszel pour voir chaque serveur, VPS et machine de homelab sur une seule page, sans installer Prometheus et Grafana. Un hub à une adresse publique convient aux agents placés derrière une box : l’agent se connecte de lui-même au hub en WebSocket, avec son token, donc rien n’est à ouvrir sur la machine qu’il surveille. Le premier compte du hub est créé à partir des champs, et un administrateur peut partager des systèmes avec des utilisateurs en lecture seule. Le revers : l’historique est gardé 30 jours au plus, et les applications pour téléphone sont des applications tierces."
+			],
+			"faq": [
+				{
+					"q": "Beszel est-il gratuit ?",
+					"a": "Oui. Beszel est open source sous licence MIT, et son auteur affirme qu’aucune fonctionnalité ne sera rendue payante. Il n’existe pas d’édition payante ni hébergée."
+				},
+				{
+					"q": "Faut-il ouvrir un port sur les serveurs que Beszel surveille ?",
+					"a": "Non, quand l’agent se connecte au hub en WebSocket : il n’établit qu’une connexion sortante, avec son token. Dans l’ancien mode SSH, c’est le hub qui se connecte à l’agent sur le port 45876, qui doit alors être joignable."
+				},
+				{
+					"q": "Comment Beszel surveille-t-il les conteneurs Docker ?",
+					"a": "L’agent lit le socket Docker, que le docker-compose.yml donné par « Ajouter Système » monte en lecture seule, ou un proxy de socket indiqué dans DOCKER_HOST. Beszel trace alors le CPU, la mémoire et le réseau de chaque conteneur."
+				},
+				{
+					"q": "Beszel remplace-t-il Prometheus et Grafana ?",
+					"a": "Pour garder un œil sur des serveurs, oui : son auteur l’a conçu pour montrer le CPU, la mémoire et le disque sans installer Prometheus et Grafana. Ses graphiques sont fixes et il garde 30 jours d’historique, donc les tableaux de bord personnalisés sur le long terme restent le rôle de Grafana."
+				},
+				{
+					"q": "Existe-t-il une application mobile Beszel ?",
+					"a": "Pas d’application officielle. Des applications tierces comme Beszel Companion pour iOS et Beszel Mobile pour Android et iOS se connectent à un hub, et la page web fonctionne dans le navigateur d’un téléphone."
+				}
+			]
+		},
+		"pl": {
+			"description": "Lekki monitoring serwerów: CPU, pamięć, dysk, sieć i statystyki Dockera, z historią i alertami",
+			"notes": "Zaloguj się adresem e-mail i hasłem administratora podanymi przy tworzeniu projektu. Żeby obserwować serwer, kliknij Dodaj System: zobaczysz docker-compose.yml dla agenta, z kluczem i tokenem, których potrzebuje. Uruchom go na tym serwerze, a agent połączy się z tym hubem przez WebSocket i nie trzeba tam otwierać żadnego portu. Alerty zaczną wychodzić, gdy na stronie Ustawienia → Powiadomienia dodasz adres URL powiadomień, na przykład Telegrama albo ntfy.",
+			"sizing": "Hub Beszela ma bardzo małe wymagania: około 20 MB pamięci, a historii trzyma najwyżej 30 dni na system, więc jego dane pozostają niewielkie.",
+			"summary": "Beszel to lekki monitoring serwerów open source: statystyki Dockera, historia i alerty. Hostuj hub u siebie w jeden klik; agenci łączą się przez WebSocket.",
+			"about": [
+				"Beszel to lekka platforma do monitorowania serwerów złożona z dwóch części: huba, czyli aplikacji webowej zbudowanej na PocketBase, którą uruchamia ten szablon, oraz agenta na każdej obserwowanej maszynie. Agenci raportują CPU, pamięć, zajętość dysków i I/O, sieć, obciążenie, temperatury, GPU, stan S.M.A.R.T. i usługi systemd, a do tego CPU, pamięć i sieć każdego kontenera Dockera albo Podmana. Hub rysuje ich historię i wysyła ci alerty przez Telegram, Discord, Slack, ntfy, e-mail i inne usługi, gdy system przestanie działać albo wartość przekroczy próg.",
+				"Beszela uruchamia się, żeby widzieć każdy serwer, VPS i maszynę z homelabu na jednej stronie, bez stawiania Prometheusa i Grafany. Hub pod publicznym adresem pasuje do agentów za domowym routerem: agent sam łączy się z hubem przez WebSocket, ze swoim tokenem, więc na obserwowanej maszynie nie trzeba niczego otwierać. Pierwsze konto huba powstaje z pól formularza, a administrator może udostępniać systemy użytkownikom z dostępem tylko do odczytu. Haczyk: historia jest przechowywana najwyżej przez 30 dni, a aplikacje na telefon pochodzą od innych autorów."
+			],
+			"faq": [
+				{
+					"q": "Czy Beszel jest darmowy?",
+					"a": "Tak. Beszel to open source na licencji MIT, a jego autor zapewnia, że żadna funkcja nie trafi za paywall. Nie ma płatnej ani hostowanej edycji."
+				},
+				{
+					"q": "Czy muszę otwierać port na serwerach, które monitoruje Beszel?",
+					"a": "Nie, gdy agent łączy się z hubem przez WebSocket: nawiązuje wtedy tylko połączenie wychodzące, ze swoim tokenem. W starszym trybie SSH to hub łączy się z agentem na porcie 45876, który musi być wtedy osiągalny."
+				},
+				{
+					"q": "Jak Beszel monitoruje kontenery Dockera?",
+					"a": "Agent czyta socket Dockera, który docker-compose.yml z okna Dodaj System montuje tylko do odczytu, albo proxy socketu wskazane w DOCKER_HOST. Potem rysuje wykresy CPU, pamięci i sieci każdego kontenera."
+				},
+				{
+					"q": "Czy Beszel zastępuje Prometheusa i Grafanę?",
+					"a": "Do pilnowania serwerów – tak: autor zbudował go, żeby pokazywał CPU, pamięć i dysk bez stawiania Prometheusa i Grafany. Jego wykresy są stałe, a historia sięga 30 dni, więc długoterminowe, własne dashboardy pozostają zadaniem Grafany."
+				},
+				{
+					"q": "Czy Beszel ma aplikację mobilną?",
+					"a": "Oficjalnej nie ma. Aplikacje innych autorów, takie jak Beszel Companion na iOS i Beszel Mobile na Androida i iOS, łączą się z hubem, a strona webowa działa w przeglądarce telefonu."
+				}
+			]
+		},
+		"pt": {
+			"description": "Monitoramento leve de servidores: CPU, memória, disco, rede e métricas do Docker, com histórico e alertas",
+			"notes": "Entre com o e-mail e a senha de administrador que você informou. Para monitorar um servidor, clique em Adicionar Sistema: aparece um docker-compose.yml para o agente, com a chave e o token de que ele precisa. Rode esse arquivo no servidor, e o agente se conecta a este hub por WebSocket, sem nenhuma porta para abrir lá. Os alertas saem depois que você adiciona uma URL de notificação, como a do Telegram ou a do ntfy, em Configurações → Notificações.",
+			"sizing": "O hub do Beszel é muito leve: cerca de 20 MB de memória, e ele guarda no máximo 30 dias de histórico por sistema, então os dados continuam pequenos.",
+			"summary": "Beszel: monitoramento de servidores leve e open source com métricas do Docker, histórico e alertas. Auto-hospede o hub em um clique; agentes via WebSocket.",
+			"about": [
+				"O Beszel é uma plataforma leve de monitoramento de servidores em duas partes: o hub, um app web feito sobre o PocketBase, que este template roda, e um agente em cada máquina que você monitora. Os agentes informam CPU, memória, uso e E/S de disco, rede, carga, temperaturas, GPUs, saúde S.M.A.R.T. e serviços do systemd, além da CPU, da memória e da rede de cada container Docker ou Podman. O hub desenha o histórico deles e avisa você pelo Telegram, Discord, Slack, ntfy, e-mail e outros serviços quando um sistema cai ou um valor passa do limite.",
+				"As pessoas usam o Beszel para ver todos os servidores, VPS e máquinas do home lab em uma só página, sem montar Prometheus e Grafana. Um hub num endereço público serve para agentes atrás de um roteador doméstico: o agente abre a conexão até o hub por WebSocket, com seu token, então nada precisa ser aberto na máquina que ele monitora. A primeira conta do hub é criada a partir dos campos, e um administrador pode compartilhar sistemas com usuários que só podem ver. O porém: o histórico fica guardado por 30 dias no máximo, e os apps de celular são de terceiros."
+			],
+			"faq": [
+				{
+					"q": "O Beszel é gratuito?",
+					"a": "Sim. O Beszel é open source sob a licença MIT, e o criador dele diz que nenhum recurso será colocado atrás de um paywall. Não há edição paga nem hospedada."
+				},
+				{
+					"q": "Preciso abrir uma porta nos servidores que o Beszel monitora?",
+					"a": "Não, quando o agente se conecta ao hub por WebSocket: ele só faz uma conexão de saída, com seu token. No modo SSH, mais antigo, o hub se conecta ao agente na porta 45876, que então precisa estar acessível."
+				},
+				{
+					"q": "Como o Beszel monitora containers Docker?",
+					"a": "O agente lê o socket do Docker, que o docker-compose.yml de Adicionar Sistema monta como somente leitura, ou um proxy de socket indicado em DOCKER_HOST. Depois ele mostra em gráficos a CPU, a memória e a rede de cada container."
+				},
+				{
+					"q": "O Beszel substitui o Prometheus e o Grafana?",
+					"a": "Para ficar de olho nos servidores, sim: o criador o fez para mostrar CPU, memória e disco sem montar Prometheus e Grafana. Os gráficos dele são fixos e ele guarda 30 dias de histórico, então dashboards personalizados de longo prazo continuam sendo trabalho do Grafana."
+				},
+				{
+					"q": "Existe app do Beszel para celular?",
+					"a": "Oficial, não. Apps de terceiros, como o Beszel Companion para iOS e o Beszel Mobile para Android e iOS, se conectam a um hub, e a página web funciona no navegador do celular."
+				}
+			]
+		},
+		"ru": {
+			"description": "Легкий мониторинг серверов: CPU, память, диск, сеть и статистика Docker, с историей и оповещениями",
+			"notes": "Войдите с почтой и паролем администратора, которые вы указали. Чтобы следить за сервером, нажмите «Добавить систему»: Beszel покажет docker-compose.yml для агента с нужными ему ключом и токеном. Запустите его на сервере, и агент подключится к этому хабу по WebSocket — открывать там порт не нужно. Оповещения начнут уходить, когда вы добавите URL уведомлений, например для Telegram или ntfy, в разделе «Настройки» → «Уведомления».",
+			"sizing": "Хаб Beszel: совсем небольшие требования — около 20 MB памяти, а история хранится не дольше 30 дней на систему, так что данных остается немного.",
+			"summary": "Self-hosted Beszel — легкий open source мониторинг серверов с метриками Docker, историей и оповещениями. Хаб в один клик, агенты подключаются по WebSocket.",
+			"about": [
+				"Beszel — легкая платформа мониторинга серверов из двух частей: хаба, веб-приложения на PocketBase, которое запускает этот шаблон, и агента на каждой машине, за которой вы следите. Агенты присылают загрузку CPU, память, занятое место и ввод-вывод дисков, сеть, нагрузку, температуры, GPU, состояние S.M.A.R.T. и сервисы systemd, а также CPU, память и сеть каждого контейнера Docker или Podman. Хаб строит по ним графики истории и оповещает вас через Telegram, Discord, Slack, ntfy, почту и другие сервисы, когда система падает или значение переходит свой порог.",
+				"Beszel запускают, чтобы видеть все серверы, VPS и машины домашней лаборатории на одной странице, не настраивая Prometheus и Grafana. Хаб на публичном адресе подходит и агентам за домашним роутером: агент сам подключается к хабу по WebSocket со своим токеном, поэтому на машине, за которой он следит, ничего открывать не нужно. Первый аккаунт хаба создается по данным из полей, а администратор может делиться системами с пользователями, у которых доступ только на чтение. Подвох: история хранится не дольше 30 дней, а приложения для телефона — сторонние."
+			],
+			"faq": [
+				{
+					"q": "Beszel бесплатный?",
+					"a": "Да. Beszel распространяется с открытым кодом под лицензией MIT, и его автор пишет, что ни одна функция не окажется за пейволом. Платной или облачной версии нет."
+				},
+				{
+					"q": "Нужно ли открывать порт на серверах, за которыми следит Beszel?",
+					"a": "Нет, если агент подключается к хабу по WebSocket: он только открывает исходящее соединение со своим токеном. В более старом режиме SSH хаб сам подключается к агенту на порт 45876, и тогда этот порт должен быть доступен."
+				},
+				{
+					"q": "Как Beszel следит за контейнерами Docker?",
+					"a": "Агент читает сокет Docker, который docker-compose.yml из «Добавить систему» монтирует только для чтения, или прокси сокета, указанный в DOCKER_HOST. Затем он строит графики CPU, памяти и сети каждого контейнера."
+				},
+				{
+					"q": "Может ли Beszel заменить Prometheus и Grafana?",
+					"a": "Чтобы присматривать за серверами — да: автор сделал Beszel, чтобы видеть CPU, память и диск, не настраивая Prometheus и Grafana. Но графики в нем фиксированные, а история хранится 30 дней, так что долгосрочные дашборды под свои задачи остаются работой для Grafana."
+				},
+				{
+					"q": "Есть ли у Beszel мобильное приложение?",
+					"a": "Официального нет. К хабу подключаются сторонние приложения, например Beszel Companion для iOS и Beszel Mobile для Android и iOS, а веб-страница работает в браузере телефона."
+				}
+			]
+		},
+		"uk": {
+			"description": "Легкий моніторинг серверів: CPU, пам’ять, диск, мережа й статистика Docker, з історією та сповіщеннями",
+			"notes": "Увійдіть із поштою й паролем адміністратора, які ви вказали. Щоб стежити за сервером, натисніть «Додати систему»: Beszel покаже docker-compose.yml для агента з потрібними йому ключем і токеном. Запустіть його на сервері, і агент підключиться до цього хаба через WebSocket — відкривати там порт не треба. Сповіщення почнуть надходити, щойно ви додасте URL для сповіщень, наприклад Telegram чи ntfy, у розділі «Налаштування → Сповіщення».",
+			"sizing": "Хаб Beszel має дуже скромні вимоги: близько 20 MB пам’яті, а історію кожної системи він зберігає щонайбільше 30 днів, тож даних небагато.",
+			"summary": "Beszel — легкий моніторинг серверів із відкритим кодом: статистика Docker, історія та сповіщення. Self-hosted хаб в один клік, агенти — через WebSocket.",
+			"about": [
+				"Beszel — легка платформа моніторингу серверів із двох частин: хаба, вебзастосунку на PocketBase, який запускає цей шаблон, і агента на кожній машині, за якою ви стежите. Агенти передають дані про CPU, пам’ять, заповненість і I/O дисків, мережу, навантаження, температури, GPU, стан S.M.A.R.T. і служби systemd, а також CPU, пам’ять і мережу кожного контейнера Docker чи Podman. Хаб показує їхню історію на графіках і сповіщає вас через Telegram, Discord, Slack, ntfy, пошту та інші сервіси, коли система стає недоступною або значення перетинає свій поріг.",
+				"Beszel запускають, щоб бачити всі сервери, VPS і машини домашньої лабораторії на одній сторінці без налаштування Prometheus і Grafana. Хаб на публічній адресі зручний для агентів за домашнім роутером: агент сам підключається до хаба через WebSocket зі своїм токеном, тож на машині, за якою він стежить, нічого не треба відкривати. Перший акаунт хаба створюється з полів, а адміністратор може ділитися системами з користувачами, які мають доступ лише на читання. Підводний камінь: історія зберігається щонайбільше 30 днів, а застосунки для телефона — сторонні."
+			],
+			"faq": [
+				{
+					"q": "Beszel безкоштовний?",
+					"a": "Так. Beszel має відкритий код за ліцензією MIT, і його автор каже, що жодна функція не стане платною. Платної чи хмарної редакції немає."
+				},
+				{
+					"q": "Чи треба відкривати порт на серверах, за якими стежить Beszel?",
+					"a": "Ні, якщо агент підключається до хаба через WebSocket: він лише встановлює вихідне з’єднання зі своїм токеном. У старішому режимі SSH хаб сам підключається до агента на порт 45876, і тоді цей порт має бути доступним."
+				},
+				{
+					"q": "Як Beszel стежить за контейнерами Docker?",
+					"a": "Агент читає сокет Docker, який docker-compose.yml із «Додати систему» монтує лише для читання, або проксі сокета, вказаний у DOCKER_HOST. Далі він показує на графіках CPU, пам’ять і мережу кожного контейнера."
+				},
+				{
+					"q": "Чи замінює Beszel Prometheus і Grafana?",
+					"a": "Щоб наглядати за серверами — так: автор створив його, щоб показувати CPU, пам’ять і диск без налаштування Prometheus і Grafana. Графіки в Beszel фіксовані, а історія зберігається 30 днів, тож довгострокові дашборди, зібрані під свої потреби, лишаються справою Grafana."
+				},
+				{
+					"q": "Чи є мобільний застосунок Beszel?",
+					"a": "Офіційного немає. До хаба підключаються сторонні застосунки, як-от Beszel Companion для iOS і Beszel Mobile для Android та iOS, а вебсторінка працює в браузері телефона."
+				}
+			]
+		}
+	}
+}
