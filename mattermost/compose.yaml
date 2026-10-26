@@ -1,0 +1,98 @@
+services:
+  # A new Mattermost makes whoever signs up first its System Admin. So the page is served through
+  # this small Caddy, which answers only once the administrator exists: at its start it waits for
+  # Mattermost, and while Mattermost says it has no accounts, it signs the administrator up with
+  # the email, username and password given, as that first account. A refusal stops it, says so in
+  # its log, and is tried again at its next start.
+  proxy:
+    image: caddy:2.11-alpine
+    restart: unless-stopped
+    environment:
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    command:
+      - sh
+      - -c
+      - |
+        set -e
+        mattermost=http://mattermost:8065
+        echo "waiting for Mattermost"
+        until client=$$(wget -qO- "$$mattermost/api/v4/config/client?format=old" 2>/dev/null); do sleep 2; done
+        case "$$client" in
+          *'"NoAccounts":"true"'*)
+            json() { printf '%s' "$$1" | sed 's/\\/\\\\/g; s/"/\\"/g'; }
+            body=$$(printf '{"email":"%s","username":"%s","password":"%s"}' \
+              "$$(json "$$ADMIN_EMAIL")" "$$(json "$$ADMIN_USERNAME")" "$$(json "$$ADMIN_PASSWORD")")
+            if ! wget -qO /dev/null --header 'Content-Type: application/json' --post-data "$$body" "$$mattermost/api/v4/users"; then
+              echo "Mattermost refused the administrator: an email address, a username of letters, digits, dots, dashes and underscores, and a password of 8 characters at least are what it takes" >&2
+              exit 1
+            fi
+            echo "the administrator $$ADMIN_USERNAME is made"
+            ;;
+        esac
+        exec caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
+    configs:
+      - source: caddy
+        target: /etc/caddy/Caddyfile
+    # The image's own directories, which a proxy without certificates does not use.
+    tmpfs:
+      - /config
+      - /data
+    depends_on:
+      - mattermost
+
+  mattermost:
+    image: mattermost/mattermost-team-edition:12.0
+    restart: unless-stopped
+    environment:
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://mattermost:${POSTGRES_PASSWORD}@postgres:5432/mattermost?sslmode=disable&connect_timeout=10
+      MM_SERVICESETTINGS_SITEURL: ${URL}
+      # Only the proxy reaches Mattermost, and it says who the client is.
+      MM_SERVICESETTINGS_TRUSTEDPROXYIPHEADER: X-Forwarded-For
+    volumes:
+      - config:/mattermost/config
+      - data:/mattermost/data
+      - logs:/mattermost/logs
+      - plugins:/mattermost/plugins
+      - client-plugins:/mattermost/client/plugins
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mattermost
+      POSTGRES_USER: mattermost
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U mattermost -d mattermost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+configs:
+  caddy:
+    content: |
+      {
+        admin off
+        auto_https off
+      }
+
+      :8065 {
+        reverse_proxy mattermost:8065
+      }
+
+volumes:
+  config:
+  data:
+  logs:
+  plugins:
+  client-plugins:
+  db:

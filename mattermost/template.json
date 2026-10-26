@@ -1,0 +1,326 @@
+{
+	"name": "Mattermost",
+	"emoji": "🗨️",
+	"category": "community",
+	"alternatives": [
+		"Slack",
+		"Microsoft Teams"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "proxy",
+		"port": 8065
+	},
+	"variables": [
+		{
+			"name": "URL",
+			"from": "url"
+		},
+		{
+			"name": "POSTGRES_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "ADMIN_EMAIL",
+			"ask": "email"
+		},
+		{
+			"name": "ADMIN_USERNAME",
+			"ask": "username"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "Open-source team chat with channels, threads, file sharing and integrations",
+			"notes": "Sign in with the username or email and the admin password you gave: that account is the System Admin, made before the page answered anyone. Name your organization to make the first team, then add people with Invite Members: nobody signs up without an invitation. Email notifications need an SMTP server in System Console → Environment → SMTP.",
+			"sizing": "Mattermost takes about 300 MB of memory with Postgres for a small team, and its database and files grow with the messages and uploads.",
+			"summary": "Mattermost is open-source team chat with channels, threads and integrations. Self-host Mattermost Team Edition, a Slack alternative, in one click.",
+			"about": [
+				"Mattermost is an open-source collaboration platform for team chat: public and private channels, direct and group messages, threads, file sharing, search, Markdown and custom emoji, in more than 20 languages. Webhooks, slash commands, bots, plugins and an API connect it to other tools, with integrations for Jira, GitHub and GitLab. Apps for Windows, macOS, Linux, iOS and Android connect to its address.",
+				"This template runs Mattermost Team Edition, the free build under the MIT license, with PostgreSQL, and makes the System Admin from the fields before the page answers anyone. Team Edition is meant for small teams: it takes up to 250 active users and has no single sign-on, guest accounts or group calls, which are in the paid plans. The catch: push notifications to the phone apps go through Mattermost’s free Test Push Notification Service, which it does not recommend for production."
+			],
+			"faq": [
+				{
+					"q": "Is Mattermost free?",
+					"a": "Yes. Mattermost Team Edition is free, compiled under the MIT license from open source code, and keeps the whole message history. It is meant for teams under 250 active users; the paid plans add SSO, guest accounts, group calls and compliance features."
+				},
+				{
+					"q": "Mattermost or Slack?",
+					"a": "Both have channels, threads, direct messages and integrations. Slack runs only on Slack’s servers, while Mattermost runs where you deploy it, and its incoming webhooks accept Slack’s format, so many Slack integrations work unchanged."
+				},
+				{
+					"q": "Can I move from Slack to Mattermost?",
+					"a": "Yes. Mattermost’s migration tools, mmetl and mmctl import, bring users, channels, message history, direct messages, threads and files over from a Slack export. Slash commands do not come over."
+				},
+				{
+					"q": "Does Mattermost have mobile apps?",
+					"a": "Yes, for iOS and Android, and desktop apps for Windows, macOS and Linux. With Team Edition, push notifications go through Mattermost’s Test Push Notification Service, which is free but comes with no guarantees."
+				},
+				{
+					"q": "How many users can Mattermost Team Edition have?",
+					"a": "Up to 250 active users: it warns at 200, and at 250 it refuses to create or activate more. A team that outgrows it moves to a paid plan."
+				},
+				{
+					"q": "Do Mattermost calls work with this template?",
+					"a": "Not as it is. Calls send their audio and video over port 8443, which this template does not publish; text chat, files and integrations work in full."
+				}
+			]
+		},
+		"de": {
+			"description": "Open-Source-Teamchat mit Kanälen, Threads, Dateifreigabe und Integrationen",
+			"notes": "Melde dich mit dem Benutzernamen oder der E-Mail und dem Admin-Passwort an, die du angegeben hast: Dieses Konto ist der Systemadministrator, angelegt, bevor die Seite irgendwem geantwortet hat. Gib deiner Organisation einen Namen, um das erste Team anzulegen, und füg dann Leute mit „Mitglieder einladen“ hinzu: Ohne Einladung kann sich niemand registrieren. E-Mail-Benachrichtigungen brauchen einen SMTP-Server unter „Systemkonsole“ → „Umgebung“ → „SMTP“.",
+			"sizing": "Mattermost braucht für ein kleines Team etwa 300 MB RAM mit Postgres, und Datenbank und Dateien wachsen mit den Nachrichten und Uploads.",
+			"summary": "Mattermost selbst hosten: Open-Source-Teamchat mit Kanälen, Threads und Integrationen. Die Team Edition als Slack-Alternative, mit einem Klick.",
+			"about": [
+				"Mattermost ist eine Open-Source-Plattform für die Zusammenarbeit im Teamchat: öffentliche und private Kanäle, Direkt- und Gruppennachrichten, Unterhaltungen in Threads, Dateifreigabe, Suche, Markdown und eigene Emojis, in mehr als 20 Sprachen. Webhooks, Slash-Befehle, Bots, Plugins und eine API verbinden Mattermost mit anderen Tools, dazu kommen Integrationen für Jira, GitHub und GitLab. Apps für Windows, macOS, Linux, iOS und Android verbinden sich mit seiner Adresse.",
+				"Diese Vorlage betreibt Mattermost Team Edition, den kostenlosen Build unter der MIT-Lizenz, mit PostgreSQL und legt den Systemadministrator aus den Feldern an, bevor die Seite irgendwem antwortet. Die Team Edition ist für kleine Teams gedacht: Sie nimmt bis zu 250 aktive Benutzer auf und hat kein Single Sign-on, keine Gastkonten und keine Gruppenanrufe, die es in den kostenpflichtigen Tarifen gibt. Der Haken: Push-Benachrichtigungen an die Apps auf dem Handy laufen über den kostenlosen Test Push Notification Service von Mattermost, den Mattermost selbst nicht für den Produktivbetrieb empfiehlt."
+			],
+			"faq": [
+				{
+					"q": "Ist Mattermost kostenlos?",
+					"a": "Ja. Mattermost Team Edition ist kostenlos, unter der MIT-Lizenz aus Open-Source-Code kompiliert, und behält den gesamten Nachrichtenverlauf. Sie ist für Teams mit weniger als 250 aktiven Benutzern gedacht; die kostenpflichtigen Tarife bringen SSO, Gastkonten, Gruppenanrufe und Compliance-Funktionen dazu."
+				},
+				{
+					"q": "Mattermost oder Slack?",
+					"a": "Beide haben Kanäle, Threads, Direktnachrichten und Integrationen. Slack läuft nur auf den Servern von Slack, Mattermost dagegen dort, wo du es deployst, und seine eingehenden Webhooks verstehen das Format von Slack, sodass viele Slack-Integrationen unverändert funktionieren."
+				},
+				{
+					"q": "Kann ich von Slack zu Mattermost umziehen?",
+					"a": "Ja. Die Migrationstools von Mattermost, mmetl und mmctl import, übernehmen Benutzer, Kanäle, Nachrichtenverlauf, Direktnachrichten, Threads und Dateien aus einem Slack-Export. Slash-Befehle kommen nicht mit."
+				},
+				{
+					"q": "Hat Mattermost Apps fürs Handy?",
+					"a": "Ja, für iOS und Android, dazu Desktop-Apps für Windows, macOS und Linux. Mit der Team Edition laufen Push-Benachrichtigungen über den Test Push Notification Service von Mattermost, der kostenlos ist, aber ohne Garantien kommt."
+				},
+				{
+					"q": "Wie viele Benutzer kann Mattermost Team Edition haben?",
+					"a": "Bis zu 250 aktive Benutzer: Bei 200 warnt sie, und bei 250 lehnt sie es ab, weitere anzulegen oder zu aktivieren. Ein Team, das darüber hinauswächst, wechselt in einen kostenpflichtigen Tarif."
+				},
+				{
+					"q": "Funktionieren Anrufe in Mattermost mit dieser Vorlage?",
+					"a": "So, wie sie ist, nicht. Anrufe (Calls) übertragen Audio und Video über Port 8443, den diese Vorlage nicht veröffentlicht; Textchat, Dateien und Integrationen funktionieren vollständig."
+				}
+			]
+		},
+		"es": {
+			"description": "Chat de equipo de código abierto con canales, hilos, intercambio de archivos e integraciones",
+			"notes": "Inicia sesión con el nombre de usuario o el correo y la contraseña de administrador que indicaste: esa cuenta es el Administrador del Sistema y se creó antes de que la página respondiera a nadie. Escribe el nombre de tu organización para crear el primer equipo y luego agrega personas con “Invitar Miembros”: nadie se registra sin una invitación. Las notificaciones por correo necesitan un servidor SMTP en Consola de sistema → Entorno → SMTP.",
+			"sizing": "Mattermost ocupa unos 300 MB de memoria con Postgres para un equipo pequeño, y su base de datos y sus archivos crecen con los mensajes y lo que se sube.",
+			"summary": "Mattermost es un chat de equipo de código abierto con canales, hilos e integraciones. Autoaloja Mattermost Team Edition, alternativa a Slack, en un clic.",
+			"about": [
+				"Mattermost es una plataforma de colaboración de código abierto para el chat de equipo: canales públicos y privados, mensajes directos y de grupo, hilos, intercambio de archivos, búsqueda, Markdown y emojis personalizados, en más de 20 idiomas. Webhooks, comandos de barra, bots, plugins y una API lo conectan con otras herramientas, con integraciones para Jira, GitHub y GitLab. Las apps para Windows, macOS, Linux, iOS y Android se conectan a su dirección.",
+				"Esta plantilla ejecuta Mattermost Team Edition, la versión gratuita bajo la licencia MIT, con PostgreSQL, y crea el Administrador del Sistema con los datos de los campos antes de que la página responda a nadie. Team Edition está pensada para equipos pequeños: admite hasta 250 usuarios activos y no tiene inicio de sesión único, cuentas de huésped ni llamadas grupales, que están en los planes de pago. El inconveniente: las notificaciones push a las apps del teléfono pasan por el Test Push Notification Service gratuito de Mattermost, que Mattermost no recomienda para producción."
+			],
+			"faq": [
+				{
+					"q": "¿Mattermost es gratis?",
+					"a": "Sí. Mattermost Team Edition es gratis, se compila bajo la licencia MIT a partir de código abierto y conserva todo el historial de mensajes. Está pensada para equipos de menos de 250 usuarios activos; los planes de pago agregan SSO, cuentas de huésped, llamadas grupales y funciones de cumplimiento normativo."
+				},
+				{
+					"q": "¿Mattermost o Slack?",
+					"a": "Los dos tienen canales, hilos, mensajes directos e integraciones. Slack solo funciona en los servidores de Slack, mientras que Mattermost funciona donde lo despliegues, y sus webhooks de entrada aceptan el formato de Slack, así que muchas integraciones de Slack funcionan sin cambios."
+				},
+				{
+					"q": "¿Puedo pasar de Slack a Mattermost?",
+					"a": "Sí. Las herramientas de migración de Mattermost, mmetl y mmctl import, traen usuarios, canales, historial de mensajes, mensajes directos, hilos y archivos desde una exportación de Slack. Los comandos de barra no se pasan."
+				},
+				{
+					"q": "¿Mattermost tiene apps móviles?",
+					"a": "Sí, para iOS y Android, y apps de escritorio para Windows, macOS y Linux. Con Team Edition, las notificaciones push pasan por el Test Push Notification Service de Mattermost, que es gratis pero no ofrece garantías."
+				},
+				{
+					"q": "¿Cuántos usuarios admite Mattermost Team Edition?",
+					"a": "Hasta 250 usuarios activos: avisa al llegar a 200, y a los 250 se niega a crear o activar más. Un equipo que lo supera pasa a un plan de pago."
+				},
+				{
+					"q": "¿Las llamadas de Mattermost funcionan con esta plantilla?",
+					"a": "Tal como está, no. Las llamadas envían su audio y su video por el puerto 8443, que esta plantilla no publica; el chat de texto, los archivos y las integraciones funcionan por completo."
+				}
+			]
+		},
+		"fr": {
+			"description": "La messagerie d’équipe open source, avec canaux, fils de discussion, partage de fichiers et intégrations",
+			"notes": "Connectez-vous avec le nom d’utilisateur ou l’e-mail et le mot de passe administrateur indiqués : ce compte est l’Administrateur système, créé avant que la page ne réponde à quiconque. Donnez un nom à votre organisation pour créer la première équipe, puis ajoutez des personnes avec « Inviter des membres » : personne ne s’inscrit sans invitation. Les notifications par e-mail demandent un serveur SMTP dans Console système → Environnement → SMTP.",
+			"sizing": "Mattermost prend environ 300 MB de mémoire avec Postgres pour une petite équipe, et sa base de données et ses fichiers grossissent avec les messages et les fichiers envoyés.",
+			"summary": "Mattermost, la messagerie d’équipe open source avec canaux, fils et intégrations. Auto-hébergez Mattermost Team Edition, alternative à Slack, en un clic.",
+			"about": [
+				"Mattermost est une plateforme de collaboration open source pour la messagerie d’équipe : canaux publics et privés, messages personnels et de groupe, fils de discussion, partage de fichiers, recherche, Markdown et émoticônes personnalisées, dans plus de 20 langues. Des webhooks, des commandes slash, des bots, des plugins et une API le relient à d’autres outils, avec des intégrations pour Jira, GitHub et GitLab. Des applications pour Windows, macOS, Linux, iOS et Android se connectent à son adresse.",
+				"Ce template fait tourner Mattermost Team Edition, la version gratuite sous licence MIT, avec PostgreSQL, et crée l’Administrateur système à partir des champs avant que la page ne réponde à quiconque. Team Edition est pensée pour les petites équipes : elle accepte jusqu’à 250 utilisateurs actifs et n’a ni authentification unique, ni comptes invités, ni appels de groupe, qui font partie des offres payantes. Le revers : les notifications push vers les applications pour téléphone passent par le Test Push Notification Service gratuit de Mattermost, que Mattermost ne recommande pas en production."
+			],
+			"faq": [
+				{
+					"q": "Mattermost est-il gratuit ?",
+					"a": "Oui. Mattermost Team Edition est gratuite, compilée sous licence MIT à partir du code open source, et garde tout l’historique des messages. Elle est pensée pour les équipes de moins de 250 utilisateurs actifs ; les offres payantes ajoutent le SSO, les comptes invités, les appels de groupe et des fonctions de conformité."
+				},
+				{
+					"q": "Mattermost ou Slack ?",
+					"a": "Les deux ont des canaux, des fils de discussion, des messages personnels et des intégrations. Slack ne tourne que sur les serveurs de Slack, alors que Mattermost tourne là où vous le déployez, et ses webhooks entrants acceptent le format de Slack, si bien que beaucoup d’intégrations Slack fonctionnent telles quelles."
+				},
+				{
+					"q": "Puis-je passer de Slack à Mattermost ?",
+					"a": "Oui. Les outils de migration de Mattermost, mmetl et mmctl import, reprennent d’un export Slack les utilisateurs, les canaux, l’historique des messages, les messages personnels, les fils de discussion et les fichiers. Les commandes slash ne sont pas reprises."
+				},
+				{
+					"q": "Mattermost a-t-il des applications mobiles ?",
+					"a": "Oui, pour iOS et Android, ainsi que des applications de bureau pour Windows, macOS et Linux. Avec Team Edition, les notifications push passent par le Test Push Notification Service de Mattermost, gratuit mais sans aucune garantie."
+				},
+				{
+					"q": "Combien d’utilisateurs Mattermost Team Edition accepte-t-elle ?",
+					"a": "Jusqu’à 250 utilisateurs actifs : elle prévient à 200, et à 250 elle refuse d’en créer ou d’en activer davantage. Une équipe qui la dépasse passe à une offre payante."
+				},
+				{
+					"q": "Les appels Mattermost fonctionnent-ils avec ce template ?",
+					"a": "Pas tel quel. Les appels font passer leur audio et leur vidéo par le port 8443, que ce template ne publie pas ; la messagerie texte, les fichiers et les intégrations fonctionnent entièrement."
+				}
+			]
+		},
+		"pl": {
+			"description": "Czat zespołowy open source z kanałami, wątkami, udostępnianiem plików i integracjami",
+			"notes": "Zaloguj się nazwą użytkownika lub adresem e-mail i hasłem administratora podanymi przy tworzeniu projektu: to konto ma rolę Administrator Systemu i powstało, zanim strona komukolwiek odpowiedziała. Podaj nazwę organizacji, żeby utworzyć pierwszy zespół, a potem dodawaj ludzi przez Zaproś Członków: bez zaproszenia nikt się nie zarejestruje. Powiadomienia e-mail wymagają serwera SMTP, ustawianego na stronie Konsola systemu → Środowisko → SMTP.",
+			"sizing": "Mattermost zajmuje około 300 MB pamięci razem z Postgresem przy małym zespole, a jego baza danych i pliki rosną z każdą wiadomością i każdym wgranym załącznikiem.",
+			"summary": "Mattermost to czat zespołowy open source z kanałami, wątkami i integracjami. Hostuj Mattermost Team Edition, alternatywę dla Slacka, u siebie w jeden klik.",
+			"about": [
+				"Mattermost to platforma open source do współpracy na czacie zespołowym: kanały publiczne i prywatne, wiadomości bezpośrednie i grupowe, wątki, udostępnianie plików, wyszukiwanie, Markdown i niestandardowe emoji, w ponad 20 językach. Webhooki, polecenia po ukośniku, boty, wtyczki i API łączą go z innymi narzędziami, z integracjami dla Jiry, GitHuba i GitLaba. Aplikacje na Windows, macOS, Linuksa, iOS i Androida łączą się z jego adresem.",
+				"Ten szablon uruchamia Mattermost Team Edition, darmowe wydanie na licencji MIT, z PostgreSQL i tworzy Administratora Systemu z pól formularza, zanim strona komukolwiek odpowie. Team Edition to wydanie dla małych zespołów: obsługuje do 250 aktywnych użytkowników i nie ma logowania jednokrotnego, kont gości ani połączeń grupowych, które są w płatnych planach. Haczyk: powiadomienia push do aplikacji mobilnych idą przez darmową usługę Test Push Notification Service od Mattermosta, której sam Mattermost nie zaleca do produkcji."
+			],
+			"faq": [
+				{
+					"q": "Czy Mattermost jest darmowy?",
+					"a": "Tak. Mattermost Team Edition to darmowe wydanie skompilowane na licencji MIT z otwartego kodu źródłowego, które zachowuje całą historię wiadomości. Jest przeznaczone dla zespołów poniżej 250 aktywnych użytkowników; płatne plany dodają SSO, konta gości, połączenia grupowe i funkcje compliance."
+				},
+				{
+					"q": "Mattermost czy Slack?",
+					"a": "Oba mają kanały, wątki, wiadomości bezpośrednie i integracje. Slack działa tylko na serwerach Slacka, a Mattermost tam, gdzie go wdrożysz. Jego przychodzące webhooki przyjmują format Slacka, więc wiele integracji ze Slackiem działa bez zmian."
+				},
+				{
+					"q": "Czy mogę przenieść się ze Slacka do Mattermosta?",
+					"a": "Tak. Narzędzia migracji Mattermosta, mmetl i mmctl import, przenoszą z eksportu Slacka użytkowników, kanały, historię wiadomości, wiadomości bezpośrednie, wątki i pliki. Polecenia po ukośniku nie przechodzą."
+				},
+				{
+					"q": "Czy Mattermost ma aplikacje mobilne?",
+					"a": "Tak, na iOS i Androida, a do tego aplikacje desktopowe na Windows, macOS i Linuksa. W Team Edition powiadomienia push idą przez usługę Test Push Notification Service od Mattermosta, która jest darmowa, ale nie daje żadnych gwarancji."
+				},
+				{
+					"q": "Ilu użytkowników może mieć Mattermost Team Edition?",
+					"a": "Do 250 aktywnych użytkowników: przy 200 ostrzega, a przy 250 odmawia tworzenia i aktywowania kolejnych kont. Zespół, który przerośnie ten limit, przechodzi na płatny plan."
+				},
+				{
+					"q": "Czy połączenia Mattermosta działają z tym szablonem?",
+					"a": "Nie w tej postaci. Połączenia przesyłają dźwięk i obraz przez port 8443, którego ten szablon nie publikuje; czat tekstowy, pliki i integracje działają w pełni."
+				}
+			]
+		},
+		"pt": {
+			"description": "Chat de equipe de código aberto com canais, tópicos, compartilhamento de arquivos e integrações",
+			"notes": "Entre com o usuário ou o e-mail e a senha de administrador que você informou: essa conta, criada antes de a página responder a qualquer pessoa, é o Administrador do Sistema. Dê um nome à sua organização para criar a primeira equipe e depois adicione pessoas com Convidar Membros: ninguém se cadastra sem convite. As notificações por e-mail precisam de um servidor SMTP em Console do Sistema → Ambiente → SMTP.",
+			"sizing": "Mattermost usa cerca de 300 MB de memória com o Postgres para uma equipe pequena, e o banco de dados e os arquivos crescem com as mensagens e os uploads.",
+			"summary": "O Mattermost é um chat de equipe open source com canais, tópicos e integrações. Auto-hospede o Mattermost Team Edition, alternativa ao Slack, em um clique.",
+			"about": [
+				"O Mattermost é uma plataforma de colaboração de código aberto para chat de equipe: canais públicos e privados, mensagens diretas e em grupo, tópicos, compartilhamento de arquivos, busca, Markdown e emoji personalizado, em mais de 20 idiomas. Webhooks, comandos slash, bots, plugins e uma API o conectam a outras ferramentas, com integrações para Jira, GitHub e GitLab. Apps para Windows, macOS, Linux, iOS e Android se conectam ao endereço dele.",
+				"Este template roda o Mattermost Team Edition, a versão gratuita compilada sob a licença MIT, com PostgreSQL, e cria o Administrador do Sistema a partir dos campos antes de a página responder a qualquer pessoa. O Team Edition é feito para equipes pequenas: aceita até 250 usuários ativos e não tem login único, contas de convidados nem chamadas em grupo, que ficam nos planos pagos. O porém: as notificações push para os apps de celular passam pelo Test Push Notification Service do Mattermost, gratuito, que o próprio Mattermost não recomenda para produção."
+			],
+			"faq": [
+				{
+					"q": "O Mattermost é gratuito?",
+					"a": "Sim. O Mattermost Team Edition é gratuito, compilado sob a licença MIT a partir de código aberto, e guarda todo o histórico de mensagens. Ele é feito para equipes com menos de 250 usuários ativos; os planos pagos adicionam SSO, contas de convidados, chamadas em grupo e recursos de conformidade."
+				},
+				{
+					"q": "Mattermost ou Slack?",
+					"a": "Os dois têm canais, tópicos, mensagens diretas e integrações. O Slack roda só nos servidores do Slack, enquanto o Mattermost roda onde você fizer o deploy dele, e os webhooks de entrada dele aceitam o formato do Slack, então muitas integrações do Slack funcionam sem mudança."
+				},
+				{
+					"q": "Posso migrar do Slack para o Mattermost?",
+					"a": "Sim. As ferramentas de migração do Mattermost, mmetl e mmctl import, trazem usuários, canais, histórico de mensagens, mensagens diretas, tópicos e arquivos de uma exportação do Slack. Os comandos slash não vêm junto."
+				},
+				{
+					"q": "O Mattermost tem apps para celular?",
+					"a": "Sim, para iOS e Android, e apps de desktop para Windows, macOS e Linux. Com o Team Edition, as notificações push passam pelo Test Push Notification Service do Mattermost, que é gratuito, mas não oferece garantias."
+				},
+				{
+					"q": "Quantos usuários o Mattermost Team Edition aceita?",
+					"a": "Até 250 usuários ativos: ele avisa aos 200 e, aos 250, se recusa a criar ou ativar mais. Uma equipe que passa disso migra para um plano pago."
+				},
+				{
+					"q": "As chamadas do Mattermost funcionam com este template?",
+					"a": "Do jeito que está, não. As chamadas enviam áudio e vídeo pela porta 8443, que este template não publica; o chat de texto, os arquivos e as integrações funcionam por completo."
+				}
+			]
+		},
+		"ru": {
+			"description": "Командный чат с открытым кодом: каналы, обсуждения, обмен файлами и интеграции",
+			"notes": "Войдите с именем пользователя или почтой и паролем администратора, которые вы указали: этот аккаунт — администратор системы, созданный еще до того, как страница кому-либо ответила. Укажите название организации, чтобы создать первую команду, затем добавьте людей через «Пригласить участников»: без приглашения никто не зарегистрируется. Для уведомлений по почте нужен SMTP-сервер в разделе «Системная консоль» → «Окружение» → «SMTP».",
+			"sizing": "Mattermost для небольшой команды занимает около 300 MB памяти вместе с Postgres, а база данных и файлы растут вместе с сообщениями и загрузками.",
+			"summary": "Self-hosted Mattermost — open source командный чат с каналами, обсуждениями и интеграциями. Mattermost Team Edition, альтернатива Slack, в один клик.",
+			"about": [
+				"Mattermost — платформа с открытым кодом для совместной работы в командном чате: публичные и приватные каналы, личные и групповые сообщения, обсуждения, обмен файлами, поиск, Markdown и пользовательские смайлики, на более чем 20 языках. Вебхуки, слэш-команды, боты, плагины и API связывают его с другими инструментами, а для Jira, GitHub и GitLab есть интеграции. Приложения для Windows, macOS, Linux, iOS и Android подключаются к его адресу.",
+				"Этот шаблон запускает Mattermost Team Edition — бесплатную сборку под лицензией MIT — с PostgreSQL и создает администратора системы по данным из полей еще до того, как страница кому-либо ответит. Team Edition рассчитана на небольшие команды: она принимает до 250 активных пользователей, и в ней нет единого входа, гостевых учетных записей и групповых звонков — они есть в платных тарифах. Подвох: push-уведомления в приложения на телефоне идут через бесплатный Test Push Notification Service от Mattermost, который сам Mattermost не рекомендует для продакшена."
+			],
+			"faq": [
+				{
+					"q": "Mattermost бесплатный?",
+					"a": "Да. Mattermost Team Edition бесплатна, собрана из открытого кода под лицензией MIT и хранит всю историю сообщений. Она рассчитана на команды меньше 250 активных пользователей; платные тарифы добавляют SSO, гостевые учетные записи, групповые звонки и функции для соответствия требованиям (compliance)."
+				},
+				{
+					"q": "Mattermost или Slack?",
+					"a": "В обоих есть каналы, обсуждения, личные сообщения и интеграции. Slack работает только на серверах Slack, а Mattermost — там, где вы его задеплоите, и его входящие вебхуки принимают формат Slack, так что многие интеграции Slack работают без изменений."
+				},
+				{
+					"q": "Можно ли переехать со Slack на Mattermost?",
+					"a": "Да. Инструменты миграции Mattermost, mmetl и mmctl import, переносят из экспорта Slack пользователей, каналы, историю сообщений, личные сообщения, обсуждения и файлы. Слэш-команды не переносятся."
+				},
+				{
+					"q": "Есть ли у Mattermost мобильные приложения?",
+					"a": "Да, для iOS и Android, а также десктопные приложения для Windows, macOS и Linux. В Team Edition push-уведомления идут через Test Push Notification Service от Mattermost — он бесплатный, но без каких-либо гарантий."
+				},
+				{
+					"q": "Сколько пользователей может быть в Mattermost Team Edition?",
+					"a": "До 250 активных пользователей: на 200 она предупреждает, а на 250 отказывается создавать или активировать новых. Команда, которая из нее выросла, переходит на платный тариф."
+				},
+				{
+					"q": "Работают ли звонки Mattermost с этим шаблоном?",
+					"a": "В исходном виде — нет. Звонки передают звук и видео через порт 8443, который этот шаблон не публикует; текстовый чат, файлы и интеграции работают полностью."
+				}
+			]
+		},
+		"uk": {
+			"description": "Командний чат із відкритим кодом: канали, обговорення, обмін файлами й інтеграції",
+			"notes": "Увійдіть з іменем користувача або поштою й паролем адміністратора, які ви вказали: це акаунт із роллю «Системний адміністратор», створений ще до того, як сторінка комусь відповіла. Вкажіть назву своєї організації, щоб створити першу команду, а потім додайте людей кнопкою «Запросити учасників»: без запрошення ніхто не зареєструється. Для сповіщень поштою потрібен SMTP-сервер у розділі «Системна консоль → Середовище → SMTP».",
+			"sizing": "Для невеликої команди Mattermost займає близько 300 MB пам’яті разом із Postgres, а база даних і файли ростуть із повідомленнями та завантаженнями.",
+			"summary": "Mattermost — командний чат із відкритим кодом: канали, обговорення й інтеграції. Self-hosted Mattermost Team Edition, альтернатива Slack, в один клік.",
+			"about": [
+				"Mattermost — платформа для командної роботи з відкритим кодом, побудована навколо чату: публічні й приватні канали, приватні та групові повідомлення, обговорення, обмін файлами, пошук, Markdown і користувацькі емодзі, і все це понад 20 мовами. Вебхуки, швидкі команди, боти, плагіни й API пов’язують його з іншими інструментами, є інтеграції з Jira, GitHub і GitLab. Застосунки для Windows, macOS, Linux, iOS і Android підключаються до його адреси.",
+				"Цей шаблон запускає Mattermost Team Edition, безкоштовну збірку за ліцензією MIT, разом із PostgreSQL і створює системного адміністратора з полів ще до того, як сторінка комусь відповість. Team Edition розрахована на невеликі команди: вона допускає до 250 активних користувачів і не має єдиного входу, гостьових акаунтів і групових дзвінків — вони є в платних тарифах. Підводний камінь: push-повідомлення в застосунки для телефонів ідуть через безкоштовний Test Push Notification Service від Mattermost, який сама компанія не радить для продакшну."
+			],
+			"faq": [
+				{
+					"q": "Mattermost безкоштовний?",
+					"a": "Так. Mattermost Team Edition безкоштовна, зібрана з відкритого коду за ліцензією MIT і зберігає всю історію повідомлень. Вона розрахована на команди, де менше ніж 250 активних користувачів; платні тарифи додають SSO, гостьові акаунти, групові дзвінки й функції комплаєнсу."
+				},
+				{
+					"q": "Mattermost чи Slack?",
+					"a": "В обох є канали, обговорення, приватні повідомлення й інтеграції. Slack працює лише на серверах Slack, а Mattermost — там, де ви його задеплоїте, і його вхідні вебхуки приймають формат Slack, тож багато інтеграцій Slack працюють без змін."
+				},
+				{
+					"q": "Чи можна перейти зі Slack на Mattermost?",
+					"a": "Так. Інструменти міграції Mattermost, mmetl і mmctl import, переносять з експорту Slack користувачів, канали, історію повідомлень, приватні повідомлення, обговорення й файли. Швидкі команди не переносяться."
+				},
+				{
+					"q": "Чи є в Mattermost мобільні застосунки?",
+					"a": "Так, для iOS і Android, а також застосунки для комп’ютерів на Windows, macOS і Linux. З Team Edition push-повідомлення йдуть через Test Push Notification Service від Mattermost — безкоштовний, але без жодних гарантій."
+				},
+				{
+					"q": "Скільки користувачів може мати Mattermost Team Edition?",
+					"a": "До 250 активних користувачів: на 200 вона попереджає, а на 250 відмовляється створювати чи активувати нових. Команда, яка з неї виросла, переходить на платний тариф."
+				},
+				{
+					"q": "Чи працюють дзвінки Mattermost із цим шаблоном?",
+					"a": "Не в такому вигляді. Дзвінки передають аудіо й відео через порт 8443, який цей шаблон не публікує; текстовий чат, файли й інтеграції працюють повністю."
+				}
+			]
+		}
+	}
+}
