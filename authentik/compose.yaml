@@ -1,0 +1,60 @@
+x-authentik: &authentik
+  image: ghcr.io/goauthentik/server:2026.8
+  restart: unless-stopped
+  depends_on:
+    postgresql:
+      condition: service_healthy
+  shm_size: 512mb
+  # Any of authentik's settings can be added to .env, such as AUTHENTIK_EMAIL__HOST and the
+  # others that send its email.
+  env_file: .env
+
+services:
+  server:
+    <<: *authentik
+    command: server
+    environment: &environment
+      AUTHENTIK_POSTGRESQL__HOST: postgresql
+      AUTHENTIK_POSTGRESQL__NAME: authentik
+      AUTHENTIK_POSTGRESQL__USER: authentik
+      AUTHENTIK_POSTGRESQL__PASSWORD: ${POSTGRES_PASSWORD}
+      AUTHENTIK_SECRET_KEY: ${SECRET_KEY}
+    volumes:
+      - data:/data
+      - templates:/templates
+
+  # The worker runs the background tasks, and at its first start it gives the administrator,
+  # akadmin, the email and password given, so authentik's initial setup is never offered.
+  worker:
+    <<: *authentik
+    command: worker
+    environment:
+      <<: *environment
+      AUTHENTIK_BOOTSTRAP_EMAIL: ${ADMIN_EMAIL}
+      AUTHENTIK_BOOTSTRAP_PASSWORD: ${ADMIN_PASSWORD}
+    volumes:
+      - data:/data
+      - certs:/certs
+      - templates:/templates
+
+  postgresql:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: authentik
+      POSTGRES_USER: authentik
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U authentik -d authentik"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  data:
+  certs:
+  templates:
+  database:

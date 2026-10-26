@@ -1,0 +1,291 @@
+{
+	"name": "authentik",
+	"emoji": "🛂",
+	"category": "security",
+	"alternatives": [
+		"Okta",
+		"Auth0",
+		"Keycloak"
+	],
+	"plan": "starter",
+	"route": {
+		"service": "server",
+		"port": 9000
+	},
+	"variables": [
+		{
+			"name": "POSTGRES_PASSWORD",
+			"secret": 24
+		},
+		{
+			"name": "SECRET_KEY",
+			"secret": 40
+		},
+		{
+			"name": "ADMIN_EMAIL",
+			"ask": "email"
+		},
+		{
+			"name": "ADMIN_PASSWORD",
+			"ask": "adminPassword"
+		}
+	],
+	"texts": {
+		"en": {
+			"description": "An identity provider for single sign-on to your apps: OpenID Connect, SAML, LDAP, MFA and passkeys",
+			"notes": "Sign in with the email and the admin password you gave, as akadmin: authentik set that password at its first start, so its initial setup is never offered, and the password in .env is read only then: change it in authentik. Add an app in the Admin interface under Applications → Applications with New Application. Sending email, for password recovery, takes AUTHENTIK_EMAIL__HOST and the other email settings in .env.",
+			"sizing": "authentik takes about 750 MB of memory at rest with PostgreSQL and around 1 GB while it starts; its database grows slowly with events and sessions.",
+			"summary": "authentik is an open-source identity provider for SSO with OpenID Connect, SAML, LDAP and passkeys. An Okta alternative you self-host in one click.",
+			"about": [
+				"authentik is an open-source identity provider: one sign-in, with its own users, groups and multi-factor authentication, for every app you run. It speaks OAuth2 and OpenID Connect, SAML, LDAP, RADIUS and SCIM, and its proxy provider puts a sign-in in front of apps that have none. Sign-in is built from flows and stages in the admin interface, so enrollment, recovery, MFA with TOTP, WebAuthn passkeys or Duo, and sign-in with GitHub, Google, Apple or Discord are settings rather than code.",
+				"People self-host authentik to give their own apps single sign-on, as companies do with Okta or Microsoft Entra ID, without paying per user. This template runs authentik’s server, its worker and PostgreSQL, and sets the administrator’s email and password from the fields; authentik has needed no Redis since 2025.10. The catch: LDAP and RADIUS each need an outpost, a container of its own, and a few features, such as the Google Workspace and Entra ID integrations, are in the paid Enterprise edition."
+			],
+			"faq": [
+				{
+					"q": "Is authentik free?",
+					"a": "Yes. authentik’s open-source edition is free under the MIT license and includes OpenID Connect, SAML, LDAP, RADIUS, SCIM and the proxy provider. The Enterprise edition starts at $5 per user a month, billed yearly."
+				},
+				{
+					"q": "authentik or Keycloak?",
+					"a": "Both are open-source identity providers with OpenID Connect and SAML. authentik builds sign-in from flows in its admin interface, and its own comparison marks LDAP, GeoIP and RDP, SSH and VNC access in the browser as what it has and Keycloak does not, with SCIM and RADIUS in Keycloak only through extensions."
+				},
+				{
+					"q": "Does authentik support passkeys?",
+					"a": "Yes. Its WebAuthn stage registers passkeys and security keys, as a second factor or for passwordless sign-in, and the sign-in form offers passkey autofill since authentik 2025.12."
+				},
+				{
+					"q": "How do I connect an app to authentik with OpenID Connect?",
+					"a": "In the Admin interface, open Applications → Applications, click New Application, choose OAuth2/OpenID Connect and give the app’s redirect URI. The app then takes the client ID, the client secret and the issuer, https://<your address>/application/o/<slug>/, where it finds the rest."
+				},
+				{
+					"q": "Can authentik be an LDAP server?",
+					"a": "Yes, through an LDAP provider and an LDAP outpost, the container ghcr.io/goauthentik/ldap, which serves authentik’s users and groups to apps that only speak LDAP. It is added to compose.yaml with the outpost’s token from authentik."
+				}
+			]
+		},
+		"de": {
+			"description": "Ein Identity Provider für Single Sign-on bei deinen Apps: OpenID Connect, SAML, LDAP, MFA und Passkeys",
+			"notes": "Melde dich als akadmin an, mit der E-Mail und dem Admin-Passwort, die du angegeben hast. Das Passwort hat authentik beim ersten Start gesetzt, deshalb wird die Ersteinrichtung nie angeboten, und das Passwort in der .env liest authentik nur dieses eine Mal: Ändere es danach in authentik. Eine App fügst du in der „Admin-Oberfläche“ unter „Anwendungen“ → „Anwendungen“ mit „Neue Anwendung“ hinzu. Damit authentik E-Mails verschicken kann, etwa zur Wiederherstellung von Passwörtern, braucht es AUTHENTIK_EMAIL__HOST und die übrigen E-Mail-Einstellungen in der .env.",
+			"sizing": "Im Leerlauf braucht authentik mit PostgreSQL etwa 750 MB RAM und beim Start rund 1 GB; die Datenbank wächst langsam mit Ereignissen und Sitzungen.",
+			"summary": "Open-Source-Identity-Provider authentik selbst hosten: SSO mit OpenID Connect, SAML, LDAP und Passkeys. Eine Okta-Alternative mit einem Klick.",
+			"about": [
+				"Der Open-Source-Identity-Provider authentik bietet eine Anmeldung für alle Apps, die du betreibst, mit eigenen Benutzern, Gruppen und Multi-Faktor-Authentifizierung. Unterstützt werden OAuth2 und OpenID Connect, SAML, LDAP, RADIUS und SCIM, und der Proxy-Provider setzt eine Anmeldung vor Apps, die selbst keine haben. Die Anmeldung wird in der Admin-Oberfläche aus Flows und Stages zusammengesetzt, sodass Registrierung, Wiederherstellung, MFA mit TOTP, WebAuthn-Passkeys oder Duo und die Anmeldung mit GitHub, Google, Apple oder Discord Einstellungen sind statt Code.",
+				"Viele hosten authentik selbst, um ihren eigenen Apps Single Sign-on zu geben, wie es Unternehmen mit Okta oder Microsoft Entra ID tun, ohne pro Benutzer zu zahlen. Diese Vorlage betreibt den Server von authentik, seinen Worker und PostgreSQL und setzt E-Mail und Passwort des Administrators aus den Feldern; Redis braucht authentik seit 2025.10 nicht mehr. Der Haken: LDAP und RADIUS brauchen jeweils einen Outpost, also einen eigenen Container, und einige Funktionen, etwa die Integrationen für Google Workspace und Entra ID, gehören zur kostenpflichtigen Enterprise Edition."
+			],
+			"faq": [
+				{
+					"q": "Ist authentik kostenlos?",
+					"a": "Ja. Die Open-Source-Edition von authentik ist unter der MIT-Lizenz kostenlos und umfasst OpenID Connect, SAML, LDAP, RADIUS, SCIM und den Proxy-Provider. Die Enterprise Edition kostet ab 5 $ pro Benutzer im Monat, bei jährlicher Abrechnung."
+				},
+				{
+					"q": "Wie unterscheiden sich authentik und Keycloak?",
+					"a": "Beide sind Open-Source-Identity-Provider mit OpenID Connect und SAML. Bei authentik setzt du die Anmeldung in der Admin-Oberfläche aus Flows zusammen, und der Vergleich, den authentik selbst veröffentlicht, führt LDAP, GeoIP sowie RDP-, SSH- und VNC-Zugriff im Browser als das auf, was authentik hat und Keycloak nicht, während Keycloak SCIM und RADIUS dort nur über Erweiterungen bekommt."
+				},
+				{
+					"q": "Unterstützt authentik Passkeys?",
+					"a": "Ja. Die WebAuthn-Stage registriert Passkeys und Sicherheitsschlüssel, als zweiten Faktor oder für die Anmeldung ohne Passwort, und seit authentik 2025.12 bietet das Anmeldeformular Passkeys per Autofill an."
+				},
+				{
+					"q": "Wie verbinde ich eine App per OpenID Connect mit authentik?",
+					"a": "Öffne in der „Admin-Oberfläche“ „Anwendungen“ → „Anwendungen“, klick auf „Neue Anwendung“, wähl OAuth2/OpenID Connect und gib die Redirect-URI der App an. Die App bekommt dann die „Client ID“, das „Client Geheimnis“ und den Aussteller (Issuer), https://<deine Adresse>/application/o/<slug>/, unter dem sie den Rest findet."
+				},
+				{
+					"q": "Kann authentik ein LDAP-Server sein?",
+					"a": "Ja, über einen LDAP-Provider und einen LDAP-Outpost, den Container ghcr.io/goauthentik/ldap, der die Benutzer und Gruppen von authentik an Apps ausliefert, die nur LDAP sprechen. Er kommt mit dem Token des Outposts aus authentik in die compose.yaml."
+				}
+			]
+		},
+		"es": {
+			"description": "Un proveedor de identidad para el inicio de sesión único en tus apps: OpenID Connect, SAML, LDAP, MFA y passkeys",
+			"notes": "Inicia sesión con el correo y la contraseña de administrador que indicaste, como akadmin: authentik fijó esa contraseña en su primer inicio, así que su configuración inicial nunca se ofrece, y la contraseña de .env solo se lee entonces: cámbiala en authentik. Agrega una app en la Interfaz de administrador, en Aplicaciones → Aplicaciones, con “New Application”. El envío de correos, para recuperar contraseñas, requiere AUTHENTIK_EMAIL__HOST y los demás ajustes de correo en .env.",
+			"sizing": "authentik ocupa unos 750 MB de memoria en reposo con PostgreSQL y alrededor de 1 GB mientras se inicia; su base de datos crece despacio con los eventos y las sesiones.",
+			"summary": "authentik es un proveedor de identidad de código abierto para SSO con OpenID Connect, SAML, LDAP y passkeys. Alternativa a Okta que autoalojas en un clic.",
+			"about": [
+				"authentik es un proveedor de identidad de código abierto: un solo inicio de sesión, con sus propios usuarios, grupos y autenticación multifactor, para todas las apps que ejecutas. Habla OAuth2 y OpenID Connect, SAML, LDAP, RADIUS y SCIM, y su proveedor de proxy pone un inicio de sesión delante de las apps que no lo tienen. El inicio de sesión se construye con flujos y etapas en la interfaz de administrador, así que la inscripción, la recuperación, la MFA con TOTP, passkeys WebAuthn o Duo, y el inicio de sesión con GitHub, Google, Apple o Discord se configuran en lugar de programarse.",
+				"La gente autoaloja authentik para dar inicio de sesión único a sus propias apps, como hacen las empresas con Okta o Microsoft Entra ID, sin pagar por usuario. Esta plantilla ejecuta el servidor de authentik, su worker y PostgreSQL, y fija el correo y la contraseña del administrador con los datos de los campos; authentik no necesita Redis desde la versión 2025.10. El inconveniente: LDAP y RADIUS necesitan cada uno un puesto avanzado (outpost), que es un contenedor aparte, y algunas funciones, como las integraciones con Google Workspace y Entra ID, están en la edición Enterprise, que es de pago."
+			],
+			"faq": [
+				{
+					"q": "¿authentik es gratis?",
+					"a": "Sí. La edición de código abierto de authentik es gratis bajo la licencia MIT e incluye OpenID Connect, SAML, LDAP, RADIUS, SCIM y el proveedor de proxy. La edición Enterprise cuesta desde 5 USD por usuario al mes, con facturación anual."
+				},
+				{
+					"q": "¿authentik o Keycloak?",
+					"a": "Los dos son proveedores de identidad de código abierto con OpenID Connect y SAML. authentik construye el inicio de sesión con flujos en su interfaz de administrador, y su propia comparación señala LDAP, GeoIP y el acceso por RDP, SSH y VNC en el navegador como lo que él tiene y Keycloak no, con SCIM y RADIUS en Keycloak solo mediante extensiones."
+				},
+				{
+					"q": "¿authentik admite passkeys?",
+					"a": "Sí. Su etapa de WebAuthn registra passkeys y llaves de seguridad, como segundo factor o para iniciar sesión sin contraseña, y desde authentik 2025.12 el formulario de inicio de sesión ofrece autocompletar las passkeys."
+				},
+				{
+					"q": "¿Cómo conecto una app a authentik con OpenID Connect?",
+					"a": "En la Interfaz de administrador, abre Aplicaciones → Aplicaciones, haz clic en “New Application”, elige OAuth2/OpenID Connect e indica la URI de redirección de la app. Luego la app toma el ID de cliente, el secreto del cliente y el emisor, https://<tu dirección>/application/o/<slug>/, donde encuentra lo demás."
+				},
+				{
+					"q": "¿authentik puede ser un servidor LDAP?",
+					"a": "Sí, mediante un proveedor de LDAP y un puesto avanzado (outpost) de LDAP, el contenedor ghcr.io/goauthentik/ldap, que sirve los usuarios y grupos de authentik a las apps que solo hablan LDAP. Se agrega a compose.yaml con el token del puesto avanzado que da authentik."
+				}
+			]
+		},
+		"fr": {
+			"description": "Un fournisseur d’identité pour l’authentification unique (SSO) sur vos applications : OpenID Connect, SAML, LDAP, MFA et clés d’accès",
+			"notes": "Connectez-vous avec l’e-mail et le mot de passe administrateur indiqués, sous le compte akadmin : authentik a défini ce mot de passe à son premier démarrage, donc sa configuration initiale n’est jamais proposée. Le mot de passe de .env n’est lu qu’à ce moment-là : changez-le dans authentik. Ajoutez une application dans l’Interface d’administration, sous Applications → Applications, avec « Nouvelle application ». L’envoi d’e-mails, pour la récupération de mot de passe, demande AUTHENTIK_EMAIL__HOST et les autres réglages d’e-mail dans .env.",
+			"sizing": "authentik prend environ 750 MB de mémoire au repos avec PostgreSQL, et autour de 1 GB pendant son démarrage ; sa base de données grossit lentement avec les évènements et les sessions.",
+			"summary": "authentik, fournisseur d’identité open source pour le SSO : OpenID Connect, SAML, LDAP, clés d’accès. Une alternative à Okta à auto-héberger en un clic.",
+			"about": [
+				"authentik est un fournisseur d’identité open source : une seule connexion, avec ses propres utilisateurs, groupes et authentification multifacteur, pour toutes les applications que vous faites tourner. Il parle OAuth2 et OpenID Connect, SAML, LDAP, RADIUS et SCIM, et son fournisseur proxy place une connexion devant les applications qui n’en ont pas. La connexion se construit avec des flux et des étapes dans l’interface d’administration, si bien que l’inscription, la récupération, la MFA par TOTP, clés d’accès WebAuthn ou Duo, et la connexion avec GitHub, Google, Apple ou Discord sont des réglages plutôt que du code.",
+				"On auto-héberge authentik pour doter ses propres applications d’une authentification unique, comme les entreprises le font avec Okta ou Microsoft Entra ID, sans payer par utilisateur. Ce template fait tourner le serveur d’authentik, son worker et PostgreSQL, et définit l’e-mail et le mot de passe de l’administrateur à partir des champs ; authentik se passe de Redis depuis la version 2025.10. Le revers : LDAP et RADIUS demandent chacun un avant-poste (outpost), un conteneur à part, et quelques fonctionnalités, comme les intégrations Google Workspace et Entra ID, font partie de l’édition Enterprise, payante."
+			],
+			"faq": [
+				{
+					"q": "authentik est-il gratuit ?",
+					"a": "Oui. L’édition open source d’authentik est gratuite, sous licence MIT, et comprend OpenID Connect, SAML, LDAP, RADIUS, SCIM et le fournisseur proxy. L’édition Enterprise commence à 5 $ par utilisateur et par mois, en facturation annuelle."
+				},
+				{
+					"q": "authentik ou Keycloak ?",
+					"a": "Ce sont deux fournisseurs d’identité open source, avec OpenID Connect et SAML. authentik construit la connexion avec des flux dans son interface d’administration, et son propre comparatif indique LDAP, GeoIP et l’accès RDP, SSH et VNC dans le navigateur comme ce qu’il a et que Keycloak n’a pas, SCIM et RADIUS n’existant dans Keycloak que par des extensions."
+				},
+				{
+					"q": "authentik prend-il en charge les clés d’accès ?",
+					"a": "Oui. Son étape WebAuthn enregistre les clés d’accès et les clés de sécurité, comme second facteur ou pour une connexion sans mot de passe, et le formulaire de connexion propose les clés d’accès en saisie automatique depuis authentik 2025.12."
+				},
+				{
+					"q": "Comment connecter une application à authentik avec OpenID Connect ?",
+					"a": "Dans l’Interface d’administration, ouvrez Applications → Applications, cliquez sur « Nouvelle application », choisissez OAuth2/OpenID Connect et indiquez l’URI de redirection de l’application. L’application reçoit ensuite l’ID client, le secret du client et l’émetteur, https://<votre adresse>/application/o/<slug>/, où elle trouve le reste."
+				},
+				{
+					"q": "authentik peut-il servir de serveur LDAP ?",
+					"a": "Oui, grâce à un fournisseur LDAP et à un avant-poste LDAP, le conteneur ghcr.io/goauthentik/ldap, qui sert les utilisateurs et les groupes d’authentik aux applications qui ne parlent que LDAP. On l’ajoute à compose.yaml avec le token de l’avant-poste, fourni par authentik."
+				}
+			]
+		},
+		"pl": {
+			"description": "Dostawca tożsamości do logowania jednokrotnego w twoich aplikacjach: OpenID Connect, SAML, LDAP, MFA i klucze dostępu",
+			"notes": "Zaloguj się jako akadmin adresem e-mail i hasłem administratora podanymi przy tworzeniu projektu: authentik ustawił to hasło przy pierwszym uruchomieniu, więc nigdy nie proponuje konfiguracji początkowej, a hasło z .env odczytuje tylko wtedy: zmieniaj je w authentiku. Aplikację dodasz w Interfejsie administratora, w sekcji Aplikacje → Aplikacje, przyciskiem New Application. Wysyłanie e-maili, potrzebne do odzyskiwania hasła, wymaga AUTHENTIK_EMAIL__HOST i pozostałych ustawień poczty w .env.",
+			"sizing": "authentik zajmuje około 750 MB pamięci bez obciążenia razem z PostgreSQL i około 1 GB podczas uruchamiania; jego baza danych rośnie powoli wraz ze zdarzeniami i sesjami.",
+			"summary": "authentik to dostawca tożsamości open source do SSO z OpenID Connect, SAML, LDAP i kluczami dostępu. Alternatywa dla Okty, hostowana u siebie w jeden klik.",
+			"about": [
+				"authentik to dostawca tożsamości open source: jedno logowanie, z własnymi użytkownikami, grupami i uwierzytelnianiem wieloskładnikowym, do każdej aplikacji, którą uruchamiasz. Obsługuje OAuth2 i OpenID Connect, SAML, LDAP, RADIUS i SCIM, a jego dostawca proxy stawia logowanie przed aplikacjami, które same go nie mają. Logowanie buduje się z przepływów i etapów w interfejsie administratora, więc rejestracja, odzyskiwanie konta, MFA z TOTP, kluczami dostępu WebAuthn albo Duo i logowanie przez GitHuba, Google, Apple czy Discorda to ustawienia, a nie kod.",
+				"authentika hostuje się u siebie, żeby dać swoim aplikacjom logowanie jednokrotne, jak robią to firmy z Oktą albo Microsoft Entra ID, ale bez płacenia za użytkownika. Ten szablon uruchamia serwer authentika, jego workera i PostgreSQL, a e-mail i hasło administratora ustawia z pól formularza; od wersji 2025.10 authentik nie potrzebuje Redisa. Haczyk: LDAP i RADIUS wymagają każdy osobnej placówki (outpost), czyli oddzielnego kontenera, a kilka funkcji, takich jak integracje z Google Workspace i Entra ID, jest w płatnej edycji Enterprise."
+			],
+			"faq": [
+				{
+					"q": "Czy authentik jest darmowy?",
+					"a": "Tak. Edycja open source authentika jest darmowa na licencji MIT i obejmuje OpenID Connect, SAML, LDAP, RADIUS, SCIM i dostawcę proxy. Edycja Enterprise kosztuje od 5 $ za użytkownika miesięcznie, przy płatności rocznej."
+				},
+				{
+					"q": "authentik czy Keycloak?",
+					"a": "Oba to dostawcy tożsamości open source z OpenID Connect i SAML. authentik buduje logowanie z przepływów w swoim interfejsie administratora, a jego własne porównanie wskazuje LDAP, GeoIP oraz dostęp RDP, SSH i VNC w przeglądarce jako to, co on ma, a Keycloak nie; SCIM i RADIUS Keycloak ma tylko przez rozszerzenia."
+				},
+				{
+					"q": "Czy authentik obsługuje klucze dostępu?",
+					"a": "Tak. Jego etap WebAuthn rejestruje klucze dostępu i klucze bezpieczeństwa, jako drugi składnik albo do logowania bez hasła, a od wersji authentik 2025.12 formularz logowania podsuwa klucze dostępu przez autouzupełnianie."
+				},
+				{
+					"q": "Jak podłączyć aplikację do authentika przez OpenID Connect?",
+					"a": "W Interfejsie administratora otwórz Aplikacje → Aplikacje, kliknij New Application, wybierz OAuth2/OpenID Connect i podaj URI przekierowania aplikacji. Aplikacja dostaje potem Client ID, Client Secret i wystawcę (issuer), https://<twój adres>/application/o/<slug>/, pod którym znajdzie resztę."
+				},
+				{
+					"q": "Czy authentik może być serwerem LDAP?",
+					"a": "Tak, przez dostawcę LDAP i placówkę LDAP, czyli kontener ghcr.io/goauthentik/ldap, który udostępnia użytkowników i grupy authentika aplikacjom obsługującym tylko LDAP. Dodaje się go do compose.yaml z tokenem placówki pobranym z authentika."
+				}
+			]
+		},
+		"pt": {
+			"description": "Um provedor de identidade para login único nos seus apps: OpenID Connect, SAML, LDAP, MFA e passkeys",
+			"notes": "Entre com o e-mail e a senha de administrador que você informou, como akadmin: o authentik definiu essa senha na primeira inicialização, então a configuração inicial dele nunca é oferecida, e a senha do .env só é lida nesse momento: altere-a no authentik. Adicione um app na Interface de administração, em Aplicações → Aplicações, com New Application. Enviar e-mails, para recuperar senhas, exige AUTHENTIK_EMAIL__HOST e as outras configurações de e-mail no .env.",
+			"sizing": "authentik usa cerca de 750 MB de memória em repouso com o PostgreSQL e por volta de 1 GB enquanto inicia; o banco de dados cresce devagar com eventos e sessões.",
+			"summary": "O authentik é um provedor de identidade open source: SSO com OpenID Connect, SAML, LDAP e passkeys. Alternativa ao Okta para auto-hospedar em um clique.",
+			"about": [
+				"O authentik é um provedor de identidade de código aberto: um só login, com usuários, grupos e autenticação multifator próprios, para todos os apps que você roda. Ele fala OAuth2 e OpenID Connect, SAML, LDAP, RADIUS e SCIM, e o provedor de proxy dele coloca um login na frente de apps que não têm nenhum. O login é montado com fluxos e estágios na interface de administração, então inscrição, recuperação, MFA com TOTP, passkeys WebAuthn ou Duo e login com GitHub, Google, Apple ou Discord são configurações, e não código.",
+				"As pessoas auto-hospedam o authentik para dar login único aos próprios apps, como as empresas fazem com o Okta ou o Microsoft Entra ID, sem pagar por usuário. Este template roda o servidor do authentik, o worker dele e o PostgreSQL, e define o e-mail e a senha do administrador a partir dos campos; o authentik não precisa de Redis desde a versão 2025.10. O porém: LDAP e RADIUS precisam cada um de um outpost, um container à parte, e alguns recursos, como as integrações com Google Workspace e Entra ID, ficam na edição Enterprise, paga."
+			],
+			"faq": [
+				{
+					"q": "O authentik é gratuito?",
+					"a": "Sim. A edição open source do authentik é gratuita sob a licença MIT e inclui OpenID Connect, SAML, LDAP, RADIUS, SCIM e o provedor de proxy. A edição Enterprise começa em US$ 5 por usuário por mês, com cobrança anual."
+				},
+				{
+					"q": "authentik ou Keycloak?",
+					"a": "Os dois são provedores de identidade de código aberto com OpenID Connect e SAML. O authentik monta o login com fluxos na interface de administração, e a comparação do próprio authentik aponta LDAP, GeoIP e acesso RDP, SSH e VNC no navegador como o que ele tem e o Keycloak não, com SCIM e RADIUS no Keycloak só por meio de extensões."
+				},
+				{
+					"q": "O authentik suporta passkeys?",
+					"a": "Sim. O estágio WebAuthn dele registra passkeys e chaves de segurança, como segundo fator ou para login sem senha, e o formulário de login oferece o preenchimento automático de passkeys desde o authentik 2025.12."
+				},
+				{
+					"q": "Como conecto um app ao authentik com OpenID Connect?",
+					"a": "Na Interface de administração, abra Aplicações → Aplicações, clique em New Application, escolha OAuth2/OpenID Connect e informe a URI de redirecionamento do app. Depois o app recebe o ID do cliente, o segredo do cliente e o emissor, https://<seu endereço>/application/o/<slug>/, onde encontra o resto."
+				},
+				{
+					"q": "O authentik pode ser um servidor LDAP?",
+					"a": "Sim, por meio de um provedor LDAP e de um outpost LDAP, o container ghcr.io/goauthentik/ldap, que serve os usuários e os grupos do authentik para apps que só falam LDAP. Ele é adicionado ao compose.yaml com o token do outpost que o authentik fornece."
+				}
+			]
+		},
+		"ru": {
+			"description": "Провайдер идентификации для единого входа в ваши приложения: OpenID Connect, SAML, LDAP, MFA и passkey",
+			"notes": "Войдите как akadmin с почтой и паролем администратора, которые вы указали. authentik задал этот пароль при первом запуске, поэтому начальную настройку он не предлагает, а пароль из .env читается только в тот раз: меняйте его в самом authentik. Приложение добавляется в интерфейсе администратора: «Приложения» → «Приложения», кнопка «Новое приложение». Чтобы отправлять письма для восстановления пароля, нужны AUTHENTIK_EMAIL__HOST и остальные настройки почты в .env.",
+			"sizing": "authentik занимает около 750 MB памяти в простое вместе с PostgreSQL и около 1 GB во время запуска; его база данных растет медленно — за счет событий и сессий.",
+			"summary": "Self-hosted authentik — open source провайдер идентификации для SSO с OpenID Connect, SAML, LDAP и passkey. Альтернатива Okta в один клик.",
+			"about": [
+				"authentik — провайдер идентификации с открытым кодом: один вход со своими пользователями, группами и многофакторной аутентификацией для всех приложений, которые вы запускаете. Он поддерживает OAuth2 и OpenID Connect, SAML, LDAP, RADIUS и SCIM, а его прокси-провайдер ставит вход перед приложениями, у которых входа нет. Вход собирается из потоков и этапов в интерфейсе администратора, поэтому регистрация, восстановление, MFA с TOTP, passkey через WebAuthn или Duo и вход через GitHub, Google, Apple или Discord — это настройки, а не код.",
+				"authentik хостят у себя, чтобы дать своим приложениям единый вход, как компании делают с Okta или Microsoft Entra ID, но без платы за каждого пользователя. Этот шаблон запускает сервер authentik, его воркер и PostgreSQL и задает почту и пароль администратора по данным из полей; начиная с версии 2025.10 authentik обходится без Redis. Подвох: для LDAP и RADIUS нужен внешний компонент (outpost) — у каждого свой, в отдельном контейнере, а некоторые функции, например интеграции с Google Workspace и Entra ID, входят в платную редакцию Enterprise."
+			],
+			"faq": [
+				{
+					"q": "authentik бесплатный?",
+					"a": "Да. Open source редакция authentik бесплатна, распространяется под лицензией MIT и включает OpenID Connect, SAML, LDAP, RADIUS, SCIM и прокси-провайдер. Редакция Enterprise стоит от 5 $ за пользователя в месяц при оплате за год."
+				},
+				{
+					"q": "authentik или Keycloak?",
+					"a": "Оба — провайдеры идентификации с открытым кодом, с OpenID Connect и SAML. authentik собирает вход из потоков в интерфейсе администратора, а в его собственном сравнении LDAP, GeoIP и доступ по RDP, SSH и VNC в браузере отмечены как то, что есть у authentik и нет у Keycloak; SCIM и RADIUS у Keycloak — только через расширения."
+				},
+				{
+					"q": "Поддерживает ли authentik passkey?",
+					"a": "Да. Этап WebAuthn регистрирует passkey и ключи безопасности как второй фактор или для входа без пароля, а начиная с authentik 2025.12 форма входа предлагает автозаполнение passkey."
+				},
+				{
+					"q": "Как подключить приложение к authentik по OpenID Connect?",
+					"a": "В интерфейсе администратора откройте «Приложения» → «Приложения», нажмите «Новое приложение», выберите OAuth2/OpenID Connect и укажите ссылку перенаправления (redirect URI) приложения. Затем приложению нужны ID клиента, секрет клиента и издатель (issuer) — https://<ваш адрес>/application/o/<slug>/, где оно найдет все остальное."
+				},
+				{
+					"q": "Может ли authentik работать как LDAP-сервер?",
+					"a": "Да, через LDAP-провайдер и внешний компонент LDAP (outpost) — контейнер ghcr.io/goauthentik/ldap, который отдает пользователей и группы authentik приложениям, понимающим только LDAP. Его добавляют в compose.yaml вместе с токеном внешнего компонента из authentik."
+				}
+			]
+		},
+		"uk": {
+			"description": "Провайдер ідентифікації для єдиного входу у ваші застосунки: OpenID Connect, SAML, LDAP, MFA і ключі доступу",
+			"notes": "Увійдіть як akadmin із поштою й паролем адміністратора, які ви вказали: authentik задав цей пароль під час першого запуску, тому свого початкового налаштування не пропонує, а пароль із .env читає лише тоді, тож змінюйте його в самому authentik. Застосунок додається в «Admin interface», у розділі «Applications → Applications», кнопкою «New Application». Щоб надсилати пошту для відновлення пароля, потрібні AUTHENTIK_EMAIL__HOST та інші поштові налаштування в .env.",
+			"sizing": "authentik займає близько 750 MB пам’яті в спокої разом із PostgreSQL і близько 1 GB під час запуску; його база даних повільно росте з подіями й сесіями.",
+			"summary": "authentik — провайдер ідентифікації з відкритим кодом для SSO з OpenID Connect, SAML, LDAP і ключами доступу. Self-hosted альтернатива Okta в один клік.",
+			"about": [
+				"authentik — провайдер ідентифікації з відкритим кодом: один вхід для всіх застосунків, які ви запускаєте, зі своїми користувачами, групами й багатофакторною автентифікацією. Він підтримує OAuth2 і OpenID Connect, SAML, LDAP, RADIUS і SCIM, а його проксі-провайдер ставить форму входу перед застосунками, у яких її немає. Вхід складається з потоків (flows) і етапів (stages) в інтерфейсі адміністратора, тож реєстрація, відновлення доступу, MFA з TOTP, ключами доступу WebAuthn або Duo і вхід через GitHub, Google, Apple чи Discord — це налаштування, а не код.",
+				"authentik хостять у себе, щоб дати своїм застосункам єдиний вхід, як це роблять компанії з Okta або Microsoft Entra ID, але без оплати за кожного користувача. Цей шаблон запускає сервер authentik, його воркер і PostgreSQL, а пошту й пароль адміністратора задає з полів; Redis authentik не потребує з версії 2025.10. Підводний камінь: LDAP і RADIUS потребують кожен свого outpost — окремого контейнера, а деякі функції, як-от інтеграції з Google Workspace та Entra ID, є лише в платній редакції Enterprise."
+			],
+			"faq": [
+				{
+					"q": "authentik безкоштовний?",
+					"a": "Так. Редакція authentik із відкритим кодом безкоштовна за ліцензією MIT і містить OpenID Connect, SAML, LDAP, RADIUS, SCIM і проксі-провайдер. Редакція Enterprise коштує від 5 $ за користувача на місяць з оплатою за рік."
+				},
+				{
+					"q": "authentik чи Keycloak?",
+					"a": "Обидва — провайдери ідентифікації з відкритим кодом, з OpenID Connect і SAML. authentik збирає вхід із потоків в інтерфейсі адміністратора, а його власне порівняння позначає LDAP, GeoIP і доступ до RDP, SSH та VNC у браузері як те, що є в authentik і немає в Keycloak, а SCIM і RADIUS у Keycloak — лише через розширення."
+				},
+				{
+					"q": "Чи підтримує authentik ключі доступу?",
+					"a": "Так. Його етап WebAuthn реєструє ключі доступу й ключі безпеки як другий фактор або для входу без пароля, а з authentik 2025.12 форма входу пропонує автозаповнення ключів доступу."
+				},
+				{
+					"q": "Як підключити застосунок до authentik через OpenID Connect?",
+					"a": "В «Admin interface» відкрийте «Applications → Applications», натисніть «New Application», виберіть OAuth2/OpenID Connect і вкажіть redirect URI застосунку. Потім застосунку вказують client ID, client secret та issuer — https://<ваша адреса>/application/o/<slug>/, за яким він знаходить решту."
+				},
+				{
+					"q": "Чи може authentik бути LDAP-сервером?",
+					"a": "Так, через LDAP-провайдер і LDAP outpost, контейнер ghcr.io/goauthentik/ldap, який віддає користувачів і групи authentik застосункам, що вміють лише LDAP. Його додають у compose.yaml разом із токеном outpost з authentik."
+				}
+			]
+		}
+	}
+}
