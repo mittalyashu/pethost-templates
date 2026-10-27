@@ -1,0 +1,45 @@
+{
+	"name": "LogChimp",
+	"emoji": "⬆️",
+	"category": "analytics",
+	"plan": "starter",
+	"route": {
+		"service": "theme",
+		"port": 3000
+	},
+	"variables": [],
+	"texts": {
+		"en": {
+			"description": "Collect customer feedback, analyzes, and prioritizes feedback using LogChimp.",
+			"notes": "Open the address and create the administrator account on the first page. Do it right away: until then anyone with the address can claim it. Then create your first board and share its link with your users.",
+			"sizing": "LogChimp is light: a few hundred MB of memory for the app and its database, and thousands of posts and votes take well under a gigabyte of disk.",
+			"summary": "LogChimp is a Canny alternative where users post ideas, vote and follow a public roadmap. Self-host it in one click.",
+			"about": [
+				"LogChimp is a feedback tool that people run instead of Canny. Your users sign up, post feature requests and bug reports on boards, comment on them and upvote the ones they want. You sort posts by votes or by date, and move them through roadmap stages so everyone can see what is planned, in progress or shipped. Administrators manage boards, posts, users and roles from a dashboard, and the site can carry your own name, logo and colors. A REST API lets you read and create data from other tools.",
+				"People self-host it to keep every post, vote and user account on their own server, with no plan capping how many users or boards they get. It is a Node.js app that stores its data in PostgreSQL. The catch is that it covers collecting and ranking feedback and showing a roadmap, and it has fewer integrations than the paid services, so check that it fits your workflow before moving over."
+			],
+			"faq": [
+				{
+					"q": "Is LogChimp free?",
+					"a": "Yes. You can collect unlimited feedback, and an unlimited number of users can submit it. To explore what else LogChimp offers, visit the pricing page on https://logchimp.app."
+				},
+				{
+					"q": "LogChimp vs Canny: what is the difference?",
+					"a": "LogChimp is software you run yourself rather than a service you pay for by tracked user, so your boards, posts and votes stay on your own server. Canny is a hosted product with more integrations and extras, while LogChimp covers the core: boards, voting, comments and a roadmap."
+				},
+				{
+					"q": "Can my users post without creating an account?",
+					"a": "No. Users sign up with an email and password before they can post, comment or vote. This ties each vote to one person, so the ranking is not easily gamed."
+				},
+				{
+					"q": "Does LogChimp have an API?",
+					"a": "Yes. It has a REST API, documented on the LogChimp site, that the web app itself uses. You can use it to read boards and posts or to create posts from other tools."
+				},
+				{
+					"q": "How do I back up LogChimp?",
+					"a": "Back up its PostgreSQL database, which holds the boards, posts, votes, comments and accounts. On Pethost the volume holding that data is backed up every night and kept for 14 days."
+				}
+			]
+		}
+	}
+}
